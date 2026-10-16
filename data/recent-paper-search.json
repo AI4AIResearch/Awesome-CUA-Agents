@@ -1,24 +1,21 @@
 {
-  "query": "(ti:\"computer use\" OR ti:\"computer-use\" OR ti:\"GUI agent\" OR ti:\"GUI agents\" OR ti:\"GUI grounding\" OR ti:\"web agent\" OR ti:\"browser agent\") AND submittedDate:[202610021122 TO 202610161122]",
-  "since_utc": "202610021122",
-  "cutoff_utc": "202610161122",
-  "reported_total": 36,
-  "unique_returned": 36,
-  "complete": true,
+  "query": "(ti:\"computer use\" OR ti:\"computer-use\" OR ti:\"GUI agent\" OR ti:\"GUI agents\" OR ti:\"GUI grounding\" OR ti:\"web agent\" OR ti:\"browser agent\") AND submittedDate:[202610021848 TO 202610161848]",
+  "since_utc": "202610021848",
+  "cutoff_utc": "202610161848",
+  "reported_total": null,
+  "unique_returned": 0,
+  "complete": false,
   "pages": [
     {
-      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agent%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B202610021122+TO+202610161122%5D&start=0&max_results=200&sortBy=submittedDate&sortOrder=descending",
-      "retrieved_at": "2026-10-16T11:22:02Z",
-      "ok": true,
-      "status": 200,
-      "final_url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agent%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B202610021122+TO+202610161122%5D&start=0&max_results=200&sortBy=submittedDate&sortOrder=descending",
-      "content_type": "application/atom+xml; charset=utf-8",
-      "sha256": "9cff3d5ce88eb28fae8341a56060d1cd62e50229256571296868ba1a840dc189",
-      "bytes": 94550,
-      "start": 0,
-      "returned": 36
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agent%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B202610021848+TO+202610161848%5D&start=0&max_results=200&sortBy=submittedDate&sortOrder=descending",
+      "retrieved_at": "2026-10-16T18:48:53Z",
+      "ok": false,
+      "error": "HTTP Error 429: Unknown Error",
+      "status": 429
     }
   ],
   "new_ids": [],
-  "warnings": []
+  "warnings": [
+    "HTTP Error 429: Unknown Error"
+  ]
 }
