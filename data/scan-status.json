@@ -1,0 +1,87 @@
+{
+  "id": "scan:2026-10-16T10:21:58Z",
+  "schema_version": 1,
+  "status": "success",
+  "started_at": "2026-10-16T10:21:58Z",
+  "finished_at": "2026-10-16T10:22:06Z",
+  "run_url": "https://github.com/reacher-z/Awesome-CUA/actions/runs/38886724721",
+  "schedule": {
+    "timezone": "America/Los_Angeles",
+    "times_local": [
+      "08:17",
+      "20:17"
+    ]
+  },
+  "before": {
+    "resources": 1987,
+    "bibliographic_records": 1764,
+    "curated_papers": 59,
+    "curated_resources": 223,
+    "candidates": 2676
+  },
+  "after": {
+    "resources": 1987,
+    "bibliographic_records": 1764,
+    "curated_papers": 59,
+    "curated_resources": 223,
+    "candidates": 2678
+  },
+  "new_papers": [],
+  "new_candidate_count": 2,
+  "pending_metadata_changes": 0,
+  "source_fetches": {
+    "successful": 21,
+    "total": 21
+  },
+  "phases": [
+    {
+      "name": "discovery",
+      "started_at": "2026-10-16T10:21:58Z",
+      "finished_at": "2026-10-16T10:22:01Z",
+      "ok": true,
+      "exit_code": 0,
+      "error": null
+    },
+    {
+      "name": "huggingface",
+      "started_at": "2026-10-16T10:22:01Z",
+      "finished_at": "2026-10-16T10:22:03Z",
+      "ok": true,
+      "exit_code": 0,
+      "error": null
+    },
+    {
+      "name": "recent_arxiv",
+      "ok": true,
+      "complete": true,
+      "new_count": 0,
+      "warnings": []
+    },
+    {
+      "name": "harvest",
+      "started_at": "2026-10-16T10:22:04Z",
+      "finished_at": "2026-10-16T10:22:04Z",
+      "ok": true,
+      "exit_code": 0,
+      "error": null
+    },
+    {
+      "name": "build",
+      "started_at": "2026-10-16T10:22:04Z",
+      "finished_at": "2026-10-16T10:22:05Z",
+      "ok": true,
+      "exit_code": 0,
+      "error": null
+    },
+    {
+      "name": "validate",
+      "started_at": "2026-10-16T10:22:05Z",
+      "finished_at": "2026-10-16T10:22:06Z",
+      "ok": true,
+      "exit_code": 0,
+      "error": null
+    }
+  ],
+  "warnings": [],
+  "policy": "Automated scans discover candidates and verify bibliographic metadata. Editorial approval, topic annotations, and license claims require separate source review."
+}
