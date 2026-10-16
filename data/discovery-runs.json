@@ -2,7 +2,7 @@
   {
     "id": "cdxeve-cua",
     "url": "https://raw.githubusercontent.com/cdxeve/awesome-computer-use-agents/main/README.md",
-    "retrieved_at": "2026-10-16T10:21:59Z",
+    "retrieved_at": "2026-10-16T11:21:58Z",
     "ok": true,
     "status": 200,
     "final_url": "https://raw.githubusercontent.com/cdxeve/awesome-computer-use-agents/main/README.md",
@@ -14,7 +14,7 @@
   {
     "id": "delunn-multimodal",
     "url": "https://raw.githubusercontent.com/DeLunnLi/Awesome-Multimodal-GUI-Agents/main/README.md",
-    "retrieved_at": "2026-10-16T10:21:59Z",
+    "retrieved_at": "2026-10-16T11:21:58Z",
     "ok": true,
     "status": 200,
     "final_url": "https://raw.githubusercontent.com/DeLunnLi/Awesome-Multimodal-GUI-Agents/main/README.md",
@@ -26,7 +26,7 @@
   {
     "id": "gui-datasets",
     "url": "https://raw.githubusercontent.com/Khang-9966/Computer-Browser-Phone-Use-Agent-Datasets/main/README.md",
-    "retrieved_at": "2026-10-16T10:21:59Z",
+    "retrieved_at": "2026-10-16T11:21:58Z",
     "ok": true,
     "status": 200,
     "final_url": "https://raw.githubusercontent.com/Khang-9966/Computer-Browser-Phone-Use-Agent-Datasets/main/README.md",
@@ -38,7 +38,7 @@
   {
     "id": "jin-gui-hub",
     "url": "https://raw.githubusercontent.com/jin-s13/awesome-gui-agent-hub/main/AWESOME.md",
-    "retrieved_at": "2026-10-16T10:22:00Z",
+    "retrieved_at": "2026-10-16T11:21:59Z",
     "ok": true,
     "status": 200,
     "final_url": "https://raw.githubusercontent.com/jin-s13/awesome-gui-agent-hub/main/AWESOME.md",
@@ -50,7 +50,7 @@
   {
     "id": "mobile-agents",
     "url": "https://raw.githubusercontent.com/aialt/awesome-mobile-agents/main/README.md",
-    "retrieved_at": "2026-10-16T10:22:01Z",
+    "retrieved_at": "2026-10-16T11:21:59Z",
     "ok": true,
     "status": 200,
     "final_url": "https://raw.githubusercontent.com/aialt/awesome-mobile-agents/main/README.md",
@@ -62,7 +62,7 @@
   {
     "id": "mobile-gui",
     "url": "https://raw.githubusercontent.com/dqtz5vpvj9-create/awesome-mobile-gui-agents/main/README.md",
-    "retrieved_at": "2026-10-16T10:22:00Z",
+    "retrieved_at": "2026-10-16T11:21:59Z",
     "ok": true,
     "status": 200,
     "final_url": "https://raw.githubusercontent.com/dqtz5vpvj9-create/awesome-mobile-gui-agents/main/README.md",
@@ -74,7 +74,7 @@
   {
     "id": "opendilab-ui",
     "url": "https://raw.githubusercontent.com/opendilab/awesome-ui-agents/main/README.md",
-    "retrieved_at": "2026-10-16T10:22:00Z",
+    "retrieved_at": "2026-10-16T11:21:59Z",
     "ok": true,
     "status": 200,
     "final_url": "https://raw.githubusercontent.com/opendilab/awesome-ui-agents/main/README.md",
@@ -86,7 +86,7 @@
   {
     "id": "os-agent-survey",
     "url": "https://raw.githubusercontent.com/OS-Agent-Survey/OS-Agent-Survey/main/README.md",
-    "retrieved_at": "2026-10-16T10:21:59Z",
+    "retrieved_at": "2026-10-16T11:21:58Z",
     "ok": true,
     "status": 200,
     "final_url": "https://raw.githubusercontent.com/OS-Agent-Survey/OS-Agent-Survey/main/README.md",
@@ -98,7 +98,7 @@
   {
     "id": "osu-gui",
     "url": "https://raw.githubusercontent.com/OSU-NLP-Group/GUI-Agents-Paper-List/main/README.md",
-    "retrieved_at": "2026-10-16T10:22:00Z",
+    "retrieved_at": "2026-10-16T11:21:59Z",
     "ok": true,
     "status": 200,
     "final_url": "https://raw.githubusercontent.com/OSU-NLP-Group/GUI-Agents-Paper-List/main/README.md",
@@ -110,7 +110,7 @@
   {
     "id": "phone-gui",
     "url": "https://raw.githubusercontent.com/PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents/master/README.md",
-    "retrieved_at": "2026-10-16T10:22:00Z",
+    "retrieved_at": "2026-10-16T11:21:59Z",
     "ok": true,
     "status": 200,
     "final_url": "https://raw.githubusercontent.com/PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents/master/README.md",
@@ -122,7 +122,7 @@
   {
     "id": "ranpox-cua",
     "url": "https://raw.githubusercontent.com/ranpox/awesome-computer-use/main/README.md",
-    "retrieved_at": "2026-10-16T10:22:01Z",
+    "retrieved_at": "2026-10-16T11:21:59Z",
     "ok": true,
     "status": 200,
     "final_url": "https://raw.githubusercontent.com/ranpox/awesome-computer-use/main/README.md",
@@ -132,9 +132,105 @@
     "unique_resources": 96
   },
   {
+    "id": "release-fara",
+    "url": "https://raw.githubusercontent.com/microsoft/fara/HEAD/README.md",
+    "retrieved_at": "2026-10-16T11:21:59Z",
+    "ok": true,
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/microsoft/fara/HEAD/README.md",
+    "content_type": "text/plain; charset=utf-8",
+    "sha256": "ce11bdfe8354eb9c3b8a985dd5ddd21f88f94fb5fb9d00c9b01a76226f0b0a36",
+    "bytes": 19152,
+    "unique_resources": 18
+  },
+  {
+    "id": "release-nnetnav",
+    "url": "https://raw.githubusercontent.com/MurtyShikhar/NNetnav/HEAD/README.md",
+    "retrieved_at": "2026-10-16T11:22:00Z",
+    "ok": true,
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/MurtyShikhar/NNetnav/HEAD/README.md",
+    "content_type": "text/plain; charset=utf-8",
+    "sha256": "3095f7262b7d4ff916c6f58c55e6fc9902c08f77d09bf3951199945501148bb3",
+    "bytes": 10548,
+    "unique_resources": 6
+  },
+  {
+    "id": "release-opencua",
+    "url": "https://raw.githubusercontent.com/xlang-ai/OpenCUA/HEAD/README.md",
+    "retrieved_at": "2026-10-16T11:22:00Z",
+    "ok": true,
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/xlang-ai/OpenCUA/HEAD/README.md",
+    "content_type": "text/plain; charset=utf-8",
+    "sha256": "91fed11b234775bde91bb766ee65e1015897ced6668de8e80418fcee09f8f75d",
+    "bytes": 17894,
+    "unique_resources": 18
+  },
+  {
+    "id": "release-opengvlab-scalecua",
+    "url": "https://raw.githubusercontent.com/OpenGVLab/ScaleCUA/HEAD/README.md",
+    "retrieved_at": "2026-10-16T11:21:59Z",
+    "ok": true,
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/OpenGVLab/ScaleCUA/HEAD/README.md",
+    "content_type": "text/plain; charset=utf-8",
+    "sha256": "0538701c860afedd5d63c3839039699d8e5a14977d5c339b187ed13ad666c8fa",
+    "bytes": 7910,
+    "unique_resources": 15
+  },
+  {
+    "id": "release-showui-pi",
+    "url": "https://raw.githubusercontent.com/showlab/showui-pi/HEAD/README.md",
+    "retrieved_at": "2026-10-16T11:22:00Z",
+    "ok": true,
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/showlab/showui-pi/HEAD/README.md",
+    "content_type": "text/plain; charset=utf-8",
+    "sha256": "88df552ccbe80efd7020905d77d526f4f9efe2d09a11fed2714b083988f9dcef",
+    "bytes": 2784,
+    "unique_resources": 11
+  },
+  {
+    "id": "release-thudm-scalecua",
+    "url": "https://raw.githubusercontent.com/THUDM/SCALE-CUA/HEAD/README.md",
+    "retrieved_at": "2026-10-16T11:21:59Z",
+    "ok": true,
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/THUDM/SCALE-CUA/HEAD/README.md",
+    "content_type": "text/plain; charset=utf-8",
+    "sha256": "d4a68b00acc4becf2a25688520595babea9b694b56541e709f066413b5b80aea",
+    "bytes": 13479,
+    "unique_resources": 28
+  },
+  {
+    "id": "release-ui-venus",
+    "url": "https://raw.githubusercontent.com/inclusionAI/UI-Venus/HEAD/README.md",
+    "retrieved_at": "2026-10-16T11:21:59Z",
+    "ok": true,
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/inclusionAI/UI-Venus/HEAD/README.md",
+    "content_type": "text/plain; charset=utf-8",
+    "sha256": "5703c892aaf99d250bf59edf52d359560a80d443f2be13c7aa76af0c1a7f1d67",
+    "bytes": 35279,
+    "unique_resources": 10
+  },
+  {
+    "id": "release-webdreamer",
+    "url": "https://raw.githubusercontent.com/OSU-NLP-Group/WebDreamer/HEAD/README.md",
+    "retrieved_at": "2026-10-16T11:22:00Z",
+    "ok": true,
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/OSU-NLP-Group/WebDreamer/HEAD/README.md",
+    "content_type": "text/plain; charset=utf-8",
+    "sha256": "6602cb260b52ae5b2b93db231a51a38d0463c78d8e71321620e05b4fa31caacb",
+    "bytes": 6779,
+    "unique_resources": 5
+  },
+  {
     "id": "showlab-gui",
     "url": "https://raw.githubusercontent.com/showlab/Awesome-GUI-Agent/main/README.md",
-    "retrieved_at": "2026-10-16T10:21:58Z",
+    "retrieved_at": "2026-10-16T11:21:58Z",
     "ok": true,
     "status": 200,
     "final_url": "https://raw.githubusercontent.com/showlab/Awesome-GUI-Agent/main/README.md",
@@ -146,7 +242,7 @@
   {
     "id": "steel-web",
     "url": "https://raw.githubusercontent.com/steel-dev/awesome-web-agents/main/README.md",
-    "retrieved_at": "2026-10-16T10:21:59Z",
+    "retrieved_at": "2026-10-16T11:21:58Z",
     "ok": true,
     "status": 200,
     "final_url": "https://raw.githubusercontent.com/steel-dev/awesome-web-agents/main/README.md",
@@ -158,7 +254,7 @@
   {
     "id": "steel-web-archive",
     "url": "https://raw.githubusercontent.com/steel-dev/awesome-web-agents/main/ARCHIVE.md",
-    "retrieved_at": "2026-10-16T10:21:59Z",
+    "retrieved_at": "2026-10-16T11:21:58Z",
     "ok": true,
     "status": 200,
     "final_url": "https://raw.githubusercontent.com/steel-dev/awesome-web-agents/main/ARCHIVE.md",
@@ -170,7 +266,7 @@
   {
     "id": "supernal-gui",
     "url": "https://raw.githubusercontent.com/supernalintelligence/Awesome-Gui-Agents/main/README.md",
-    "retrieved_at": "2026-10-16T10:22:00Z",
+    "retrieved_at": "2026-10-16T11:21:58Z",
     "ok": true,
     "status": 200,
     "final_url": "https://raw.githubusercontent.com/supernalintelligence/Awesome-Gui-Agents/main/README.md",
@@ -182,7 +278,7 @@
   {
     "id": "tianyuan-cua",
     "url": "https://raw.githubusercontent.com/TianyuanYang/awesome-computer-use/main/README.md",
-    "retrieved_at": "2026-10-16T10:21:59Z",
+    "retrieved_at": "2026-10-16T11:21:58Z",
     "ok": true,
     "status": 200,
     "final_url": "https://raw.githubusercontent.com/TianyuanYang/awesome-computer-use/main/README.md",
@@ -194,7 +290,7 @@
   {
     "id": "web-research",
     "url": "https://raw.githubusercontent.com/albzni/Awesome-LLM-based-Web-Agent-and-Tools/main/README.md",
-    "retrieved_at": "2026-10-16T10:22:01Z",
+    "retrieved_at": "2026-10-16T11:21:59Z",
     "ok": true,
     "status": 200,
     "final_url": "https://raw.githubusercontent.com/albzni/Awesome-LLM-based-Web-Agent-and-Tools/main/README.md",
@@ -206,7 +302,7 @@
   {
     "id": "wjhou-cua",
     "url": "https://raw.githubusercontent.com/wjhou/awesome-computer-use-agents/main/README.md",
-    "retrieved_at": "2026-10-16T10:21:59Z",
+    "retrieved_at": "2026-10-16T11:21:58Z",
     "ok": true,
     "status": 200,
     "final_url": "https://raw.githubusercontent.com/wjhou/awesome-computer-use-agents/main/README.md",
@@ -218,7 +314,7 @@
   {
     "id": "yearly-gui",
     "url": "https://raw.githubusercontent.com/qy0720/awesome-yearly-gui-agents/main/README.md",
-    "retrieved_at": "2026-10-16T10:22:00Z",
+    "retrieved_at": "2026-10-16T11:21:58Z",
     "ok": true,
     "status": 200,
     "final_url": "https://raw.githubusercontent.com/qy0720/awesome-yearly-gui-agents/main/README.md",
@@ -230,7 +326,7 @@
   {
     "id": "zju-gui",
     "url": "https://raw.githubusercontent.com/ZJU-REAL/Awesome-GUI-Agents/main/README.md",
-    "retrieved_at": "2026-10-16T10:21:59Z",
+    "retrieved_at": "2026-10-16T11:21:58Z",
     "ok": true,
     "status": 200,
     "final_url": "https://raw.githubusercontent.com/ZJU-REAL/Awesome-GUI-Agents/main/README.md",
@@ -242,7 +338,7 @@
   {
     "id": "zju-iclr26",
     "url": "https://raw.githubusercontent.com/ZJU-REAL/Awesome-GUI-Agents/main/ICLR2026/Paperlist.md",
-    "retrieved_at": "2026-10-16T10:22:00Z",
+    "retrieved_at": "2026-10-16T11:21:59Z",
     "ok": true,
     "status": 200,
     "final_url": "https://raw.githubusercontent.com/ZJU-REAL/Awesome-GUI-Agents/main/ICLR2026/Paperlist.md",

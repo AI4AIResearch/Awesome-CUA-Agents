@@ -4,7 +4,7 @@ Evidence snapshot through **2026-10-16T11:15:55Z**. Generated from committed sou
 
 - 2,025 resource records: 501 curated; 1,524 bibliographic metadata only.
 - 1,764 arXiv records, including curated surveys. This count overlaps the status counts above.
-- 2,678 discovery identifiers; 727 have no published catalog record.
+- 2,763 discovery identifiers; 806 have no published catalog record.
 - 7 editorial proposals await verification or review.
 
 These are distinct resource identifiers, not distinct research projects. Papers, repositories, datasets, products, and publisher entities have different grains.
@@ -36,14 +36,14 @@ The denominator is the normalized identifiers extracted from each fetched docume
 | [aialt/awesome-mobile-agents](https://github.com/aialt/awesome-mobile-agents) | 91 | 76 | 50 | 15 | OK · 2026-10-16 |
 | [albzni/Awesome-LLM-based-Web-Agent-and-Tools](https://github.com/albzni/Awesome-LLM-based-Web-Agent-and-Tools) | 10 | 4 | 4 | 6 | OK · 2026-10-16 |
 | [ranpox/awesome-computer-use](https://github.com/ranpox/awesome-computer-use) | 96 | 57 | 35 | 39 | OK · 2026-10-16 |
-| [Fara — first-party releases](https://github.com/microsoft/fara) | 0 | 0 | 0 | 0 | FAILED ·  |
-| [UI-Venus — first-party releases](https://github.com/inclusionAI/UI-Venus) | 0 | 0 | 0 | 0 | FAILED ·  |
-| [OpenGVLab ScaleCUA — first-party releases](https://github.com/OpenGVLab/ScaleCUA) | 0 | 0 | 0 | 0 | FAILED ·  |
-| [THUDM SCALE-CUA — first-party releases](https://github.com/THUDM/SCALE-CUA) | 0 | 0 | 0 | 0 | FAILED ·  |
-| [ShowUI-π — first-party releases](https://github.com/showlab/showui-pi) | 0 | 0 | 0 | 0 | FAILED ·  |
-| [OpenCUA — first-party releases](https://github.com/xlang-ai/OpenCUA) | 0 | 0 | 0 | 0 | FAILED ·  |
-| [WebDreamer — first-party releases](https://github.com/OSU-NLP-Group/WebDreamer) | 0 | 0 | 0 | 0 | FAILED ·  |
-| [NNetNav — first-party releases](https://github.com/MurtyShikhar/NNetnav) | 0 | 0 | 0 | 0 | FAILED ·  |
+| [Fara — first-party releases](https://github.com/microsoft/fara) | 18 | 3 | 3 | 15 | OK · 2026-10-16 |
+| [UI-Venus — first-party releases](https://github.com/inclusionAI/UI-Venus) | 10 | 4 | 4 | 6 | OK · 2026-10-16 |
+| [OpenGVLab ScaleCUA — first-party releases](https://github.com/OpenGVLab/ScaleCUA) | 15 | 9 | 9 | 6 | OK · 2026-10-16 |
+| [THUDM SCALE-CUA — first-party releases](https://github.com/THUDM/SCALE-CUA) | 28 | 1 | 1 | 27 | OK · 2026-10-16 |
+| [ShowUI-π — first-party releases](https://github.com/showlab/showui-pi) | 11 | 3 | 3 | 8 | OK · 2026-10-16 |
+| [OpenCUA — first-party releases](https://github.com/xlang-ai/OpenCUA) | 18 | 5 | 5 | 13 | OK · 2026-10-16 |
+| [WebDreamer — first-party releases](https://github.com/OSU-NLP-Group/WebDreamer) | 5 | 3 | 3 | 2 | OK · 2026-10-16 |
+| [NNetNav — first-party releases](https://github.com/MurtyShikhar/NNetnav) | 6 | 2 | 2 | 4 | OK · 2026-10-16 |
 
 ## Primary arXiv discovery
 

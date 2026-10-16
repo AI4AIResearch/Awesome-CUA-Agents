@@ -1,10 +1,10 @@
 {
-  "id": "scan:2026-10-16T10:21:58Z",
+  "id": "scan:2026-10-16T11:21:57Z",
   "schema_version": 1,
   "status": "success",
-  "started_at": "2026-10-16T10:21:58Z",
-  "finished_at": "2026-10-16T10:22:06Z",
-  "run_url": "https://github.com/reacher-z/Awesome-CUA/actions/runs/38886724721",
+  "started_at": "2026-10-16T11:21:57Z",
+  "finished_at": "2026-10-16T11:22:05Z",
+  "run_url": "https://github.com/reacher-z/Awesome-CUA/actions/runs/38893270509",
   "schedule": {
     "timezone": "America/Los_Angeles",
     "times_local": [
@@ -13,39 +13,39 @@
     ]
   },
   "before": {
-    "resources": 1987,
+    "resources": 2025,
     "bibliographic_records": 1764,
-    "curated_papers": 59,
-    "curated_resources": 223,
-    "candidates": 2676
-  },
-  "after": {
-    "resources": 1987,
-    "bibliographic_records": 1764,
-    "curated_papers": 59,
-    "curated_resources": 223,
+    "curated_papers": 240,
+    "curated_resources": 261,
     "candidates": 2678
   },
+  "after": {
+    "resources": 2025,
+    "bibliographic_records": 1764,
+    "curated_papers": 240,
+    "curated_resources": 261,
+    "candidates": 2763
+  },
   "new_papers": [],
-  "new_candidate_count": 2,
+  "new_candidate_count": 85,
   "pending_metadata_changes": 0,
   "source_fetches": {
-    "successful": 21,
-    "total": 21
+    "successful": 29,
+    "total": 29
   },
   "phases": [
     {
       "name": "discovery",
-      "started_at": "2026-10-16T10:21:58Z",
-      "finished_at": "2026-10-16T10:22:01Z",
+      "started_at": "2026-10-16T11:21:57Z",
+      "finished_at": "2026-10-16T11:22:00Z",
       "ok": true,
       "exit_code": 0,
       "error": null
     },
     {
       "name": "huggingface",
-      "started_at": "2026-10-16T10:22:01Z",
-      "finished_at": "2026-10-16T10:22:03Z",
+      "started_at": "2026-10-16T11:22:00Z",
+      "finished_at": "2026-10-16T11:22:02Z",
       "ok": true,
       "exit_code": 0,
       "error": null
@@ -59,24 +59,24 @@
     },
     {
       "name": "harvest",
-      "started_at": "2026-10-16T10:22:04Z",
-      "finished_at": "2026-10-16T10:22:04Z",
+      "started_at": "2026-10-16T11:22:03Z",
+      "finished_at": "2026-10-16T11:22:03Z",
       "ok": true,
       "exit_code": 0,
       "error": null
     },
     {
       "name": "build",
-      "started_at": "2026-10-16T10:22:04Z",
-      "finished_at": "2026-10-16T10:22:05Z",
+      "started_at": "2026-10-16T11:22:03Z",
+      "finished_at": "2026-10-16T11:22:03Z",
       "ok": true,
       "exit_code": 0,
       "error": null
     },
     {
       "name": "validate",
-      "started_at": "2026-10-16T10:22:05Z",
-      "finished_at": "2026-10-16T10:22:06Z",
+      "started_at": "2026-10-16T11:22:03Z",
+      "finished_at": "2026-10-16T11:22:05Z",
       "ok": true,
       "exit_code": 0,
       "error": null
