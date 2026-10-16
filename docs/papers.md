@@ -924,7 +924,7 @@ Official arXiv bibliographic metadata. Most entries have **not** undergone a rel
 | 2025-07-21 | [Impact of finite squeezing on near-term quantum computations using GKP qubits](https://arxiv.org/abs/2507.15955) | metadata_verified |
 | 2025-07-21 | [GUI-G$^2$: Gaussian Reward Modeling for GUI Grounding](https://arxiv.org/abs/2507.15846) | metadata_verified |
 | 2025-07-20 | [Manipulating LLM Web Agents with Indirect Prompt Injection Attack via HTML Accessibility Tree](https://arxiv.org/abs/2507.14799) | metadata_verified |
-| 2025-07-19 | [MagicGUI: A Foundational Mobile GUI Agent with Scalable Data Pipeline and Reinforcement Fine-tuning](https://arxiv.org/abs/2508.03700) | metadata_verified |
+| 2025-07-19 | [MagicGUI: A Foundational Mobile GUI Agent with Scalable Data Pipeline and Reinforcement Fine-tuning](https://arxiv.org/abs/2508.03700) | curated |
 | 2025-07-18 | [WebGuard: Building a Generalizable Guardrail for Web Agents](https://arxiv.org/abs/2507.14293) | metadata_verified |
 | 2025-07-17 | [Performance Portable Gradient Computations Using Source Transformation](https://arxiv.org/abs/2507.13204) | metadata_verified |
 | 2025-07-17 | [Machine-Readable Ads: Accessibility and Trust Patterns for AI Web Agents interacting with Online Advertisements](https://arxiv.org/abs/2507.12844) | metadata_verified |
@@ -976,7 +976,7 @@ Official arXiv bibliographic metadata. Most entries have **not** undergone a rel
 | 2025-06-03 | [DPO Learning with LLMs-Judge Signal for Computer Use Agents](https://arxiv.org/abs/2506.03095) | metadata_verified |
 | 2025-06-02 | [AgentCPM-GUI: Building Mobile-Use Agents with Reinforcement Fine-Tuning](https://arxiv.org/abs/2506.01391) | curated |
 | 2025-05-31 | [RiOSWorld: Benchmarking the Risk of Multimodal Computer-Use Agents](https://arxiv.org/abs/2506.00618) | metadata_verified |
-| 2025-05-30 | [VideoCAD: A Dataset and Model for Learning Long-Horizon 3D CAD UI Interactions from Video](https://arxiv.org/abs/2505.24838) | metadata_verified |
+| 2025-05-30 | [VideoCAD: A Dataset and Model for Learning Long-Horizon 3D CAD UI Interactions from Video](https://arxiv.org/abs/2505.24838) | curated |
 | 2025-05-29 | [ZeroGUI: Automating Online GUI Learning at Zero Human Cost](https://arxiv.org/abs/2505.23762) | curated |
 | 2025-05-29 | [Agent-SAMA: State-Aware Mobile Assistant](https://arxiv.org/abs/2505.23596) | curated |
 | 2025-05-28 | [WorkForceAgent-R1: Incentivizing Reasoning Capability in LLM-based Web Agents via Reinforcement Learning](https://arxiv.org/abs/2505.22942) | curated |
@@ -996,7 +996,7 @@ Official arXiv bibliographic metadata. Most entries have **not** undergone a rel
 | 2025-05-22 | [GUI-explorer: Autonomous Exploration and Mining of Transition-aware Knowledge for GUI Agent](https://arxiv.org/abs/2505.16827) | metadata_verified |
 | 2025-05-22 | [ARPO:End-to-End Policy Optimization for GUI Agents with Experience Replay](https://arxiv.org/abs/2505.16282) | metadata_verified |
 | 2025-05-21 | [Web-Shepherd: Advancing PRMs for Reinforcing Web Agents](https://arxiv.org/abs/2505.15277) | metadata_verified |
-| 2025-05-21 | [ReGUIDE: Data Efficient GUI Grounding via Spatial Reasoning and Search](https://arxiv.org/abs/2505.15259) | metadata_verified |
+| 2025-05-21 | [ReGUIDE: Data Efficient GUI Grounding via Spatial Reasoning and Search](https://arxiv.org/abs/2505.15259) | curated |
 | 2025-05-21 | [GUI-G1: Understanding R1-Zero-Like Training for Visual Grounding in GUI Agents](https://arxiv.org/abs/2505.15810) | curated |
 | 2025-05-21 | [AutoData: A Multi-Agent System for Open Web Data Collection](https://arxiv.org/abs/2505.15859) | metadata_verified |
 | 2025-05-20 | [Mobile-Agent-V: A Video-Guided Approach for Effortless and Efficient Operational Knowledge Injection in Mobile Automation](https://arxiv.org/abs/2505.13887) | metadata_verified |
@@ -1006,7 +1006,7 @@ Official arXiv bibliographic metadata. Most entries have **not** undergone a rel
 | 2025-05-20 | [EVA: Evolving Semantic Adversaries for Red-Teaming GUI Agents Against Environmental Injection Attacks](https://arxiv.org/abs/2505.14289) | metadata_verified |
 | 2025-05-20 | [Building a Stable Planner: An Extended Finite State Machine Based Planning Module for Mobile GUI Agent](https://arxiv.org/abs/2505.14141) | metadata_verified |
 | 2025-05-19 | [Scaling Computer-Use Grounding via User Interface Decomposition and Synthesis](https://arxiv.org/abs/2505.13227) | curated |
-| 2025-05-19 | [Scalable Video-to-Dataset Generation for Cross-Platform Mobile Agents](https://arxiv.org/abs/2505.12632) | metadata_verified |
+| 2025-05-19 | [Scalable Video-to-Dataset Generation for Cross-Platform Mobile Agents](https://arxiv.org/abs/2505.12632) | curated |
 | 2025-05-19 | [Large-scale quantum reservoir computing using a Gaussian Boson Sampler](https://arxiv.org/abs/2505.13695) | metadata_verified |
 | 2025-05-19 | [GEM: Gaussian Embedding Modeling for Out-of-Distribution Detection in GUI Agents](https://arxiv.org/abs/2505.12842) | metadata_verified |
 | 2025-05-19 | [2T1R Regulated Memristor Conductance Control Array Architecture for Neuromorphic Computing using 28nm CMOS Technology](https://arxiv.org/abs/2505.12830) | metadata_verified |
@@ -1054,7 +1054,7 @@ Official arXiv bibliographic metadata. Most entries have **not** undergone a rel
 | 2025-03-27 | [UI-R1: Enhancing Efficient Action Prediction of GUI Agents by Reinforcement Learning](https://arxiv.org/abs/2503.21620) | curated |
 | 2025-03-27 | [A Survey on (M)LLM-Based GUI Agents](https://arxiv.org/abs/2504.13865) | curated |
 | 2025-03-26 | [ShieldAgent: Shielding Agents via Verifiable Safety Policy Reasoning](https://arxiv.org/abs/2503.22738) | curated |
-| 2025-03-26 | [ScreenLLM: Stateful Screen Schema for Efficient Action Understanding and Prediction](https://arxiv.org/abs/2503.20978) | metadata_verified |
+| 2025-03-26 | [ScreenLLM: Stateful Screen Schema for Efficient Action Understanding and Prediction](https://arxiv.org/abs/2503.20978) | curated |
 | 2025-03-25 | [Agent-Initiated Interaction in Phone UI Automation](https://arxiv.org/abs/2503.19537) | curated |
 | 2025-03-24 | [VeriSafe Agent: Safeguarding Mobile GUI Agent via Logic-based Action Verification](https://arxiv.org/abs/2503.18492) | curated |
 | 2025-03-22 | [GUI-Xplore: Empowering Generalizable GUI Agents with One Exploration](https://arxiv.org/abs/2503.17709) | curated |
@@ -1077,7 +1077,7 @@ Official arXiv bibliographic metadata. Most entries have **not** undergone a rel
 | 2025-03-10 | [Automated Benchmark Generation for Repository-Level Coding Tasks](https://arxiv.org/abs/2503.07701) | metadata_verified |
 | 2025-03-09 | [Think Twice, Click Once: Enhancing GUI Grounding via Fast and Slow Systems](https://arxiv.org/abs/2503.06470) | metadata_verified |
 | 2025-03-09 | [Agent models: Internalizing Chain-of-Action Generation into Reasoning models](https://arxiv.org/abs/2503.06580) | metadata_verified |
-| 2025-03-07 | [FedMABench: Benchmarking Mobile Agents on Decentralized Heterogeneous User Data](https://arxiv.org/abs/2503.05143) | metadata_verified |
+| 2025-03-07 | [FedMABench: Benchmarking Mobile Agents on Decentralized Heterogeneous User Data](https://arxiv.org/abs/2503.05143) | curated |
 | 2025-03-07 | [Encrypted Vector Similarity Computations Using Partially Homomorphic Encryption: Applications and Performance Analysis](https://arxiv.org/abs/2503.05850) | metadata_verified |
 | 2025-03-06 | [SafeArena: Evaluating the Safety of Autonomous Web Agents](https://arxiv.org/abs/2503.04957) | curated |
 | 2025-03-05 | [SpiritSight Agent: Advanced GUI Agent with One Look](https://arxiv.org/abs/2503.03196) | metadata_verified |
@@ -1105,7 +1105,7 @@ Official arXiv bibliographic metadata. Most entries have **not** undergone a rel
 | 2025-02-17 | [A-MEM: Agentic Memory for LLM Agents](https://arxiv.org/abs/2502.12110) | metadata_verified |
 | 2025-02-13 | [Digi-Q: Learning Q-Value Functions for Training Device-Control Agents](https://arxiv.org/abs/2502.15760) | curated |
 | 2025-02-12 | [WorldGUI: An Interactive Benchmark for Desktop GUI Automation from Any Starting Point](https://arxiv.org/abs/2502.08047) | curated |
-| 2025-02-12 | [TRISHUL: Towards Region Identification and Screen Hierarchy Understanding for Large VLM based GUI Agents](https://arxiv.org/abs/2502.08226) | metadata_verified |
+| 2025-02-12 | [TRISHUL: Towards Region Identification and Screen Hierarchy Understanding for Large VLM based GUI Agents](https://arxiv.org/abs/2502.08226) | curated |
 | 2025-02-11 | [Symbiotic Cooperation for Web Agents: Harnessing Complementary Strengths of Large and Small LLMs](https://arxiv.org/abs/2502.07942) | metadata_verified |
 | 2025-02-11 | [Advancing Autonomous VLM Agents via Variational Subgoal-Conditioned Reinforcement Learning](https://arxiv.org/abs/2502.07949) | metadata_verified |
 | 2025-02-10 | [AppVLM: A Lightweight Vision Language Model for Online App Control](https://arxiv.org/abs/2502.06395) | metadata_verified |
@@ -1160,7 +1160,7 @@ Official arXiv bibliographic metadata. Most entries have **not** undergone a rel
 | 2024-12-05 | [BigDocs: An Open Dataset for Training Multimodal Models on Document and Code Tasks](https://arxiv.org/abs/2412.04626) | metadata_verified |
 | 2024-12-05 | [Aguvis: Unified Pure Vision Agents for Autonomous GUI Interaction](https://arxiv.org/abs/2412.04454) | curated |
 | 2024-12-02 | [Ponder & Press: Advancing Visual GUI Agent towards General Computer Control](https://arxiv.org/abs/2412.01268) | metadata_verified |
-| 2024-11-30 | [DroidCall: A Dataset for LLM-powered Android Intent Invocation](https://arxiv.org/abs/2412.00402) | metadata_verified |
+| 2024-11-30 | [DroidCall: A Dataset for LLM-powered Android Intent Invocation](https://arxiv.org/abs/2412.00402) | curated |
 | 2024-11-27 | [Large Language Model-Brained GUI Agents: A Survey](https://arxiv.org/abs/2411.18279) | curated |
 | 2024-11-26 | [ShowUI: One Vision-Language-Action Model for GUI Visual Agent](https://arxiv.org/abs/2411.17465) | curated |
 | 2024-11-22 | [ScribeAgent: Towards Specialized Web Agents Using Production-Scale Workflow Data](https://arxiv.org/abs/2411.15004) | curated |
@@ -1183,7 +1183,7 @@ Official arXiv bibliographic metadata. Most entries have **not** undergone a rel
 | 2024-10-28 | [Shopping MMLU: A Massive Multi-Task Online Shopping Benchmark for Large Language Models](https://arxiv.org/abs/2410.20745) | metadata_verified |
 | 2024-10-28 | [AutoGLM: Autonomous Foundation Agents for GUIs](https://arxiv.org/abs/2411.00820) | curated |
 | 2024-10-25 | [OpenWebVoyager: Building Multimodal Web Agents via Iterative Real-World Exploration, Feedback and Optimization](https://arxiv.org/abs/2410.19609) | curated |
-| 2024-10-25 | [EDGE: Enhanced Grounded GUI Understanding with Enriched Multi-Granularity Synthetic Data](https://arxiv.org/abs/2410.19461) | metadata_verified |
+| 2024-10-25 | [EDGE: Enhanced Grounded GUI Understanding with Enriched Multi-Granularity Synthetic Data](https://arxiv.org/abs/2410.19461) | curated |
 | 2024-10-24 | [VideoWebArena: Evaluating Long Context Multimodal Agents with Video Understanding Web Tasks](https://arxiv.org/abs/2410.19100) | curated |
 | 2024-10-24 | [OSCAR: Operating System Control via State-Aware Reasoning and Re-Planning](https://arxiv.org/abs/2410.18963) | metadata_verified |
 | 2024-10-24 | [Infogent: An Agent-Based Framework for Web Information Aggregation](https://arxiv.org/abs/2410.19054) | metadata_verified |
@@ -1221,7 +1221,7 @@ Official arXiv bibliographic metadata. Most entries have **not** undergone a rel
 | 2024-10-01 | [Dynamic Planning for LLM-based Graphical User Interface Automation](https://arxiv.org/abs/2410.00467) | metadata_verified |
 | 2024-09-30 | [MM1.5: Methods, Analysis & Insights from Multimodal LLM Fine-tuning](https://arxiv.org/abs/2409.20566) | metadata_verified |
 | 2024-09-30 | [Interactive Speculative Planning: Enhance Agent Efficiency through Co-design of System and User Interface](https://arxiv.org/abs/2410.00079) | metadata_verified |
-| 2024-09-30 | [DreamStruct: Understanding Slides and User Interfaces via Synthetic Data Generation](https://arxiv.org/abs/2410.00201) | metadata_verified |
+| 2024-09-30 | [DreamStruct: Understanding Slides and User Interfaces via Synthetic Data Generation](https://arxiv.org/abs/2410.00201) | curated |
 | 2024-09-26 | [Inferring Alt-text For UI Icons With Large Language Models During App Development](https://arxiv.org/abs/2409.18060) | metadata_verified |
 | 2024-09-25 | [AXIS: Efficient Human-Agent-Computer Interaction with API-First LLM-Based Agents](https://arxiv.org/abs/2409.17140) | metadata_verified |
 | 2024-09-24 | [Synatra: Turning Indirect Knowledge into Direct Demonstrations for Digital Agents at Scale](https://arxiv.org/abs/2409.15637) | metadata_verified |
@@ -1263,11 +1263,11 @@ Official arXiv bibliographic metadata. Most entries have **not** undergone a rel
 | 2024-07-22 | [AssistantBench: Can Web Agents Solve Realistic and Time-Consuming Tasks?](https://arxiv.org/abs/2407.15711) | curated |
 | 2024-07-18 | [Smart polymer solution and thermal conductivity: How important is an exact polymer conformation?](https://arxiv.org/abs/2407.13063) | metadata_verified |
 | 2024-07-17 | [Agent-E: From Autonomous Web Navigation to Foundational Design Principles in Agentic Systems](https://arxiv.org/abs/2407.13032) | metadata_verified |
-| 2024-07-15 | [Spider2-V: How Far Are Multimodal Agents From Automating Data Science and Engineering Workflows?](https://arxiv.org/abs/2407.10956) | metadata_verified |
+| 2024-07-15 | [Spider2-V: How Far Are Multimodal Agents From Automating Data Science and Engineering Workflows?](https://arxiv.org/abs/2407.10956) | curated |
 | 2024-07-15 | [CircleZ: Reliable Photometric redshifts for AGN computed using only photometry from Legacy Survey Imaging for DESI](https://arxiv.org/abs/2407.10788) | metadata_verified |
 | 2024-07-12 | [Systematic Categorization, Construction and Evaluation of New Attacks against Multi-modal Mobile GUI Agents](https://arxiv.org/abs/2407.09295) | curated |
 | 2024-07-12 | [AUITestAgent: Automatic Requirements Oriented GUI Function Testing](https://arxiv.org/abs/2407.09018) | curated |
-| 2024-07-11 | [UICrit: Enhancing Automated Design Evaluation with a UICritique Dataset](https://arxiv.org/abs/2407.08850) | metadata_verified |
+| 2024-07-11 | [UICrit: Enhancing Automated Design Evaluation with a UICritique Dataset](https://arxiv.org/abs/2407.08850) | curated |
 | 2024-07-09 | [Internet of Agents: Weaving a Web of Heterogeneous Agents for Collaborative Intelligence](https://arxiv.org/abs/2407.07061) | metadata_verified |
 | 2024-07-07 | [WorkArena++: Towards Compositional Planning and Reasoning-based Common Knowledge Work Tasks](https://arxiv.org/abs/2407.05291) | curated |
 | 2024-07-05 | [MobileFlow: A Multimodal LLM For Mobile GUI Agent](https://arxiv.org/abs/2407.04346) | curated |
@@ -1352,7 +1352,7 @@ Official arXiv bibliographic metadata. Most entries have **not** undergone a rel
 | 2024-03-26 | [AgentStudio: A Toolkit for Building General Virtual Agents](https://arxiv.org/abs/2403.17918) | metadata_verified |
 | 2024-03-25 | [AIOS: LLM Agent Operating System](https://arxiv.org/abs/2403.16971) | metadata_verified |
 | 2024-03-18 | [Tur\[k\]ingBench: A Challenge Benchmark for Web Agents](https://arxiv.org/abs/2403.11905) | curated |
-| 2024-03-15 | [Computer User Interface Understanding. A New Dataset and a Learning Framework](https://arxiv.org/abs/2403.10170) | metadata_verified |
+| 2024-03-15 | [Computer User Interface Understanding. A New Dataset and a Learning Framework](https://arxiv.org/abs/2403.10170) | curated |
 | 2024-03-13 | [Scaling Instructable Agents Across Many Simulated Worlds](https://arxiv.org/abs/2404.10179) | metadata_verified |
 | 2024-03-12 | [WorkArena: How Capable Are Web Agents at Solving Common Knowledge Work Tasks?](https://arxiv.org/abs/2403.07718) | curated |
 | 2024-03-08 | [Load Balancing For High Performance Computing Using Quantum Annealing](https://arxiv.org/abs/2403.05278) | metadata_verified |
@@ -1371,7 +1371,7 @@ Official arXiv bibliographic metadata. Most entries have **not** undergone a rel
 | 2024-02-26 | [Computing Using Shallow NV-Center Charges in Diamond](https://arxiv.org/abs/2402.17083) | metadata_verified |
 | 2024-02-23 | [On the Multi-turn Instruction Following for Conversational Web Agents](https://arxiv.org/abs/2402.15057) | metadata_verified |
 | 2024-02-23 | [AgentOhana: Design Unified Data and Training Pipeline for Effective Agent Learning](https://arxiv.org/abs/2402.15506) | metadata_verified |
-| 2024-02-21 | [Improving Language Understanding from Screenshots](https://arxiv.org/abs/2402.14073) | metadata_verified |
+| 2024-02-21 | [Improving Language Understanding from Screenshots](https://arxiv.org/abs/2402.14073) | curated |
 | 2024-02-19 | [CoCo-Agent: A Comprehensive Cognitive MLLM Agent for Smartphone GUI Automation](https://arxiv.org/abs/2402.11941) | curated |
 | 2024-02-14 | [Tell Me More! Towards Implicit User Intention Understanding of Language Model Driven Agents](https://arxiv.org/abs/2402.09205) | metadata_verified |
 | 2024-02-13 | [Agent Smith: A Single Image Can Jailbreak One Million Multimodal LLM Agents Exponentially Fast](https://arxiv.org/abs/2402.08567) | metadata_verified |
@@ -1501,7 +1501,7 @@ Official arXiv bibliographic metadata. Most entries have **not** undergone a rel
 | 2023-02-23 | [A Survey of Secure Computation Using Trusted Execution Environments](https://arxiv.org/abs/2302.12150) | metadata_verified |
 | 2023-02-09 | [Toolformer: Language Models Can Teach Themselves to Use Tools](https://arxiv.org/abs/2302.04761) | metadata_verified |
 | 2023-02-07 | [Computational capability for physical reservoir computing using a spin-torque oscillator with two free layers](https://arxiv.org/abs/2302.03769) | metadata_verified |
-| 2023-01-30 | [WebUI: A Dataset for Enhancing Visual UI Understanding with Web Semantics](https://arxiv.org/abs/2301.13280) | metadata_verified |
+| 2023-01-30 | [WebUI: A Dataset for Enhancing Visual UI Understanding with Web Semantics](https://arxiv.org/abs/2301.13280) | curated |
 | 2023-01-23 | [Lexi: Self-Supervised Learning of the UI Language](https://arxiv.org/abs/2301.10165) | metadata_verified |
 | 2023-01-18 | [Near-Landauer-Bound Quantum Computing Using Single Spins](https://arxiv.org/abs/2301.09418) | metadata_verified |
 | 2023-01-11 | [Trapped Ion Quantum Computing using Optical Tweezers and the Magnus Effect](https://arxiv.org/abs/2301.04668) | metadata_verified |
@@ -1550,9 +1550,9 @@ Official arXiv bibliographic metadata. Most entries have **not** undergone a rel
 | 2022-03-04 | [Homomorphically Encrypted Computation using Stochastic Encodings](https://arxiv.org/abs/2203.02547) | metadata_verified |
 | 2022-03-03 | [Quantum circuit compilation and hybrid computation using Pauli-based computation](https://arxiv.org/abs/2203.01789) | metadata_verified |
 | 2022-02-22 | [Time Division Multiplexing Ising Computer Using Single Tunable True Random Number Generator Based on Spin Torque Nano-Oscillator](https://arxiv.org/abs/2202.10634) | metadata_verified |
-| 2022-02-16 | [A data-driven approach for learning to control computers](https://arxiv.org/abs/2202.08137) | metadata_verified |
+| 2022-02-16 | [A data-driven approach for learning to control computers](https://arxiv.org/abs/2202.08137) | curated |
 | 2022-02-14 | [Polyhedron Kernel Computation Using a Geometric Approach](https://arxiv.org/abs/2202.06625) | metadata_verified |
-| 2022-02-04 | [A Dataset for Interactive Vision-Language Navigation with Unknown Command Feasibility](https://arxiv.org/abs/2202.02312) | metadata_verified |
+| 2022-02-04 | [A Dataset for Interactive Vision-Language Navigation with Unknown Command Feasibility](https://arxiv.org/abs/2202.02312) | curated |
 | 2022-02-03 | [DigiQ: A Scalable Digital Controller for Quantum Computers Using SFQ Logic](https://arxiv.org/abs/2202.01407) | metadata_verified |
 | 2022-01-27 | [Gutzwiller wave function on a quantum computer using a discrete Hubbard-Stratonovich transformation](https://arxiv.org/abs/2201.11381) | metadata_verified |
 | 2022-01-23 | [Task Scheduling in Cloud Computing Using Hybrid Meta-heuristic: A Review](https://arxiv.org/abs/2201.09242) | metadata_verified |
@@ -1586,7 +1586,7 @@ Official arXiv bibliographic metadata. Most entries have **not** undergone a rel
 | 2021-08-02 | [Spin Wave Computing using pre-recorded magnetization patterns](https://arxiv.org/abs/2108.00909) | metadata_verified |
 | 2021-08-02 | [Resource Management in Edge and Fog Computing using FogBus2 Framework](https://arxiv.org/abs/2108.00591) | metadata_verified |
 | 2021-07-30 | [Three-Dimensional Data-Driven Magnetostatic Field Computation using Real-World Measurement Data](https://arxiv.org/abs/2107.14604) | metadata_verified |
-| 2021-07-29 | [UIBert: Learning Generic Multimodal Representations for UI Understanding](https://arxiv.org/abs/2107.13731) | metadata_verified |
+| 2021-07-29 | [UIBert: Learning Generic Multimodal Representations for UI Understanding](https://arxiv.org/abs/2107.13731) | curated |
 | 2021-07-07 | [Evaluating Large Language Models Trained on Code](https://arxiv.org/abs/2107.03374) | metadata_verified |
 | 2021-06-30 | [String Comparison on a Quantum Computer Using Hamming Distance](https://arxiv.org/abs/2106.16173) | metadata_verified |
 | 2021-06-14 | [Trapped Ion Quantum Computing using Optical Tweezers and Electric Fields](https://arxiv.org/abs/2106.07486) | metadata_verified |
@@ -1602,7 +1602,7 @@ Official arXiv bibliographic metadata. Most entries have **not** undergone a rel
 | 2021-02-11 | [Efficient Reservoir Computing using Field Programmable Gate Array and Electro-optic Modulation](https://arxiv.org/abs/2102.09049) | metadata_verified |
 | 2021-02-09 | [Simulating collider physics on quantum computers using effective field theories](https://arxiv.org/abs/2102.05044) | metadata_verified |
 | 2021-02-01 | [DisQ: A Novel Quantum Output State Classification Method on IBM Quantum Computers using OpenPulse](https://arxiv.org/abs/2102.01153) | metadata_verified |
-| 2021-01-23 | [WebSRC: A Dataset for Web-Based Structural Reading Comprehension](https://arxiv.org/abs/2101.09465) | metadata_verified |
+| 2021-01-23 | [WebSRC: A Dataset for Web-Based Structural Reading Comprehension](https://arxiv.org/abs/2101.09465) | curated |
 | 2021-01-13 | [Screen Recognition: Creating Accessibility Metadata for Mobile Applications from Pixels](https://arxiv.org/abs/2101.04893) | curated |
 | 2021-01-07 | [Distributed Quantum Faithful Simulation and Function Computation Using Algebraic Structured Measurements](https://arxiv.org/abs/2101.02360) | metadata_verified |
 
@@ -1615,7 +1615,7 @@ Official arXiv bibliographic metadata. Most entries have **not** undergone a rel
 | 2020-11-23 | [Scaling silicon-based quantum computing using CMOS technology: State-of-the-art, Challenges and Perspectives](https://arxiv.org/abs/2011.11753) | metadata_verified |
 | 2020-11-12 | [Revisiting Secure Computation Using Functional Encryption: Opportunities and Research Directions](https://arxiv.org/abs/2011.06191) | metadata_verified |
 | 2020-11-09 | [Highly photon loss tolerant quantum computing using hybrid qubits](https://arxiv.org/abs/2011.04209) | metadata_verified |
-| 2020-10-08 | [Widget Captioning: Generating Natural Language Description for Mobile User Interface Elements](https://arxiv.org/abs/2010.04295) | metadata_verified |
+| 2020-10-08 | [Widget Captioning: Generating Natural Language Description for Mobile User Interface Elements](https://arxiv.org/abs/2010.04295) | curated |
 | 2020-09-29 | [Universal quantum computing using electro-nuclear wavefunctions of rare-earth ions](https://arxiv.org/abs/2009.14126) | metadata_verified |
 | 2020-09-24 | [Neurocoder: Learning General-Purpose Computation Using Stored Neural Programs](https://arxiv.org/abs/2009.11443) | metadata_verified |
 | 2020-09-24 | [An Incentive-Based Mechanism for Volunteer Computing using Blockchain](https://arxiv.org/abs/2009.11901) | metadata_verified |

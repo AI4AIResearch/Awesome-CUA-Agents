@@ -12,6 +12,7 @@ import sqlite3
 import urllib.parse
 
 from catalog import ROOT, DATA, KINDS, ENVIRONMENTS, STATUSES, canonical, read_json, read_jsonl, write_json, write_jsonl
+from specifications import validate_profiles
 
 
 def source_records():
@@ -63,7 +64,7 @@ def source_records():
             relations.append({"type": "variant_of", "target_id": canonical(editorial["family_url"])[0], "evidence_url": ev["url"]})
         primary = {"role": "primary", "method": "editorial_primary_review", "supports": editorial.get("primary_supports", ["name", "kind", "summary", "environments", "topics", "scope", "relations"]),
             "url": ev["url"], "retrieved_at": ev["retrieved_at"], "sha256": ev["sha256"]}
-        if editorial.get("details"):
+        if editorial.get("details") and "primary_supports" not in editorial:
             primary["supports"].append("details")
         row = {"id": rid, "name": editorial["name"], "kind": editorial["kind"], "url": editorial["url"],
             "aliases": editorial.get("aliases", []), "environments": editorial["environments"], "topics": editorial["topics"],
@@ -101,6 +102,8 @@ def validate_records(rows):
             error("invalid scope")
         if r.get("review_status") == "curated" and (not r.get("summary") or r.get("scope") == "relevance_pending"):
             error("curated entry lacks an editorial summary/scope")
+        for issue in validate_profiles(r):
+            error(issue)
         preferred = r.get("identifiers", {}).get("preferred_arxiv")
         if preferred and preferred != r.get("identifiers", {}).get("arxiv"):
             if "arxiv:" + preferred not in ids:

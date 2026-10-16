@@ -1,10 +1,10 @@
 # Coverage and quality ledger
 
-Evidence snapshot through **2026-10-16T11:15:55Z**. Generated from committed source receipts.
+Evidence snapshot through **2026-10-16T11:40:46Z**. Generated from committed source receipts.
 
-- 2,025 resource records: 501 curated; 1,524 bibliographic metadata only.
+- 2,027 resource records: 523 curated; 1,504 bibliographic metadata only.
 - 1,764 arXiv records, including curated surveys. This count overlaps the status counts above.
-- 2,763 discovery identifiers; 806 have no published catalog record.
+- 2,763 discovery identifiers; 805 have no published catalog record.
 - 7 editorial proposals await verification or review.
 
 These are distinct resource identifiers, not distinct research projects. Papers, repositories, datasets, products, and publisher entities have different grains.
@@ -15,27 +15,27 @@ The denominator is the normalized identifiers extracted from each fetched docume
 
 | Source | Discovered | Indexed | Curated | Unindexed | Fetch |
 | --- | ---: | ---: | ---: | ---: | --- |
-| [ShowLab Awesome GUI Agent](https://github.com/showlab/Awesome-GUI-Agent) | 338 | 199 | 145 | 139 | OK · 2026-10-16 |
-| [ZJU REAL Awesome GUI Agents](https://github.com/ZJU-REAL/Awesome-GUI-Agents) | 218 | 155 | 122 | 63 | OK · 2026-10-16 |
-| [OS Agents Survey](https://github.com/OS-Agent-Survey/OS-Agent-Survey) | 224 | 198 | 102 | 26 | OK · 2026-10-16 |
-| [Awesome Computer Use Agents — wjhou](https://github.com/wjhou/awesome-computer-use-agents) | 132 | 93 | 63 | 39 | OK · 2026-10-16 |
+| [ShowLab Awesome GUI Agent](https://github.com/showlab/Awesome-GUI-Agent) | 338 | 199 | 152 | 139 | OK · 2026-10-16 |
+| [ZJU REAL Awesome GUI Agents](https://github.com/ZJU-REAL/Awesome-GUI-Agents) | 218 | 156 | 127 | 62 | OK · 2026-10-16 |
+| [OS Agents Survey](https://github.com/OS-Agent-Survey/OS-Agent-Survey) | 224 | 198 | 110 | 26 | OK · 2026-10-16 |
+| [Awesome Computer Use Agents — wjhou](https://github.com/wjhou/awesome-computer-use-agents) | 132 | 93 | 64 | 39 | OK · 2026-10-16 |
 | [Steel Awesome Web Agents](https://github.com/steel-dev/awesome-web-agents) | 113 | 22 | 22 | 91 | OK · 2026-10-16 |
 | [Steel Web Agents Archive](https://github.com/steel-dev/awesome-web-agents/blob/main/ARCHIVE.md) | 7 | 1 | 1 | 6 | OK · 2026-10-16 |
-| [Computer Browser Phone Use Agent Datasets](https://github.com/Khang-9966/Computer-Browser-Phone-Use-Agent-Datasets) | 170 | 108 | 66 | 62 | OK · 2026-10-16 |
-| [Awesome Multimodal GUI Agents](https://github.com/DeLunnLi/Awesome-Multimodal-GUI-Agents) | 588 | 472 | 220 | 116 | OK · 2026-10-16 |
+| [Computer Browser Phone Use Agent Datasets](https://github.com/Khang-9966/Computer-Browser-Phone-Use-Agent-Datasets) | 170 | 108 | 68 | 62 | OK · 2026-10-16 |
+| [Awesome Multimodal GUI Agents](https://github.com/DeLunnLi/Awesome-Multimodal-GUI-Agents) | 588 | 472 | 229 | 116 | OK · 2026-10-16 |
 | [Awesome Computer Use — TianyuanYang](https://github.com/TianyuanYang/awesome-computer-use) | 94 | 67 | 34 | 27 | OK · 2026-10-16 |
 | [Computer Use Agents Overview](https://github.com/cdxeve/awesome-computer-use-agents) | 78 | 48 | 29 | 30 | OK · 2026-10-16 |
 | [Awesome GUI Agents — Supernal](https://github.com/supernalintelligence/Awesome-Gui-Agents) | 63 | 11 | 8 | 52 | OK · 2026-10-16 |
-| [Yearly GUI Agents](https://github.com/qy0720/awesome-yearly-gui-agents) | 193 | 137 | 109 | 56 | OK · 2026-10-16 |
+| [Yearly GUI Agents](https://github.com/qy0720/awesome-yearly-gui-agents) | 193 | 137 | 116 | 56 | OK · 2026-10-16 |
 | [OSU-NLP-Group/GUI-Agents-Paper-List / README.md](https://github.com/OSU-NLP-Group/GUI-Agents-Paper-List) | 544 | 486 | 41 | 58 | OK · 2026-10-16 |
 | [opendilab/awesome-ui-agents / README.md](https://github.com/opendilab/awesome-ui-agents) | 144 | 88 | 60 | 56 | OK · 2026-10-16 |
 | [jin-s13/awesome-gui-agent-hub / AWESOME.md](https://github.com/jin-s13/awesome-gui-agent-hub) | 206 | 203 | 26 | 3 | OK · 2026-10-16 |
 | [ZJU-REAL/Awesome-GUI-Agents / ICLR2026/Paperlist.md](https://github.com/ZJU-REAL/Awesome-GUI-Agents) | 9 | 0 | 0 | 9 | OK · 2026-10-16 |
 | [dqtz5vpvj9-create/awesome-mobile-gui-agents / README.md](https://github.com/dqtz5vpvj9-create/awesome-mobile-gui-agents) | 40 | 22 | 18 | 18 | OK · 2026-10-16 |
-| [PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents](https://github.com/PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents) | 247 | 180 | 121 | 67 | OK · 2026-10-16 |
-| [aialt/awesome-mobile-agents](https://github.com/aialt/awesome-mobile-agents) | 91 | 76 | 50 | 15 | OK · 2026-10-16 |
+| [PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents](https://github.com/PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents) | 247 | 180 | 124 | 67 | OK · 2026-10-16 |
+| [aialt/awesome-mobile-agents](https://github.com/aialt/awesome-mobile-agents) | 91 | 76 | 53 | 15 | OK · 2026-10-16 |
 | [albzni/Awesome-LLM-based-Web-Agent-and-Tools](https://github.com/albzni/Awesome-LLM-based-Web-Agent-and-Tools) | 10 | 4 | 4 | 6 | OK · 2026-10-16 |
-| [ranpox/awesome-computer-use](https://github.com/ranpox/awesome-computer-use) | 96 | 57 | 35 | 39 | OK · 2026-10-16 |
+| [ranpox/awesome-computer-use](https://github.com/ranpox/awesome-computer-use) | 96 | 57 | 36 | 39 | OK · 2026-10-16 |
 | [Fara — first-party releases](https://github.com/microsoft/fara) | 18 | 3 | 3 | 15 | OK · 2026-10-16 |
 | [UI-Venus — first-party releases](https://github.com/inclusionAI/UI-Venus) | 10 | 4 | 4 | 6 | OK · 2026-10-16 |
 | [OpenGVLab ScaleCUA — first-party releases](https://github.com/OpenGVLab/ScaleCUA) | 15 | 9 | 9 | 6 | OK · 2026-10-16 |
@@ -58,7 +58,7 @@ The recorded title query returned 1,199 unique records out of 1,246 reported mat
 | Scope | Recorded declarations |
 | --- | ---: |
 | code | 119 |
-| data | 25 |
+| data | 27 |
 | weights | 14 |
 | document | 0 |
 
