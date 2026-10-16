@@ -1468,5 +1468,27 @@
     "status": "fetch_unconfirmed",
     "discovered_pages": 0,
     "evidence": "The submitted-sitemaps report still displayed Could not fetch for both formats, with no Last read date. Earlier live URL inspection confirmed fetch success. No new sitemap submission or indexing request was sent in this observation."
+  },
+  {
+    "provider": "Google Search Console",
+    "action": "sitemap_report_observation",
+    "observed_at": "2026-10-16T12:35:36+00:00",
+    "sitemaps": [
+      "https://awesomecua.github.io/sitemap.xml",
+      "https://awesomecua.github.io/sitemap.txt"
+    ],
+    "status": "fetch_unconfirmed",
+    "discovered_pages": 0,
+    "evidence": "The submitted-sitemaps report still displayed Could not fetch for both formats and no Last read date. No sitemap resubmission was performed."
+  },
+  {
+    "provider": "Google Search Console",
+    "action": "request_indexing",
+    "url": "https://awesomecua.github.io/compare/benchmarks/",
+    "observed_at": "2026-10-16T12:35:36+00:00",
+    "status": "quota_exceeded",
+    "request_accepted": false,
+    "evidence": "URL inspection reported URL is unknown to Google. Request indexing opened a live-URL check, then returned a Quota Exceeded dialog stating that the request could not be processed because the daily quota was exceeded and asking to try again tomorrow. This is not an accepted indexing request or evidence of indexing.",
+    "retry_policy": "Do not repeat same-day manual submissions; retry when provider quota is available."
   }
 ]
