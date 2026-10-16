@@ -299,7 +299,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "79b7a90a1413a52deb53142b5bbd81ecf40f61743bd4601c2835e91375898ec0",
-    "reviewed_at": "2026-10-16T06:35:57Z"
+    "reviewed_at": "2026-10-16T10:50:15Z",
+    "documented_by": [
+      "2207.01206"
+    ]
   },
   {
     "name": "BrowserGym",
@@ -318,7 +321,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "7b685115ef822989fac9093518d16c46f0202736d005eed56e7f9fc36b43f3ee",
-    "reviewed_at": "2026-10-16T06:35:57Z"
+    "reviewed_at": "2026-10-16T10:50:15Z",
+    "documented_by": [
+      "2412.05467"
+    ]
   },
   {
     "name": "CRAB",
@@ -339,7 +345,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "7b894c5474ba78294427cfd4ef0eea8cb22d76dfa0c2e8c7f01e31ad927064e9",
-    "reviewed_at": "2026-10-16T06:35:58Z"
+    "reviewed_at": "2026-10-16T10:50:15Z",
+    "documented_by": [
+      "2407.01511"
+    ]
   },
   {
     "name": "AndroidLab",
@@ -389,7 +398,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "206bd0dc5220cf754cffc97767cce6a3cd27660ef050a569366bef2331241c60",
-    "reviewed_at": "2026-10-16T06:35:58Z"
+    "reviewed_at": "2026-10-16T10:50:15Z",
+    "documented_by": [
+      "2402.06596"
+    ]
   },
   {
     "name": "SPA-Bench",
@@ -409,7 +421,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "5294a67728072a3658cb2073bdf9a084fe3c00d87a848923dff68adb35213072",
-    "reviewed_at": "2026-10-16T06:35:58Z"
+    "reviewed_at": "2026-10-16T10:50:15Z",
+    "documented_by": [
+      "2410.15164"
+    ]
   },
   {
     "name": "MobileAgentBench",
@@ -534,7 +549,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "262947081ddd17dbf5bb3d072574a19bbf30510c42c3ff42c9851a748fd37546",
-    "reviewed_at": "2026-10-16T06:35:58Z"
+    "reviewed_at": "2026-10-16T10:50:15Z",
+    "documented_by": [
+      "2404.05955"
+    ]
   },
   {
     "name": "VideoGUI",
@@ -554,7 +572,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "1a21631fb312cc7eac35547792611a84f13dcf756a3cf92209676ccdb92cbc6b",
-    "reviewed_at": "2026-10-16T06:35:58Z"
+    "reviewed_at": "2026-10-16T10:50:15Z",
+    "documented_by": [
+      "2406.10227"
+    ]
   },
   {
     "name": "WorldGUI",
@@ -574,7 +595,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "ea54ea82b86548ff38913ef328ec18152ace71a3fe9bb497bcabcaad24e6a678",
-    "reviewed_at": "2026-10-16T06:35:58Z"
+    "reviewed_at": "2026-10-16T10:50:15Z",
+    "documented_by": [
+      "2502.08047"
+    ]
   },
   {
     "name": "ScienceBoard",
@@ -635,7 +659,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "abc848e7eb5181be22168dbc076446c5eb0f065fd57c7e10367284ca6e50bf5c",
-    "reviewed_at": "2026-10-16T06:35:58Z"
+    "reviewed_at": "2026-10-16T10:50:15Z",
+    "documented_by": [
+      "2404.09992"
+    ]
   },
   {
     "name": "MMBench-GUI",
@@ -854,7 +881,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "5b2b4b4ce1241db7fd776f2ba0856ec2e0e441a56fa6461234abe0c6516f643e",
-    "reviewed_at": "2026-10-16T06:35:59Z"
+    "reviewed_at": "2026-10-16T10:50:15Z",
+    "documented_by": [
+      "2406.12373"
+    ]
   },
   {
     "name": "UI-TARS",
@@ -983,7 +1013,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "f025e4bc9d920ec982525394c69b87043aae87fbe719de4b9e973408a44211e2",
-    "reviewed_at": "2026-10-16T06:36:00Z"
+    "reviewed_at": "2026-10-16T10:50:15Z",
+    "documented_by": [
+      "2312.08914"
+    ]
   },
   {
     "name": "OS-Atlas",
@@ -1046,7 +1079,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "72ca3f23114c3a08fefb724573acf10c9f0a1b3d4a50d811c98356264ecf6ffc",
-    "reviewed_at": "2026-10-16T06:36:00Z"
+    "reviewed_at": "2026-10-16T10:50:15Z",
+    "documented_by": [
+      "2410.05243"
+    ]
   },
   {
     "name": "ShowUI",
@@ -1321,7 +1357,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "a2a3c5ad115e4e2109b56686c9e0b073bcfec6d9f052a58bc92683af44933480",
-    "reviewed_at": "2026-10-16T06:36:00Z"
+    "reviewed_at": "2026-10-16T10:50:15Z",
+    "documented_by": [
+      "2412.16256"
+    ]
   },
   {
     "name": "Ferret-UI",
@@ -1345,7 +1384,10 @@
     ],
     "notes": "The repository has moved from apple/ml-ferret to apple-aiml-research/ml-ferret; evidence uses the dedicated ferretui component.",
     "reviewed_sha256": "1973f702c08ca9637ce03bc28fc34188be05826e9d43f9992b08e804f474b1a1",
-    "reviewed_at": "2026-10-16T06:40:52Z"
+    "reviewed_at": "2026-10-16T10:50:15Z",
+    "documented_by": [
+      "2404.05719"
+    ]
   },
   {
     "name": "GELab Zero",
@@ -1445,7 +1487,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "0968273442bfb9a6478fe78f8b9a6247a3bb8e6d028880939b432fd009961e98",
-    "reviewed_at": "2026-10-16T06:36:01Z"
+    "reviewed_at": "2026-10-16T10:50:15Z",
+    "documented_by": [
+      "2406.11317"
+    ]
   },
   {
     "name": "AMEX",
@@ -1530,7 +1575,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "7d1bfe7d6eddd5d3fc4c33d4814de3cabf7a6b6fd3d3f85ba4c2b33036bf8867",
-    "reviewed_at": "2026-10-16T06:36:01Z"
+    "reviewed_at": "2026-10-16T10:50:15Z",
+    "documented_by": [
+      "2209.08199"
+    ]
   },
   {
     "name": "MultiUI",
@@ -1628,7 +1676,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "d02fa5da3384a3e58cf1d28aad47497de73fe3aad0ce57219585da04fc3187ef",
-    "reviewed_at": "2026-10-16T06:40:52Z"
+    "reviewed_at": "2026-10-16T10:50:15Z",
+    "documented_by": [
+      "2406.10819"
+    ]
   },
   {
     "name": "GUI-Action Narrator",
@@ -2023,7 +2074,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "2248b2048b9166ce0348b24e81b2587fdf373a958fd86ab870ba85825425b02f",
-    "reviewed_at": "2026-10-16T06:36:02Z"
+    "reviewed_at": "2026-10-16T10:50:15Z",
+    "documented_by": [
+      "2402.07945"
+    ]
   },
   {
     "name": "SeeAct",
@@ -2043,7 +2097,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "673b0e309540e57ec3b977689b33f89ef80e45ba1c0ffb05e7412e4862f6b99e",
-    "reviewed_at": "2026-10-16T06:36:03Z"
+    "reviewed_at": "2026-10-16T10:50:15Z",
+    "documented_by": [
+      "2401.01614"
+    ]
   },
   {
     "name": "Agent E",
@@ -2354,7 +2411,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "ca312434db1db852f96fb49bbc0a61f6a93cffe6c0dd3aa2b7ac814681ccc19e",
-    "reviewed_at": "2026-10-16T06:36:03Z"
+    "reviewed_at": "2026-10-16T10:50:15Z",
+    "documented_by": [
+      "2412.05467"
+    ]
   },
   {
     "name": "ClawGUI",
@@ -2794,12 +2854,12 @@
     "kind": "tool",
     "url": "https://github.com/microsoft/SoM",
     "environments": [
-      "cross-platform"
+      "unspecified"
     ],
     "topics": [
       "grounding"
     ],
-    "summary": "Visual prompting tools that annotate interface elements.",
+    "summary": "Visual-prompting toolbox that labels image regions for multimodal reference and grounding, including GUI applications.",
     "verify_terms": [
       "Set of Mark",
       "SoM"
@@ -2807,7 +2867,10 @@
     "editorial_reviewed": true,
     "scope": "adjacent",
     "reviewed_sha256": "b3fa8b7e24a01da023a5f21023c4853a90388dd7744055fbb5a2888938c68b0c",
-    "reviewed_at": "2026-10-16T06:36:04Z"
+    "reviewed_at": "2026-10-16T10:49:19Z",
+    "documented_by": [
+      "2310.11441"
+    ]
   },
   {
     "name": "Tarsier",
@@ -3237,7 +3300,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "2db0a5dd2b983dded3b90a8ecd66cadbb39074f03778a339822418531661b3e3",
-    "reviewed_at": "2026-10-16T06:38:27Z"
+    "reviewed_at": "2026-10-16T10:50:15Z",
+    "documented_by": [
+      "2402.17553"
+    ]
   },
   {
     "name": "WeaveBench",
@@ -9857,5 +9923,777 @@
     "reviewed_sha256": "74e521e46c46489e48f9bad5d774625a85b5ccd32828969fd98e1a4c453b899f",
     "reviewed_at": "2026-10-16T10:40:59Z",
     "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "url": "https://github.com/cooelf/Auto-GUI",
+    "name": "Auto-GUI / Auto-UI",
+    "kind": "agent",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "mobile-navigation",
+      "planning"
+    ],
+    "summary": "Screenshot-based mobile agent implementation with training and inference code for chain-of-action prediction.",
+    "verify_terms": [
+      "Auto-UI"
+    ],
+    "documented_by": [
+      "2309.11436"
+    ],
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/cooelf/Auto-GUI/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "13f045fa84dc0ad68dcceea95fc7e0e34a45bcda866d589132351559b87a8e30",
+    "reviewed_at": "2026-10-16T10:48:36Z"
+  },
+  {
+    "url": "https://github.com/DistRL-lab/distrl-open",
+    "name": "DistRL",
+    "kind": "framework",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "reinforcement-learning",
+      "efficiency"
+    ],
+    "summary": "Distributed online reinforcement-learning framework for Android agents, with environment setup and trajectory collection tools.",
+    "verify_terms": [
+      "DistRL"
+    ],
+    "documented_by": [
+      "2410.14803"
+    ],
+    "notes": "The README identifies model weights and dataset release as pending; this entry covers the code framework.",
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/DistRL-lab/distrl-open/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "f501f8de6aac53758f60882a8c595a5ac27145f327c73b0cfa7921b45ccae75a",
+    "reviewed_at": "2026-10-16T10:48:36Z"
+  },
+  {
+    "url": "https://github.com/google-deepmind/android_env",
+    "name": "AndroidEnv",
+    "kind": "infrastructure",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "sandbox",
+      "reinforcement-learning",
+      "automation"
+    ],
+    "summary": "Android device-control platform with screenshots, accessibility telemetry, input actions, and an optional reinforcement-learning task interface.",
+    "verify_terms": [
+      "AndroidEnv"
+    ],
+    "documented_by": [
+      "2105.13231"
+    ],
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/google-deepmind/android_env/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "b8dd2ea004647008265f4fb5c5a122569992311b6758f413080984266e53c25a",
+    "reviewed_at": "2026-10-16T10:48:36Z"
+  },
+  {
+    "url": "https://github.com/THUDM/VisualAgentBench",
+    "name": "VisualAgentBench",
+    "kind": "benchmark",
+    "environments": [
+      "cross-platform",
+      "web",
+      "android"
+    ],
+    "topics": [
+      "evaluation"
+    ],
+    "scope": "adjacent",
+    "summary": "Evaluation framework spanning visual GUI, embodied, and design tasks, including mobile and WebArena-based environments.",
+    "verify_terms": [
+      "VisualAgentBench"
+    ],
+    "documented_by": [
+      "2408.06327"
+    ],
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/THUDM/VisualAgentBench/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "21afbc4086441dee131fe4b84986870f9b280413dd2a38df6e99406f1fc45586",
+    "reviewed_at": "2026-10-16T10:48:36Z"
+  },
+  {
+    "url": "https://github.com/xbmxb/CoCo-Agent",
+    "name": "CoCo-Agent",
+    "kind": "agent",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "mobile-navigation",
+      "screen-understanding"
+    ],
+    "summary": "Research implementation combining screen and layout perception with conditional action prediction for smartphone automation.",
+    "verify_terms": [
+      "CoCo-Agent"
+    ],
+    "documented_by": [
+      "2402.11941"
+    ],
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/xbmxb/CoCo-Agent/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "55de0ed6627a5812d1f26d2a920e0af47afb17f8a99cae41b70a85ba30a23370",
+    "reviewed_at": "2026-10-16T10:48:36Z"
+  },
+  {
+    "url": "https://github.com/THUDM/AgentBench",
+    "name": "AgentBench",
+    "kind": "benchmark",
+    "environments": [
+      "cross-platform",
+      "web"
+    ],
+    "topics": [
+      "evaluation",
+      "tool-integration"
+    ],
+    "scope": "adjacent",
+    "summary": "Agent evaluation suite with containerized tasks and a function-calling interface, including operating-system and shopping environments.",
+    "verify_terms": [
+      "AgentBench"
+    ],
+    "documented_by": [
+      "2308.03688"
+    ],
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/THUDM/AgentBench/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "1b7d1f1cd7a74ac9497c639324ec342dd3f8769e9c0c4cd2cd92a4eb6740ac98",
+    "reviewed_at": "2026-10-16T10:48:36Z"
+  },
+  {
+    "url": "https://github.com/gydpku/PPTC",
+    "name": "PPTC",
+    "kind": "benchmark",
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "evaluation",
+      "tool-integration"
+    ],
+    "scope": "adjacent",
+    "summary": "PowerPoint creation and editing benchmark with API-based execution and checks of the resulting presentation files.",
+    "verify_terms": [
+      "PPTC"
+    ],
+    "documented_by": [
+      "2311.01767"
+    ],
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/gydpku/PPTC/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "63349e7557bd99240d4628de3994a53b69e54e3bd809895be11e9879bfba40cb",
+    "reviewed_at": "2026-10-16T10:48:36Z"
+  },
+  {
+    "url": "https://github.com/ljang0/iOSWorld",
+    "name": "iOSWorld",
+    "kind": "benchmark",
+    "environments": [
+      "ios"
+    ],
+    "topics": [
+      "evaluation",
+      "cross-app",
+      "memory"
+    ],
+    "summary": "Native iPhone-simulator benchmark with shared user data, application workflows, agent runners, and rubric-based scoring.",
+    "verify_terms": [
+      "iOSWorld"
+    ],
+    "details": {
+      "task_count": 133,
+      "metrics": [
+        "mean rubric score",
+        "full-task pass rate"
+      ],
+      "evaluation_type": "rubric-based"
+    },
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/ljang0/iOSWorld/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "706f9d770b65a1238e56f74f7dd5089c7756cc88e0ac09d80c7b2b3085a09b27",
+    "reviewed_at": "2026-10-16T10:48:36Z"
+  },
+  {
+    "url": "https://github.com/vivo-ai-lab/BlueLM-GUI",
+    "name": "BlueLM-GUI",
+    "kind": "model",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "mobile-navigation",
+      "reinforcement-learning"
+    ],
+    "summary": "Mobile GUI agent research release with technical report, benchmark data, and evaluation tooling from vivo AI Lab.",
+    "verify_terms": [
+      "BlueLM-GUI"
+    ],
+    "documented_by": [
+      "2609.12394"
+    ],
+    "notes": "The repository lists the agent as in-house. Public model weights were not established by this review; linked benchmark assets have their own access terms.",
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/vivo-ai-lab/BlueLM-GUI/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "5f460f9b2a18315d07b8c48d78dcc764892d09d9250e95f5e591b5966fe59328",
+    "reviewed_at": "2026-10-16T10:48:36Z"
+  },
+  {
+    "url": "https://github.com/droidrun/mobile-harness",
+    "name": "Mobile Harness",
+    "kind": "tool",
+    "environments": [
+      "android",
+      "ios"
+    ],
+    "topics": [
+      "automation",
+      "tool-integration"
+    ],
+    "summary": "Portable agent instructions and integration tooling for local or cloud phone control through mobilerun-core.",
+    "verify_terms": [
+      "Mobile Harness"
+    ],
+    "notes": "The publisher describes this as a Markdown harness, not an agent runtime. Published benchmark results have not been independently reproduced.",
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/droidrun/mobile-harness/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "0d05433c730e74f13be753fa6156737f797a69d61d8793e47f5a56b3a63ee790",
+    "reviewed_at": "2026-10-16T10:48:36Z"
+  },
+  {
+    "url": "https://github.com/Acrab-Agentic-Labs/AppSim",
+    "name": "AppSim-Bench",
+    "kind": "benchmark",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "evaluation",
+      "sandbox"
+    ],
+    "summary": "Simulated mobile applications and evaluation tooling for reproducible GUI-agent tasks with controlled application state.",
+    "verify_terms": [
+      "AppSim"
+    ],
+    "documented_by": [
+      "2609.07712"
+    ],
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/Acrab-Agentic-Labs/AppSim/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "12dc2afe339c1ed66e4a6a4ccf5ae13d27ce32f452960341529a4b9016f69059",
+    "reviewed_at": "2026-10-16T10:48:36Z"
+  },
+  {
+    "url": "https://github.com/GaryYang12345/GUI-HARVEST",
+    "name": "GUI-HARVEST",
+    "kind": "framework",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "automation",
+      "observability",
+      "robustness"
+    ],
+    "summary": "Optimizes GUI-agent execution code from repeated rollout evidence and checks proposed changes against fixed validation gates.",
+    "verify_terms": [
+      "GUI-HARVEST"
+    ],
+    "notes": "Requires a separately installed benchmark and seed agent harness; benchmark tasks and model weights remain fixed during its optimization procedure.",
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/GaryYang12345/GUI-HARVEST/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "2e42f01578710d91145412f7d1ecb93979db96c698f677915284da1a1d592588",
+    "reviewed_at": "2026-10-16T10:48:36Z"
+  },
+  {
+    "url": "https://github.com/china-qijizhifeng/Work2Skill",
+    "name": "Work2Skill",
+    "kind": "framework",
+    "environments": [
+      "desktop",
+      "macos",
+      "linux"
+    ],
+    "topics": [
+      "recording",
+      "workflow",
+      "data-generation"
+    ],
+    "summary": "Collects human GUI demonstrations and inspects multimodal evidence to derive reusable agent workflow skills.",
+    "verify_terms": [
+      "Work2Skill"
+    ],
+    "documented_by": [
+      "2610.12984"
+    ],
+    "notes": "The README reports that evaluation integration and live cross-platform acceptance testing remain pending.",
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/china-qijizhifeng/Work2Skill/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "40a5e9ad3a2169527a9330825bd6e07ac1669293e21c209ed41036987bbf0a8b",
+    "reviewed_at": "2026-10-16T10:48:36Z"
+  },
+  {
+    "url": "https://github.com/StonyBrookNLP/appworld",
+    "name": "AppWorld",
+    "kind": "benchmark",
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "evaluation",
+      "tool-integration",
+      "cross-app"
+    ],
+    "scope": "adjacent",
+    "summary": "Simulated applications, user data, and state-based task checks for evaluating agents that interact through APIs and code.",
+    "verify_terms": [
+      "AppWorld"
+    ],
+    "documented_by": [
+      "2407.18901"
+    ],
+    "notes": "Primarily API and coding interaction; included as an adjacent comparison for GUI and hybrid agents.",
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/stonybrooknlp/appworld/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "f4049141b6e520217395b7ccd9f27048c8e0f90331690dcbef300d2bc4ff7bdd",
+    "reviewed_at": "2026-10-16T10:48:36Z"
+  },
+  {
+    "url": "https://huggingface.co/datasets/AutoGUI/AutoGUI-v1-702k",
+    "name": "AutoGUI v1 training data",
+    "kind": "dataset",
+    "environments": [
+      "web",
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "screen-understanding"
+    ],
+    "summary": "Screenshot-based grounding and captioning samples with UI functionality descriptions, target coordinates, and bounding boxes.",
+    "verify_terms": [
+      "AutoGUI"
+    ],
+    "details": {
+      "sample_count": 701864,
+      "sample_unit": "training rows reported in the dataset card",
+      "modalities": [
+        "image",
+        "text",
+        "bounding-box"
+      ],
+      "download_url": "https://huggingface.co/datasets/AutoGUI/AutoGUI-v1-702k/tree/main"
+    },
+    "notes": "The row count is not a unique-screen count. The data card documents image scaling conventions that affect coordinate interpretation.",
+    "evidence_urls": [
+      "https://huggingface.co/datasets/AutoGUI/AutoGUI-v1-702k/raw/main/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c73b46acc2ff034a443fb8dbde327de1888535267199c9fb1819adf66898f1d7",
+    "reviewed_at": "2026-10-16T10:48:36Z"
+  },
+  {
+    "url": "https://huggingface.co/datasets/Aria-UI/Aria-UI_Data",
+    "name": "Aria-UI Data",
+    "kind": "dataset",
+    "environments": [
+      "web",
+      "android",
+      "desktop",
+      "linux"
+    ],
+    "topics": [
+      "grounding",
+      "screen-understanding"
+    ],
+    "summary": "GUI element descriptions and grounding instructions spanning web, mobile, and Ubuntu desktop interfaces.",
+    "verify_terms": [
+      "Aria-UI"
+    ],
+    "documented_by": [
+      "2412.16256"
+    ],
+    "details": {
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "download_url": "https://huggingface.co/datasets/Aria-UI/Aria-UI_Data/tree/main"
+    },
+    "notes": "The publisher flags original desktop files as deprecated because of screenshot-mapping issues, and identifies corrected versions in the dataset card.",
+    "evidence_urls": [
+      "https://huggingface.co/datasets/Aria-UI/Aria-UI_Data/raw/main/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "8713ca2a6b1962d5dce7da132e1135898d467053dc6b53b4463a0d43a6433bcb",
+    "reviewed_at": "2026-10-16T10:48:36Z"
+  },
+  {
+    "url": "https://github.com/MurtyShikhar/NNetnav",
+    "name": "NNetNav",
+    "kind": "framework",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "data-generation",
+      "web-navigation"
+    ],
+    "summary": "Collects and labels browser-exploration trajectories for agent training, with code for data processing, fine-tuning, and web evaluation.",
+    "verify_terms": [
+      "NNetNav"
+    ],
+    "documented_by": [
+      "2410.02907"
+    ],
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/MurtyShikhar/NNetnav/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "3095f7262b7d4ff916c6f58c55e6fc9902c08f77d09bf3951199945501148bb3",
+    "reviewed_at": "2026-10-16T10:48:36Z"
+  },
+  {
+    "url": "https://github.com/TheAgentCompany/TheAgentCompany",
+    "name": "TheAgentCompany",
+    "kind": "benchmark",
+    "environments": [
+      "web",
+      "desktop"
+    ],
+    "topics": [
+      "evaluation",
+      "workflow",
+      "cross-app"
+    ],
+    "summary": "Self-contained workplace environment for evaluating agents on professional tasks involving websites, files, code, and simulated coworkers.",
+    "verify_terms": [
+      "TheAgentCompany"
+    ],
+    "documented_by": [
+      "2412.14161"
+    ],
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/TheAgentCompany/TheAgentCompany/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "d1646f67d49d38ef1e81bf7b5057dfc3d6f172b4c8a7413a2cc78741ccb08723",
+    "reviewed_at": "2026-10-16T10:48:36Z"
+  },
+  {
+    "url": "https://github.com/facebookresearch/ai-agent-privacy",
+    "name": "AgentDAM",
+    "kind": "benchmark",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "safety-security",
+      "evaluation"
+    ],
+    "summary": "Web-agent benchmark for measuring unnecessary use of sensitive personal information during end-to-end task execution.",
+    "verify_terms": [
+      "AgentDAM"
+    ],
+    "documented_by": [
+      "2503.09780"
+    ],
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/facebookresearch/ai-agent-privacy/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "9c938f8f3f3ee04f459362a8b7d399588fd030ce476cda111e5f23fbf1e31f10",
+    "reviewed_at": "2026-10-16T10:48:36Z"
+  },
+  {
+    "url": "https://github.com/OSU-NLP-Group/WebDreamer",
+    "name": "WebDreamer",
+    "kind": "framework",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "world-models",
+      "planning"
+    ],
+    "summary": "World-model and planning components that simulate web-action outcomes, with linked training data and model checkpoints.",
+    "verify_terms": [
+      "WebDreamer"
+    ],
+    "documented_by": [
+      "2411.06559"
+    ],
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/OSU-NLP-Group/WebDreamer/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "6602cb260b52ae5b2b93db231a51a38d0463c78d8e71321620e05b4fa31caacb",
+    "reviewed_at": "2026-10-16T10:48:36Z"
+  },
+  {
+    "url": "https://github.com/UCSB-AI/Screen-Point-and-Read",
+    "name": "Screen Point-and-Read / Tree-of-Lens",
+    "kind": "benchmark",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "screen-understanding",
+      "grounding",
+      "evaluation"
+    ],
+    "summary": "Screen-reading benchmark and Tree-of-Lens implementation for interpreting user-indicated regions and their layout context.",
+    "verify_terms": [
+      "Read Anywhere Pointed"
+    ],
+    "documented_by": [
+      "2406.19263"
+    ],
+    "notes": "The canonical repository now belongs to UCSB-AI. Its README lists additional setup documentation and evaluation scripts as unfinished.",
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/eric-ai-lab/Screen-Point-and-Read/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "7567287ceee0ad2d3d5605abb44ac50463c1008f9b6309393695763cf2ce89bb",
+    "reviewed_at": "2026-10-16T10:48:36Z"
+  },
+  {
+    "url": "https://github.com/X-LANCE/META-GUI-baseline",
+    "name": "META-GUI baseline",
+    "kind": "framework",
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "mobile-navigation",
+      "human-in-the-loop"
+    ],
+    "summary": "Training and evaluation pipeline for conversational mobile GUI agents, with action prediction, response generation, and dataset processing.",
+    "verify_terms": [
+      "META-GUI"
+    ],
+    "documented_by": [
+      "2205.11029"
+    ],
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/X-LANCE/META-GUI-baseline/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "2cea1be73ea75acd46990ab1fb567fbd83ad58a2bc69ca858b207660df9fe8c1",
+    "reviewed_at": "2026-10-16T10:48:36Z"
+  },
+  {
+    "url": "https://github.com/bz-lab/AUITestAgent",
+    "name": "AUITestAgent",
+    "kind": "tool",
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "automation",
+      "evaluation"
+    ],
+    "summary": "Generates mobile GUI interactions from natural-language test requirements and checks application behavior against those requirements.",
+    "verify_terms": [
+      "AUITestAgent"
+    ],
+    "documented_by": [
+      "2407.09018"
+    ],
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/bz-lab/AUITestAgent/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "dc60f683b0f44ccee4e54e5cbe1552ee3454e1ec4ed5c04635fedb83a325f51f",
+    "reviewed_at": "2026-10-16T10:48:36Z"
+  },
+  {
+    "url": "https://github.com/ritzz-ai/GUI-R1",
+    "name": "GUI-R1",
+    "kind": "model",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "reinforcement-learning",
+      "grounding"
+    ],
+    "summary": "GUI action-model training and evaluation code with verifiable rewards, plus linked reinforcement-learning data and checkpoints.",
+    "verify_terms": [
+      "GUI-R1"
+    ],
+    "documented_by": [
+      "2504.10458"
+    ],
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/ritzz-ai/GUI-R1/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "94c7c78bede11dde727940f56592a04594c1c59438812dff47540bf53c1bed7d",
+    "reviewed_at": "2026-10-16T10:48:36Z"
+  },
+  {
+    "url": "https://github.com/chessbean1/GUI-Robust",
+    "name": "GUI-Robust",
+    "kind": "benchmark",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "evaluation",
+      "robustness"
+    ],
+    "summary": "Evaluation scripts and linked data for comparing GUI action predictions and task execution under ordinary and anomalous interface conditions.",
+    "verify_terms": [
+      "GUI-Robust"
+    ],
+    "documented_by": [
+      "2506.14477"
+    ],
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/chessbean1/GUI-Robust/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "93defc2b31d0f8e6144e77cda4a74abeafd5253ae18a626bfc625f429050770a",
+    "reviewed_at": "2026-10-16T10:48:36Z"
+  },
+  {
+    "url": "https://github.com/Yuqi-Zhou/GUI-G1",
+    "name": "GUI-G1",
+    "kind": "model",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "reinforcement-learning"
+    ],
+    "summary": "GUI-grounding training code that modifies reasoning templates, reward functions, and the GRPO objective, with a linked model release.",
+    "verify_terms": [
+      "GUI-G1"
+    ],
+    "documented_by": [
+      "2505.15810"
+    ],
+    "notes": "The README retains an older release-pending notice alongside a later checkpoint-release announcement. Check the linked model card for current weight availability and terms.",
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/Yuqi-Zhou/GUI-G1/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "2d64349b514c43fb9d0260247300412d33cadc2a029d8279a00cb2a12f26a25a",
+    "reviewed_at": "2026-10-16T10:48:36Z"
+  },
+  {
+    "url": "https://huggingface.co/datasets/yuqi777/WorkDemo-350",
+    "name": "WorkDemo-350",
+    "kind": "dataset",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "recording",
+      "workflow",
+      "video"
+    ],
+    "summary": "Desktop demonstrations with task descriptions, videos, input logs, and action-linked screenshot evidence for studying reusable agent skills.",
+    "verify_terms": [
+      "WorkDemo-350"
+    ],
+    "documented_by": [
+      "2610.12984"
+    ],
+    "details": {
+      "sample_count": 350,
+      "sample_unit": "task demonstrations / videos",
+      "modalities": [
+        "video",
+        "image",
+        "text",
+        "input-events"
+      ],
+      "download_url": "https://huggingface.co/datasets/yuqi777/WorkDemo-350/tree/main"
+    },
+    "notes": "The card documents post hoc selection of the 286-task OSWorld subset based on model outcomes, uncalibrated coordinate annotations, and missing task-success acceptance records. It provides no train/test split or complete evaluator and does not claim complete anonymization. Review these limits before training or evaluation; the collection is an offline demonstration asset.",
+    "evidence_urls": [
+      "https://huggingface.co/datasets/yuqi777/WorkDemo-350/raw/main/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "ae14cfe91c8c9a79edf1f306273a2ee9d1790b1dc5be0cd2d89e93df09db42f0",
+    "reviewed_at": "2026-10-16T10:48:36Z"
+  },
+  {
+    "url": "https://github.com/zzxslp/MM-Navigator",
+    "name": "MM-Navigator",
+    "kind": "agent",
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "automation"
+    ],
+    "summary": "MM-Navigator research project.",
+    "verify_terms": [
+      "MM-Navigator"
+    ],
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/zzxslp/MM-Navigator/HEAD/README.md"
+    ],
+    "editorial_reviewed": false,
+    "review_note": "The primary README currently announces a future code and benchmark release; the repository supplies a research demo but does not establish a usable implementation."
+  },
+  {
+    "url": "https://github.com/InfiXAI/InfiGUIAgent",
+    "name": "InfiGUIAgent",
+    "kind": "agent",
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "automation"
+    ],
+    "summary": "InfiGUIAgent research project.",
+    "verify_terms": [
+      "InfiGUIAgent"
+    ],
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/Reallm-Labs/InfiGUIAgent/HEAD/README.md"
+    ],
+    "editorial_reviewed": false,
+    "review_note": "The primary README says the full model release is pending while third-party training-data restrictions are resolved; available implementation artifacts need separate verification."
   }
 ]

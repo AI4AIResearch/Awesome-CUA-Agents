@@ -1,11 +1,11 @@
 {
-  "as_of_utc": "2026-10-16T09:39:34Z",
-  "total_records": 1987,
-  "curated_records": 433,
+  "as_of_utc": "2026-10-16T10:48:43Z",
+  "total_records": 2014,
+  "curated_records": 460,
   "bibliographic_records": 1764,
   "metadata_only_records": 1554,
   "discovery_identifiers": 2678,
-  "unindexed_candidates": 743,
+  "unindexed_candidates": 730,
   "pending_editorial": [
     {
       "id": "github:mobilellm/autodroid-v2",
@@ -36,35 +36,47 @@
       "name": "OpenCUA 72B Preview",
       "url": "https://huggingface.co/xlangai/OpenCUA-72B-preview",
       "reason": "primary evidence unresolved: content mismatch"
+    },
+    {
+      "id": "github:zzxslp/mm-navigator",
+      "name": "MM-Navigator",
+      "url": "https://github.com/zzxslp/MM-Navigator",
+      "reason": "current source snapshot needs editorial review"
+    },
+    {
+      "id": "github:infixai/infiguiagent",
+      "name": "InfiGUIAgent",
+      "url": "https://github.com/InfiXAI/InfiGUIAgent",
+      "reason": "current source snapshot needs editorial review"
     }
   ],
   "by_kind": {
-    "agent": 24,
-    "benchmark": 50,
+    "agent": 26,
+    "benchmark": 60,
     "company": 16,
-    "dataset": 33,
-    "framework": 20,
-    "infrastructure": 11,
-    "model": 43,
+    "dataset": 36,
+    "framework": 26,
+    "infrastructure": 12,
+    "model": 46,
     "paper": 1753,
     "product": 19,
     "survey": 11,
-    "tool": 7
+    "tool": 9
   },
   "curated_by_environment": {
-    "android": 90,
-    "cross-platform": 108,
-    "desktop": 101,
-    "ios": 11,
-    "linux": 6,
-    "macos": 5,
-    "unspecified": 36,
-    "web": 125,
+    "android": 99,
+    "cross-platform": 114,
+    "desktop": 106,
+    "ios": 13,
+    "linux": 8,
+    "macos": 6,
+    "unspecified": 41,
+    "web": 133,
     "windows": 12
   },
   "license_declarations_by_scope": {
-    "code": 100,
-    "data": 18,
+    "code": 118,
+    "data": 21,
     "weights": 13,
     "document": 0
   },
@@ -86,9 +98,9 @@
         "unique_resources": 338
       },
       "discovered": 338,
-      "indexed": 195,
-      "curated": 137,
-      "unindexed": 143
+      "indexed": 199,
+      "curated": 141,
+      "unindexed": 139
     },
     {
       "id": "zju-gui",
@@ -107,9 +119,9 @@
         "unique_resources": 218
       },
       "discovered": 218,
-      "indexed": 154,
-      "curated": 114,
-      "unindexed": 64
+      "indexed": 155,
+      "curated": 115,
+      "unindexed": 63
     },
     {
       "id": "os-agent-survey",
@@ -212,9 +224,9 @@
         "unique_resources": 170
       },
       "discovered": 170,
-      "indexed": 103,
-      "curated": 60,
-      "unindexed": 67
+      "indexed": 108,
+      "curated": 65,
+      "unindexed": 62
     },
     {
       "id": "delunn-multimodal",
@@ -233,9 +245,9 @@
         "unique_resources": 588
       },
       "discovered": 588,
-      "indexed": 469,
-      "curated": 203,
-      "unindexed": 119
+      "indexed": 471,
+      "curated": 205,
+      "unindexed": 117
     },
     {
       "id": "tianyuan-cua",
@@ -317,9 +329,9 @@
         "unique_resources": 193
       },
       "discovered": 193,
-      "indexed": 135,
-      "curated": 104,
-      "unindexed": 58
+      "indexed": 137,
+      "curated": 106,
+      "unindexed": 56
     },
     {
       "id": "osu-gui",
@@ -359,9 +371,9 @@
         "unique_resources": 144
       },
       "discovered": 144,
-      "indexed": 85,
-      "curated": 56,
-      "unindexed": 59
+      "indexed": 88,
+      "curated": 59,
+      "unindexed": 56
     },
     {
       "id": "jin-gui-hub",
@@ -422,9 +434,9 @@
         "unique_resources": 40
       },
       "discovered": 40,
-      "indexed": 21,
-      "curated": 16,
-      "unindexed": 19
+      "indexed": 22,
+      "curated": 17,
+      "unindexed": 18
     },
     {
       "id": "phone-gui",
@@ -443,9 +455,9 @@
         "unique_resources": 247
       },
       "discovered": 247,
-      "indexed": 172,
-      "curated": 104,
-      "unindexed": 75
+      "indexed": 178,
+      "curated": 110,
+      "unindexed": 69
     },
     {
       "id": "mobile-agents",
@@ -464,9 +476,9 @@
         "unique_resources": 91
       },
       "discovered": 91,
-      "indexed": 75,
-      "curated": 47,
-      "unindexed": 16
+      "indexed": 76,
+      "curated": 48,
+      "unindexed": 15
     },
     {
       "id": "web-research",

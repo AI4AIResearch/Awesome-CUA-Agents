@@ -388,6 +388,7 @@
               "arxiv_api",
               "editorial_primary_review",
               "huggingface_api",
+              "huggingface_card",
               "license_header"
             ]
           },

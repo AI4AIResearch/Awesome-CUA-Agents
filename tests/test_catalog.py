@@ -94,6 +94,32 @@ class SourceTests(unittest.TestCase):
             self.assertEqual(len(rows), 1)
             self.assertEqual(pending, [])
 
+    def test_hub_card_licenses_are_scoped_and_require_a_metadata_declaration(self):
+        cases = [
+            ("dataset", "https://huggingface.co/datasets/example/data", "---\nlicense: cc-by-4.0\n---\nDataset card", {"data": "cc-by-4.0"}),
+            ("model", "https://huggingface.co/example/model", "---\nlicense: apache-2.0\n---\nModel card", {"weights": "apache-2.0"}),
+            ("framework", "https://huggingface.co/example/framework", "---\nlicense: mit\n---\nFramework", {}),
+            ("dataset", "https://huggingface.co/datasets/example/prose", "# Card\nRelated code has license: MIT", {}),
+        ]
+        with tempfile.TemporaryDirectory() as directory, mock.patch.object(catalog, "DATA", Path(directory)):
+            rows, evidence, bodies = [], [], {}
+            for kind, url, content, expected in cases:
+                rid = catalog.canonical(url)[0]
+                primary = url + "/raw/main/README.md"
+                bodies[primary] = content.encode()
+                rows.append({"url": url, "kind": kind})
+                evidence.append({"id": rid, "url": primary, "content_matched": True, "sha256": hashlib.sha256(content.encode()).hexdigest(), "retrieved_at": "2026-10-16T00:00:00Z"})
+            catalog.write_json(Path(directory) / "editorial.json", rows)
+            catalog.write_jsonl(Path(directory) / "primary-evidence.jsonl", evidence)
+            with mock.patch.object(catalog, "cached_body", side_effect=lambda url: bodies[url]), contextlib.redirect_stdout(io.StringIO()):
+                catalog.enrich(types.SimpleNamespace(refresh=False))
+            enriched = {r["id"]: r for r in catalog.read_jsonl(Path(directory) / "enrichment.jsonl")}
+            for kind, url, content, expected in cases:
+                result = enriched[catalog.canonical(url)[0]]
+                self.assertEqual({scope: value["declared"] for scope, value in result["licenses"].items()}, expected)
+                for receipt in result["evidence"]:
+                    self.assertEqual(receipt["url"], url + "/raw/main/README.md")
+
 
 class QualityTests(unittest.TestCase):
     def test_duplicate_and_dangling_relationship_rejected(self):

@@ -324,6 +324,16 @@ def enrich(args):
             article = re.search(r"<article\b[^>]*>(.*?)</article>", raw, re.S)
             raw = article.group(1) if article else ""
         result = {"id": rid, "evidence_sha256": ev["sha256"], "licenses": {}, "details": {}, "references": [], "evidence": []}
+        # A raw Hub card may be the reviewed primary source rather than the API.
+        # Read only an explicit scalar declaration in its metadata header; do not
+        # inherit a dataset/model license from a linked repository or prose.
+        if urllib.parse.urlsplit(ev["url"]).hostname == "huggingface.co" and "/raw/" in ev["url"]:
+            header = re.match(r"\A---\r?\n(.*?)\r?\n---", raw, re.S)
+            declaration = re.search(r"^license:[ \t]*([a-zA-Z0-9][a-zA-Z0-9_.-]*)[ \t]*$", header[1], re.M) if header else None
+            slot = "data" if row["kind"] == "dataset" else "weights" if row["kind"] == "model" else None
+            if declaration and slot:
+                result["licenses"][slot] = {"declared": declaration[1], "url": ev["url"], "retrieved_at": ev["retrieved_at"], "basis": "publisher model/dataset card metadata; third-party assets retain their own terms"}
+                result["evidence"].append({"role": "primary", "method": "huggingface_card", "supports": [f"licenses.{slot}"], **{k: ev[k] for k in ("url", "sha256", "retrieved_at")}})
         if "/api/datasets/" in ev["url"] or "/api/models/" in ev["url"]:
             payload = json.loads(raw)
             card = payload.get("cardData") or {}
