@@ -19,7 +19,7 @@ test('platform, kind, review, and topic filters intersect',()=>{
   assert.equal(matches(actual[0],{...state,kind:'model'}),false);
 });
 test('source-pending papers are not silently labeled as Android',()=>{
-  const papers=filtered(rows,{...initial(),kind:'paper',platform:'android'});
+  const papers=filtered(rows,{...initial(),kind:'paper',platform:'android',review:'metadata_verified'});
   assert.equal(papers.length,0);
 });
 test('search uses all terms and normalizes punctuation',()=>{

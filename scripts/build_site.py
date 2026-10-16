@@ -8,6 +8,7 @@ import sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts'))
 from build import validate_records, write_sqlite
+from search_pages import build_search_pages, resource_path
 
 
 def build_site(output=None):
@@ -23,7 +24,7 @@ def build_site(output=None):
     (destination/'data').mkdir(exist_ok=True)
     (destination/'downloads').mkdir(exist_ok=True)
     keys=['id','name','kind','url','aliases','environments','topics','summary','review_status','published_at','authors','scope','last_verified_at']
-    index={'coverage':{k:coverage[k] for k in ['as_of_utc','total_records','curated_records','metadata_only_records','by_kind','unindexed_candidates','sources']},'records':[{k:row[k] for k in keys} for row in rows]}
+    index={'coverage':{k:coverage[k] for k in ['as_of_utc','total_records','curated_records','metadata_only_records','by_kind','unindexed_candidates','sources']},'records':[{**{k:row[k] for k in keys},'page_url':resource_path(row)} for row in rows]}
     for filename,payload in [('index.json',index),('records.json',rows)]:
         (destination/'data'/filename).write_text(json.dumps(payload,ensure_ascii=False,separators=(',',':'))+'\n')
     for name in ['catalog.jsonl','coverage.json','sources.json']:
@@ -31,9 +32,8 @@ def build_site(output=None):
     write_sqlite(rows,destination/'downloads'/'catalog.sqlite')
     shutil.copy2(ROOT/'LICENSE',destination/'LICENSE')
     (destination/'.nojekyll').write_text('')
-    (destination/'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: https://awesomecua.github.io/sitemap.xml\n')
-    (destination/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://awesomecua.github.io/</loc><lastmod>'+coverage['as_of_utc'][:10]+'</lastmod></url></urlset>\n')
-    print(f'Built {len(rows):,} searchable resources → {destination}')
+    manifest=build_search_pages(destination,rows,coverage,ROOT)
+    print(f'Built {len(rows):,} searchable resources and {sum(x["indexable"] for x in manifest)} indexable HTML pages → {destination}')
     return destination
 
 

@@ -1,0 +1,54 @@
+# Search and AI discovery
+
+The objective is to make accurate public resources discoverable, readable, and citable. Search submission, crawl access, indexing, ranking, and AI citation are separate states. This repository does not claim that a configuration guarantees any of them.
+
+## Implemented discovery surface
+
+- `/catalog/`, `/papers/`, `/categories/<kind>/`, `/guides/`, `/data/`, `/coverage/`, and `/about/` return complete textual HTML without running JavaScript.
+- Every resource has a stable `/resources/<id-slug>/` URL and an `index.md` companion. Curated entries are indexable. Metadata-only entries stay accessible with `noindex,follow` until relevance is reviewed.
+- Canonical URLs, descriptive titles, visible summaries, ordinary anchor links, breadcrumbs, and JSON-LD describe the content actually shown.
+- The catalog download page uses `Dataset`/`DataDownload`; paper entities retain their original authors and dates. Catalog authorship is never substituted for research-paper authorship.
+- The sitemap includes only indexable HTML pages. It omits artificial build-time `lastmod` values; a source retrieval date is not a page-modification date.
+- `robots.txt` allows Googlebot, bingbot, OAI-SearchBot, PerplexityBot, and Claude-SearchBot. The existing general access policy is retained. Search access and model-training access are different controls.
+- `llms.txt`, `llms-full.txt`, and an Atom feed provide optional navigation and machine-readable annotations. They are not mandatory AI-ranking mechanisms.
+- Google’s provided verification file is retained at the site root. Do not delete it during future deployments.
+
+## Reproduce and validate
+
+```bash
+python3 scripts/discover_papers.py --query 'GUI grounding benchmark' --limit 30
+python3 scripts/catalog.py harvest
+# Review selected primary abstracts and update editorial records before promotion.
+python3 scripts/catalog.py build
+python3 scripts/build_site.py
+.venv/bin/python -m unittest discover -s tests -v
+node --test tests/web.test.mjs
+```
+
+Discovery searches are ranked, bounded windows. Their provenance is saved in `data/research-discovery.json`; their results are not editorial endorsement. Titles returned by discovery services may be outdated, so current arXiv metadata controls the bibliographic title.
+
+## Submit and measure
+
+Google Search Console is the authority for property verification, sitemap processing, URL inspection, and actual indexing. After deploying the tested build, submit `https://awesomecua.github.io/sitemap.xml` and inspect the homepage and a representative resource page. A submission-success message is not an indexing confirmation.
+
+IndexNow is a separate notification channel for participating engines, not a Google submission endpoint:
+
+```bash
+python3 scripts/submit_indexnow.py          # dry run
+python3 scripts/submit_indexnow.py --submit # only after the exact tested build is live
+```
+
+The script verifies the public key file and exact live search manifest before submitting only sitemap URLs. It records timestamp, URLs, HTTP status, and response meaning in `data/search-submissions.json`. HTTP 200 means submission accepted; 202 means key validation pending. Neither proves indexing. The IndexNow key is intentionally public ownership proof, not a login credential.
+
+Use Search Console to track indexed pages, impressions, clicks, canonical selection, and excluded-page reasons. Track observed AI referral traffic or citations separately. Do not use fabricated testimonials, synthetic backlinks, unsupported rankings, or schema unrelated to visible content. No third-party outreach or paid submission service is part of this implementation.
+
+## Official references
+
+- [Google: AI features and your website](https://developers.google.com/search/docs/appearance/ai-features) — normal search eligibility applies; no special AI text file or schema is required.
+- [Google: link best practices](https://developers.google.com/search/docs/crawling-indexing/links-crawlable) — discoverable links use anchors with real destinations.
+- [Google: dataset structured data](https://developers.google.com/search/docs/appearance/structured-data/dataset) — names, descriptions, and distribution metadata support dataset discovery.
+- [Google: sitemap ping deprecation](https://developers.google.com/search/blog/2023/06/sitemaps-lastmod-ping) — use robots.txt and Search Console, not the retired ping endpoint.
+- [OpenAI: crawlers](https://developers.openai.com/api/docs/bots) — OAI-SearchBot handles search; GPTBot is a separate training control.
+- [Perplexity: crawlers](https://docs.perplexity.ai/docs/resources/perplexity-crawlers) — PerplexityBot supports search discovery.
+- [Anthropic: crawler controls](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler) — search and other crawler roles are separate.
+- [IndexNow protocol](https://www.indexnow.org/documentation) — public key proof, URL submissions, and response semantics.

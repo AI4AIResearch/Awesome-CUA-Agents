@@ -2,7 +2,7 @@
 
 The organization homepage is published at **https://awesomecua.github.io/**. The GitHub organization entry point is **https://github.com/AwesomeCUA**.
 
-The website is a static application: no API keys, account system, paid backend, or analytics. It uses the committed catalog and coverage ledger. Search, filters, pagination, English/Chinese navigation, shareable resource links, evidence details, and downloads work in the browser. Unknown resource metadata remains unknown in the site.
+The website combines a static interactive application with complete HTML resource pages and reading guides. Search, filters, pagination, English/Chinese navigation, source evidence, and downloads use the committed catalog. Unknown resource metadata remains unknown. [Search and AI discovery](search-discovery.md) documents canonical pages, sitemap policy, structured data, and submission receipts.
 
 ## Build and preview
 
@@ -11,7 +11,7 @@ python3 scripts/build_site.py
 python3 -m http.server 4173 --bind 127.0.0.1 --directory dist/site
 ```
 
-Open http://127.0.0.1:4173/. Source files are in `web/`; the deployable static bundle is in `dist/site/`. The bundle includes a compact search index, full resource records, and JSONL/SQLite downloads. It can also be hosted under a subdirectory because application assets use relative URLs.
+Open http://127.0.0.1:4173/. Source files are in `web/`; the deployable static bundle is in `dist/site/`. The bundle includes the search index, resource HTML/Markdown, guides, and JSONL/SQLite downloads. Discovery pages are configured for the root of `https://awesomecua.github.io/`; changing the origin or deploying under a subdirectory requires updating the canonical URLs and internal paths.
 
 ```bash
 node --test tests/web.test.mjs

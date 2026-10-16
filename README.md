@@ -10,9 +10,9 @@ The goal is comprehensive coverage of public research and industry resources, wi
 
 <!-- STATS:START -->
 
-**1,947 resource records** · **231 curated** · **1,727 arXiv records** · **21 discovery documents**
+**1,984 resource records** · **251 curated** · **1,764 arXiv records** · **21 discovery documents**
 
-Evidence through `2026-10-16T06:50:49Z`. 1,716 records have bibliographic verification only; 742 discovered identifiers remain unindexed. Counts overlap as explained below.
+Evidence through `2026-10-16T07:54:03Z`. 1,733 records have bibliographic verification only; 742 discovered identifiers remain unindexed. Counts overlap as explained below.
 
 <!-- STATS:END -->
 
@@ -31,6 +31,8 @@ Coverage spans web, desktop, Android, iOS, Windows, macOS, Linux, and cross-plat
 ## Use the data
 
 Browse the [interactive website](https://awesomecua.github.io/) to search and filter all resources, inspect source evidence, switch between English and Chinese, or download the complete catalog. [Website development and publishing](docs/website.md).
+
+[Reviewed research](https://awesomecua.github.io/papers/) · [Computer-use agent guides](https://awesomecua.github.io/guides/) · [Static resource directory](https://awesomecua.github.io/catalog/) · [Search and AI discovery](docs/search-discovery.md)
 
 - **[Catalog JSONL](data/catalog.jsonl):** one resource per line, with stable IDs, typed fields, provenance, scoped licenses, and review status.
 - **[Reference graph](data/references.jsonl):** outbound references from primary sources. `mentions` does not mean `trained_on` or `evaluated_on`.

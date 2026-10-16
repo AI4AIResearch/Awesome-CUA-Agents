@@ -4964,5 +4964,476 @@
     },
     "reviewed_sha256": "d66bc86d9fb61f88d1456b36cb0c2c9ab5e178b55bc9d34f307b35733f9b90bc",
     "reviewed_at": "2026-10-16T06:50:49Z"
+  },
+  {
+    "name": "Mind2Web: Towards a Generalist Agent for the Web",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2306.06070",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "data-generation",
+      "web-navigation",
+      "evaluation"
+    ],
+    "summary": "Introduces a web-task dataset spanning diverse websites and evaluates generalization to unseen sites and domains.",
+    "verify_terms": [
+      "Mind2Web: Towards a Gener"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=1802.08802%2C1808.09132%2C2005.03776%2C2101.09465%2C2103.16057%2C2104.08560%2C2105.13231%2C2107.03374%2C2107.13731%2C2108.03353%2C2202.02312%2C2202.08137%2C2204.01691%2C2205.11029%2C2207.01206%2C2209.08199%2C2209.08655%2C2209.14927%2C2209.15099%2C2210.02663%2C2210.03629%2C2210.03945%2C2211.07615%2C2301.10165%2C2301.13280%2C2302.04761%2C2303.07280%2C2303.08774%2C2303.17491%2C2303.17580%2C2304.04370%2C2304.07061%2C2305.04091%2C2305.05662%2C2305.08144%2C2305.10601%2C2305.11854%2C2305.12487%2C2305.14257%2C2305.14325%2C2305.16504%2C2305.16653%2C2305.19308%2C2306.00245%2C2306.06070%2C2306.07863%2C2307.10088%2C2307.12856%2C2307.13854%2C2308.01990&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "cbe8bfcbce4170a94a6cf42de01fbe0a448e7b1d29fa75a0de877105a98ec08e",
+    "reviewed_at": "2026-10-16T06:31:20Z",
+    "notes": "Editorial summary based on the primary paper abstract; experiments and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "WebArena: A Realistic Web Environment for Building Autonomous Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2307.13854",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "evaluation",
+      "web-navigation",
+      "long-horizon"
+    ],
+    "summary": "Introduces reproducible web environments with task-completion checks for evaluating autonomous web agents.",
+    "verify_terms": [
+      "WebArena: A Realistic Web"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=1802.08802%2C1808.09132%2C2005.03776%2C2101.09465%2C2103.16057%2C2104.08560%2C2105.13231%2C2107.03374%2C2107.13731%2C2108.03353%2C2202.02312%2C2202.08137%2C2204.01691%2C2205.11029%2C2207.01206%2C2209.08199%2C2209.08655%2C2209.14927%2C2209.15099%2C2210.02663%2C2210.03629%2C2210.03945%2C2211.07615%2C2301.10165%2C2301.13280%2C2302.04761%2C2303.07280%2C2303.08774%2C2303.17491%2C2303.17580%2C2304.04370%2C2304.07061%2C2305.04091%2C2305.05662%2C2305.08144%2C2305.10601%2C2305.11854%2C2305.12487%2C2305.14257%2C2305.14325%2C2305.16504%2C2305.16653%2C2305.19308%2C2306.00245%2C2306.06070%2C2306.07863%2C2307.10088%2C2307.12856%2C2307.13854%2C2308.01990&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "cbe8bfcbce4170a94a6cf42de01fbe0a448e7b1d29fa75a0de877105a98ec08e",
+    "reviewed_at": "2026-10-16T06:31:20Z",
+    "notes": "Editorial summary based on the primary paper abstract; experiments and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2404.07972",
+    "environments": [
+      "desktop",
+      "linux",
+      "windows",
+      "macos"
+    ],
+    "topics": [
+      "evaluation",
+      "cross-app"
+    ],
+    "summary": "Introduces a real-computer evaluation environment with execution-based checks for tasks spanning desktop applications and operating-system state.",
+    "verify_terms": [
+      "OSWorld: Benchmarking Mul"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2403.03186%2C2403.03788%2C2403.07718%2C2403.10170%2C2403.11905%2C2403.16971%2C2403.17918%2C2403.20271%2C2404.01549%2C2404.01744%2C2404.02475%2C2404.03648%2C2404.05427%2C2404.05719%2C2404.05955%2C2404.06474%2C2404.07972%2C2404.08755%2C2404.08860%2C2404.08948%2C2404.09992%2C2404.10887%2C2404.11459%2C2404.16006%2C2404.16048%2C2404.16054%2C2404.16660%2C2404.18074%2C2404.19296%2C2405.00516%2C2405.11120%2C2405.12842%2C2405.14573%2C2405.14751%2C2405.15793%2C2405.16247%2C2405.20309%2C2406.01014%2C2406.01623%2C2406.03679%2C2406.06947%2C2406.07822%2C2406.08184%2C2406.08340%2C2406.08451%2C2406.10227%2C2406.10819%2C2406.11317%2C2406.11896%2C2406.12373&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "be244bfae7f89ef9449b69d85aac44295eb7b5f7e5e1bbedd76df312696676a7",
+    "reviewed_at": "2026-10-16T06:31:28Z",
+    "notes": "Editorial summary based on the primary paper abstract; experiments and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "AndroidWorld: A Dynamic Benchmarking Environment for Autonomous Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2405.14573",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "evaluation",
+      "mobile-navigation"
+    ],
+    "summary": "Introduces parameterized Android tasks with initialization, success checks, and cleanup for reproducible interactive evaluation.",
+    "verify_terms": [
+      "AndroidWorld: A Dynamic B"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2403.03186%2C2403.03788%2C2403.07718%2C2403.10170%2C2403.11905%2C2403.16971%2C2403.17918%2C2403.20271%2C2404.01549%2C2404.01744%2C2404.02475%2C2404.03648%2C2404.05427%2C2404.05719%2C2404.05955%2C2404.06474%2C2404.07972%2C2404.08755%2C2404.08860%2C2404.08948%2C2404.09992%2C2404.10887%2C2404.11459%2C2404.16006%2C2404.16048%2C2404.16054%2C2404.16660%2C2404.18074%2C2404.19296%2C2405.00516%2C2405.11120%2C2405.12842%2C2405.14573%2C2405.14751%2C2405.15793%2C2405.16247%2C2405.20309%2C2406.01014%2C2406.01623%2C2406.03679%2C2406.06947%2C2406.07822%2C2406.08184%2C2406.08340%2C2406.08451%2C2406.10227%2C2406.10819%2C2406.11317%2C2406.11896%2C2406.12373&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "be244bfae7f89ef9449b69d85aac44295eb7b5f7e5e1bbedd76df312696676a7",
+    "reviewed_at": "2026-10-16T06:31:28Z",
+    "notes": "Editorial summary based on the primary paper abstract; experiments and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "Agent S: An Open Agentic Framework that Uses Computers Like a Human",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2410.08164",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "planning",
+      "memory"
+    ],
+    "summary": "Combines hierarchical planning, retrieved experience, and a computer interaction interface to execute multistep GUI tasks.",
+    "verify_terms": [
+      "Agent S: An Open Agentic "
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2410.00467%2C2410.00689%2C2410.02810%2C2410.02907%2C2410.05243%2C2410.06703%2C2410.08164%2C2410.09006%2C2410.09024%2C2410.11843%2C2410.11871%2C2410.11872%2C2410.13232%2C2410.13757%2C2410.13824%2C2410.13825%2C2410.13886%2C2410.14803%2C2410.15164%2C2410.16464%2C2410.17236%2C2410.17401%2C2410.17520%2C2410.17883%2C2410.18603%2C2410.18963%2C2410.18967%2C2410.19054%2C2410.19100%2C2410.19461%2C2410.19609%2C2410.20745%2C2410.22552%2C2410.23218%2C2410.24024%2C2411.00820%2C2411.02337%2C2411.02391%2C2411.04468%2C2411.04890%2C2411.06559%2C2411.07618%2C2411.10323%2C2411.13451%2C2411.13591%2C2411.15004%2C2411.17465%2C2411.18279%2C2412.00402%2C2412.01268&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "b3e67984f59a1b05ccd946eb54e2d37b0bb78ab0ca796fbb6d544793dafea3e0",
+    "reviewed_at": "2026-10-16T06:31:35Z",
+    "notes": "Editorial summary based on the primary paper abstract; experiments and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "UI-TARS: Pioneering Automated GUI Interaction with Native Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2501.12326",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "planning",
+      "data-generation"
+    ],
+    "summary": "Studies a screenshot-driven native GUI model with unified actions, deliberate reasoning, and iterative training on interaction traces.",
+    "verify_terms": [
+      "UI-TARS: Pioneering Autom"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2412.04454%2C2412.04626%2C2412.05467%2C2412.09362%2C2412.09605%2C2412.10342%2C2412.10742%2C2412.10840%2C2412.13103%2C2412.13194%2C2412.13501%2C2412.14161%2C2412.14470%2C2412.16256%2C2412.17589%2C2412.18116%2C2412.18426%2C2412.19723%2C2501.01149%2C2501.04575%2C2501.07572%2C2501.11733%2C2501.12326%2C2501.13896%2C2501.16150%2C2502.01600%2C2502.01977%2C2502.02982%2C2502.06395%2C2502.07949%2C2502.08047%2C2502.08226%2C2502.11357%2C2502.13053%2C2502.13923%2C2502.14282%2C2502.18906%2C2503.00401%2C2503.02268%2C2503.03196%2C2503.04730%2C2503.05143%2C2503.06470%2C2503.09263%2C2503.11069%2C2503.11170%2C2503.12687%2C2503.15661%2C2503.15937%2C2503.16465&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "e96b86015c763c780e0430a8d0867b96cae947f50e888b3441c85abcaa42de78",
+    "reviewed_at": "2026-10-16T06:31:38Z",
+    "notes": "Editorial summary based on the primary paper abstract; experiments and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "ShieldAgent: Shielding Agents via Verifiable Safety Policy Reasoning",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2503.22738",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "safety-security"
+    ],
+    "summary": "Proposes a guardrail agent that reasons over explicit safety policies and checks action trajectories, with a web-agent safety benchmark.",
+    "verify_terms": [
+      "ShieldAgent: Shielding Ag"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2401.05507%2C2406.07275%2C2409.16427%2C2410.00079%2C2503.07701%2C2503.22738%2C2505.15859%2C2505.17735%2C2505.23596%2C2507.05257%2C2507.06134%2C2507.21953%2C2507.23336%2C2508.06960%2C2508.08997%2C2509.02473%2C2509.23694%2C2510.09116%2C2510.14438%2C2511.18423%2C2512.12818%2C2512.13564%2C2601.10758%2C2601.12449%2C2601.21841%2C2603.01152%2C2603.19993%2C2603.20576%2C2604.04503%2C2604.17562%2C2604.23941%2C2605.16265%2C2606.06448%2C2606.06462%2C2606.29193%2C2607.01647%2C2607.13157&max_results=37"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "13d5969845070cd2877dc51ae5300c2d623e5daef00c8a1552ffa46af3f721a5",
+    "reviewed_at": "2026-10-16T07:54:03Z",
+    "notes": "Editorial summary based on the primary paper abstract; experiments and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "Agent S2: A Compositional Generalist-Specialist Framework for Computer Use Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2504.00906",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "planning"
+    ],
+    "summary": "Combines generalist and specialist models with hierarchical planning and multiple grounding methods for computer-use tasks.",
+    "verify_terms": [
+      "Agent S2: A Compositional"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T06:36:54Z",
+    "notes": "Editorial summary based on the primary paper abstract; experiments and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "ScreenSpot-Pro: GUI Grounding for Professional High-Resolution Computer Use",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2504.07981",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "grounding",
+      "evaluation"
+    ],
+    "summary": "Evaluates GUI target localization in high-resolution professional software and studies cascaded visual search to narrow the target region.",
+    "verify_terms": [
+      "ScreenSpot-Pro: GUI Groun"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T06:36:54Z",
+    "notes": "Editorial summary based on the primary paper abstract; experiments and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "GUI-Actor: Coordinate-Free Visual Grounding for GUI Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2506.03143",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding"
+    ],
+    "summary": "Uses an attention-based action head and a verifier to select relevant screen regions without generating coordinates as text.",
+    "verify_terms": [
+      "GUI-Actor: Coordinate-Fre"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T06:36:54Z",
+    "notes": "Editorial summary based on the primary paper abstract; experiments and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "OpenAgentSafety: A Comprehensive Framework for Evaluating Real-World AI Agent Safety",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2507.06134",
+    "environments": [
+      "web",
+      "desktop"
+    ],
+    "topics": [
+      "safety-security",
+      "evaluation"
+    ],
+    "summary": "Evaluates agent safety across real browser, code, filesystem, shell, and messaging tools using rule-based and model-based assessments.",
+    "verify_terms": [
+      "OpenAgentSafety: A Compre"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2401.05507%2C2406.07275%2C2409.16427%2C2410.00079%2C2503.07701%2C2503.22738%2C2505.15859%2C2505.17735%2C2505.23596%2C2507.05257%2C2507.06134%2C2507.21953%2C2507.23336%2C2508.06960%2C2508.08997%2C2509.02473%2C2509.23694%2C2510.09116%2C2510.14438%2C2511.18423%2C2512.12818%2C2512.13564%2C2601.10758%2C2601.12449%2C2601.21841%2C2603.01152%2C2603.19993%2C2603.20576%2C2604.04503%2C2604.17562%2C2604.23941%2C2605.16265%2C2606.06448%2C2606.06462%2C2606.29193%2C2607.01647%2C2607.13157&max_results=37"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "13d5969845070cd2877dc51ae5300c2d623e5daef00c8a1552ffa46af3f721a5",
+    "reviewed_at": "2026-10-16T07:54:03Z",
+    "notes": "Editorial summary based on the primary paper abstract; experiments and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "MapAgent: Trajectory-Constructed Memory-Augmented Planning for Mobile Task Automation",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2507.21953",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "memory",
+      "planning",
+      "mobile-navigation"
+    ],
+    "summary": "Builds reusable page memories from past mobile trajectories and retrieves them to support task planning and execution.",
+    "verify_terms": [
+      "MapAgent: Trajectory-Cons"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2401.05507%2C2406.07275%2C2409.16427%2C2410.00079%2C2503.07701%2C2503.22738%2C2505.15859%2C2505.17735%2C2505.23596%2C2507.05257%2C2507.06134%2C2507.21953%2C2507.23336%2C2508.06960%2C2508.08997%2C2509.02473%2C2509.23694%2C2510.09116%2C2510.14438%2C2511.18423%2C2512.12818%2C2512.13564%2C2601.10758%2C2601.12449%2C2601.21841%2C2603.01152%2C2603.19993%2C2603.20576%2C2604.04503%2C2604.17562%2C2604.23941%2C2605.16265%2C2606.06448%2C2606.06462%2C2606.29193%2C2607.01647%2C2607.13157&max_results=37"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "13d5969845070cd2877dc51ae5300c2d623e5daef00c8a1552ffa46af3f721a5",
+    "reviewed_at": "2026-10-16T07:54:03Z",
+    "notes": "Editorial summary based on the primary paper abstract; experiments and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "OpenCUA: Open Foundations for Computer-Use Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2508.09123",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "data-generation",
+      "planning"
+    ],
+    "summary": "Presents demonstration collection infrastructure, the AgentNet dataset, and a training pipeline for open computer-use models.",
+    "verify_terms": [
+      "OpenCUA: Open Foundations"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=600&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "26fb4922c4c0bb5c9069935ed0aef0a9f56938cf8ae1af9724894fa1409955fb",
+    "reviewed_at": "2026-10-16T06:36:50Z",
+    "notes": "Editorial summary based on the primary paper abstract; experiments and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "MedSPOT: A Workflow-Aware Sequential Grounding Benchmark for Clinical GUI",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2603.19993",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "grounding",
+      "evaluation"
+    ],
+    "summary": "Benchmarks sequential target localization in clinical software workflows, emphasizing how early mistakes affect subsequent interaction steps.",
+    "verify_terms": [
+      "MedSPOT: A Workflow-Aware"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2401.05507%2C2406.07275%2C2409.16427%2C2410.00079%2C2503.07701%2C2503.22738%2C2505.15859%2C2505.17735%2C2505.23596%2C2507.05257%2C2507.06134%2C2507.21953%2C2507.23336%2C2508.06960%2C2508.08997%2C2509.02473%2C2509.23694%2C2510.09116%2C2510.14438%2C2511.18423%2C2512.12818%2C2512.13564%2C2601.10758%2C2601.12449%2C2601.21841%2C2603.01152%2C2603.19993%2C2603.20576%2C2604.04503%2C2604.17562%2C2604.23941%2C2605.16265%2C2606.06448%2C2606.06462%2C2606.29193%2C2607.01647%2C2607.13157&max_results=37"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "13d5969845070cd2877dc51ae5300c2d623e5daef00c8a1552ffa46af3f721a5",
+    "reviewed_at": "2026-10-16T07:54:03Z",
+    "notes": "Editorial summary based on the primary paper abstract; experiments and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "GoClick: Lightweight Element Grounding Model for Autonomous GUI Interaction",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2604.23941",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "efficiency"
+    ],
+    "summary": "Studies a compact encoder-decoder grounding model and progressive training-data refinement for resource-constrained GUI interaction.",
+    "verify_terms": [
+      "GoClick: Lightweight Elem"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2401.05507%2C2406.07275%2C2409.16427%2C2410.00079%2C2503.07701%2C2503.22738%2C2505.15859%2C2505.17735%2C2505.23596%2C2507.05257%2C2507.06134%2C2507.21953%2C2507.23336%2C2508.06960%2C2508.08997%2C2509.02473%2C2509.23694%2C2510.09116%2C2510.14438%2C2511.18423%2C2512.12818%2C2512.13564%2C2601.10758%2C2601.12449%2C2601.21841%2C2603.01152%2C2603.19993%2C2603.20576%2C2604.04503%2C2604.17562%2C2604.23941%2C2605.16265%2C2606.06448%2C2606.06462%2C2606.29193%2C2607.01647%2C2607.13157&max_results=37"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "13d5969845070cd2877dc51ae5300c2d623e5daef00c8a1552ffa46af3f721a5",
+    "reviewed_at": "2026-10-16T07:54:03Z",
+    "notes": "Editorial summary based on the primary paper abstract; experiments and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "DeskForge: Dense Supervision from Desktop Environments for Computer-Use Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2610.02320",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "data-generation",
+      "grounding"
+    ],
+    "summary": "Generates dense desktop supervision by varying real application scenes and combining screenshots, accessibility trees, and window geometry.",
+    "verify_terms": [
+      "DeskForge: Dense Supervis"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=0&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "74e521e46c46489e48f9bad5d774625a85b5ccd32828969fd98e1a4c453b899f",
+    "reviewed_at": "2026-10-16T06:36:29Z",
+    "notes": "Editorial summary based on the primary paper abstract; experiments and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "OpenGCUA: Toward a Fully Open Stack for Generalist Computer Use",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2610.22200",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "tool-integration",
+      "planning"
+    ],
+    "summary": "Introduces an open generalist computer-use stack combining visual and programmatic interaction, with model-controlled observation and task-state decisions.",
+    "verify_terms": [
+      "OpenGCUA: Toward a Fully "
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=0&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "74e521e46c46489e48f9bad5d774625a85b5ccd32828969fd98e1a4c453b899f",
+    "reviewed_at": "2026-10-16T06:36:29Z",
+    "notes": "Editorial summary based on the primary paper abstract; experiments and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "OS-Helix: Unifying GUI Interaction and Code Execution in Native Computer-Using Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2610.22234",
+    "environments": [
+      "desktop",
+      "linux"
+    ],
+    "topics": [
+      "tool-integration",
+      "reinforcement-learning"
+    ],
+    "summary": "Trains native computer-use models to coordinate GUI actions and code execution using hybrid demonstrations and online reinforcement learning.",
+    "verify_terms": [
+      "OS-Helix: Unifying GUI In"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=0&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "74e521e46c46489e48f9bad5d774625a85b5ccd32828969fd98e1a4c453b899f",
+    "reviewed_at": "2026-10-16T06:36:29Z",
+    "notes": "Editorial summary based on the primary paper abstract; experiments and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "LEASH: Uncertainty-Aware Weak-to-Strong Escalation and Oversight for Computer-Use Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2610.22280",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "efficiency",
+      "planning"
+    ],
+    "summary": "Uses weak-agent uncertainty to decide when to escalate to a stronger model and monitor its subsequent task execution.",
+    "verify_terms": [
+      "LEASH: Uncertainty-Aware "
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=0&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "74e521e46c46489e48f9bad5d774625a85b5ccd32828969fd98e1a4c453b899f",
+    "reviewed_at": "2026-10-16T06:36:29Z",
+    "notes": "Editorial summary based on the primary paper abstract; experiments and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "Agent-SAMA: State-Aware Mobile Assistant",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2505.23596",
+    "aliases": [
+      "MAPLE"
+    ],
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "planning",
+      "memory",
+      "mobile-navigation"
+    ],
+    "summary": "Models mobile application execution as a finite-state machine to support planning, verification, and recovery across interface transitions.",
+    "verify_terms": [
+      "Agent-SAMA: State-Aware M"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2401.05507%2C2406.07275%2C2409.16427%2C2410.00079%2C2503.07701%2C2503.22738%2C2505.15859%2C2505.17735%2C2505.23596%2C2507.05257%2C2507.06134%2C2507.21953%2C2507.23336%2C2508.06960%2C2508.08997%2C2509.02473%2C2509.23694%2C2510.09116%2C2510.14438%2C2511.18423%2C2512.12818%2C2512.13564%2C2601.10758%2C2601.12449%2C2601.21841%2C2603.01152%2C2603.19993%2C2603.20576%2C2604.04503%2C2604.17562%2C2604.23941%2C2605.16265%2C2606.06448%2C2606.06462%2C2606.29193%2C2607.01647%2C2607.13157&max_results=37"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "13d5969845070cd2877dc51ae5300c2d623e5daef00c8a1552ffa46af3f721a5",
+    "reviewed_at": "2026-10-16T07:54:03Z",
+    "notes": "The discovery result used the earlier MAPLE title; this record follows the current arXiv title, Agent-SAMA. Summary reviewed against the abstract; experiments not independently reproduced."
   }
 ]
