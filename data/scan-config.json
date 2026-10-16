@@ -1,0 +1,14 @@
+{
+  "timezone": "America/Los_Angeles",
+  "scan_cron": "17 8,20 * * *",
+  "publish_cron": "47 8,20 * * *",
+  "scan_times_local": ["08:17", "20:17"],
+  "publish_times_local": ["08:47", "20:47"],
+  "recent_lookback_days": 14,
+  "recent_max_results": 500,
+  "harvest_limit": 500,
+  "history_limit": 180,
+  "source_repository": "reacher-z/Awesome-CUA",
+  "website_repository": "AwesomeCUA/awesomecua.github.io",
+  "policy": "Automated scans discover candidates and verify bibliographic metadata. Editorial approval, topic annotations, and license claims require separate source review."
+}
