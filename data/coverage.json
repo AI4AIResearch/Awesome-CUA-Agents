@@ -1,0 +1,688 @@
+{
+  "as_of_utc": "2026-10-16T06:50:49Z",
+  "total_records": 1947,
+  "curated_records": 231,
+  "bibliographic_records": 1727,
+  "metadata_only_records": 1716,
+  "discovery_identifiers": 2639,
+  "unindexed_candidates": 742,
+  "pending_editorial": [
+    {
+      "id": "github:mobilellm/autodroid-v2",
+      "name": "AutoDroid V2",
+      "url": "https://github.com/MobileLLM/AutoDroid-V2",
+      "reason": "Repository landing page is reachable, but accessible primary description is insufficient to validate the claimed framework."
+    },
+    {
+      "id": "github:thudm/autoglm",
+      "name": "AutoGLM",
+      "url": "https://github.com/THUDM/AutoGLM",
+      "reason": "primary evidence unresolved: HTTP Error 404: Not Found"
+    },
+    {
+      "id": "github:ai-secure/advweb",
+      "name": "AdvWeb",
+      "url": "https://github.com/AI-secure/AdvWeb",
+      "reason": "primary evidence unresolved: HTTP Error 404: Not Found"
+    },
+    {
+      "id": "url:df3dc96d9e27b824f6ea",
+      "name": "Comet",
+      "url": "https://www.perplexity.ai/comet",
+      "reason": "primary evidence unresolved: HTTP Error 403: Forbidden"
+    },
+    {
+      "id": "url:8c792416d297293422cf",
+      "name": "OpenCUA 72B Preview",
+      "url": "https://huggingface.co/xlangai/OpenCUA-72B-preview",
+      "reason": "primary evidence unresolved: content mismatch"
+    }
+  ],
+  "by_kind": {
+    "agent": 24,
+    "benchmark": 48,
+    "company": 16,
+    "dataset": 32,
+    "framework": 20,
+    "infrastructure": 11,
+    "model": 43,
+    "paper": 1716,
+    "product": 19,
+    "survey": 11,
+    "tool": 7
+  },
+  "curated_by_environment": {
+    "android": 42,
+    "cross-platform": 63,
+    "desktop": 50,
+    "ios": 7,
+    "linux": 4,
+    "macos": 3,
+    "unspecified": 16,
+    "web": 66,
+    "windows": 5
+  },
+  "license_declarations_by_scope": {
+    "code": 99,
+    "data": 17,
+    "weights": 13,
+    "document": 0
+  },
+  "sources": [
+    {
+      "id": "showlab-gui",
+      "name": "ShowLab Awesome GUI Agent",
+      "url": "https://github.com/showlab/Awesome-GUI-Agent",
+      "snapshot": {
+        "id": "showlab-gui",
+        "url": "https://raw.githubusercontent.com/showlab/Awesome-GUI-Agent/main/README.md",
+        "retrieved_at": "2026-10-16T06:31:04Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/showlab/Awesome-GUI-Agent/main/README.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "eed201441de9c42ee78fc9090b0c973139e2f0b2da638f1f009881f8d34b918d",
+        "bytes": 61336,
+        "unique_resources": 338
+      },
+      "discovered": 338,
+      "indexed": 197,
+      "curated": 61,
+      "unindexed": 141
+    },
+    {
+      "id": "zju-gui",
+      "name": "ZJU REAL Awesome GUI Agents",
+      "url": "https://github.com/ZJU-REAL/Awesome-GUI-Agents",
+      "snapshot": {
+        "id": "zju-gui",
+        "url": "https://raw.githubusercontent.com/ZJU-REAL/Awesome-GUI-Agents/main/README.md",
+        "retrieved_at": "2026-10-16T06:31:05Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/ZJU-REAL/Awesome-GUI-Agents/main/README.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "3c8a2ece9b96fd2b8a2c0c090ba89a8eabb96a93ca9c46e6e7f740036e72298f",
+        "bytes": 53322,
+        "unique_resources": 218
+      },
+      "discovered": 218,
+      "indexed": 154,
+      "curated": 50,
+      "unindexed": 64
+    },
+    {
+      "id": "os-agent-survey",
+      "name": "OS Agents Survey",
+      "url": "https://github.com/OS-Agent-Survey/OS-Agent-Survey",
+      "snapshot": {
+        "id": "os-agent-survey",
+        "url": "https://raw.githubusercontent.com/OS-Agent-Survey/OS-Agent-Survey/main/README.md",
+        "retrieved_at": "2026-10-16T06:31:05Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/OS-Agent-Survey/OS-Agent-Survey/main/README.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "d6d48ef6fca566eb2f0cd9ed757de98752f9a96f77a205a12f7bcb6e5ca32f54",
+        "bytes": 69065,
+        "unique_resources": 224
+      },
+      "discovered": 224,
+      "indexed": 198,
+      "curated": 1,
+      "unindexed": 26
+    },
+    {
+      "id": "wjhou-cua",
+      "name": "Awesome Computer Use Agents — wjhou",
+      "url": "https://github.com/wjhou/awesome-computer-use-agents",
+      "snapshot": {
+        "id": "wjhou-cua",
+        "url": "https://raw.githubusercontent.com/wjhou/awesome-computer-use-agents/main/README.md",
+        "retrieved_at": "2026-10-16T06:31:05Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/wjhou/awesome-computer-use-agents/main/README.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "c9b1cfc58cff5f9c45054ab15e1e0165870012ba6d339ae398bf69612234bbe6",
+        "bytes": 39694,
+        "unique_resources": 132
+      },
+      "discovered": 132,
+      "indexed": 93,
+      "curated": 24,
+      "unindexed": 39
+    },
+    {
+      "id": "steel-web",
+      "name": "Steel Awesome Web Agents",
+      "url": "https://github.com/steel-dev/awesome-web-agents",
+      "snapshot": {
+        "id": "steel-web",
+        "url": "https://raw.githubusercontent.com/steel-dev/awesome-web-agents/main/README.md",
+        "retrieved_at": "2026-10-16T06:31:05Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/steel-dev/awesome-web-agents/main/README.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "d6f7c24ac78d19f61000b02953a03cf7d91e92f87f0b9c5b0013610f7ec174c1",
+        "bytes": 27039,
+        "unique_resources": 113
+      },
+      "discovered": 113,
+      "indexed": 22,
+      "curated": 21,
+      "unindexed": 91
+    },
+    {
+      "id": "steel-web-archive",
+      "name": "Steel Web Agents Archive",
+      "url": "https://github.com/steel-dev/awesome-web-agents/blob/main/ARCHIVE.md",
+      "snapshot": {
+        "id": "steel-web-archive",
+        "url": "https://raw.githubusercontent.com/steel-dev/awesome-web-agents/main/ARCHIVE.md",
+        "retrieved_at": "2026-10-16T06:31:05Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/steel-dev/awesome-web-agents/main/ARCHIVE.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "a0e6333bac1cec6806cfd5cc1a8f3f51956b9f72eed80c65e3148cac3ea3ce54",
+        "bytes": 1138,
+        "unique_resources": 7
+      },
+      "discovered": 7,
+      "indexed": 1,
+      "curated": 1,
+      "unindexed": 6
+    },
+    {
+      "id": "gui-datasets",
+      "name": "Computer Browser Phone Use Agent Datasets",
+      "url": "https://github.com/Khang-9966/Computer-Browser-Phone-Use-Agent-Datasets",
+      "snapshot": {
+        "id": "gui-datasets",
+        "url": "https://raw.githubusercontent.com/Khang-9966/Computer-Browser-Phone-Use-Agent-Datasets/main/README.md",
+        "retrieved_at": "2026-10-16T06:31:06Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/Khang-9966/Computer-Browser-Phone-Use-Agent-Datasets/main/README.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "55c6489618ede64bd30f70a997d2b341c3af2fdfa1b106715201b96a468e9637",
+        "bytes": 48882,
+        "unique_resources": 170
+      },
+      "discovered": 170,
+      "indexed": 102,
+      "curated": 38,
+      "unindexed": 68
+    },
+    {
+      "id": "delunn-multimodal",
+      "name": "Awesome Multimodal GUI Agents",
+      "url": "https://github.com/DeLunnLi/Awesome-Multimodal-GUI-Agents",
+      "snapshot": {
+        "id": "delunn-multimodal",
+        "url": "https://raw.githubusercontent.com/DeLunnLi/Awesome-Multimodal-GUI-Agents/main/README.md",
+        "retrieved_at": "2026-10-16T06:31:06Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/DeLunnLi/Awesome-Multimodal-GUI-Agents/main/README.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "ec638560743ecc3ca578f1d2e72ea5836c1eb05bb71e9ed08802d5a8320fae40",
+        "bytes": 159209,
+        "unique_resources": 588
+      },
+      "discovered": 588,
+      "indexed": 469,
+      "curated": 96,
+      "unindexed": 119
+    },
+    {
+      "id": "tianyuan-cua",
+      "name": "Awesome Computer Use — TianyuanYang",
+      "url": "https://github.com/TianyuanYang/awesome-computer-use",
+      "snapshot": {
+        "id": "tianyuan-cua",
+        "url": "https://raw.githubusercontent.com/TianyuanYang/awesome-computer-use/main/README.md",
+        "retrieved_at": "2026-10-16T06:31:06Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/TianyuanYang/awesome-computer-use/main/README.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "27cf411461026e2d6ededbc46304f238324ddd0a026b6045e56cb3ef4c7f7e14",
+        "bytes": 21565,
+        "unique_resources": 94
+      },
+      "discovered": 94,
+      "indexed": 67,
+      "curated": 24,
+      "unindexed": 27
+    },
+    {
+      "id": "cdxeve-cua",
+      "name": "Computer Use Agents Overview",
+      "url": "https://github.com/cdxeve/awesome-computer-use-agents",
+      "snapshot": {
+        "id": "cdxeve-cua",
+        "url": "https://raw.githubusercontent.com/cdxeve/awesome-computer-use-agents/main/README.md",
+        "retrieved_at": "2026-10-16T06:31:06Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/cdxeve/awesome-computer-use-agents/main/README.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "cb10a118fa532ac1c48b51ad73c5d9e052458379d214cf178557ac748dcfe749",
+        "bytes": 9976,
+        "unique_resources": 78
+      },
+      "discovered": 78,
+      "indexed": 48,
+      "curated": 12,
+      "unindexed": 30
+    },
+    {
+      "id": "supernal-gui",
+      "name": "Awesome GUI Agents — Supernal",
+      "url": "https://github.com/supernalintelligence/Awesome-Gui-Agents",
+      "snapshot": {
+        "id": "supernal-gui",
+        "url": "https://raw.githubusercontent.com/supernalintelligence/Awesome-Gui-Agents/main/README.md",
+        "retrieved_at": "2026-10-16T06:31:07Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/supernalintelligence/Awesome-Gui-Agents/main/README.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "5418292d4bbc9e0a38ea630f9d3a1727bba6318a0f748798d4a540f0ab18bd49",
+        "bytes": 18498,
+        "unique_resources": 63
+      },
+      "discovered": 63,
+      "indexed": 11,
+      "curated": 6,
+      "unindexed": 52
+    },
+    {
+      "id": "yearly-gui",
+      "name": "Yearly GUI Agents",
+      "url": "https://github.com/qy0720/awesome-yearly-gui-agents",
+      "snapshot": {
+        "id": "yearly-gui",
+        "url": "https://raw.githubusercontent.com/qy0720/awesome-yearly-gui-agents/main/README.md",
+        "retrieved_at": "2026-10-16T06:31:07Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/qy0720/awesome-yearly-gui-agents/main/README.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "c448e56faea9ba5fef7611557a0da16d72c37ed9a976e0f359420934b8ec9ae5",
+        "bytes": 20691,
+        "unique_resources": 193
+      },
+      "discovered": 193,
+      "indexed": 136,
+      "curated": 42,
+      "unindexed": 57
+    },
+    {
+      "id": "osu-gui",
+      "name": "OSU-NLP-Group/GUI-Agents-Paper-List / README.md",
+      "url": "https://github.com/OSU-NLP-Group/GUI-Agents-Paper-List",
+      "snapshot": {
+        "id": "osu-gui",
+        "url": "https://raw.githubusercontent.com/OSU-NLP-Group/GUI-Agents-Paper-List/main/README.md",
+        "retrieved_at": "2026-10-16T06:31:39Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/OSU-NLP-Group/GUI-Agents-Paper-List/main/README.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "f052f82fbd907b85e6e7453185a7a5e4f03ba30cca39a290822d82da960409ef",
+        "bytes": 437825,
+        "unique_resources": 544
+      },
+      "discovered": 544,
+      "indexed": 486,
+      "curated": 1,
+      "unindexed": 58
+    },
+    {
+      "id": "opendilab-ui",
+      "name": "opendilab/awesome-ui-agents / README.md",
+      "url": "https://github.com/opendilab/awesome-ui-agents",
+      "snapshot": {
+        "id": "opendilab-ui",
+        "url": "https://raw.githubusercontent.com/opendilab/awesome-ui-agents/main/README.md",
+        "retrieved_at": "2026-10-16T06:31:39Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/opendilab/awesome-ui-agents/main/README.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "c8b59bd1bcfb8fd06c581f83390427e5ae7f45a924c419218e510764d7f56f47",
+        "bytes": 35980,
+        "unique_resources": 144
+      },
+      "discovered": 144,
+      "indexed": 85,
+      "curated": 25,
+      "unindexed": 59
+    },
+    {
+      "id": "jin-gui-hub",
+      "name": "jin-s13/awesome-gui-agent-hub / AWESOME.md",
+      "url": "https://github.com/jin-s13/awesome-gui-agent-hub",
+      "snapshot": {
+        "id": "jin-gui-hub",
+        "url": "https://raw.githubusercontent.com/jin-s13/awesome-gui-agent-hub/main/AWESOME.md",
+        "retrieved_at": "2026-10-16T06:31:40Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/jin-s13/awesome-gui-agent-hub/main/AWESOME.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "5bab5cd01c62dbf596942755988b967da0f254b0b65d052999b768f8ae0c4fa1",
+        "bytes": 67089,
+        "unique_resources": 206
+      },
+      "discovered": 206,
+      "indexed": 203,
+      "curated": 1,
+      "unindexed": 3
+    },
+    {
+      "id": "zju-iclr26",
+      "name": "ZJU-REAL/Awesome-GUI-Agents / ICLR2026/Paperlist.md",
+      "url": "https://github.com/ZJU-REAL/Awesome-GUI-Agents",
+      "snapshot": {
+        "id": "zju-iclr26",
+        "url": "https://raw.githubusercontent.com/ZJU-REAL/Awesome-GUI-Agents/main/ICLR2026/Paperlist.md",
+        "retrieved_at": "2026-10-16T06:31:40Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/ZJU-REAL/Awesome-GUI-Agents/main/ICLR2026/Paperlist.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "53c5c472b3a68faaa147edb130039505e75566b409dce83623e17cfdf3459549",
+        "bytes": 140177,
+        "unique_resources": 9
+      },
+      "discovered": 9,
+      "indexed": 0,
+      "curated": 0,
+      "unindexed": 9
+    },
+    {
+      "id": "mobile-gui",
+      "name": "dqtz5vpvj9-create/awesome-mobile-gui-agents / README.md",
+      "url": "https://github.com/dqtz5vpvj9-create/awesome-mobile-gui-agents",
+      "snapshot": {
+        "id": "mobile-gui",
+        "url": "https://raw.githubusercontent.com/dqtz5vpvj9-create/awesome-mobile-gui-agents/main/README.md",
+        "retrieved_at": "2026-10-16T06:31:40Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/dqtz5vpvj9-create/awesome-mobile-gui-agents/main/README.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "50e8017e040127a6a7ff0726bdfb119a8b914ce4929b48d95e60f6b5272aa250",
+        "bytes": 31646,
+        "unique_resources": 40
+      },
+      "discovered": 40,
+      "indexed": 21,
+      "curated": 8,
+      "unindexed": 19
+    },
+    {
+      "id": "phone-gui",
+      "name": "PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents",
+      "url": "https://github.com/PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents",
+      "snapshot": {
+        "id": "phone-gui",
+        "url": "https://raw.githubusercontent.com/PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents/master/README.md",
+        "retrieved_at": "2026-10-16T06:43:37Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents/master/README.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "b8112d56f9a79a70501862c15092c414bccff223c7b22f8529dabaed3ae979b6",
+        "bytes": 48015,
+        "unique_resources": 247
+      },
+      "discovered": 247,
+      "indexed": 172,
+      "curated": 40,
+      "unindexed": 75
+    },
+    {
+      "id": "mobile-agents",
+      "name": "aialt/awesome-mobile-agents",
+      "url": "https://github.com/aialt/awesome-mobile-agents",
+      "snapshot": {
+        "id": "mobile-agents",
+        "url": "https://raw.githubusercontent.com/aialt/awesome-mobile-agents/main/README.md",
+        "retrieved_at": "2026-10-16T06:40:53Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/aialt/awesome-mobile-agents/main/README.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "3b4b4047065db034c00b34a50af4d3bc5399f997175ac6c0da07a9cce189298f",
+        "bytes": 23445,
+        "unique_resources": 91
+      },
+      "discovered": 91,
+      "indexed": 75,
+      "curated": 3,
+      "unindexed": 16
+    },
+    {
+      "id": "web-research",
+      "name": "albzni/Awesome-LLM-based-Web-Agent-and-Tools",
+      "url": "https://github.com/albzni/Awesome-LLM-based-Web-Agent-and-Tools",
+      "snapshot": {
+        "id": "web-research",
+        "url": "https://raw.githubusercontent.com/albzni/Awesome-LLM-based-Web-Agent-and-Tools/main/README.md",
+        "retrieved_at": "2026-10-16T06:40:53Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/albzni/Awesome-LLM-based-Web-Agent-and-Tools/main/README.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "9acf4fa8795b4e19e2759f1e28ff511eb62898ff41e171d9af15f6101042ad96",
+        "bytes": 4224,
+        "unique_resources": 10
+      },
+      "discovered": 10,
+      "indexed": 4,
+      "curated": 3,
+      "unindexed": 6
+    },
+    {
+      "id": "ranpox-cua",
+      "name": "ranpox/awesome-computer-use",
+      "url": "https://github.com/ranpox/awesome-computer-use",
+      "snapshot": {
+        "id": "ranpox-cua",
+        "url": "https://raw.githubusercontent.com/ranpox/awesome-computer-use/main/README.md",
+        "retrieved_at": "2026-10-16T06:40:53Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/ranpox/awesome-computer-use/main/README.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "4c73c0b8090b79651134ccd319d7dc0384ffa78ad03e7d1256935b933839a784",
+        "bytes": 11601,
+        "unique_resources": 96
+      },
+      "discovered": 96,
+      "indexed": 57,
+      "curated": 8,
+      "unindexed": 39
+    }
+  ],
+  "primary_search": {
+    "id": "arxiv-title-search",
+    "query": "(ti:\"computer use\" OR ti:\"computer-use\" OR ti:\"GUI agent\" OR ti:\"GUI agents\" OR ti:\"GUI grounding\" OR ti:\"web agents\" OR ti:\"browser agent\") AND submittedDate:[200001010000 TO 202610160636]",
+    "cutoff_utc": "202610160636",
+    "reported_total": 1246,
+    "unique_returned": 1199,
+    "complete": false,
+    "pages": [
+      {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=0&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "retrieved_at": "2026-10-16T06:36:29Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=0&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "content_type": "application/atom+xml; charset=utf-8",
+        "sha256": "74e521e46c46489e48f9bad5d774625a85b5ccd32828969fd98e1a4c453b899f",
+        "bytes": 261532,
+        "start": 0,
+        "returned": 100
+      },
+      {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "retrieved_at": "2026-10-16T06:36:32Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "content_type": "application/atom+xml; charset=utf-8",
+        "sha256": "13d3fb5811d203f2e6b80eb45d30ebc0b3cfefd88e2034ffa3b1b80687bef285",
+        "bytes": 262599,
+        "start": 100,
+        "returned": 100
+      },
+      {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=200&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "retrieved_at": "2026-10-16T06:36:36Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=200&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "content_type": "application/atom+xml; charset=utf-8",
+        "sha256": "aeacc1a41bb90f3d296823356174fe77d1547ffbe7cd56652cf9d98fca09206c",
+        "bytes": 258767,
+        "start": 200,
+        "returned": 100
+      },
+      {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=300&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "retrieved_at": "2026-10-16T06:36:39Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=300&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "content_type": "application/atom+xml; charset=utf-8",
+        "sha256": "27c33576ed43c7bc63d4b290f6558553bd1d3aa112a7358138f4045e1bc14918",
+        "bytes": 253830,
+        "start": 300,
+        "returned": 100
+      },
+      {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=400&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "retrieved_at": "2026-10-16T06:36:43Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=400&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "content_type": "application/atom+xml; charset=utf-8",
+        "sha256": "c432f419481a105a8ce71174ec4aea23c4f0d36ddf89cfe1d0974fa349f6cb59",
+        "bytes": 250996,
+        "start": 400,
+        "returned": 100
+      },
+      {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=500&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "retrieved_at": "2026-10-16T06:36:47Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=500&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "content_type": "application/atom+xml; charset=utf-8",
+        "sha256": "ae98e77b8bb125e45277aacec768a047e7bb0e13f33ca9ff6ca7c19e29e56cca",
+        "bytes": 264244,
+        "start": 500,
+        "returned": 100
+      },
+      {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=600&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "retrieved_at": "2026-10-16T06:36:50Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=600&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "content_type": "application/atom+xml; charset=utf-8",
+        "sha256": "26fb4922c4c0bb5c9069935ed0aef0a9f56938cf8ae1af9724894fa1409955fb",
+        "bytes": 267612,
+        "start": 600,
+        "returned": 100
+      },
+      {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "retrieved_at": "2026-10-16T06:36:54Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "content_type": "application/atom+xml; charset=utf-8",
+        "sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+        "bytes": 266438,
+        "start": 700,
+        "returned": 100
+      },
+      {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "retrieved_at": "2026-10-16T06:36:58Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "content_type": "application/atom+xml; charset=utf-8",
+        "sha256": "c87e97eb397da04806d53145cf9c13be739fc657bb54dca9318c8c4ed2a36249",
+        "bytes": 242885,
+        "start": 800,
+        "returned": 100
+      },
+      {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=900&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "retrieved_at": "2026-10-16T06:37:01Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=900&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "content_type": "application/atom+xml; charset=utf-8",
+        "sha256": "8bfa074910574410d7988771270feded31e7e1bd1fd0924d4754850d4a5f1914",
+        "bytes": 228187,
+        "start": 900,
+        "returned": 100
+      },
+      {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1000&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "retrieved_at": "2026-10-16T06:37:05Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1000&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "content_type": "application/atom+xml; charset=utf-8",
+        "sha256": "bb3d2692c294743a8d06d5065cc84b27b229a981c2c650ff20a2ec038797a0e3",
+        "bytes": 223756,
+        "start": 1000,
+        "returned": 100
+      },
+      {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "retrieved_at": "2026-10-16T06:37:09Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "content_type": "application/atom+xml; charset=utf-8",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "bytes": 190550,
+        "start": 1100,
+        "returned": 100
+      },
+      {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1200&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "retrieved_at": "2026-10-16T06:37:12Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1200&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "content_type": "application/atom+xml; charset=utf-8",
+        "sha256": "8e887946393959e93616aed0694fbaadbc1e6e68a0dce15ae8ff0bdc4dfe5e23",
+        "bytes": 84762,
+        "start": 1200,
+        "returned": 46
+      }
+    ],
+    "warning": "A title query is a discovery population, not the whole field. Search results are metadata-verified, not editorially curated."
+  },
+  "limits": [
+    "Counts are resources, not distinct projects, companies, or independent discoveries.",
+    "Metadata verification does not establish relevance, quality, reproducibility, availability, or endorsement.",
+    "Source indexing measures only fetched source snapshots; incidental/out-of-scope links remain in discovery.",
+    "Global completeness has no observed denominator and is not claimed.",
+    "Environment facets overlap. Unknown license, size, price, or performance fields are not inferred."
+  ]
+}

@@ -1,0 +1,4968 @@
+[
+  {
+    "name": "OSWorld",
+    "kind": "benchmark",
+    "url": "https://github.com/xlang-ai/OSWorld",
+    "environments": [
+      "desktop",
+      "linux",
+      "windows",
+      "macos"
+    ],
+    "topics": [
+      "evaluation",
+      "cross-app"
+    ],
+    "summary": "Execution-based evaluation of agents performing tasks in real desktop environments.",
+    "verify_terms": [
+      "OSWorld",
+      "OSWorld"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "83b8684c2f4ac4f31996b8b4752195fcb6cc5429f89d92398177b9b721d787fc",
+    "reviewed_at": "2026-10-16T06:35:57Z"
+  },
+  {
+    "name": "WebArena",
+    "kind": "benchmark",
+    "url": "https://github.com/web-arena-x/webarena",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "evaluation",
+      "web-navigation"
+    ],
+    "summary": "Self-hosted web environments and tasks for evaluating autonomous web agents.",
+    "verify_terms": [
+      "WebArena",
+      "webarena"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "081c826497f9b7da4952771ee128c2215ec3532379db0fe9f7fcbd899d9c9287",
+    "reviewed_at": "2026-10-16T06:35:57Z"
+  },
+  {
+    "name": "VisualWebArena",
+    "kind": "benchmark",
+    "url": "https://github.com/web-arena-x/visualwebarena",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "evaluation",
+      "screen-understanding"
+    ],
+    "summary": "Visually grounded web tasks extending the WebArena evaluation setting.",
+    "verify_terms": [
+      "VisualWebArena",
+      "visualwebarena"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "182529c2fce1e41f3a2162727205c54da8b3d2381b2273d726170ee9d8cf65cc",
+    "reviewed_at": "2026-10-16T06:35:57Z"
+  },
+  {
+    "name": "AndroidWorld",
+    "kind": "benchmark",
+    "url": "https://github.com/google-research/android_world",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "evaluation",
+      "mobile-navigation"
+    ],
+    "summary": "Android environment with programmatic task evaluation for mobile agents.",
+    "verify_terms": [
+      "AndroidWorld",
+      "android_world"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "93201de5e21f2b12283a75b1e2c357781b2e6cc27eab20cc7dd7aa0f5919d839",
+    "reviewed_at": "2026-10-16T06:35:57Z",
+    "details": {
+      "task_count": 116,
+      "task_unit": "parameterized task definitions",
+      "metrics": [
+        "task success"
+      ],
+      "evaluation_type": "programmatic state checks"
+    }
+  },
+  {
+    "name": "Windows Agent Arena",
+    "kind": "benchmark",
+    "url": "https://github.com/microsoft/WindowsAgentArena",
+    "environments": [
+      "windows",
+      "desktop"
+    ],
+    "topics": [
+      "evaluation"
+    ],
+    "summary": "Windows desktop agent evaluation environment.",
+    "verify_terms": [
+      "Windows Agent Arena",
+      "WindowsAgentArena"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "e481abd422a4cc8b819ad84b32684e4af641e18a7c0d277dd608cfd5d3c5e6ad",
+    "reviewed_at": "2026-10-16T06:35:57Z"
+  },
+  {
+    "name": "ScreenSpot Pro",
+    "kind": "benchmark",
+    "url": "https://github.com/likaixin2000/ScreenSpot-Pro-GUI-Grounding",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "evaluation",
+      "grounding"
+    ],
+    "summary": "GUI grounding benchmark focused on professional high-resolution interfaces.",
+    "verify_terms": [
+      "ScreenSpot Pro",
+      "ScreenSpot-Pro-GUI-Grounding"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "7b64ccad9cfec24c2c9cb35f55923bff93d53729cef3cc7463c79b29bdb1de1a",
+    "reviewed_at": "2026-10-16T06:35:58Z"
+  },
+  {
+    "name": "OSWorld-G",
+    "kind": "benchmark",
+    "url": "https://github.com/xlang-ai/OSWorld-G",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "evaluation",
+      "grounding"
+    ],
+    "summary": "Desktop grounding evaluation associated with OSWorld.",
+    "verify_terms": [
+      "OSWorld-G",
+      "OSWorld-G"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "e814851bc3016a2abf59358f99b80afd9c2bd5894fc34baddfb7e4d0aa03bd45",
+    "reviewed_at": "2026-10-16T06:35:57Z"
+  },
+  {
+    "name": "WorkArena",
+    "kind": "benchmark",
+    "url": "https://github.com/ServiceNow/WorkArena",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "evaluation",
+      "workflow"
+    ],
+    "summary": "Browser-based enterprise workflow tasks built around ServiceNow.",
+    "verify_terms": [
+      "WorkArena",
+      "WorkArena"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "834a48f0346036a0fc591a36f9eb6f513b44a2777a66afa0917f28fc63f29334",
+    "reviewed_at": "2026-10-16T06:35:57Z"
+  },
+  {
+    "name": "WebVoyager",
+    "kind": "benchmark",
+    "url": "https://github.com/MinorJerry/WebVoyager",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "evaluation",
+      "web-navigation"
+    ],
+    "summary": "Multimodal web navigation agent and evaluation tasks on real websites.",
+    "verify_terms": [
+      "WebVoyager",
+      "WebVoyager"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "b5523941b2773634fdcf359b5b89bf0aca589f33ad9db30692c8b1912ed5dda5",
+    "reviewed_at": "2026-10-16T06:35:57Z"
+  },
+  {
+    "name": "WebLINX",
+    "kind": "benchmark",
+    "url": "https://github.com/mcgill-nlp/weblinx",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "evaluation",
+      "web-navigation"
+    ],
+    "summary": "Demonstrations and evaluation for conversational web navigation.",
+    "verify_terms": [
+      "WebLINX",
+      "weblinx"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "15c3f1656afd861894b180bca7d9214b4cf78a6ad9cd0601c80f5d67d2839528",
+    "reviewed_at": "2026-10-16T06:35:57Z"
+  },
+  {
+    "name": "Mind2Web",
+    "kind": "benchmark",
+    "url": "https://github.com/OSU-NLP-Group/Mind2Web",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "evaluation",
+      "web-navigation"
+    ],
+    "summary": "Human demonstrations and tasks for generalist web navigation research.",
+    "verify_terms": [
+      "Mind2Web",
+      "Mind2Web"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "157dbd840264ea29f958c0b7383d63783845c573b3e19a1f39b773be22e0b32d",
+    "reviewed_at": "2026-10-16T06:35:57Z"
+  },
+  {
+    "name": "Online Mind2Web",
+    "kind": "benchmark",
+    "url": "https://github.com/OSU-NLP-Group/Online-Mind2Web",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "evaluation",
+      "web-navigation"
+    ],
+    "summary": "Live website evaluation of web agents.",
+    "verify_terms": [
+      "Online Mind2Web",
+      "Online-Mind2Web"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "49d7cc317fd2ba0df65abf65a0357d1fa2384e59019a96d4e24b784888599eaa",
+    "reviewed_at": "2026-10-16T06:35:57Z"
+  },
+  {
+    "name": "WebShop",
+    "kind": "benchmark",
+    "url": "https://github.com/princeton-nlp/WebShop",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "evaluation",
+      "web-navigation"
+    ],
+    "summary": "Simulated shopping environment for instruction-following web agents.",
+    "verify_terms": [
+      "WebShop",
+      "WebShop"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "79b7a90a1413a52deb53142b5bbd81ecf40f61743bd4601c2835e91375898ec0",
+    "reviewed_at": "2026-10-16T06:35:57Z"
+  },
+  {
+    "name": "BrowserGym",
+    "kind": "benchmark",
+    "url": "https://github.com/ServiceNow/BrowserGym",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "evaluation"
+    ],
+    "summary": "Unified interfaces for browser-agent tasks and benchmark environments.",
+    "verify_terms": [
+      "BrowserGym",
+      "BrowserGym"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "7b685115ef822989fac9093518d16c46f0202736d005eed56e7f9fc36b43f3ee",
+    "reviewed_at": "2026-10-16T06:35:57Z"
+  },
+  {
+    "name": "CRAB",
+    "kind": "benchmark",
+    "url": "https://github.com/camel-ai/crab",
+    "environments": [
+      "desktop",
+      "android"
+    ],
+    "topics": [
+      "evaluation",
+      "cross-app"
+    ],
+    "summary": "Cross-environment benchmark framework for multimodal agents.",
+    "verify_terms": [
+      "CRAB",
+      "crab"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "7b894c5474ba78294427cfd4ef0eea8cb22d76dfa0c2e8c7f01e31ad927064e9",
+    "reviewed_at": "2026-10-16T06:35:58Z"
+  },
+  {
+    "name": "AndroidLab",
+    "kind": "benchmark",
+    "url": "https://github.com/THUDM/Android-Lab",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "evaluation",
+      "mobile-navigation"
+    ],
+    "summary": "Training and evaluation environment for Android agents.",
+    "verify_terms": [
+      "AndroidLab",
+      "Android-Lab"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "340680a9a7833d103234b8367195deebd29bfec7e25ebc50c2dc04fc3627e55b",
+    "reviewed_at": "2026-10-16T06:35:58Z",
+    "details": {
+      "task_count": 138,
+      "metrics": [
+        "task success"
+      ],
+      "evaluation_type": "benchmark task evaluation"
+    }
+  },
+  {
+    "name": "AndroidArena",
+    "kind": "benchmark",
+    "url": "https://github.com/AndroidArenaAgent/AndroidArena",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "evaluation",
+      "mobile-navigation"
+    ],
+    "summary": "Android environment for evaluating language-model-driven agents.",
+    "verify_terms": [
+      "AndroidArena",
+      "AndroidArena"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "206bd0dc5220cf754cffc97767cce6a3cd27660ef050a569366bef2331241c60",
+    "reviewed_at": "2026-10-16T06:35:58Z"
+  },
+  {
+    "name": "SPA-Bench",
+    "kind": "benchmark",
+    "url": "https://github.com/ai-agents-2030/SPA-Bench",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "evaluation",
+      "mobile-navigation"
+    ],
+    "summary": "Smartphone agent evaluation benchmark.",
+    "verify_terms": [
+      "SPA-Bench",
+      "SPA-Bench"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "5294a67728072a3658cb2073bdf9a084fe3c00d87a848923dff68adb35213072",
+    "reviewed_at": "2026-10-16T06:35:58Z"
+  },
+  {
+    "name": "MobileAgentBench",
+    "kind": "benchmark",
+    "url": "https://github.com/MobileAgentBench/mobile-agent-bench",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "evaluation",
+      "mobile-navigation"
+    ],
+    "summary": "Evaluation toolkit and tasks for mobile agents.",
+    "verify_terms": [
+      "MobileAgentBench",
+      "mobile-agent-bench"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "e1d75e8a196f19af6050c53694383f069561244c810ca259c5f8075ee91f72b1",
+    "reviewed_at": "2026-10-16T06:35:58Z"
+  },
+  {
+    "name": "MobileWorldBench",
+    "kind": "benchmark",
+    "url": "https://github.com/jacklishufan/MobileWorld",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "evaluation",
+      "mobile-navigation"
+    ],
+    "summary": "Benchmark of semantic world modeling for mobile GUI agents.",
+    "verify_terms": [
+      "MobileWorldBench"
+    ],
+    "editorial_reviewed": true,
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/jacklishufan/MobileWorld/main/Readme.md",
+      "https://github.com/jacklishufan/MobileWorld"
+    ],
+    "reviewed_sha256": "dfcbaa088cc21dd4e3c67d6eb3b3a1dc476217165ce2ca0daa2facfda71b5a38",
+    "reviewed_at": "2026-10-16T06:40:51Z"
+  },
+  {
+    "name": "MobileSafetyBench",
+    "kind": "benchmark",
+    "url": "https://github.com/jylee425/mobilesafetybench",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "safety-security",
+      "evaluation"
+    ],
+    "summary": "Benchmark for safety behavior of mobile device agents.",
+    "verify_terms": [
+      "MobileSafetyBench",
+      "mobilesafetybench"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "e733115d9b2fbe910cb3891162f04a89af8cbda25255c8f0bf60f78101e4309a",
+    "reviewed_at": "2026-10-16T06:35:58Z"
+  },
+  {
+    "name": "B-MoCA",
+    "kind": "benchmark",
+    "url": "https://github.com/jylee425/b-moca",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "evaluation",
+      "robustness"
+    ],
+    "summary": "Mobile control benchmark with varied interface configurations.",
+    "verify_terms": [
+      "B-MoCA",
+      "b-moca"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "bd1354c8008d7d79d4883c0c037b7918392f86fab61391b39b52e507b04672ce",
+    "reviewed_at": "2026-10-16T06:35:58Z"
+  },
+  {
+    "name": "LlamaTouch",
+    "kind": "benchmark",
+    "url": "https://github.com/LlamaTouch/LlamaTouch",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "evaluation"
+    ],
+    "summary": "Mobile UI task evaluation using application state information.",
+    "verify_terms": [
+      "LlamaTouch",
+      "LlamaTouch"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4c4fe0fa92961f7286b6553b13117b2942e8482a48b7120a79e57dce2f8d42b9",
+    "reviewed_at": "2026-10-16T06:35:58Z"
+  },
+  {
+    "name": "VisualWebBench",
+    "kind": "benchmark",
+    "url": "https://github.com/VisualWebBench/VisualWebBench",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "evaluation",
+      "screen-understanding"
+    ],
+    "summary": "Evaluation of multimodal models on visual web understanding tasks.",
+    "verify_terms": [
+      "VisualWebBench",
+      "VisualWebBench"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "262947081ddd17dbf5bb3d072574a19bbf30510c42c3ff42c9851a748fd37546",
+    "reviewed_at": "2026-10-16T06:35:58Z"
+  },
+  {
+    "name": "VideoGUI",
+    "kind": "benchmark",
+    "url": "https://github.com/showlab/videogui",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "evaluation",
+      "video"
+    ],
+    "summary": "Benchmark for desktop GUI tasks derived from instructional videos.",
+    "verify_terms": [
+      "VideoGUI",
+      "videogui"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "1a21631fb312cc7eac35547792611a84f13dcf756a3cf92209676ccdb92cbc6b",
+    "reviewed_at": "2026-10-16T06:35:58Z"
+  },
+  {
+    "name": "WorldGUI",
+    "kind": "benchmark",
+    "url": "https://github.com/showlab/WorldGUI",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "evaluation",
+      "robustness"
+    ],
+    "summary": "GUI agent evaluation with varied initial states.",
+    "verify_terms": [
+      "WorldGUI",
+      "WorldGUI"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "ea54ea82b86548ff38913ef328ec18152ace71a3fe9bb497bcabcaad24e6a678",
+    "reviewed_at": "2026-10-16T06:35:58Z"
+  },
+  {
+    "name": "ScienceBoard",
+    "kind": "benchmark",
+    "url": "https://github.com/OS-Copilot/ScienceBoard",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "evaluation",
+      "science"
+    ],
+    "summary": "Desktop tasks involving scientific software workflows.",
+    "verify_terms": [
+      "ScienceBoard",
+      "ScienceBoard"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4c3fe93aa740dbf4a279a246ddd836f2590a2a36f39b820abe166e38cb484577",
+    "reviewed_at": "2026-10-16T06:35:58Z"
+  },
+  {
+    "name": "Spider2-V",
+    "kind": "benchmark",
+    "url": "https://github.com/xlang-ai/Spider2-V",
+    "environments": [
+      "web",
+      "desktop"
+    ],
+    "topics": [
+      "evaluation",
+      "workflow"
+    ],
+    "summary": "Visual agent evaluation on data-science and engineering workflows.",
+    "verify_terms": [
+      "Spider2-V",
+      "Spider2-V"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "e3edf30ab45da16382b46d8c542607c1bbbfcf077b6df57a2decf938fc84ff0f",
+    "reviewed_at": "2026-10-16T06:35:58Z"
+  },
+  {
+    "name": "MMInA",
+    "kind": "benchmark",
+    "url": "https://github.com/shulin16/MMInA",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "evaluation",
+      "long-horizon"
+    ],
+    "summary": "Multihop multimodal internet navigation tasks.",
+    "verify_terms": [
+      "MMInA",
+      "MMInA"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "abc848e7eb5181be22168dbc076446c5eb0f065fd57c7e10367284ca6e50bf5c",
+    "reviewed_at": "2026-10-16T06:35:58Z"
+  },
+  {
+    "name": "MMBench-GUI",
+    "kind": "benchmark",
+    "url": "https://github.com/open-compass/MMBench-GUI",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "evaluation",
+      "grounding"
+    ],
+    "summary": "Multiplatform evaluation framework for GUI capabilities.",
+    "verify_terms": [
+      "MMBench-GUI",
+      "MMBench-GUI"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "35db9fca3ed1c1a3513924fefff4ccd224bc70cd7eb4bf8c54fcb9048851988e",
+    "reviewed_at": "2026-10-16T06:35:58Z"
+  },
+  {
+    "name": "GUIHalluBench",
+    "kind": "benchmark",
+    "url": "https://github.com/ant-research/GUIHalluBench",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "evaluation",
+      "robustness"
+    ],
+    "summary": "Benchmark investigating hallucinations in GUI agents.",
+    "verify_terms": [
+      "GUIHalluBench",
+      "GUIHalluBench"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "51df9dbcf52f46e4774207f2e6ad84dc8a6d117cdab6f77a38e9897ded1d0963",
+    "reviewed_at": "2026-10-16T06:40:51Z"
+  },
+  {
+    "name": "VeriWeb (formerly VeriGUI)",
+    "kind": "benchmark",
+    "url": "https://github.com/VeriGUI-Team/VeriGUI",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "evaluation"
+    ],
+    "summary": "Verifiable web information-seeking benchmark renamed from VeriGUI; desktop evaluation is described as future work.",
+    "verify_terms": [
+      "VeriWeb",
+      "VeriGUI"
+    ],
+    "editorial_reviewed": true,
+    "aliases": [
+      "VeriGUI",
+      "VeriWeb"
+    ],
+    "reviewed_sha256": "e9a0866c8d9fa1759dedebd5ea3a4176009e51eb669f5877540524e53ac1077d",
+    "reviewed_at": "2026-10-16T06:35:59Z"
+  },
+  {
+    "name": "WindowsWorld",
+    "kind": "benchmark",
+    "url": "https://github.com/HITsz-TMG/WindowsWorld",
+    "environments": [
+      "windows"
+    ],
+    "topics": [
+      "evaluation",
+      "cross-app"
+    ],
+    "summary": "Cross-application Windows benchmark with intermediate task evaluation.",
+    "verify_terms": [
+      "WindowsWorld",
+      "WindowsWorld"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "9857bd8ae9f521f152761ae3bd85debe4e7471aad34c9eb47618332948bca6c9",
+    "reviewed_at": "2026-10-16T06:35:59Z"
+  },
+  {
+    "name": "MacAgentBench",
+    "kind": "benchmark",
+    "url": "https://github.com/JetAstra/MacAgentBench",
+    "environments": [
+      "macos"
+    ],
+    "topics": [
+      "evaluation"
+    ],
+    "summary": "Benchmark of tasks in macOS desktop applications.",
+    "verify_terms": [
+      "MacAgentBench",
+      "MacAgentBench"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "f1f8c0cd5d984e4026abea858b54f0f1427c018cad7e75322e744f1e070225a9",
+    "reviewed_at": "2026-10-16T06:35:59Z"
+  },
+  {
+    "name": "RiOSWorld",
+    "kind": "benchmark",
+    "url": "https://github.com/yjyddq/RiOSWorld",
+    "environments": [
+      "ios"
+    ],
+    "topics": [
+      "evaluation"
+    ],
+    "summary": "Evaluation environment for agents operating iOS interfaces.",
+    "verify_terms": [
+      "RiOSWorld",
+      "RiOSWorld"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c984f114df33af953a97d22e14e14246f8a98e0866edcaf283900b309b71d8d1",
+    "reviewed_at": "2026-10-16T06:35:59Z"
+  },
+  {
+    "name": "SaaS-Bench",
+    "kind": "benchmark",
+    "url": "https://github.com/UniPat-AI/SaaS-Bench",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "evaluation",
+      "workflow"
+    ],
+    "summary": "Benchmark for agents interacting with SaaS applications.",
+    "verify_terms": [
+      "SaaS-Bench",
+      "SaaS-Bench"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "8cfab6fca80090adb47c4ef634f89eedd49a6204dbdc2b5b8e0d6f04c32db289",
+    "reviewed_at": "2026-10-16T06:35:59Z"
+  },
+  {
+    "name": "MCPWorld",
+    "kind": "benchmark",
+    "url": "https://github.com/SAAgent/MCPWorld",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "evaluation",
+      "tool-integration"
+    ],
+    "summary": "Evaluation environment combining computer interaction with tool access.",
+    "verify_terms": [
+      "MCPWorld",
+      "MCPWorld"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "5559ca58f8ee06d2812c6cbc8c3e49ef112f4ef41fdcf4e95568b268bb24bf14",
+    "reviewed_at": "2026-10-16T06:35:59Z"
+  },
+  {
+    "name": "Precision CUA Bench",
+    "kind": "benchmark",
+    "url": "https://github.com/microsoft/precision-cua-bench",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "evaluation",
+      "grounding"
+    ],
+    "summary": "Evaluation resources for pixel-precise cursor grounding in code editors.",
+    "verify_terms": [
+      "Precision CUA Bench",
+      "precision-cua-bench"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "23d0dc8ea0a10c080cf8ae32121eade2785ae923a6b0d853d166c94c195e789b",
+    "reviewed_at": "2026-10-16T06:40:52Z"
+  },
+  {
+    "name": "WebGames",
+    "kind": "benchmark",
+    "url": "https://github.com/convergence-ai/webgames",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "evaluation"
+    ],
+    "summary": "Browser games used to evaluate interactive agents.",
+    "verify_terms": [
+      "WebGames",
+      "webgames"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "a2df62f9b4359f7839c7d6c6917ff654f9eadeafa92f96311495b71e37abd9ba",
+    "reviewed_at": "2026-10-16T06:35:59Z"
+  },
+  {
+    "name": "WebCanvas",
+    "kind": "benchmark",
+    "url": "https://github.com/iMeanAI/WebCanvas",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "evaluation"
+    ],
+    "summary": "Framework and evaluation resources for real-world web agents.",
+    "verify_terms": [
+      "WebCanvas",
+      "WebCanvas"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "5b2b4b4ce1241db7fd776f2ba0856ec2e0e441a56fa6461234abe0c6516f643e",
+    "reviewed_at": "2026-10-16T06:35:59Z"
+  },
+  {
+    "name": "UI-TARS",
+    "kind": "model",
+    "url": "https://github.com/bytedance/UI-TARS",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "planning"
+    ],
+    "summary": "Native GUI agent model family for perception and action.",
+    "verify_terms": [
+      "UI-TARS",
+      "UI-TARS"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "0c4feb17b657c0c9a71d7e0c5e2142abbd19bb5cff22e6cd3b6b082644c98ee7",
+    "reviewed_at": "2026-10-16T06:35:59Z"
+  },
+  {
+    "name": "OpenCUA",
+    "kind": "model",
+    "url": "https://github.com/xlang-ai/OpenCUA",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "data-generation",
+      "planning"
+    ],
+    "summary": "Open computer-use research stack including models and training resources.",
+    "verify_terms": [
+      "OpenCUA",
+      "OpenCUA"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "91fed11b234775bde91bb766ee65e1015897ced6668de8e80418fcee09f8f75d",
+    "reviewed_at": "2026-10-16T06:35:59Z"
+  },
+  {
+    "name": "UI-Venus",
+    "kind": "model",
+    "url": "https://github.com/inclusionAI/UI-Venus",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "planning"
+    ],
+    "summary": "GUI model family for interface grounding and navigation.",
+    "verify_terms": [
+      "UI-Venus",
+      "UI-Venus"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "5703c892aaf99d250bf59edf52d359560a80d443f2be13c7aa76af0c1a7f1d67",
+    "reviewed_at": "2026-10-16T06:35:59Z"
+  },
+  {
+    "name": "EvoCUA",
+    "kind": "model",
+    "url": "https://github.com/meituan/EvoCUA",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "reinforcement-learning",
+      "planning"
+    ],
+    "summary": "Computer-use model and training resources from the EvoCUA project.",
+    "verify_terms": [
+      "EvoCUA",
+      "EvoCUA"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "b00a072dfde61f774db6acf94fcde9bd32337b1b4f16a178998378d842bbbe4d",
+    "reviewed_at": "2026-10-16T06:35:59Z"
+  },
+  {
+    "name": "ScaleCUA",
+    "kind": "model",
+    "url": "https://github.com/OpenGVLab/ScaleCUA",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "data-generation",
+      "planning"
+    ],
+    "summary": "Computer-use model family trained with cross-platform interaction data.",
+    "verify_terms": [
+      "ScaleCUA",
+      "ScaleCUA"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "0538701c860afedd5d63c3839039699d8e5a14977d5c339b187ed13ad666c8fa",
+    "reviewed_at": "2026-10-16T06:35:59Z"
+  },
+  {
+    "name": "CogAgent",
+    "kind": "model",
+    "url": "https://github.com/THUDM/CogAgent",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "screen-understanding"
+    ],
+    "summary": "Visual language model for GUI understanding and interaction.",
+    "verify_terms": [
+      "CogAgent",
+      "CogAgent"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "f025e4bc9d920ec982525394c69b87043aae87fbe719de4b9e973408a44211e2",
+    "reviewed_at": "2026-10-16T06:36:00Z"
+  },
+  {
+    "name": "OS-Atlas",
+    "kind": "model",
+    "url": "https://github.com/OS-Copilot/OS-Atlas",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding"
+    ],
+    "summary": "Foundation action models and data for GUI interaction.",
+    "verify_terms": [
+      "OS-Atlas",
+      "OS-Atlas"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "021cf14ec9482d1dab04dfeaadc3e39cdc405a284991cd540f5eeae7dea47a12",
+    "reviewed_at": "2026-10-16T06:36:00Z"
+  },
+  {
+    "name": "SeeClick",
+    "kind": "model",
+    "url": "https://github.com/njucckevin/SeeClick",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding"
+    ],
+    "summary": "GUI grounding model trained to locate visual interface elements.",
+    "verify_terms": [
+      "SeeClick",
+      "SeeClick"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c4112415bec58fc77f9a1e8fa98f8d602c5d382747579dfda9f866900c55995c",
+    "reviewed_at": "2026-10-16T06:36:00Z"
+  },
+  {
+    "name": "UGround",
+    "kind": "model",
+    "url": "https://github.com/OSU-NLP-Group/UGround",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding"
+    ],
+    "summary": "Universal visual grounding models for GUI agents.",
+    "verify_terms": [
+      "UGround",
+      "UGround"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "72ca3f23114c3a08fefb724573acf10c9f0a1b3d4a50d811c98356264ecf6ffc",
+    "reviewed_at": "2026-10-16T06:36:00Z"
+  },
+  {
+    "name": "ShowUI",
+    "kind": "model",
+    "url": "https://github.com/showlab/ShowUI",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "efficiency"
+    ],
+    "summary": "Vision-language-action model for GUI interaction.",
+    "verify_terms": [
+      "ShowUI",
+      "ShowUI"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "730e51422c0ebe00cb2a1a8f4510d9914b1ea735fdb06445fde2b243da80bdd4",
+    "reviewed_at": "2026-10-16T06:36:00Z"
+  },
+  {
+    "name": "Aguvis",
+    "kind": "model",
+    "url": "https://github.com/xlang-ai/aguvis",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "planning"
+    ],
+    "summary": "Vision-based GUI agent models with unified action representations.",
+    "verify_terms": [
+      "Aguvis",
+      "aguvis"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "2dd9f36b818c1b7b6bd772ba8575f6c0ebab6d9e0d307edcc2f196f3e4ba502e",
+    "reviewed_at": "2026-10-16T06:36:00Z"
+  },
+  {
+    "name": "GUI-Actor",
+    "kind": "model",
+    "url": "https://github.com/microsoft/GUI-Actor",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding"
+    ],
+    "summary": "GUI grounding model with attention-based action localization.",
+    "verify_terms": [
+      "GUI-Actor",
+      "GUI-Actor"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "2dafdebf2fa1e0a5db871addd103e50cb55625f0108c757708029e885920ee4e",
+    "reviewed_at": "2026-10-16T06:36:00Z"
+  },
+  {
+    "name": "Phi-Ground",
+    "kind": "model",
+    "url": "https://github.com/microsoft/Phi-Ground",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding"
+    ],
+    "summary": "GUI grounding model and associated evaluation resources.",
+    "verify_terms": [
+      "Phi-Ground",
+      "Phi-Ground"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "a0609394a736dc495d077cd57a2945b018123e5b3f9514d7d5bafb9e690aeae2",
+    "reviewed_at": "2026-10-16T06:36:00Z"
+  },
+  {
+    "name": "Fara",
+    "kind": "model",
+    "url": "https://github.com/microsoft/fara",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "planning",
+      "web-navigation"
+    ],
+    "summary": "Computer-use model for web interaction.",
+    "verify_terms": [
+      "Fara",
+      "fara"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "ce11bdfe8354eb9c3b8a985dd5ddd21f88f94fb5fb9d00c9b01a76226f0b0a36",
+    "reviewed_at": "2026-10-16T06:36:00Z"
+  },
+  {
+    "name": "AgentCPM-GUI",
+    "kind": "model",
+    "url": "https://github.com/OpenBMB/AgentCPM-GUI",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "grounding",
+      "mobile-navigation"
+    ],
+    "summary": "GUI agent model with a focus on mobile interaction.",
+    "verify_terms": [
+      "AgentCPM-GUI",
+      "AgentCPM-GUI"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "2cf79e21b5438bf6a2e6bd450ba8c4d86404560dfb61836f7e300112ce74a59d",
+    "reviewed_at": "2026-10-16T06:36:00Z"
+  },
+  {
+    "name": "POINTS-GUI",
+    "kind": "model",
+    "url": "https://github.com/Tencent/POINTS-GUI",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding"
+    ],
+    "summary": "GUI models for interface perception and action grounding.",
+    "verify_terms": [
+      "POINTS-GUI",
+      "POINTS-GUI"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "9f851237932688c15d261c016d51ff5ae80c43c5d0b4eaccac0b48d941118d80",
+    "reviewed_at": "2026-10-16T06:36:00Z"
+  },
+  {
+    "name": "UI-R1",
+    "kind": "model",
+    "url": "https://github.com/lll6gg/UI-R1",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "reinforcement-learning",
+      "grounding"
+    ],
+    "summary": "Reinforcement-learning approach to GUI action modeling.",
+    "verify_terms": [
+      "UI-R1",
+      "UI-R1"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "f55ac6a0c50d298d46c5f7083a0879959fd7cd3c1d91496af295ebf2afcc13a3",
+    "reviewed_at": "2026-10-16T06:36:00Z"
+  },
+  {
+    "name": "InfiGUI-R1",
+    "kind": "model",
+    "url": "https://github.com/Reallm-Labs/InfiGUI-R1",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "reinforcement-learning",
+      "planning"
+    ],
+    "summary": "Reasoning-oriented GUI agent model.",
+    "verify_terms": [
+      "InfiGUI-R1",
+      "InfiGUI-R1"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "5fd1399c88bdf406e7689765ccf0599b3b7e0ddbed082fa92bffdd7b120bd41a",
+    "reviewed_at": "2026-10-16T06:36:00Z"
+  },
+  {
+    "name": "InfiGUI-G1",
+    "kind": "model",
+    "url": "https://github.com/InfiXAI/InfiGUI-G1",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding"
+    ],
+    "summary": "GUI grounding model and training resources.",
+    "verify_terms": [
+      "InfiGUI-G1",
+      "InfiGUI-G1"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4b68c82a2dd0063a450bde34c8bffbd931565a91a2982a5b47be7e711815b284",
+    "reviewed_at": "2026-10-16T06:36:00Z"
+  },
+  {
+    "name": "GUI-G2",
+    "kind": "model",
+    "url": "https://github.com/ZJU-REAL/GUI-G2",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding"
+    ],
+    "summary": "GUI grounding model and associated training code.",
+    "verify_terms": [
+      "GUI-G2",
+      "GUI-G2"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "f9ecdf208ed4b7845ea4dbd1a7c936c016d11f7ec28f17e71338ab3c2f5b5c0d",
+    "reviewed_at": "2026-10-16T06:36:00Z"
+  },
+  {
+    "name": "UI-AGILE",
+    "kind": "model",
+    "url": "https://github.com/KDEGroup/UI-AGILE",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "reinforcement-learning"
+    ],
+    "summary": "GUI grounding research using reinforcement learning.",
+    "verify_terms": [
+      "UI-AGILE",
+      "UI-AGILE"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "eb2a2767741b53e5a6659ef4b0cc325ac18ffdc4222deef1d0e7671089fcaa39",
+    "reviewed_at": "2026-10-16T06:36:00Z"
+  },
+  {
+    "name": "Aria-UI",
+    "kind": "model",
+    "url": "https://github.com/AriaUI/Aria-UI",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding"
+    ],
+    "summary": "Model and data resources for GUI grounding.",
+    "verify_terms": [
+      "Aria-UI",
+      "Aria-UI"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "a2a3c5ad115e4e2109b56686c9e0b073bcfec6d9f052a58bc92683af44933480",
+    "reviewed_at": "2026-10-16T06:36:00Z"
+  },
+  {
+    "name": "Ferret-UI",
+    "kind": "model",
+    "url": "https://github.com/apple/ml-ferret",
+    "environments": [
+      "android",
+      "ios"
+    ],
+    "topics": [
+      "screen-understanding",
+      "grounding"
+    ],
+    "summary": "Screen understanding research within the Ferret model family.",
+    "verify_terms": [
+      "Ferret-UI"
+    ],
+    "editorial_reviewed": true,
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/apple-aiml-research/ml-ferret/main/ferretui/README.md"
+    ],
+    "notes": "The repository has moved from apple/ml-ferret to apple-aiml-research/ml-ferret; evidence uses the dedicated ferretui component.",
+    "reviewed_sha256": "1973f702c08ca9637ce03bc28fc34188be05826e9d43f9992b08e804f474b1a1",
+    "reviewed_at": "2026-10-16T06:40:52Z"
+  },
+  {
+    "name": "GELab Zero",
+    "kind": "model",
+    "url": "https://github.com/stepfun-ai/gelab-zero",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "mobile-navigation"
+    ],
+    "summary": "Mobile GUI agent model and execution resources.",
+    "verify_terms": [
+      "GELab Zero",
+      "gelab-zero"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "462e2b627989a969f7e859e22040a83d38e7c3eac12305d844563b0925f8a787",
+    "reviewed_at": "2026-10-16T06:36:01Z"
+  },
+  {
+    "name": "DiMo-GUI",
+    "kind": "model",
+    "url": "https://github.com/vivo/DiMo-GUI",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "efficiency"
+    ],
+    "summary": "GUI grounding research using modality-aware visual reasoning and test-time scaling.",
+    "verify_terms": [
+      "DiMo-GUI",
+      "DiMo-GUI"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4f578ecd5cbba12797586892a9190e480291bd267a180f0ce56847764eaac524",
+    "reviewed_at": "2026-10-16T06:36:01Z"
+  },
+  {
+    "name": "TreeCUA",
+    "kind": "framework",
+    "url": "https://github.com/UITron-hub/TreeCUA",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "data-generation"
+    ],
+    "summary": "Framework for generating GUI trajectories through tree-structured exploration and verification.",
+    "verify_terms": [
+      "TreeCUA",
+      "TreeCUA"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "91cffd585c667d169486506a785c6cbc3068fe28409efc97abf8911f9d0bd5a5",
+    "reviewed_at": "2026-10-16T06:36:01Z"
+  },
+  {
+    "name": "GUI-Odyssey",
+    "kind": "dataset",
+    "url": "https://github.com/OpenGVLab/GUI-Odyssey",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "cross-app",
+      "data-generation"
+    ],
+    "summary": "Cross-application mobile interaction trajectories.",
+    "verify_terms": [
+      "GUI-Odyssey",
+      "GUI-Odyssey"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4585b765d7c8b3e9bb6187d36d576edde454d4c0158a6aa8b3fdbedf34c89a15",
+    "reviewed_at": "2026-10-16T06:36:01Z"
+  },
+  {
+    "name": "GUICourse",
+    "kind": "dataset",
+    "url": "https://github.com/yiye3/GUICourse",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "data-generation"
+    ],
+    "summary": "GUI instruction data and model training resources.",
+    "verify_terms": [
+      "GUICourse",
+      "GUICourse"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "0968273442bfb9a6478fe78f8b9a6247a3bb8e6d028880939b432fd009961e98",
+    "reviewed_at": "2026-10-16T06:36:01Z"
+  },
+  {
+    "name": "AMEX",
+    "kind": "dataset",
+    "url": "https://github.com/YuxiangChai/AMEX-codebase",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "data-generation"
+    ],
+    "summary": "Android interaction data with interface annotations.",
+    "verify_terms": [
+      "AMEX",
+      "AMEX-codebase"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "3184bfd612543621e57226e9079132dc8d5695339795a60366d3f6d445e13551",
+    "reviewed_at": "2026-10-16T06:36:01Z"
+  },
+  {
+    "name": "MoTIF",
+    "kind": "dataset",
+    "url": "https://github.com/aburns4/MoTIF",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "mobile-navigation"
+    ],
+    "summary": "Mobile task demonstrations and natural-language instructions.",
+    "verify_terms": [
+      "MoTIF",
+      "MoTIF"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4b2f5a23dc28e96b671272380b953e7fabaf34f4b1e83f3513643846718e3389",
+    "reviewed_at": "2026-10-16T06:36:01Z"
+  },
+  {
+    "name": "Screen2Words",
+    "kind": "dataset",
+    "url": "https://github.com/google-research-datasets/screen2words",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "screen-understanding"
+    ],
+    "summary": "Mobile screen descriptions for language-based screen understanding.",
+    "verify_terms": [
+      "Screen2Words",
+      "screen2words"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "8be66dc5a3907e0e84993a66679416d928ed1a32aae70db8bb0e0f771c7a8715",
+    "reviewed_at": "2026-10-16T06:36:01Z",
+    "details": {
+      "sample_count": 112085,
+      "sample_unit": "screen summaries",
+      "screen_count": 22417,
+      "modalities": [
+        "text",
+        "screenshot-reference"
+      ]
+    }
+  },
+  {
+    "name": "ScreenQA",
+    "kind": "dataset",
+    "url": "https://github.com/google-research-datasets/screen_qa",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "screen-understanding"
+    ],
+    "summary": "Question-answering data over mobile interface screenshots.",
+    "verify_terms": [
+      "ScreenQA",
+      "screen_qa"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "7d1bfe7d6eddd5d3fc4c33d4814de3cabf7a6b6fd3d3f85ba4c2b33036bf8867",
+    "reviewed_at": "2026-10-16T06:36:01Z"
+  },
+  {
+    "name": "MultiUI",
+    "kind": "dataset",
+    "url": "https://github.com/neulab/multiui",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "screen-understanding",
+      "data-generation"
+    ],
+    "summary": "Multilingual UI understanding and interaction data.",
+    "verify_terms": [
+      "MultiUI",
+      "multiui"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "fe0c03fe73529a29788d559103c4aed48dca6ed9ba3bfd5f151f902fa8858b38",
+    "reviewed_at": "2026-10-16T06:36:01Z",
+    "details": {
+      "sample_count": null,
+      "sample_unit": "instructions",
+      "reported_scale": {
+        "value": 7300000,
+        "comparison": "approximately",
+        "unit": "samples"
+      },
+      "modalities": [
+        "screenshot",
+        "instruction"
+      ]
+    }
+  },
+  {
+    "name": "OS-Genesis",
+    "kind": "dataset",
+    "url": "https://github.com/OS-Copilot/OS-Genesis",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "data-generation"
+    ],
+    "summary": "GUI trajectory synthesis using environment interaction.",
+    "verify_terms": [
+      "OS-Genesis",
+      "OS-Genesis"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "430e495ab250395d666854bd18b0fc29b819cd784cd7730215ef65e461834d0d",
+    "reviewed_at": "2026-10-16T06:36:01Z"
+  },
+  {
+    "name": "AgentTrek",
+    "kind": "dataset",
+    "url": "https://github.com/xlang-ai/AgentTrek",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "data-generation",
+      "video"
+    ],
+    "summary": "Agent trajectory generation using web tutorial resources.",
+    "verify_terms": [
+      "AgentTrek",
+      "AgentTrek"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "17fa475b96bdd00270c656072d3f8fc55d8433f0e3a1c2762110160ec21a5c35",
+    "reviewed_at": "2026-10-16T06:36:01Z"
+  },
+  {
+    "name": "GUI-World",
+    "kind": "dataset",
+    "url": "https://github.com/Dongping-Chen/GUI-World",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "video",
+      "screen-understanding"
+    ],
+    "summary": "GUI video data for understanding dynamic interfaces.",
+    "verify_terms": [
+      "GUI-World",
+      "GUI-World"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "d02fa5da3384a3e58cf1d28aad47497de73fe3aad0ce57219585da04fc3187ef",
+    "reviewed_at": "2026-10-16T06:40:52Z"
+  },
+  {
+    "name": "GUI-Action Narrator",
+    "kind": "dataset",
+    "url": "https://github.com/showlab/GUI-Action-Narrator",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "data-generation",
+      "video"
+    ],
+    "summary": "Action narration resources for GUI interaction trajectories.",
+    "verify_terms": [
+      "GUI-Action Narrator",
+      "GUI-Action-Narrator"
+    ],
+    "editorial_reviewed": true,
+    "aliases": [
+      "GUI-Narrator"
+    ],
+    "notes": "Original repository URL redirects to showlab/GUI-Narrator.",
+    "reviewed_sha256": "379aae1a8890a0c3d3b5999589b8338338cf1ea63883c2b77df678fd3bb367a2",
+    "reviewed_at": "2026-10-16T06:40:52Z"
+  },
+  {
+    "name": "RoTS",
+    "kind": "dataset",
+    "url": "https://github.com/AlibabaResearch/RoTS",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "data-generation",
+      "robustness"
+    ],
+    "summary": "GUI trajectory resources focused on recovering from errors.",
+    "verify_terms": [
+      "RoTS",
+      "RoTS"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "bf5c1469d33ced951ff0a5de017494b65f654023ceee8e7fbfd8b60afb082244",
+    "reviewed_at": "2026-10-16T06:36:02Z"
+  },
+  {
+    "name": "FingerTip-20K",
+    "kind": "dataset",
+    "url": "https://github.com/tsinghua-fib-lab/FingerTip-20K",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "data-generation"
+    ],
+    "summary": "Mobile interface interaction data.",
+    "verify_terms": [
+      "FingerTip-20K",
+      "FingerTip-20K"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "2c67c8b181e7196f3ca1e88888ffc5d6b32afca686a0e5c4353ad3f5af51ff9e",
+    "reviewed_at": "2026-10-16T06:36:02Z"
+  },
+  {
+    "name": "UI-Ins",
+    "kind": "dataset",
+    "url": "https://github.com/alibaba/UI-Ins",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "data-generation"
+    ],
+    "summary": "Instruction-oriented GUI data and research resources.",
+    "verify_terms": [
+      "UI-Ins",
+      "UI-Ins"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "e06aedcb1760867470afeb27d4eb4cdde9a3b76b9d55af183047df3c0ae2b71c",
+    "reviewed_at": "2026-10-16T06:36:02Z"
+  },
+  {
+    "name": "Agent S",
+    "kind": "agent",
+    "url": "https://github.com/simular-ai/Agent-S",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "planning",
+      "memory"
+    ],
+    "summary": "Agent framework for general computer interaction.",
+    "verify_terms": [
+      "Agent S",
+      "Agent-S"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "9ea381fdb78eb326d988ea384b6f5074ef0ff4c0d5fab555a148eded385e88f1",
+    "reviewed_at": "2026-10-16T06:36:02Z",
+    "publisher_id": "organization:simular"
+  },
+  {
+    "name": "UI-TARS Desktop",
+    "kind": "agent",
+    "url": "https://github.com/bytedance/UI-TARS-desktop",
+    "environments": [
+      "desktop",
+      "web"
+    ],
+    "topics": [
+      "workflow"
+    ],
+    "summary": "Desktop application for running GUI agents.",
+    "verify_terms": [
+      "UI-TARS Desktop",
+      "UI-TARS-desktop"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "0f05aa4f447d43439f6b3f4ab179cbe1e59d170eaf6c0684fa9c2eb0872e5985",
+    "reviewed_at": "2026-10-16T06:36:02Z"
+  },
+  {
+    "name": "Mobile-Agent",
+    "kind": "agent",
+    "url": "https://github.com/X-PLUG/MobileAgent",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "mobile-navigation",
+      "planning"
+    ],
+    "summary": "Mobile device agent family using visual interface interaction.",
+    "verify_terms": [
+      "Mobile-Agent",
+      "MobileAgent"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "ca402ffd3b05f72a6d72f47de52c962f92e410749a77939044f3301d4330af16",
+    "reviewed_at": "2026-10-16T06:36:02Z"
+  },
+  {
+    "name": "AppAgent",
+    "kind": "agent",
+    "url": "https://github.com/TencentQQGYLab/AppAgent",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "mobile-navigation",
+      "memory"
+    ],
+    "summary": "Mobile app agent using exploration and reusable knowledge.",
+    "verify_terms": [
+      "AppAgent",
+      "AppAgent"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "ac94cca1f69807d2d31d30bd5521fbf1bda6155996881054df87a85522cd8f5b",
+    "reviewed_at": "2026-10-16T06:36:02Z"
+  },
+  {
+    "name": "AppAgentX",
+    "kind": "agent",
+    "url": "https://github.com/Westlake-AGI-Lab/AppAgentX",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "mobile-navigation",
+      "memory"
+    ],
+    "summary": "Mobile agent research using accumulated interaction experience.",
+    "verify_terms": [
+      "AppAgentX",
+      "AppAgentX"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "085f1a1810805bcade9555b1e5c374a7db1b8b1377afeeea285d927853b02f3d",
+    "reviewed_at": "2026-10-16T06:36:02Z"
+  },
+  {
+    "name": "AppAgent Pro",
+    "kind": "agent",
+    "url": "https://github.com/LaoKuiZe/AppAgent-Pro",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "mobile-navigation"
+    ],
+    "summary": "Extended mobile app agent implementation.",
+    "verify_terms": [
+      "AppAgent Pro",
+      "AppAgent-Pro"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "9b4b945f4514d261373ec08d4c3e4e86b6623f95f95b9469bec2b8e7e93d9807",
+    "reviewed_at": "2026-10-16T06:36:02Z"
+  },
+  {
+    "name": "AutoDroid",
+    "kind": "agent",
+    "url": "https://github.com/MobileLLM/AutoDroid",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "mobile-navigation"
+    ],
+    "summary": "Language-model-driven Android task automation.",
+    "verify_terms": [
+      "AutoDroid",
+      "AutoDroid"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4a79eb2e14b6da67ded536c127d41f865d5b43620d60d0d950d291c8956564fc",
+    "reviewed_at": "2026-10-16T06:36:02Z"
+  },
+  {
+    "name": "AutoDroid V2",
+    "kind": "agent",
+    "url": "https://github.com/MobileLLM/AutoDroid-V2",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "mobile-navigation",
+      "tool-integration"
+    ],
+    "summary": "Mobile automation using generated execution code.",
+    "verify_terms": [
+      "AutoDroid V2",
+      "AutoDroid-V2"
+    ],
+    "editorial_reviewed": false,
+    "reviewed_sha256": "481424898c23290322206d660878712e2dc7680aad627d520282775a9d9a4601",
+    "reviewed_at": "2026-10-16T06:40:53Z",
+    "review_note": "Repository landing page is reachable, but accessible primary description is insufficient to validate the claimed framework."
+  },
+  {
+    "name": "UFO",
+    "kind": "agent",
+    "url": "https://github.com/microsoft/UFO",
+    "environments": [
+      "windows",
+      "desktop"
+    ],
+    "topics": [
+      "planning",
+      "cross-app"
+    ],
+    "summary": "Windows agent framework for application and desktop automation.",
+    "verify_terms": [
+      "UFO",
+      "UFO"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "40d9a4010ab122ab50242a0cd7a5320e2fd16b3e53494d988eecdbd94fd8e6e8",
+    "reviewed_at": "2026-10-16T06:36:02Z"
+  },
+  {
+    "name": "MagenticLite / Magentic UI",
+    "kind": "agent",
+    "url": "https://github.com/microsoft/magentic-ui",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "human-in-the-loop"
+    ],
+    "summary": "Microsoft agent application combining orchestration with browser interaction; successor to Magentic UI.",
+    "verify_terms": [
+      "Magentic UI",
+      "magentic-ui"
+    ],
+    "editorial_reviewed": true,
+    "aliases": [
+      "Magentic UI",
+      "Magentic-UI",
+      "MagenticLite"
+    ],
+    "reviewed_sha256": "240e0c92b86c02d3790c0784d8c72193ffb4fd5f9c2b0ec618ef8121fe216b8b",
+    "reviewed_at": "2026-10-16T06:36:02Z"
+  },
+  {
+    "name": "OS-Copilot",
+    "kind": "agent",
+    "url": "https://github.com/OS-Copilot/OS-Copilot",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "planning",
+      "tool-integration"
+    ],
+    "summary": "Operating-system agent framework and assistant research.",
+    "verify_terms": [
+      "OS-Copilot",
+      "OS-Copilot"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "b840368441695a54137216c2ba6bc99a8d35df75ad4196a4f0f0a1f5b5a70a9d",
+    "reviewed_at": "2026-10-16T06:36:02Z"
+  },
+  {
+    "name": "Cradle",
+    "kind": "agent",
+    "url": "https://github.com/BAAI-Agents/Cradle",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "planning",
+      "memory"
+    ],
+    "summary": "General computer-control framework using visual interfaces.",
+    "verify_terms": [
+      "Cradle",
+      "Cradle"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "fe475d3e92c42807b792c542bc5986bf74caa7d166aea860d368fbe776342a82",
+    "reviewed_at": "2026-10-16T06:36:02Z"
+  },
+  {
+    "name": "AssistGUI",
+    "kind": "agent",
+    "url": "https://github.com/showlab/assistgui",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "planning"
+    ],
+    "summary": "Task-oriented desktop GUI automation framework.",
+    "verify_terms": [
+      "AssistGUI",
+      "assistgui"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "9c43f97560c3781b28f97c894ff65bbea7121c3df8c183ddf15bb38842bd1e39",
+    "reviewed_at": "2026-10-16T06:36:02Z"
+  },
+  {
+    "name": "ScreenAgent",
+    "kind": "agent",
+    "url": "https://github.com/niuzaisheng/ScreenAgent",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "planning"
+    ],
+    "summary": "Agent implementation for controlling desktop interfaces.",
+    "verify_terms": [
+      "ScreenAgent",
+      "ScreenAgent"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "2248b2048b9166ce0348b24e81b2587fdf373a958fd86ab870ba85825425b02f",
+    "reviewed_at": "2026-10-16T06:36:02Z"
+  },
+  {
+    "name": "SeeAct",
+    "kind": "agent",
+    "url": "https://github.com/OSU-NLP-Group/SeeAct",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "web-navigation",
+      "grounding"
+    ],
+    "summary": "Vision-based web agent with action grounding.",
+    "verify_terms": [
+      "SeeAct",
+      "SeeAct"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "673b0e309540e57ec3b977689b33f89ef80e45ba1c0ffb05e7412e4862f6b99e",
+    "reviewed_at": "2026-10-16T06:36:03Z"
+  },
+  {
+    "name": "Agent E",
+    "kind": "agent",
+    "url": "https://github.com/EmergenceAI/Agent-E",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "web-navigation"
+    ],
+    "summary": "Web automation agent with hierarchical task execution.",
+    "verify_terms": [
+      "Agent E",
+      "Agent-E"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "fc3099072ca60acf2294a63dd2c3e343e90c901a7c7581f723cfdccc5a1edc2b",
+    "reviewed_at": "2026-10-16T06:36:03Z"
+  },
+  {
+    "name": "PC-Agent",
+    "kind": "agent",
+    "url": "https://github.com/GAIR-NLP/PC-Agent",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "planning",
+      "cross-app"
+    ],
+    "summary": "Agent framework for desktop workflows.",
+    "verify_terms": [
+      "PC-Agent",
+      "PC-Agent"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "178774927f003b5221d695fa78ded6fcc543aa8653c7b2dd8016418e6911afb7",
+    "reviewed_at": "2026-10-16T06:36:03Z"
+  },
+  {
+    "name": "Open Interpreter",
+    "kind": "agent",
+    "url": "https://github.com/OpenInterpreter/open-interpreter",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "tool-integration"
+    ],
+    "summary": "Assistant framework combining code execution and computer interaction.",
+    "verify_terms": [
+      "Open Interpreter",
+      "open-interpreter"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "8f6c33487eca77769798677d32bce15335d0439f129c9a0413e12e0d9e70ab7a",
+    "reviewed_at": "2026-10-16T06:36:03Z",
+    "notes": "The repository has evolved substantially; computer-use functionality is documented in its Computer Use section. Do not infer parity with historical releases."
+  },
+  {
+    "name": "Self Operating Computer",
+    "kind": "agent",
+    "url": "https://github.com/OthersideAI/self-operating-computer",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "grounding"
+    ],
+    "summary": "Visual agent loop for interacting with a desktop.",
+    "verify_terms": [
+      "Self Operating Computer",
+      "self-operating-computer"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "8a7f7199f7cf52cb31940bcea8ae797d4ab6dbd2029c3fc9066a17dde3d19095",
+    "reviewed_at": "2026-10-16T06:36:03Z"
+  },
+  {
+    "name": "Bytebot",
+    "kind": "agent",
+    "url": "https://github.com/bytebot-ai/bytebot",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "workflow"
+    ],
+    "summary": "Containerized desktop agent environment and application.",
+    "verify_terms": [
+      "Bytebot",
+      "bytebot"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "796cc24df9874c71408d32d12135b6b04389c455134c6c722ca34711288beb40",
+    "reviewed_at": "2026-10-16T06:36:03Z"
+  },
+  {
+    "name": "Surf New",
+    "kind": "agent",
+    "url": "https://github.com/steel-dev/surf.new",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "web-navigation"
+    ],
+    "summary": "Browser-agent application associated with Steel.",
+    "verify_terms": [
+      "Surf New",
+      "surf.new"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "b92abb5fdf714e569cf9f0d2c85ac3fb91ed67365e371a4b322aafe6fab39a1d",
+    "reviewed_at": "2026-10-16T06:36:03Z"
+  },
+  {
+    "name": "AutoGLM",
+    "kind": "agent",
+    "url": "https://github.com/THUDM/AutoGLM",
+    "environments": [
+      "android",
+      "web"
+    ],
+    "topics": [
+      "mobile-navigation",
+      "web-navigation"
+    ],
+    "summary": "Foundation-agent research for GUI automation.",
+    "verify_terms": [
+      "AutoGLM",
+      "AutoGLM"
+    ],
+    "editorial_reviewed": false
+  },
+  {
+    "name": "AutoWebGLM",
+    "kind": "agent",
+    "url": "https://github.com/THUDM/AutoWebGLM",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "web-navigation"
+    ],
+    "summary": "Language-model-based web navigation research.",
+    "verify_terms": [
+      "AutoWebGLM",
+      "AutoWebGLM"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "9d18b958cfefd47100aa32ab14374c22ababb997a637a80da98b1977dec83fe0",
+    "reviewed_at": "2026-10-16T06:36:03Z"
+  },
+  {
+    "name": "Mobile Use",
+    "kind": "agent",
+    "url": "https://github.com/MadeAgents/mobile-use",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "mobile-navigation"
+    ],
+    "summary": "SDK and agent tooling for mobile interaction.",
+    "verify_terms": [
+      "Mobile Use",
+      "mobile-use"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "101595fa1f62d30271b0560f8aaa54286d7f6fc006e2aa9d8b73086583b27656",
+    "reviewed_at": "2026-10-16T06:36:03Z"
+  },
+  {
+    "name": "OpenAdapt",
+    "kind": "agent",
+    "url": "https://github.com/OpenAdaptAI/OpenAdapt",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "recording",
+      "workflow"
+    ],
+    "summary": "Tools for learning and automating workflows from desktop demonstrations.",
+    "verify_terms": [
+      "OpenAdapt",
+      "OpenAdapt"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "36a6e7d56a1d474ee83e5811babe8e11cb113ee12386f9621bba64ffd957a6bc",
+    "reviewed_at": "2026-10-16T06:36:03Z"
+  },
+  {
+    "name": "Browser Use",
+    "kind": "framework",
+    "url": "https://github.com/browser-use/browser-use",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "web-navigation"
+    ],
+    "summary": "Framework for browser interaction by AI agents.",
+    "verify_terms": [
+      "Browser Use",
+      "browser-use"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "fcca30a036d122e34c943740c29d8cb91642f0c615050a8d54ec891c0eee56d2",
+    "reviewed_at": "2026-10-16T06:36:03Z",
+    "publisher_id": "organization:browser-use"
+  },
+  {
+    "name": "Stagehand",
+    "kind": "framework",
+    "url": "https://github.com/browserbase/stagehand",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "web-navigation"
+    ],
+    "summary": "Browser automation framework combining code and natural-language actions.",
+    "verify_terms": [
+      "Stagehand",
+      "stagehand"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "fb2039ee569e37cf1d652ca26c0a1951a318d4ac3240018b958985c0aec91007",
+    "reviewed_at": "2026-10-16T06:36:03Z",
+    "publisher_id": "organization:browserbase"
+  },
+  {
+    "name": "Skyvern",
+    "kind": "framework",
+    "url": "https://github.com/Skyvern-AI/skyvern",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "workflow"
+    ],
+    "summary": "Visual browser workflow automation framework.",
+    "verify_terms": [
+      "Skyvern",
+      "skyvern"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "68fda945255825907aeada13d19de19209708c14504ac975e63a235f0cd9343b",
+    "reviewed_at": "2026-10-16T06:36:03Z",
+    "publisher_id": "organization:skyvern"
+  },
+  {
+    "name": "LaVague",
+    "kind": "framework",
+    "url": "https://github.com/lavague-ai/LaVague",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "web-navigation"
+    ],
+    "summary": "Framework for building natural-language web agents.",
+    "verify_terms": [
+      "LaVague",
+      "LaVague"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "7e4d38b95657b604f5f390e25762d94c8d59164fbb2ae6c140c126bb128dbd4f",
+    "reviewed_at": "2026-10-16T06:36:03Z"
+  },
+  {
+    "name": "Cua",
+    "kind": "framework",
+    "url": "https://github.com/trycua/cua",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "evaluation",
+      "workflow"
+    ],
+    "summary": "Infrastructure and libraries for computer-use agents.",
+    "verify_terms": [
+      "Cua",
+      "cua"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "12830b2eeb3edea7af9953b27987f3467fa90803c641e786db09a33643c714d7",
+    "reviewed_at": "2026-10-16T06:36:03Z"
+  },
+  {
+    "name": "AgentLab",
+    "kind": "framework",
+    "url": "https://github.com/ServiceNow/AgentLab",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "evaluation"
+    ],
+    "summary": "Experiment framework for developing and evaluating browser agents.",
+    "verify_terms": [
+      "AgentLab",
+      "AgentLab"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "ca312434db1db852f96fb49bbc0a61f6a93cffe6c0dd3aa2b7ac814681ccc19e",
+    "reviewed_at": "2026-10-16T06:36:03Z"
+  },
+  {
+    "name": "ClawGUI",
+    "kind": "framework",
+    "url": "https://github.com/ZJU-REAL/ClawGUI",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "reinforcement-learning",
+      "evaluation"
+    ],
+    "summary": "Framework for GUI agent training, evaluation, and deployment.",
+    "verify_terms": [
+      "ClawGUI",
+      "ClawGUI"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "3f0aaefce32210dfba428fcf9e609e04e75d4d1520d24a3a6377611a9b83fa6d",
+    "reviewed_at": "2026-10-16T06:36:03Z"
+  },
+  {
+    "name": "ComputerRL",
+    "kind": "framework",
+    "url": "https://github.com/THUDM/ComputerRL",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "reinforcement-learning"
+    ],
+    "summary": "Reinforcement-learning infrastructure for computer-use agents.",
+    "verify_terms": [
+      "ComputerRL",
+      "ComputerRL"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "8b327dcd58c18e48e1e7f5b19ebf5673da4b5ff9320aa960e391844adf3a8a55",
+    "reviewed_at": "2026-10-16T06:36:03Z"
+  },
+  {
+    "name": "MobileRL",
+    "kind": "framework",
+    "url": "https://github.com/THUDM/MobileRL",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "reinforcement-learning"
+    ],
+    "summary": "Reinforcement-learning framework for mobile agents.",
+    "verify_terms": [
+      "MobileRL",
+      "MobileRL"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "752fad8ebd8b8eda03648329a6fc2585e5bcb2b96875b8aa2ce7d9f3fff78153",
+    "reviewed_at": "2026-10-16T06:36:04Z"
+  },
+  {
+    "name": "DigiRL",
+    "kind": "framework",
+    "url": "https://github.com/DigiRL-agent/digirl",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "reinforcement-learning"
+    ],
+    "summary": "Reinforcement learning for autonomous mobile device control.",
+    "verify_terms": [
+      "DigiRL",
+      "digirl"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "464e26d88420cd2694abe4c014bfd088417622c3a980aadf19b2bf01988d5b65",
+    "reviewed_at": "2026-10-16T06:36:04Z"
+  },
+  {
+    "name": "ZeroGUI",
+    "kind": "framework",
+    "url": "https://github.com/OpenGVLab/ZeroGUI",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "reinforcement-learning",
+      "data-generation"
+    ],
+    "summary": "GUI agent learning with generated interaction data.",
+    "verify_terms": [
+      "ZeroGUI",
+      "ZeroGUI"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "033d2de815e11c208862c5c5601b78d58668b79cadd37a750cad9edd4dacabed",
+    "reviewed_at": "2026-10-16T06:36:04Z"
+  },
+  {
+    "name": "Notte",
+    "kind": "framework",
+    "url": "https://github.com/nottelabs/notte",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "web-navigation"
+    ],
+    "summary": "Framework and infrastructure for browser agents.",
+    "verify_terms": [
+      "Notte",
+      "notte"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "5ecb73264cce10b75ec04dea59aaff77ffde552259fba6932507779a35681c5b",
+    "reviewed_at": "2026-10-16T06:36:04Z"
+  },
+  {
+    "name": "HyperAgent",
+    "kind": "framework",
+    "url": "https://github.com/hyperbrowserai/HyperAgent",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "web-navigation"
+    ],
+    "summary": "Browser automation agent framework.",
+    "verify_terms": [
+      "HyperAgent",
+      "HyperAgent"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "9fe74ee087156efde4531a058ccd3abad504032e0bd994979992ed4164c8704b",
+    "reviewed_at": "2026-10-16T06:36:04Z",
+    "publisher_id": "organization:hyperbrowser"
+  },
+  {
+    "name": "CUAWright (formerly Webwright)",
+    "kind": "framework",
+    "url": "https://github.com/microsoft/Webwright",
+    "environments": [
+      "web",
+      "desktop"
+    ],
+    "topics": [
+      "tool-integration"
+    ],
+    "summary": "Agent framework for browser and desktop tasks using automation code.",
+    "verify_terms": [
+      "CUAWright",
+      "Webwright"
+    ],
+    "editorial_reviewed": true,
+    "aliases": [
+      "Webwright",
+      "CUAWright"
+    ],
+    "reviewed_sha256": "7c0f87f684e5ed4d77b175b63a5dcaf0a268644c3662c723713de4cf0ac1de40",
+    "reviewed_at": "2026-10-16T06:36:04Z"
+  },
+  {
+    "name": "HUD",
+    "kind": "framework",
+    "url": "https://github.com/hud-evals/hud-python",
+    "environments": [
+      "web",
+      "desktop"
+    ],
+    "topics": [
+      "evaluation",
+      "reinforcement-learning"
+    ],
+    "summary": "SDK for agent environments, evaluation, and training.",
+    "verify_terms": [
+      "HUD",
+      "hud-python"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "3ef331612819a006d4279ac59203971a22a56fb6d9a0047f85a82668d09c327b",
+    "reviewed_at": "2026-10-16T06:36:04Z"
+  },
+  {
+    "name": "Surfkit",
+    "kind": "framework",
+    "url": "https://github.com/agentsea/surfkit",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "workflow"
+    ],
+    "summary": "Toolkit for building and deploying computer-use agents.",
+    "verify_terms": [
+      "Surfkit",
+      "surfkit"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "32420db547a889f0d86090689d0bd0c93d1776a70346dfd4029db7d99ae4bd9f",
+    "reviewed_at": "2026-10-16T06:36:04Z"
+  },
+  {
+    "name": "Computer Use OOTB",
+    "kind": "framework",
+    "url": "https://github.com/showlab/computer_use_ootb",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "workflow"
+    ],
+    "summary": "Computer-use agent execution toolkit.",
+    "verify_terms": [
+      "Computer Use OOTB",
+      "computer_use_ootb"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "7b53e58d3efb35d23e58bd75bfa6d36f1e57af9f63556c34935726cead47e322",
+    "reviewed_at": "2026-10-16T06:36:04Z"
+  },
+  {
+    "name": "E2B Desktop",
+    "kind": "infrastructure",
+    "url": "https://github.com/e2b-dev/desktop",
+    "environments": [
+      "desktop",
+      "linux"
+    ],
+    "topics": [
+      "sandbox"
+    ],
+    "summary": "Desktop sandboxes for computer-use agents.",
+    "verify_terms": [
+      "E2B Desktop",
+      "desktop"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "edb4293cb510888cdc2d5c9d1135a0500272aae96366710744d5b74b5289c462",
+    "reviewed_at": "2026-10-16T06:36:04Z",
+    "publisher_id": "organization:e2b"
+  },
+  {
+    "name": "Steel Browser",
+    "kind": "infrastructure",
+    "url": "https://github.com/steel-dev/steel-browser",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "sandbox",
+      "web-navigation"
+    ],
+    "summary": "Browser infrastructure for agent applications.",
+    "verify_terms": [
+      "Steel Browser",
+      "steel-browser"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "668949f121cb5a8ac262a8d3222a31eaee6692bfc0de9b86e60ae04f885ccc9b",
+    "reviewed_at": "2026-10-16T06:36:04Z",
+    "publisher_id": "organization:steel"
+  },
+  {
+    "name": "Agent Infra Sandbox",
+    "kind": "infrastructure",
+    "url": "https://github.com/agent-infra/sandbox",
+    "environments": [
+      "desktop",
+      "web"
+    ],
+    "topics": [
+      "sandbox"
+    ],
+    "summary": "Sandbox environments supporting computer and browser interaction.",
+    "verify_terms": [
+      "Agent Infra Sandbox",
+      "sandbox"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "0fe34cd605e492c4c93f760e9caefd194f9c8ec7cfc3d4d4a927a1ac1613e51c",
+    "reviewed_at": "2026-10-16T06:36:04Z"
+  },
+  {
+    "name": "AndroidEnv",
+    "kind": "infrastructure",
+    "url": "https://github.com/deepmind/android_env",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "evaluation",
+      "reinforcement-learning"
+    ],
+    "summary": "Environment toolkit for interacting with Android devices in agent research.",
+    "verify_terms": [
+      "AndroidEnv",
+      "android_env"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "b8dd2ea004647008265f4fb5c5a122569992311b6758f413080984266e53c25a",
+    "reviewed_at": "2026-10-16T06:36:04Z"
+  },
+  {
+    "name": "Mobile Env",
+    "kind": "infrastructure",
+    "url": "https://github.com/X-LANCE/Mobile-Env",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "evaluation"
+    ],
+    "summary": "Environment toolkit for mobile interaction agents.",
+    "verify_terms": [
+      "Mobile Env",
+      "Mobile-Env"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "fa70fd96c57a163404b77431f89dd16864ed104d7160e347742ff87587229961",
+    "reviewed_at": "2026-10-16T06:36:04Z"
+  },
+  {
+    "name": "Playwright",
+    "kind": "infrastructure",
+    "url": "https://github.com/microsoft/playwright",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "automation"
+    ],
+    "summary": "Browser automation library used as an execution layer by agents.",
+    "verify_terms": [
+      "Playwright",
+      "playwright"
+    ],
+    "editorial_reviewed": true,
+    "scope": "adjacent",
+    "reviewed_sha256": "0a6a9dddcbf1295b61e83462ee7aa130289a4d4e60bac1a0deccd661f8fc8146",
+    "reviewed_at": "2026-10-16T06:36:04Z"
+  },
+  {
+    "name": "Appium",
+    "kind": "infrastructure",
+    "url": "https://github.com/appium/appium",
+    "environments": [
+      "android",
+      "ios"
+    ],
+    "topics": [
+      "automation"
+    ],
+    "summary": "Cross-platform UI automation infrastructure.",
+    "verify_terms": [
+      "Appium",
+      "appium"
+    ],
+    "editorial_reviewed": true,
+    "scope": "adjacent",
+    "reviewed_sha256": "ecd5b8033cbc17a2ce5aebf1b35260b77c4906aea7c549a0b86e5d55b9ebe135",
+    "reviewed_at": "2026-10-16T06:36:04Z"
+  },
+  {
+    "name": "PyAutoGUI",
+    "kind": "infrastructure",
+    "url": "https://github.com/asweigart/pyautogui",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "automation"
+    ],
+    "summary": "Mouse, keyboard, and screenshot automation library.",
+    "verify_terms": [
+      "PyAutoGUI",
+      "pyautogui"
+    ],
+    "editorial_reviewed": true,
+    "scope": "adjacent",
+    "reviewed_sha256": "9e7a23adb62bd05d0fd45e5c95a57fcfc3cc4d19ab89d6801c5bf1e23d3c678c",
+    "reviewed_at": "2026-10-16T06:36:04Z"
+  },
+  {
+    "name": "Nut.js",
+    "kind": "infrastructure",
+    "url": "https://github.com/nut-tree/nut.js",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "automation"
+    ],
+    "summary": "Desktop automation library for keyboard, mouse, and screen interaction.",
+    "verify_terms": [
+      "Nut.js",
+      "nut.js"
+    ],
+    "editorial_reviewed": true,
+    "scope": "adjacent",
+    "reviewed_sha256": "41a6435d6c27a647b4d2170cba476fa6a941b12f8a4ffe41674a508df9e0ea1d",
+    "reviewed_at": "2026-10-16T06:36:04Z"
+  },
+  {
+    "name": "OmniParser",
+    "kind": "tool",
+    "url": "https://github.com/microsoft/OmniParser",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "screen-understanding",
+      "grounding"
+    ],
+    "summary": "Screen parsing tools for visually grounded agents.",
+    "verify_terms": [
+      "OmniParser",
+      "OmniParser"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "f4ebaafcc0ab0b9e9cc55cb587678e5c83a5bbd64469fb2cc52bc63843c5cc6d",
+    "reviewed_at": "2026-10-16T06:36:04Z"
+  },
+  {
+    "name": "Set of Mark",
+    "kind": "tool",
+    "url": "https://github.com/microsoft/SoM",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding"
+    ],
+    "summary": "Visual prompting tools that annotate interface elements.",
+    "verify_terms": [
+      "Set of Mark",
+      "SoM"
+    ],
+    "editorial_reviewed": true,
+    "scope": "adjacent",
+    "reviewed_sha256": "b3fa8b7e24a01da023a5f21023c4853a90388dd7744055fbb5a2888938c68b0c",
+    "reviewed_at": "2026-10-16T06:36:04Z"
+  },
+  {
+    "name": "Tarsier",
+    "kind": "tool",
+    "url": "https://github.com/reworkd/tarsier",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "screen-understanding"
+    ],
+    "summary": "Visual and text representation tools for browser agents.",
+    "verify_terms": [
+      "Tarsier",
+      "tarsier"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "2a313a5a1c433c0609067c6d875d5ff69493e8792d2173e458eb5db8bf232977",
+    "reviewed_at": "2026-10-16T06:36:04Z"
+  },
+  {
+    "name": "BrowserTrace",
+    "kind": "tool",
+    "url": "https://github.com/aaronlab/browsertrace",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "observability"
+    ],
+    "summary": "Local trace viewer for browser-agent runs.",
+    "verify_terms": [
+      "BrowserTrace",
+      "browsertrace"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "86d7fbe30596de4a1f1a1df2a986f5f247351a91c0c593dc4c29ba9c70d28c8f",
+    "reviewed_at": "2026-10-16T06:36:05Z"
+  },
+  {
+    "name": "Agent Browser Shield",
+    "kind": "tool",
+    "url": "https://github.com/pixiebrix/agent-browser-shield",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "safety-security"
+    ],
+    "summary": "Browser extension for filtering potentially unsafe agent input.",
+    "verify_terms": [
+      "Agent Browser Shield",
+      "agent-browser-shield"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "8682f83d71dd4d44772db3e531f2a9fcb168729211e0cc43493020a0773b0aba",
+    "reviewed_at": "2026-10-16T06:36:05Z"
+  },
+  {
+    "name": "AgentNet",
+    "kind": "dataset",
+    "url": "https://huggingface.co/datasets/xlangai/AgentNet",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "data-generation"
+    ],
+    "summary": "Computer-use demonstrations released with OpenCUA.",
+    "verify_terms": [
+      "AgentNet"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "f23c588ea9fb27210f9d605e164a32527a24298ca516df98272ff7ca7110eac6",
+    "reviewed_at": "2026-10-16T06:38:26Z"
+  },
+  {
+    "name": "OS-Atlas Data",
+    "kind": "dataset",
+    "url": "https://huggingface.co/datasets/OS-Copilot/OS-Atlas-data",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "data-generation"
+    ],
+    "summary": "GUI grounding data released by the OS-Atlas project.",
+    "verify_terms": [
+      "OS-Atlas"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c2c5f7b3f07d92349ffd8256792599c856ed77c89108c45dbaef48a4699abe20",
+    "reviewed_at": "2026-10-16T06:38:26Z"
+  },
+  {
+    "name": "UI-Vision",
+    "kind": "dataset",
+    "url": "https://huggingface.co/datasets/ServiceNow/ui-vision",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "grounding",
+      "screen-understanding"
+    ],
+    "summary": "Desktop GUI data for interface understanding and interaction research.",
+    "verify_terms": [
+      "ui-vision"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "34f4ad5c9e7160b5be5aa8ae77e6e9f83a277aada41a272b82a2628d21159a8c",
+    "reviewed_at": "2026-10-16T06:38:26Z"
+  },
+  {
+    "name": "MobileViews",
+    "kind": "dataset",
+    "url": "https://huggingface.co/datasets/mllmTeam/MobileViews",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "screen-understanding"
+    ],
+    "summary": "Mobile screenshot and interface hierarchy dataset.",
+    "verify_terms": [
+      "MobileViews"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "d36d62283deecd3c5ccf1ac1af49aa7ba779a1d69cdcaea39a1bed37ff5d66b9",
+    "reviewed_at": "2026-10-16T06:38:26Z"
+  },
+  {
+    "name": "Mobile3M",
+    "kind": "dataset",
+    "url": "https://huggingface.co/datasets/xwk123/Mobile3M",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "screen-understanding"
+    ],
+    "summary": "Mobile interface data for multimodal UI research.",
+    "verify_terms": [
+      "Mobile3M"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "356a8dca28fa3dc46bc05b13eaf04a3db273e63c06be4fd15d0e87e0343c0824",
+    "reviewed_at": "2026-10-16T06:38:26Z"
+  },
+  {
+    "name": "GUI-360",
+    "kind": "dataset",
+    "url": "https://huggingface.co/datasets/vyokky/GUI-360",
+    "environments": [
+      "windows"
+    ],
+    "topics": [
+      "grounding",
+      "data-generation"
+    ],
+    "summary": "Desktop GUI trajectory data supporting multiple interface understanding tasks.",
+    "verify_terms": [
+      "GUI-360"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "e51af2845c2f31c7af112579b42c3ff9bf5a2c2356e80932e829bc2be1a341bd",
+    "reviewed_at": "2026-10-16T06:38:26Z"
+  },
+  {
+    "name": "CAGUI",
+    "kind": "dataset",
+    "url": "https://huggingface.co/datasets/openbmb/CAGUI",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "data-generation"
+    ],
+    "summary": "Mobile GUI data released by the OpenBMB team.",
+    "verify_terms": [
+      "CAGUI"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "98699e13f7c7f5af812e1cbbd5e71eaceefa8aa73ca37167a772774a40818efd",
+    "reviewed_at": "2026-10-16T06:38:26Z"
+  },
+  {
+    "name": "WebUI",
+    "kind": "dataset",
+    "url": "https://huggingface.co/datasets/biglab/webui-all",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "screen-understanding"
+    ],
+    "summary": "Web screenshot and interface data for UI research.",
+    "verify_terms": [
+      "webui"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "70928db908760c1561bfc8e0cd7d925e0103ffddef4676fbaa7c1756a804b99a",
+    "reviewed_at": "2026-10-16T06:38:26Z"
+  },
+  {
+    "name": "CMGUI",
+    "kind": "dataset",
+    "url": "https://huggingface.co/datasets/alibabagroup/CMGUI",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "data-generation"
+    ],
+    "summary": "Mobile GUI interaction data from the CMGUI project.",
+    "verify_terms": [
+      "CMGUI"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "aa1e063e73269acd0cb06adcef67d6230f0fe9498ed361d92234053dcf035685",
+    "reviewed_at": "2026-10-16T06:38:26Z"
+  },
+  {
+    "name": "UGround V1 Data",
+    "kind": "dataset",
+    "url": "https://huggingface.co/datasets/osunlp/UGround-V1-Data",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "data-generation"
+    ],
+    "summary": "Training data released with UGround V1.",
+    "verify_terms": [
+      "UGround"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "0342862bd7857dd21e389ee5d351375dfea722cad4725c8e33271efc93e009f6",
+    "reviewed_at": "2026-10-16T06:38:26Z"
+  },
+  {
+    "name": "ShowUI Desktop",
+    "kind": "dataset",
+    "url": "https://huggingface.co/datasets/showlab/ShowUI-desktop-8K",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "data-generation"
+    ],
+    "summary": "Desktop interaction data released with ShowUI.",
+    "verify_terms": [
+      "ShowUI"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "84bd2ef05ea837eaeebb248002b2942dd5c72f072beb29a9bd70eda1ea433a31",
+    "reviewed_at": "2026-10-16T06:38:26Z"
+  },
+  {
+    "name": "ScaleCUA Data",
+    "kind": "dataset",
+    "url": "https://huggingface.co/datasets/OpenGVLab/ScaleCUA-Data",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "data-generation"
+    ],
+    "summary": "Cross-platform computer-use data released with ScaleCUA.",
+    "verify_terms": [
+      "ScaleCUA"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "dca4b89176c7653e83545363e4868bd2d5f0bf618df007b68a7e25407262f1ac",
+    "reviewed_at": "2026-10-16T06:38:26Z"
+  },
+  {
+    "name": "GUI-Drag",
+    "kind": "dataset",
+    "url": "https://huggingface.co/datasets/osunlp/GUI-Drag-dataset",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding"
+    ],
+    "summary": "Data for learning text-dragging interactions in graphical interfaces.",
+    "verify_terms": [
+      "GUI-Drag"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "cdb8be8c4692a8ddcf8a66c1f0be666a9214718445925fb3c88615a0d641bf3a",
+    "reviewed_at": "2026-10-16T06:38:26Z"
+  },
+  {
+    "name": "DragOn",
+    "kind": "dataset",
+    "url": "https://huggingface.co/datasets/Hcompany/DragOn",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding"
+    ],
+    "summary": "GUI interaction dataset focused on drag operations.",
+    "verify_terms": [
+      "DragOn"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "08b5529ce01781143147d56e2278aec2e5bdd972ba7e2fae6ba7e65e62688d40",
+    "reviewed_at": "2026-10-16T06:38:26Z"
+  },
+  {
+    "name": "CUA-Gym",
+    "kind": "dataset",
+    "url": "https://huggingface.co/datasets/xlangai/CUA-Gym",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "evaluation",
+      "data-generation"
+    ],
+    "summary": "Computer-use environment and task resources for agent research.",
+    "verify_terms": [
+      "CUA-Gym"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "43b8ebde3b971e1b8b61d789c786ead59b45a2490bc6ed19e204bafc03a31f44",
+    "reviewed_at": "2026-10-16T06:38:26Z"
+  },
+  {
+    "name": "RecreationBench",
+    "kind": "benchmark",
+    "url": "https://huggingface.co/datasets/Qwen/RecreationBench",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "evaluation",
+      "tool-integration"
+    ],
+    "summary": "Tasks for recreating reference applications with hybrid computer interaction.",
+    "verify_terms": [
+      "RecreationBench"
+    ],
+    "editorial_reviewed": true,
+    "evidence_urls": [
+      "https://huggingface.co/datasets/Qwen/RecreationBench/raw/main/README.md"
+    ],
+    "reviewed_sha256": "79deaa899d085ece77a127d53b12ddb9edea8a796943f35b75e9acec67bcb976",
+    "reviewed_at": "2026-10-16T06:50:49Z",
+    "notes": "Dataset card declares multiple upstream licenses; do not treat the package as having one blanket permissive license."
+  },
+  {
+    "name": "ScreenSpot",
+    "kind": "benchmark",
+    "url": "https://huggingface.co/datasets/rootsautomation/ScreenSpot",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "evaluation"
+    ],
+    "summary": "Screenshot-based GUI element grounding benchmark.",
+    "verify_terms": [
+      "ScreenSpot"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "9e2d2a2c076032225911ae1032b548eafa6331ea81a2779632610f0f1c82dfd9",
+    "reviewed_at": "2026-10-16T06:38:26Z"
+  },
+  {
+    "name": "ScreenSpot v2",
+    "kind": "benchmark",
+    "url": "https://huggingface.co/datasets/OS-Copilot/ScreenSpot-v2",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "evaluation"
+    ],
+    "summary": "Revised ScreenSpot grounding evaluation data from OS-Atlas.",
+    "verify_terms": [
+      "ScreenSpot"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "7feddadc306e384f8df6a3d9c8afc0c776cb3734c4c7fe3eb842eab85537f408",
+    "reviewed_at": "2026-10-16T06:38:26Z"
+  },
+  {
+    "name": "OmniAct",
+    "kind": "benchmark",
+    "url": "https://huggingface.co/datasets/Writer/omniact",
+    "environments": [
+      "desktop",
+      "web"
+    ],
+    "topics": [
+      "evaluation"
+    ],
+    "summary": "Dataset and benchmark for generating computer interaction programs.",
+    "verify_terms": [
+      "omniact"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "2db0a5dd2b983dded3b90a8ecd66cadbb39074f03778a339822418531661b3e3",
+    "reviewed_at": "2026-10-16T06:38:27Z"
+  },
+  {
+    "name": "WeaveBench",
+    "kind": "benchmark",
+    "url": "https://huggingface.co/datasets/wanlilll/WeaveBench",
+    "environments": [
+      "desktop",
+      "linux"
+    ],
+    "topics": [
+      "evaluation",
+      "tool-integration"
+    ],
+    "summary": "Computer-use benchmark mixing graphical interaction and code execution.",
+    "verify_terms": [
+      "WeaveBench"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "e65e5793fe5b251ef7793a0618f4e8139fe5c92c2cf8093d0cc6142e8ece9d02",
+    "reviewed_at": "2026-10-16T06:38:27Z"
+  },
+  {
+    "name": "OpenAI CUA",
+    "kind": "model",
+    "url": "https://openai.com/index/computer-using-agent/",
+    "environments": [
+      "web",
+      "desktop"
+    ],
+    "topics": [
+      "planning",
+      "grounding"
+    ],
+    "summary": "Computer-using model introduced with the Operator research preview.",
+    "verify_terms": [
+      "Computer-Using Agent",
+      "Computer-using agent"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "14f573af0c4ea3e5922b8831b7f03724936963e293d7c0aaa3fccbb71dbb0cfa",
+    "reviewed_at": "2026-10-16T06:38:27Z",
+    "publisher_id": "organization:openai"
+  },
+  {
+    "name": "Gemini Computer Use",
+    "kind": "model",
+    "url": "https://ai.google.dev/gemini-api/docs/computer-use",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "planning",
+      "grounding"
+    ],
+    "summary": "Gemini capability for generating interface actions from screenshots.",
+    "verify_terms": [
+      "Computer use",
+      "computer_use"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "e7062cfb4c0948d3a2274843f9f493f34cb40dfd634371408086df6141a0e036",
+    "reviewed_at": "2026-10-16T06:38:27Z",
+    "publisher_id": "organization:google"
+  },
+  {
+    "name": "Holo Model Family",
+    "kind": "model",
+    "url": "https://hcompany.ai/research/models",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "planning",
+      "grounding"
+    ],
+    "summary": "H computer-use model family and its release-specific access options.",
+    "verify_terms": [
+      "Holo"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "84ce0fd682367a6dac5cc5abc39d5c877556024bbf6ffdad30f76fc2ec08523f",
+    "reviewed_at": "2026-10-16T06:38:27Z",
+    "publisher_id": "organization:h"
+  },
+  {
+    "name": "Claude Computer Use",
+    "kind": "model",
+    "url": "https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/computer-use-tool",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "planning",
+      "grounding"
+    ],
+    "summary": "Claude tool capability for screenshot-based computer interaction.",
+    "verify_terms": [
+      "computer use",
+      "computer_use"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "de16b4fd611982cfaa160cb0fbdc1b0f0559b90983e452964527704a6de4e72d",
+    "reviewed_at": "2026-10-16T06:38:27Z",
+    "publisher_id": "organization:anthropic"
+  },
+  {
+    "name": "ChatGPT Agent",
+    "kind": "product",
+    "url": "https://openai.com/index/introducing-chatgpt-agent/",
+    "environments": [
+      "web",
+      "desktop"
+    ],
+    "topics": [
+      "workflow"
+    ],
+    "summary": "Hosted agent combining browser interaction, tools, and computer-based tasks.",
+    "verify_terms": [
+      "ChatGPT agent"
+    ],
+    "editorial_reviewed": true,
+    "notes": "The launch page identifies itself as outdated. This entry records the product introduction, not current availability, limits, or pricing.",
+    "reviewed_sha256": "fb3b4dbc435158c256abae36cf092172284c4d6fd53fa556499cb7b0730a5bc6",
+    "reviewed_at": "2026-10-16T06:38:27Z",
+    "details": {
+      "access": "publisher-managed",
+      "pricing_url": null,
+      "availability": "not independently tested"
+    },
+    "publisher_id": "organization:openai"
+  },
+  {
+    "name": "Operator",
+    "kind": "product",
+    "url": "https://openai.com/index/introducing-operator/",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "web-navigation",
+      "history"
+    ],
+    "summary": "Historical OpenAI browser-agent research preview.",
+    "verify_terms": [
+      "Operator"
+    ],
+    "editorial_reviewed": true,
+    "notes": "Historical product entry; the official page describes its integration into ChatGPT agent. Do not infer current standalone availability.",
+    "reviewed_sha256": "474a27cf644ac5f8400a023086fb8d356e6148de71d1851337215f88624852d9",
+    "reviewed_at": "2026-10-16T06:38:27Z",
+    "details": {
+      "access": "publisher-managed",
+      "pricing_url": null,
+      "availability": "not independently tested"
+    },
+    "publisher_id": "organization:openai"
+  },
+  {
+    "name": "HoloTab",
+    "kind": "product",
+    "url": "https://hcompany.ai/newsroom/meet-holotab",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "web-navigation"
+    ],
+    "summary": "H browser extension for executing tasks through website interfaces.",
+    "verify_terms": [
+      "HoloTab"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "7d67747fdfe89bcc69d2b60b41f4f2dccf758913ea6d491949cbeac20de372ef",
+    "reviewed_at": "2026-10-16T06:38:27Z",
+    "details": {
+      "access": "publisher-managed",
+      "pricing_url": null,
+      "availability": "not independently tested"
+    },
+    "publisher_id": "organization:h"
+  },
+  {
+    "name": "Browserbase Cloud",
+    "kind": "product",
+    "url": "https://www.browserbase.com/",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "sandbox"
+    ],
+    "summary": "Managed browser infrastructure for agent applications.",
+    "verify_terms": [
+      "Browserbase"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "d86315819750e4a5fde12bce85a03c61cf68e704cb54146e6180027a37471b72",
+    "reviewed_at": "2026-10-16T06:38:27Z",
+    "details": {
+      "access": "publisher-managed",
+      "pricing_url": null,
+      "availability": "not independently tested"
+    },
+    "publisher_id": "organization:browserbase"
+  },
+  {
+    "name": "Browser Use Cloud",
+    "kind": "product",
+    "url": "https://browser-use.com/",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "web-navigation"
+    ],
+    "summary": "Hosted browser-agent platform from Browser Use.",
+    "verify_terms": [
+      "Browser Use",
+      "Browser-Use"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "69e029d01dda3806f88abfaee01da08c671adcb3555f1314e975ab8942a686ae",
+    "reviewed_at": "2026-10-16T06:38:27Z",
+    "details": {
+      "access": "publisher-managed",
+      "pricing_url": null,
+      "availability": "not independently tested"
+    },
+    "publisher_id": "organization:browser-use"
+  },
+  {
+    "name": "Skyvern Cloud",
+    "kind": "product",
+    "url": "https://www.skyvern.com/",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "workflow"
+    ],
+    "summary": "Hosted visual browser workflow automation service.",
+    "verify_terms": [
+      "Skyvern"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "7a8813c174043d1a27cb3766f77c90beb1a08eeedee935264d6237d6a57672a5",
+    "reviewed_at": "2026-10-16T06:38:27Z",
+    "details": {
+      "access": "publisher-managed",
+      "pricing_url": null,
+      "availability": "not independently tested"
+    },
+    "publisher_id": "organization:skyvern"
+  },
+  {
+    "name": "AskUI",
+    "kind": "product",
+    "url": "https://www.askui.com/",
+    "environments": [
+      "desktop",
+      "web"
+    ],
+    "topics": [
+      "workflow"
+    ],
+    "summary": "Visual computer interaction and automation platform.",
+    "verify_terms": [
+      "AskUI",
+      "askui"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "df8615d0687cba27e5558ea3f7ecb1823871e3804522603dd62b52dcf127ac89",
+    "reviewed_at": "2026-10-16T06:38:27Z",
+    "details": {
+      "access": "publisher-managed",
+      "pricing_url": null,
+      "availability": "not independently tested"
+    },
+    "publisher_id": "organization:askui"
+  },
+  {
+    "name": "Simular",
+    "kind": "product",
+    "url": "https://www.simular.ai/",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "workflow"
+    ],
+    "summary": "Computer-use products and research from Simular.",
+    "verify_terms": [
+      "Simular"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4cb358ab96e57a66d2b268a17963f92be249325fb0687a78985a6d9773ff5a81",
+    "reviewed_at": "2026-10-16T06:38:27Z",
+    "details": {
+      "access": "publisher-managed",
+      "pricing_url": null,
+      "availability": "not independently tested"
+    },
+    "publisher_id": "organization:simular"
+  },
+  {
+    "name": "Manus",
+    "kind": "product",
+    "url": "https://manus.im/",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "workflow"
+    ],
+    "summary": "General agent platform with browser-based task execution.",
+    "verify_terms": [
+      "Manus"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "832b84c366eaadc69e328f207f2659cf07a0901c47662244831c0f1695d02efd",
+    "reviewed_at": "2026-10-16T06:38:28Z",
+    "details": {
+      "access": "publisher-managed",
+      "pricing_url": null,
+      "availability": "not independently tested"
+    },
+    "publisher_id": "organization:manus"
+  },
+  {
+    "name": "Steel Cloud",
+    "kind": "product",
+    "url": "https://steel.dev/",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "sandbox"
+    ],
+    "summary": "Managed browser infrastructure associated with Steel Browser.",
+    "verify_terms": [
+      "Steel"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "5eacfa15c116ddeb02f6fd731fbb2e9856a933d743870fe41d947ef3b01aeb6f",
+    "reviewed_at": "2026-10-16T06:38:28Z",
+    "details": {
+      "access": "publisher-managed",
+      "pricing_url": null,
+      "availability": "not independently tested"
+    },
+    "publisher_id": "organization:steel"
+  },
+  {
+    "name": "E2B",
+    "kind": "product",
+    "url": "https://e2b.dev/",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "sandbox"
+    ],
+    "summary": "Sandbox infrastructure for executing agent workloads.",
+    "verify_terms": [
+      "E2B"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "6232364481bbae45a3fcec1d1aca858493baff0693ececa98b09b610183e6796",
+    "reviewed_at": "2026-10-16T06:38:28Z",
+    "details": {
+      "access": "publisher-managed",
+      "pricing_url": null,
+      "availability": "not independently tested"
+    },
+    "publisher_id": "organization:e2b"
+  },
+  {
+    "name": "Browserless",
+    "kind": "product",
+    "url": "https://www.browserless.io/",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "sandbox"
+    ],
+    "summary": "Hosted browser infrastructure for automation applications.",
+    "verify_terms": [
+      "Browserless",
+      "browserless"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "e044e75ec1c2a74f2bee8c02b6efae05c399ec3537e34dd861dcf4a0a25dc182",
+    "reviewed_at": "2026-10-16T06:38:28Z",
+    "details": {
+      "access": "publisher-managed",
+      "pricing_url": null,
+      "availability": "not independently tested"
+    },
+    "publisher_id": "organization:browserless"
+  },
+  {
+    "name": "Hyperbrowser",
+    "kind": "product",
+    "url": "https://www.hyperbrowser.ai/",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "sandbox"
+    ],
+    "summary": "Browser infrastructure and automation services for AI agents.",
+    "verify_terms": [
+      "Hyperbrowser"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "47f31d41c806e97143fa046c4e1f5e916096d158bee0bff43efd15a7d78053b1",
+    "reviewed_at": "2026-10-16T06:38:28Z",
+    "details": {
+      "access": "publisher-managed",
+      "pricing_url": null,
+      "availability": "not independently tested"
+    },
+    "publisher_id": "organization:hyperbrowser"
+  },
+  {
+    "name": "TinyFish",
+    "kind": "product",
+    "url": "https://www.tinyfish.ai/",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "web-navigation"
+    ],
+    "summary": "Browser-agent API for executing web tasks and extracting structured results.",
+    "verify_terms": [
+      "TinyFish"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "461de0060fae1ded024dfa724624b001665b463b14f454afafebd0c9a2dce71d",
+    "reviewed_at": "2026-10-16T06:38:28Z",
+    "details": {
+      "access": "publisher-managed",
+      "pricing_url": null,
+      "availability": "not independently tested"
+    },
+    "publisher_id": "organization:tinyfish"
+  },
+  {
+    "name": "BrowserAct",
+    "kind": "product",
+    "url": "https://www.browseract.com/",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "workflow"
+    ],
+    "summary": "Managed web scraping platform with reusable browser interaction workflows.",
+    "verify_terms": [
+      "BrowserAct"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "463db02b607e7215a4421440c4d274ee3546bd9eefc50ed9e10f64d27d7f8f38",
+    "reviewed_at": "2026-10-16T06:38:28Z",
+    "details": {
+      "access": "publisher-managed",
+      "pricing_url": null,
+      "availability": "not independently tested"
+    },
+    "publisher_id": "organization:browseract"
+  },
+  {
+    "name": "AgentQL",
+    "kind": "product",
+    "url": "https://www.agentql.com/",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "grounding",
+      "web-navigation"
+    ],
+    "summary": "Natural-language querying and interaction tools for web interfaces.",
+    "verify_terms": [
+      "AgentQL"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "41ec857dacdb106ad99abbe1872f40a295056522ffaa1b1714b51dffb370f450",
+    "reviewed_at": "2026-10-16T06:38:28Z",
+    "details": {
+      "access": "publisher-managed",
+      "pricing_url": null,
+      "availability": "not independently tested"
+    }
+  },
+  {
+    "name": "Scribe",
+    "kind": "product",
+    "url": "https://scribehow.com/",
+    "environments": [
+      "desktop",
+      "web"
+    ],
+    "topics": [
+      "recording",
+      "workflow"
+    ],
+    "summary": "Workflow recording and documentation product adjacent to agent data collection.",
+    "verify_terms": [
+      "Scribe"
+    ],
+    "editorial_reviewed": true,
+    "scope": "adjacent",
+    "reviewed_sha256": "bb658d64714578f8ce5d78b014474781f865e42ccc078be3b61539bc3780b235",
+    "reviewed_at": "2026-10-16T06:38:28Z",
+    "details": {
+      "access": "publisher-managed",
+      "pricing_url": null,
+      "availability": "not independently tested"
+    }
+  },
+  {
+    "id": "component:google-research/android_control",
+    "name": "AndroidControl",
+    "kind": "dataset",
+    "url": "https://github.com/google-research/google-research/tree/master/android_control",
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/google-research/google-research/master/android_control/README.md"
+    ],
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "data-generation",
+      "mobile-navigation"
+    ],
+    "summary": "Android demonstrations with high-level goals, step instructions, screenshots, and accessibility trees.",
+    "verify_terms": [
+      "AndroidControl"
+    ],
+    "editorial_reviewed": true,
+    "paper_ids": [
+      "2406.03679"
+    ],
+    "reviewed_sha256": "e4f8baa15441fb63cad07220cc5a4de177a1f785d4fe1fed5cfcbf3c3867faf1",
+    "reviewed_at": "2026-10-16T06:38:29Z",
+    "details": {
+      "sample_count": null,
+      "sample_unit": "demonstrations",
+      "reported_scale": {
+        "value": 15000,
+        "comparison": ">",
+        "unit": "demonstrations"
+      },
+      "modalities": [
+        "screenshot",
+        "accessibility-tree",
+        "instruction",
+        "action"
+      ]
+    }
+  },
+  {
+    "id": "component:google-research/android_in_the_wild",
+    "name": "Android in the Wild",
+    "kind": "dataset",
+    "url": "https://github.com/google-research/google-research/tree/master/android_in_the_wild",
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/google-research/google-research/master/android_in_the_wild/README.md"
+    ],
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "data-generation",
+      "mobile-navigation"
+    ],
+    "summary": "Human demonstrations of Android tasks with screenshots and touch actions.",
+    "verify_terms": [
+      "Android in the Wild"
+    ],
+    "editorial_reviewed": true,
+    "paper_ids": [
+      "2307.10088"
+    ],
+    "reviewed_sha256": "6d8964c95db41dada1d5867e50a5ec61f6cb90595965d0e72e010b8e4a12dcb2",
+    "reviewed_at": "2026-10-16T06:38:29Z",
+    "details": {
+      "sample_count": 715142,
+      "sample_unit": "episodes",
+      "example_count": 5689993,
+      "modalities": [
+        "screenshot",
+        "action",
+        "instruction"
+      ],
+      "access": "public download referenced by publisher",
+      "download_url": "https://console.cloud.google.com/storage/browser/gresearch/android-in-the-wild"
+    }
+  },
+  {
+    "name": "Rico",
+    "kind": "dataset",
+    "url": "https://www.interactionmining.org/archive/rico",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "screen-understanding"
+    ],
+    "summary": "Mobile app screenshots, view hierarchies, and interaction traces for UI research.",
+    "verify_terms": [
+      "Rico",
+      "RICO"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "daa370b9aae5bce9f5171ea81fa4574c6155e04177af1db138529efd76377f89",
+    "reviewed_at": "2026-10-16T06:38:29Z",
+    "details": {
+      "sample_count": null,
+      "sample_unit": "UI screens",
+      "reported_scale": {
+        "value": 66000,
+        "comparison": ">",
+        "unit": "unique UI screens"
+      },
+      "modalities": [
+        "screenshot",
+        "view-hierarchy",
+        "interaction-trace"
+      ]
+    }
+  },
+  {
+    "name": "Midscene.js",
+    "kind": "framework",
+    "url": "https://github.com/web-infra-dev/midscene",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "automation",
+      "grounding"
+    ],
+    "summary": "Visual automation toolkit for web, mobile, and desktop interfaces.",
+    "verify_terms": [
+      "Midscene"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "8cd83b12f4e1c1b22c27b6ae3ee5415564e61ff4072349ec512982a548ea6ec3",
+    "reviewed_at": "2026-10-16T06:40:53Z"
+  },
+  {
+    "name": "Open-AutoGLM",
+    "kind": "agent",
+    "url": "https://github.com/zai-org/Open-AutoGLM",
+    "environments": [
+      "android",
+      "ios"
+    ],
+    "topics": [
+      "mobile-navigation"
+    ],
+    "summary": "Phone agent model and framework with device interaction tooling.",
+    "verify_terms": [
+      "AutoGLM"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "de9c289c418218d40cdf1731775158af771d010266d7ea2aa398f2dc91f22acc",
+    "reviewed_at": "2026-10-16T06:40:53Z"
+  },
+  {
+    "name": "Playwright MCP",
+    "kind": "tool",
+    "url": "https://github.com/microsoft/playwright-mcp",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "automation",
+      "tool-integration"
+    ],
+    "summary": "MCP server exposing browser interaction tools for agents.",
+    "verify_terms": [
+      "Playwright"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "b33aa71a13d655e96e6b736d0c9de1e5ddea52f205916ca20b876387ff830e87",
+    "reviewed_at": "2026-10-16T06:40:53Z"
+  },
+  {
+    "name": "Chrome DevTools MCP",
+    "kind": "tool",
+    "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "automation",
+      "tool-integration"
+    ],
+    "summary": "MCP tools for browser control and inspection through Chrome DevTools.",
+    "verify_terms": [
+      "chrome-devtools"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "059a0349daaef6bda98eae6d9384ed349ac94b8033b18be817c317a01b472024",
+    "reviewed_at": "2026-10-16T06:40:53Z"
+  },
+  {
+    "name": "AgentDesk",
+    "kind": "infrastructure",
+    "url": "https://github.com/agentsea/agentdesk",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "sandbox"
+    ],
+    "summary": "Virtual desktop provisioning and control tools for agents.",
+    "verify_terms": [
+      "AgentDesk",
+      "agentdesk"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "3ee6212ef10c39943546d20a3beeed412262f4a8a910120becb5409626569b0f",
+    "reviewed_at": "2026-10-16T06:40:53Z"
+  },
+  {
+    "name": "Lume",
+    "kind": "infrastructure",
+    "url": "https://github.com/trycua/lume",
+    "environments": [
+      "macos",
+      "linux"
+    ],
+    "topics": [
+      "sandbox"
+    ],
+    "summary": "Virtual machine management for local computer-use environments.",
+    "verify_terms": [
+      "Lume",
+      "lume"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "12830b2eeb3edea7af9953b27987f3467fa90803c641e786db09a33643c714d7",
+    "reviewed_at": "2026-10-16T06:40:53Z",
+    "notes": "Lume is a component of the Cua repository. The legacy repository URL now serves the Cua monorepo README; counted as a component, not an independent project.",
+    "component_of": "https://github.com/trycua/cua"
+  },
+  {
+    "name": "MiniWoB++",
+    "kind": "benchmark",
+    "url": "https://github.com/Farama-Foundation/miniwob-plusplus",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "evaluation",
+      "reinforcement-learning"
+    ],
+    "summary": "Browser interaction task environment derived from MiniWoB.",
+    "verify_terms": [
+      "MiniWoB"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "90499776fa1b23e08ac85190ad3be709caa9172ff4f2a0a106b0fa350568e86f",
+    "reviewed_at": "2026-10-16T06:40:54Z"
+  },
+  {
+    "name": "Adversarial Web Agents",
+    "kind": "benchmark",
+    "url": "https://github.com/ChenWu98/agent-attack",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "safety-security",
+      "robustness"
+    ],
+    "summary": "Evaluation resources for adversarial attacks on multimodal web agents.",
+    "verify_terms": [
+      "agent",
+      "attack"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "0759e1212025ac487c1646877f97526d35db1a62337192800acaff7684471087",
+    "reviewed_at": "2026-10-16T06:40:54Z"
+  },
+  {
+    "name": "AdvWeb",
+    "kind": "framework",
+    "url": "https://github.com/AI-secure/AdvWeb",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "safety-security",
+      "robustness"
+    ],
+    "summary": "Research framework for adversarial attacks on web agents.",
+    "verify_terms": [
+      "AdvWeb",
+      "adversarial"
+    ],
+    "editorial_reviewed": false,
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/AI-secure/AdvWeb/main/README.md"
+    ]
+  },
+  {
+    "name": "PopupAttack",
+    "kind": "benchmark",
+    "url": "https://github.com/SALT-NLP/PopupAttack",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "safety-security"
+    ],
+    "summary": "Resources for evaluating GUI agents under malicious popup instructions.",
+    "verify_terms": [
+      "Popup",
+      "attack"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "24251854f9481af5c8db65750197604546f000b54868930a6de79adc365db854",
+    "reviewed_at": "2026-10-16T06:40:54Z"
+  },
+  {
+    "name": "OS-Sentinel",
+    "kind": "framework",
+    "url": "https://github.com/OS-Copilot/OS-Sentinel",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "safety-security"
+    ],
+    "summary": "Safety-oriented research for computer-use agents.",
+    "verify_terms": [
+      "Sentinel"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "42bf4aea8369ac2909bf27bcb1078756c2c26567e2b46284c8f3a9e4c4f636c1",
+    "reviewed_at": "2026-10-16T06:40:54Z"
+  },
+  {
+    "name": "Comet",
+    "kind": "product",
+    "url": "https://www.perplexity.ai/comet",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "web-navigation"
+    ],
+    "summary": "Perplexity browser with an integrated AI assistant.",
+    "verify_terms": [
+      "Comet"
+    ],
+    "editorial_reviewed": false,
+    "details": {
+      "access": "publisher-managed",
+      "pricing_url": null,
+      "availability": "not independently tested"
+    }
+  },
+  {
+    "name": "Claude for Chrome",
+    "kind": "product",
+    "url": "https://claude.com/chrome",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "web-navigation"
+    ],
+    "summary": "Claude browser extension for interacting with websites.",
+    "verify_terms": [
+      "Chrome",
+      "chrome"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "bd3e99c1e12588bc3136dfa27de2c0d5790b6f6f25f2696988eb182c6b1ef670",
+    "reviewed_at": "2026-10-16T06:40:54Z",
+    "details": {
+      "access": "publisher-managed",
+      "pricing_url": null,
+      "availability": "not independently tested"
+    },
+    "publisher_id": "organization:anthropic"
+  },
+  {
+    "name": "ChatGPT Atlas",
+    "kind": "product",
+    "url": "https://openai.com/index/introducing-chatgpt-atlas/",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "web-navigation"
+    ],
+    "summary": "OpenAI browser product integrating ChatGPT and agent capabilities.",
+    "verify_terms": [
+      "Atlas"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "fa71ad6addd026ecd017059219c2457baf6b99c5c94f67350c0f9637c459c852",
+    "reviewed_at": "2026-10-16T06:40:54Z",
+    "details": {
+      "access": "publisher-managed",
+      "pricing_url": null,
+      "availability": "not independently tested"
+    },
+    "publisher_id": "organization:openai"
+  },
+  {
+    "id": "organization:openai",
+    "name": "OpenAI",
+    "kind": "company",
+    "url": "https://openai.com/index/computer-using-agent/",
+    "evidence_urls": [
+      "https://openai.com/index/computer-using-agent/"
+    ],
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "industry"
+    ],
+    "summary": "Publisher or product brand associated with OpenAI computer-use or browser automation offerings.",
+    "verify_terms": [
+      "OpenAI"
+    ],
+    "editorial_reviewed": true,
+    "notes": "Publisher/brand identity only. Corporate ownership, jurisdiction, financing, and commercial traction are not inferred.",
+    "reviewed_sha256": "14f573af0c4ea3e5922b8831b7f03724936963e293d7c0aaa3fccbb71dbb0cfa",
+    "reviewed_at": "2026-10-16T06:38:27Z"
+  },
+  {
+    "id": "organization:anthropic",
+    "name": "Anthropic",
+    "kind": "company",
+    "url": "https://claude.com/chrome",
+    "evidence_urls": [
+      "https://claude.com/chrome"
+    ],
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "industry"
+    ],
+    "summary": "Publisher or product brand associated with Anthropic computer-use or browser automation offerings.",
+    "verify_terms": [
+      "Anthropic"
+    ],
+    "editorial_reviewed": true,
+    "notes": "Publisher/brand identity only. Corporate ownership, jurisdiction, financing, and commercial traction are not inferred.",
+    "reviewed_sha256": "bd3e99c1e12588bc3136dfa27de2c0d5790b6f6f25f2696988eb182c6b1ef670",
+    "reviewed_at": "2026-10-16T06:40:54Z"
+  },
+  {
+    "id": "organization:google",
+    "name": "Google",
+    "kind": "company",
+    "url": "https://ai.google.dev/gemini-api/docs/computer-use",
+    "evidence_urls": [
+      "https://ai.google.dev/gemini-api/docs/computer-use"
+    ],
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "industry"
+    ],
+    "summary": "Publisher or product brand associated with Google computer-use or browser automation offerings.",
+    "verify_terms": [
+      "Google"
+    ],
+    "editorial_reviewed": true,
+    "notes": "Publisher/brand identity only. Corporate ownership, jurisdiction, financing, and commercial traction are not inferred.",
+    "reviewed_sha256": "e7062cfb4c0948d3a2274843f9f493f34cb40dfd634371408086df6141a0e036",
+    "reviewed_at": "2026-10-16T06:38:27Z"
+  },
+  {
+    "id": "organization:h",
+    "name": "H",
+    "kind": "company",
+    "url": "https://hcompany.ai/research/models",
+    "evidence_urls": [
+      "https://hcompany.ai/research/models"
+    ],
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "industry"
+    ],
+    "summary": "Publisher or product brand associated with H computer-use or browser automation offerings.",
+    "verify_terms": [
+      "Holo"
+    ],
+    "editorial_reviewed": true,
+    "notes": "Publisher/brand identity only. Corporate ownership, jurisdiction, financing, and commercial traction are not inferred.",
+    "reviewed_sha256": "84ce0fd682367a6dac5cc5abc39d5c877556024bbf6ffdad30f76fc2ec08523f",
+    "reviewed_at": "2026-10-16T06:38:27Z"
+  },
+  {
+    "id": "organization:browserbase",
+    "name": "Browserbase",
+    "kind": "company",
+    "url": "https://www.browserbase.com/",
+    "evidence_urls": [
+      "https://www.browserbase.com/"
+    ],
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "industry"
+    ],
+    "summary": "Publisher or product brand associated with Browserbase computer-use or browser automation offerings.",
+    "verify_terms": [
+      "Browserbase"
+    ],
+    "editorial_reviewed": true,
+    "notes": "Publisher/brand identity only. Corporate ownership, jurisdiction, financing, and commercial traction are not inferred.",
+    "reviewed_sha256": "d86315819750e4a5fde12bce85a03c61cf68e704cb54146e6180027a37471b72",
+    "reviewed_at": "2026-10-16T06:38:27Z"
+  },
+  {
+    "id": "organization:browser-use",
+    "name": "Browser Use",
+    "kind": "company",
+    "url": "https://browser-use.com/",
+    "evidence_urls": [
+      "https://browser-use.com/"
+    ],
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "industry"
+    ],
+    "summary": "Publisher or product brand associated with Browser Use computer-use or browser automation offerings.",
+    "verify_terms": [
+      "Browser Use"
+    ],
+    "editorial_reviewed": true,
+    "notes": "Publisher/brand identity only. Corporate ownership, jurisdiction, financing, and commercial traction are not inferred.",
+    "reviewed_sha256": "69e029d01dda3806f88abfaee01da08c671adcb3555f1314e975ab8942a686ae",
+    "reviewed_at": "2026-10-16T06:38:27Z",
+    "publisher_id": "organization:browser-use"
+  },
+  {
+    "id": "organization:skyvern",
+    "name": "Skyvern",
+    "kind": "company",
+    "url": "https://www.skyvern.com/",
+    "evidence_urls": [
+      "https://www.skyvern.com/"
+    ],
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "industry"
+    ],
+    "summary": "Publisher or product brand associated with Skyvern computer-use or browser automation offerings.",
+    "verify_terms": [
+      "Skyvern"
+    ],
+    "editorial_reviewed": true,
+    "notes": "Publisher/brand identity only. Corporate ownership, jurisdiction, financing, and commercial traction are not inferred.",
+    "reviewed_sha256": "7a8813c174043d1a27cb3766f77c90beb1a08eeedee935264d6237d6a57672a5",
+    "reviewed_at": "2026-10-16T06:38:27Z",
+    "publisher_id": "organization:skyvern"
+  },
+  {
+    "id": "organization:askui",
+    "name": "AskUI",
+    "kind": "company",
+    "url": "https://www.askui.com/",
+    "evidence_urls": [
+      "https://www.askui.com/"
+    ],
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "industry"
+    ],
+    "summary": "Publisher or product brand associated with AskUI computer-use or browser automation offerings.",
+    "verify_terms": [
+      "AskUI"
+    ],
+    "editorial_reviewed": true,
+    "notes": "Publisher/brand identity only. Corporate ownership, jurisdiction, financing, and commercial traction are not inferred.",
+    "reviewed_sha256": "df8615d0687cba27e5558ea3f7ecb1823871e3804522603dd62b52dcf127ac89",
+    "reviewed_at": "2026-10-16T06:38:27Z",
+    "publisher_id": "organization:askui"
+  },
+  {
+    "id": "organization:simular",
+    "name": "Simular",
+    "kind": "company",
+    "url": "https://www.simular.ai/",
+    "evidence_urls": [
+      "https://www.simular.ai/"
+    ],
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "industry"
+    ],
+    "summary": "Publisher or product brand associated with Simular computer-use or browser automation offerings.",
+    "verify_terms": [
+      "Simular"
+    ],
+    "editorial_reviewed": true,
+    "notes": "Publisher/brand identity only. Corporate ownership, jurisdiction, financing, and commercial traction are not inferred.",
+    "reviewed_sha256": "4cb358ab96e57a66d2b268a17963f92be249325fb0687a78985a6d9773ff5a81",
+    "reviewed_at": "2026-10-16T06:38:27Z",
+    "publisher_id": "organization:simular"
+  },
+  {
+    "id": "organization:manus",
+    "name": "Manus",
+    "kind": "company",
+    "url": "https://manus.im/",
+    "evidence_urls": [
+      "https://manus.im/"
+    ],
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "industry"
+    ],
+    "summary": "Publisher or product brand associated with Manus computer-use or browser automation offerings.",
+    "verify_terms": [
+      "Manus"
+    ],
+    "editorial_reviewed": true,
+    "notes": "Publisher/brand identity only. Corporate ownership, jurisdiction, financing, and commercial traction are not inferred.",
+    "reviewed_sha256": "832b84c366eaadc69e328f207f2659cf07a0901c47662244831c0f1695d02efd",
+    "reviewed_at": "2026-10-16T06:38:28Z",
+    "publisher_id": "organization:manus"
+  },
+  {
+    "id": "organization:steel",
+    "name": "Steel",
+    "kind": "company",
+    "url": "https://steel.dev/",
+    "evidence_urls": [
+      "https://steel.dev/"
+    ],
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "industry"
+    ],
+    "summary": "Publisher or product brand associated with Steel computer-use or browser automation offerings.",
+    "verify_terms": [
+      "Steel"
+    ],
+    "editorial_reviewed": true,
+    "notes": "Publisher/brand identity only. Corporate ownership, jurisdiction, financing, and commercial traction are not inferred.",
+    "reviewed_sha256": "5eacfa15c116ddeb02f6fd731fbb2e9856a933d743870fe41d947ef3b01aeb6f",
+    "reviewed_at": "2026-10-16T06:38:28Z"
+  },
+  {
+    "id": "organization:e2b",
+    "name": "E2B",
+    "kind": "company",
+    "url": "https://e2b.dev/",
+    "evidence_urls": [
+      "https://e2b.dev/"
+    ],
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "industry"
+    ],
+    "summary": "Publisher or product brand associated with E2B computer-use or browser automation offerings.",
+    "verify_terms": [
+      "E2B"
+    ],
+    "editorial_reviewed": true,
+    "notes": "Publisher/brand identity only. Corporate ownership, jurisdiction, financing, and commercial traction are not inferred.",
+    "reviewed_sha256": "6232364481bbae45a3fcec1d1aca858493baff0693ececa98b09b610183e6796",
+    "reviewed_at": "2026-10-16T06:38:28Z",
+    "publisher_id": "organization:e2b"
+  },
+  {
+    "id": "organization:browserless",
+    "name": "Browserless",
+    "kind": "company",
+    "url": "https://www.browserless.io/",
+    "evidence_urls": [
+      "https://www.browserless.io/"
+    ],
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "industry"
+    ],
+    "summary": "Publisher or product brand associated with Browserless computer-use or browser automation offerings.",
+    "verify_terms": [
+      "browserless"
+    ],
+    "editorial_reviewed": true,
+    "notes": "Publisher/brand identity only. Corporate ownership, jurisdiction, financing, and commercial traction are not inferred.",
+    "reviewed_sha256": "e044e75ec1c2a74f2bee8c02b6efae05c399ec3537e34dd861dcf4a0a25dc182",
+    "reviewed_at": "2026-10-16T06:38:28Z",
+    "publisher_id": "organization:browserless"
+  },
+  {
+    "id": "organization:hyperbrowser",
+    "name": "Hyperbrowser",
+    "kind": "company",
+    "url": "https://www.hyperbrowser.ai/",
+    "evidence_urls": [
+      "https://www.hyperbrowser.ai/"
+    ],
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "industry"
+    ],
+    "summary": "Publisher or product brand associated with Hyperbrowser computer-use or browser automation offerings.",
+    "verify_terms": [
+      "Hyperbrowser"
+    ],
+    "editorial_reviewed": true,
+    "notes": "Publisher/brand identity only. Corporate ownership, jurisdiction, financing, and commercial traction are not inferred.",
+    "reviewed_sha256": "47f31d41c806e97143fa046c4e1f5e916096d158bee0bff43efd15a7d78053b1",
+    "reviewed_at": "2026-10-16T06:38:28Z",
+    "publisher_id": "organization:hyperbrowser"
+  },
+  {
+    "id": "organization:tinyfish",
+    "name": "TinyFish",
+    "kind": "company",
+    "url": "https://www.tinyfish.ai/",
+    "evidence_urls": [
+      "https://www.tinyfish.ai/"
+    ],
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "industry"
+    ],
+    "summary": "Publisher or product brand associated with TinyFish computer-use or browser automation offerings.",
+    "verify_terms": [
+      "TinyFish"
+    ],
+    "editorial_reviewed": true,
+    "notes": "Publisher/brand identity only. Corporate ownership, jurisdiction, financing, and commercial traction are not inferred.",
+    "reviewed_sha256": "461de0060fae1ded024dfa724624b001665b463b14f454afafebd0c9a2dce71d",
+    "reviewed_at": "2026-10-16T06:38:28Z",
+    "publisher_id": "organization:tinyfish"
+  },
+  {
+    "id": "organization:browseract",
+    "name": "BrowserAct",
+    "kind": "company",
+    "url": "https://www.browseract.com/",
+    "evidence_urls": [
+      "https://www.browseract.com/"
+    ],
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "industry"
+    ],
+    "summary": "Publisher or product brand associated with BrowserAct computer-use or browser automation offerings.",
+    "verify_terms": [
+      "BrowserAct"
+    ],
+    "editorial_reviewed": true,
+    "notes": "Publisher/brand identity only. Corporate ownership, jurisdiction, financing, and commercial traction are not inferred.",
+    "reviewed_sha256": "463db02b607e7215a4421440c4d274ee3546bd9eefc50ed9e10f64d27d7f8f38",
+    "reviewed_at": "2026-10-16T06:38:28Z",
+    "publisher_id": "organization:browseract"
+  },
+  {
+    "name": "GUI Agents with Foundation Models: A Comprehensive Survey",
+    "kind": "survey",
+    "url": "https://arxiv.org/abs/2411.04890",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "survey"
+    ],
+    "summary": "Survey of research directions in GUI or computer-use agents.",
+    "verify_terms": [
+      "GUI Agents with Foundatio"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c87e97eb397da04806d53145cf9c13be739fc657bb54dca9318c8c4ed2a36249",
+    "reviewed_at": "2026-10-16T06:36:58Z"
+  },
+  {
+    "name": "Large Language Model-Brained GUI Agents: A Survey",
+    "kind": "survey",
+    "url": "https://arxiv.org/abs/2411.18279",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "survey"
+    ],
+    "summary": "Survey of research directions in GUI or computer-use agents.",
+    "verify_terms": [
+      "Large Language Model-Brai"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c87e97eb397da04806d53145cf9c13be739fc657bb54dca9318c8c4ed2a36249",
+    "reviewed_at": "2026-10-16T06:36:58Z"
+  },
+  {
+    "name": "GUI Agents: A Survey",
+    "kind": "survey",
+    "url": "https://arxiv.org/abs/2412.13501",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "survey"
+    ],
+    "summary": "Survey of research directions in GUI or computer-use agents.",
+    "verify_terms": [
+      "GUI Agents: A Survey"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c87e97eb397da04806d53145cf9c13be739fc657bb54dca9318c8c4ed2a36249",
+    "reviewed_at": "2026-10-16T06:36:58Z"
+  },
+  {
+    "name": "A Comprehensive Survey of Agents for Computer Use: Foundations, Challenges, and Future Directions",
+    "kind": "survey",
+    "url": "https://arxiv.org/abs/2501.16150",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "survey"
+    ],
+    "summary": "Survey of research directions in GUI or computer-use agents.",
+    "verify_terms": [
+      "A Comprehensive Survey of"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c87e97eb397da04806d53145cf9c13be739fc657bb54dca9318c8c4ed2a36249",
+    "reviewed_at": "2026-10-16T06:36:58Z"
+  },
+  {
+    "name": "Towards Trustworthy GUI Agents: A Survey",
+    "kind": "survey",
+    "url": "https://arxiv.org/abs/2503.23434",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "survey",
+      "safety-security"
+    ],
+    "summary": "Survey of research directions in GUI or computer-use agents.",
+    "verify_terms": [
+      "Towards Trustworthy GUI A"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T06:36:54Z"
+  },
+  {
+    "name": "A Survey on (M)LLM-Based GUI Agents",
+    "kind": "survey",
+    "url": "https://arxiv.org/abs/2504.13865",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "survey"
+    ],
+    "summary": "Survey of research directions in GUI or computer-use agents.",
+    "verify_terms": [
+      "A Survey on (M)LLM-Based "
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T06:36:54Z"
+  },
+  {
+    "name": "LLM-Powered GUI Agents in Phone Automation: Surveying Progress and Prospects",
+    "kind": "survey",
+    "url": "https://arxiv.org/abs/2504.19838",
+    "environments": [
+      "android",
+      "ios"
+    ],
+    "topics": [
+      "survey"
+    ],
+    "summary": "Survey of research directions in GUI or computer-use agents.",
+    "verify_terms": [
+      "LLM-Powered GUI Agents in"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T06:36:54Z"
+  },
+  {
+    "name": "A Survey on GUI Agents with Foundation Models Enhanced by Reinforcement Learning",
+    "kind": "survey",
+    "url": "https://arxiv.org/abs/2504.20464",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "survey",
+      "reinforcement-learning"
+    ],
+    "summary": "Survey of research directions in GUI or computer-use agents.",
+    "verify_terms": [
+      "A Survey on GUI Agents wi"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T06:36:54Z"
+  },
+  {
+    "name": "A Survey on the Safety and Security Threats of Computer-Using Agents: JARVIS or Ultron?",
+    "kind": "survey",
+    "url": "https://arxiv.org/abs/2505.10924",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "survey",
+      "safety-security"
+    ],
+    "summary": "Survey of research directions in GUI or computer-use agents.",
+    "verify_terms": [
+      "A Survey on the Safety an"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T06:36:54Z"
+  },
+  {
+    "name": "OS Agents: A Survey on MLLM-based Agents for General Computing Devices Use",
+    "kind": "survey",
+    "url": "https://arxiv.org/abs/2508.04482",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "survey"
+    ],
+    "summary": "Survey of research directions in GUI or computer-use agents.",
+    "verify_terms": [
+      "OS Agents: A Survey on ML"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2506.10387%2C2506.14866%2C2506.20332%2C2507.00008%2C2507.02592%2C2507.03730%2C2507.04227%2C2507.05445%2C2507.05673%2C2507.05720%2C2507.05791%2C2507.14293%2C2507.14799%2C2507.15846%2C2507.16853%2C2507.19132%2C2507.19478%2C2507.21071%2C2507.22025%2C2507.22358%2C2507.23779%2C2508.00935%2C2508.01330%2C2508.03700%2C2508.03923%2C2508.04010%2C2508.04026%2C2508.04482%2C2508.04700%2C2508.05615%2C2508.05731%2C2508.09057%2C2508.09123%2C2508.13167%2C2508.14040%2C2508.15144%2C2508.18689%2C2508.19679%2C2508.20096%2C2509.02544%2C2509.03891%2C2509.06477%2C2509.10723%2C2509.11250%2C2509.11543%2C2509.15221%2C2509.15566%2C2509.15738%2C2509.18119%2C2510.01354&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c208e36ae75cef4b32cfcb2f8182dd4aaaa218e3119bb3d4a2c20a5832f8b1ee",
+    "reviewed_at": "2026-10-16T06:31:49Z"
+  },
+  {
+    "name": "Efficient GUI Agents: A Systems Survey of Observation, Memory, Action, and Runtime Optimization",
+    "kind": "survey",
+    "url": "https://arxiv.org/abs/2609.02309",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "survey"
+    ],
+    "summary": "Survey of research directions in GUI or computer-use agents.",
+    "verify_terms": [
+      "Efficient GUI Agents: A S"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=100&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "13d3fb5811d203f2e6b80eb45d30ebc0b3cfefd88e2034ffa3b1b80687bef285",
+    "reviewed_at": "2026-10-16T06:36:32Z"
+  },
+  {
+    "name": "UI-TARS 1.5 7B",
+    "kind": "model",
+    "url": "https://huggingface.co/ByteDance-Seed/UI-TARS-1.5-7B",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "planning"
+    ],
+    "summary": "Released model checkpoint associated with UI-TARS.",
+    "verify_terms": [
+      "ByteDance-Seed/UI-TARS-1.5-7B"
+    ],
+    "family_url": "https://github.com/bytedance/UI-TARS",
+    "editorial_reviewed": true,
+    "details": {
+      "artifact_type": "model-checkpoint"
+    },
+    "reviewed_sha256": "73b8964fb8ae2c25009dd4621549a3549d357c4c5c766ef7ed441acaef7efbc9",
+    "reviewed_at": "2026-10-16T06:50:49Z"
+  },
+  {
+    "name": "UI-Venus 2 9B",
+    "kind": "model",
+    "url": "https://huggingface.co/inclusionAI/UI-Venus-2-9b",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "planning"
+    ],
+    "summary": "Released model checkpoint associated with UI-Venus.",
+    "verify_terms": [
+      "inclusionAI/UI-Venus-2-9b"
+    ],
+    "family_url": "https://github.com/inclusionAI/UI-Venus",
+    "editorial_reviewed": true,
+    "details": {
+      "artifact_type": "model-checkpoint"
+    },
+    "reviewed_sha256": "0097be2c0e5c3f3c8aace10de835b0d7c1075531cc7823287c3f5488aebaea08",
+    "reviewed_at": "2026-10-16T06:50:49Z"
+  },
+  {
+    "name": "EvoCUA 32B 20260105",
+    "kind": "model",
+    "url": "https://huggingface.co/meituan/EvoCUA-32B-20260105",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "reinforcement-learning",
+      "planning"
+    ],
+    "summary": "Released model checkpoint associated with EvoCUA.",
+    "verify_terms": [
+      "meituan/EvoCUA-32B-20260105"
+    ],
+    "family_url": "https://github.com/meituan/EvoCUA",
+    "editorial_reviewed": true,
+    "details": {
+      "artifact_type": "model-checkpoint"
+    },
+    "reviewed_sha256": "f42d9537a05f2562b57e5d508f95c3d29a9107d06574318c5715c7da5fb2a86d",
+    "reviewed_at": "2026-10-16T06:50:49Z"
+  },
+  {
+    "name": "EvoCUA 8B 20260105",
+    "kind": "model",
+    "url": "https://huggingface.co/meituan/EvoCUA-8B-20260105",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "reinforcement-learning",
+      "planning"
+    ],
+    "summary": "Released model checkpoint associated with EvoCUA.",
+    "verify_terms": [
+      "meituan/EvoCUA-8B-20260105"
+    ],
+    "family_url": "https://github.com/meituan/EvoCUA",
+    "editorial_reviewed": true,
+    "details": {
+      "artifact_type": "model-checkpoint"
+    },
+    "reviewed_sha256": "3fd1e50729e97746fec57c7d5da6f093d76fb9174e74c3f2c630fed5486fe995",
+    "reviewed_at": "2026-10-16T06:50:49Z"
+  },
+  {
+    "name": "Fara 7B",
+    "kind": "model",
+    "url": "https://huggingface.co/microsoft/Fara-7b",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "planning",
+      "web-navigation"
+    ],
+    "summary": "Released model checkpoint associated with Fara.",
+    "verify_terms": [
+      "microsoft/Fara-7b"
+    ],
+    "family_url": "https://github.com/microsoft/fara",
+    "editorial_reviewed": true,
+    "details": {
+      "artifact_type": "model-checkpoint"
+    },
+    "reviewed_sha256": "92bfa3c1f34e7e76a35f72389a3b3dd9fdab5fcff0569c9fc8aabe331c703f07",
+    "reviewed_at": "2026-10-16T06:50:49Z"
+  },
+  {
+    "name": "GUI-Actor 7B Qwen2-VL",
+    "kind": "model",
+    "url": "https://huggingface.co/microsoft/GUI-Actor-7B-Qwen2-VL",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding"
+    ],
+    "summary": "Released model checkpoint associated with GUI-Actor.",
+    "verify_terms": [
+      "microsoft/GUI-Actor-7B-Qwen2-VL"
+    ],
+    "family_url": "https://github.com/microsoft/GUI-Actor",
+    "editorial_reviewed": true,
+    "details": {
+      "artifact_type": "model-checkpoint"
+    },
+    "reviewed_sha256": "c76d9811dc6152d1b33bec7f19e808c1882e86cca79bd3fea90075ac9df5c7e6",
+    "reviewed_at": "2026-10-16T06:50:49Z"
+  },
+  {
+    "name": "Phi-Ground checkpoint",
+    "kind": "model",
+    "url": "https://huggingface.co/microsoft/Phi-Ground",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding"
+    ],
+    "summary": "Released model checkpoint associated with Phi-Ground.",
+    "verify_terms": [
+      "microsoft/Phi-Ground"
+    ],
+    "family_url": "https://github.com/microsoft/Phi-Ground",
+    "editorial_reviewed": true,
+    "details": {
+      "artifact_type": "model-checkpoint"
+    },
+    "reviewed_sha256": "ce8e0ebc3d4c2642bfb6a1d807176eae4c14b52fbc6f221b3c234a9d55e0d362",
+    "reviewed_at": "2026-10-16T06:50:49Z"
+  },
+  {
+    "name": "OS-Atlas Base 4B",
+    "kind": "model",
+    "url": "https://huggingface.co/OS-Copilot/OS-Atlas-Base-4B",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding"
+    ],
+    "summary": "Released model checkpoint associated with OS-Atlas.",
+    "verify_terms": [
+      "OS-Copilot/OS-Atlas-Base-4B"
+    ],
+    "family_url": "https://github.com/OS-Copilot/OS-Atlas",
+    "editorial_reviewed": true,
+    "details": {
+      "artifact_type": "model-checkpoint"
+    },
+    "reviewed_sha256": "20c6679849cd81a871809aa7f96145855739c9170608dfa6ec3653e52bd795cb",
+    "reviewed_at": "2026-10-16T06:50:49Z"
+  },
+  {
+    "name": "OS-Atlas Base 7B",
+    "kind": "model",
+    "url": "https://huggingface.co/OS-Copilot/OS-Atlas-Base-7B",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding"
+    ],
+    "summary": "Released model checkpoint associated with OS-Atlas.",
+    "verify_terms": [
+      "OS-Copilot/OS-Atlas-Base-7B"
+    ],
+    "family_url": "https://github.com/OS-Copilot/OS-Atlas",
+    "editorial_reviewed": true,
+    "details": {
+      "artifact_type": "model-checkpoint"
+    },
+    "reviewed_sha256": "a3355c4f884490efe2dc31ad393b869349c35130cc37370dafa19f4f0f5016b7",
+    "reviewed_at": "2026-10-16T06:50:49Z"
+  },
+  {
+    "name": "UGround V1 7B",
+    "kind": "model",
+    "url": "https://huggingface.co/osunlp/UGround-V1-7B",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding"
+    ],
+    "summary": "Released model checkpoint associated with UGround.",
+    "verify_terms": [
+      "osunlp/UGround-V1-7B"
+    ],
+    "family_url": "https://github.com/OSU-NLP-Group/UGround",
+    "editorial_reviewed": true,
+    "details": {
+      "artifact_type": "model-checkpoint"
+    },
+    "reviewed_sha256": "080c9245276e9ffe5911551a66acd7e91b478f85b96c795d6079465d92580f18",
+    "reviewed_at": "2026-10-16T06:50:49Z"
+  },
+  {
+    "name": "ShowUI 2B",
+    "kind": "model",
+    "url": "https://huggingface.co/showlab/ShowUI-2B",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "efficiency"
+    ],
+    "summary": "Released model checkpoint associated with ShowUI.",
+    "verify_terms": [
+      "showlab/ShowUI-2B"
+    ],
+    "family_url": "https://github.com/showlab/ShowUI",
+    "editorial_reviewed": true,
+    "details": {
+      "artifact_type": "model-checkpoint"
+    },
+    "reviewed_sha256": "bb6d120d4795492a197e0a9e9df5c56b7baa8ac5c08182ce0f20f36c8b65783d",
+    "reviewed_at": "2026-10-16T06:50:49Z"
+  },
+  {
+    "name": "GELab Zero 4B Preview",
+    "kind": "model",
+    "url": "https://huggingface.co/stepfun-ai/GELab-Zero-4B-preview",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "mobile-navigation"
+    ],
+    "summary": "Released model checkpoint associated with GELab Zero.",
+    "verify_terms": [
+      "stepfun-ai/GELab-Zero-4B-preview"
+    ],
+    "family_url": "https://github.com/stepfun-ai/gelab-zero",
+    "editorial_reviewed": true,
+    "details": {
+      "artifact_type": "model-checkpoint"
+    },
+    "reviewed_sha256": "cd1efa947316f13967165ac906400170df6d28446804ba0763a49fc21a731e7e",
+    "reviewed_at": "2026-10-16T06:50:49Z"
+  },
+  {
+    "name": "OpenCUA 72B Preview",
+    "kind": "model",
+    "url": "https://huggingface.co/xlangai/OpenCUA-72B-preview",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "data-generation",
+      "planning"
+    ],
+    "summary": "Released model checkpoint associated with OpenCUA.",
+    "verify_terms": [
+      "xlangai/OpenCUA-72B-preview"
+    ],
+    "family_url": "https://github.com/xlang-ai/OpenCUA",
+    "editorial_reviewed": false,
+    "details": {
+      "artifact_type": "model-checkpoint"
+    }
+  },
+  {
+    "name": "AutoGLM Phone 9B",
+    "kind": "model",
+    "url": "https://huggingface.co/zai-org/AutoGLM-Phone-9B",
+    "environments": [
+      "android",
+      "ios"
+    ],
+    "topics": [
+      "mobile-navigation"
+    ],
+    "summary": "Released model checkpoint associated with Open-AutoGLM.",
+    "verify_terms": [
+      "zai-org/AutoGLM-Phone-9B"
+    ],
+    "family_url": "https://github.com/zai-org/Open-AutoGLM",
+    "editorial_reviewed": true,
+    "details": {
+      "artifact_type": "model-checkpoint"
+    },
+    "reviewed_sha256": "94b02fa7104849cedee8ddd1fa33e22d3039e05ae9dd03033805a000e3fed847",
+    "reviewed_at": "2026-10-16T06:50:49Z"
+  },
+  {
+    "name": "AutoGLM Phone 9B Multilingual",
+    "kind": "model",
+    "url": "https://huggingface.co/zai-org/AutoGLM-Phone-9B-Multilingual",
+    "environments": [
+      "android",
+      "ios"
+    ],
+    "topics": [
+      "mobile-navigation"
+    ],
+    "summary": "Released model checkpoint associated with Open-AutoGLM.",
+    "verify_terms": [
+      "zai-org/AutoGLM-Phone-9B-Multilingual"
+    ],
+    "family_url": "https://github.com/zai-org/Open-AutoGLM",
+    "editorial_reviewed": true,
+    "details": {
+      "artifact_type": "model-checkpoint"
+    },
+    "reviewed_sha256": "d66bc86d9fb61f88d1456b36cb0c2c9ab5e178b55bc9d34f307b35733f9b90bc",
+    "reviewed_at": "2026-10-16T06:50:49Z"
+  }
+]

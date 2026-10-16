@@ -1,0 +1,23 @@
+name: Resource or correction
+description: Suggest a source-backed resource, report a missing asset, or correct a record.
+body:
+  - type: input
+    id: resource
+    attributes:
+      label: Resource name or catalog ID
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Primary source URL
+      description: Official paper, repository, dataset/model card, or publisher documentation.
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: Suggested addition or correction
+      description: Explain scope, evidence, and any uncertain fields. Distinguish code, data, and weights licenses.
+    validations:
+      required: true

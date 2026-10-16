@@ -1,0 +1,58 @@
+# Benchmark catalog
+
+[Home](../README.md) · [Methodology](methodology.md) · [Machine-readable catalog](../data/catalog.jsonl)
+
+Curated metadata, not a performance ranking. Each entry links its first-party evidence. Empty facts remain unknown.
+
+| Resource | Environments | Description | Evidence |
+| --- | --- | --- | --- |
+| [Adversarial Web Agents](https://github.com/ChenWu98/agent-attack) | web | Evaluation resources for adversarial attacks on multimodal web agents. | [Source](https://raw.githubusercontent.com/ChenWu98/agent-attack/HEAD/README.md) · 2026-10-16 |
+| [AndroidArena](https://github.com/AndroidArenaAgent/AndroidArena) | android | Android environment for evaluating language-model-driven agents. | [Source](https://raw.githubusercontent.com/AndroidArenaAgent/AndroidArena/HEAD/README.md) · 2026-10-16 |
+| [AndroidLab](https://github.com/THUDM/Android-Lab) | android | Training and evaluation environment for Android agents. | [Source](https://raw.githubusercontent.com/THUDM/Android-Lab/HEAD/README.md) · 2026-10-16 |
+| [AndroidWorld](https://github.com/google-research/android_world) | android | Android environment with programmatic task evaluation for mobile agents. | [Source](https://raw.githubusercontent.com/google-research/android_world/HEAD/README.md) · 2026-10-16 |
+| [B-MoCA](https://github.com/jylee425/b-moca) | android | Mobile control benchmark with varied interface configurations. | [Source](https://raw.githubusercontent.com/jylee425/b-moca/HEAD/readme.md) · 2026-10-16 |
+| [BrowserGym](https://github.com/ServiceNow/BrowserGym) | web | Unified interfaces for browser-agent tasks and benchmark environments. | [Source](https://raw.githubusercontent.com/ServiceNow/BrowserGym/HEAD/README.md) · 2026-10-16 |
+| [CRAB](https://github.com/camel-ai/crab) | desktop, android | Cross-environment benchmark framework for multimodal agents. | [Source](https://raw.githubusercontent.com/camel-ai/crab/HEAD/README.md) · 2026-10-16 |
+| [GUIHalluBench](https://github.com/ant-research/GUIHalluBench) | cross-platform | Benchmark investigating hallucinations in GUI agents. | [Source](https://github.com/ant-research/GUIHalluBench) · 2026-10-16 |
+| [LlamaTouch](https://github.com/LlamaTouch/LlamaTouch) | android | Mobile UI task evaluation using application state information. | [Source](https://raw.githubusercontent.com/LlamaTouch/LlamaTouch/HEAD/README.md) · 2026-10-16 |
+| [MacAgentBench](https://github.com/JetAstra/MacAgentBench) | macos | Benchmark of tasks in macOS desktop applications. | [Source](https://raw.githubusercontent.com/JetAstra/MacAgentBench/HEAD/README.md) · 2026-10-16 |
+| [MCPWorld](https://github.com/SAAgent/MCPWorld) | cross-platform | Evaluation environment combining computer interaction with tool access. | [Source](https://raw.githubusercontent.com/SAAgent/MCPWorld/HEAD/README.md) · 2026-10-16 |
+| [Mind2Web](https://github.com/OSU-NLP-Group/Mind2Web) | web | Human demonstrations and tasks for generalist web navigation research. | [Source](https://raw.githubusercontent.com/OSU-NLP-Group/Mind2Web/HEAD/README.md) · 2026-10-16 |
+| [MiniWoB++](https://github.com/Farama-Foundation/miniwob-plusplus) | web | Browser interaction task environment derived from MiniWoB. | [Source](https://raw.githubusercontent.com/Farama-Foundation/miniwob-plusplus/HEAD/README.md) · 2026-10-16 |
+| [MMBench-GUI](https://github.com/open-compass/MMBench-GUI) | cross-platform | Multiplatform evaluation framework for GUI capabilities. | [Source](https://raw.githubusercontent.com/open-compass/MMBench-GUI/HEAD/README.md) · 2026-10-16 |
+| [MMInA](https://github.com/shulin16/MMInA) | web | Multihop multimodal internet navigation tasks. | [Source](https://raw.githubusercontent.com/shulin16/MMInA/HEAD/README.md) · 2026-10-16 |
+| [MobileAgentBench](https://github.com/MobileAgentBench/mobile-agent-bench) | android | Evaluation toolkit and tasks for mobile agents. | [Source](https://raw.githubusercontent.com/MobileAgentBench/mobile-agent-bench/HEAD/README.md) · 2026-10-16 |
+| [MobileSafetyBench](https://github.com/jylee425/mobilesafetybench) | android | Benchmark for safety behavior of mobile device agents. | [Source](https://raw.githubusercontent.com/jylee425/mobilesafetybench/HEAD/README.md) · 2026-10-16 |
+| [MobileWorldBench](https://github.com/jacklishufan/MobileWorld) | android | Benchmark of semantic world modeling for mobile GUI agents. | [Source](https://github.com/jacklishufan/MobileWorld) · 2026-10-16 |
+| [OmniAct](https://huggingface.co/datasets/Writer/omniact) | desktop, web | Dataset and benchmark for generating computer interaction programs. | [Source](https://huggingface.co/api/datasets/Writer/omniact) · 2026-10-16 |
+| [Online Mind2Web](https://github.com/OSU-NLP-Group/Online-Mind2Web) | web | Live website evaluation of web agents. | [Source](https://raw.githubusercontent.com/OSU-NLP-Group/Online-Mind2Web/HEAD/README.md) · 2026-10-16 |
+| [OSWorld](https://github.com/xlang-ai/OSWorld) | desktop, linux, windows, macos | Execution-based evaluation of agents performing tasks in real desktop environments. | [Source](https://raw.githubusercontent.com/xlang-ai/OSWorld/HEAD/README.md) · 2026-10-16 |
+| [OSWorld-G](https://github.com/xlang-ai/OSWorld-G) | desktop | Desktop grounding evaluation associated with OSWorld. | [Source](https://raw.githubusercontent.com/xlang-ai/OSWorld-G/HEAD/README.md) · 2026-10-16 |
+| [PopupAttack](https://github.com/SALT-NLP/PopupAttack) | web | Resources for evaluating GUI agents under malicious popup instructions. | [Source](https://raw.githubusercontent.com/SALT-NLP/PopupAttack/HEAD/README.md) · 2026-10-16 |
+| [Precision CUA Bench](https://github.com/microsoft/precision-cua-bench) | cross-platform | Evaluation resources for pixel-precise cursor grounding in code editors. | [Source](https://github.com/microsoft/precision-cua-bench) · 2026-10-16 |
+| [RecreationBench](https://huggingface.co/datasets/Qwen/RecreationBench) | cross-platform | Tasks for recreating reference applications with hybrid computer interaction. | [Source](https://huggingface.co/datasets/Qwen/RecreationBench/raw/main/README.md) · 2026-10-16 |
+| [RiOSWorld](https://github.com/yjyddq/RiOSWorld) | ios | Evaluation environment for agents operating iOS interfaces. | [Source](https://raw.githubusercontent.com/yjyddq/RiOSWorld/HEAD/README.md) · 2026-10-16 |
+| [SaaS-Bench](https://github.com/UniPat-AI/SaaS-Bench) | web | Benchmark for agents interacting with SaaS applications. | [Source](https://raw.githubusercontent.com/UniPat-AI/SaaS-Bench/HEAD/README.md) · 2026-10-16 |
+| [ScienceBoard](https://github.com/OS-Copilot/ScienceBoard) | desktop | Desktop tasks involving scientific software workflows. | [Source](https://raw.githubusercontent.com/OS-Copilot/ScienceBoard/HEAD/README.md) · 2026-10-16 |
+| [ScreenSpot](https://huggingface.co/datasets/rootsautomation/ScreenSpot) | cross-platform | Screenshot-based GUI element grounding benchmark. | [Source](https://huggingface.co/api/datasets/rootsautomation/ScreenSpot) · 2026-10-16 |
+| [ScreenSpot Pro](https://github.com/likaixin2000/ScreenSpot-Pro-GUI-Grounding) | desktop | GUI grounding benchmark focused on professional high-resolution interfaces. | [Source](https://raw.githubusercontent.com/likaixin2000/ScreenSpot-Pro-GUI-Grounding/HEAD/readme.md) · 2026-10-16 |
+| [ScreenSpot v2](https://huggingface.co/datasets/OS-Copilot/ScreenSpot-v2) | cross-platform | Revised ScreenSpot grounding evaluation data from OS-Atlas. | [Source](https://huggingface.co/api/datasets/OS-Copilot/ScreenSpot-v2) · 2026-10-16 |
+| [SPA-Bench](https://github.com/ai-agents-2030/SPA-Bench) | android | Smartphone agent evaluation benchmark. | [Source](https://raw.githubusercontent.com/ai-agents-2030/SPA-Bench/HEAD/README.md) · 2026-10-16 |
+| [Spider2-V](https://github.com/xlang-ai/Spider2-V) | web, desktop | Visual agent evaluation on data-science and engineering workflows. | [Source](https://raw.githubusercontent.com/xlang-ai/Spider2-V/HEAD/README.md) · 2026-10-16 |
+| [VeriWeb (formerly VeriGUI)](https://github.com/VeriGUI-Team/VeriGUI) | web | Verifiable web information-seeking benchmark renamed from VeriGUI; desktop evaluation is described as future work. | [Source](https://raw.githubusercontent.com/VeriGUI-Team/VeriGUI/HEAD/README.md) · 2026-10-16 |
+| [VideoGUI](https://github.com/showlab/videogui) | desktop | Benchmark for desktop GUI tasks derived from instructional videos. | [Source](https://raw.githubusercontent.com/showlab/videogui/HEAD/README.md) · 2026-10-16 |
+| [VisualWebArena](https://github.com/web-arena-x/visualwebarena) | web | Visually grounded web tasks extending the WebArena evaluation setting. | [Source](https://raw.githubusercontent.com/web-arena-x/visualwebarena/HEAD/README.md) · 2026-10-16 |
+| [VisualWebBench](https://github.com/VisualWebBench/VisualWebBench) | web | Evaluation of multimodal models on visual web understanding tasks. | [Source](https://raw.githubusercontent.com/VisualWebBench/VisualWebBench/HEAD/README.md) · 2026-10-16 |
+| [WeaveBench](https://huggingface.co/datasets/wanlilll/WeaveBench) | desktop, linux | Computer-use benchmark mixing graphical interaction and code execution. | [Source](https://huggingface.co/api/datasets/wanlilll/WeaveBench) · 2026-10-16 |
+| [WebArena](https://github.com/web-arena-x/webarena) | web | Self-hosted web environments and tasks for evaluating autonomous web agents. | [Source](https://raw.githubusercontent.com/web-arena-x/webarena/HEAD/README.md) · 2026-10-16 |
+| [WebCanvas](https://github.com/iMeanAI/WebCanvas) | web | Framework and evaluation resources for real-world web agents. | [Source](https://raw.githubusercontent.com/iMeanAI/WebCanvas/HEAD/README.md) · 2026-10-16 |
+| [WebGames](https://github.com/convergence-ai/webgames) | web | Browser games used to evaluate interactive agents. | [Source](https://raw.githubusercontent.com/convergence-ai/webgames/HEAD/README.md) · 2026-10-16 |
+| [WebLINX](https://github.com/mcgill-nlp/weblinx) | web | Demonstrations and evaluation for conversational web navigation. | [Source](https://raw.githubusercontent.com/mcgill-nlp/weblinx/HEAD/README.md) · 2026-10-16 |
+| [WebShop](https://github.com/princeton-nlp/WebShop) | web | Simulated shopping environment for instruction-following web agents. | [Source](https://raw.githubusercontent.com/princeton-nlp/WebShop/HEAD/README.md) · 2026-10-16 |
+| [WebVoyager](https://github.com/MinorJerry/WebVoyager) | web | Multimodal web navigation agent and evaluation tasks on real websites. | [Source](https://raw.githubusercontent.com/MinorJerry/WebVoyager/HEAD/README.md) · 2026-10-16 |
+| [Windows Agent Arena](https://github.com/microsoft/WindowsAgentArena) | windows, desktop | Windows desktop agent evaluation environment. | [Source](https://raw.githubusercontent.com/microsoft/WindowsAgentArena/HEAD/README.md) · 2026-10-16 |
+| [WindowsWorld](https://github.com/HITsz-TMG/WindowsWorld) | windows | Cross-application Windows benchmark with intermediate task evaluation. | [Source](https://raw.githubusercontent.com/HITsz-TMG/WindowsWorld/HEAD/README.md) · 2026-10-16 |
+| [WorkArena](https://github.com/ServiceNow/WorkArena) | web | Browser-based enterprise workflow tasks built around ServiceNow. | [Source](https://raw.githubusercontent.com/ServiceNow/WorkArena/HEAD/README.md) · 2026-10-16 |
+| [WorldGUI](https://github.com/showlab/WorldGUI) | desktop | GUI agent evaluation with varied initial states. | [Source](https://raw.githubusercontent.com/showlab/WorldGUI/HEAD/README.md) · 2026-10-16 |
+
+Detailed notes and separate code/data/weights license declarations are in `data/catalog.jsonl`.

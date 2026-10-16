@@ -1,0 +1,240 @@
+[
+  {
+    "id": "showlab-gui",
+    "name": "ShowLab Awesome GUI Agent",
+    "url": "https://raw.githubusercontent.com/showlab/Awesome-GUI-Agent/main/README.md",
+    "homepage": "https://github.com/showlab/Awesome-GUI-Agent",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "benchmarks",
+      "datasets",
+      "models"
+    ]
+  },
+  {
+    "id": "zju-gui",
+    "name": "ZJU REAL Awesome GUI Agents",
+    "url": "https://raw.githubusercontent.com/ZJU-REAL/Awesome-GUI-Agents/main/README.md",
+    "homepage": "https://github.com/ZJU-REAL/Awesome-GUI-Agents",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "models",
+      "benchmarks"
+    ]
+  },
+  {
+    "id": "os-agent-survey",
+    "name": "OS Agents Survey",
+    "url": "https://raw.githubusercontent.com/OS-Agent-Survey/OS-Agent-Survey/main/README.md",
+    "homepage": "https://github.com/OS-Agent-Survey/OS-Agent-Survey",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "models",
+      "safety"
+    ]
+  },
+  {
+    "id": "wjhou-cua",
+    "name": "Awesome Computer Use Agents — wjhou",
+    "url": "https://raw.githubusercontent.com/wjhou/awesome-computer-use-agents/main/README.md",
+    "homepage": "https://github.com/wjhou/awesome-computer-use-agents",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "products",
+      "frameworks"
+    ]
+  },
+  {
+    "id": "steel-web",
+    "name": "Steel Awesome Web Agents",
+    "url": "https://raw.githubusercontent.com/steel-dev/awesome-web-agents/main/README.md",
+    "homepage": "https://github.com/steel-dev/awesome-web-agents",
+    "role": "discovery",
+    "scope": [
+      "browser",
+      "products",
+      "infrastructure"
+    ]
+  },
+  {
+    "id": "steel-web-archive",
+    "name": "Steel Web Agents Archive",
+    "url": "https://raw.githubusercontent.com/steel-dev/awesome-web-agents/main/ARCHIVE.md",
+    "homepage": "https://github.com/steel-dev/awesome-web-agents/blob/main/ARCHIVE.md",
+    "role": "discovery",
+    "scope": [
+      "browser",
+      "history"
+    ]
+  },
+  {
+    "id": "gui-datasets",
+    "name": "Computer Browser Phone Use Agent Datasets",
+    "url": "https://raw.githubusercontent.com/Khang-9966/Computer-Browser-Phone-Use-Agent-Datasets/main/README.md",
+    "homepage": "https://github.com/Khang-9966/Computer-Browser-Phone-Use-Agent-Datasets",
+    "role": "discovery",
+    "scope": [
+      "datasets",
+      "benchmarks"
+    ]
+  },
+  {
+    "id": "delunn-multimodal",
+    "name": "Awesome Multimodal GUI Agents",
+    "url": "https://raw.githubusercontent.com/DeLunnLi/Awesome-Multimodal-GUI-Agents/main/README.md",
+    "homepage": "https://github.com/DeLunnLi/Awesome-Multimodal-GUI-Agents",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "models",
+      "datasets"
+    ]
+  },
+  {
+    "id": "tianyuan-cua",
+    "name": "Awesome Computer Use — TianyuanYang",
+    "url": "https://raw.githubusercontent.com/TianyuanYang/awesome-computer-use/main/README.md",
+    "homepage": "https://github.com/TianyuanYang/awesome-computer-use",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "frameworks",
+      "benchmarks"
+    ]
+  },
+  {
+    "id": "cdxeve-cua",
+    "name": "Computer Use Agents Overview",
+    "url": "https://raw.githubusercontent.com/cdxeve/awesome-computer-use-agents/main/README.md",
+    "homepage": "https://github.com/cdxeve/awesome-computer-use-agents",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "hybrid",
+      "frameworks"
+    ]
+  },
+  {
+    "id": "supernal-gui",
+    "name": "Awesome GUI Agents — Supernal",
+    "url": "https://raw.githubusercontent.com/supernalintelligence/Awesome-Gui-Agents/main/README.md",
+    "homepage": "https://github.com/supernalintelligence/Awesome-Gui-Agents",
+    "role": "discovery",
+    "scope": [
+      "products",
+      "frameworks",
+      "research"
+    ]
+  },
+  {
+    "id": "yearly-gui",
+    "name": "Yearly GUI Agents",
+    "url": "https://raw.githubusercontent.com/qy0720/awesome-yearly-gui-agents/main/README.md",
+    "homepage": "https://github.com/qy0720/awesome-yearly-gui-agents",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "benchmarks",
+      "models"
+    ]
+  },
+  {
+    "id": "osu-gui",
+    "name": "OSU-NLP-Group/GUI-Agents-Paper-List / README.md",
+    "url": "https://raw.githubusercontent.com/OSU-NLP-Group/GUI-Agents-Paper-List/main/README.md",
+    "homepage": "https://github.com/OSU-NLP-Group/GUI-Agents-Paper-List",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "cross-platform"
+    ]
+  },
+  {
+    "id": "opendilab-ui",
+    "name": "opendilab/awesome-ui-agents / README.md",
+    "url": "https://raw.githubusercontent.com/opendilab/awesome-ui-agents/main/README.md",
+    "homepage": "https://github.com/opendilab/awesome-ui-agents",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "cross-platform"
+    ]
+  },
+  {
+    "id": "jin-gui-hub",
+    "name": "jin-s13/awesome-gui-agent-hub / AWESOME.md",
+    "url": "https://raw.githubusercontent.com/jin-s13/awesome-gui-agent-hub/main/AWESOME.md",
+    "homepage": "https://github.com/jin-s13/awesome-gui-agent-hub",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "cross-platform"
+    ]
+  },
+  {
+    "id": "zju-iclr26",
+    "name": "ZJU-REAL/Awesome-GUI-Agents / ICLR2026/Paperlist.md",
+    "url": "https://raw.githubusercontent.com/ZJU-REAL/Awesome-GUI-Agents/main/ICLR2026/Paperlist.md",
+    "homepage": "https://github.com/ZJU-REAL/Awesome-GUI-Agents",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "cross-platform"
+    ]
+  },
+  {
+    "id": "mobile-gui",
+    "name": "dqtz5vpvj9-create/awesome-mobile-gui-agents / README.md",
+    "url": "https://raw.githubusercontent.com/dqtz5vpvj9-create/awesome-mobile-gui-agents/main/README.md",
+    "homepage": "https://github.com/dqtz5vpvj9-create/awesome-mobile-gui-agents",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "mobile"
+    ]
+  },
+  {
+    "id": "phone-gui",
+    "name": "PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents",
+    "url": "https://raw.githubusercontent.com/PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents/master/README.md",
+    "homepage": "https://github.com/PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents",
+    "role": "discovery",
+    "scope": [
+      "research"
+    ]
+  },
+  {
+    "id": "mobile-agents",
+    "name": "aialt/awesome-mobile-agents",
+    "url": "https://raw.githubusercontent.com/aialt/awesome-mobile-agents/main/README.md",
+    "homepage": "https://github.com/aialt/awesome-mobile-agents",
+    "role": "discovery",
+    "scope": [
+      "research"
+    ]
+  },
+  {
+    "id": "web-research",
+    "name": "albzni/Awesome-LLM-based-Web-Agent-and-Tools",
+    "url": "https://raw.githubusercontent.com/albzni/Awesome-LLM-based-Web-Agent-and-Tools/main/README.md",
+    "homepage": "https://github.com/albzni/Awesome-LLM-based-Web-Agent-and-Tools",
+    "role": "discovery",
+    "scope": [
+      "research"
+    ]
+  },
+  {
+    "id": "ranpox-cua",
+    "name": "ranpox/awesome-computer-use",
+    "url": "https://raw.githubusercontent.com/ranpox/awesome-computer-use/main/README.md",
+    "homepage": "https://github.com/ranpox/awesome-computer-use",
+    "role": "discovery",
+    "scope": [
+      "research"
+    ]
+  }
+]
