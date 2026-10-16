@@ -34,11 +34,18 @@ Google Search Console is the authority for property verification, sitemap proces
 IndexNow is a separate notification channel for participating engines, not a Google submission endpoint:
 
 ```bash
-python3 scripts/submit_indexnow.py          # dry run
-python3 scripts/submit_indexnow.py --submit # only after the exact tested build is live
+python3 scripts/submit_indexnow.py          # dry run; local accepted state defaults to .cache/
+# To continue from the public website's accepted state, first update its checkout:
+git -C .cache/github-pages-publish pull --ff-only
+python3 scripts/submit_indexnow.py --state .cache/github-pages-publish/.indexnow/state.json
+# Add --submit only after the exact tested build is live.
 ```
 
-The script verifies the public key file and exact live search manifest before submitting only sitemap URLs. It records timestamp, URLs, HTTP status, and response meaning in `data/search-submissions.json`. HTTP 200 means submission accepted; 202 means key validation pending. Neither proves indexing. The IndexNow key is intentionally public ownership proof, not a login credential.
+The script compares page-content hashes with the last accepted state. It submits new or changed indexable pages and previously accepted pages that were removed or changed to `noindex`. Newly discovered metadata-only pages are excluded. An unchanged build sends no network request. Before any submission it verifies the public key file, the exact live search manifest, and agreement between the local sitemap and indexable pages.
+
+The website publication workflow runs this notification only after successful deployment, using the exact source revision that built the site. The website repository keeps `.indexnow/state.json` and the most recent 180 outcomes in `.indexnow/submissions.json`. Only HTTP 200 advances accepted page hashes; failed requests and HTTP 202 leave changes pending for the next publication. Search-notification failure does not undo the already deployed website. Local manual receipts default to `data/search-submissions.json`.
+
+HTTP 200 means submission accepted; 202 means key validation pending. Neither proves indexing. The IndexNow key is intentionally public ownership proof, not a login credential. This automation does not submit URLs to Google or claim AI citation.
 
 Use Search Console to track indexed pages, impressions, clicks, canonical selection, and excluded-page reasons. Track observed AI referral traffic or citations separately. Do not use fabricated testimonials, synthetic backlinks, unsupported rankings, or schema unrelated to visible content. No third-party outreach or paid submission service is part of this implementation.
 

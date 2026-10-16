@@ -39,4 +39,6 @@ Every editorial entry binds to a `reviewed_sha256`. If an upstream page changes,
 
 `data/scan-status.json` records the latest completed attempt; `data/scan-history.jsonl` retains the most recent 180 receipts. Workflow failures before a valid receipt are visible in GitHub Actions and its uploaded evidence artifact. Review the run timestamps, not just the presence of a status file.
 
+After a successful website deployment, the publication workflow notifies IndexNow of changed pages and preserves accepted fingerprints and submission receipts in the website repository's `.indexnow/` directory. Unchanged pages are not resubmitted. HTTP 202 and failures do not advance fingerprints, so a later publication retries the pending changes. See [search discovery](search-discovery.md) for manual use and the distinction between submission and indexing.
+
 For each expansion, prioritize sources or resource kinds with known gaps rather than a raw-count target. Track primary metadata coverage separately from editorial review, protocol completeness, license completeness, and executable reproduction. Keep removed/renamed resources explainable; do not silently substitute a different project with the same name.

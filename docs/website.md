@@ -22,4 +22,6 @@ The `AwesomeCUA/awesomecua.github.io` repository contains the published static s
 
 The `AwesomeCUA/.github` repository contains the organization profile. Its links lead to the public homepage and public website repository.
 
+Successful deployments also run incremental IndexNow notification. The website repository retains the actual response and accepted page hashes in `.indexnow/`; a failed notification preserves the pending changes without rolling back the deployed site. The organization profile uses the website's live count badge so its counts follow future publications.
+
 The initial browser QA covered desktop and a 390-pixel mobile viewport, catalog/category/platform intersections, detail evidence and license separation, empty results, Chinese UI, and absence of horizontal mobile overflow. The automated tests cover filter behavior, Unicode queries, deep-link state, sorting, metadata review boundaries, and safe rendering of untrusted text/URLs.

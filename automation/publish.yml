@@ -19,6 +19,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    outputs:
+      source_commit: ${{ steps.source_revision.outputs.source_commit }}
     permissions:
       contents: write
       pages: read
@@ -54,8 +56,10 @@ jobs:
           python scripts/build_site.py
           python scripts/prepare_publication.py --site-dir "$GITHUB_WORKSPACE" --skip-profile
       - name: Record source revision
+        id: source_revision
         run: |
           CUA_SOURCE_SHA=$(git -C .pipeline/source rev-parse HEAD)
+          printf 'source_commit=%s\n' "$CUA_SOURCE_SHA" >> "$GITHUB_OUTPUT"
           CUA_SOURCE_SHA="$CUA_SOURCE_SHA" python - <<'PY'
           import json, os
           from pathlib import Path
@@ -95,3 +99,41 @@ jobs:
       - name: Deploy verified static catalog
         id: deployment
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+  notify_search:
+    name: Notify search engines of published changes
+    needs: [build, deploy]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - name: Check out the published snapshot and accepted submission state
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: main
+      - name: Check out the exact source used in this publication
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          repository: reacher-z/Awesome-CUA
+          ref: ${{ needs.build.outputs.source_commit }}
+          path: .pipeline/source
+          persist-credentials: false
+      - name: Notify IndexNow after live-site and ownership checks
+        run: |
+          python3 .pipeline/source/scripts/submit_indexnow.py --submit \
+            --site-dir "$GITHUB_WORKSPACE" \
+            --state .indexnow/state.json \
+            --receipts .indexnow/submissions.json
+      - name: Preserve accepted state and actual submission receipts
+        if: always()
+        run: |
+          if [ -d .indexnow ]; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add -- .indexnow
+            git diff --cached --check
+            if ! git diff --cached --quiet; then
+              git commit -m 'Record search notification outcome for the published catalog'
+              git push origin HEAD:main
+            fi
+          fi

@@ -179,6 +179,7 @@ def build_search_pages(destination, rows, coverage, root):
     else:
         body+='<h2>First scan pending</h2><p>The schedule is configured in the source repository. No completed automated-scan receipt has been recorded yet.</p>'
     body+='<h2>What automation does and does not establish</h2><p>A scan can discover a source or verify bibliographic fields. It does not reproduce experiments, approve a resource’s relevance, establish dataset permissions, or add editorial summaries. Existing reviewed snapshots are preserved; observed metadata changes are queued for review.</p><p><a href="https://github.com/reacher-z/Awesome-CUA/actions/workflows/scan.yml">Discovery workflow</a> · <a href="'+REPO+'/actions/workflows/publish.yml">Publication workflow</a> · <a href="/coverage/">Coverage ledger</a></p>'
+    body+='<p><a href="'+REPO+'/blob/main/.indexnow/submissions.json">Search notification receipts</a> record which changed pages were submitted after publication and the response received. Submission is separate from search indexing.</p>'
     emit('/updates/',page('Twice-daily catalog updates','Inspect the actual completion, discoveries, and source gaps from the AwesomeCUA twice-daily public-source scans.','/updates/',body))
     badge_papers=sum(r['kind'] in {'paper','survey'} for r in reviewed)
     (destination/'badges').mkdir(exist_ok=True)
