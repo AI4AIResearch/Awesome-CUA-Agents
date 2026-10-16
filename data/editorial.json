@@ -452,7 +452,10 @@
       "https://github.com/jacklishufan/MobileWorld"
     ],
     "reviewed_sha256": "dfcbaa088cc21dd4e3c67d6eb3b3a1dc476217165ce2ca0daa2facfda71b5a38",
-    "reviewed_at": "2026-10-16T06:40:51Z"
+    "reviewed_at": "2026-10-16T06:40:51Z",
+    "documented_by": [
+      "2512.14014"
+    ]
   },
   {
     "name": "MobileSafetyBench",
@@ -1212,7 +1215,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "f55ac6a0c50d298d46c5f7083a0879959fd7cd3c1d91496af295ebf2afcc13a3",
-    "reviewed_at": "2026-10-16T06:36:00Z"
+    "reviewed_at": "2026-10-16T06:36:00Z",
+    "documented_by": [
+      "2503.21620"
+    ]
   },
   {
     "name": "InfiGUI-R1",
@@ -1232,7 +1238,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "5fd1399c88bdf406e7689765ccf0599b3b7e0ddbed082fa92bffdd7b120bd41a",
-    "reviewed_at": "2026-10-16T06:36:00Z"
+    "reviewed_at": "2026-10-16T06:36:00Z",
+    "documented_by": [
+      "2504.14239"
+    ]
   },
   {
     "name": "InfiGUI-G1",
@@ -1251,7 +1260,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "4b68c82a2dd0063a450bde34c8bffbd931565a91a2982a5b47be7e711815b284",
-    "reviewed_at": "2026-10-16T06:36:00Z"
+    "reviewed_at": "2026-10-16T06:36:00Z",
+    "documented_by": [
+      "2508.05731"
+    ]
   },
   {
     "name": "GUI-G2",
@@ -1570,7 +1582,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "430e495ab250395d666854bd18b0fc29b819cd784cd7730215ef65e461834d0d",
-    "reviewed_at": "2026-10-16T06:36:01Z"
+    "reviewed_at": "2026-10-16T06:36:01Z",
+    "documented_by": [
+      "2412.19723"
+    ]
   },
   {
     "name": "AgentTrek",
@@ -1590,7 +1605,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "17fa475b96bdd00270c656072d3f8fc55d8433f0e3a1c2762110160ec21a5c35",
-    "reviewed_at": "2026-10-16T06:36:01Z"
+    "reviewed_at": "2026-10-16T06:36:01Z",
+    "documented_by": [
+      "2412.09605"
+    ]
   },
   {
     "name": "GUI-World",
@@ -1785,7 +1803,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "ac94cca1f69807d2d31d30bd5521fbf1bda6155996881054df87a85522cd8f5b",
-    "reviewed_at": "2026-10-16T06:36:02Z"
+    "reviewed_at": "2026-10-16T06:36:02Z",
+    "documented_by": [
+      "2312.13771"
+    ]
   },
   {
     "name": "AppAgentX",
@@ -1805,7 +1826,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "085f1a1810805bcade9555b1e5c374a7db1b8b1377afeeea285d927853b02f3d",
-    "reviewed_at": "2026-10-16T06:36:02Z"
+    "reviewed_at": "2026-10-16T06:36:02Z",
+    "documented_by": [
+      "2503.02268"
+    ]
   },
   {
     "name": "AppAgent Pro",
@@ -1824,7 +1848,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "9b4b945f4514d261373ec08d4c3e4e86b6623f95f95b9469bec2b8e7e93d9807",
-    "reviewed_at": "2026-10-16T06:36:02Z"
+    "reviewed_at": "2026-10-16T06:36:02Z",
+    "documented_by": [
+      "2508.18689"
+    ]
   },
   {
     "name": "AutoDroid",
@@ -1843,7 +1870,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "4a79eb2e14b6da67ded536c127d41f865d5b43620d60d0d950d291c8956564fc",
-    "reviewed_at": "2026-10-16T06:36:02Z"
+    "reviewed_at": "2026-10-16T06:36:02Z",
+    "documented_by": [
+      "2308.15272"
+    ]
   },
   {
     "name": "AutoDroid V2",
@@ -1929,7 +1959,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "b840368441695a54137216c2ba6bc99a8d35df75ad4196a4f0f0a1f5b5a70a9d",
-    "reviewed_at": "2026-10-16T06:36:02Z"
+    "reviewed_at": "2026-10-16T06:36:02Z",
+    "documented_by": [
+      "2402.07456"
+    ]
   },
   {
     "name": "Cradle",
@@ -1949,7 +1982,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "fe475d3e92c42807b792c542bc5986bf74caa7d166aea860d368fbe776342a82",
-    "reviewed_at": "2026-10-16T06:36:02Z"
+    "reviewed_at": "2026-10-16T06:36:02Z",
+    "documented_by": [
+      "2403.03186"
+    ]
   },
   {
     "name": "AssistGUI",
@@ -2357,7 +2393,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "8b327dcd58c18e48e1e7f5b19ebf5673da4b5ff9320aa960e391844adf3a8a55",
-    "reviewed_at": "2026-10-16T06:36:03Z"
+    "reviewed_at": "2026-10-16T06:36:03Z",
+    "documented_by": [
+      "2508.14040"
+    ]
   },
   {
     "name": "MobileRL",
@@ -2395,7 +2434,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "464e26d88420cd2694abe4c014bfd088417622c3a980aadf19b2bf01988d5b65",
-    "reviewed_at": "2026-10-16T06:36:04Z"
+    "reviewed_at": "2026-10-16T06:36:04Z",
+    "documented_by": [
+      "2406.11896"
+    ]
   },
   {
     "name": "ZeroGUI",
@@ -2415,7 +2457,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "033d2de815e11c208862c5c5601b78d58668b79cadd37a750cad9edd4dacabed",
-    "reviewed_at": "2026-10-16T06:36:04Z"
+    "reviewed_at": "2026-10-16T06:36:04Z",
+    "documented_by": [
+      "2505.23762"
+    ]
   },
   {
     "name": "Notte",
@@ -6263,5 +6308,676 @@
     "reviewed_sha256": "be244bfae7f89ef9449b69d85aac44295eb7b5f7e5e1bbedd76df312696676a7",
     "reviewed_at": "2026-10-16T06:31:28Z",
     "notes": "Annotation reviewed against the primary abstract. Original dataset scale and experimental results are not independently reproduced."
+  },
+  {
+    "name": "AutoDroid: LLM-powered Task Automation in Android",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2308.15272",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "mobile-navigation",
+      "memory"
+    ],
+    "summary": "Combines language-model reasoning with app analysis, UI representations, and exploration-derived memory for Android task automation.",
+    "verify_terms": [
+      "AutoDroid: LLM-powered Ta"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2308.03688%2C2308.15272%2C2309.08172%2C2309.11436%2C2310.04716%2C2310.04869%2C2310.05126%2C2310.06770%2C2310.08740%2C2310.10634%2C2310.11441%2C2310.16042%2C2310.18331%2C2311.01767%2C2311.07562%2C2311.09278%2C2311.12983%2C2311.18751%2C2312.03003%2C2312.06677%2C2312.08914%2C2312.11671%2C2312.13108%2C2312.13771%2C2312.15820%2C2312.16062%2C2401.01614%2C2401.04124%2C2401.07781%2C2401.10935%2C2401.13178%2C2401.13649%2C2401.13919%2C2401.14268%2C2401.16158%2C2402.01030%2C2402.04476%2C2402.04615%2C2402.05930%2C2402.06596%2C2402.07456%2C2402.07939%2C2402.07945%2C2402.08567%2C2402.11941%2C2402.14073%2C2402.15057%2C2402.16965%2C2402.17553%2C2403.02713&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "3aac6e9748769efff3c475ede0da192776daa03431d231b5f67e2aa50f8a3be9",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "AppAgent: Multimodal Agents as Smartphone Users",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2312.13771",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "mobile-navigation",
+      "memory"
+    ],
+    "summary": "Builds app knowledge through exploration or human demonstrations and uses it to guide multimodal smartphone interactions.",
+    "verify_terms": [
+      "AppAgent: Multimodal Agen"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2308.03688%2C2308.15272%2C2309.08172%2C2309.11436%2C2310.04716%2C2310.04869%2C2310.05126%2C2310.06770%2C2310.08740%2C2310.10634%2C2310.11441%2C2310.16042%2C2310.18331%2C2311.01767%2C2311.07562%2C2311.09278%2C2311.12983%2C2311.18751%2C2312.03003%2C2312.06677%2C2312.08914%2C2312.11671%2C2312.13108%2C2312.13771%2C2312.15820%2C2312.16062%2C2401.01614%2C2401.04124%2C2401.07781%2C2401.10935%2C2401.13178%2C2401.13649%2C2401.13919%2C2401.14268%2C2401.16158%2C2402.01030%2C2402.04476%2C2402.04615%2C2402.05930%2C2402.06596%2C2402.07456%2C2402.07939%2C2402.07945%2C2402.08567%2C2402.11941%2C2402.14073%2C2402.15057%2C2402.16965%2C2402.17553%2C2403.02713&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "3aac6e9748769efff3c475ede0da192776daa03431d231b5f67e2aa50f8a3be9",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "OS-Copilot: Towards Generalist Computer Agents with Self-Improvement",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2402.07456",
+    "environments": [
+      "desktop",
+      "web"
+    ],
+    "topics": [
+      "tool-integration",
+      "planning"
+    ],
+    "summary": "Provides an operating-system agent framework connecting applications, files, terminals, and web tools, with accumulated skills for subsequent tasks.",
+    "verify_terms": [
+      "OS-Copilot: Towards Gener"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2308.03688%2C2308.15272%2C2309.08172%2C2309.11436%2C2310.04716%2C2310.04869%2C2310.05126%2C2310.06770%2C2310.08740%2C2310.10634%2C2310.11441%2C2310.16042%2C2310.18331%2C2311.01767%2C2311.07562%2C2311.09278%2C2311.12983%2C2311.18751%2C2312.03003%2C2312.06677%2C2312.08914%2C2312.11671%2C2312.13108%2C2312.13771%2C2312.15820%2C2312.16062%2C2401.01614%2C2401.04124%2C2401.07781%2C2401.10935%2C2401.13178%2C2401.13649%2C2401.13919%2C2401.14268%2C2401.16158%2C2402.01030%2C2402.04476%2C2402.04615%2C2402.05930%2C2402.06596%2C2402.07456%2C2402.07939%2C2402.07945%2C2402.08567%2C2402.11941%2C2402.14073%2C2402.15057%2C2402.16965%2C2402.17553%2C2403.02713&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "3aac6e9748769efff3c475ede0da192776daa03431d231b5f67e2aa50f8a3be9",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "Cradle: Empowering Foundation Agents Towards General Computer Control",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2403.03186",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "planning",
+      "screen-understanding"
+    ],
+    "summary": "Uses screenshot observations, planning modules, and generated low-level keyboard and mouse control for general computer interaction.",
+    "verify_terms": [
+      "Cradle: Empowering Founda"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2403.03186%2C2403.03788%2C2403.07718%2C2403.10170%2C2403.11905%2C2403.16971%2C2403.17918%2C2403.20271%2C2404.01549%2C2404.01744%2C2404.02475%2C2404.03648%2C2404.05427%2C2404.05719%2C2404.05955%2C2404.06474%2C2404.07972%2C2404.08755%2C2404.08860%2C2404.08948%2C2404.09992%2C2404.10887%2C2404.11459%2C2404.16006%2C2404.16048%2C2404.16054%2C2404.16660%2C2404.18074%2C2404.19296%2C2405.00516%2C2405.11120%2C2405.12842%2C2405.14573%2C2405.14751%2C2405.15793%2C2405.16247%2C2405.20309%2C2406.01014%2C2406.01623%2C2406.03679%2C2406.06947%2C2406.07822%2C2406.08184%2C2406.08340%2C2406.08451%2C2406.10227%2C2406.10819%2C2406.11317%2C2406.11896%2C2406.12373&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "be244bfae7f89ef9449b69d85aac44295eb7b5f7e5e1bbedd76df312696676a7",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "DigiRL: Training In-The-Wild Device-Control Agents with Autonomous Reinforcement Learning",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2406.11896",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "reinforcement-learning",
+      "mobile-navigation"
+    ],
+    "summary": "Combines offline initialization and online reinforcement learning in Android environments, with automated evaluation and curriculum-based sampling.",
+    "verify_terms": [
+      "DigiRL: Training In-The-W"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2403.03186%2C2403.03788%2C2403.07718%2C2403.10170%2C2403.11905%2C2403.16971%2C2403.17918%2C2403.20271%2C2404.01549%2C2404.01744%2C2404.02475%2C2404.03648%2C2404.05427%2C2404.05719%2C2404.05955%2C2404.06474%2C2404.07972%2C2404.08755%2C2404.08860%2C2404.08948%2C2404.09992%2C2404.10887%2C2404.11459%2C2404.16006%2C2404.16048%2C2404.16054%2C2404.16660%2C2404.18074%2C2404.19296%2C2405.00516%2C2405.11120%2C2405.12842%2C2405.14573%2C2405.14751%2C2405.15793%2C2405.16247%2C2405.20309%2C2406.01014%2C2406.01623%2C2406.03679%2C2406.06947%2C2406.07822%2C2406.08184%2C2406.08340%2C2406.08451%2C2406.10227%2C2406.10819%2C2406.11317%2C2406.11896%2C2406.12373&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "be244bfae7f89ef9449b69d85aac44295eb7b5f7e5e1bbedd76df312696676a7",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "AppAgent v2: Advanced Agent for Flexible Mobile Interactions",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2408.11824",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "mobile-navigation",
+      "memory"
+    ],
+    "summary": "Separates exploration and deployment while using a structured application knowledge base and retrieval to guide mobile workflows.",
+    "verify_terms": [
+      "AppAgent v2: Advanced Age"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2406.12814%2C2406.13719%2C2406.14056%2C2406.14250%2C2406.14314%2C2406.18082%2C2406.19263%2C2407.00993%2C2407.01476%2C2407.01489%2C2407.01511%2C2407.01558%2C2407.03037%2C2407.03913%2C2407.04346%2C2407.05291%2C2407.07061%2C2407.08850%2C2407.09018%2C2407.09295%2C2407.10956%2C2407.13032%2C2407.13063%2C2407.15673%2C2407.15711%2C2407.16741%2C2407.17490%2C2407.18901%2C2407.19056%2C2407.20183%2C2408.00203%2C2408.02544%2C2408.06327%2C2408.07199%2C2408.11824%2C2408.15978%2C2409.02453%2C2409.04566%2C2409.07429%2C2409.08264%2C2409.09354%2C2409.10741%2C2409.11295%2C2409.13711%2C2409.14337%2C2409.14818%2C2409.15441%2C2409.15637%2C2409.17140%2C2409.20566&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "b9a83994d8ac36ccdb606a5219511f8bb35ad3948ade4f9f3e28d386221aedfb",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "AgentTrek: Agent Trajectory Synthesis via Guiding Replay with Web Tutorials",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2412.09605",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "data-generation",
+      "web-navigation"
+    ],
+    "summary": "Converts public tutorials into task specifications and executes them with an agent to synthesize multimodal interaction trajectories.",
+    "verify_terms": [
+      "AgentTrek: Agent Trajecto"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2412.04454%2C2412.04626%2C2412.05467%2C2412.09362%2C2412.09605%2C2412.10342%2C2412.10742%2C2412.10840%2C2412.13103%2C2412.13194%2C2412.13501%2C2412.14161%2C2412.14470%2C2412.16256%2C2412.17589%2C2412.18116%2C2412.18426%2C2412.19723%2C2501.01149%2C2501.04575%2C2501.07572%2C2501.11733%2C2501.12326%2C2501.13896%2C2501.16150%2C2502.01600%2C2502.01977%2C2502.02982%2C2502.06395%2C2502.07949%2C2502.08047%2C2502.08226%2C2502.11357%2C2502.13053%2C2502.13923%2C2502.14282%2C2502.18906%2C2503.00401%2C2503.02268%2C2503.03196%2C2503.04730%2C2503.05143%2C2503.06470%2C2503.09263%2C2503.11069%2C2503.11170%2C2503.12687%2C2503.15661%2C2503.15937%2C2503.16465&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "e96b86015c763c780e0430a8d0867b96cae947f50e888b3441c85abcaa42de78",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "AutoDroid-V2: Boosting SLM-based GUI Agents via Code Generation",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2412.18116",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "mobile-navigation",
+      "tool-integration"
+    ],
+    "summary": "Recasts mobile UI automation as on-device code generation, using app-specific documentation and synthetic tasks to guide smaller models.",
+    "verify_terms": [
+      "AutoDroid-V2: Boosting SL"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c87e97eb397da04806d53145cf9c13be739fc657bb54dca9318c8c4ed2a36249",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "OS-Genesis: Automating GUI Agent Trajectory Construction via Reverse Task Synthesis",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2412.19723",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "data-generation"
+    ],
+    "summary": "Builds GUI trajectories by exploring environments first and deriving tasks retrospectively, with reward-model filtering of generated trajectories.",
+    "verify_terms": [
+      "OS-Genesis: Automating GU"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c87e97eb397da04806d53145cf9c13be739fc657bb54dca9318c8c4ed2a36249",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "InfiGUIAgent: A Multimodal Generalist GUI Agent with Native Reasoning and Reflection",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2501.04575",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "planning"
+    ],
+    "summary": "Uses staged supervised training to combine GUI understanding and grounding with hierarchical reasoning and expectation-based reflection.",
+    "verify_terms": [
+      "InfiGUIAgent: A Multimoda"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c87e97eb397da04806d53145cf9c13be739fc657bb54dca9318c8c4ed2a36249",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "AppAgentX: Evolving GUI Agents as Proficient Smartphone Users",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2503.02268",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "memory",
+      "efficiency"
+    ],
+    "summary": "Records interaction history and converts repeated action sequences into reusable high-level shortcuts for mobile GUI tasks.",
+    "verify_terms": [
+      "AppAgentX: Evolving GUI A"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "UI-R1: Enhancing Efficient Action Prediction of GUI Agents by Reinforcement Learning",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2503.21620",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "reinforcement-learning",
+      "grounding"
+    ],
+    "summary": "Uses rule-based action rewards and policy optimization to train GUI action prediction from a compact set of mobile tasks.",
+    "verify_terms": [
+      "UI-R1: Enhancing Efficien"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "GUI-R1 : A Generalist R1-Style Vision-Language Action Model For GUI Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2504.10458",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "reinforcement-learning",
+      "grounding"
+    ],
+    "summary": "Applies reinforcement fine-tuning with unified action rules and curated cross-platform examples to vision-language GUI agents.",
+    "verify_terms": [
+      "GUI-R1 : A Generalist R1-"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "InfiGUI-R1: Advancing Multimodal GUI Agents from Reactive Actors to Deliberative Reasoners",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2504.14239",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "planning",
+      "reinforcement-learning"
+    ],
+    "summary": "Uses a staged reasoning-focused training framework to move GUI agents from reactive actions toward deliberative planning and recovery.",
+    "verify_terms": [
+      "InfiGUI-R1: Advancing Mul"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "GUI-G1: Understanding R1-Zero-Like Training for Visual Grounding in GUI Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2505.15810",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "reinforcement-learning"
+    ],
+    "summary": "Analyzes reasoning templates, reward design, and policy updates in GUI grounding, then proposes targeted adjustments to the training process.",
+    "verify_terms": [
+      "GUI-G1: Understanding R1-"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "WebAgent-R1: Training Web Agents via End-to-End Multi-Turn Reinforcement Learning",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2505.16421",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "reinforcement-learning",
+      "web-navigation"
+    ],
+    "summary": "Trains web agents through asynchronous multi-turn environment interaction, using task-success rewards to optimize complete trajectories.",
+    "verify_terms": [
+      "WebAgent-R1: Training Web"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "WorkForceAgent-R1: Incentivizing Reasoning Capability in LLM-based Web Agents via Reinforcement Learning",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2505.22942",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "reinforcement-learning",
+      "workflow"
+    ],
+    "summary": "Uses rule-based rewards for output structure and action correctness to train reasoning for enterprise web navigation.",
+    "verify_terms": [
+      "WorkForceAgent-R1: Incent"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "ZeroGUI: Automating Online GUI Learning at Zero Human Cost",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2505.23762",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "reinforcement-learning",
+      "data-generation"
+    ],
+    "summary": "Combines generated tasks, estimated success rewards, and online reinforcement learning to automate GUI-agent interaction training.",
+    "verify_terms": [
+      "ZeroGUI: Automating Onlin"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2503.16788%2C2503.17709%2C2503.18492%2C2503.19537%2C2503.20978%2C2503.21620%2C2503.23434%2C2504.01382%2C2504.07981%2C2504.10445%2C2504.10458%2C2504.11257%2C2504.11281%2C2504.12679%2C2504.13805%2C2504.13865%2C2504.14239%2C2504.18575%2C2504.19838%2C2504.20464%2C2505.10924%2C2505.11891%2C2505.12299%2C2505.12632%2C2505.13227%2C2505.13887%2C2505.13909%2C2505.14289%2C2505.15810%2C2505.16282%2C2505.16827%2C2505.18829%2C2505.19897%2C2505.21496%2C2505.21499%2C2505.21936%2C2505.22648%2C2505.23762%2C2505.24838%2C2506.00618%2C2506.01391%2C2506.01968%2C2506.02456%2C2506.03143%2C2506.03569%2C2506.04135%2C2506.04614%2C2506.07672%2C2506.08012%2C2506.08972&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "afe4e75ffb8a5c44f4c088a90ffa5f53553036f514aa768f5aee0c5aa38d731e",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "Look Before You Leap: A GUI-Critic-R1 Model for Pre-Operative Error Diagnosis in GUI Automation",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2506.04614",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "planning",
+      "robustness"
+    ],
+    "summary": "Uses a pre-execution critic and reinforcement training to evaluate proposed GUI actions and provide corrective suggestions before execution.",
+    "verify_terms": [
+      "Look Before You Leap: A G"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2503.16788%2C2503.17709%2C2503.18492%2C2503.19537%2C2503.20978%2C2503.21620%2C2503.23434%2C2504.01382%2C2504.07981%2C2504.10445%2C2504.10458%2C2504.11257%2C2504.11281%2C2504.12679%2C2504.13805%2C2504.13865%2C2504.14239%2C2504.18575%2C2504.19838%2C2504.20464%2C2505.10924%2C2505.11891%2C2505.12299%2C2505.12632%2C2505.13227%2C2505.13887%2C2505.13909%2C2505.14289%2C2505.15810%2C2505.16282%2C2505.16827%2C2505.18829%2C2505.19897%2C2505.21496%2C2505.21499%2C2505.21936%2C2505.22648%2C2505.23762%2C2505.24838%2C2506.00618%2C2506.01391%2C2506.01968%2C2506.02456%2C2506.03143%2C2506.03569%2C2506.04135%2C2506.04614%2C2506.07672%2C2506.08012%2C2506.08972&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "afe4e75ffb8a5c44f4c088a90ffa5f53553036f514aa768f5aee0c5aa38d731e",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "GUI-Robust: A Comprehensive Dataset for Testing GUI Agent Robustness in Real-World Anomalies",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2506.14477",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "robustness",
+      "evaluation",
+      "data-generation"
+    ],
+    "summary": "Builds GUI task data with real-world interaction anomalies and evaluates how agent behavior changes under those conditions.",
+    "verify_terms": [
+      "GUI-Robust: A Comprehensi"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=600&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "26fb4922c4c0bb5c9069935ed0aef0a9f56938cf8ae1af9724894fa1409955fb",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "Mobile-R1: Towards Interactive Capability for VLM-Based Mobile Agent via Systematic Training",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2506.20332",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "reinforcement-learning",
+      "mobile-navigation"
+    ],
+    "summary": "Uses a staged curriculum from response-format alignment through action feedback to interactive task-level training for mobile agents.",
+    "verify_terms": [
+      "Mobile-R1: Towards Intera"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2506.10387%2C2506.14866%2C2506.20332%2C2507.00008%2C2507.02592%2C2507.03730%2C2507.04227%2C2507.05445%2C2507.05673%2C2507.05720%2C2507.05791%2C2507.14293%2C2507.14799%2C2507.15846%2C2507.16853%2C2507.19132%2C2507.19478%2C2507.21071%2C2507.22025%2C2507.22358%2C2507.23779%2C2508.00935%2C2508.01330%2C2508.03700%2C2508.03923%2C2508.04010%2C2508.04026%2C2508.04482%2C2508.04700%2C2508.05615%2C2508.05731%2C2508.09057%2C2508.09123%2C2508.13167%2C2508.14040%2C2508.15144%2C2508.18689%2C2508.19679%2C2508.20096%2C2509.02544%2C2509.03891%2C2509.06477%2C2509.10723%2C2509.11250%2C2509.11543%2C2509.15221%2C2509.15566%2C2509.15738%2C2509.18119%2C2510.01354&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c208e36ae75cef4b32cfcb2f8182dd4aaaa218e3119bb3d4a2c20a5832f8b1ee",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "InfiGUI-G1: Advancing GUI Grounding with Adaptive Exploration Policy Optimization",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2508.05731",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "reinforcement-learning"
+    ],
+    "summary": "Uses multiple candidate answers and adaptive exploration rewards to improve spatial and semantic alignment in GUI grounding.",
+    "verify_terms": [
+      "InfiGUI-G1: Advancing GUI"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=600&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "26fb4922c4c0bb5c9069935ed0aef0a9f56938cf8ae1af9724894fa1409955fb",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "ComputerRL: Scaling End-to-End Online Reinforcement Learning for Computer Use Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2508.14040",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "reinforcement-learning",
+      "tool-integration"
+    ],
+    "summary": "Combines API and GUI actions with distributed desktop reinforcement learning and alternating supervised training to address training instability.",
+    "verify_terms": [
+      "ComputerRL: Scaling End-t"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=600&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "26fb4922c4c0bb5c9069935ed0aef0a9f56938cf8ae1af9724894fa1409955fb",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "AppAgent-Pro: A Proactive GUI Agent System for Multidomain Information Integration and User Assistance",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2508.18689",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "planning",
+      "workflow"
+    ],
+    "summary": "Proposes a proactive GUI assistant that gathers information across domains in response to user requests and anticipated information needs.",
+    "verify_terms": [
+      "AppAgent-Pro: A Proactive"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=600&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "26fb4922c4c0bb5c9069935ed0aef0a9f56938cf8ae1af9724894fa1409955fb",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "VideoAgentTrek: Computer Use Pretraining from Unlabeled Videos",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2510.19488",
+    "environments": [
+      "desktop",
+      "web"
+    ],
+    "topics": [
+      "data-generation",
+      "video"
+    ],
+    "summary": "Extracts structured GUI actions from screen-recorded tutorials using inverse dynamics, then uses the inferred trajectories for computer-use training.",
+    "verify_terms": [
+      "VideoAgentTrek: Computer "
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=500&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "ae98e77b8bb125e45277aacec768a047e7bb0e13f33ca9ff6ca7c19e29e56cca",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "MobileWorldBench: Towards Semantic World Modeling For Mobile Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2512.14014",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "world-models",
+      "planning",
+      "evaluation"
+    ],
+    "summary": "Evaluates semantic world models for mobile interfaces and studies natural-language state transitions as a tool for agent planning.",
+    "verify_terms": [
+      "MobileWorldBench: Towards"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2510.01670%2C2510.04673%2C2510.10073%2C2510.12200%2C2510.14621%2C2510.16051%2C2510.17790%2C2510.18488%2C2510.18596%2C2510.19488%2C2510.19949%2C2510.20286%2C2510.22009%2C2510.24168%2C2510.24411%2C2510.24563%2C2511.00810%2C2511.04307%2C2511.07332%2C2511.09157%2C2511.12254%2C2511.13087%2C2511.15567%2C2511.16590%2C2511.19663%2C2511.20597%2C2511.20766%2C2512.08529%2C2512.10371%2C2512.10962%2C2512.12634%2C2512.14014%2C2512.15431%2C2512.16295%2C2512.16501%2C2512.19432%2C2512.22894%2C2512.24965%2C2601.02399%2C2601.06031%2C2601.07181%2C2601.07262%2C2601.07779%2C2601.08406%2C2601.09923%2C2601.11044%2C2601.11868%2C2601.12822%2C2601.13060%2C2601.15876&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "8623b0ff7ef9d2e8ba484cd67359e7b8817e78e9ca22b8f27432c2533f5b90a0",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "MobileWorld: Benchmarking Autonomous Mobile Agents in Agent-User Interactive and MCP-Augmented Environments",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2512.19432",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "evaluation",
+      "tool-integration",
+      "long-horizon"
+    ],
+    "summary": "Introduces long mobile workflows that combine agent-user interaction, cross-application tasks, and MCP-based tool access.",
+    "verify_terms": [
+      "MobileWorld: Benchmarking"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2510.01670%2C2510.04673%2C2510.10073%2C2510.12200%2C2510.14621%2C2510.16051%2C2510.17790%2C2510.18488%2C2510.18596%2C2510.19488%2C2510.19949%2C2510.20286%2C2510.22009%2C2510.24168%2C2510.24411%2C2510.24563%2C2511.00810%2C2511.04307%2C2511.07332%2C2511.09157%2C2511.12254%2C2511.13087%2C2511.15567%2C2511.16590%2C2511.19663%2C2511.20597%2C2511.20766%2C2512.08529%2C2512.10371%2C2512.10962%2C2512.12634%2C2512.14014%2C2512.15431%2C2512.16295%2C2512.16501%2C2512.19432%2C2512.22894%2C2512.24965%2C2601.02399%2C2601.06031%2C2601.07181%2C2601.07262%2C2601.07779%2C2601.08406%2C2601.09923%2C2601.11044%2C2601.11868%2C2601.12822%2C2601.13060%2C2601.15876&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "8623b0ff7ef9d2e8ba484cd67359e7b8817e78e9ca22b8f27432c2533f5b90a0",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "MobileWorldSafety: Benchmarking GUI Agent Safety Against Environmental Injection Attacks in Android Apps",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2608.17659",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "safety-security",
+      "evaluation"
+    ],
+    "summary": "Evaluates environmental injection risks in Android tasks using programmatic risk checks and model-based adjudication of ambiguous cases.",
+    "verify_terms": [
+      "MobileWorldSafety: Benchm"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=100&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "13d3fb5811d203f2e6b80eb45d30ebc0b3cfefd88e2034ffa3b1b80687bef285",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "WM-R1: Training GUI Agents to Reason and leverage World Models with Reinforcement Learning",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2608.27508",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "world-models",
+      "reinforcement-learning"
+    ],
+    "summary": "Uses learned world models for mobile-agent training rollouts and for reasoning about the consequences of candidate GUI actions.",
+    "verify_terms": [
+      "WM-R1: Training GUI Agent"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=100&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "13d3fb5811d203f2e6b80eb45d30ebc0b3cfefd88e2034ffa3b1b80687bef285",
+    "reviewed_at": "2026-10-16T10:28:51Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
   }
 ]
