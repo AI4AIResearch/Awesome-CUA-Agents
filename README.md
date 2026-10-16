@@ -2,7 +2,7 @@
 
 **A source-backed data catalog for computer-use, GUI, browser, and mobile agents.**
 
-[简体中文](README.zh-CN.md) · [Coverage ledger](docs/coverage.md) · [Search & SQL](docs/query-guide.md) · [Contribute](CONTRIBUTING.md)
+[Website](https://awesomecua.github.io/) · [GitHub organization](https://github.com/AwesomeCUA) · [简体中文](README.zh-CN.md) · [Coverage ledger](docs/coverage.md) · [Contribute](CONTRIBUTING.md)
 
 The goal is comprehensive coverage of public research and industry resources, with provenance that can be inspected. Papers, models, training data, evaluation environments, frameworks, infrastructure, products, and publishers belong in the same searchable catalog.
 
@@ -29,6 +29,8 @@ Evidence through `2026-10-16T06:50:49Z`. 1,716 records have bibliographic verifi
 Coverage spans web, desktop, Android, iOS, Windows, macOS, Linux, and cross-platform work. Topics include grounding, screen understanding, planning, memory, long-horizon workflows, reinforcement learning, data generation, safety, robustness, and evaluation. Environment facets overlap; framework support is not assumed from a model's benchmark results.
 
 ## Use the data
+
+Browse the [interactive website](https://awesomecua.github.io/) to search and filter all resources, inspect source evidence, switch between English and Chinese, or download the complete catalog. [Website development and publishing](docs/website.md).
 
 - **[Catalog JSONL](data/catalog.jsonl):** one resource per line, with stable IDs, typed fields, provenance, scoped licenses, and review status.
 - **[Reference graph](data/references.jsonl):** outbound references from primary sources. `mentions` does not mean `trained_on` or `evaluated_on`.

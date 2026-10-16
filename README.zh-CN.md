@@ -2,7 +2,7 @@
 
 **面向研究、训练评测和产业应用的 Computer-Use Agent 数据目录。**
 
-[English](README.md) · [覆盖度与缺口](docs/coverage.md) · [查询示例](docs/query-guide.md)
+[在线主页](https://awesomecua.github.io/) · [GitHub 组织](https://github.com/AwesomeCUA) · [English](README.md) · [覆盖度与缺口](docs/coverage.md)
 
 目标是把全球公开的 GUI、浏览器、桌面和手机智能体资料整理成可检索、可追溯、可持续扩充的数据资产。论文、模型、数据集、基准、框架、基础设施、产品和发布方统一建模，并保留它们之间的关系。
 
@@ -21,6 +21,8 @@ Evidence through `2026-10-16T06:50:49Z`. 1,716 records have bibliographic verifi
 - **产业与工程：** [智能体](docs/agents.md)、[产品](docs/products.md)、[工具](docs/tools.md)、[基础设施](docs/infrastructures.md)、[发布方与品牌](docs/companies.md)。
 
 ## 直接使用
+
+打开 [AwesomeCUA 网站](https://awesomecua.github.io/)，即可搜索和筛选全部资源、查看来源证据、切换中英文界面，并下载完整数据。网站构建和发布说明见 [website.md](docs/website.md)。
 
 ```bash
 python3 scripts/catalog.py search "grounding" --kind model
