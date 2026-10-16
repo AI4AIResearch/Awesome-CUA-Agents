@@ -10,9 +10,9 @@ The goal is comprehensive coverage of public research and industry resources, wi
 
 <!-- STATS:START -->
 
-**2,014 resource records** · **460 curated** · **1,764 arXiv records** · **21 discovery documents**
+**2,025 resource records** · **501 curated** · **1,764 arXiv records** · **29 discovery documents**
 
-Evidence through `2026-10-16T10:48:43Z`. 1,554 records have bibliographic verification only; 730 discovered identifiers remain unindexed. Counts overlap as explained below.
+Evidence through `2026-10-16T11:15:55Z`. 1,524 records have bibliographic verification only; 727 discovered identifiers remain unindexed. Counts overlap as explained below.
 
 <!-- STATS:END -->
 

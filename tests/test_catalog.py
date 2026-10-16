@@ -120,8 +120,33 @@ class SourceTests(unittest.TestCase):
                 for receipt in result["evidence"]:
                     self.assertEqual(receipt["url"], url + "/raw/main/README.md")
 
+    def test_supporting_source_change_revokes_primary_review_match(self):
+        with tempfile.TemporaryDirectory() as directory, mock.patch.object(catalog, "DATA", Path(directory)):
+            primary = "https://example.org/primary"
+            supporting = "https://example.org/description"
+            row = {"name": "Example", "url": primary, "additional_evidence": [{"url": supporting, "sha256": "b" * 64}]}
+            catalog.write_json(Path(directory) / "editorial.json", [row])
+            for support_digest, expected in [("b" * 64, True), ("c" * 64, False)]:
+                def fake_fetch(url, refresh=False):
+                    return {"url": url, "ok": True, "status": 200, "sha256": "a" * 64 if url == primary else support_digest}, b"Example"
+                with mock.patch.object(catalog, "fetch", side_effect=fake_fetch), contextlib.redirect_stdout(io.StringIO()):
+                    catalog.verify_editorial(types.SimpleNamespace(refresh=True))
+                result = catalog.read_jsonl(Path(directory) / "primary-evidence.jsonl")[0]
+                self.assertEqual(result["content_matched"], expected)
+                if not expected:
+                    self.assertIn("supporting source", result["error"])
+
 
 class QualityTests(unittest.TestCase):
+    def test_confirmed_duplicate_remains_provenance_not_an_extra_reviewed_work(self):
+        original = paper()
+        duplicate = copy.deepcopy(original)
+        duplicate.update(id="arxiv:2505.13887", url="https://arxiv.org/abs/2505.13887")
+        duplicate["identifiers"] = {"arxiv": "2505.13887", "preferred_arxiv": original["identifiers"]["arxiv"]}
+        self.assertEqual(build.validate_records([original, duplicate]), [])
+        duplicate.update(review_status="curated", scope="core", summary="A duplicate publication.")
+        self.assertTrue(any("known duplicate" in e for e in build.validate_records([original, duplicate])))
+
     def test_duplicate_and_dangling_relationship_rejected(self):
         row = paper()
         row["relations"] = [{"type": "uses", "target_id": "missing", "evidence_url": row["url"]}]

@@ -61,7 +61,7 @@ def source_records():
             relations.append({"type": "component_of", "target_id": canonical(editorial["component_of"])[0], "evidence_url": ev["url"]})
         if editorial.get("family_url"):
             relations.append({"type": "variant_of", "target_id": canonical(editorial["family_url"])[0], "evidence_url": ev["url"]})
-        primary = {"role": "primary", "method": "editorial_primary_review", "supports": ["name", "kind", "summary", "environments", "topics", "scope", "relations"],
+        primary = {"role": "primary", "method": "editorial_primary_review", "supports": editorial.get("primary_supports", ["name", "kind", "summary", "environments", "topics", "scope", "relations"]),
             "url": ev["url"], "retrieved_at": ev["retrieved_at"], "sha256": ev["sha256"]}
         if editorial.get("details"):
             primary["supports"].append("details")
@@ -70,7 +70,7 @@ def source_records():
             "scope": editorial.get("scope", "core"), "summary": editorial["summary"], "review_status": "curated",
             "published_at": base.get("published_at"), "updated_at": base.get("updated_at"), "authors": base.get("authors", []),
             "identifiers": base.get("identifiers", {}), "links": [{"rel": "primary", "url": editorial["url"]}],
-            "relations": relations, "licenses": licenses, "evidence": base.get("evidence", []) + [primary] + extra.get("evidence", []),
+            "relations": relations, "licenses": licenses, "evidence": base.get("evidence", []) + [primary] + editorial.get("additional_evidence", []) + extra.get("evidence", []),
             "last_verified_at": ev["retrieved_at"], "notes": editorial.get("notes", ""), "details": details}
         records[rid] = row
     return sorted(records.values(), key=lambda r: r["id"]), pending
@@ -101,6 +101,12 @@ def validate_records(rows):
             error("invalid scope")
         if r.get("review_status") == "curated" and (not r.get("summary") or r.get("scope") == "relevance_pending"):
             error("curated entry lacks an editorial summary/scope")
+        preferred = r.get("identifiers", {}).get("preferred_arxiv")
+        if preferred and preferred != r.get("identifiers", {}).get("arxiv"):
+            if "arxiv:" + preferred not in ids:
+                error("preferred bibliographic identity is missing")
+            if r.get("review_status") == "curated":
+                error("known duplicate cannot be counted as an additional curated paper")
         if set(r.get("licenses", {})) != {"code", "data", "weights", "document"}:
             error("license scopes must be explicit")
         for scope, license_info in r.get("licenses", {}).items():

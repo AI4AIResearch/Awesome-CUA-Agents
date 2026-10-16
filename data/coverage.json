@@ -1,11 +1,11 @@
 {
-  "as_of_utc": "2026-10-16T10:48:43Z",
-  "total_records": 2014,
-  "curated_records": 460,
+  "as_of_utc": "2026-10-16T11:15:55Z",
+  "total_records": 2025,
+  "curated_records": 501,
   "bibliographic_records": 1764,
-  "metadata_only_records": 1554,
+  "metadata_only_records": 1524,
   "discovery_identifiers": 2678,
-  "unindexed_candidates": 730,
+  "unindexed_candidates": 727,
   "pending_editorial": [
     {
       "id": "github:mobilellm/autodroid-v2",
@@ -51,33 +51,33 @@
     }
   ],
   "by_kind": {
-    "agent": 26,
+    "agent": 28,
     "benchmark": 60,
     "company": 16,
-    "dataset": 36,
-    "framework": 26,
+    "dataset": 41,
+    "framework": 28,
     "infrastructure": 12,
-    "model": 46,
+    "model": 48,
     "paper": 1753,
     "product": 19,
     "survey": 11,
     "tool": 9
   },
   "curated_by_environment": {
-    "android": 99,
-    "cross-platform": 114,
-    "desktop": 106,
+    "android": 110,
+    "cross-platform": 123,
+    "desktop": 116,
     "ios": 13,
     "linux": 8,
-    "macos": 6,
-    "unspecified": 41,
-    "web": 133,
-    "windows": 12
+    "macos": 7,
+    "unspecified": 47,
+    "web": 144,
+    "windows": 13
   },
   "license_declarations_by_scope": {
-    "code": 118,
-    "data": 21,
-    "weights": 13,
+    "code": 119,
+    "data": 25,
+    "weights": 14,
     "document": 0
   },
   "sources": [
@@ -99,7 +99,7 @@
       },
       "discovered": 338,
       "indexed": 199,
-      "curated": 141,
+      "curated": 145,
       "unindexed": 139
     },
     {
@@ -120,7 +120,7 @@
       },
       "discovered": 218,
       "indexed": 155,
-      "curated": 115,
+      "curated": 122,
       "unindexed": 63
     },
     {
@@ -141,7 +141,7 @@
       },
       "discovered": 224,
       "indexed": 198,
-      "curated": 98,
+      "curated": 102,
       "unindexed": 26
     },
     {
@@ -162,7 +162,7 @@
       },
       "discovered": 132,
       "indexed": 93,
-      "curated": 61,
+      "curated": 63,
       "unindexed": 39
     },
     {
@@ -225,7 +225,7 @@
       },
       "discovered": 170,
       "indexed": 108,
-      "curated": 65,
+      "curated": 66,
       "unindexed": 62
     },
     {
@@ -245,9 +245,9 @@
         "unique_resources": 588
       },
       "discovered": 588,
-      "indexed": 471,
-      "curated": 205,
-      "unindexed": 117
+      "indexed": 472,
+      "curated": 220,
+      "unindexed": 116
     },
     {
       "id": "tianyuan-cua",
@@ -267,7 +267,7 @@
       },
       "discovered": 94,
       "indexed": 67,
-      "curated": 31,
+      "curated": 34,
       "unindexed": 27
     },
     {
@@ -330,7 +330,7 @@
       },
       "discovered": 193,
       "indexed": 137,
-      "curated": 106,
+      "curated": 109,
       "unindexed": 56
     },
     {
@@ -351,7 +351,7 @@
       },
       "discovered": 544,
       "indexed": 486,
-      "curated": 33,
+      "curated": 41,
       "unindexed": 58
     },
     {
@@ -372,7 +372,7 @@
       },
       "discovered": 144,
       "indexed": 88,
-      "curated": 59,
+      "curated": 60,
       "unindexed": 56
     },
     {
@@ -393,7 +393,7 @@
       },
       "discovered": 206,
       "indexed": 203,
-      "curated": 23,
+      "curated": 26,
       "unindexed": 3
     },
     {
@@ -435,7 +435,7 @@
       },
       "discovered": 40,
       "indexed": 22,
-      "curated": 17,
+      "curated": 18,
       "unindexed": 18
     },
     {
@@ -455,9 +455,9 @@
         "unique_resources": 247
       },
       "discovered": 247,
-      "indexed": 178,
-      "curated": 110,
-      "unindexed": 69
+      "indexed": 180,
+      "curated": 121,
+      "unindexed": 67
     },
     {
       "id": "mobile-agents",
@@ -477,7 +477,7 @@
       },
       "discovered": 91,
       "indexed": 76,
-      "curated": 48,
+      "curated": 50,
       "unindexed": 15
     },
     {
@@ -519,8 +519,88 @@
       },
       "discovered": 96,
       "indexed": 57,
-      "curated": 34,
+      "curated": 35,
       "unindexed": 39
+    },
+    {
+      "id": "release-fara",
+      "name": "Fara — first-party releases",
+      "url": "https://github.com/microsoft/fara",
+      "snapshot": null,
+      "discovered": 0,
+      "indexed": 0,
+      "curated": 0,
+      "unindexed": 0
+    },
+    {
+      "id": "release-ui-venus",
+      "name": "UI-Venus — first-party releases",
+      "url": "https://github.com/inclusionAI/UI-Venus",
+      "snapshot": null,
+      "discovered": 0,
+      "indexed": 0,
+      "curated": 0,
+      "unindexed": 0
+    },
+    {
+      "id": "release-opengvlab-scalecua",
+      "name": "OpenGVLab ScaleCUA — first-party releases",
+      "url": "https://github.com/OpenGVLab/ScaleCUA",
+      "snapshot": null,
+      "discovered": 0,
+      "indexed": 0,
+      "curated": 0,
+      "unindexed": 0
+    },
+    {
+      "id": "release-thudm-scalecua",
+      "name": "THUDM SCALE-CUA — first-party releases",
+      "url": "https://github.com/THUDM/SCALE-CUA",
+      "snapshot": null,
+      "discovered": 0,
+      "indexed": 0,
+      "curated": 0,
+      "unindexed": 0
+    },
+    {
+      "id": "release-showui-pi",
+      "name": "ShowUI-π — first-party releases",
+      "url": "https://github.com/showlab/showui-pi",
+      "snapshot": null,
+      "discovered": 0,
+      "indexed": 0,
+      "curated": 0,
+      "unindexed": 0
+    },
+    {
+      "id": "release-opencua",
+      "name": "OpenCUA — first-party releases",
+      "url": "https://github.com/xlang-ai/OpenCUA",
+      "snapshot": null,
+      "discovered": 0,
+      "indexed": 0,
+      "curated": 0,
+      "unindexed": 0
+    },
+    {
+      "id": "release-webdreamer",
+      "name": "WebDreamer — first-party releases",
+      "url": "https://github.com/OSU-NLP-Group/WebDreamer",
+      "snapshot": null,
+      "discovered": 0,
+      "indexed": 0,
+      "curated": 0,
+      "unindexed": 0
+    },
+    {
+      "id": "release-nnetnav",
+      "name": "NNetNav — first-party releases",
+      "url": "https://github.com/MurtyShikhar/NNetnav",
+      "snapshot": null,
+      "discovered": 0,
+      "indexed": 0,
+      "curated": 0,
+      "unindexed": 0
     }
   ],
   "primary_search": {

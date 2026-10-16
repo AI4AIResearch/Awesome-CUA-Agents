@@ -291,6 +291,11 @@ def verify_editorial(args):
                 ok = bool(matched) and not blocked
                 result = {"id": rid, "source_url": url, **info, "content_matched": ok, "matched_terms": matched, "attempts": len(attempts)}
                 if ok:
+                    for supporting in row.get("additional_evidence", []):
+                        supporting_info, _ = fetch(supporting["url"], args.refresh)
+                        if not supporting_info["ok"] or supporting_info.get("sha256") != supporting["sha256"]:
+                            result.update(content_matched=False, error="supporting source unavailable or changed; editorial review required: " + supporting["url"])
+                            break
                     return result
         return {"id": rid, "source_url": url, **attempts[-1], "content_matched": False, "attempts": len(attempts)}
 

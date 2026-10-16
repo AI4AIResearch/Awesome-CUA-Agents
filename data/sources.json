@@ -236,5 +236,109 @@
     "scope": [
       "research"
     ]
+  },
+  {
+    "id": "release-fara",
+    "name": "Fara — first-party releases",
+    "url": "https://raw.githubusercontent.com/microsoft/fara/HEAD/README.md",
+    "homepage": "https://github.com/microsoft/fara",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "models",
+      "datasets",
+      "release-monitoring"
+    ]
+  },
+  {
+    "id": "release-ui-venus",
+    "name": "UI-Venus — first-party releases",
+    "url": "https://raw.githubusercontent.com/inclusionAI/UI-Venus/HEAD/README.md",
+    "homepage": "https://github.com/inclusionAI/UI-Venus",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "models",
+      "datasets",
+      "release-monitoring"
+    ]
+  },
+  {
+    "id": "release-opengvlab-scalecua",
+    "name": "OpenGVLab ScaleCUA — first-party releases",
+    "url": "https://raw.githubusercontent.com/OpenGVLab/ScaleCUA/HEAD/README.md",
+    "homepage": "https://github.com/OpenGVLab/ScaleCUA",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "models",
+      "datasets",
+      "release-monitoring"
+    ]
+  },
+  {
+    "id": "release-thudm-scalecua",
+    "name": "THUDM SCALE-CUA — first-party releases",
+    "url": "https://raw.githubusercontent.com/THUDM/SCALE-CUA/HEAD/README.md",
+    "homepage": "https://github.com/THUDM/SCALE-CUA",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "models",
+      "datasets",
+      "release-monitoring"
+    ]
+  },
+  {
+    "id": "release-showui-pi",
+    "name": "ShowUI-π — first-party releases",
+    "url": "https://raw.githubusercontent.com/showlab/showui-pi/HEAD/README.md",
+    "homepage": "https://github.com/showlab/showui-pi",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "models",
+      "datasets",
+      "release-monitoring"
+    ]
+  },
+  {
+    "id": "release-opencua",
+    "name": "OpenCUA — first-party releases",
+    "url": "https://raw.githubusercontent.com/xlang-ai/OpenCUA/HEAD/README.md",
+    "homepage": "https://github.com/xlang-ai/OpenCUA",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "models",
+      "datasets",
+      "release-monitoring"
+    ]
+  },
+  {
+    "id": "release-webdreamer",
+    "name": "WebDreamer — first-party releases",
+    "url": "https://raw.githubusercontent.com/OSU-NLP-Group/WebDreamer/HEAD/README.md",
+    "homepage": "https://github.com/OSU-NLP-Group/WebDreamer",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "models",
+      "datasets",
+      "release-monitoring"
+    ]
+  },
+  {
+    "id": "release-nnetnav",
+    "name": "NNetNav — first-party releases",
+    "url": "https://raw.githubusercontent.com/MurtyShikhar/NNetnav/HEAD/README.md",
+    "homepage": "https://github.com/MurtyShikhar/NNetnav",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "models",
+      "datasets",
+      "release-monitoring"
+    ]
   }
 ]

@@ -24,10 +24,13 @@ Supporting automation libraries and workflow recording tools may be marked `adja
 - `organization:` IDs distinguish publisher/brand entities from their offerings; these do not assert legal incorporation or ownership.
 - Other URLs lose fragments and common tracking parameters. Similar titles are not automatically merged.
 - Redirects, project renames, dataset mirrors, and model variants require continued editorial entity resolution. Source coverage is conservative and does not assume that similar names are equivalent.
+- When an author explicitly identifies an accidental duplicate submission, `identifiers.preferred_arxiv` records the preferred identifier with primary evidence. The duplicate stays accessible as bibliographic provenance and cannot be promoted as another curated paper. Similar titles alone do not establish this relationship.
 
 ## Evidence and unknowns
 
 Every published record has a primary URL, retrieval timestamp, SHA-256 of the fetched response, and the fields supported by that evidence. Upstream raw responses stay in an ignored local cache; committed receipts retain attribution and fingerprints. A digest verifies identity when the response is available; it does **not** guarantee that a mutable upstream URL can recreate an old snapshot.
+
+Some dataset cards contain only licensing metadata. For these entries, Hub metadata establishes identity and licensing while an inspected project README supports the description and scope. Editorial inputs retain these as `additional_evidence` with separate content hashes and field scopes. Refreshing either required source with changed or unavailable content revokes the verification match until another review.
 
 `published_at` is the original arXiv publication date where available. Retrieval dates never substitute for release dates. Unknown dates, size, licenses, and pricing are null. A hub size category can refer to packaged files, so it is not interpreted as a sample count. Publisher claims and independent measurements are not interchangeable.
 
