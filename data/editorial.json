@@ -20,7 +20,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "83b8684c2f4ac4f31996b8b4752195fcb6cc5429f89d92398177b9b721d787fc",
-    "reviewed_at": "2026-10-16T06:35:57Z"
+    "reviewed_at": "2026-10-16T06:35:57Z",
+    "documented_by": [
+      "2404.07972"
+    ]
   },
   {
     "name": "WebArena",
@@ -40,7 +43,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "081c826497f9b7da4952771ee128c2215ec3532379db0fe9f7fcbd899d9c9287",
-    "reviewed_at": "2026-10-16T06:35:57Z"
+    "reviewed_at": "2026-10-16T06:35:57Z",
+    "documented_by": [
+      "2307.13854"
+    ]
   },
   {
     "name": "VisualWebArena",
@@ -60,7 +66,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "182529c2fce1e41f3a2162727205c54da8b3d2381b2273d726170ee9d8cf65cc",
-    "reviewed_at": "2026-10-16T06:35:57Z"
+    "reviewed_at": "2026-10-16T06:35:57Z",
+    "documented_by": [
+      "2401.13649"
+    ]
   },
   {
     "name": "AndroidWorld",
@@ -88,7 +97,10 @@
         "task success"
       ],
       "evaluation_type": "programmatic state checks"
-    }
+    },
+    "documented_by": [
+      "2405.14573"
+    ]
   },
   {
     "name": "Windows Agent Arena",
@@ -108,7 +120,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "e481abd422a4cc8b819ad84b32684e4af641e18a7c0d277dd608cfd5d3c5e6ad",
-    "reviewed_at": "2026-10-16T06:35:57Z"
+    "reviewed_at": "2026-10-16T06:35:57Z",
+    "documented_by": [
+      "2409.08264"
+    ]
   },
   {
     "name": "ScreenSpot Pro",
@@ -148,7 +163,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "e814851bc3016a2abf59358f99b80afd9c2bd5894fc34baddfb7e4d0aa03bd45",
-    "reviewed_at": "2026-10-16T06:35:57Z"
+    "reviewed_at": "2026-10-16T06:35:57Z",
+    "documented_by": [
+      "2505.13227"
+    ]
   },
   {
     "name": "WorkArena",
@@ -168,7 +186,11 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "834a48f0346036a0fc591a36f9eb6f513b44a2777a66afa0917f28fc63f29334",
-    "reviewed_at": "2026-10-16T06:35:57Z"
+    "reviewed_at": "2026-10-16T06:35:57Z",
+    "documented_by": [
+      "2403.07718",
+      "2407.05291"
+    ]
   },
   {
     "name": "WebVoyager",
@@ -188,7 +210,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "b5523941b2773634fdcf359b5b89bf0aca589f33ad9db30692c8b1912ed5dda5",
-    "reviewed_at": "2026-10-16T06:35:57Z"
+    "reviewed_at": "2026-10-16T06:35:57Z",
+    "documented_by": [
+      "2401.13919"
+    ]
   },
   {
     "name": "WebLINX",
@@ -208,7 +233,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "15c3f1656afd861894b180bca7d9214b4cf78a6ad9cd0601c80f5d67d2839528",
-    "reviewed_at": "2026-10-16T06:35:57Z"
+    "reviewed_at": "2026-10-16T06:35:57Z",
+    "documented_by": [
+      "2402.05930"
+    ]
   },
   {
     "name": "Mind2Web",
@@ -228,7 +256,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "157dbd840264ea29f958c0b7383d63783845c573b3e19a1f39b773be22e0b32d",
-    "reviewed_at": "2026-10-16T06:35:57Z"
+    "reviewed_at": "2026-10-16T06:35:57Z",
+    "documented_by": [
+      "2306.06070"
+    ]
   },
   {
     "name": "Online Mind2Web",
@@ -335,7 +366,10 @@
         "task success"
       ],
       "evaluation_type": "benchmark task evaluation"
-    }
+    },
+    "documented_by": [
+      "2410.24024"
+    ]
   },
   {
     "name": "AndroidArena",
@@ -837,7 +871,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "0c4feb17b657c0c9a71d7e0c5e2142abbd19bb5cff22e6cd3b6b082644c98ee7",
-    "reviewed_at": "2026-10-16T06:35:59Z"
+    "reviewed_at": "2026-10-16T06:35:59Z",
+    "documented_by": [
+      "2501.12326"
+    ]
   },
   {
     "name": "OpenCUA",
@@ -857,7 +894,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "91fed11b234775bde91bb766ee65e1015897ced6668de8e80418fcee09f8f75d",
-    "reviewed_at": "2026-10-16T06:35:59Z"
+    "reviewed_at": "2026-10-16T06:35:59Z",
+    "documented_by": [
+      "2508.09123"
+    ]
   },
   {
     "name": "UI-Venus",
@@ -877,7 +917,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "5703c892aaf99d250bf59edf52d359560a80d443f2be13c7aa76af0c1a7f1d67",
-    "reviewed_at": "2026-10-16T06:35:59Z"
+    "reviewed_at": "2026-10-16T06:35:59Z",
+    "documented_by": [
+      "2508.10833"
+    ]
   },
   {
     "name": "EvoCUA",
@@ -956,7 +999,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "021cf14ec9482d1dab04dfeaadc3e39cdc405a284991cd540f5eeae7dea47a12",
-    "reviewed_at": "2026-10-16T06:36:00Z"
+    "reviewed_at": "2026-10-16T06:36:00Z",
+    "documented_by": [
+      "2410.23218"
+    ]
   },
   {
     "name": "SeeClick",
@@ -975,7 +1021,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "c4112415bec58fc77f9a1e8fa98f8d602c5d382747579dfda9f866900c55995c",
-    "reviewed_at": "2026-10-16T06:36:00Z"
+    "reviewed_at": "2026-10-16T06:36:00Z",
+    "documented_by": [
+      "2401.10935"
+    ]
   },
   {
     "name": "UGround",
@@ -1014,7 +1063,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "730e51422c0ebe00cb2a1a8f4510d9914b1ea735fdb06445fde2b243da80bdd4",
-    "reviewed_at": "2026-10-16T06:36:00Z"
+    "reviewed_at": "2026-10-16T06:36:00Z",
+    "documented_by": [
+      "2411.17465"
+    ]
   },
   {
     "name": "Aguvis",
@@ -1034,7 +1086,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "2dd9f36b818c1b7b6bd772ba8575f6c0ebab6d9e0d307edcc2f196f3e4ba502e",
-    "reviewed_at": "2026-10-16T06:36:00Z"
+    "reviewed_at": "2026-10-16T06:36:00Z",
+    "documented_by": [
+      "2412.04454"
+    ]
   },
   {
     "name": "GUI-Actor",
@@ -1053,7 +1108,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "2dafdebf2fa1e0a5db871addd103e50cb55625f0108c757708029e885920ee4e",
-    "reviewed_at": "2026-10-16T06:36:00Z"
+    "reviewed_at": "2026-10-16T06:36:00Z",
+    "documented_by": [
+      "2506.03143"
+    ]
   },
   {
     "name": "Phi-Ground",
@@ -1112,7 +1170,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "2cf79e21b5438bf6a2e6bd450ba8c4d86404560dfb61836f7e300112ce74a59d",
-    "reviewed_at": "2026-10-16T06:36:00Z"
+    "reviewed_at": "2026-10-16T06:36:00Z",
+    "documented_by": [
+      "2506.01391"
+    ]
   },
   {
     "name": "POINTS-GUI",
@@ -1350,7 +1411,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "4585b765d7c8b3e9bb6187d36d576edde454d4c0158a6aa8b3fdbedf34c89a15",
-    "reviewed_at": "2026-10-16T06:36:01Z"
+    "reviewed_at": "2026-10-16T06:36:01Z",
+    "documented_by": [
+      "2406.08451"
+    ]
   },
   {
     "name": "GUICourse",
@@ -1649,7 +1713,11 @@
     "editorial_reviewed": true,
     "reviewed_sha256": "9ea381fdb78eb326d988ea384b6f5074ef0ff4c0d5fab555a148eded385e88f1",
     "reviewed_at": "2026-10-16T06:36:02Z",
-    "publisher_id": "organization:simular"
+    "publisher_id": "organization:simular",
+    "documented_by": [
+      "2410.08164",
+      "2504.00906"
+    ]
   },
   {
     "name": "UI-TARS Desktop",
@@ -1676,7 +1744,8 @@
     "kind": "agent",
     "url": "https://github.com/X-PLUG/MobileAgent",
     "environments": [
-      "android"
+      "android",
+      "cross-platform"
     ],
     "topics": [
       "mobile-navigation",
@@ -1689,7 +1758,14 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "ca402ffd3b05f72a6d72f47de52c962f92e410749a77939044f3301d4330af16",
-    "reviewed_at": "2026-10-16T06:36:02Z"
+    "reviewed_at": "2026-10-16T06:36:02Z",
+    "documented_by": [
+      "2401.16158",
+      "2406.01014",
+      "2508.15144",
+      "2602.16855"
+    ],
+    "notes": "This repository contains multiple Mobile-Agent generations. Platform coverage differs by version; use the corresponding paper and implementation instructions."
   },
   {
     "name": "AppAgent",
@@ -2663,7 +2739,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "f4ebaafcc0ab0b9e9cc55cb587678e5c83a5bbd64469fb2cc52bc63843c5cc6d",
-    "reviewed_at": "2026-10-16T06:36:04Z"
+    "reviewed_at": "2026-10-16T06:36:04Z",
+    "documented_by": [
+      "2408.00203"
+    ]
   },
   {
     "name": "Set of Mark",
@@ -2758,7 +2837,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "f23c588ea9fb27210f9d605e164a32527a24298ca516df98272ff7ca7110eac6",
-    "reviewed_at": "2026-10-16T06:38:26Z"
+    "reviewed_at": "2026-10-16T06:38:26Z",
+    "documented_by": [
+      "2508.09123"
+    ]
   },
   {
     "name": "OS-Atlas Data",
@@ -2777,7 +2859,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "c2c5f7b3f07d92349ffd8256792599c856ed77c89108c45dbaef48a4699abe20",
-    "reviewed_at": "2026-10-16T06:38:26Z"
+    "reviewed_at": "2026-10-16T06:38:26Z",
+    "documented_by": [
+      "2410.23218"
+    ]
   },
   {
     "name": "UI-Vision",
@@ -2796,7 +2881,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "34f4ad5c9e7160b5be5aa8ae77e6e9f83a277aada41a272b82a2628d21159a8c",
-    "reviewed_at": "2026-10-16T06:38:26Z"
+    "reviewed_at": "2026-10-16T06:38:26Z",
+    "documented_by": [
+      "2503.15661"
+    ]
   },
   {
     "name": "MobileViews",
@@ -2814,7 +2902,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "d36d62283deecd3c5ccf1ac1af49aa7ba779a1d69cdcaea39a1bed37ff5d66b9",
-    "reviewed_at": "2026-10-16T06:38:26Z"
+    "reviewed_at": "2026-10-16T06:38:26Z",
+    "documented_by": [
+      "2409.14337"
+    ]
   },
   {
     "name": "Mobile3M",
@@ -2851,7 +2942,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "e51af2845c2f31c7af112579b42c3ff9bf5a2c2356e80932e829bc2be1a341bd",
-    "reviewed_at": "2026-10-16T06:38:26Z"
+    "reviewed_at": "2026-10-16T06:38:26Z",
+    "documented_by": [
+      "2511.04307"
+    ]
   },
   {
     "name": "CAGUI",
@@ -2869,7 +2963,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "98699e13f7c7f5af812e1cbbd5e71eaceefa8aa73ca37167a772774a40818efd",
-    "reviewed_at": "2026-10-16T06:38:26Z"
+    "reviewed_at": "2026-10-16T06:38:26Z",
+    "documented_by": [
+      "2506.01391"
+    ]
   },
   {
     "name": "WebUI",
@@ -5413,9 +5510,6 @@
     "name": "Agent-SAMA: State-Aware Mobile Assistant",
     "kind": "paper",
     "url": "https://arxiv.org/abs/2505.23596",
-    "aliases": [
-      "MAPLE"
-    ],
     "environments": [
       "android"
     ],
@@ -5434,6 +5528,740 @@
     "editorial_reviewed": true,
     "reviewed_sha256": "13d5969845070cd2877dc51ae5300c2d623e5daef00c8a1552ffa46af3f721a5",
     "reviewed_at": "2026-10-16T07:54:03Z",
-    "notes": "The discovery result used the earlier MAPLE title; this record follows the current arXiv title, Agent-SAMA. Summary reviewed against the abstract; experiments not independently reproduced."
+    "notes": "Hugging Face discovery used the label MAPLE for this ID; the record follows the current primary arXiv title, Agent-SAMA. The secondary-title discrepancy is not treated as proof of a historical rename. Experiments not independently reproduced."
+  },
+  {
+    "name": "SeeClick: Harnessing GUI Grounding for Advanced Visual GUI Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2401.10935",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "data-generation"
+    ],
+    "summary": "Trains a screenshot-driven GUI agent with grounding pretraining and introduces ScreenSpot for evaluating interface target localization.",
+    "verify_terms": [
+      "SeeClick: Harnessing GUI "
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c87e97eb397da04806d53145cf9c13be739fc657bb54dca9318c8c4ed2a36249",
+    "reviewed_at": "2026-10-16T06:36:58Z",
+    "notes": "Summary and topic tags reviewed against the primary abstract. Reported experiments, task counts, and artifact availability are not independently reproduced."
+  },
+  {
+    "name": "VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2401.13649",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "evaluation",
+      "grounding",
+      "web-navigation"
+    ],
+    "summary": "Introduces visually grounded website tasks for evaluating multimodal agents that must interpret both images and text.",
+    "verify_terms": [
+      "VisualWebArena: Evaluatin"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2308.03688%2C2308.15272%2C2309.08172%2C2309.11436%2C2310.04716%2C2310.04869%2C2310.05126%2C2310.06770%2C2310.08740%2C2310.10634%2C2310.11441%2C2310.16042%2C2310.18331%2C2311.01767%2C2311.07562%2C2311.09278%2C2311.12983%2C2311.18751%2C2312.03003%2C2312.06677%2C2312.08914%2C2312.11671%2C2312.13108%2C2312.13771%2C2312.15820%2C2312.16062%2C2401.01614%2C2401.04124%2C2401.07781%2C2401.10935%2C2401.13178%2C2401.13649%2C2401.13919%2C2401.14268%2C2401.16158%2C2402.01030%2C2402.04476%2C2402.04615%2C2402.05930%2C2402.06596%2C2402.07456%2C2402.07939%2C2402.07945%2C2402.08567%2C2402.11941%2C2402.14073%2C2402.15057%2C2402.16965%2C2402.17553%2C2403.02713&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "3aac6e9748769efff3c475ede0da192776daa03431d231b5f67e2aa50f8a3be9",
+    "reviewed_at": "2026-10-16T06:31:24Z",
+    "notes": "Summary and topic tags reviewed against the primary abstract. Reported experiments, task counts, and artifact availability are not independently reproduced."
+  },
+  {
+    "name": "WebVoyager: Building an End-to-End Web Agent with Large Multimodal Models",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2401.13919",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "web-navigation",
+      "evaluation"
+    ],
+    "summary": "Combines multimodal web interaction with a real-website task collection and an automated evaluation protocol.",
+    "verify_terms": [
+      "WebVoyager: Building an E"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c87e97eb397da04806d53145cf9c13be739fc657bb54dca9318c8c4ed2a36249",
+    "reviewed_at": "2026-10-16T06:36:58Z",
+    "notes": "Summary and topic tags reviewed against the primary abstract. Reported experiments, task counts, and artifact availability are not independently reproduced."
+  },
+  {
+    "name": "Mobile-Agent: Autonomous Multi-Modal Mobile Device Agent with Visual Perception",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2401.16158",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "mobile-navigation",
+      "planning"
+    ],
+    "summary": "Uses visual perception tools and task decomposition to operate mobile applications without relying on app interface metadata.",
+    "verify_terms": [
+      "Mobile-Agent: Autonomous "
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2308.03688%2C2308.15272%2C2309.08172%2C2309.11436%2C2310.04716%2C2310.04869%2C2310.05126%2C2310.06770%2C2310.08740%2C2310.10634%2C2310.11441%2C2310.16042%2C2310.18331%2C2311.01767%2C2311.07562%2C2311.09278%2C2311.12983%2C2311.18751%2C2312.03003%2C2312.06677%2C2312.08914%2C2312.11671%2C2312.13108%2C2312.13771%2C2312.15820%2C2312.16062%2C2401.01614%2C2401.04124%2C2401.07781%2C2401.10935%2C2401.13178%2C2401.13649%2C2401.13919%2C2401.14268%2C2401.16158%2C2402.01030%2C2402.04476%2C2402.04615%2C2402.05930%2C2402.06596%2C2402.07456%2C2402.07939%2C2402.07945%2C2402.08567%2C2402.11941%2C2402.14073%2C2402.15057%2C2402.16965%2C2402.17553%2C2403.02713&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "3aac6e9748769efff3c475ede0da192776daa03431d231b5f67e2aa50f8a3be9",
+    "reviewed_at": "2026-10-16T06:31:24Z",
+    "notes": "Summary and topic tags reviewed against the primary abstract. Reported experiments, task counts, and artifact availability are not independently reproduced."
+  },
+  {
+    "name": "WebLINX: Real-World Website Navigation with Multi-Turn Dialogue",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2402.05930",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "data-generation",
+      "web-navigation",
+      "evaluation"
+    ],
+    "summary": "Collects expert demonstrations of conversational web navigation and studies retrieval-based element selection for processing large pages.",
+    "verify_terms": [
+      "WebLINX: Real-World Websi"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2308.03688%2C2308.15272%2C2309.08172%2C2309.11436%2C2310.04716%2C2310.04869%2C2310.05126%2C2310.06770%2C2310.08740%2C2310.10634%2C2310.11441%2C2310.16042%2C2310.18331%2C2311.01767%2C2311.07562%2C2311.09278%2C2311.12983%2C2311.18751%2C2312.03003%2C2312.06677%2C2312.08914%2C2312.11671%2C2312.13108%2C2312.13771%2C2312.15820%2C2312.16062%2C2401.01614%2C2401.04124%2C2401.07781%2C2401.10935%2C2401.13178%2C2401.13649%2C2401.13919%2C2401.14268%2C2401.16158%2C2402.01030%2C2402.04476%2C2402.04615%2C2402.05930%2C2402.06596%2C2402.07456%2C2402.07939%2C2402.07945%2C2402.08567%2C2402.11941%2C2402.14073%2C2402.15057%2C2402.16965%2C2402.17553%2C2403.02713&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "3aac6e9748769efff3c475ede0da192776daa03431d231b5f67e2aa50f8a3be9",
+    "reviewed_at": "2026-10-16T06:31:24Z",
+    "notes": "Summary and topic tags reviewed against the primary abstract. Reported experiments, task counts, and artifact availability are not independently reproduced."
+  },
+  {
+    "name": "WorkArena: How Capable Are Web Agents at Solving Common Knowledge Work Tasks?",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2403.07718",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "evaluation",
+      "workflow"
+    ],
+    "summary": "Introduces enterprise web tasks on ServiceNow and BrowserGym interfaces for evaluating browser-based agents.",
+    "verify_terms": [
+      "WorkArena: How Capable Ar"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c87e97eb397da04806d53145cf9c13be739fc657bb54dca9318c8c4ed2a36249",
+    "reviewed_at": "2026-10-16T06:36:58Z",
+    "notes": "Summary and topic tags reviewed against the primary abstract. Reported experiments, task counts, and artifact availability are not independently reproduced."
+  },
+  {
+    "name": "Mobile-Agent-v2: Mobile Device Operation Assistant with Effective Navigation via Multi-Agent Collaboration",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2406.01014",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "planning",
+      "memory",
+      "mobile-navigation"
+    ],
+    "summary": "Separates mobile planning, decision-making, and reflection, with a memory unit for task progress and relevant content.",
+    "verify_terms": [
+      "Mobile-Agent-v2: Mobile D"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2403.03186%2C2403.03788%2C2403.07718%2C2403.10170%2C2403.11905%2C2403.16971%2C2403.17918%2C2403.20271%2C2404.01549%2C2404.01744%2C2404.02475%2C2404.03648%2C2404.05427%2C2404.05719%2C2404.05955%2C2404.06474%2C2404.07972%2C2404.08755%2C2404.08860%2C2404.08948%2C2404.09992%2C2404.10887%2C2404.11459%2C2404.16006%2C2404.16048%2C2404.16054%2C2404.16660%2C2404.18074%2C2404.19296%2C2405.00516%2C2405.11120%2C2405.12842%2C2405.14573%2C2405.14751%2C2405.15793%2C2405.16247%2C2405.20309%2C2406.01014%2C2406.01623%2C2406.03679%2C2406.06947%2C2406.07822%2C2406.08184%2C2406.08340%2C2406.08451%2C2406.10227%2C2406.10819%2C2406.11317%2C2406.11896%2C2406.12373&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "be244bfae7f89ef9449b69d85aac44295eb7b5f7e5e1bbedd76df312696676a7",
+    "reviewed_at": "2026-10-16T06:31:28Z",
+    "notes": "Summary and topic tags reviewed against the primary abstract. Reported experiments, task counts, and artifact availability are not independently reproduced."
+  },
+  {
+    "name": "GUIOdyssey: A Comprehensive Dataset for Cross-App GUI Navigation on Mobile Devices",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2406.08451",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "cross-app",
+      "data-generation"
+    ],
+    "summary": "Introduces annotated cross-application mobile trajectories and studies history-aware navigation over long task sequences.",
+    "verify_terms": [
+      "GUIOdyssey: A Comprehensi"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2403.03186%2C2403.03788%2C2403.07718%2C2403.10170%2C2403.11905%2C2403.16971%2C2403.17918%2C2403.20271%2C2404.01549%2C2404.01744%2C2404.02475%2C2404.03648%2C2404.05427%2C2404.05719%2C2404.05955%2C2404.06474%2C2404.07972%2C2404.08755%2C2404.08860%2C2404.08948%2C2404.09992%2C2404.10887%2C2404.11459%2C2404.16006%2C2404.16048%2C2404.16054%2C2404.16660%2C2404.18074%2C2404.19296%2C2405.00516%2C2405.11120%2C2405.12842%2C2405.14573%2C2405.14751%2C2405.15793%2C2405.16247%2C2405.20309%2C2406.01014%2C2406.01623%2C2406.03679%2C2406.06947%2C2406.07822%2C2406.08184%2C2406.08340%2C2406.08451%2C2406.10227%2C2406.10819%2C2406.11317%2C2406.11896%2C2406.12373&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "be244bfae7f89ef9449b69d85aac44295eb7b5f7e5e1bbedd76df312696676a7",
+    "reviewed_at": "2026-10-16T06:31:28Z",
+    "notes": "Summary and topic tags reviewed against the primary abstract. Reported experiments, task counts, and artifact availability are not independently reproduced."
+  },
+  {
+    "name": "WorkArena++: Towards Compositional Planning and Reasoning-based Common Knowledge Work Tasks",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2407.05291",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "evaluation",
+      "planning",
+      "workflow"
+    ],
+    "summary": "Defines compositional enterprise workflows to evaluate planning and reasoning, with generation of ground-truth interaction traces.",
+    "verify_terms": [
+      "WorkArena++: Towards Comp"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2406.12814%2C2406.13719%2C2406.14056%2C2406.14250%2C2406.14314%2C2406.18082%2C2406.19263%2C2407.00993%2C2407.01476%2C2407.01489%2C2407.01511%2C2407.01558%2C2407.03037%2C2407.03913%2C2407.04346%2C2407.05291%2C2407.07061%2C2407.08850%2C2407.09018%2C2407.09295%2C2407.10956%2C2407.13032%2C2407.13063%2C2407.15673%2C2407.15711%2C2407.16741%2C2407.17490%2C2407.18901%2C2407.19056%2C2407.20183%2C2408.00203%2C2408.02544%2C2408.06327%2C2408.07199%2C2408.11824%2C2408.15978%2C2409.02453%2C2409.04566%2C2409.07429%2C2409.08264%2C2409.09354%2C2409.10741%2C2409.11295%2C2409.13711%2C2409.14337%2C2409.14818%2C2409.15441%2C2409.15637%2C2409.17140%2C2409.20566&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "b9a83994d8ac36ccdb606a5219511f8bb35ad3948ade4f9f3e28d386221aedfb",
+    "reviewed_at": "2026-10-16T06:31:32Z",
+    "notes": "Summary and topic tags reviewed against the primary abstract. Reported experiments, task counts, and artifact availability are not independently reproduced."
+  },
+  {
+    "name": "OmniParser for Pure Vision Based GUI Agent",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2408.00203",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "screen-understanding"
+    ],
+    "summary": "Parses screenshots into interactable regions and semantic element descriptions to support visually grounded agent actions.",
+    "verify_terms": [
+      "OmniParser for Pure Visio"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c87e97eb397da04806d53145cf9c13be739fc657bb54dca9318c8c4ed2a36249",
+    "reviewed_at": "2026-10-16T06:36:58Z",
+    "notes": "Summary and topic tags reviewed against the primary abstract. Reported experiments, task counts, and artifact availability are not independently reproduced."
+  },
+  {
+    "name": "Windows Agent Arena: Evaluating Multi-Modal OS Agents at Scale",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2409.08264",
+    "environments": [
+      "windows"
+    ],
+    "topics": [
+      "evaluation",
+      "cross-app"
+    ],
+    "summary": "Adapts real-desktop evaluation to Windows applications and supports parallel execution of benchmark tasks.",
+    "verify_terms": [
+      "Windows Agent Arena: Eval"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2406.12814%2C2406.13719%2C2406.14056%2C2406.14250%2C2406.14314%2C2406.18082%2C2406.19263%2C2407.00993%2C2407.01476%2C2407.01489%2C2407.01511%2C2407.01558%2C2407.03037%2C2407.03913%2C2407.04346%2C2407.05291%2C2407.07061%2C2407.08850%2C2407.09018%2C2407.09295%2C2407.10956%2C2407.13032%2C2407.13063%2C2407.15673%2C2407.15711%2C2407.16741%2C2407.17490%2C2407.18901%2C2407.19056%2C2407.20183%2C2408.00203%2C2408.02544%2C2408.06327%2C2408.07199%2C2408.11824%2C2408.15978%2C2409.02453%2C2409.04566%2C2409.07429%2C2409.08264%2C2409.09354%2C2409.10741%2C2409.11295%2C2409.13711%2C2409.14337%2C2409.14818%2C2409.15441%2C2409.15637%2C2409.17140%2C2409.20566&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "b9a83994d8ac36ccdb606a5219511f8bb35ad3948ade4f9f3e28d386221aedfb",
+    "reviewed_at": "2026-10-16T06:31:32Z",
+    "notes": "Summary and topic tags reviewed against the primary abstract. Reported experiments, task counts, and artifact availability are not independently reproduced."
+  },
+  {
+    "name": "MobileViews: A Million-scale and Diverse Mobile GUI Dataset",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2409.14337",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "screen-understanding",
+      "data-generation"
+    ],
+    "summary": "Builds mobile screenshot and view-hierarchy pairs through automated application traversal and evaluates their usefulness for GUI grounding.",
+    "verify_terms": [
+      "MobileViews: A Million-sc"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2406.12814%2C2406.13719%2C2406.14056%2C2406.14250%2C2406.14314%2C2406.18082%2C2406.19263%2C2407.00993%2C2407.01476%2C2407.01489%2C2407.01511%2C2407.01558%2C2407.03037%2C2407.03913%2C2407.04346%2C2407.05291%2C2407.07061%2C2407.08850%2C2407.09018%2C2407.09295%2C2407.10956%2C2407.13032%2C2407.13063%2C2407.15673%2C2407.15711%2C2407.16741%2C2407.17490%2C2407.18901%2C2407.19056%2C2407.20183%2C2408.00203%2C2408.02544%2C2408.06327%2C2408.07199%2C2408.11824%2C2408.15978%2C2409.02453%2C2409.04566%2C2409.07429%2C2409.08264%2C2409.09354%2C2409.10741%2C2409.11295%2C2409.13711%2C2409.14337%2C2409.14818%2C2409.15441%2C2409.15637%2C2409.17140%2C2409.20566&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "b9a83994d8ac36ccdb606a5219511f8bb35ad3948ade4f9f3e28d386221aedfb",
+    "reviewed_at": "2026-10-16T06:31:32Z",
+    "notes": "Summary and topic tags reviewed against the primary abstract. Reported experiments, task counts, and artifact availability are not independently reproduced."
+  },
+  {
+    "name": "MobileSafetyBench: Evaluating Safety of Autonomous Agents in Mobile Device Control",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2410.17520",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "safety-security",
+      "evaluation"
+    ],
+    "summary": "Evaluates mobile agents on misuse, side effects, and indirect prompt-injection risks in an Android emulator environment.",
+    "verify_terms": [
+      "MobileSafetyBench: Evalua"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2410.00467%2C2410.00689%2C2410.02810%2C2410.02907%2C2410.05243%2C2410.06703%2C2410.08164%2C2410.09006%2C2410.09024%2C2410.11843%2C2410.11871%2C2410.11872%2C2410.13232%2C2410.13757%2C2410.13824%2C2410.13825%2C2410.13886%2C2410.14803%2C2410.15164%2C2410.16464%2C2410.17236%2C2410.17401%2C2410.17520%2C2410.17883%2C2410.18603%2C2410.18963%2C2410.18967%2C2410.19054%2C2410.19100%2C2410.19461%2C2410.19609%2C2410.20745%2C2410.22552%2C2410.23218%2C2410.24024%2C2411.00820%2C2411.02337%2C2411.02391%2C2411.04468%2C2411.04890%2C2411.06559%2C2411.07618%2C2411.10323%2C2411.13451%2C2411.13591%2C2411.15004%2C2411.17465%2C2411.18279%2C2412.00402%2C2412.01268&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "b3e67984f59a1b05ccd946eb54e2d37b0bb78ab0ca796fbb6d544793dafea3e0",
+    "reviewed_at": "2026-10-16T06:31:35Z",
+    "notes": "Summary and topic tags reviewed against the primary abstract. Reported experiments, task counts, and artifact availability are not independently reproduced."
+  },
+  {
+    "name": "OS-ATLAS: A Foundation Action Model for Generalist GUI Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2410.23218",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "data-generation"
+    ],
+    "summary": "Combines cross-platform GUI grounding data synthesis with action-model training to study generalization to unfamiliar interfaces.",
+    "verify_terms": [
+      "OS-ATLAS: A Foundation Ac"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c87e97eb397da04806d53145cf9c13be739fc657bb54dca9318c8c4ed2a36249",
+    "reviewed_at": "2026-10-16T06:36:58Z",
+    "notes": "Summary and topic tags reviewed against the primary abstract. Reported experiments, task counts, and artifact availability are not independently reproduced."
+  },
+  {
+    "name": "AndroidLab: Training and Systematic Benchmarking of Android Autonomous Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2410.24024",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "evaluation",
+      "data-generation",
+      "mobile-navigation"
+    ],
+    "summary": "Provides a shared Android action environment, reproducible tasks, and instruction data for training and comparing language and multimodal agents.",
+    "verify_terms": [
+      "AndroidLab: Training and "
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2410.00467%2C2410.00689%2C2410.02810%2C2410.02907%2C2410.05243%2C2410.06703%2C2410.08164%2C2410.09006%2C2410.09024%2C2410.11843%2C2410.11871%2C2410.11872%2C2410.13232%2C2410.13757%2C2410.13824%2C2410.13825%2C2410.13886%2C2410.14803%2C2410.15164%2C2410.16464%2C2410.17236%2C2410.17401%2C2410.17520%2C2410.17883%2C2410.18603%2C2410.18963%2C2410.18967%2C2410.19054%2C2410.19100%2C2410.19461%2C2410.19609%2C2410.20745%2C2410.22552%2C2410.23218%2C2410.24024%2C2411.00820%2C2411.02337%2C2411.02391%2C2411.04468%2C2411.04890%2C2411.06559%2C2411.07618%2C2411.10323%2C2411.13451%2C2411.13591%2C2411.15004%2C2411.17465%2C2411.18279%2C2412.00402%2C2412.01268&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "b3e67984f59a1b05ccd946eb54e2d37b0bb78ab0ca796fbb6d544793dafea3e0",
+    "reviewed_at": "2026-10-16T06:31:35Z",
+    "notes": "Summary and topic tags reviewed against the primary abstract. Reported experiments, task counts, and artifact availability are not independently reproduced."
+  },
+  {
+    "name": "ShowUI: One Vision-Language-Action Model for GUI Visual Agent",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2411.17465",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "efficiency"
+    ],
+    "summary": "Combines visual token selection, interleaved visual-action history, and curated instruction data in a compact GUI action model.",
+    "verify_terms": [
+      "ShowUI: One Vision-Langua"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2410.00467%2C2410.00689%2C2410.02810%2C2410.02907%2C2410.05243%2C2410.06703%2C2410.08164%2C2410.09006%2C2410.09024%2C2410.11843%2C2410.11871%2C2410.11872%2C2410.13232%2C2410.13757%2C2410.13824%2C2410.13825%2C2410.13886%2C2410.14803%2C2410.15164%2C2410.16464%2C2410.17236%2C2410.17401%2C2410.17520%2C2410.17883%2C2410.18603%2C2410.18963%2C2410.18967%2C2410.19054%2C2410.19100%2C2410.19461%2C2410.19609%2C2410.20745%2C2410.22552%2C2410.23218%2C2410.24024%2C2411.00820%2C2411.02337%2C2411.02391%2C2411.04468%2C2411.04890%2C2411.06559%2C2411.07618%2C2411.10323%2C2411.13451%2C2411.13591%2C2411.15004%2C2411.17465%2C2411.18279%2C2412.00402%2C2412.01268&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "b3e67984f59a1b05ccd946eb54e2d37b0bb78ab0ca796fbb6d544793dafea3e0",
+    "reviewed_at": "2026-10-16T06:31:35Z",
+    "notes": "Summary and topic tags reviewed against the primary abstract. Reported experiments, task counts, and artifact availability are not independently reproduced."
+  },
+  {
+    "name": "Aguvis: Unified Pure Vision Agents for Autonomous GUI Interaction",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2412.04454",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "planning",
+      "data-generation"
+    ],
+    "summary": "Uses screenshots, a unified action space, and staged grounding and reasoning training for cross-platform GUI interaction.",
+    "verify_terms": [
+      "Aguvis: Unified Pure Visi"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2412.04454%2C2412.04626%2C2412.05467%2C2412.09362%2C2412.09605%2C2412.10342%2C2412.10742%2C2412.10840%2C2412.13103%2C2412.13194%2C2412.13501%2C2412.14161%2C2412.14470%2C2412.16256%2C2412.17589%2C2412.18116%2C2412.18426%2C2412.19723%2C2501.01149%2C2501.04575%2C2501.07572%2C2501.11733%2C2501.12326%2C2501.13896%2C2501.16150%2C2502.01600%2C2502.01977%2C2502.02982%2C2502.06395%2C2502.07949%2C2502.08047%2C2502.08226%2C2502.11357%2C2502.13053%2C2502.13923%2C2502.14282%2C2502.18906%2C2503.00401%2C2503.02268%2C2503.03196%2C2503.04730%2C2503.05143%2C2503.06470%2C2503.09263%2C2503.11069%2C2503.11170%2C2503.12687%2C2503.15661%2C2503.15937%2C2503.16465&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "e96b86015c763c780e0430a8d0867b96cae947f50e888b3441c85abcaa42de78",
+    "reviewed_at": "2026-10-16T06:31:38Z",
+    "notes": "Summary and topic tags reviewed against the primary abstract. Reported experiments, task counts, and artifact availability are not independently reproduced."
+  },
+  {
+    "name": "SafeArena: Evaluating the Safety of Autonomous Web Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2503.04957",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "safety-security",
+      "evaluation"
+    ],
+    "summary": "Pairs benign and harmful web tasks to assess deliberate misuse risks and categorize agent behavior by risk level.",
+    "verify_terms": [
+      "SafeArena: Evaluating the"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T06:36:54Z",
+    "notes": "Summary and topic tags reviewed against the primary abstract. Reported experiments, task counts, and artifact availability are not independently reproduced."
+  },
+  {
+    "name": "UI-Vision: A Desktop-centric GUI Benchmark for Visual Perception and Interaction",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2503.15661",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "grounding",
+      "evaluation",
+      "screen-understanding"
+    ],
+    "summary": "Provides annotated desktop demonstrations for evaluating element grounding, layout grounding, and action prediction.",
+    "verify_terms": [
+      "UI-Vision: A Desktop-cent"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2412.04454%2C2412.04626%2C2412.05467%2C2412.09362%2C2412.09605%2C2412.10342%2C2412.10742%2C2412.10840%2C2412.13103%2C2412.13194%2C2412.13501%2C2412.14161%2C2412.14470%2C2412.16256%2C2412.17589%2C2412.18116%2C2412.18426%2C2412.19723%2C2501.01149%2C2501.04575%2C2501.07572%2C2501.11733%2C2501.12326%2C2501.13896%2C2501.16150%2C2502.01600%2C2502.01977%2C2502.02982%2C2502.06395%2C2502.07949%2C2502.08047%2C2502.08226%2C2502.11357%2C2502.13053%2C2502.13923%2C2502.14282%2C2502.18906%2C2503.00401%2C2503.02268%2C2503.03196%2C2503.04730%2C2503.05143%2C2503.06470%2C2503.09263%2C2503.11069%2C2503.11170%2C2503.12687%2C2503.15661%2C2503.15937%2C2503.16465&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "e96b86015c763c780e0430a8d0867b96cae947f50e888b3441c85abcaa42de78",
+    "reviewed_at": "2026-10-16T06:31:38Z",
+    "notes": "Summary and topic tags reviewed against the primary abstract. Reported experiments, task counts, and artifact availability are not independently reproduced."
+  },
+  {
+    "name": "Scaling Computer-Use Grounding via User Interface Decomposition and Synthesis",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2505.13227",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "grounding",
+      "data-generation",
+      "evaluation"
+    ],
+    "summary": "Introduces OSWorld-G grounding evaluation and the Jedi synthesis pipeline for examples spanning layout reasoning and fine-grained interaction.",
+    "verify_terms": [
+      "Scaling Computer-Use Grou"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T06:36:54Z",
+    "notes": "Summary and topic tags reviewed against the primary abstract. Reported experiments, task counts, and artifact availability are not independently reproduced."
+  },
+  {
+    "name": "AgentCPM-GUI: Building Mobile-Use Agents with Reinforcement Fine-Tuning",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2506.01391",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "reinforcement-learning",
+      "mobile-navigation"
+    ],
+    "summary": "Combines grounding pretraining, bilingual interaction trajectories, and reinforcement fine-tuning for mobile GUI actions.",
+    "verify_terms": [
+      "AgentCPM-GUI: Building Mo"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2503.16788%2C2503.17709%2C2503.18492%2C2503.19537%2C2503.20978%2C2503.21620%2C2503.23434%2C2504.01382%2C2504.07981%2C2504.10445%2C2504.10458%2C2504.11257%2C2504.11281%2C2504.12679%2C2504.13805%2C2504.13865%2C2504.14239%2C2504.18575%2C2504.19838%2C2504.20464%2C2505.10924%2C2505.11891%2C2505.12299%2C2505.12632%2C2505.13227%2C2505.13887%2C2505.13909%2C2505.14289%2C2505.15810%2C2505.16282%2C2505.16827%2C2505.18829%2C2505.19897%2C2505.21496%2C2505.21499%2C2505.21936%2C2505.22648%2C2505.23762%2C2505.24838%2C2506.00618%2C2506.01391%2C2506.01968%2C2506.02456%2C2506.03143%2C2506.03569%2C2506.04135%2C2506.04614%2C2506.07672%2C2506.08012%2C2506.08972&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "afe4e75ffb8a5c44f4c088a90ffa5f53553036f514aa768f5aee0c5aa38d731e",
+    "reviewed_at": "2026-10-16T06:31:42Z",
+    "notes": "Summary and topic tags reviewed against the primary abstract. Reported experiments, task counts, and artifact availability are not independently reproduced."
+  },
+  {
+    "name": "OS-Harm: A Benchmark for Measuring Safety of Computer Use Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2506.14866",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "safety-security",
+      "evaluation"
+    ],
+    "summary": "Extends OSWorld with tasks covering user misuse, prompt injection, and model misbehavior, with assessment of both task success and safety.",
+    "verify_terms": [
+      "OS-Harm: A Benchmark for "
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=600&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "26fb4922c4c0bb5c9069935ed0aef0a9f56938cf8ae1af9724894fa1409955fb",
+    "reviewed_at": "2026-10-16T06:36:50Z",
+    "notes": "Summary and topic tags reviewed against the primary abstract. Reported experiments, task counts, and artifact availability are not independently reproduced."
+  },
+  {
+    "name": "UI-Venus Technical Report: Building High-performance UI Agents with RFT",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2508.10833",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "reinforcement-learning"
+    ],
+    "summary": "Studies screenshot-based GUI grounding and navigation using curated interaction data, reward design, and reinforcement fine-tuning.",
+    "verify_terms": [
+      "UI-Venus Technical Report"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2310.08588%2C2402.09205%2C2406.05720%2C2407.21075%2C2410.07166%2C2503.03743%2C2508.04037%2C2508.10833%2C2508.11360%2C2508.13024%2C2508.13186%2C2508.14104%2C2509.01619%2C2509.01720%2C2509.02322%2C2509.04198%2C2509.07764%2C2509.21823%2C2509.22256%2C2509.23263%2C2509.23866%2C2509.25047%2C2509.26539%2C2510.00413%2C2510.00536%2C2510.01524%2C2510.02204%2C2510.02250%2C2510.02418%2C2510.03204%2C2510.03612%2C2510.04039%2C2510.04373%2C2510.04607%2C2510.06223%2C2510.06607%2C2510.09872%2C2510.10666%2C2510.11035%2C2510.11221%2C2510.11892%2C2510.13543%2C2510.15455%2C2510.15863%2C2510.16252%2C2510.18113%2C2510.18314%2C2510.19205%2C2510.22732%2C2511.06101&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "0b730323b2ce85c39aa7d534665901a480ff06540c73f1f80832fcc0735b8789",
+    "reviewed_at": "2026-10-16T06:32:52Z",
+    "notes": "Summary and topic tags reviewed against the primary abstract. Reported experiments, task counts, and artifact availability are not independently reproduced."
+  },
+  {
+    "name": "Mobile-Agent-v3: Fundamental Agents for GUI Automation",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2508.15144",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "data-generation",
+      "planning",
+      "mobile-navigation"
+    ],
+    "summary": "Introduces GUI-Owl models and Mobile-Agent-v3 orchestration, using environment-generated trajectories to support GUI capabilities.",
+    "verify_terms": [
+      "Mobile-Agent-v3: Fundamen"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2506.10387%2C2506.14866%2C2506.20332%2C2507.00008%2C2507.02592%2C2507.03730%2C2507.04227%2C2507.05445%2C2507.05673%2C2507.05720%2C2507.05791%2C2507.14293%2C2507.14799%2C2507.15846%2C2507.16853%2C2507.19132%2C2507.19478%2C2507.21071%2C2507.22025%2C2507.22358%2C2507.23779%2C2508.00935%2C2508.01330%2C2508.03700%2C2508.03923%2C2508.04010%2C2508.04026%2C2508.04482%2C2508.04700%2C2508.05615%2C2508.05731%2C2508.09057%2C2508.09123%2C2508.13167%2C2508.14040%2C2508.15144%2C2508.18689%2C2508.19679%2C2508.20096%2C2509.02544%2C2509.03891%2C2509.06477%2C2509.10723%2C2509.11250%2C2509.11543%2C2509.15221%2C2509.15566%2C2509.15738%2C2509.18119%2C2510.01354&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c208e36ae75cef4b32cfcb2f8182dd4aaaa218e3119bb3d4a2c20a5832f8b1ee",
+    "reviewed_at": "2026-10-16T06:31:49Z",
+    "notes": "Summary and topic tags reviewed against the primary abstract. Reported experiments, task counts, and artifact availability are not independently reproduced."
+  },
+  {
+    "name": "GUI-360$^\\circ$: A Comprehensive Dataset and Benchmark for Computer-Using Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2511.04307",
+    "environments": [
+      "windows"
+    ],
+    "topics": [
+      "data-generation",
+      "grounding",
+      "evaluation"
+    ],
+    "summary": "Collects Windows application trajectories with screenshots and action traces for grounding, screen parsing, and action prediction.",
+    "verify_terms": [
+      "GUI-360$^\\circ$: A Compre"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=500&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "ae98e77b8bb125e45277aacec768a047e7bb0e13f33ca9ff6ca7c19e29e56cca",
+    "reviewed_at": "2026-10-16T06:36:47Z",
+    "notes": "Summary and topic tags reviewed against the primary abstract. Reported experiments, task counts, and artifact availability are not independently reproduced."
+  },
+  {
+    "name": "Mobile-Agent-v3.5: Multi-platform Fundamental GUI Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2602.16855",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "tool-integration",
+      "memory",
+      "reinforcement-learning"
+    ],
+    "summary": "Presents GUI-Owl-1.5 variants and a hybrid data pipeline for multimodal GUI interaction, tool use, memory, and multi-platform tasks.",
+    "verify_terms": [
+      "Mobile-Agent-v3.5: Multi-"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=400&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c432f419481a105a8ce71174ec4aea23c4f0d36ddf89cfe1d0974fa349f6cb59",
+    "reviewed_at": "2026-10-16T06:36:43Z",
+    "notes": "Summary and topic tags reviewed against the primary abstract. Reported experiments, task counts, and artifact availability are not independently reproduced."
+  },
+  {
+    "name": "OS-Harm",
+    "kind": "benchmark",
+    "url": "https://github.com/tml-epfl/os-harm",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "safety-security",
+      "evaluation"
+    ],
+    "summary": "Benchmark for safety of computer-use agents across misuse, prompt injection, and unintended model behavior.",
+    "verify_terms": [
+      "OS-Harm",
+      "OSWorld"
+    ],
+    "editorial_reviewed": true,
+    "documented_by": [
+      "2506.14866"
+    ],
+    "reviewed_sha256": "d001158f58ac37b01c8470224db1567a52feb8010877305f7966637cf7400706",
+    "reviewed_at": "2026-10-16T09:36:33Z",
+    "details": {
+      "task_count": 150,
+      "task_unit": "benchmark tasks in the documented release",
+      "metrics": [
+        "task completion",
+        "safety"
+      ],
+      "evaluation_type": "automated judgment of accuracy and safety"
+    }
+  },
+  {
+    "name": "SafeArena",
+    "kind": "benchmark",
+    "url": "https://github.com/McGill-NLP/safearena",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "safety-security",
+      "evaluation"
+    ],
+    "summary": "Web-agent benchmark pairing benign and harmful tasks to study deliberate misuse risks.",
+    "verify_terms": [
+      "SafeArena"
+    ],
+    "editorial_reviewed": true,
+    "documented_by": [
+      "2503.04957"
+    ],
+    "reviewed_sha256": "ae50121aa60ac26b32d8d6ad6f578f9091a81a3cb9ca28b98050bddee16c929a",
+    "reviewed_at": "2026-10-16T09:36:33Z"
+  },
+  {
+    "name": "Jedi",
+    "kind": "dataset",
+    "url": "https://huggingface.co/datasets/xlangai/Jedi",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "grounding",
+      "data-generation"
+    ],
+    "summary": "Synthetic GUI grounding data associated with UI decomposition research and the OSWorld-G benchmark.",
+    "verify_terms": [
+      "xlangai/Jedi"
+    ],
+    "editorial_reviewed": true,
+    "documented_by": [
+      "2505.13227"
+    ],
+    "reviewed_sha256": "63ff72bea0a2cb9218093d7a5a420b39c01861aef66141433d7c56c1e0ad05ad",
+    "reviewed_at": "2026-10-16T09:33:18Z",
+    "notes": "The dataset card requires coordinate scaling to stay aligned with the image processor. Follow the publisher recipe before using the grounding labels."
+  },
+  {
+    "name": "Android in the Wild: A Large-Scale Dataset for Android Device Control",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2307.10088",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "data-generation",
+      "mobile-navigation",
+      "evaluation"
+    ],
+    "summary": "Collects Android interaction demonstrations with screens, actions, and instructions across device and platform variations for robustness evaluation.",
+    "verify_terms": [
+      "Android in the Wild: A La"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=1802.08802%2C1808.09132%2C2005.03776%2C2101.09465%2C2103.16057%2C2104.08560%2C2105.13231%2C2107.03374%2C2107.13731%2C2108.03353%2C2202.02312%2C2202.08137%2C2204.01691%2C2205.11029%2C2207.01206%2C2209.08199%2C2209.08655%2C2209.14927%2C2209.15099%2C2210.02663%2C2210.03629%2C2210.03945%2C2211.07615%2C2301.10165%2C2301.13280%2C2302.04761%2C2303.07280%2C2303.08774%2C2303.17491%2C2303.17580%2C2304.04370%2C2304.07061%2C2305.04091%2C2305.05662%2C2305.08144%2C2305.10601%2C2305.11854%2C2305.12487%2C2305.14257%2C2305.14325%2C2305.16504%2C2305.16653%2C2305.19308%2C2306.00245%2C2306.06070%2C2306.07863%2C2307.10088%2C2307.12856%2C2307.13854%2C2308.01990&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "cbe8bfcbce4170a94a6cf42de01fbe0a448e7b1d29fa75a0de877105a98ec08e",
+    "reviewed_at": "2026-10-16T06:31:20Z",
+    "notes": "Annotation reviewed against the primary abstract. Original dataset scale and experimental results are not independently reproduced."
+  },
+  {
+    "name": "On the Effects of Data Scale on UI Control Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2406.03679",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "data-generation",
+      "mobile-navigation",
+      "evaluation"
+    ],
+    "summary": "Studies how Android task performance changes with demonstration scale and releases AndroidControl with high- and low-level instructions.",
+    "verify_terms": [
+      "On the Effects of Data Sc"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2403.03186%2C2403.03788%2C2403.07718%2C2403.10170%2C2403.11905%2C2403.16971%2C2403.17918%2C2403.20271%2C2404.01549%2C2404.01744%2C2404.02475%2C2404.03648%2C2404.05427%2C2404.05719%2C2404.05955%2C2404.06474%2C2404.07972%2C2404.08755%2C2404.08860%2C2404.08948%2C2404.09992%2C2404.10887%2C2404.11459%2C2404.16006%2C2404.16048%2C2404.16054%2C2404.16660%2C2404.18074%2C2404.19296%2C2405.00516%2C2405.11120%2C2405.12842%2C2405.14573%2C2405.14751%2C2405.15793%2C2405.16247%2C2405.20309%2C2406.01014%2C2406.01623%2C2406.03679%2C2406.06947%2C2406.07822%2C2406.08184%2C2406.08340%2C2406.08451%2C2406.10227%2C2406.10819%2C2406.11317%2C2406.11896%2C2406.12373&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "be244bfae7f89ef9449b69d85aac44295eb7b5f7e5e1bbedd76df312696676a7",
+    "reviewed_at": "2026-10-16T06:31:28Z",
+    "notes": "Annotation reviewed against the primary abstract. Original dataset scale and experimental results are not independently reproduced."
   }
 ]

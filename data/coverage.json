@@ -1,11 +1,11 @@
 {
-  "as_of_utc": "2026-10-16T07:54:03Z",
-  "total_records": 1984,
-  "curated_records": 251,
+  "as_of_utc": "2026-10-16T09:39:34Z",
+  "total_records": 1987,
+  "curated_records": 282,
   "bibliographic_records": 1764,
-  "metadata_only_records": 1733,
+  "metadata_only_records": 1705,
   "discovery_identifiers": 2676,
-  "unindexed_candidates": 742,
+  "unindexed_candidates": 741,
   "pending_editorial": [
     {
       "id": "github:mobilellm/autodroid-v2",
@@ -40,9 +40,9 @@
   ],
   "by_kind": {
     "agent": 24,
-    "benchmark": 48,
+    "benchmark": 50,
     "company": 16,
-    "dataset": 32,
+    "dataset": 33,
     "framework": 20,
     "infrastructure": 11,
     "model": 43,
@@ -52,19 +52,19 @@
     "tool": 7
   },
   "curated_by_environment": {
-    "android": 45,
-    "cross-platform": 67,
-    "desktop": 60,
+    "android": 54,
+    "cross-platform": 76,
+    "desktop": 65,
     "ios": 7,
     "linux": 6,
     "macos": 4,
     "unspecified": 16,
-    "web": 70,
-    "windows": 6
+    "web": 77,
+    "windows": 8
   },
   "license_declarations_by_scope": {
-    "code": 99,
-    "data": 17,
+    "code": 100,
+    "data": 18,
     "weights": 13,
     "document": 0
   },
@@ -87,7 +87,7 @@
       },
       "discovered": 338,
       "indexed": 197,
-      "curated": 66,
+      "curated": 80,
       "unindexed": 141
     },
     {
@@ -108,7 +108,7 @@
       },
       "discovered": 218,
       "indexed": 154,
-      "curated": 57,
+      "curated": 74,
       "unindexed": 64
     },
     {
@@ -129,7 +129,7 @@
       },
       "discovered": 224,
       "indexed": 198,
-      "curated": 6,
+      "curated": 25,
       "unindexed": 26
     },
     {
@@ -150,7 +150,7 @@
       },
       "discovered": 132,
       "indexed": 93,
-      "curated": 30,
+      "curated": 40,
       "unindexed": 39
     },
     {
@@ -171,7 +171,7 @@
       },
       "discovered": 113,
       "indexed": 22,
-      "curated": 21,
+      "curated": 22,
       "unindexed": 91
     },
     {
@@ -212,9 +212,9 @@
         "unique_resources": 170
       },
       "discovered": 170,
-      "indexed": 102,
-      "curated": 40,
-      "unindexed": 68
+      "indexed": 103,
+      "curated": 48,
+      "unindexed": 67
     },
     {
       "id": "delunn-multimodal",
@@ -234,7 +234,7 @@
       },
       "discovered": 588,
       "indexed": 469,
-      "curated": 104,
+      "curated": 127,
       "unindexed": 119
     },
     {
@@ -255,7 +255,7 @@
       },
       "discovered": 94,
       "indexed": 67,
-      "curated": 26,
+      "curated": 28,
       "unindexed": 27
     },
     {
@@ -276,7 +276,7 @@
       },
       "discovered": 78,
       "indexed": 48,
-      "curated": 17,
+      "curated": 21,
       "unindexed": 30
     },
     {
@@ -297,7 +297,7 @@
       },
       "discovered": 63,
       "indexed": 11,
-      "curated": 7,
+      "curated": 8,
       "unindexed": 52
     },
     {
@@ -318,7 +318,7 @@
       },
       "discovered": 193,
       "indexed": 136,
-      "curated": 47,
+      "curated": 60,
       "unindexed": 57
     },
     {
@@ -339,7 +339,7 @@
       },
       "discovered": 544,
       "indexed": 486,
-      "curated": 3,
+      "curated": 7,
       "unindexed": 58
     },
     {
@@ -360,7 +360,7 @@
       },
       "discovered": 144,
       "indexed": 85,
-      "curated": 28,
+      "curated": 38,
       "unindexed": 59
     },
     {
@@ -423,7 +423,7 @@
       },
       "discovered": 40,
       "indexed": 21,
-      "curated": 9,
+      "curated": 13,
       "unindexed": 19
     },
     {
@@ -444,7 +444,7 @@
       },
       "discovered": 247,
       "indexed": 172,
-      "curated": 44,
+      "curated": 57,
       "unindexed": 75
     },
     {
@@ -465,7 +465,7 @@
       },
       "discovered": 91,
       "indexed": 75,
-      "curated": 6,
+      "curated": 13,
       "unindexed": 16
     },
     {
@@ -486,7 +486,7 @@
       },
       "discovered": 10,
       "indexed": 4,
-      "curated": 3,
+      "curated": 4,
       "unindexed": 6
     },
     {
@@ -507,7 +507,7 @@
       },
       "discovered": 96,
       "indexed": 57,
-      "curated": 13,
+      "curated": 20,
       "unindexed": 39
     }
   ],

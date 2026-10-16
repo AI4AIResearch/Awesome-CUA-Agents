@@ -1,0 +1,13 @@
+[
+  {
+    "id": "arxiv-title-query-single-request-audit",
+    "audited_at": "2026-10-16T09:47:13+00:00",
+    "request": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=0&max_results=2000&sortBy=submittedDate&sortOrder=descending",
+    "source_sha256": "5036037a21e185c7f2b3b521329acbb72d15fe7c9ed5a9c41ff9206fe4fd0352",
+    "reported_total": 1246,
+    "returned_entries": 1199,
+    "unique_identifiers": 1199,
+    "new_to_corpus": 0,
+    "finding": "The full bounded request still returns fewer distinct entries than the API-reported total. The existing completeness flag remains false; this audit does not claim full-field coverage."
+  }
+]

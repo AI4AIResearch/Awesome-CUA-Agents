@@ -8,6 +8,7 @@ import json
 from pathlib import Path
 import re
 import xml.etree.ElementTree as ET
+from collections import defaultdict
 
 SITE = "https://awesomecua.github.io"
 REPO = "https://github.com/AwesomeCUA/awesomecua.github.io"
@@ -67,7 +68,15 @@ def listing(rows):
     return '<div class="reading-list">'+"".join(f'<article><div class="list-overline">{esc(KINDS[r["kind"]])} · {esc(r["review_status"])}</div><h2><a href="{resource_path(r)}">{esc(r["name"])}</a></h2><p>{esc(description(r))}</p><small>{esc(r.get("published_at") or "Release date not recorded")} · {esc(", ".join(r["environments"]))}</small></article>' for r in rows)+'</div>'
 
 
-def resource_body(record, lookup):
+def incoming_relations(rows):
+    incoming=defaultdict(list)
+    for source in rows:
+        for relation in source['relations']:
+            incoming[relation['target_id']].append({'source_id':source['id'],**relation})
+    return incoming
+
+
+def resource_body(record, lookup, incoming=None):
     r=record
     status="AI-assisted editorial review against a primary source" if eligible(r) else "Bibliographic metadata verified; topic relevance and research findings have not been reviewed"
     body=f'<div class="eyebrow">{esc(KINDS[r["kind"]])}</div><h1>{esc(r["name"])}</h1><p class="answer-lead">{esc(description(r))}</p><p class="review-notice">{esc(status)}. This is a catalog annotation, not an independent reproduction or endorsement.</p><div class="page-actions"><a class="button primary" href="{esc(r["url"])}">Original source ↗</a><a class="button secondary" href="{resource_path(r)}index.md">Read as Markdown</a></div>'
@@ -86,6 +95,14 @@ def resource_body(record, lookup):
     if r["notes"]:body+='<h2>Scope and limitations</h2><p>'+esc(r["notes"])+'</p>'
     if r["relations"]:
         body+='<h2>Related resources</h2><ul>'+''.join(f'<li>{esc(rel["type"].replace("_"," "))}: <a href="{resource_path(lookup[rel["target_id"]])}">{esc(lookup[rel["target_id"]]["name"])}</a></li>' for rel in r["relations"] if rel["target_id"] in lookup)+'</ul>'
+    backlinks=(incoming or {}).get(r['id'],[])
+    if backlinks:
+        labels={'documented_by':'Documented resource','introduced_by':'Introduced resource','published_by':'Published resource','variant_of':'Model variant','component_of':'Component'}
+        body+='<h2>Connected assets</h2><p>These links come from reviewed resource records. A documentation link does not imply a training-data or evaluation dependency.</p><ul>'
+        for rel in backlinks:
+            source=lookup[rel['source_id']]
+            body+=f'<li>{esc(labels.get(rel["type"],rel["type"].replace("_"," ")))}: <a href="{resource_path(source)}">{esc(source["name"])}</a> · {esc(KINDS[source["kind"]])} · <a href="{esc(rel["evidence_url"])}">relationship evidence</a></li>'
+        body+='</ul>'
     body+='<h2>Primary evidence and verification</h2><p>Source retrieval is separate from experiment reproduction. Use the original publication or publisher page when citing claims about the resource.</p><ol class="source-list">'
     for ev in r["evidence"]:
         body+=f'<li><a href="{esc(ev["url"])}">{esc(ev["method"].replace("_"," "))}</a><p>Retrieved {esc(ev["retrieved_at"])}. Supports: {esc(", ".join(ev["supports"]))}.</p><details><summary>Content fingerprint</summary><code>{esc(ev["sha256"])}</code></details></li>'
@@ -104,6 +121,7 @@ def resource_markdown(r):
 
 def build_search_pages(destination, rows, coverage, root):
     lookup={r["id"]:r for r in rows}
+    incoming=incoming_relations(rows)
     reviewed=[r for r in rows if eligible(r)]
     latest=coverage["as_of_utc"]
     manifest=[]
@@ -113,7 +131,7 @@ def build_search_pages(destination, rows, coverage, root):
         manifest.append({"path":path,"indexable":index,"sha256":hashlib.sha256(content.encode()).hexdigest()})
     for r in rows:
         path=resource_path(r)
-        emit(path,page(r["name"],description(r),path,resource_body(r,lookup),resource_schema(r),eligible(r)),eligible(r))
+        emit(path,page(r["name"],description(r),path,resource_body(r,lookup,incoming),resource_schema(r),eligible(r)),eligible(r))
         (destination/path.lstrip('/')/'index.md').write_text(resource_markdown(r))
     category_links='<ul class="category-directory">'+''.join(f'<li><a href="/categories/{kind}/">{esc(name)}</a><span>{sum(r["kind"]==kind for r in rows):,} resources</span></li>' for kind,name in KINDS.items())+'</ul>'
     overview=f'<div class="eyebrow">COMPUTER-USE AGENT DIRECTORY</div><h1>Explore the computer-use agent ecosystem</h1><p class="answer-lead">AwesomeCUA connects research papers, GUI models, training datasets, benchmarks, engineering tools, products, and publishers with their original sources.</p><p>This snapshot has {len(rows):,} resource records, including {len(reviewed):,} reviewed entries. Counts are resources, not independent projects.</p><a class="button primary" href="/#catalog">Search and filter all resources</a><h2>Browse by resource type</h2>{category_links}<h2>Research and practical guides</h2><ul><li><a href="/papers/">Reviewed computer-use and GUI-agent research papers</a></li><li><a href="/guides/">Guides to agents, benchmarks, and training data</a></li><li><a href="/data/">Download the source-backed catalog</a></li><li><a href="/coverage/">Inspect coverage and unresolved gaps</a></li></ul>'
@@ -128,6 +146,18 @@ def build_search_pages(destination, rows, coverage, root):
     papers=sorted([r for r in reviewed if r['kind'] in {'paper','survey'}],key=lambda r:r.get('published_at') or '',reverse=True)
     body='<div class="eyebrow">RESEARCH LIBRARY</div><h1>Computer-use agent papers and surveys</h1><p class="answer-lead">A reading list covering GUI grounding, desktop and mobile evaluation, browser agents, training data, planning, and safety. Annotations are based on primary publications, with original author and date metadata.</p><p>The date shown is the paper publication date, not the date we added it. These annotations do not independently reproduce reported experiments.</p>'+listing(papers)
     emit('/papers/',page('Computer-use agent papers and surveys','Read source-backed annotations of computer-use and GUI-agent research, including OSWorld, AndroidWorld, UI-TARS, OpenCUA, grounding, planning, and safety.','/papers/',body,{"@type":"CollectionPage","name":"Reviewed computer-use agent research"}))
+    linked_papers=[r for r in papers if any(e['type'] in {'documented_by','introduced_by'} for e in incoming.get(r['id'],[]))]
+    body='<div class="eyebrow">FOLLOW THE RESEARCH TO THE ASSETS</div><h1>Computer-use papers, code, and datasets</h1><p class="answer-lead">Find the implementations, benchmarks, and datasets connected to reviewed research papers. Every relationship below has a primary-source evidence link.</p><p>Connections describe publication documentation or introduction. They do not automatically mean that a model was trained on a dataset or evaluated on a benchmark.</p><div class="reading-list">'
+    for paper in linked_papers:
+        body+=f'<article><h2><a href="{resource_path(paper)}">{esc(paper["name"])}</a></h2><p>{esc(description(paper))}</p><ul>'
+        for rel in incoming[paper['id']]:
+            source=lookup[rel['source_id']]
+            body+=f'<li><a href="{resource_path(source)}">{esc(source["name"])}</a> — {esc(KINDS[source["kind"]])} · <a href="{esc(rel["evidence_url"])}">source evidence</a></li>'
+        body+='</ul></article>'
+    body+='</div><p><a href="/downloads/relationships.json">Download reviewed relationships as JSON</a> · <a href="/about/">Editorial policy</a></p>'
+    emit('/connections/',page('Computer-use papers, code, and datasets','Trace computer-use agent papers to documented implementations, GUI benchmarks, and training datasets using reviewed primary-source relationships.','/connections/',body))
+    edges=[{'source_id':r['id'],'source_name':r['name'],'source_kind':r['kind'],**rel} for r in rows for rel in r['relations']]
+    (destination/'downloads/relationships.json').write_text(json.dumps({'relation_count':len(edges),'semantics':'Reviewed semantic links only. Documentation does not establish training or evaluation dependency.','relations':edges},ensure_ascii=False,indent=2)+'\n')
     sources=''.join(f'<tr><td><a href="{esc(s["url"])}">{esc(s["name"])}</a></td><td>{s["discovered"]}</td><td>{s["indexed"]}</td><td>{s["curated"]}</td></tr>' for s in coverage['sources'])
     body=f'<h1>Coverage and verification ledger</h1><p class="answer-lead">{len(rows):,} resource records: {len(reviewed):,} curated and {coverage["metadata_only_records"]:,} with bibliographic metadata verification only.</p><p>Evidence snapshot: {esc(latest)}. Resource types can refer to different parts of the same project. Source populations overlap and cannot be summed into a global field size.</p><h2>Discovery-source coverage</h2><div class="table-scroll"><table class="coverage-table"><thead><tr><th>Source</th><th>Found</th><th>Indexed</th><th>Curated</th></tr></thead><tbody>{sources}</tbody></table></div><h2>What remains unverified?</h2><p>Most bibliography entries still require relevance review. Closed datasets, unpublished systems, and regional resources are not exhaustively represented. Asset sizes, model licenses, availability, and experiment protocols need continuing curation. Global completeness has not been established.</p><p>{coverage["unindexed_candidates"]} discovered identifiers currently have no catalog record.</p><p><a href="/downloads/coverage.json">Download the complete coverage ledger</a> · <a href="/about/">Editorial policy</a></p>'
     emit('/coverage/',page('Coverage and verification ledger','Inspect AwesomeCUA source populations, editorial review states, bibliographic verification, unresolved identifiers, and explicit coverage gaps.','/coverage/',body))
@@ -151,7 +181,7 @@ def build_search_pages(destination, rows, coverage, root):
     for identity,value in [('stat-resources',len(rows)),('stat-curated',len(reviewed)),('stat-kinds',len(KINDS)),('stat-sources',len(coverage['sources']))]:
         home=re.sub(f'(id="{identity}">).*?(</span>)',lambda m:m.group(1)+format(value,',')+m.group(2),home)
     home=home.replace('id="snapshot-date">—','id="snapshot-date">'+latest[:10])
-    static='<section class="shell static-directory" aria-labelledby="static-directory-title"><div class="eyebrow">READ, EXPLORE, AND CITE</div><h2 id="static-directory-title">Computer-use agent research and resources</h2><p>Browse source-backed pages directly, with or without JavaScript. Reviewed entries include concise annotations, provenance, and separate license declarations.</p><div class="directory-links"><a href="/catalog/">Resource directory</a><a href="/papers/">Research papers</a><a href="/categories/model/">Models</a><a href="/categories/dataset/">Datasets</a><a href="/categories/benchmark/">Benchmarks</a><a href="/categories/framework/">Frameworks</a><a href="/categories/product/">Products</a><a href="/guides/">Guides</a><a href="/data/">Download data</a><a href="/coverage/">Coverage</a><a href="/about/">Editorial policy</a><a href="/zh/">中文指南</a></div><h3>Where should I start?</h3><p><a href="/guides/what-are-computer-use-agents/">Understand computer-use agents</a>, <a href="/guides/gui-agent-benchmarks/">choose a benchmark for the capability you need</a>, or <a href="/guides/gui-agent-training-data/">find training data with the right supervision and license</a>.</p></section>'
+    static='<section class="shell static-directory" aria-labelledby="static-directory-title"><div class="eyebrow">READ, EXPLORE, AND CITE</div><h2 id="static-directory-title">Computer-use agent research and resources</h2><p>Browse source-backed pages directly, with or without JavaScript. Reviewed entries include concise annotations, provenance, and separate license declarations.</p><div class="directory-links"><a href="/catalog/">Resource directory</a><a href="/papers/">Research papers</a><a href="/connections/">Papers → code & data</a><a href="/categories/model/">Models</a><a href="/categories/dataset/">Datasets</a><a href="/categories/benchmark/">Benchmarks</a><a href="/categories/framework/">Frameworks</a><a href="/categories/product/">Products</a><a href="/guides/">Guides</a><a href="/data/">Download data</a><a href="/coverage/">Coverage</a><a href="/about/">Editorial policy</a><a href="/zh/">中文指南</a></div><h3>Where should I start?</h3><p><a href="/guides/what-are-computer-use-agents/">Understand computer-use agents</a>, <a href="/guides/gui-agent-benchmarks/">choose a benchmark for the capability you need</a>, or <a href="/guides/gui-agent-training-data/">find training data with the right supervision and license</a>.</p></section>'
     home=home.replace('</main>',static+'</main>')
     emit('/',home)
     feed=ET.Element('feed',xmlns='http://www.w3.org/2005/Atom')
@@ -165,14 +195,16 @@ def build_search_pages(destination, rows, coverage, root):
     llms=['# AwesomeCUA','', '> A source-backed computer-use agent resource catalog. Distinguish curated entries from metadata-only bibliography records.','', 'Resource counts are not independent project counts. Primary-source retrieval does not establish reproducibility. Code, data, weights, and document licenses are separate.','', '## Start here','',f'- [Catalog]({SITE}/catalog/): resource categories',f'- [Research]({SITE}/papers/): reviewed papers and surveys',f'- [Guides]({SITE}/guides/): definitions and practical reading guides',f'- [Editorial policy]({SITE}/about/): review states and limits',f'- [Coverage]({SITE}/coverage/): source populations and known gaps',f'- [Data downloads]({SITE}/data/): structured catalog with provenance','', '## Machine-readable access','',f'- [Full catalog JSONL]({SITE}/downloads/catalog.jsonl)',f'- [Curated annotations in Markdown]({SITE}/llms-full.txt)',f'- [Research Atom feed]({SITE}/feed.xml)','', 'Resource HTML pages have a companion `index.md` at the same path. This file is an optional navigation aid, not an indexing requirement or a request to rank this site.']
     (destination/'llms.txt').write_text('\n'.join(llms)+'\n')
     (destination/'llms-full.txt').write_text('# AwesomeCUA curated resource annotations\n\n'+f'Evidence snapshot: {latest}. These records were reviewed with AI assistance; experiments are not independently reproduced.\n\n'+'\n---\n\n'.join(resource_markdown(r) for r in reviewed))
-    robots='User-agent: *\nAllow: /\n\n'+''.join(f'User-agent: {bot}\nAllow: /\n\n' for bot in ['Googlebot','bingbot','OAI-SearchBot','PerplexityBot','Claude-SearchBot'])+f'Sitemap: {SITE}/sitemap.xml\n'
+    robots='User-agent: *\nAllow: /\n\n'+''.join(f'User-agent: {bot}\nAllow: /\n\n' for bot in ['Googlebot','bingbot','OAI-SearchBot','PerplexityBot','Claude-SearchBot'])+f'Sitemap: {SITE}/sitemap.xml\nSitemap: {SITE}/sitemap.txt\n'
     (destination/'robots.txt').write_text(robots)
     sitemap=ET.Element('urlset',xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
     for item in sorted(manifest,key=lambda x:x['path']):
         if item['indexable']:
             node=ET.SubElement(sitemap,'url');ET.SubElement(node,'loc').text=SITE+item['path']
             # No synthetic build-time lastmod; upstream evidence time is not page modification time.
+    ET.indent(sitemap,space='  ')
     (destination/'sitemap.xml').write_bytes(ET.tostring(sitemap,encoding='utf-8',xml_declaration=True))
+    (destination/'sitemap.txt').write_text(''.join(SITE+item['path']+'\n' for item in sorted(manifest,key=lambda x:x['path']) if item['indexable']))
     (destination/'data/search-manifest.json').write_text(json.dumps({'site_url':SITE,'indexable_pages':sum(x['indexable'] for x in manifest),'metadata_only_pages':sum(not x['indexable'] for x in manifest),'pages':manifest},ensure_ascii=False,indent=2)+'\n')
     config=json.loads((root/'data/site-discovery.json').read_text())
     key=config['indexnow_key'];(destination/(key+'.txt')).write_text(key)

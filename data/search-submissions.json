@@ -622,5 +622,16 @@
       "live_manifest_matches_tested_build": true
     },
     "limitations": "User-agent probes test public reachability from this environment, not a crawl from the search engines themselves."
+  },
+  {
+    "provider": "Google Search Console",
+    "action": "live_url_test",
+    "url": "https://awesomecua.github.io/sitemap.xml",
+    "status": "fetch_successful",
+    "observed_at": "2026-10-16T09:47:13+00:00",
+    "crawler": "Google Inspection Tool smartphone",
+    "crawl_allowed": true,
+    "indexing_allowed": true,
+    "evidence": "Live test displayed URL is available to Google, Page fetch Successful, Crawl allowed Yes, and Indexing allowed Yes. This verifies live retrieval, not sitemap parsing or inclusion in the search index."
   }
 ]

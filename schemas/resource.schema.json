@@ -174,7 +174,8 @@
               "uses",
               "evaluates",
               "trained_on",
-              "variant_of"
+              "variant_of",
+              "documented_by"
             ]
           },
           "target_id": {

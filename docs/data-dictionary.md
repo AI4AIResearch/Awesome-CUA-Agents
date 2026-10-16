@@ -16,7 +16,7 @@ The executable contract is [resource.schema.json](../schemas/resource.schema.jso
 | `published_at`, `updated_at` | Bibliographic dates where established, otherwise null |
 | `authors`, `identifiers` | Official bibliographic attribution and IDs |
 | `links` | Typed links, starting with a primary or paper link |
-| `relations` | Explicit semantic assertions: introduced by, published by, component of, variant of, etc. |
+| `relations` | Explicit semantic assertions: introduced by, documented by, published by, component of, variant of, etc. |
 | `licenses` | Four separate nullable declarations: code, data, weights, document |
 | `evidence` | Primary source URL, retrieval time in UTC, response digest, method, supported fields |
 | `last_verified_at` | Time of the primary identity/content check; not a promise of current runtime availability |
@@ -28,3 +28,5 @@ Dataset details can include sample count and unit, modalities, languages, downlo
 `references.jsonl` is a separate discovery graph. Its `mentions` relation only means a URL was found in the source. `target_in_catalog` distinguishes indexed and unresolved targets. Strong reviewed relations remain inside each resource record and in the SQLite `relations` table.
 
 Source data lives in `editorial.json`, `papers.jsonl`, `primary-evidence.jsonl`, `enrichment.jsonl`, `candidates.jsonl`, and discovery manifests. `catalog.jsonl`, `coverage.json`, `references.jsonl`, `review-queue.jsonl`, and category Markdown are generated views. The ignored `.cache/` directory is not needed to reproduce an offline build.
+
+Reviewed `documented_by` links connect an implementation or dataset to a paper named by its first-party source. They do not imply a training or evaluation dependency. Resource pages expose both outgoing relations and incoming connected assets. The [connections directory](https://awesomecua.github.io/connections/) and [relationship export](https://awesomecua.github.io/downloads/relationships.json) provide a consolidated view.

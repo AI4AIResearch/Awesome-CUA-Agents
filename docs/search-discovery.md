@@ -8,7 +8,7 @@ The objective is to make accurate public resources discoverable, readable, and c
 - Every resource has a stable `/resources/<id-slug>/` URL and an `index.md` companion. Curated entries are indexable. Metadata-only entries stay accessible with `noindex,follow` until relevance is reviewed.
 - Canonical URLs, descriptive titles, visible summaries, ordinary anchor links, breadcrumbs, and JSON-LD describe the content actually shown.
 - The catalog download page uses `Dataset`/`DataDownload`; paper entities retain their original authors and dates. Catalog authorship is never substituted for research-paper authorship.
-- The sitemap includes only indexable HTML pages. It omits artificial build-time `lastmod` values; a source retrieval date is not a page-modification date.
+- The XML and plain-text sitemaps contain the same indexable HTML pages. It omits artificial build-time `lastmod` values; a source retrieval date is not a page-modification date.
 - `robots.txt` allows Googlebot, bingbot, OAI-SearchBot, PerplexityBot, and Claude-SearchBot. The existing general access policy is retained. Search access and model-training access are different controls.
 - `llms.txt`, `llms-full.txt`, and an Atom feed provide optional navigation and machine-readable annotations. They are not mandatory AI-ranking mechanisms.
 - Google’s provided verification file is retained at the site root. Do not delete it during future deployments.
@@ -52,3 +52,5 @@ Use Search Console to track indexed pages, impressions, clicks, canonical select
 - [Perplexity: crawlers](https://docs.perplexity.ai/docs/resources/perplexity-crawlers) — PerplexityBot supports search discovery.
 - [Anthropic: crawler controls](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler) — search and other crawler roles are separate.
 - [IndexNow protocol](https://www.indexnow.org/documentation) — public key proof, URL submissions, and response semantics.
+
+The alternate `sitemap.txt` uses Google’s documented one-URL-per-line format. It is an additional discovery channel and parser-independent diagnostic, not a way to bypass indexing policy. Google live URL-test results and sitemap-processing status are recorded separately.

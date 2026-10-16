@@ -53,6 +53,8 @@ def source_records():
         for aid in editorial.get("paper_ids", []):
             target = "arxiv:" + aid
             relations.append({"type": "introduced_by", "target_id": target, "evidence_url": ev["url"]})
+        for aid in editorial.get("documented_by", []):
+            relations.append({"type": "documented_by", "target_id": "arxiv:" + aid, "evidence_url": ev["url"]})
         if editorial.get("publisher_id"):
             relations.append({"type": "published_by", "target_id": editorial["publisher_id"], "evidence_url": ev["url"]})
         if editorial.get("component_of"):

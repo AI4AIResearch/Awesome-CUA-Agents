@@ -12,7 +12,7 @@ import xml.etree.ElementTree as ET
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from build_site import build_site
-from search_pages import SITE, eligible, resource_path, resource_schema, page
+from search_pages import SITE, eligible, resource_path, resource_schema, page, incoming_relations
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -55,6 +55,7 @@ class SearchPagesTests(unittest.TestCase):
         self.assertEqual(set(urls),expected);self.assertEqual(len(urls),len(set(urls)))
         self.assertFalse(root.findall('s:url/s:lastmod',ns))
         for row in self.rows:self.assertEqual(SITE+resource_path(row) in urls,eligible(row))
+        self.assertEqual((self.dest/'sitemap.txt').read_text().splitlines(),urls)
     def test_static_pages_link_to_real_local_destinations(self):
         for item in self.manifest['pages']:
             p=PageParser((self.dest/item['path'].lstrip('/')/'index.html').read_text())
@@ -85,6 +86,18 @@ class SearchPagesTests(unittest.TestCase):
             self.assertEqual(schema['sameAs'],r['url'])
             if r['authors']:self.assertEqual([a['name'] for a in schema['author']],r['authors'])
             if schema['@type']=='Dataset':self.assertGreaterEqual(len(schema['description']),50)
+    def test_reviewed_relationships_are_navigable_in_both_directions(self):
+        incoming=incoming_relations(self.rows)
+        paper=next(r for r in self.rows if r['id']=='arxiv:2508.09123')
+        assets={r['source_id'] for r in incoming[paper['id']]}
+        self.assertIn('github:xlang-ai/opencua',assets)
+        self.assertTrue(any(r['name']=='AgentNet' and r['id'] in assets for r in self.rows))
+        text=(self.dest/resource_path(paper).lstrip('/')/'index.html').read_text()
+        self.assertIn('Connected assets',text);self.assertIn('AgentNet',text)
+        export=json.loads((self.dest/'downloads/relationships.json').read_text())
+        self.assertEqual(export['relation_count'],sum(len(r['relations']) for r in self.rows))
+        self.assertTrue(any(e['type']=='documented_by' for e in export['relations']))
+        self.assertNotIn('mentions',{e['type'] for e in export['relations']})
     def test_jsonld_and_titles_escape_untrusted_text(self):
         text=page('</script><script>alert(1)</script>','x','/test/','<h1>Test</h1>',{'@type':'CreativeWork','name':'</script><script>alert(1)</script>'})
         blocks=re.findall(r'<script type="application/ld\+json">(.*?)</script>',text,re.S)
