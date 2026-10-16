@@ -2,7 +2,7 @@
 
 Evidence snapshot through **2026-10-16T09:39:34Z**. Generated from committed source receipts.
 
-- 1,987 resource records: 311 curated; 1,676 bibliographic metadata only.
+- 1,987 resource records: 433 curated; 1,554 bibliographic metadata only.
 - 1,764 arXiv records, including curated surveys. This count overlaps the status counts above.
 - 2,678 discovery identifiers; 743 have no published catalog record.
 - 5 editorial proposals await verification or review.
@@ -15,27 +15,27 @@ The denominator is the normalized identifiers extracted from each fetched docume
 
 | Source | Discovered | Indexed | Curated | Unindexed | Fetch |
 | --- | ---: | ---: | ---: | ---: | --- |
-| [ShowLab Awesome GUI Agent](https://github.com/showlab/Awesome-GUI-Agent) | 338 | 195 | 88 | 143 | OK · 2026-10-16 |
-| [ZJU REAL Awesome GUI Agents](https://github.com/ZJU-REAL/Awesome-GUI-Agents) | 218 | 154 | 83 | 64 | OK · 2026-10-16 |
-| [OS Agents Survey](https://github.com/OS-Agent-Survey/OS-Agent-Survey) | 224 | 198 | 30 | 26 | OK · 2026-10-16 |
-| [Awesome Computer Use Agents — wjhou](https://github.com/wjhou/awesome-computer-use-agents) | 132 | 93 | 46 | 39 | OK · 2026-10-16 |
+| [ShowLab Awesome GUI Agent](https://github.com/showlab/Awesome-GUI-Agent) | 338 | 195 | 137 | 143 | OK · 2026-10-16 |
+| [ZJU REAL Awesome GUI Agents](https://github.com/ZJU-REAL/Awesome-GUI-Agents) | 218 | 154 | 114 | 64 | OK · 2026-10-16 |
+| [OS Agents Survey](https://github.com/OS-Agent-Survey/OS-Agent-Survey) | 224 | 198 | 98 | 26 | OK · 2026-10-16 |
+| [Awesome Computer Use Agents — wjhou](https://github.com/wjhou/awesome-computer-use-agents) | 132 | 93 | 61 | 39 | OK · 2026-10-16 |
 | [Steel Awesome Web Agents](https://github.com/steel-dev/awesome-web-agents) | 113 | 22 | 22 | 91 | OK · 2026-10-16 |
 | [Steel Web Agents Archive](https://github.com/steel-dev/awesome-web-agents/blob/main/ARCHIVE.md) | 7 | 1 | 1 | 6 | OK · 2026-10-16 |
-| [Computer Browser Phone Use Agent Datasets](https://github.com/Khang-9966/Computer-Browser-Phone-Use-Agent-Datasets) | 170 | 103 | 50 | 67 | OK · 2026-10-16 |
-| [Awesome Multimodal GUI Agents](https://github.com/DeLunnLi/Awesome-Multimodal-GUI-Agents) | 588 | 469 | 149 | 119 | OK · 2026-10-16 |
-| [Awesome Computer Use — TianyuanYang](https://github.com/TianyuanYang/awesome-computer-use) | 94 | 67 | 28 | 27 | OK · 2026-10-16 |
-| [Computer Use Agents Overview](https://github.com/cdxeve/awesome-computer-use-agents) | 78 | 48 | 23 | 30 | OK · 2026-10-16 |
+| [Computer Browser Phone Use Agent Datasets](https://github.com/Khang-9966/Computer-Browser-Phone-Use-Agent-Datasets) | 170 | 103 | 60 | 67 | OK · 2026-10-16 |
+| [Awesome Multimodal GUI Agents](https://github.com/DeLunnLi/Awesome-Multimodal-GUI-Agents) | 588 | 469 | 203 | 119 | OK · 2026-10-16 |
+| [Awesome Computer Use — TianyuanYang](https://github.com/TianyuanYang/awesome-computer-use) | 94 | 67 | 31 | 27 | OK · 2026-10-16 |
+| [Computer Use Agents Overview](https://github.com/cdxeve/awesome-computer-use-agents) | 78 | 48 | 29 | 30 | OK · 2026-10-16 |
 | [Awesome GUI Agents — Supernal](https://github.com/supernalintelligence/Awesome-Gui-Agents) | 63 | 11 | 8 | 52 | OK · 2026-10-16 |
-| [Yearly GUI Agents](https://github.com/qy0720/awesome-yearly-gui-agents) | 193 | 135 | 66 | 58 | OK · 2026-10-16 |
-| [OSU-NLP-Group/GUI-Agents-Paper-List / README.md](https://github.com/OSU-NLP-Group/GUI-Agents-Paper-List) | 544 | 486 | 13 | 58 | OK · 2026-10-16 |
-| [opendilab/awesome-ui-agents / README.md](https://github.com/opendilab/awesome-ui-agents) | 144 | 85 | 42 | 59 | OK · 2026-10-16 |
-| [jin-s13/awesome-gui-agent-hub / AWESOME.md](https://github.com/jin-s13/awesome-gui-agent-hub) | 206 | 203 | 3 | 3 | OK · 2026-10-16 |
+| [Yearly GUI Agents](https://github.com/qy0720/awesome-yearly-gui-agents) | 193 | 135 | 104 | 58 | OK · 2026-10-16 |
+| [OSU-NLP-Group/GUI-Agents-Paper-List / README.md](https://github.com/OSU-NLP-Group/GUI-Agents-Paper-List) | 544 | 486 | 33 | 58 | OK · 2026-10-16 |
+| [opendilab/awesome-ui-agents / README.md](https://github.com/opendilab/awesome-ui-agents) | 144 | 85 | 56 | 59 | OK · 2026-10-16 |
+| [jin-s13/awesome-gui-agent-hub / AWESOME.md](https://github.com/jin-s13/awesome-gui-agent-hub) | 206 | 203 | 23 | 3 | OK · 2026-10-16 |
 | [ZJU-REAL/Awesome-GUI-Agents / ICLR2026/Paperlist.md](https://github.com/ZJU-REAL/Awesome-GUI-Agents) | 9 | 0 | 0 | 9 | OK · 2026-10-16 |
-| [dqtz5vpvj9-create/awesome-mobile-gui-agents / README.md](https://github.com/dqtz5vpvj9-create/awesome-mobile-gui-agents) | 40 | 21 | 15 | 19 | OK · 2026-10-16 |
-| [PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents](https://github.com/PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents) | 247 | 172 | 68 | 75 | OK · 2026-10-16 |
-| [aialt/awesome-mobile-agents](https://github.com/aialt/awesome-mobile-agents) | 91 | 75 | 18 | 16 | OK · 2026-10-16 |
+| [dqtz5vpvj9-create/awesome-mobile-gui-agents / README.md](https://github.com/dqtz5vpvj9-create/awesome-mobile-gui-agents) | 40 | 21 | 16 | 19 | OK · 2026-10-16 |
+| [PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents](https://github.com/PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents) | 247 | 172 | 104 | 75 | OK · 2026-10-16 |
+| [aialt/awesome-mobile-agents](https://github.com/aialt/awesome-mobile-agents) | 91 | 75 | 47 | 16 | OK · 2026-10-16 |
 | [albzni/Awesome-LLM-based-Web-Agent-and-Tools](https://github.com/albzni/Awesome-LLM-based-Web-Agent-and-Tools) | 10 | 4 | 4 | 6 | OK · 2026-10-16 |
-| [ranpox/awesome-computer-use](https://github.com/ranpox/awesome-computer-use) | 96 | 57 | 24 | 39 | OK · 2026-10-16 |
+| [ranpox/awesome-computer-use](https://github.com/ranpox/awesome-computer-use) | 96 | 57 | 34 | 39 | OK · 2026-10-16 |
 
 ## Primary arXiv discovery
 

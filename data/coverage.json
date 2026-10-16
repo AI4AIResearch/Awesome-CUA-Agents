@@ -1,9 +1,9 @@
 {
   "as_of_utc": "2026-10-16T09:39:34Z",
   "total_records": 1987,
-  "curated_records": 311,
+  "curated_records": 433,
   "bibliographic_records": 1764,
-  "metadata_only_records": 1676,
+  "metadata_only_records": 1554,
   "discovery_identifiers": 2678,
   "unindexed_candidates": 743,
   "pending_editorial": [
@@ -52,15 +52,15 @@
     "tool": 7
   },
   "curated_by_environment": {
-    "android": 66,
-    "cross-platform": 86,
-    "desktop": 69,
-    "ios": 7,
+    "android": 90,
+    "cross-platform": 108,
+    "desktop": 101,
+    "ios": 11,
     "linux": 6,
-    "macos": 4,
-    "unspecified": 16,
-    "web": 82,
-    "windows": 8
+    "macos": 5,
+    "unspecified": 36,
+    "web": 125,
+    "windows": 12
   },
   "license_declarations_by_scope": {
     "code": 100,
@@ -87,7 +87,7 @@
       },
       "discovered": 338,
       "indexed": 195,
-      "curated": 88,
+      "curated": 137,
       "unindexed": 143
     },
     {
@@ -108,7 +108,7 @@
       },
       "discovered": 218,
       "indexed": 154,
-      "curated": 83,
+      "curated": 114,
       "unindexed": 64
     },
     {
@@ -129,7 +129,7 @@
       },
       "discovered": 224,
       "indexed": 198,
-      "curated": 30,
+      "curated": 98,
       "unindexed": 26
     },
     {
@@ -150,7 +150,7 @@
       },
       "discovered": 132,
       "indexed": 93,
-      "curated": 46,
+      "curated": 61,
       "unindexed": 39
     },
     {
@@ -213,7 +213,7 @@
       },
       "discovered": 170,
       "indexed": 103,
-      "curated": 50,
+      "curated": 60,
       "unindexed": 67
     },
     {
@@ -234,7 +234,7 @@
       },
       "discovered": 588,
       "indexed": 469,
-      "curated": 149,
+      "curated": 203,
       "unindexed": 119
     },
     {
@@ -255,7 +255,7 @@
       },
       "discovered": 94,
       "indexed": 67,
-      "curated": 28,
+      "curated": 31,
       "unindexed": 27
     },
     {
@@ -276,7 +276,7 @@
       },
       "discovered": 78,
       "indexed": 48,
-      "curated": 23,
+      "curated": 29,
       "unindexed": 30
     },
     {
@@ -318,7 +318,7 @@
       },
       "discovered": 193,
       "indexed": 135,
-      "curated": 66,
+      "curated": 104,
       "unindexed": 58
     },
     {
@@ -339,7 +339,7 @@
       },
       "discovered": 544,
       "indexed": 486,
-      "curated": 13,
+      "curated": 33,
       "unindexed": 58
     },
     {
@@ -360,7 +360,7 @@
       },
       "discovered": 144,
       "indexed": 85,
-      "curated": 42,
+      "curated": 56,
       "unindexed": 59
     },
     {
@@ -381,7 +381,7 @@
       },
       "discovered": 206,
       "indexed": 203,
-      "curated": 3,
+      "curated": 23,
       "unindexed": 3
     },
     {
@@ -423,7 +423,7 @@
       },
       "discovered": 40,
       "indexed": 21,
-      "curated": 15,
+      "curated": 16,
       "unindexed": 19
     },
     {
@@ -444,7 +444,7 @@
       },
       "discovered": 247,
       "indexed": 172,
-      "curated": 68,
+      "curated": 104,
       "unindexed": 75
     },
     {
@@ -465,7 +465,7 @@
       },
       "discovered": 91,
       "indexed": 75,
-      "curated": 18,
+      "curated": 47,
       "unindexed": 16
     },
     {
@@ -507,7 +507,7 @@
       },
       "discovered": 96,
       "indexed": 57,
-      "curated": 24,
+      "curated": 34,
       "unindexed": 39
     }
   ],

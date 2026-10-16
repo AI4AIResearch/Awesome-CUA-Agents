@@ -8,9 +8,9 @@
 
 <!-- STATS:START -->
 
-**1,987 resource records** · **311 curated** · **1,764 arXiv records** · **21 discovery documents**
+**1,987 resource records** · **433 curated** · **1,764 arXiv records** · **21 discovery documents**
 
-Evidence through `2026-10-16T09:39:34Z`. 1,676 records have bibliographic verification only; 743 discovered identifiers remain unindexed. Counts overlap as explained below.
+Evidence through `2026-10-16T09:39:34Z`. 1,554 records have bibliographic verification only; 743 discovered identifiers remain unindexed. Counts overlap as explained below.
 
 <!-- STATS:END -->
 
