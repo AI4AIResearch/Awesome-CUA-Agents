@@ -1,10 +1,10 @@
 {
-  "id": "scan:2026-10-16T18:48:45Z",
+  "id": "scan:2026-10-17T01:45:00Z",
   "schema_version": 1,
-  "status": "partial",
-  "started_at": "2026-10-16T18:48:45Z",
-  "finished_at": "2026-10-16T18:49:11Z",
-  "run_url": "https://github.com/reacher-z/Awesome-CUA/actions/runs/38950167012",
+  "status": "success",
+  "started_at": "2026-10-17T01:45:00Z",
+  "finished_at": "2026-10-17T01:45:10Z",
+  "run_url": "https://github.com/reacher-z/Awesome-CUA/actions/runs/38992154361",
   "schedule": {
     "timezone": "America/Los_Angeles",
     "times_local": [
@@ -13,17 +13,21 @@
     ]
   },
   "before": {
-    "resources": 2027,
-    "bibliographic_records": 1764,
-    "curated_papers": 260,
-    "curated_resources": 263,
+    "resources": 1993,
+    "bibliographic_records": 1724,
+    "arxiv_archive_records": 1764,
+    "excluded_records": 40,
+    "curated_papers": 300,
+    "curated_resources": 269,
     "candidates": 2763
   },
   "after": {
-    "resources": 2027,
-    "bibliographic_records": 1764,
-    "curated_papers": 260,
-    "curated_resources": 263,
+    "resources": 1993,
+    "bibliographic_records": 1724,
+    "arxiv_archive_records": 1764,
+    "excluded_records": 40,
+    "curated_papers": 300,
+    "curated_resources": 269,
     "candidates": 2763
   },
   "new_papers": [],
@@ -36,57 +40,52 @@
   "phases": [
     {
       "name": "discovery",
-      "started_at": "2026-10-16T18:48:45Z",
-      "finished_at": "2026-10-16T18:48:51Z",
+      "started_at": "2026-10-17T01:45:00Z",
+      "finished_at": "2026-10-17T01:45:05Z",
       "ok": true,
       "exit_code": 0,
       "error": null
     },
     {
       "name": "huggingface",
-      "started_at": "2026-10-16T18:48:51Z",
-      "finished_at": "2026-10-16T18:48:53Z",
+      "started_at": "2026-10-17T01:45:05Z",
+      "finished_at": "2026-10-17T01:45:08Z",
       "ok": true,
       "exit_code": 0,
       "error": null
     },
     {
       "name": "recent_arxiv",
-      "ok": false,
-      "complete": false,
+      "ok": true,
+      "complete": true,
       "new_count": 0,
-      "warnings": [
-        "HTTP Error 429: Unknown Error"
-      ]
+      "warnings": []
     },
     {
       "name": "harvest",
-      "started_at": "2026-10-16T18:49:09Z",
-      "finished_at": "2026-10-16T18:49:09Z",
+      "started_at": "2026-10-17T01:45:08Z",
+      "finished_at": "2026-10-17T01:45:08Z",
       "ok": true,
       "exit_code": 0,
       "error": null
     },
     {
       "name": "build",
-      "started_at": "2026-10-16T18:49:09Z",
-      "finished_at": "2026-10-16T18:49:10Z",
+      "started_at": "2026-10-17T01:45:08Z",
+      "finished_at": "2026-10-17T01:45:09Z",
       "ok": true,
       "exit_code": 0,
       "error": null
     },
     {
       "name": "validate",
-      "started_at": "2026-10-16T18:49:10Z",
-      "finished_at": "2026-10-16T18:49:11Z",
+      "started_at": "2026-10-17T01:45:09Z",
+      "finished_at": "2026-10-17T01:45:10Z",
       "ok": true,
       "exit_code": 0,
       "error": null
     }
   ],
-  "warnings": [
-    "recent_arxiv: failed",
-    "HTTP Error 429: Unknown Error"
-  ],
+  "warnings": [],
   "policy": "Automated scans discover candidates and verify bibliographic metadata. Editorial approval, topic annotations, and license claims require separate source review."
 }

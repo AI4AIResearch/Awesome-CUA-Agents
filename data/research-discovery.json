@@ -7,7 +7,7 @@
     "scope": "ranked search window, not exhaustive",
     "evidence": {
       "url": "https://huggingface.co/api/papers/search?q=computer+use+agent+safety&limit=30",
-      "retrieved_at": "2026-10-16T18:48:53Z",
+      "retrieved_at": "2026-10-17T01:45:07Z",
       "ok": true,
       "status": 200,
       "final_url": "https://huggingface.co/api/papers/search?q=computer+use+agent+safety&limit=30",
@@ -56,12 +56,12 @@
     "scope": "ranked search window, not exhaustive",
     "evidence": {
       "url": "https://huggingface.co/api/papers/search?q=computer+use+agents&limit=30",
-      "retrieved_at": "2026-10-16T18:48:51Z",
+      "retrieved_at": "2026-10-17T01:45:05Z",
       "ok": true,
       "status": 200,
       "final_url": "https://huggingface.co/api/papers/search?q=computer+use+agents&limit=30",
       "content_type": "application/json; charset=utf-8",
-      "sha256": "a5c1f4781baba121229318e272516aee3907582d715caa4fea034052c276f315",
+      "sha256": "ff62ed914082f7b0f6c92f4de655d526ce05a83cf814ab97a9235617ce751c72",
       "bytes": 214457
     },
     "identifiers": [
@@ -105,12 +105,12 @@
     "scope": "ranked search window, not exhaustive",
     "evidence": {
       "url": "https://huggingface.co/api/papers/search?q=GUI+agent+memory+planning&limit=30",
-      "retrieved_at": "2026-10-16T18:48:53Z",
+      "retrieved_at": "2026-10-17T01:45:07Z",
       "ok": true,
       "status": 200,
       "final_url": "https://huggingface.co/api/papers/search?q=GUI+agent+memory+planning&limit=30",
       "content_type": "application/json; charset=utf-8",
-      "sha256": "3d390fd70fde113889ff5b1b4d1fb40157065d6b7ae2b40dcd5807e83b5457e5",
+      "sha256": "c82c5bc04f5cbbac22c227e733de896ac50f3be9b0926b1ebc41aaa22bee806a",
       "bytes": 217710
     },
     "identifiers": [
@@ -154,7 +154,7 @@
     "scope": "ranked search window, not exhaustive",
     "evidence": {
       "url": "https://huggingface.co/api/papers/search?q=GUI+grounding+benchmark&limit=30",
-      "retrieved_at": "2026-10-16T18:48:51Z",
+      "retrieved_at": "2026-10-17T01:45:05Z",
       "ok": true,
       "status": 200,
       "final_url": "https://huggingface.co/api/papers/search?q=GUI+grounding+benchmark&limit=30",
@@ -203,13 +203,13 @@
     "scope": "ranked search window, not exhaustive",
     "evidence": {
       "url": "https://huggingface.co/api/papers/search?q=mobile+GUI+agent+reinforcement+learning&limit=30",
-      "retrieved_at": "2026-10-16T18:48:52Z",
+      "retrieved_at": "2026-10-17T01:45:06Z",
       "ok": true,
       "status": 200,
       "final_url": "https://huggingface.co/api/papers/search?q=mobile+GUI+agent+reinforcement+learning&limit=30",
       "content_type": "application/json; charset=utf-8",
-      "sha256": "012d9ff8c35f7cc4076d1cf06effa6e1f98d6a3e73ab1ac11b87642b2e882ca0",
-      "bytes": 234386
+      "sha256": "6c477835e3bacbb547d60950f203a111299ea56fa1408bf3db058032668d545d",
+      "bytes": 234387
     },
     "identifiers": [
       "arxiv:2507.05720",
@@ -252,12 +252,12 @@
     "scope": "ranked search window, not exhaustive",
     "evidence": {
       "url": "https://huggingface.co/api/papers/search?q=web+agent+dataset+benchmark&limit=30",
-      "retrieved_at": "2026-10-16T18:48:52Z",
+      "retrieved_at": "2026-10-17T01:45:06Z",
       "ok": true,
       "status": 200,
       "final_url": "https://huggingface.co/api/papers/search?q=web+agent+dataset+benchmark&limit=30",
       "content_type": "application/json; charset=utf-8",
-      "sha256": "c5a3ab4830cb5ea51721f6a14e2e3012386fb6aba0ed60dc81e56c1ba702e05e",
+      "sha256": "1f96c30d1f87c9b9b8c64cb2d50ff36120e903e9227bba05931eb623b5e73808",
       "bytes": 210758
     },
     "identifiers": [
