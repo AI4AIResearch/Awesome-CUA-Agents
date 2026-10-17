@@ -34,7 +34,7 @@ In the Required column, `always` means that `build` or `verify` fails without th
 | Field | Required | Type | Default | Read by | Effect on the published record |
 | --- | --- | --- | --- | --- | --- |
 | `name` | always | string | — | `source_records`, `verify_editorial` | `name`; default verification term |
-| `kind` | for approval | one of the `kind` values in the [schema](../schemas/resource.schema.json) | — | `source_records`, `enrich` | `kind`; selects dataset/benchmark detail placeholders and the license slot for Hub cards (`data` or `weights`) |
+| `kind` | for approval | one of the `kind` values in the [schema](../schemas/resource.schema.json) | — | `source_records`, `enrich` | `kind`; selects dataset/benchmark detail placeholders and the license slot for a Hub card: `data` for a `dataset` or any card in a Hub dataset repository, `weights` for a `model` |
 | `url` | always | HTTPS URL accepted by `canonical` | — | `canonical`, `verify_editorial`, `source_records` | `url` and the `primary` link; default ID and default evidence URLs |
 | `environments` | for approval | non-empty array of schema environments | — | `source_records` | `environments`; `validate` rejects an empty array |
 | `topics` | for approval | array of keys from the [topic vocabulary](data-dictionary.md#topic-vocabulary) in `data/topics.json` | — | `source_records` | `topics` and topic-hub placement |
