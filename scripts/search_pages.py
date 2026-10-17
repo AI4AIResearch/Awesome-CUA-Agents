@@ -141,7 +141,7 @@ def resource_markdown(r):
             if key in {'counts','evidence_urls','notes'}:continue
             lines.append('- '+key.replace('_',' ')+': '+(', '.join(value) if isinstance(value,list) and value else str(value) if value else 'not recorded'))
         lines+=['','### Count observations','']
-        lines += [f'- {count_text(c)} ({c["basis"]}; source: {c.get("reference_url",c["evidence_url"])})' for c in profile['counts']] or ['No count recorded.']
+        lines += [f'- {count_text(c)} ({c["basis"]}; source: {c.get("reference_url") or c["evidence_url"]})' for c in profile['counts']] or ['No count recorded.']
         lines+=['',profile['notes']]
     lines+=['','## License declarations','']
     for slot,license in r["licenses"].items():lines.append(f'- {slot}: '+(f'{license["declared"]} — {license["url"]}' if license else 'not recorded'))

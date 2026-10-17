@@ -42,7 +42,7 @@ def validate_profiles(record):
             if count.get('evidence_url') not in sources:
                 errors.append(f'{key} count lacks a linked primary source')
             reference = count.get('reference_url')
-            if reference is not None:
+            if 'reference_url' in count:
                 parsed = urllib.parse.urlsplit(reference) if isinstance(reference,str) else None
                 if not parsed or parsed.scheme != 'https' or not parsed.netloc or parsed.username:
                     errors.append(f'{key} count has an invalid readable source link')
@@ -69,7 +69,7 @@ def count_text(count):
 def counts_html(profile):
     if not profile['counts']:
         return '<span class="unknown-value">Not recorded</span>'
-    return '<ul class="measure-list">' + ''.join(f'<li>{esc(count_text(count))} <a href="{esc(count.get("reference_url",count["evidence_url"]))}" aria-label="Source for {esc(count["population"])}">source</a></li>' for count in profile['counts']) + '</ul>'
+    return '<ul class="measure-list">' + ''.join(f'<li>{esc(count_text(count))} <a href="{esc(count.get("reference_url") or count["evidence_url"])}" aria-label="Source for {esc(count["population"])}">source</a></li>' for count in profile['counts']) + '</ul>'
 
 
 def selected_profiles(rows, kind):
