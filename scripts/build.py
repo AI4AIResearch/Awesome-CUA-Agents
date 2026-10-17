@@ -333,6 +333,66 @@ def documents(rows, report):
     return files
 
 
+def shield(label, message, color):
+    escape = lambda text: urllib.parse.quote(str(text).replace("-", "--").replace("_", "__"), safe="")
+    return f"https://img.shields.io/badge/{escape(label)}-{escape(message)}-{color}"
+
+
+def badges(rows, report):
+    curated = report["curated_records"]
+    return ("\n" + " ".join([
+        f"[![Resources]({shield('resources', format(report['total_records'], ','), '4f46e5')})](data/catalog.jsonl)",
+        f"[![Curated]({shield('source-reviewed', format(curated, ','), '0e8a16')})](docs/coverage.md)",
+        f"[![Evidence]({shield('evidence through', report['as_of_utc'][:10], '1d76db')})](docs/coverage.md)",
+        "[![Catalog quality](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml/badge.svg)](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml)",
+        f"[![License]({shield('license', 'MIT', 'blue')})](LICENSE)",
+        f"[![Website]({shield('website', 'awesomecua.github.io', '6366f1')})](https://awesomecua.github.io/)"]) + "\n")
+
+
+# README category layout: rows of (left, right) cells; each cell lists (label, generated page, kind). Counts are curated resources.
+EXPLORE = [
+    ([("Research bibliography", "docs/papers.md", "paper")], [("Agents", "docs/agents.md", "agent")]),
+    ([("Surveys", "docs/surveys.md", "survey")], [("Frameworks", "docs/frameworks.md", "framework")]),
+    ([("Datasets", "docs/datasets.md", "dataset")], [("Infrastructure", "docs/infrastructures.md", "infrastructure")]),
+    ([("Benchmarks", "docs/benchmarks.md", "benchmark")], [("Tools", "docs/tools.md", "tool")]),
+    ([("Models and checkpoint releases", "docs/models.md", "model")], [("Products", "docs/products.md", "product"), ("Publishers and brands", "docs/companies.md", "company")]),
+]
+
+
+def explore(rows, report):
+    curated = collections.Counter(r["kind"] for r in rows if r["review_status"] == "curated")
+    def link(label, path, kind):
+        if kind == "paper":
+            return f"[{label}]({path}) · **{curated[kind]:,}** reviewed of {report['bibliographic_records']:,}"
+        return f"[{label}]({path}) · **{curated[kind]:,}**"
+    lines = ["| Research and training | Engineering and industry |", "| --- | --- |"]
+    lines += [f"| {' · '.join(link(*item) for item in left)} | {' · '.join(link(*item) for item in right)} |" for left, right in EXPLORE]
+    return "\n" + "\n".join(lines) + "\n"
+
+
+HIGHLIGHT_KINDS = [("benchmark", "Benchmarks", "docs/benchmarks.md"), ("model", "Models", "docs/models.md"), ("dataset", "Datasets", "docs/datasets.md"),
+    ("framework", "Frameworks", "docs/frameworks.md"), ("agent", "Agents", "docs/agents.md")]
+
+
+def highlights(rows, edges, limit=6):
+    """Rank curated resources by distinct cataloged resources whose reviewed source mentions them; not a quality ranking."""
+    by_id = {r["id"]: r for r in rows}
+    cited_by = collections.defaultdict(set)
+    for edge in edges:
+        if edge["target_in_catalog"] and edge["source_id"] != edge["target_id"]:
+            cited_by[edge["target_id"]].add(edge["source_id"])
+    lines = [""]
+    for kind, label, path in HIGHLIGHT_KINDS:
+        curated = [r for r in rows if r["kind"] == kind and r["review_status"] == "curated"]
+        ranked = sorted((r for r in curated if cited_by[r["id"]]), key=lambda r: (-len(cited_by[r["id"]]), r["name"].casefold()))[:limit]
+        if not ranked:
+            continue
+        lines += [f"**{label}** · [all {len(curated)} →]({path})", "", "| Resource | Mentioned by | Environments | Paper | License | Description |", "| --- | ---: | --- | --- | --- | --- |"]
+        lines += [f"| [{md(r['name'])}]({r['url']}) | {len(cited_by[r['id']])} | {', '.join(r['environments'])} | {paper_cell(r, by_id)} | {license_cell(r)} | {md(r['summary'])} |" for r in ranked]
+        lines.append("")
+    return "\n".join(lines) + "\n"
+
+
 def write_sqlite(rows, path):
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_suffix(".tmp")
@@ -374,11 +434,6 @@ def build(args):
         f"Evidence through `{report['as_of_utc']}`. {report['metadata_only_records']:,} records have bibliographic verification only; "
         f"{report['unindexed_candidates']:,} discovered identifiers remain unresolved. "
         f"{report['excluded_records']:,} scope exclusions retain their original metadata in the archive. Counts overlap as explained below.\n\n")
-    for filename in ("README.md", "README.zh-CN.md"):
-        path = ROOT / filename
-        if path.exists():
-            content = path.read_text()
-            files[filename] = re.sub(r"(?<=<!-- STATS:START -->).*?(?=<!-- STATS:END -->)", stats, content, flags=re.S)
     files["data/catalog.jsonl"] = "".join(json.dumps(r, ensure_ascii=False, sort_keys=True) + "\n" for r in rows)
     files["data/coverage.json"] = json.dumps(report, ensure_ascii=False, indent=2) + "\n"
     files['data/exclusion-status.json'] = json.dumps(scope_report(scope_decisions),ensure_ascii=False,indent=2)+'\n'
@@ -399,6 +454,15 @@ def build(args):
         for ref in r.get("references", []):
             edges.append({"id": hashlib.sha256((r["id"] + "\0" + ref["target_id"]).encode()).hexdigest()[:24], "source_id": r["id"], **ref, "target_in_catalog": ref["target_id"] in ids})
     files["data/references.jsonl"] = "".join(json.dumps(e, ensure_ascii=False, sort_keys=True) + "\n" for e in sorted(edges, key=lambda e: e["id"]))
+    blocks = {"STATS": stats, "BADGES": badges(rows, report), "EXPLORE": explore(rows, report), "HIGHLIGHTS": highlights(rows, edges)}
+    for filename in ("README.md", "README.zh-CN.md"):
+        path = ROOT / filename
+        if path.exists():
+            content = path.read_text()
+            for name, body in blocks.items():
+                # A function replacement keeps backslashes in generated Markdown literal.
+                content = re.sub(rf"(?<=<!-- {name}:START -->).*?(?=<!-- {name}:END -->)", lambda _: body, content, flags=re.S)
+            files[filename] = content
     changed = []
     for relative, content in files.items():
         path = ROOT / relative
