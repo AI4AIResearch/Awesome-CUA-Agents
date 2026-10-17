@@ -1,20 +1,24 @@
 # Awesome Computer-Use Agents
 
-**面向研究、训练评测和产业应用的 Computer-Use Agent 数据目录。**
+<!-- BADGES:START -->
+[![Resources](https://img.shields.io/badge/resources-2%2C545-4f46e5)](data/catalog.jsonl) [![Curated](https://img.shields.io/badge/source--reviewed-996-0e8a16)](docs/coverage.md) [![Evidence](https://img.shields.io/badge/evidence%20through-2026--10--17-1d76db)](docs/coverage.md) [![Catalog quality](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml/badge.svg)](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml) [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![Website](https://img.shields.io/badge/website-awesomecua.github.io-6366f1)](https://awesomecua.github.io/)
+<!-- BADGES:END -->
 
-[在线主页](https://awesomecua.github.io/) · [GitHub 组织](https://github.com/AwesomeCUA) · [English](README.md) · [覆盖度与缺口](docs/coverage.md)
+**面向 computer-use、GUI、浏览器和移动端智能体的可溯源数据目录。**
 
-**让人、RAG 和 Agents 都能使用：一行克隆完整目录。**
+[浏览](#浏览) · [使用数据](#使用数据) · [网站](https://awesomecua.github.io/) · [中文主页](https://awesomecua.github.io/zh/) · [GitHub 组织](https://github.com/AwesomeCUA) · [English](README.md) · [覆盖台账](docs/coverage.md) · [参与贡献](CONTRIBUTING.md)
+
+**供人、RAG 系统和智能体使用——克隆完整目录：**
 
 ```sh
 git clone https://github.com/reacher-z/Awesome-CUA.git
 ```
 
-[Agent 操作指南](AGENTS.md) · [网页使用指南](https://awesomecua.github.io/agents/) · [完整 JSONL](https://awesomecua.github.io/downloads/catalog.jsonl) · [已审阅 RAG 文档](https://awesomecua.github.io/downloads/rag-documents.jsonl)
+[Agent 操作指南](AGENTS.md) · [RAG 与智能体指南](https://awesomecua.github.io/agents/) · [完整 JSONL](https://awesomecua.github.io/downloads/catalog.jsonl) · [检索文档](https://awesomecua.github.io/downloads/rag-documents.jsonl)
 
-克隆后进入 `Awesome-CUA`，用 `python3 scripts/catalog.py search "grounding" --status curated --json` 查询；用 `python3 scripts/export_rag.py --output dist/rag-documents.jsonl` 导出带引用、版本、审阅状态与来源指纹的检索文档。加 `--include-metadata` 可包含全部当前记录。
+目标是全面覆盖公开的研究和产业资源，并提供可检查的来源证据。论文、模型、训练数据、评测环境、框架、基础设施、产品和发布方都收录在同一个可检索目录中。
 
-目标是把全球公开的 GUI、浏览器、桌面和手机智能体资料整理成可检索、可追溯、可持续扩充的数据资产。论文、模型、数据集、基准、框架、基础设施、产品和发布方统一建模，并保留它们之间的关系。
+**“全球最全”是建设目标，而不是已经核实的结论。** 我们公开来源范围、审阅状态和剩余缺口。核实书目元数据不等于审阅了资源的相关性或质量。
 
 <!-- STATS:START -->
 
@@ -24,31 +28,70 @@ Evidence through `2026-10-17T07:57:59Z`. 1,549 records have bibliographic verifi
 
 <!-- STATS:END -->
 
-## 三类用途全部覆盖
+## 浏览
 
-- **全景研究：** [论文](docs/papers.md)、[综述](docs/surveys.md)、[模型](docs/models.md)，覆盖 grounding、规划、记忆、强化学习、长任务、安全与鲁棒性等方向。
-- **训练与评测：** [数据集](docs/datasets.md)、[基准](docs/benchmarks.md)、[训练框架](docs/frameworks.md)，记录下载入口、平台、许可和能够核实的数据规格。
-- **产业与工程：** [智能体](docs/agents.md)、[产品](docs/products.md)、[工具](docs/tools.md)、[基础设施](docs/infrastructures.md)、[发布方与品牌](docs/companies.md)。
+- **研究与综述：** [按主题浏览研究](docs/topics.md)、[完整论文目录](docs/papers.md)、[综述](docs/surveys.md)。
+- **训练与评测：** [数据集](docs/datasets.md)、[基准](docs/benchmarks.md)、[模型与权重版本](docs/models.md)。
+- **工程与产业：** [智能体](docs/agents.md)、[框架](docs/frameworks.md)、[基础设施](docs/infrastructures.md)、[工具](docs/tools.md)、[产品](docs/products.md)、[发布方与品牌](docs/companies.md)。
 
-## 直接使用
+覆盖 Web、桌面、Android、iOS、Windows、macOS、Linux 和跨平台工作。主题包括 grounding、屏幕理解、规划、记忆、长流程任务、强化学习、数据生成、安全、鲁棒性和评测。环境分面可以重叠；不会根据模型的基准成绩推定框架支持。
 
-打开 [AwesomeCUA 网站](https://awesomecua.github.io/)，即可搜索和筛选全部资源、查看来源证据、切换中英文界面，并下载完整数据。网站构建和发布说明见 [website.md](docs/website.md)。
+英文 README 的 [Highlights](README.md#highlights) 按类别列出被其他已收录资源提及最多的已审阅资源。该计数反映目录内部的关联程度，不代表质量、流行度或基准表现；每个类别页面都列出全部已审阅条目。
+
+英文 README 的 [Recently reviewed](README.md#recently-reviewed) 按时间倒序列出最新通过编辑审阅的模型、数据集、基准、系统和工具；新论文按日期列在[主题页面](docs/topics.md)中。
+
+## 使用数据
+
+打开[交互式网站](https://awesomecua.github.io/)，可以搜索和筛选全部资源、查看来源证据、切换中英文界面，或下载完整目录。网站开发与发布见 [website.md](docs/website.md)。
+
+[已审阅研究](https://awesomecua.github.io/papers/) · [Computer-use agent 指南](https://awesomecua.github.io/guides/) · [静态资源目录](https://awesomecua.github.io/catalog/) · [搜索与 AI 发现](docs/search-discovery.md)
+
+- **[目录 JSONL](data/catalog.jsonl)：** 每行一个资源，包含稳定 ID、类型化字段、来源证据、按范围区分的许可和审阅状态。
+- **[引用图](data/references.jsonl)：** 一手来源中的对外引用。`mentions` 不等于 `trained_on` 或 `evaluated_on`。
+- **[发现来源登记](data/sources.json)** 和 **[候选条目](data/candidates.jsonl)：** 来源快照，以及每个标识符的发现位置。
+- **[待审队列](data/review-queue.jsonl)：** 未解决的证据、尚未收录的发现，以及需要编辑处理的提议。
+- **[JSON Schema](schemas/resource.schema.json)** 和 **[覆盖度 JSON](data/coverage.json)：** 可机器检查的数据契约和覆盖度统计。
 
 ```bash
+# Python 3.11+。搜索和导出只需要标准库。
+cd Awesome-CUA
 python3 scripts/catalog.py search "grounding" --kind model
 python3 scripts/catalog.py search --kind dataset --environment android
-python3 scripts/catalog.py search --kind benchmark --topic safety-security
+python3 scripts/catalog.py search --kind product --status curated --json
 python3 scripts/catalog.py build
+# 生成 dist/catalog.sqlite 和 dist/catalog.json，不发起网络请求。
+python3 scripts/export_rag.py --output dist/rag-documents.jsonl
+# 加 --include-metadata 可包含全部当前记录，并保留各自的审阅状态。
 ```
 
-主数据在 [data/catalog.jsonl](data/catalog.jsonl)。构建命令还会生成 `dist/catalog.sqlite` 和 `dist/catalog.json`，支持本地查询、SQL 分析和下游集成。
+用 SQLite 联查资源、环境/主题分面和已审阅关系，示例见[查询指南](docs/query-guide.md)。`data/catalog.jsonl` 已提交到仓库；SQLite 和 JSON 数组导出是可复现的本地构建产物。
 
-## 质量口径
+## “已核实”的含义
 
-`curated` 表示已经过 AI 辅助的编辑审阅，并绑定到一手来源快照；`metadata_verified` 仅表示官方论文元数据已核实，不代表相关性、实验或结论经过审阅；`candidate` 是待核验线索，不计入正式目录。
+| 状态 | 已检查的内容 | 尚未确认的内容 |
+| --- | --- | --- |
+| `curated` | 基于一手来源快照的 AI 辅助编辑审阅，涵盖名称、范围、摘要和分类 | 独立复现、普遍可用性或背书 |
+| `metadata_verified` | arXiv 返回的书目身份、标题、作者和日期 | 主题相关性、方法、结论，或是否属于核心领域 |
+| `candidate` | 发现了规范化的 URL 或标识符 | 是否收录、是否正确或是否可用；不计入公开目录 |
 
-论文、仓库、数据集、模型权重版本、产品和发布方是不同资源，不能把它们的总数当成独立项目数。代码、数据、权重的许可分别记录；无法核实的规模、价格和许可留空。目录不把不同版本或不同实验设置的评测成绩拼成排行榜。
+计数指的是**资源**，而不是独立项目。论文、仓库、数据集发布、模型权重版本、产品和发布方可以是彼此关联的不同资源。模型系列与具体权重版本在审阅后会显式关联。
 
-**“全球最全”是建设目标，目前没有足够证据宣称已经达到。** [覆盖台账](docs/coverage.md)列明每个来源的抓取范围、收录数量、待处理条目和已知缺口；[待审队列](data/review-queue.jsonl)可以继续执行。
+代码、数据、权重和文档的许可分别记录。缺失值为 `null`。数据集归档文件数不会被换算成训练样本数。来自不同基准版本、数据划分、动作预算或评测器的分数不会合并成排行榜。
 
-维护方法见 [CONTRIBUTING.md](CONTRIBUTING.md) 和 [maintenance.md](docs/maintenance.md)。原始 README、论文全文、数据集和模型权重不在本仓库中再分发。
+## 维护与验证
+
+```bash
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements-dev.txt
+.venv/bin/python scripts/catalog.py validate
+.venv/bin/python -m unittest discover -s tests -v
+python3 scripts/catalog.py build --check
+```
+
+网络发现和核实需要显式运行相应命令；常规构建不联网。一手来源快照发生变化后，必须重新进行编辑审阅才能发布。[维护指南](docs/maintenance.md) · [方法说明](docs/methodology.md) · [数据字典](docs/data-dictionary.md)
+
+## 致谢与复用
+
+[来源登记](data/sources.json)列出了用于发现资源的社区合集和综述。目录从 arXiv 获取权威书目元数据，并对照发布方的仓库、文档以及模型/数据集卡片核查部分资源。上游 README、论文、模型权重和数据集不在本仓库中再分发。
+
+本仓库的原创代码和标注采用 [MIT 许可](LICENSE)。被链接的资源保留各自的条款；本仓库不对其重新授权。
