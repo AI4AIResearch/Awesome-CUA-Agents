@@ -49,7 +49,7 @@ The most-mentioned curated resources per category: the count is how many other c
 <!-- HIGHLIGHTS:START -->
 **Benchmarks** · [all 70 →](docs/benchmarks.md)
 
-| Resource | Mentioned by | Environments | Paper | License | Description |
+| Resource | Mentions | Environments | Paper | License | Description |
 | --- | ---: | --- | --- | --- | --- |
 | [OSWorld](https://github.com/xlang-ai/OSWorld) | 20 | desktop, linux, windows, macos | [2404.07972](https://arxiv.org/abs/2404.07972) (2024) | code Apache-2.0 | Execution-based evaluation of agents performing tasks in real desktop environments. |
 | [WebArena](https://github.com/web-arena-x/webarena) | 13 | web | [2307.13854](https://arxiv.org/abs/2307.13854) (2023) | code Apache-2.0 | Self-hosted web environments and tasks for evaluating autonomous web agents. |
@@ -60,7 +60,7 @@ The most-mentioned curated resources per category: the count is how many other c
 
 **Models** · [all 91 →](docs/models.md)
 
-| Resource | Mentioned by | Environments | Paper | License | Description |
+| Resource | Mentions | Environments | Paper | License | Description |
 | --- | ---: | --- | --- | --- | --- |
 | [SeeClick](https://github.com/njucckevin/SeeClick) | 7 | cross-platform | [2401.10935](https://arxiv.org/abs/2401.10935) (2024) | code Apache-2.0 | GUI grounding model trained to locate visual interface elements. |
 | [Aguvis](https://github.com/xlang-ai/aguvis) | 5 | cross-platform | [2412.04454](https://arxiv.org/abs/2412.04454) (2024) | — | Vision-based GUI agent models with unified action representations. |
@@ -71,7 +71,7 @@ The most-mentioned curated resources per category: the count is how many other c
 
 **Datasets** · [all 73 →](docs/datasets.md)
 
-| Resource | Mentioned by | Environments | Paper | License | Description |
+| Resource | Mentions | Environments | Paper | License | Description |
 | --- | ---: | --- | --- | --- | --- |
 | [ScreenSpot-Pro data](https://huggingface.co/datasets/likaixin/ScreenSpot-Pro) | 4 | desktop, windows, macos, linux | — | data mit | High-resolution professional interface screenshots and target annotations for evaluating instruction-based GUI localization. |
 | [GUI-Odyssey](https://github.com/OpenGVLab/GUI-Odyssey) | 3 | android | [2406.08451](https://arxiv.org/abs/2406.08451) (2024) | — | Cross-application mobile interaction trajectories. |
@@ -82,7 +82,7 @@ The most-mentioned curated resources per category: the count is how many other c
 
 **Frameworks** · [all 50 →](docs/frameworks.md)
 
-| Resource | Mentioned by | Environments | Paper | License | Description |
+| Resource | Mentions | Environments | Paper | License | Description |
 | --- | ---: | --- | --- | --- | --- |
 | [Browser Use](https://github.com/browser-use/browser-use) | 7 | web | — | code MIT | Framework for browser interaction by AI agents. |
 | [AgentLab](https://github.com/ServiceNow/AgentLab) | 5 | web | [2412.05467](https://arxiv.org/abs/2412.05467) (2024) | code Apache-2.0 | Experiment framework for developing and evaluating browser agents. |
@@ -93,7 +93,7 @@ The most-mentioned curated resources per category: the count is how many other c
 
 **Agents** · [all 31 →](docs/agents.md)
 
-| Resource | Mentioned by | Environments | Paper | License | Description |
+| Resource | Mentions | Environments | Paper | License | Description |
 | --- | ---: | --- | --- | --- | --- |
 | [Mobile-Agent](https://github.com/X-PLUG/MobileAgent) | 8 | android, cross-platform | [2401.16158](https://arxiv.org/abs/2401.16158) (2024), [2406.01014](https://arxiv.org/abs/2406.01014) (2024), [2508.15144](https://arxiv.org/abs/2508.15144) (2025), [2602.16855](https://arxiv.org/abs/2602.16855) (2026) | code MIT | Mobile device agent family using visual interface interaction. |
 | [Agent S](https://github.com/simular-ai/Agent-S) | 2 | desktop | [2410.08164](https://arxiv.org/abs/2410.08164) (2024), [2504.00906](https://arxiv.org/abs/2504.00906) (2025) | code Apache-2.0 | Agent framework for general computer interaction. |
@@ -111,18 +111,18 @@ Newest editorial approvals of models, datasets, benchmarks, systems, and tools (
 <!-- RECENT:START -->
 | Reviewed | Resource | Kind | Environments | Description |
 | --- | --- | --- | --- | --- |
-| 2026-10-17 | [WebRewardBench](https://huggingface.co/datasets/LangAGI-Lab/WebRewardBench) | benchmark | web | An offline preference-evaluation set for web process reward models, pairing page and trajectory context with preferred and rejected candidate decisions. |
-| 2026-10-17 | [WebPRM Collection preference data](https://huggingface.co/datasets/LangAGI-Lab/WebPRMCollection_preference_pair) | dataset | web | Checklist-annotated web decision records with page observations, prior actions, one preferred continuation and rejected alternatives for process-reward learning. |
-| 2026-10-17 | [Go-Browse-WA processed data](https://huggingface.co/datasets/apurvaga/go-browse-wa) | dataset | web | Flattened web-interaction training records with accessibility-tree observations, assistant completions, trajectory rewards and step-link metadata. |
-| 2026-10-17 | [Go-Browse WebArena Qwen 7B](https://huggingface.co/apurvaga/go-browse-wa-qwen-7B) | model | web | A Qwen-2.5-7B-Instruct checkpoint fine-tuned on Go-Browse WebArena trajectories for website task execution. |
-| 2026-10-17 | [WebShepherd 3B](https://huggingface.co/LangAGI-Lab/WebShepherd_3B) | model | web | A public text-based process-reward checkpoint from the Web-Shepherd collection for scoring web-agent decisions against task checklists. |
-| 2026-10-17 | [Web-Shepherd inference and evaluation](https://github.com/kyle8581/Web-Shepherd) | tool | web | Process-reward inference and benchmark-evaluation utilities that use task checklists to assess individual web-agent decisions. |
-| 2026-10-17 | [SkillWeaver](https://github.com/OSU-NLP-Group/SkillWeaver) | framework | web | A web-agent framework that explores sites, synthesizes reusable interaction APIs and builds a skill library for later tasks. |
-| 2026-10-17 | [ShowUI-π checkpoint](https://huggingface.co/showlab/ShowUI-pi) | model | unspecified | A compact visual-action checkpoint that predicts continuous GUI drag trajectories from a screenshot and a natural-language instruction. |
-| 2026-10-17 | [ScaleCUA 7B](https://huggingface.co/OpenGVLab/ScaleCUA-7B) | model | web, desktop, android, linux | A Qwen2.5-VL-based computer-use checkpoint with direct grounding and agent action modes across desktop, mobile and web interfaces. |
-| 2026-10-17 | [RedTeamCUA](https://github.com/OSU-NLP-Group/RedTeamCUA) | framework | web, desktop | A controlled testing framework that combines desktop virtual machines and replicated websites to evaluate computer-use agents against indirect prompt injection. |
-| 2026-10-17 | [Holo1 7B](https://huggingface.co/Hcompany/Holo1-7B) | model | web | A Qwen2.5-VL-based action model released for the Surfer-H web-agent system, supporting policy, interface-localization and validation roles. |
-| 2026-10-17 | [Go-Browse](https://github.com/ApGa/Go-Browse) | framework | web | Structured website-exploration and data-processing code that revisits discovered pages, proposes tasks and collects trajectories for web-agent fine-tuning. |
+| 2026‑10‑17 | [WebRewardBench](https://huggingface.co/datasets/LangAGI-Lab/WebRewardBench) | benchmark | web | An offline preference-evaluation set for web process reward models, pairing page and trajectory context with preferred and rejected candidate decisions. |
+| 2026‑10‑17 | [WebPRM Collection preference data](https://huggingface.co/datasets/LangAGI-Lab/WebPRMCollection_preference_pair) | dataset | web | Checklist-annotated web decision records with page observations, prior actions, one preferred continuation and rejected alternatives for process-reward learning. |
+| 2026‑10‑17 | [Go-Browse-WA processed data](https://huggingface.co/datasets/apurvaga/go-browse-wa) | dataset | web | Flattened web-interaction training records with accessibility-tree observations, assistant completions, trajectory rewards and step-link metadata. |
+| 2026‑10‑17 | [Go-Browse WebArena Qwen 7B](https://huggingface.co/apurvaga/go-browse-wa-qwen-7B) | model | web | A Qwen-2.5-7B-Instruct checkpoint fine-tuned on Go-Browse WebArena trajectories for website task execution. |
+| 2026‑10‑17 | [WebShepherd 3B](https://huggingface.co/LangAGI-Lab/WebShepherd_3B) | model | web | A public text-based process-reward checkpoint from the Web-Shepherd collection for scoring web-agent decisions against task checklists. |
+| 2026‑10‑17 | [Web-Shepherd inference and evaluation](https://github.com/kyle8581/Web-Shepherd) | tool | web | Process-reward inference and benchmark-evaluation utilities that use task checklists to assess individual web-agent decisions. |
+| 2026‑10‑17 | [SkillWeaver](https://github.com/OSU-NLP-Group/SkillWeaver) | framework | web | A web-agent framework that explores sites, synthesizes reusable interaction APIs and builds a skill library for later tasks. |
+| 2026‑10‑17 | [ShowUI-π checkpoint](https://huggingface.co/showlab/ShowUI-pi) | model | unspecified | A compact visual-action checkpoint that predicts continuous GUI drag trajectories from a screenshot and a natural-language instruction. |
+| 2026‑10‑17 | [ScaleCUA 7B](https://huggingface.co/OpenGVLab/ScaleCUA-7B) | model | web, desktop, android, linux | A Qwen2.5-VL-based computer-use checkpoint with direct grounding and agent action modes across desktop, mobile and web interfaces. |
+| 2026‑10‑17 | [RedTeamCUA](https://github.com/OSU-NLP-Group/RedTeamCUA) | framework | web, desktop | A controlled testing framework that combines desktop virtual machines and replicated websites to evaluate computer-use agents against indirect prompt injection. |
+| 2026‑10‑17 | [Holo1 7B](https://huggingface.co/Hcompany/Holo1-7B) | model | web | A Qwen2.5-VL-based action model released for the Surfer-H web-agent system, supporting policy, interface-localization and validation roles. |
+| 2026‑10‑17 | [Go-Browse](https://github.com/ApGa/Go-Browse) | framework | web | Structured website-exploration and data-processing code that revisits discovered pages, proposes tasks and collects trajectories for web-agent fine-tuning. |
 <!-- RECENT:END -->
 
 ## Use the data

@@ -483,7 +483,7 @@ def highlights(rows, edges, limit=6):
         ranked = sorted((r for r in curated if cited_by[r["id"]]), key=lambda r: (-len(cited_by[r["id"]]), r["name"].casefold()))[:limit]
         if not ranked:
             continue
-        lines += [f"**{label}** · [all {len(curated)} →]({path})", "", "| Resource | Mentioned by | Environments | Paper | License | Description |", "| --- | ---: | --- | --- | --- | --- |"]
+        lines += [f"**{label}** · [all {len(curated)} →]({path})", "", "| Resource | Mentions | Environments | Paper | License | Description |", "| --- | ---: | --- | --- | --- | --- |"]
         lines += [f"| [{md(r['name'])}]({r['url']}) | {len(cited_by[r['id']])} | {', '.join(r['environments'])} | {paper_cell(r, by_id)} | {license_cell(r)} | {md(r['summary'])} |" for r in ranked]
         lines.append("")
     return "\n".join(lines) + "\n"
@@ -494,7 +494,7 @@ def recently_reviewed(rows, reviewed_at, limit=12):
     recent = sorted((r for r in rows if r["review_status"] == "curated" and r["kind"] not in {"paper", "survey"} and reviewed_at.get(r["id"])),
         key=lambda r: (reviewed_at[r["id"]], r["name"].casefold()), reverse=True)[:limit]
     lines = ["", "| Reviewed | Resource | Kind | Environments | Description |", "| --- | --- | --- | --- | --- |"]
-    lines += [f"| {reviewed_at[r['id']][:10]} | [{md(r['name'])}]({r['url']}) | {r['kind']} | {', '.join(r['environments'])} | {md(r['summary'])} |" for r in recent]
+    lines += [f"| {reviewed_at[r['id']][:10].replace('-', '\u2011')} | [{md(r['name'])}]({r['url']}) | {r['kind']} | {', '.join(r['environments'])} | {md(r['summary'])} |" for r in recent]
     return "\n".join(lines) + "\n" if recent else "\n"
 
 
