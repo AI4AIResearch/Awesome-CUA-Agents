@@ -20,6 +20,10 @@ export function bibliographicDate(record) {
   }
   return record.published_at || '';
 }
+export function compactFacts(record, slotLabel = slot => slot) {
+  const year=bibliographicDate(record).slice(0,4), arxiv=record.paper_arxiv;
+  return [year&&{key:'year',text:year},arxiv&&{key:'paper',text:'arXiv '+arxiv,url:'https://arxiv.org/abs/'+arxiv},...Object.entries(record.declared_licenses || {}).map(([slot,name])=>({key:'license',text:slotLabel(slot)+' '+name}))].filter(Boolean);
+}
 export const TOPIC_ALIASES = {'reinforcement-learning':['RL'],'human-in-the-loop':['HITL']};
 const CJK = /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]/u;
 export function searchText(values) {

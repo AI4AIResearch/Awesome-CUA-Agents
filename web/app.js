@@ -1,4 +1,4 @@
-import { KIND_ORDER, PAGE_SIZE, FACT_LABELS, TOPIC_ALIASES, createRecordLoader, bibliographicDate, matches, filtered, parseState, serializeState, searchText, escapeHTML as e, safeURL, formatDate, formatFact } from './catalog-core.js';
+import { KIND_ORDER, PAGE_SIZE, FACT_LABELS, TOPIC_ALIASES, createRecordLoader, bibliographicDate, compactFacts, matches, filtered, parseState, serializeState, searchText, escapeHTML as e, safeURL, formatDate, formatFact } from './catalog-core.js';
 
 const TEXT = {
   en: {
@@ -78,12 +78,12 @@ function renderCategories() {
 function card(r) {
   const initials = r.name.split(/[\s-]+/).slice(0,2).map(x=>x[0] || '').join('').toUpperCase();
   const curated=r.review_status==='curated';
-  const summary=r.summary || (r.authors.slice(0,3).join(' · ')+(r.authors.length>3?' et al.':'')+(r.published_at?' · '+r.published_at.slice(0,4):''));
-  const tags=r.environments.filter(x=>x!=='unspecified').slice(0,2).map(x=>label(PLATFORMS,x));
-  if(!tags.length && bibliographicDate(r)) tags.push(bibliographicDate(r).slice(0,4),r.id.startsWith('arxiv:')?'arXiv':label(KINDS,r.kind));
+  const summary=r.summary || (r.authors.slice(0,3).join(' · ')+(r.authors.length>3?' et al.':''));
+  const tags=r.environments.filter(x=>x!=='unspecified').slice(0,2).map(x=>label(PLATFORMS,x)), facts=compactFacts(r,t);
   if(curated && r.topics.length && tags.length<3) tags.push(label(TOPICS,r.topics[0]));
-  return `<article class="resource-card" data-kind="${e(r.kind)}"><div class="card-top"><div class="resource-monogram" aria-hidden="true">${e(initials)}</div><span class="kind-chip">${e(label(KINDS,r.kind))}</span></div><h3 class="card-title"><a href="${e(r.page_url)}" data-record="${e(r.id)}">${e(r.name)}</a></h3><p class="resource-summary ${curated?'':'is-bibliography'}">${e(summary)}</p><div class="card-tags">${tags.map(x=>`<span>${e(x)}</span>`).join('')}</div><div class="card-bottom ${curated?'is-curated':''}"><span class="review-dot"></span><span>${e(t(curated?'curatedBadge':'metadataBadge'))}</span><a class="card-external" href="${e(safeURL(r.url))}" target="_blank" rel="noopener noreferrer" aria-label="${e(t('openSource'))}: ${e(r.name)}">↗</a></div></article>`;
+  return `<article class="resource-card" data-kind="${e(r.kind)}"><div class="card-top"><div class="resource-monogram" aria-hidden="true">${e(initials)}</div><span class="kind-chip">${e(label(KINDS,r.kind))}</span></div><h3 class="card-title"><a href="${e(r.page_url)}" data-record="${e(r.id)}">${e(r.name)}</a></h3>${facts.length?`<p class="card-facts">${facts.map(factMarkup).join('\u00a0· ')}</p>`:''}<p class="resource-summary ${curated?'':'is-bibliography'}">${e(summary)}</p><div class="card-tags">${tags.map(x=>`<span>${e(x)}</span>`).join('')}</div><div class="card-bottom ${curated?'is-curated':''}"><span class="review-dot"></span><span>${e(t(curated?'curatedBadge':'metadataBadge'))}</span><a class="card-external" href="${e(safeURL(r.url))}" target="_blank" rel="noopener noreferrer" aria-label="${e(t('openSource'))}: ${e(r.name)}">↗</a></div></article>`;
 }
+const factMarkup=fact=>fact.url?`<a href="${e(safeURL(fact.url))}" target="_blank" rel="noopener noreferrer">${e(fact.text)}</a>`:`<span title="${e(fact.text)}">${e(fact.text)}</span>`;
 function render() {
   if(loading) return;
   const focused=Boolean(state.kind||state.q||state.platform||state.review||state.topic||state.year);
@@ -105,12 +105,12 @@ function render() {
 }
 function denseRow(r) {
   const reviewed=r.review_status==='curated',isPaper=['paper','survey'].includes(r.kind);
-  const date=bibliographicDate(r) || '—';
-  const dateMarkup=date.length===10?`<time datetime="${e(date)}">${e(date)}</time>`:`<span class="row-date-value">${e(date)}</span>`;
+  const date=bibliographicDate(r);
+  const dateMarkup=!date?'':date.length===10?`<time datetime="${e(date)}">${e(date)}</time>`:`<span class="row-date-value">${e(date)}</span>`;
   const authors=r.authors.slice(0,2).join(', ')+(r.authors.length>2?' et al.':'');
   const facets=[...r.environments.filter(x=>x!=='unspecified').map(x=>label(PLATFORMS,x)),...r.topics.slice(0,2).map(x=>label(TOPICS,x))];
   const summary=r.summary || t('noTaxonomy');
-  return `<article class="resource-row" data-kind="${e(r.kind)}"><div class="row-date">${dateMarkup}<span>${r.paper_version?`arXiv v${r.paper_version}`:e(label(KINDS,r.kind))}</span></div><div class="row-main"><h3><a href="${e(r.page_url)}" data-record="${e(r.id)}">${e(r.name)}</a></h3><p class="row-summary">${e(summary)}</p><div class="row-meta">${authors?`<span class="row-authors">${e(authors)}</span>`:''}${facets.map(x=>`<span class="row-tag">${e(x)}</span>`).join('')}${!isPaper?`<span>${e(label(KINDS,r.kind))}</span>`:''}</div></div><div class="row-actions"><span class="row-review ${reviewed?'is-reviewed':''}">${e(t(reviewed?'curatedBadge':'metadataBadge'))}</span><a href="${e(safeURL(r.paper_source_url || r.url))}" target="_blank" rel="noopener noreferrer">${e(t('primaryLink'))} ↗</a><a href="${e(r.page_url)}" data-record="${e(r.id)}">${r.related_count?`${num(r.related_count)} ${e(t('related'))} · `:''}${e(t('recordLink'))}</a></div></article>`;
+  return `<article class="resource-row" data-kind="${e(r.kind)}"><div class="row-date">${dateMarkup}<span>${r.paper_version?`arXiv v${r.paper_version}`:e(label(KINDS,r.kind))}</span></div><div class="row-main"><h3><a href="${e(r.page_url)}" data-record="${e(r.id)}">${e(r.name)}</a></h3><p class="row-summary">${e(summary)}</p><div class="row-meta">${authors?`<span class="row-authors">${e(authors)}</span>`:''}${facets.map(x=>`<span class="row-tag">${e(x)}</span>`).join('')}${!isPaper?`<span>${e(label(KINDS,r.kind))}</span>`:''}${compactFacts(r,t).filter(f=>f.key!=='year').map(factMarkup).join('')}</div></div><div class="row-actions"><span class="row-review ${reviewed?'is-reviewed':''}">${e(t(reviewed?'curatedBadge':'metadataBadge'))}</span><a href="${e(safeURL(r.paper_source_url || r.url))}" target="_blank" rel="noopener noreferrer">${e(t('primaryLink'))} ↗</a><a href="${e(r.page_url)}" data-record="${e(r.id)}">${r.related_count?`${num(r.related_count)} ${e(t('related'))} · `:''}${e(t('recordLink'))}</a></div></article>`;
 }
 async function load() {
   loading=true;$('#load-error').hidden=true;$('#results').setAttribute('aria-busy','true');$('#results-count').textContent=t('loading');$('#results').innerHTML=Array.from({length:6},()=>'<div class="skeleton-card" aria-hidden="true"></div>').join('');
