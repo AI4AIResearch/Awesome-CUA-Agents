@@ -9,6 +9,14 @@ export function createRecordLoader(fetcher) {
   };
 }
 export function normalize(value) { return String(value || '').normalize('NFKC').toLowerCase().replace(/[\p{P}\p{S}]+/gu,' ').replace(/\s+/g,' ').trim(); }
+export const TOPIC_ALIASES = {'reinforcement-learning':['RL'],'human-in-the-loop':['HITL']};
+const CJK = /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]/u;
+export function searchText(values) {
+  const text = values.filter(Boolean).join(' ');
+  // Index the parts of compound names too, so word-start search finds "osworld" in macOSWorld and "llm" in SpreadsheetLLM.
+  const parts = text.split(/\s+/).filter(word => /\p{Ll}\p{Lu}/u.test(word)).map(word => word.replace(/(\p{Ll})(\p{Lu})/gu,'$1 $2'));
+  return normalize([text,...parts].join(' '));
+}
 export function matches(record, state, ignoreKind = false) {
   if (!ignoreKind && state.kind && record.kind !== state.kind) return false;
   if (state.platform && !record.environments.includes(state.platform)) return false;
@@ -16,7 +24,8 @@ export function matches(record, state, ignoreKind = false) {
   if (state.topic && !record.topics.includes(state.topic)) return false;
   if (state.year && (record.published_at || '').slice(0,4) !== state.year) return false;
   const terms = normalize(state.q).split(' ').filter(Boolean);
-  return terms.every(term => record.search_text.includes(term));
+  // Latin and digit terms match at word starts; CJK text is not space-delimited, so it keeps substring matching.
+  return terms.every(term => CJK.test(term) ? record.search_text.includes(term) : record.search_text.startsWith(term) || record.search_text.includes(' '+term));
 }
 export function filtered(records, state) {
   const result = records.filter(r => matches(r,state));

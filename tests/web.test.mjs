@@ -2,9 +2,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {normalize,matches,filtered,parseState,serializeState,escapeHTML,safeURL,PAGE_SIZE} from '../web/catalog-core.js';
+import {TOPIC_ALIASES,searchText} from '../web/catalog-core.js';
 
 const rows=readFileSync(new URL('../data/catalog.jsonl',import.meta.url),'utf8').trim().split('\n').map(JSON.parse);
-rows.forEach(r=>r.search_text=normalize([r.name,r.summary,...r.aliases,...r.authors,...r.topics,...r.environments].join(' ')));
+rows.forEach(r=>r.search_text=searchText([r.name,r.summary,...r.aliases,...r.authors,...r.topics,...r.topics.flatMap(x=>TOPIC_ALIASES[x] || []),...r.environments]));
 const initial=()=>parseState('');
 
 test('all published resources are searchable without dropping metadata-only records',()=>{
@@ -100,4 +101,14 @@ test('failed, mismatched, or scope-excluded detail payloads are not cached as ac
     let calls=0;const load=createRecordLoader(async()=>++calls===1?bad:{ok:true,json:async()=>({id:record.id,review_status:'curated'})});
     await assert.rejects(load(record));assert.equal((await load(record)).id,record.id);assert.equal(calls,2);
   }
+});
+test('search matches Latin terms at word starts while keeping CJK substrings and topic abbreviations',()=>{
+  const rl=filtered(rows,{...initial(),q:'rl'}),tagged=rows.filter(r=>r.topics.includes('reinforcement-learning'));
+  assert.ok(!rl.some(r=>r.name==='OSWorld'));
+  assert.ok(tagged.length>0&&tagged.every(r=>rl.includes(r)));
+  assert.ok(filtered(rows,{...initial(),q:'osworld'}).some(r=>r.name==='OSWorld'));
+  assert.ok(filtered(rows,{...initial(),q:'UI-TARS'}).some(r=>r.name==='UI-TARS'));
+  const record={search_text:searchText(['macOSWorld SpreadsheetLLM','面向界面理解的 GUI 定位'])};
+  for(const q of ['osworld','macosworld','llm','GUI 定位','理解','界面理解 gui'])assert.ok(matches(record,{...initial(),q}),q);
+  for(const q of ['sworld','preadsheet','ui','gent'])assert.equal(matches(record,{...initial(),q}),false,q);
 });

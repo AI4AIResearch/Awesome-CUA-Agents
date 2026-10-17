@@ -1,4 +1,4 @@
-import { KIND_ORDER, PAGE_SIZE, createRecordLoader, normalize, matches, filtered, parseState, serializeState, escapeHTML as e, safeURL } from './catalog-core.js';
+import { KIND_ORDER, PAGE_SIZE, TOPIC_ALIASES, createRecordLoader, matches, filtered, parseState, serializeState, searchText, escapeHTML as e, safeURL } from './catalog-core.js';
 
 const TEXT = {
   en: {
@@ -109,7 +109,7 @@ async function load() {
   try {
     const response=await fetch('./data/index.json');if(!response.ok)throw new Error('HTTP '+response.status);
     const data=await response.json();report=data.coverage;records=data.records;
-    records.forEach(r=>r.search_text=normalize([r.name,r.summary,...r.aliases,...r.authors,...r.environments.flatMap(x=>PLATFORMS[x] || [x]),...r.topics.flatMap(x=>TOPICS[x] || [x]),...(KINDS[r.kind] || [])].filter(Boolean).join(' ')));
+    records.forEach(r=>r.search_text=searchText([r.name,r.summary,...r.aliases,...r.authors,...r.environments.flatMap(x=>PLATFORMS[x] || [x]),...r.topics.flatMap(x=>[...(TOPICS[x] || [x]),...(TOPIC_ALIASES[x] || [])]),...(KINDS[r.kind] || [])]));
     if(!Object.hasOwn(PLATFORMS,state.platform))state.platform='';
     if(!records.some(r=>r.topics.includes(state.topic)))state.topic='';
     $('#stat-resources').textContent=num(records.length);$('#stat-curated').textContent=num(report.curated_records);$('#stat-kinds').textContent=num(Object.keys(report.by_kind).length);$('#stat-sources').textContent=num(report.sources.length);
