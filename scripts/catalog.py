@@ -125,12 +125,15 @@ def canonical(url, *, allow_doi=False):
     try:
         doi_parts=urllib.parse.urlsplit(candidate)
         if (doi_parts.hostname or '').lower() in {'doi.org','www.doi.org','dx.doi.org'}:
-            if not allow_doi or doi_parts.scheme not in {'http','https'} or doi_parts.username is not None or doi_parts.password is not None:
+            if doi_parts.scheme not in {'http','https'} or doi_parts.username is not None or doi_parts.password is not None:
                 return None
             if any(not key.startswith('utm_') for key,_ in urllib.parse.parse_qsl(doi_parts.query)):
                 return None
             doi=urllib.parse.unquote(doi_parts.path.lstrip('/'),errors='strict')
-            if not re.fullmatch(r'10\.\d{4,9}/[^\s\\]+',doi,re.I):return None
+            # arXiv's DataCite DOI names the preprint itself, so it folds into the arXiv record even where bare DOIs are ignored.
+            arxiv_doi=re.match(r'10\.48550/arxiv\.(\d{4}\.\d{4,5})(?:v\d+)?(?!\w)',doi,re.I)
+            if arxiv_doi:return f'arxiv:{arxiv_doi[1]}',f'https://arxiv.org/abs/{arxiv_doi[1]}','arxiv'
+            if not allow_doi or not re.fullmatch(r'10\.\d{4,9}/[^\s\\]+',doi,re.I):return None
             clean='https://doi.org/'+urllib.parse.quote(doi.casefold(),safe='/():;._-')
             return 'url:'+hashlib.sha256(clean.encode()).hexdigest()[:20],clean,'url'
     except (ValueError,UnicodeError):
@@ -146,8 +149,10 @@ def canonical(url, *, allow_doi=False):
     if parts.scheme not in {"http", "https"} or not parts.netloc:
         return None
     host = parts.hostname.lower() if parts.hostname else ""
-    if host in {"arxiv.org", "www.arxiv.org", "export.arxiv.org", "huggingface.co"}:
-        match = (HF_PAPER_RE if host == "huggingface.co" else ARXIV_RE).match(parts.path)
+    hub = host in {"huggingface.co", "www.huggingface.co", "hf.co"}
+    # arXiv mirrors and services (web3., browse., export., ar5iv.labs.) all serve the same IDs.
+    if hub or host in {"arxiv.org", "ar5iv.org"} or host.endswith(".arxiv.org"):
+        match = (HF_PAPER_RE if hub else ARXIV_RE).match(parts.path)
         if match:
             aid = match.group(1)
             return f"arxiv:{aid}", f"https://arxiv.org/abs/{aid}", "arxiv"
