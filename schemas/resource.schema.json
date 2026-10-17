@@ -434,6 +434,10 @@
         "benchmark_protocol": {
           "$ref": "#/$defs/benchmarkProtocol"
         },
+        "leaderboard_url": {
+          "type": "string",
+          "pattern": "^https://"
+        },
         "dataset_profile": {
           "$ref": "#/$defs/datasetProfile"
         },
@@ -483,6 +487,32 @@
             "type": "object",
             "required": [
               "benchmark_protocol"
+            ]
+          }
+        },
+        "required": [
+          "details"
+        ]
+      },
+      "then": {
+        "properties": {
+          "kind": {
+            "const": "benchmark"
+          },
+          "review_status": {
+            "const": "curated"
+          }
+        }
+      }
+    },
+    {
+      "description": "A leaderboard URL belongs to a curated benchmark.",
+      "if": {
+        "properties": {
+          "details": {
+            "type": "object",
+            "required": [
+              "leaderboard_url"
             ]
           }
         },

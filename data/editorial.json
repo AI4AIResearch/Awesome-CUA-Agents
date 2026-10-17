@@ -63,7 +63,8 @@
           "https://raw.githubusercontent.com/xlang-ai/OSWorld/HEAD/evaluation_examples/test_all.json",
           "https://raw.githubusercontent.com/xlang-ai/OSWorld/HEAD/evaluation_examples/test_nogdrive.json"
         ]
-      }
+      },
+      "leaderboard_url": "https://os-world.github.io/"
     },
     "primary_supports": [
       "name",
@@ -73,7 +74,8 @@
       "topics",
       "scope",
       "relations",
-      "details.benchmark_protocol"
+      "details.benchmark_protocol",
+      "details.leaderboard_url"
     ],
     "additional_evidence": [
       {
@@ -158,7 +160,8 @@
           "https://raw.githubusercontent.com/web-arena-x/webarena/HEAD/README.md",
           "https://export.arxiv.org/api/query?id_list=1802.08802%2C1808.09132%2C2005.03776%2C2101.09465%2C2103.16057%2C2104.08560%2C2105.13231%2C2107.03374%2C2107.13731%2C2108.03353%2C2202.02312%2C2202.08137%2C2204.01691%2C2205.11029%2C2207.01206%2C2209.08199%2C2209.08655%2C2209.14927%2C2209.15099%2C2210.02663%2C2210.03629%2C2210.03945%2C2211.07615%2C2301.10165%2C2301.13280%2C2302.04761%2C2303.07280%2C2303.08774%2C2303.17491%2C2303.17580%2C2304.04370%2C2304.07061%2C2305.04091%2C2305.05662%2C2305.08144%2C2305.10601%2C2305.11854%2C2305.12487%2C2305.14257%2C2305.14325%2C2305.16504%2C2305.16653%2C2305.19308%2C2306.00245%2C2306.06070%2C2306.07863%2C2307.10088%2C2307.12856%2C2307.13854%2C2308.01990&max_results=50"
         ]
-      }
+      },
+      "leaderboard_url": "https://docs.google.com/spreadsheets/d/1M801lEpBbKSNwP-vDBkC_pF7LdyGU1f_ufZb_NWNBZQ/edit?usp=sharing"
     },
     "primary_supports": [
       "name",
@@ -168,7 +171,8 @@
       "topics",
       "scope",
       "relations",
-      "details.benchmark_protocol"
+      "details.benchmark_protocol",
+      "details.leaderboard_url"
     ],
     "additional_evidence": [
       {
@@ -316,7 +320,8 @@
           "https://raw.githubusercontent.com/google-research/android_world/HEAD/README.md",
           "https://export.arxiv.org/api/query?id_list=2403.03186%2C2403.03788%2C2403.07718%2C2403.10170%2C2403.11905%2C2403.16971%2C2403.17918%2C2403.20271%2C2404.01549%2C2404.01744%2C2404.02475%2C2404.03648%2C2404.05427%2C2404.05719%2C2404.05955%2C2404.06474%2C2404.07972%2C2404.08755%2C2404.08860%2C2404.08948%2C2404.09992%2C2404.10887%2C2404.11459%2C2404.16006%2C2404.16048%2C2404.16054%2C2404.16660%2C2404.18074%2C2404.19296%2C2405.00516%2C2405.11120%2C2405.12842%2C2405.14573%2C2405.14751%2C2405.15793%2C2405.16247%2C2405.20309%2C2406.01014%2C2406.01623%2C2406.03679%2C2406.06947%2C2406.07822%2C2406.08184%2C2406.08340%2C2406.08451%2C2406.10227%2C2406.10819%2C2406.11317%2C2406.11896%2C2406.12373&max_results=50"
         ]
-      }
+      },
+      "leaderboard_url": "https://docs.google.com/spreadsheets/d/1cchzP9dlTZ3WXQTfYNhh3avxoLipqHN75v1Tb86uhHo/edit?gid=0#gid=0"
     },
     "documented_by": [
       "2405.14573"
@@ -333,7 +338,8 @@
       "details.task_unit",
       "details.metrics",
       "details.evaluation_type",
-      "details.benchmark_protocol"
+      "details.benchmark_protocol",
+      "details.leaderboard_url"
     ],
     "additional_evidence": [
       {
@@ -489,7 +495,8 @@
           "https://raw.githubusercontent.com/likaixin2000/ScreenSpot-Pro-GUI-Grounding/HEAD/eval_screenspot_pro.py",
           "https://huggingface.co/datasets/likaixin/ScreenSpot-Pro/raw/main/README.md"
         ]
-      }
+      },
+      "leaderboard_url": "https://gui-agent.github.io/grounding-leaderboard"
     },
     "primary_supports": [
       "name",
@@ -499,7 +506,8 @@
       "topics",
       "scope",
       "relations",
-      "details.benchmark_protocol"
+      "details.benchmark_protocol",
+      "details.leaderboard_url"
     ],
     "additional_evidence": [
       {
@@ -684,7 +692,8 @@
           "https://raw.githubusercontent.com/ServiceNow/WorkArena/HEAD/README.md",
           "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending"
         ]
-      }
+      },
+      "leaderboard_url": "https://huggingface.co/spaces/ServiceNow/browsergym-leaderboard"
     },
     "primary_supports": [
       "name",
@@ -694,7 +703,8 @@
       "topics",
       "scope",
       "relations",
-      "details.benchmark_protocol"
+      "details.benchmark_protocol",
+      "details.leaderboard_url"
     ],
     "additional_evidence": [
       {
@@ -1039,7 +1049,8 @@
         "evidence_urls": [
           "https://raw.githubusercontent.com/OSU-NLP-Group/Online-Mind2Web/HEAD/README.md"
         ]
-      }
+      },
+      "leaderboard_url": "https://huggingface.co/spaces/osunlp/Online_Mind2Web_Leaderboard"
     },
     "primary_supports": [
       "name",
@@ -1049,7 +1060,8 @@
       "topics",
       "scope",
       "relations",
-      "details.benchmark_protocol"
+      "details.benchmark_protocol",
+      "details.leaderboard_url"
     ]
   },
   {
@@ -1361,7 +1373,8 @@
         "evidence_urls": [
           "https://raw.githubusercontent.com/THUDM/Android-Lab/HEAD/README.md"
         ]
-      }
+      },
+      "leaderboard_url": "https://docs.google.com/spreadsheets/d/1Zv6mBfd4Ibt8mke24K6zAFrXe4AvEFaBLW3hpJqSgjw/edit?gid=0#gid=0"
     },
     "documented_by": [
       "2410.24024"
@@ -2622,7 +2635,8 @@
           "https://raw.githubusercontent.com/JetAstra/MacAgentBench/HEAD/README.md",
           "https://export.arxiv.org/api/query?id_list=2605.06761%2C2605.07110%2C2605.07134%2C2605.09497%2C2605.11212%2C2605.12481%2C2605.12501%2C2605.12549%2C2605.13631%2C2605.14290%2C2605.14747%2C2605.15030%2C2605.15542%2C2605.15777%2C2605.16024%2C2605.16116%2C2605.16402%2C2605.17320%2C2605.18048%2C2605.18652%2C2605.18758%2C2605.19260%2C2605.19769%2C2605.21470%2C2605.25160%2C2605.25624%2C2605.25707%2C2605.26114%2C2605.27761%2C2605.28116%2C2605.28534%2C2605.28646%2C2605.28775%2C2605.29119%2C2605.29324%2C2605.29447%2C2605.29486%2C2605.29534%2C2605.29615%2C2606.06322%2C2606.09426%2C2606.11042%2C2606.22557%2C2606.23189%2C2606.24551%2C2608.17659%2C2609.22000%2C2609.34139&max_results=48"
         ]
-      }
+      },
+      "leaderboard_url": "https://jetastra.github.io/MacAgentBench/"
     },
     "primary_supports": [
       "name",
@@ -2632,7 +2646,8 @@
       "topics",
       "scope",
       "relations",
-      "details.benchmark_protocol"
+      "details.benchmark_protocol",
+      "details.leaderboard_url"
     ],
     "additional_evidence": [
       {
@@ -2691,7 +2706,10 @@
     "reviewed_at": "2026-10-16T06:35:59Z",
     "documented_by": [
       "2605.15777"
-    ]
+    ],
+    "details": {
+      "leaderboard_url": "https://unipat.ai/benchmarks/SaaS-Bench"
+    }
   },
   {
     "name": "MCPWorld",
@@ -2838,7 +2856,10 @@
     "reviewed_at": "2026-10-16T10:50:15Z",
     "documented_by": [
       "2406.12373"
-    ]
+    ],
+    "details": {
+      "leaderboard_url": "https://github.com/iMeanAI/WebCanvas/blob/main/Mind2web-live_Leaderboard.md"
+    }
   },
   {
     "name": "UI-TARS",
@@ -6409,7 +6430,10 @@
     ],
     "reviewed_sha256": "79deaa899d085ece77a127d53b12ddb9edea8a796943f35b75e9acec67bcb976",
     "reviewed_at": "2026-10-16T06:50:49Z",
-    "notes": "Dataset card declares multiple upstream licenses; do not treat the package as having one blanket permissive license."
+    "notes": "Dataset card declares multiple upstream licenses; do not treat the package as having one blanket permissive license.",
+    "details": {
+      "leaderboard_url": "https://recreation-bench.cc/#leaderboard"
+    }
   },
   {
     "name": "ScreenSpot",
@@ -10248,7 +10272,8 @@
           "https://raw.githubusercontent.com/McGill-NLP/safearena/HEAD/README.md",
           "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
         ]
-      }
+      },
+      "leaderboard_url": "https://huggingface.co/spaces/McGill-NLP/safearena-leaderboard"
     },
     "primary_supports": [
       "name",
@@ -10258,7 +10283,8 @@
       "topics",
       "scope",
       "relations",
-      "details.benchmark_protocol"
+      "details.benchmark_protocol",
+      "details.leaderboard_url"
     ],
     "additional_evidence": [
       {
@@ -14082,7 +14108,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "1b7d1f1cd7a74ac9497c639324ec342dd3f8769e9c0c4cd2cd92a4eb6740ac98",
-    "reviewed_at": "2026-10-16T10:48:36Z"
+    "reviewed_at": "2026-10-16T10:48:36Z",
+    "details": {
+      "leaderboard_url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRR3Wl7wsCgHpwUw1_eUXW_fptAPLL3FkhnW_rua0O1Ji_GIVrpTjY5LaKAhwO-WeARjnY_KNw0SYNJ/pubhtml"
+    }
   },
   {
     "url": "https://github.com/gydpku/PPTC",
@@ -14449,7 +14478,8 @@
           "https://raw.githubusercontent.com/stonybrooknlp/appworld/HEAD/README.md",
           "https://export.arxiv.org/api/query?id_list=2406.12814%2C2406.13719%2C2406.14056%2C2406.14250%2C2406.14314%2C2406.18082%2C2406.19263%2C2407.00993%2C2407.01476%2C2407.01489%2C2407.01511%2C2407.01558%2C2407.03037%2C2407.03913%2C2407.04346%2C2407.05291%2C2407.07061%2C2407.08850%2C2407.09018%2C2407.09295%2C2407.10956%2C2407.13032%2C2407.13063%2C2407.15673%2C2407.15711%2C2407.16741%2C2407.17490%2C2407.18901%2C2407.19056%2C2407.20183%2C2408.00203%2C2408.02544%2C2408.06327%2C2408.07199%2C2408.11824%2C2408.15978%2C2409.02453%2C2409.04566%2C2409.07429%2C2409.08264%2C2409.09354%2C2409.10741%2C2409.11295%2C2409.13711%2C2409.14337%2C2409.14818%2C2409.15441%2C2409.15637%2C2409.17140%2C2409.20566&max_results=50"
         ]
-      }
+      },
+      "leaderboard_url": "https://appworld.dev/appworld/leaderboard"
     },
     "primary_supports": [
       "name",
@@ -14459,7 +14489,8 @@
       "topics",
       "scope",
       "relations",
-      "details.benchmark_protocol"
+      "details.benchmark_protocol",
+      "details.leaderboard_url"
     ],
     "additional_evidence": [
       {
@@ -14752,7 +14783,8 @@
         "evidence_urls": [
           "https://raw.githubusercontent.com/TheAgentCompany/TheAgentCompany/HEAD/README.md"
         ]
-      }
+      },
+      "leaderboard_url": "https://the-agent-company.com/#/leaderboard"
     },
     "primary_supports": [
       "name",
@@ -14762,7 +14794,8 @@
       "topics",
       "scope",
       "relations",
-      "details.benchmark_protocol"
+      "details.benchmark_protocol",
+      "details.leaderboard_url"
     ]
   },
   {
@@ -33304,7 +33337,8 @@
           "https://raw.githubusercontent.com/McGill-NLP/agent-reward-bench/HEAD/README.md",
           "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
         ]
-      }
+      },
+      "leaderboard_url": "https://huggingface.co/spaces/McGill-NLP/agent-reward-bench-leaderboard"
     },
     "scope": "core",
     "reviewed_licenses": {
@@ -39708,7 +39742,8 @@
         "evidence_urls": [
           "https://raw.githubusercontent.com/Tongyi-MAI/MobileWorld/HEAD/README.md"
         ]
-      }
+      },
+      "leaderboard_url": "https://tongyi-mai.github.io/MobileWorld/#leaderboard"
     },
     "documented_by": [
       "2512.19432"
@@ -54796,7 +54831,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "5cc72b992cfc11094dcf341c284d5baadc6c66a302fdfd474b27913fe1c91f6f",
-    "reviewed_at": "2026-10-17T17:18:50Z"
+    "reviewed_at": "2026-10-17T17:18:50Z",
+    "details": {
+      "leaderboard_url": "https://osu-nlp-group.github.io/Mind2Web-2/#leaderboard"
+    }
   },
   {
     "name": "Magma",
