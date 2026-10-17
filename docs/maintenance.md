@@ -40,9 +40,13 @@ python3 scripts/catalog.py enrich
 
 # Review changed snapshots before updating editorial approval digests.
 python3 scripts/catalog.py build
+
+# Run the same checks as CI, in order; see "Maintain and verify" in the README.
 .venv/bin/python scripts/catalog.py validate
+.venv/bin/python scripts/catalog.py build --check
 .venv/bin/python -m unittest discover -s tests -v
-python3 scripts/catalog.py build --check
+node --test tests/web.test.mjs
+.venv/bin/python scripts/build_site.py
 ```
 
 `--limit` bounds a harvest or search. Search manifests explicitly report incomplete pagination. Successful responses are cached; failed requests are recorded separately and never overwrite the last successful response. A failed refresh remains a failure in the latest run manifest. Re-running without `--refresh` can reuse an older successful cache response, retaining its original retrieval timestamp.
