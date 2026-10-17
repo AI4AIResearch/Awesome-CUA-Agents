@@ -157,6 +157,12 @@ A code license never fills a data or weights field. Hub declarations are publish
 | [LiteCUA implementation](https://github.com/agiresearch/LiteCUA) | primary evidence unresolved: HTTP Error 404: Not Found |
 | [Project Mariner](https://labs.google.com/mariner/) | The Project Mariner page on labs.google.com is a client-rendered sign-in shell whose HTML carries only the title, and the former deepmind.google Project Mariner pages now redirect to the DeepMind homepage. Approval needs a readable first-party product page. |
 
+## Uncurated papers behind curated resources
+
+Papers that a curated resource names as its `introduced_by` or `documented_by` paper but that have no editorial relevance review yet. Review them before other metadata-only papers.
+
+None: every paper linked from a curated resource is curated.
+
 ## Scope exclusions
 
 118 records have an applied scope decision; 0 require another review after a change. See the [decision ledger](../data/exclusion-status.json) for each rationale and source fingerprint. These decisions concern catalog relevance, not research quality. Original bibliographic metadata is retained, and previous resource URLs explain the decision rather than silently disappearing.

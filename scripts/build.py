@@ -363,6 +363,23 @@ def candidate_reviews(candidates, ids, excluded, aliases):
     return reviews
 
 
+def uncurated_linked_papers(rows):
+    """Uncurated papers that a curated resource names as its introduced_by/documented_by paper: the next papers to review."""
+    by_id = {r["id"]: r for r in rows}
+    linked = collections.defaultdict(set)
+    for r in rows:
+        for rel in r.get("relations", []) if r["review_status"] == "curated" else []:
+            target = by_id.get(rel["target_id"])
+            if rel["type"] in {"introduced_by", "documented_by"} and target and target["kind"] in {"paper", "survey"} and target["review_status"] != "curated":
+                linked[target["id"]].add(r["id"])
+    return [{"id": rid, "name": by_id[rid]["name"], "url": by_id[rid]["url"], "linked_from": sorted(sources)} for rid, sources in sorted(linked.items())]
+
+
+def print_uncurated_linked_papers(papers):
+    for p in papers:
+        print(f"Uncurated linked paper: {p['id']} is the paper of curated {', '.join(p['linked_from'])}; curate it or record a scope decision.")
+
+
 def coverage(rows, pending, scope_decisions):
     ids = {r["id"] for r in rows}
     by_id = {r["id"]: r for r in rows}
@@ -396,7 +413,7 @@ def coverage(rows, pending, scope_decisions):
         "metadata_only_records": sum(r["review_status"] == "metadata_verified" for r in rows),
         "discovery_identifiers": len(candidates), "unindexed_candidates": len({aliases.get(r['id'],r['id']) for r in candidates if r['id'] not in reviews} - ids - excluded),
         "non_resource_candidates": sum(r["resolution"] == "not_a_resource" for r in reviews.values()), "alias_candidates": sum(r["resolution"] == "alias" for r in reviews.values()),
-        "pending_editorial": pending, "by_kind": dict(sorted(collections.Counter(r["kind"] for r in rows).items())),
+        "pending_editorial": pending, "uncurated_linked_papers": uncurated_linked_papers(rows), "by_kind": dict(sorted(collections.Counter(r["kind"] for r in rows).items())),
         "curated_by_environment": dict(sorted(collections.Counter(e for r in rows if r["review_status"] == "curated" for e in r["environments"]).items())),
         "curated_by_kind_and_environment": {kind: dict(sorted(collections.Counter(e for r in rows if r["review_status"] == "curated" and r["kind"] == kind for e in set(r["environments"])).items()))
             for kind in sorted({r["kind"] for r in rows if r["review_status"] == "curated"})},
@@ -687,6 +704,9 @@ def documents(rows, report):
         "## Pending editorial proposals", "", "| Resource | Reason |", "| --- | --- |"]
     for p in report["pending_editorial"]:
         lines.append(f"| [{md(p['name'])}]({p['url']}) | {md(p['reason'])} |")
+    linked = report.get("uncurated_linked_papers", [])
+    lines += ["", "## Uncurated papers behind curated resources", "", "Papers that a curated resource names as its `introduced_by` or `documented_by` paper but that have no editorial relevance review yet. Review them before other metadata-only papers.", ""]
+    lines += ["| Paper | Linked from |", "| --- | --- |", *(f"| [{md(p['name'])}]({p['url']}) | " + ", ".join(f"[{md(by_id[s]['name'])}]({by_id[s]['url']})" for s in p["linked_from"]) + " |" for p in linked)] if linked else ["None: every paper linked from a curated resource is curated."]
     lines += ["", "## Scope exclusions", "", f"{report['excluded_records']} records have an applied scope decision; {report['exclusion_revalidation_pending']} require another review after a change. See the [decision ledger](../data/exclusion-status.json) for each rationale and source fingerprint. These decisions concern catalog relevance, not research quality. Original bibliographic metadata is retained, and previous resource URLs explain the decision rather than silently disappearing.", "", "## Known gaps", "",
         "- Most bibliography records still require relevance review and detailed taxonomy.",
         "- Closed/private datasets, unpublished systems, regional products, and work absent from arXiv/lists are not exhaustively represented.",
@@ -857,6 +877,7 @@ def build(args):
     if errors:
         raise ValueError("\n".join(errors[:30]))
     report = coverage(rows, pending, scope_decisions)
+    print_uncurated_linked_papers(report["uncurated_linked_papers"])
     files = documents(rows, report)
     files["data/catalog.jsonl"] = "".join(json.dumps(r, ensure_ascii=False, sort_keys=True) + "\n" for r in rows)
     files["data/coverage.json"] = json.dumps(report, ensure_ascii=False, indent=2) + "\n"
@@ -977,6 +998,7 @@ def validate(args):
     if errors:
         raise ValueError("\n".join(errors[:40]))
     print(f"Validated {len(rows)} records: JSON Schema, identifiers, dates, source receipts, scoped licenses, and reviewed relation targets.")
+    print_uncurated_linked_papers(uncurated_linked_papers(rows))
     for group in title_author_collisions(rows):
         print("Undecided duplicate: " + ", ".join(str(r.get("id")) for r in group) + " share a title and author list; record identifiers.preferred_arxiv on the duplicate.")
 
