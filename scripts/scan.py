@@ -29,8 +29,13 @@ def counts():
         'candidates':len(read_jsonl(DATA/'candidates.jsonl'))}
 
 
-def stage(name,command,timeout=600):
-    started=now()
+# Seconds each subprocess stage may run. Together with the recent arXiv search's retry bound and the workflow's other steps they
+# must fit inside scan.yml's timeout-minutes, so even a stalled stage ends with this scan's own receipt (tests/test_scan_budget.py).
+STAGE_TIMEOUTS={'discovery':300,'huggingface':300,'harvest':300,'build':180,'validate':180}
+
+
+def stage(name,command):
+    started=now();timeout=STAGE_TIMEOUTS[name]
     try:
         result=subprocess.run([sys.executable,*command],cwd=ROOT,encoding='utf-8',errors='replace',stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=timeout)
         print(result.stdout[-6000:],flush=True)
@@ -137,7 +142,11 @@ def run_scan():
     config=read_json(DATA/'scan-config.json')
     if not 1<=config['recent_lookback_days']<=31 or not 1<=config['recent_max_results']<=2000:raise ValueError('Unbounded recent-search configuration')
     started=now();before=counts();old_papers={r['id'] for r in read_jsonl(DATA/'papers.jsonl')};old_candidates={r['id'] for r in read_jsonl(DATA/'candidates.jsonl')}
-    phases=[stage('discovery',['scripts/catalog.py','discover','--refresh'],900)]
+    repo=os.getenv('GITHUB_REPOSITORY','');run_id=os.getenv('GITHUB_RUN_ID','')
+    run_url=f'https://github.com/{repo}/actions/runs/{run_id}' if repo and run_id else None
+    # Replaced when the scan finishes; a run killed before then leaves this receipt instead of the previous run's.
+    write_json(DATA/'scan-status.json',{'id':'scan:'+started,'schema_version':1,'status':'running','started_at':started,'finished_at':None,'run_url':run_url})
+    phases=[stage('discovery',['scripts/catalog.py','discover','--refresh'])]
     source_runs=read_json(DATA/'discovery-runs.json',[])
     hf_limited=phases[0]['ok'] and any(r.get('status')==429 and r.get('provider_host')=='huggingface.co'
         and r.get('run_started_at','')>=phases[0].get('started_at',started) for r in source_runs)
@@ -145,14 +154,14 @@ def run_scan():
         phases.append({'name':'huggingface','started_at':now(),'ok':False,'deferred':True,
             'request_attempted':False,'error':'Deferred after the publisher-source phase returned Hugging Face HTTP 429.'})
     else:
-        phases.append(stage('huggingface',['scripts/discover_papers.py','--refresh'],360))
+        phases.append(stage('huggingface',['scripts/discover_papers.py','--refresh']))
     try:phases.append(recent_papers(config))
     except Exception as error:phases.append({'name':'recent_arxiv','ok':False,'error':str(error)})
     if phases[-1].get('rate_limited'):
         phases.append({'name':'harvest','ok':False,'deferred':True,
             'error':'Deferred after the recent arXiv query returned HTTP 429; discovered identifiers remain queued.'})
     else:
-        phases.append(stage('harvest',['scripts/catalog.py','harvest','--limit',str(config['harvest_limit'])],600))
+        phases.append(stage('harvest',['scripts/catalog.py','harvest','--limit',str(config['harvest_limit'])]))
     phases.append(stage('build',['scripts/catalog.py','build']))
     phases.append(stage('validate',['scripts/catalog.py','validate']))
     source_runs=read_json(DATA/'discovery-runs.json',[])
@@ -165,8 +174,6 @@ def run_scan():
     status,problems=summarize_phases(phases,source_runs,hf_runs,read_jsonl(DATA/'harvest-failures.jsonl'))
     papers=read_jsonl(DATA/'papers.jsonl');candidates=read_jsonl(DATA/'candidates.jsonl');finished=now()
     new_papers=[{'id':r['id'],'name':r['name'],'url':r['url'],'review_status':'metadata_verified'} for r in papers if r['id'] not in old_papers]
-    repo=os.getenv('GITHUB_REPOSITORY','');run_id=os.getenv('GITHUB_RUN_ID','')
-    run_url=f'https://github.com/{repo}/actions/runs/{run_id}' if repo and run_id else None
     report={'id':'scan:'+started,'schema_version':1,'status':status,'started_at':started,'finished_at':finished,'run_url':run_url,
         'schedule':{'timezone':config['timezone'],'times_local':config['scan_times_local']},'before':before,'after':counts(),
         'new_papers':new_papers,'new_candidate_count':sum(r['id'] not in old_candidates for r in candidates),
