@@ -19,7 +19,7 @@
 | [OS-Map](https://github.com/OS-Copilot/OS-Map) | desktop, linux | [2507.19132](https://arxiv.org/abs/2507.19132) (2025) | [416 category/task references](https://raw.githubusercontent.com/OS-Copilot/OS-Map/HEAD/evaluation_examples/all.json) | code MIT | An OSWorld-derived desktop benchmark with an Ubuntu virtual-machine environment and expanded task configurations for measuring breadth and depth of computer interaction. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/OS-Copilot/OS-Map/HEAD/README.md) |
 | [OSWorld](https://github.com/xlang-ai/OSWorld) | desktop, linux, windows, macos | [2404.07972](https://arxiv.org/abs/2404.07972) (2024) | [369 task definitions](https://raw.githubusercontent.com/xlang-ai/OSWorld/HEAD/evaluation_examples/test_all.json) | code Apache-2.0 | Execution-based evaluation of agents performing tasks in real desktop environments. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/xlang-ai/OSWorld/HEAD/README.md) |
 | [TheAgentCompany](https://github.com/TheAgentCompany/TheAgentCompany) | web, desktop | [2412.14161](https://arxiv.org/abs/2412.14161) (2024) | [175 task images](https://raw.githubusercontent.com/TheAgentCompany/TheAgentCompany/HEAD/README.md) | code MIT | Self-contained workplace environment for evaluating agents on professional tasks involving websites, files, code, and simulated coworkers. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/TheAgentCompany/TheAgentCompany/HEAD/README.md) |
-| [WindowsWorld](https://github.com/HITsz-TMG/WindowsWorld) | desktop, windows | — | [181 tasks](https://raw.githubusercontent.com/HITsz-TMG/WindowsWorld/HEAD/README.md) · [17 desktop applications](https://raw.githubusercontent.com/HITsz-TMG/WindowsWorld/HEAD/README.md) | code Apache-2.0 | Cross-application Windows benchmark with intermediate task evaluation. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/HITsz-TMG/WindowsWorld/HEAD/README.md) |
+| [WindowsWorld](https://github.com/HITsz-TMG/WindowsWorld) | desktop, windows | [2604.27776](https://arxiv.org/abs/2604.27776) (2026) | [181 tasks](https://raw.githubusercontent.com/HITsz-TMG/WindowsWorld/HEAD/README.md) · [17 desktop applications](https://raw.githubusercontent.com/HITsz-TMG/WindowsWorld/HEAD/README.md) | code Apache-2.0 | Cross-application Windows benchmark with intermediate task evaluation. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/HITsz-TMG/WindowsWorld/HEAD/README.md) |
 
 ## Datasets
 
@@ -35,7 +35,7 @@ All entries in this section: android.
 | Resource | Environments | Paper | License | Description | Evidence |
 | --- | --- | --- | --- | --- | --- |
 | [PC-Agent](https://github.com/GAIR-NLP/PC-Agent) | desktop | [2412.17589](https://arxiv.org/abs/2412.17589) (2024) | code MIT | Agent framework for desktop workflows. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/GAIR-NLP/PC-Agent/HEAD/README.md) |
-| [UFO](https://github.com/microsoft/UFO) | windows, desktop | — | — | Windows agent framework for application and desktop automation. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/microsoft/UFO/HEAD/README.md) |
+| [UFO](https://github.com/microsoft/UFO) | windows, desktop | [2402.07939](https://arxiv.org/abs/2402.07939) (2024) | — | Windows agent framework for application and desktop automation. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/microsoft/UFO/HEAD/README.md) |
 
 ## Frameworks
 

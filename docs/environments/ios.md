@@ -13,7 +13,7 @@ All entries in this section: ios.
 | Resource | Paper | Scale | License | Description | Evidence |
 | --- | --- | --- | --- | --- | --- |
 | [iOSWorld](https://github.com/ljang0/iOSWorld) | — | [133 tasks](https://raw.githubusercontent.com/ljang0/iOSWorld/HEAD/README.md) · [26 applications](https://raw.githubusercontent.com/ljang0/iOSWorld/HEAD/README.md) | code Apache-2.0 | Native iPhone-simulator benchmark with shared user data, application workflows, agent runners, and rubric-based scoring. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/ljang0/iOSWorld/HEAD/README.md) |
-| [RiOSWorld](https://github.com/yjyddq/RiOSWorld) | — | — | — | Evaluation environment for agents operating iOS interfaces. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/yjyddq/RiOSWorld/HEAD/README.md) |
+| [RiOSWorld](https://github.com/yjyddq/RiOSWorld) | [2506.00618](https://arxiv.org/abs/2506.00618) (2025) | — | — | Evaluation environment for agents operating iOS interfaces. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/yjyddq/RiOSWorld/HEAD/README.md) |
 
 ## Datasets
 
