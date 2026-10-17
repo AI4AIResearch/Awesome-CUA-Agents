@@ -29,6 +29,7 @@ jobs:
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
         with:
           ref: main
+          persist-credentials: false
       - name: Check out public source catalog
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
         with:
@@ -72,7 +73,12 @@ jobs:
           # shellcheck disable=SC2016 # The backticks are Markdown code spans, not command substitution.
           printf 'Source catalog commit: `%s`\n' "$CUA_SOURCE_SHA" >> "$GITHUB_STEP_SUMMARY"
       - name: Commit the public website snapshot
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
+          # Checkouts keep no credentials: only the push and pull below get the token, as a per-command header the rest of this step never sees.
+          auth=(GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=http.https://github.com/.extraheader "GIT_CONFIG_VALUE_0=AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 | tr -d '\n')")
+          unset GH_TOKEN
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add --all
@@ -81,9 +87,9 @@ jobs:
             git commit -m 'Refresh website from the verified source catalog'
             # main can move after checkout; replay the snapshot onto it before retrying.
             for attempt in 1 2 3; do
-              if git push origin HEAD:main; then break; fi
+              if env "${auth[@]}" git push origin HEAD:main; then break; fi
               if [ "$attempt" = 3 ]; then echo '::error::The website snapshot was not pushed to main after 3 attempts'; exit 1; fi
-              git pull --rebase origin main || { echo '::error::The website snapshot could not be rebased onto a newer main; re-run publication'; git rebase --abort; exit 1; }
+              env "${auth[@]}" git pull --rebase origin main || { echo '::error::The website snapshot could not be rebased onto a newer main; re-run publication'; git rebase --abort; exit 1; }
             done
           fi
       - name: Configure Pages
@@ -119,6 +125,7 @@ jobs:
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
         with:
           ref: main
+          persist-credentials: false
       - name: Check out the exact source used in this publication
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
         with:
@@ -137,7 +144,12 @@ jobs:
             --receipts .indexnow/submissions.json
       - name: Preserve accepted state and actual submission receipts
         if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
+          # Checkouts keep no credentials: only the push and pull below get the token, as a per-command header the rest of this step never sees.
+          auth=(GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=http.https://github.com/.extraheader "GIT_CONFIG_VALUE_0=AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 | tr -d '\n')")
+          unset GH_TOKEN
           if [ -d .indexnow ]; then
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -146,9 +158,9 @@ jobs:
             if ! git diff --cached --quiet; then
               git commit -m 'Record search notification outcome for the published catalog'
               for attempt in 1 2 3; do
-                if git push origin HEAD:main; then break; fi
+                if env "${auth[@]}" git push origin HEAD:main; then break; fi
                 if [ "$attempt" = 3 ]; then echo '::error::The search notification receipts were not pushed to main after 3 attempts'; exit 1; fi
-                git pull --rebase origin main || { echo '::error::The search notification receipts could not be rebased onto a newer main; re-run publication'; git rebase --abort; exit 1; }
+                env "${auth[@]}" git pull --rebase origin main || { echo '::error::The search notification receipts could not be rebased onto a newer main; re-run publication'; git rebase --abort; exit 1; }
               done
             fi
           fi
