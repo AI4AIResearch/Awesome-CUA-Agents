@@ -3034,7 +3034,7 @@
     "topics": [
       "grounding"
     ],
-    "summary": "Universal visual grounding models for GUI agents.",
+    "summary": "Code, training data and weights for universal visual grounding of GUI elements from screenshots, including Qwen2-VL-based UGround-V1 at 2B, 7B and 72B and offline and online evaluation suites.",
     "verify_terms": [
       "UGround",
       "UGround"
@@ -3057,7 +3057,7 @@
       "grounding",
       "efficiency"
     ],
-    "summary": "Vision-language-action model for GUI interaction.",
+    "summary": "Lightweight GUI-agent vision-language-action model from Show Lab and Microsoft, released with UI-guided token selection, training code, the ShowUI-web and ShowUI-desktop datasets and vLLM inference.",
     "verify_terms": [
       "ShowUI",
       "ShowUI"
@@ -4306,7 +4306,7 @@
       "planning",
       "memory"
     ],
-    "summary": "Agent framework for general computer interaction.",
+    "summary": "Simular's open-source framework for computer-use agents that click, type and scroll through desktop and web apps on macOS, Windows and Linux; its third generation, Agent S3, reports 72.6% on OSWorld.",
     "verify_terms": [
       "Agent S",
       "Agent-S"
@@ -4331,7 +4331,7 @@
     "topics": [
       "workflow"
     ],
-    "summary": "Desktop application for running GUI agents.",
+    "summary": "Desktop app for a local GUI agent driven by UI-TARS and Seed-1.5-VL/1.6 models, offering local and remote operators for computers and browsers; the repository also ships the Agent TARS CLI and web UI.",
     "verify_terms": [
       "UI-TARS Desktop",
       "UI-TARS-desktop"
@@ -4379,7 +4379,7 @@
       "mobile-navigation",
       "memory"
     ],
-    "summary": "Mobile app agent using exploration and reusable knowledge.",
+    "summary": "Multimodal agent that operates Android apps through taps and swipes without back-end access, building a reusable knowledge base from autonomous exploration or from watching human demonstrations.",
     "verify_terms": [
       "AppAgent",
       "AppAgent"
@@ -4424,7 +4424,7 @@
     "topics": [
       "mobile-navigation"
     ],
-    "summary": "Extended mobile app agent implementation.",
+    "summary": "Proactive Android agent built on AppAgent that uses GPT-4o to decide whether YouTube or Amazon content would help, operates those apps over ADB, and merges what it finds into its answer.",
     "verify_terms": [
       "AppAgent Pro",
       "AppAgent-Pro"
@@ -4446,7 +4446,7 @@
     "topics": [
       "mobile-navigation"
     ],
-    "summary": "Language-model-driven Android task automation.",
+    "summary": "LLM-powered Android task automation built on DroidBot, released with DroidTask, a dataset of per-app screenshots, view hierarchies, exploration records and ground-truth task files.",
     "verify_terms": [
       "AutoDroid",
       "AutoDroid"
@@ -4624,7 +4624,7 @@
       "planning",
       "tool-integration"
     ],
-    "summary": "Operating-system agent framework and assistant research.",
+    "summary": "Open-source library for generalist agents acting on an operating system's web, terminals, files and third-party apps, with the FRIDAY assistant, which takes custom tools and self-learns Excel tasks.",
     "verify_terms": [
       "OS-Copilot",
       "OS-Copilot"
@@ -4647,7 +4647,7 @@
       "planning",
       "memory"
     ],
-    "summary": "General computer-control framework using visual interfaces.",
+    "summary": "Framework in which foundation models control games and software from screenshots alone, acting through keyboard and mouse, shown on RDR2, Stardew Valley, Cities: Skylines and Dealer's Life 2.",
     "verify_terms": [
       "Cradle",
       "Cradle"
@@ -4669,7 +4669,7 @@
     "topics": [
       "planning"
     ],
-    "summary": "Task-oriented desktop GUI automation framework.",
+    "summary": "LLM-based assistant for automating work in desktop productivity software by watching the screen and issuing mouse and keyboard commands; its repository says the code will be released later.",
     "verify_terms": [
       "AssistGUI",
       "assistgui"
@@ -4688,7 +4688,7 @@
     "topics": [
       "planning"
     ],
-    "summary": "Agent implementation for controlling desktop interfaces.",
+    "summary": "Environment and agent in which a vision-language model controls real desktops over VNC with mouse and keyboard in plan, act and reflect stages, plus a hand-annotated dataset of daily computer tasks.",
     "verify_terms": [
       "ScreenAgent",
       "ScreenAgent"
@@ -4711,7 +4711,7 @@
       "web-navigation",
       "grounding"
     ],
-    "summary": "Vision-based web agent with action grounding.",
+    "summary": "Generalist web agent framework for large multimodal models such as GPT-4V, with a Playwright tool that runs agents on live websites, text-choice and set-of-mark grounding, and a crawler mode.",
     "verify_terms": [
       "SeeAct",
       "SeeAct"
@@ -4733,7 +4733,7 @@
     "topics": [
       "web-navigation"
     ],
-    "summary": "Web automation agent with hierarchical task execution.",
+    "summary": "Browser automation agent on the AG2 framework that pairs a planner agent with a browser navigation agent to fill forms, search shops and work through sites, also callable over a local HTTP API.",
     "verify_terms": [
       "Agent E",
       "Agent-E"
@@ -4756,7 +4756,7 @@
       "planning",
       "cross-app"
     ],
-    "summary": "Agent framework for desktop workflows.",
+    "summary": "Human-cognition-transfer framework for PC agents: PC Tracker logs human computer use, cognition completion turns logs into cognitive trajectories, and a planner works with a grounding agent.",
     "verify_terms": [
       "PC-Agent",
       "PC-Agent"
@@ -4798,7 +4798,7 @@
     "topics": [
       "grounding"
     ],
-    "summary": "Visual agent loop for interacting with a desktop.",
+    "summary": "Framework, released in November 2023, in which a multimodal model views the screen and picks mouse and keyboard actions toward a goal, with backends such as GPT-4o, Claude 3, Gemini and LLaVA.",
     "verify_terms": [
       "Self Operating Computer",
       "self-operating-computer"
@@ -4817,7 +4817,7 @@
     "topics": [
       "workflow"
     ],
-    "summary": "Containerized desktop agent environment and application.",
+    "summary": "Open-source desktop agent that works inside its own Ubuntu Linux virtual desktop, with a web task interface, REST APIs for tasks and direct control, a takeover mode and password-manager logins.",
     "verify_terms": [
       "Bytebot",
       "bytebot"
@@ -4836,7 +4836,7 @@
     "topics": [
       "web-navigation"
     ],
-    "summary": "Browser-agent application associated with Steel.",
+    "summary": "Next.js and FastAPI playground from Steel for trying web agents in a controlled browser environment, with live views of browser interaction and support for providers such as Claude and GPT-4.",
     "verify_terms": [
       "Surf New",
       "surf.new"
@@ -4874,7 +4874,7 @@
     "topics": [
       "web-navigation"
     ],
-    "summary": "Language-model-based web navigation research.",
+    "summary": "Web navigation agent built on ChatGLM3-6B that simplifies HTML for the model, is trained on hybrid human and AI data with RL and rejection sampling, and comes with the bilingual AutoWebBench.",
     "verify_terms": [
       "AutoWebGLM",
       "AutoWebGLM"
@@ -4893,7 +4893,7 @@
     "topics": [
       "mobile-navigation"
     ],
-    "summary": "SDK and agent tooling for mobile interaction.",
+    "summary": "Android GUI agent that operates real phones through ADB with hierarchical reflection and a multi-agent framework, run from a web interface or Python and evaluated on AndroidWorld and AndroidLab.",
     "verify_terms": [
       "Mobile Use",
       "mobile-use"
@@ -4935,7 +4935,7 @@
     "topics": [
       "web-navigation"
     ],
-    "summary": "Framework for browser interaction by AI agents.",
+    "summary": "Open-source browser agent library that runs locally with any LLM against a local or cloud browser, and also serves as a CLI for coding agents and as a driver for Claude's browser toolset.",
     "verify_terms": [
       "Browser Use",
       "browser-use"
@@ -4975,7 +4975,7 @@
     "topics": [
       "workflow"
     ],
-    "summary": "Visual browser workflow automation framework.",
+    "summary": "Browser workflow automation that relies on vision LLMs and a swarm of agents instead of fixed XPath selectors, offered as a Playwright-compatible SDK and a no-code workflow builder.",
     "verify_terms": [
       "Skyvern",
       "skyvern"
@@ -4995,7 +4995,7 @@
     "topics": [
       "web-navigation"
     ],
-    "summary": "Framework for building natural-language web agents.",
+    "summary": "Open-source web agent framework where a World Model turns an objective and the current page into instructions and an Action Engine compiles them into Selenium or Playwright code to run.",
     "verify_terms": [
       "LaVague",
       "LaVague"
@@ -5015,7 +5015,7 @@
       "evaluation",
       "workflow"
     ],
-    "summary": "Infrastructure and libraries for computer-use agents.",
+    "summary": "Monorepo behind Cua Spaces, which gives agents full macOS or Linux desktops, plus Cua Driver for operating native apps, Lume for Apple Silicon VMs, Cua Bench and the CUA-S1 decision models.",
     "verify_terms": [
       "Cua",
       "cua"
@@ -5101,7 +5101,7 @@
     "topics": [
       "reinforcement-learning"
     ],
-    "summary": "Reinforcement-learning framework for mobile agents.",
+    "summary": "Online agentic RL framework for mobile GUI agents built around the difficulty-adaptive ADAGRPO algorithm, with Dockerized AndroidWorld and AndroidLab evaluation and a MobileRL-9B checkpoint.",
     "verify_terms": [
       "MobileRL",
       "MobileRL"
@@ -5146,7 +5146,7 @@
       "reinforcement-learning",
       "data-generation"
     ],
-    "summary": "GUI agent learning with generated interaction data.",
+    "summary": "Online RL framework for GUI agents in which VLMs generate the training tasks and judge success from trajectory screenshots, with OSWorld and AndroidLab checkpoints trained from UI-TARS-7B-DPO.",
     "verify_terms": [
       "ZeroGUI",
       "ZeroGUI"
@@ -5168,7 +5168,7 @@
     "topics": [
       "web-navigation"
     ],
-    "summary": "Framework and infrastructure for browser agents.",
+    "summary": "Web agent framework and cloud SDKs for managed Chrome sessions, adding a CLI, an MCP server for coding agents, serverless browser functions and an API that builds automations from English tasks.",
     "verify_terms": [
       "Notte",
       "notte"
@@ -5187,7 +5187,7 @@
     "topics": [
       "web-navigation"
     ],
-    "summary": "Browser automation agent framework.",
+    "summary": "Library adding natural-language commands to Playwright: accessibility-tree single actions, multi-step tasks that can use screenshots, an MCP client and action caching for replay without LLM calls.",
     "verify_terms": [
       "HyperAgent",
       "HyperAgent"
@@ -5236,7 +5236,7 @@
       "evaluation",
       "reinforcement-learning"
     ],
-    "summary": "SDK for agent environments, evaluation, and training.",
+    "summary": "SDK for RL environments and evals spanning coding, browser, computer-use and robotics agents, whose environments expose SSH, MCP, CDP or VNC capabilities behind a minimal start-and-grade protocol.",
     "verify_terms": [
       "HUD",
       "hud-python"
@@ -5255,7 +5255,7 @@
     "topics": [
       "workflow"
     ],
-    "summary": "Toolkit for building and deploying computer-use agents.",
+    "summary": "Python toolkit and CLI for building, publishing and running multimodal agents that operate devices such as Ubuntu desktops, locally or on Kubernetes, with task trackers and an agent hub.",
     "verify_terms": [
       "Surfkit",
       "surfkit"
@@ -5274,7 +5274,7 @@
     "topics": [
       "workflow"
     ],
-    "summary": "Computer-use agent execution toolkit.",
+    "summary": "Gradio desktop GUI agent for Windows and macOS that needs no Docker, using Claude 3.5 Computer Use over the API or ShowUI and UI-TARS run locally, with multi-display and phone remote control.",
     "verify_terms": [
       "Computer Use OOTB",
       "computer_use_ootb"
@@ -5294,7 +5294,7 @@
     "topics": [
       "sandbox"
     ],
-    "summary": "Desktop sandboxes for computer-use agents.",
+    "summary": "Open-source, isolated Linux Xfce desktop sandboxes for computer-use agents, driven from Python or JavaScript SDKs with screen streaming, mouse, keyboard and window control, screenshots and shell.",
     "verify_terms": [
       "E2B Desktop",
       "desktop"
@@ -5315,7 +5315,7 @@
       "sandbox",
       "web-navigation"
     ],
-    "summary": "Browser infrastructure for agent applications.",
+    "summary": "Open-source browser API managing Chrome sessions for agents, reachable through Puppeteer, Playwright or Selenium over CDP, with persisted cookies, proxy rotation, stealth and a session debugging UI.",
     "verify_terms": [
       "Steel Browser",
       "steel-browser"
@@ -5355,7 +5355,7 @@
     "topics": [
       "evaluation"
     ],
-    "summary": "Environment toolkit for mobile interaction agents.",
+    "summary": "AndroidEnv-based platform for building GUI agent benchmarks and training agents, where task definition files emit instructions, rewards and episode ends from screen text, view hierarchy or log events.",
     "verify_terms": [
       "Mobile Env",
       "Mobile-Env"
@@ -5398,7 +5398,7 @@
     "topics": [
       "automation"
     ],
-    "summary": "Cross-platform UI automation infrastructure.",
+    "summary": "Open-source WebDriver-based automation server for mobile, desktop and IoT apps, extended by per-platform drivers for iOS, Android, macOS and Windows, plugins, and clients in Java, Python, Ruby and C#.",
     "verify_terms": [
       "Appium",
       "appium"
@@ -5418,7 +5418,7 @@
     "topics": [
       "automation"
     ],
-    "summary": "Mouse, keyboard, and screenshot automation library.",
+    "summary": "Cross-platform Python module for scripted mouse and keyboard control, message boxes and screenshots with on-screen image search, working on the primary monitor under Windows, macOS and Linux.",
     "verify_terms": [
       "PyAutoGUI",
       "pyautogui"
@@ -5459,7 +5459,7 @@
       "screen-understanding",
       "grounding"
     ],
-    "summary": "Screen parsing tools for visually grounded agents.",
+    "summary": "Screenshot parser that detects interactable regions and captions icons so vision-language models can ground actions, released as V1.5 and V2 weights alongside OmniTool for driving a Windows 11 VM.",
     "verify_terms": [
       "OmniParser",
       "OmniParser"
@@ -5504,7 +5504,7 @@
     "topics": [
       "screen-understanding"
     ],
-    "summary": "Visual and text representation tools for browser agents.",
+    "summary": "Perception utilities for web agents that tag interactable elements with typed IDs an LLM can act on, and use OCR to render page screenshots as whitespace-structured text for models without vision.",
     "verify_terms": [
       "Tarsier",
       "tarsier"
@@ -5523,7 +5523,7 @@
     "topics": [
       "observability"
     ],
-    "summary": "Local trace viewer for browser-agent runs.",
+    "summary": "Local, cloud-free replay debugger that records each Browser Use step's screenshot, URL, action and model I/O as a timeline and reports the step at which a failed run diverges from a known-good one.",
     "verify_terms": [
       "BrowserTrace",
       "browsertrace"
@@ -6871,7 +6871,7 @@
     "topics": [
       "sandbox"
     ],
-    "summary": "Managed browser infrastructure for agent applications.",
+    "summary": "Cloud browser platform for agents that pairs browser sessions with Search, Fetch and agent APIs, identity and observability tools, and the open-source Stagehand framework and Browse CLI.",
     "verify_terms": [
       "Browserbase"
     ],
@@ -6895,7 +6895,7 @@
     "topics": [
       "web-navigation"
     ],
-    "summary": "Hosted browser-agent platform from Browser Use.",
+    "summary": "Hosted Browser Use offering with task-finishing Browser Use Agents and remote browsers for other agents, connected through SDK, REST or CDP, with automatic CAPTCHA solving and pay-as-you-go pricing.",
     "verify_terms": [
       "Browser Use",
       "Browser-Use"
@@ -6920,7 +6920,7 @@
     "topics": [
       "workflow"
     ],
-    "summary": "Hosted visual browser workflow automation service.",
+    "summary": "Hosted Skyvern service for AI browser workflows such as invoice downloads and form filling, with built-in CAPTCHA and 2FA handling, proxy geotargeting, run explanations and JSON or CSV output.",
     "verify_terms": [
       "Skyvern"
     ],
@@ -6945,7 +6945,7 @@
     "topics": [
       "workflow"
     ],
-    "summary": "Visual computer interaction and automation platform.",
+    "summary": "Agentic test-automation platform running plain-language test cases from pixels rather than selectors on desktop apps, Citrix, in-car head units and mobile devices, deployable on-premise or air-gapped.",
     "verify_terms": [
       "AskUI",
       "askui"
@@ -6970,7 +6970,7 @@
     "topics": [
       "workflow"
     ],
-    "summary": "Computer-use products and research from Simular.",
+    "summary": "Site of Simular, which builds Sai, an assistant that runs screen tasks on the user's device and on cloud computers, along with the open-source Agent S framework and an autonomous computer API.",
     "verify_terms": [
       "Simular"
     ],
@@ -6994,7 +6994,7 @@
     "topics": [
       "workflow"
     ],
-    "summary": "General agent platform with browser-based task execution.",
+    "summary": "Agent product that carries out tasks rather than only answering, such as making slides, websites, games and videos, offered as a web app with desktop and mobile apps, an API and Slack integration.",
     "verify_terms": [
       "Manus"
     ],
@@ -7042,7 +7042,7 @@
     "topics": [
       "sandbox"
     ],
-    "summary": "Sandbox infrastructure for executing agent workloads.",
+    "summary": "Agent cloud giving each agent session its own Firecracker microVM with shell, filesystem, browser and network, for coding, computer use, background jobs and RL rollouts, in E2B's or the user's cloud.",
     "verify_terms": [
       "E2B"
     ],
@@ -7066,7 +7066,7 @@
     "topics": [
       "sandbox"
     ],
-    "summary": "Hosted browser infrastructure for automation applications.",
+    "summary": "Headless-browser service for automation and AI agents, reached via Puppeteer, Playwright, HTTP APIs or an MCP server, with stealth, CAPTCHA solving, reusable logged-in profiles and self-hosting.",
     "verify_terms": [
       "Browserless",
       "browserless"
@@ -7557,7 +7557,7 @@
       "automation",
       "tool-integration"
     ],
-    "summary": "MCP server exposing browser interaction tools for agents.",
+    "summary": "MCP server that lets LLM clients drive Playwright browsers through structured accessibility snapshots instead of screenshots, with opt-in vision, PDF and devtools capabilities.",
     "verify_terms": [
       "Playwright"
     ],
@@ -7594,7 +7594,7 @@
     "topics": [
       "sandbox"
     ],
-    "summary": "Virtual desktop provisioning and control tools for agents.",
+    "summary": "Desktop environments that AI agents control programmatically, run locally with Docker or remotely on Kubernetes, built on the agentd REST daemon and offering a coordinate-grid overlay for LMM input.",
     "verify_terms": [
       "AgentDesk",
       "agentdesk"
@@ -7847,7 +7847,7 @@
     "topics": [
       "safety-security"
     ],
-    "summary": "Safety-oriented research for computer-use agents.",
+    "summary": "Safety-checking environment and benchmark for mobile agents on AndroidWorld that judges proposed actions with rule-based and VLM-based checks, evaluated on the MobileRisk trajectory dataset.",
     "verify_terms": [
       "Sentinel"
     ],
@@ -7889,7 +7889,7 @@
     "topics": [
       "web-navigation"
     ],
-    "summary": "Claude browser extension for interacting with websites.",
+    "summary": "Chrome extension that lets Claude read signed-in pages and click, type and fill forms across a group of tabs, used from a side panel, inside Claude Cowork or from Claude Code.",
     "verify_terms": [
       "Chrome",
       "chrome"
@@ -8552,7 +8552,7 @@
       "grounding",
       "planning"
     ],
-    "summary": "Released model checkpoint associated with UI-TARS.",
+    "summary": "UI-TARS 1.5 GUI-agent checkpoint in the Qwen2.5-VL architecture with about 8.3B parameters stored in FP32, released under Apache-2.0 for English image-text-to-text use in Transformers.",
     "verify_terms": [
       "ByteDance-Seed/UI-TARS-1.5-7B"
     ],
@@ -8575,7 +8575,7 @@
       "grounding",
       "planning"
     ],
-    "summary": "Released model checkpoint associated with UI-Venus.",
+    "summary": "UI-Venus 2 GUI-agent checkpoint fine-tuned from Qwen3.5-9B, with about 9.4B BF16 parameters in the Qwen3.5 multimodal architecture, loaded through Transformers for image-text-to-text.",
     "verify_terms": [
       "inclusionAI/UI-Venus-2-9b"
     ],
@@ -8644,7 +8644,7 @@
       "planning",
       "web-navigation"
     ],
-    "summary": "Released model checkpoint associated with Fara.",
+    "summary": "Microsoft's Fara checkpoint, a Qwen2.5-VL-architecture image-text-to-text model with about 8.3B BF16 parameters, English, MIT-licensed and linked to arXiv paper 2511.19663.",
     "verify_terms": [
       "microsoft/Fara-7b"
     ],
@@ -8666,7 +8666,7 @@
     "topics": [
       "grounding"
     ],
-    "summary": "Released model checkpoint associated with GUI-Actor.",
+    "summary": "GUI-Actor checkpoint fine-tuned from Qwen2-VL-7B-Instruct, with about 8.4B BF16 parameters, whose config names a pointer variant of the Qwen2-VL class rather than the stock one, under MIT.",
     "verify_terms": [
       "microsoft/GUI-Actor-7B-Qwen2-VL"
     ],
@@ -8688,7 +8688,7 @@
     "topics": [
       "grounding"
     ],
-    "summary": "Released model checkpoint associated with Phi-Ground.",
+    "summary": "Microsoft Phi-Ground GUI grounding checkpoint fine-tuned from Phi-3.5-vision-instruct, shipped as two PyTorch weight shards with custom Phi-3-V configuration and processing code under MIT.",
     "verify_terms": [
       "microsoft/Phi-Ground"
     ],
@@ -8754,7 +8754,7 @@
     "topics": [
       "grounding"
     ],
-    "summary": "Released model checkpoint associated with UGround.",
+    "summary": "UGround-V1 checkpoint fine-tuned from Qwen2-VL-7B, with about 8.3B BF16 parameters in the standard Qwen2-VL architecture, provided as safetensors and a PyTorch file under Apache-2.0.",
     "verify_terms": [
       "osunlp/UGround-V1-7B"
     ],
@@ -8777,7 +8777,7 @@
       "grounding",
       "efficiency"
     ],
-    "summary": "Released model checkpoint associated with ShowUI.",
+    "summary": "ShowUI vision-language-action checkpoint fine-tuned from Qwen2-VL-2B-Instruct, published as a single PyTorch weight file under the MIT license and tagged for GUI agents and computer use.",
     "verify_terms": [
       "showlab/ShowUI-2B"
     ],
@@ -8799,7 +8799,7 @@
     "topics": [
       "mobile-navigation"
     ],
-    "summary": "Released model checkpoint associated with GELab Zero.",
+    "summary": "Preview GELab-Zero phone-use agent checkpoint fine-tuned from Qwen3-VL-4B-Instruct, with about 4.4B BF16 parameters, tagged for Android in English and Chinese, under Apache-2.0.",
     "verify_terms": [
       "stepfun-ai/GELab-Zero-4B-preview"
     ],
