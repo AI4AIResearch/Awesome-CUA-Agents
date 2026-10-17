@@ -125,6 +125,11 @@ def validate_snapshot(record):
     rid = record.get('id', '')
     if not rid.startswith('arxiv:') or record.get('kind') not in {'paper', 'survey'}:
         errors.append('arXiv snapshot requires an arXiv paper or survey')
+    if set(snapshot) != (keys := {*SNAPSHOT_FIELDS, 'versioned_url', 'abstract_hash_method'}):
+        errors.append('arXiv snapshot needs exactly ' + ', '.join(sorted(keys)))
+    digest = snapshot.get('abstract_sha256')
+    if snapshot.get('abstract_hash_method') != ABSTRACT_HASH_METHOD or digest is not None and not (isinstance(digest, str) and re.fullmatch(r'[0-9a-f]{64}', digest)):
+        errors.append('arXiv snapshot abstract fingerprint is not a ' + ABSTRACT_HASH_METHOD + ' SHA-256 digest')
     version = snapshot.get('version')
     expected = f'https://arxiv.org/abs/{rid.split(":",1)[-1]}v{version}' if type(version) is int and version > 0 else None
     if snapshot.get('versioned_url') != expected:

@@ -16,6 +16,7 @@ from specifications import PREFIXES, PROFILE_KEYS, validate_profiles
 from scope_review import resolve_exclusions, scope_report
 from arxiv_metadata import validate_snapshot
 from repository_identity import repository_aliases, attach_repository_aliases
+from lookup import REVIEWED_RELATION_TYPES
 from publication_metadata import (alias_owner_errors, attach_publications, duplicate_publication_errors, publication_aliases,
     publication_links, publication_search_text, record_date_text, record_year, validate_publication)
 
@@ -140,6 +141,11 @@ def source_records(with_scope=False):
 FIELD_TYPES = {"id": str, "name": str, "kind": str, "url": str, "aliases": list, "environments": list, "topics": list, "scope": str, "summary": (str, type(None)), "review_status": str,
     "published_at": (str, type(None)), "updated_at": (str, type(None)), "authors": list, "identifiers": dict, "links": list, "relations": list, "licenses": dict, "evidence": list,
     "last_verified_at": str, "notes": str, "details": dict}
+EVIDENCE_FIELDS = {"role", "method", "supports", "url", "retrieved_at", "sha256"}
+# Read from the published contract, so a new receipt method is declared in one place.
+EVIDENCE_METHODS = set(read_json(ROOT / "schemas/resource.schema.json")["properties"]["evidence"]["items"]["properties"]["method"]["enum"])
+LICENSE_FIELDS = {"declared", "url", "retrieved_at", "basis"}
+RFC3339 = re.compile(r"\d{4}-\d\d-\d\d[Tt](?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:\.\d+)?(?:[Zz]|[+-](?:[01]\d|2[0-3]):[0-5]\d)", re.A)
 
 
 def malformed_fields(r):
@@ -149,6 +155,22 @@ def malformed_fields(r):
         "evidence": lambda v: all(isinstance(e, dict) and strings(e.get(k, "") for k in ("url", "sha256", "retrieved_at", "role", "method")) and isinstance(e.get("supports", []), list) for e in v),
         "relations": lambda v: all(isinstance(e, dict) and strings(e.get(k, "") for k in ("type", "target_id", "evidence_url")) for e in v)}
     return [key for key, kind in FIELD_TYPES.items() if key in r and not (isinstance(r[key], kind) and nested.get(key, lambda v: True)(r[key]))]
+
+
+def https(url):
+    # The schema requires a literal "https://" prefix; canonical() also accepts http:// and rewrites it.
+    return isinstance(url, str) and url.startswith("https://")
+
+
+def timestamp(value):
+    """The schema's RFC 3339 date-time; fromisoformat alone also accepts bare dates, missing seconds or offsets, and spaces."""
+    if not isinstance(value, str) or not RFC3339.fullmatch(value):
+        return False
+    try:
+        dt.datetime.fromisoformat(value.upper().replace("Z", "+00:00"))
+    except ValueError:  # An impossible calendar date, such as February 30.
+        return False
+    return True
 
 
 def validate_records(rows):
@@ -167,11 +189,19 @@ def validate_records(rows):
         seen.add(rid)
         if missing := required - r.keys():
             error("missing fields " + ", ".join(sorted(missing)))
+        if unknown := r.keys() - required:
+            error("unknown fields " + ", ".join(sorted(unknown)))
+        if "id" in r and not re.fullmatch(r"(?:arxiv|github|url|component|organization):\S+", rid):
+            error("invalid id prefix or whitespace")
         if r.get("kind") not in KINDS:
             error("invalid kind")
         parsed = canonical(r.get("url", ""), allow_doi=r.get("kind") in {"paper","survey"})
         if not r.get("name") or not parsed:
             error("missing name or invalid URL")
+        elif not https(r["url"]):
+            error("url must start with https://")
+        if "links" in r and (not r["links"] or any(not isinstance(link, dict) or link.keys() != {"rel", "url"} or not isinstance(link["rel"], str) or not https(link["url"]) for link in r["links"])):
+            error("links must be a non-empty list of rel and https url pairs")
         # Editors assign component: and organization: identities; every other id is its URL's canonical identity.
         if parsed and rid.split(":", 1)[0] in {"arxiv", "github", "url"} and parsed[0] != rid:
             error(f"url resolves to {parsed[0]}, not to its id")
@@ -184,6 +214,9 @@ def validate_records(rows):
             error("invalid environments")
         if unknown := set(r.get("topics", [])) - TOPICS.keys():
             error("unknown topics " + ", ".join(sorted(unknown)))
+        for key in ("aliases", "environments", "topics"):
+            if len(set(r.get(key, []))) != len(r.get(key, [])):
+                error("duplicate " + key)
         if r.get("scope") not in {"core", "adjacent", "relevance_pending"}:
             error("invalid scope")
         if r.get("review_status") == "curated" and (not r.get("summary") or r.get("scope") == "relevance_pending"):
@@ -203,24 +236,29 @@ def validate_records(rows):
         if set(r.get("licenses", {})) != {"code", "data", "weights", "document"}:
             error("license scopes must be explicit")
         for scope, license_info in r.get("licenses", {}).items():
-            if license_info is not None and (not isinstance(license_info, dict) or not license_info.get("url") or not license_info.get("declared")):
+            if license_info is None:
+                continue
+            declared = license_info.get("declared") if isinstance(license_info, dict) else None
+            if not declared or not license_info.get("url"):
                 error(f"{scope} license lacks a declaration or source")
+            elif not https(license_info["url"]):
+                error(f"{scope} license url must start with https://: {license_info['url']}")
+            elif (license_info.keys() != LICENSE_FIELDS or not isinstance(license_info["basis"], str) or not timestamp(license_info["retrieved_at"])
+                  or not (isinstance(declared, str) or isinstance(declared, list) and all(isinstance(name, str) for name in declared))):
+                error(f"{scope} license needs exactly a declared name or list, url, retrieved_at timestamp, and basis")
         if not r.get("evidence"):
             error("missing primary evidence")
         for ev in r.get("evidence", []):
             parsed_url = urllib.parse.urlsplit(ev.get("url", ""))
-            if ev.get("role") != "primary" or not re.fullmatch(r"[0-9a-f]{64}", ev.get("sha256", "")) or not ev.get("supports") or parsed_url.scheme != "https" or not parsed_url.netloc:
+            if ev.get("role") != "primary" or not re.fullmatch(r"[0-9a-f]{64}", ev.get("sha256", "")) or not ev.get("supports") or not https(ev.get("url")) or not parsed_url.netloc:
                 error("invalid evidence receipt")
-            try:
-                dt.datetime.fromisoformat(ev["retrieved_at"].replace("Z", "+00:00"))
-            except (ValueError, KeyError):
+            elif ev.keys() != EVIDENCE_FIELDS or ev["method"] not in EVIDENCE_METHODS or any(not isinstance(s, str) for s in ev["supports"]) or len(set(ev["supports"])) != len(ev["supports"]):
+                error("evidence receipt needs exactly role, a known method, distinct supports, url, retrieved_at, and sha256")
+            if not timestamp(ev.get("retrieved_at")):
                 error("invalid evidence timestamp")
         # Missing or wrongly typed values were reported above; only check the format of strings.
         verified = r.get("last_verified_at") if isinstance(r.get("last_verified_at"), str) else None
-        try:
-            if verified is not None and dt.datetime.fromisoformat(verified.replace("Z", "+00:00")).tzinfo is None:
-                raise ValueError
-        except ValueError:
+        if verified is not None and not timestamp(verified):
             error("invalid last_verified_at")
             verified = None
         relation_keys = set()
@@ -229,6 +267,8 @@ def validate_records(rows):
             if key in relation_keys:
                 error(f"duplicate relation {key[0]} {key[1]}")
             relation_keys.add(key)
+            if relation.keys() != {"type", "target_id", "evidence_url"} or relation.get("type") not in REVIEWED_RELATION_TYPES:
+                error(f"invalid relation {key[0]} {key[1]}")
             if relation.get("target_id") not in ids:
                 error(f"dangling reviewed relation {relation.get('target_id')}")
             if not any(e.get('url')==relation.get('evidence_url') and e.get('role')=='primary'
@@ -238,6 +278,8 @@ def validate_records(rows):
             value = r.get(key)
             if value is not None:
                 try:
+                    if not re.fullmatch(r"\d{4}-\d\d-\d\d", value, re.A):
+                        raise ValueError
                     dt.date.fromisoformat(value)
                     if verified and value > verified[:10]:
                         error(f"{key} is after its verification date")

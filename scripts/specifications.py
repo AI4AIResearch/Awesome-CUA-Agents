@@ -11,6 +11,7 @@ PREFIXES = {'exact': '', 'approximately': '≈ ', 'at-least': '≥ ', 'more-than
 PROFILE_LISTS = {'benchmark': {'focus': True, 'observations': False, 'actions': False}, 'dataset': {'supervision': True, 'modalities': False, 'formats': False, 'splits': False}}
 PROFILE_TEXT = {'benchmark': ('evaluation', 'notes'), 'dataset': ('notes',)}
 SETTINGS = ('interactive', 'offline', 'mixed')
+COUNT_FIELDS = {'value', 'unit', 'qualifier', 'population', 'basis', 'evidence_url', 'reference_url'}
 
 
 def validate_profiles(record):
@@ -24,6 +25,8 @@ def validate_profiles(record):
             errors.append(f'{key} requires a curated {kind} record')
         if not isinstance(profile, dict):
             errors.append(f'{key} must be an object'); continue
+        if unknown := set(profile) - {'counts', 'evidence_urls', *PROFILE_LISTS[kind], *PROFILE_TEXT[kind], *(('setting',) if kind == 'benchmark' else ())}:
+            errors.append(f'{key} has unknown fields ' + ', '.join(sorted(unknown)))
         for field, required in PROFILE_LISTS[kind].items():
             values = profile.get(field)
             if not isinstance(values, list) or (required and not values) or any(not isinstance(value, str) or not value.strip() for value in values) or len(set(values)) != len(values):
@@ -46,6 +49,8 @@ def validate_profiles(record):
         for count in counts:
             if not isinstance(count, dict):
                 errors.append(f'{key} count must be an object'); continue
+            if unknown := set(count) - COUNT_FIELDS:
+                errors.append(f'{key} count has unknown fields ' + ', '.join(sorted(unknown)))
             value = count.get('value')
             if type(value) not in (int, float) or not math.isfinite(value) or value < 0:
                 errors.append(f'{key} count must be a finite nonnegative number')

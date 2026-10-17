@@ -6,6 +6,8 @@ from urllib.parse import urlsplit
 
 PUBLICATION_TYPES = frozenset({'conference-paper', 'journal-article', 'report', 'other'})
 DOI_PATTERN = re.compile(r'10\.\d{4,9}/\S+', re.I)
+PUBLICATION_TEXT = ('venue', 'publisher', 'series', 'volume', 'issue', 'pages', 'date_basis', 'event_dates', 'identity_basis', 'notes')
+PUBLICATION_FIELDS = {'type', 'title', 'authors', 'date_parts', 'url', 'pdf_url', 'evidence_urls', 'doi', *PUBLICATION_TEXT}
 
 
 def checked_date_parts(parts):
@@ -209,6 +211,10 @@ def validate_publication(record):
         return errors
     if record.get('kind') not in {'paper', 'survey'}:
         errors.append('publication metadata is only supported for papers and surveys')
+    if unknown := set(pub) - PUBLICATION_FIELDS:
+        errors.append('publication has unknown fields ' + ', '.join(sorted(unknown)))
+    if wrong := [key for key in PUBLICATION_TEXT if not isinstance(pub.get(key), (str, type(None)))]:
+        errors.append('publication ' + ', '.join(wrong) + ' must be text or null')
     if not isinstance(pub.get('type'),str) or pub['type'] not in PUBLICATION_TYPES:
         errors.append('invalid publication type')
     for key in ('title', 'url'):
@@ -239,6 +245,8 @@ def validate_publication(record):
     if not isinstance(sources, list) or not sources or not all(isinstance(v, str) for v in sources):
         errors.append('publication lacks source evidence URLs')
     else:
+        if len(set(sources)) != len(sources):
+            errors.append('publication has duplicate source evidence URLs')
         for url in sources:
             candidates = receipts.get(url)
             if not candidates:
