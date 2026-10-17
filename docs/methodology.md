@@ -24,7 +24,7 @@ Supporting automation libraries and workflow recording tools may be marked `adja
 - `organization:` IDs distinguish publisher/brand entities from their offerings; these do not assert legal incorporation or ownership.
 - Other URLs lose fragments and common tracking parameters. Similar titles are not automatically merged.
 - Redirects, project renames, dataset mirrors, and model variants require continued editorial entity resolution. Source coverage is conservative and does not assume that similar names are equivalent.
-- When an author explicitly identifies an accidental duplicate submission, `identifiers.preferred_arxiv` records the preferred identifier with primary evidence. The duplicate stays accessible as bibliographic provenance and cannot be promoted as another curated paper. Similar titles alone do not establish this relationship.
+- When an author explicitly identifies an accidental duplicate submission, `identifiers.preferred_arxiv` records the preferred identifier with primary evidence. The duplicate stays accessible as bibliographic provenance and cannot be promoted as another curated paper. Similar titles alone do not establish this relationship. `validate` lists papers and surveys whose titles (letters and digits, ignoring case) and author lists are identical but that no `preferred_arxiv` decision connects, so each one gets a source-backed decision; it fails if two of them are curated.
 
 ## Explicit scope review
 
