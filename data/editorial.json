@@ -22180,6 +22180,31 @@
     "editorial_reviewed": true,
     "reviewed_sha256": "08a6c5cfa655e1ecd774a41a9a815e845ad0afd47b289378bc1d6ee66c81dda9",
     "reviewed_at": "2026-10-17T02:04:54Z",
+    "primary_supports": [
+      "name",
+      "kind",
+      "summary",
+      "environments",
+      "topics",
+      "scope",
+      "relations",
+      "details",
+      "licenses.data"
+    ],
+    "reviewed_licenses": {
+      "data": {
+        "value": {
+          "declared": "apache-2.0",
+          "url": "https://huggingface.co/datasets/mllmTeam/DroidCall/raw/main/README.md",
+          "retrieved_at": "2026-10-17T02:02:28Z",
+          "basis": "publisher model/dataset card metadata; third-party assets retain their own terms"
+        },
+        "reason": "The Hub dataset card declares Apache-2.0 in its metadata header (license: apache-2.0). The companion repository's MIT code license is a separate declaration.",
+        "evidence_urls": [
+          "https://huggingface.co/datasets/mllmTeam/DroidCall/raw/main/README.md"
+        ]
+      }
+    },
     "scope": "adjacent",
     "documented_by": [
       "2412.00402"
@@ -22863,6 +22888,31 @@
     "editorial_reviewed": true,
     "reviewed_sha256": "4ef2d84d2b5d9d2972907e6135ea49f1ef088beaf6ef6042dc7d8fb4297a9a3a",
     "reviewed_at": "2026-10-17T02:09:02Z",
+    "primary_supports": [
+      "name",
+      "kind",
+      "summary",
+      "environments",
+      "topics",
+      "scope",
+      "relations",
+      "details",
+      "licenses.weights"
+    ],
+    "reviewed_licenses": {
+      "weights": {
+        "value": {
+          "declared": "mit",
+          "url": "https://huggingface.co/xTRam1/plan-and-act-planner-70b/raw/main/README.md",
+          "retrieved_at": "2026-10-17T02:02:28Z",
+          "basis": "publisher model/dataset card metadata; third-party assets retain their own terms"
+        },
+        "reason": "The model card declares MIT in its metadata header (license: mit), beside a template comment asking the publisher to update it if needed. It is recorded as the publisher's declaration and does not override the Llama-3.3-70B-Instruct base model terms.",
+        "evidence_urls": [
+          "https://huggingface.co/xTRam1/plan-and-act-planner-70b/raw/main/README.md"
+        ]
+      }
+    },
     "documented_by": [
       "2503.09572"
     ],
@@ -26476,6 +26526,31 @@
     "editorial_reviewed": true,
     "reviewed_sha256": "c4cfc361d1d47d7855269af4110483363964e23f9c65244a1182830eccccbb7f",
     "reviewed_at": "2026-10-17T02:47:16Z",
+    "primary_supports": [
+      "name",
+      "kind",
+      "summary",
+      "environments",
+      "topics",
+      "scope",
+      "relations",
+      "details",
+      "licenses.data"
+    ],
+    "reviewed_licenses": {
+      "data": {
+        "value": {
+          "declared": "mit",
+          "url": "https://huggingface.co/datasets/microsoft/WebTailBench/raw/main/README.md",
+          "retrieved_at": "2026-10-17T02:42:32Z",
+          "basis": "publisher model/dataset card metadata; third-party assets retain their own terms"
+        },
+        "reason": "The benchmark's Hub dataset card declares MIT in its metadata header (license: mit).",
+        "evidence_urls": [
+          "https://huggingface.co/datasets/microsoft/WebTailBench/raw/main/README.md"
+        ]
+      }
+    },
     "documented_by": [
       "2511.19663"
     ],
@@ -26560,6 +26635,31 @@
     "editorial_reviewed": true,
     "reviewed_sha256": "44d7190b72ae489297f59d6fadff635ced6dd067c845c77b04f187a7b2d7bec7",
     "reviewed_at": "2026-10-17T02:47:16Z",
+    "primary_supports": [
+      "name",
+      "kind",
+      "summary",
+      "environments",
+      "topics",
+      "scope",
+      "relations",
+      "details",
+      "licenses.data"
+    ],
+    "reviewed_licenses": {
+      "data": {
+        "value": {
+          "declared": "mit",
+          "url": "https://huggingface.co/datasets/microsoft/CUAVerifierBench/raw/main/README.md",
+          "retrieved_at": "2026-10-17T02:42:32Z",
+          "basis": "publisher model/dataset card metadata; third-party assets retain their own terms"
+        },
+        "reason": "The benchmark's Hub dataset card declares MIT in its metadata header (license: mit).",
+        "evidence_urls": [
+          "https://huggingface.co/datasets/microsoft/CUAVerifierBench/raw/main/README.md"
+        ]
+      }
+    },
     "documented_by": [
       "2604.06240"
     ],

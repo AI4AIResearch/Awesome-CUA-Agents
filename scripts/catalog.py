@@ -570,6 +570,20 @@ def string_list(value):
     return [value] if isinstance(value, str) else [v for v in value if isinstance(v, str)] if isinstance(value, list) else []
 
 
+def card_license(card):
+    """The top-level `license` of a Hub card's YAML header: a plain or quoted name, or a flow or block list of names."""
+    header = re.match(r"\A---\n(.*?)\n---", card.replace("\r\n", "\n"), re.S)
+    found = re.search(r"^license:([^\n]*)((?:\n[ \t]*-[^\n]*)*)", header[1], re.M) if header else None
+    uncomment = lambda text: re.sub(r"(?:^|[ \t])#.*", "", text).strip()
+    value = uncomment(found[1]) if found else ""
+    flow = value.startswith("[") and value.endswith("]")
+    items = value[1:-1].split(",") if flow else [value] if value else re.findall(r"-([^\n]*)", found[2]) if found else []
+    names = [uncomment(item).strip("\"'") for item in items]
+    if not names or not all(re.fullmatch(r"[a-zA-Z0-9][a-zA-Z0-9_.-]*", name) for name in names):
+        return None
+    return names if flow or not value else names[0]
+
+
 LICENSE_FILES = ("LICENSE", "LICENSE.md", "LICENSE.txt", "LICENSE.rst", "LICENCE", "COPYING")
 # A GNU title must open the verbatim FSF text, not a project notice; that text does not say whether
 # later versions apply, so these identifiers name the text, not -only or -or-later.
@@ -642,14 +656,14 @@ def enrich(args):
         source = urllib.parse.urlsplit(ev["url"])
         hub_source = source.hostname == "huggingface.co"
         # A raw Hub card may be the reviewed primary source rather than the API.
-        # Read only an explicit scalar declaration in its metadata header; do not
+        # Read only an explicit declaration in its metadata header; do not
         # inherit a dataset/model license from a linked repository or prose.
+        # A dataset repository's card covers data whatever the catalog kind, e.g. a benchmark.
         if hub_source and "/raw/" in source.path:
-            header = re.match(r"\A---\r?\n(.*?)\r?\n---", raw, re.S)
-            declaration = re.search(r"^license:[ \t]*([a-zA-Z0-9][a-zA-Z0-9_.-]*)[ \t]*$", header[1], re.M) if header else None
-            slot = "data" if row["kind"] == "dataset" else "weights" if row["kind"] == "model" else None
+            declaration = card_license(raw)
+            slot = "data" if source.path.startswith("/datasets/") or row["kind"] == "dataset" else "weights" if row["kind"] == "model" else None
             if declaration and slot:
-                result["licenses"][slot] = {"declared": declaration[1], "url": ev["url"], "retrieved_at": ev["retrieved_at"], "basis": "publisher model/dataset card metadata; third-party assets retain their own terms"}
+                result["licenses"][slot] = {"declared": declaration, "url": ev["url"], "retrieved_at": ev["retrieved_at"], "basis": "publisher model/dataset card metadata; third-party assets retain their own terms"}
                 result["evidence"].append({"role": "primary", "method": "huggingface_card", "supports": [f"licenses.{slot}"], **{k: ev[k] for k in ("url", "sha256", "retrieved_at")}})
         if hub_source and source.path.startswith(("/api/datasets/", "/api/models/")):
             try:

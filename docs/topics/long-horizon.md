@@ -20,7 +20,7 @@ All entries in this section: web.
 
 | Resource | Paper | License | Description | Evidence |
 | --- | --- | --- | --- | --- |
-| [Plan-and-Act Planner 70B](https://huggingface.co/xTRam1/plan-and-act-planner-70b) | [2503.09572](https://arxiv.org/abs/2503.09572) (2025) | — | The planner component of Plan-and-Act, generating structured high-level plans that an executor turns into web actions. | [✓ 2026‑10‑17](https://huggingface.co/xTRam1/plan-and-act-planner-70b/raw/main/README.md) |
+| [Plan-and-Act Planner 70B](https://huggingface.co/xTRam1/plan-and-act-planner-70b) | [2503.09572](https://arxiv.org/abs/2503.09572) (2025) | weights mit | The planner component of Plan-and-Act, generating structured high-level plans that an executor turns into web actions. | [✓ 2026‑10‑17](https://huggingface.co/xTRam1/plan-and-act-planner-70b/raw/main/README.md) |
 
 ## Frameworks
 

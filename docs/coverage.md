@@ -133,8 +133,8 @@ The recorded title query returned 1,199 unique records out of 1,246 reported mat
 | Scope | Recorded declarations |
 | --- | ---: |
 | code | 164 |
-| data | 53 |
-| weights | 52 |
+| data | 56 |
+| weights | 53 |
 | document | 0 |
 
 A code license never fills a data or weights field. Hub declarations are publisher metadata, not independently audited legal conclusions. Missing values remain null.
