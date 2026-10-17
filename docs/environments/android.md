@@ -155,7 +155,7 @@ All entries in this section: android, ios.
 
 | Date | Resource | Description |
 | --- | --- | --- |
-| 2025‑04‑28 | [LLM-Powered GUI Agents in Phone Automation: Surveying Progress and Prospects](https://arxiv.org/abs/2504.19838) | Survey of research directions in GUI or computer-use agents. |
+| 2025‑04‑28 | [LLM-Powered GUI Agents in Phone Automation: Surveying Progress and Prospects](https://arxiv.org/abs/2504.19838) | Reviews LLM-driven phone GUI agents with a taxonomy of agent frameworks, prompt- and training-based modeling, datasets, and benchmarks. |
 
 ## Papers
 

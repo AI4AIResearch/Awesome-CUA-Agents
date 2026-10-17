@@ -48,8 +48,8 @@ All entries in this section: cross-platform.
 
 | Date | Resource | Description |
 | --- | --- | --- |
-| 2025‑05‑16 | [A Survey on the Safety and Security Threats of Computer-Using Agents: JARVIS or Ultron?](https://arxiv.org/abs/2505.10924) | Survey of research directions in GUI or computer-use agents. |
-| 2025‑03‑30 | [Towards Trustworthy GUI Agents: A Survey](https://arxiv.org/abs/2503.23434) | Survey of research directions in GUI or computer-use agents. |
+| 2025‑05‑16 | [A Survey on the Safety and Security Threats of Computer-Using Agents: JARVIS or Ultron?](https://arxiv.org/abs/2505.10924) | Systematizes safety and security threats to computer-using agents, with taxonomies of threats and defensive strategies. |
+| 2025‑03‑30 | [Towards Trustworthy GUI Agents: A Survey](https://arxiv.org/abs/2503.23434) | Frames GUI-agent trustworthiness as an execution gap and reviews failures, attacks, and defenses across perception, reasoning, and interaction. |
 
 ## Papers
 
