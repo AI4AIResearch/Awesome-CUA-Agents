@@ -10,7 +10,7 @@ The executable contract is [resource.schema.json](../schemas/resource.schema.jso
 | `url` | Primary landing page; not necessarily a direct binary download |
 | `scope` | `core`, `adjacent`, or `relevance_pending` |
 | `review_status` | `curated` or `metadata_verified`; candidates live outside the catalog |
-| `environments` | Reviewed platform facets; `cross-platform` is not a claim of support for every OS |
+| `environments` | Reviewed platform facets, following the [environment facet rules](#environment-facets); `cross-platform` is not a claim of support for every OS |
 | `topics` | Editorial topic facets from the [topic vocabulary](#topic-vocabulary); empty for unreviewed bibliography entries |
 | `summary` | Original concise annotation; null for metadata-only entries |
 | `published_at`, `updated_at` | Exact calendar dates where established, otherwise null; a known year/month remains in `details.publication.date_parts` |
@@ -22,6 +22,20 @@ The executable contract is [resource.schema.json](../schemas/resource.schema.jso
 | `last_verified_at` | Time of the primary identity/content check; not a promise of current runtime availability |
 | `details` | Kind-specific facts, with unknown quantities preserved as null |
 | `notes` | Renames, historical context, and material limitations |
+
+## Environment facets
+
+`environments` lists the platforms that the reviewed primary source names for the resource. Facets overlap. `catalog.py validate` and `build` reject a record that breaks these rules.
+
+| Facet | Rule |
+| --- | --- |
+| `web` | Websites or web applications operated through a browser. A browser-hosted phone simulation is `web`, the surface the agent operates, and its notes say so |
+| `desktop` | Desktop operating systems. `windows`, `macos` and `linux` refine it and are always listed with `desktop`; `desktop` alone means the source names no particular OS |
+| `android`, `ios`, `harmonyos` | Listed only when the source names that operating system. Mobile work whose source names none stays `unspecified`; its `mobile-navigation` topic carries the domain, so an Android or iOS filter does not include it |
+| `cross-platform` | The source presents the resource as spanning several platform families or as platform-independent. It is additive: platforms the source names are listed beside it |
+| `unspecified` | No platform is asserted: the record awaits review, or the reviewed source names no platform. It is never combined with another facet |
+
+A `web-navigation` topic requires `web` or `cross-platform`. A `mobile-navigation` topic cannot rest on desktop facets alone: it needs `android`, `ios`, `harmonyos`, `cross-platform`, `web` for a browser-hosted simulation, or `unspecified`.
 
 ## Topic vocabulary
 

@@ -41,7 +41,7 @@ Evidence through `2026-10-17T12:45:23Z`. 1,700 records have bibliographic verifi
 | [Benchmarks](docs/benchmarks.md) · **79** | [Tools](docs/tools.md) · **20** |
 | [Models and checkpoint releases](docs/models.md) · **93** | [Products](docs/products.md) · **19** · [Publishers and brands](docs/companies.md) · **16** |
 
-**By platform:** [Web](docs/environments/web.md) **483** · [Desktop](docs/environments/desktop.md) **256** · [Windows](docs/environments/windows.md) **47** · [macOS](docs/environments/macos.md) **25** · [Linux](docs/environments/linux.md) **38** · [Android](docs/environments/android.md) **262** · [iOS](docs/environments/ios.md) **19** · [HarmonyOS](docs/environments/harmonyos.md) **2** · [Cross-platform](docs/environments/cross-platform.md) **186**
+**By platform:** [Web](docs/environments/web.md) **483** · [Desktop](docs/environments/desktop.md) **275** · [Windows](docs/environments/windows.md) **47** · [macOS](docs/environments/macos.md) **25** · [Linux](docs/environments/linux.md) **38** · [Android](docs/environments/android.md) **262** · [iOS](docs/environments/ios.md) **19** · [HarmonyOS](docs/environments/harmonyos.md) **2** · [Cross-platform](docs/environments/cross-platform.md) **186**
 <!-- EXPLORE:END -->
 
 Coverage spans web, desktop, Android, iOS, Windows, macOS, Linux, and cross-platform work. Topics include grounding, screen understanding, planning, memory, long-horizon workflows, reinforcement learning, data generation, safety, robustness, and evaluation. Environment facets overlap; framework support is not assumed from a model's benchmark results.

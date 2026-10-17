@@ -102,7 +102,7 @@
   "curated_by_environment": {
     "android": 262,
     "cross-platform": 186,
-    "desktop": 256,
+    "desktop": 275,
     "harmonyos": 2,
     "ios": 19,
     "linux": 38,
@@ -124,7 +124,7 @@
     "benchmark": {
       "android": 17,
       "cross-platform": 13,
-      "desktop": 17,
+      "desktop": 18,
       "ios": 2,
       "linux": 4,
       "macos": 3,
@@ -138,7 +138,7 @@
     "dataset": {
       "android": 33,
       "cross-platform": 14,
-      "desktop": 14,
+      "desktop": 16,
       "ios": 1,
       "linux": 6,
       "macos": 2,
@@ -160,7 +160,7 @@
     },
     "infrastructure": {
       "android": 4,
-      "desktop": 7,
+      "desktop": 9,
       "ios": 1,
       "linux": 4,
       "macos": 2,
@@ -170,7 +170,7 @@
     "model": {
       "android": 23,
       "cross-platform": 46,
-      "desktop": 19,
+      "desktop": 21,
       "ios": 4,
       "linux": 4,
       "macos": 4,
@@ -181,7 +181,7 @@
     "paper": {
       "android": 147,
       "cross-platform": 94,
-      "desktop": 159,
+      "desktop": 171,
       "harmonyos": 1,
       "ios": 6,
       "linux": 15,
