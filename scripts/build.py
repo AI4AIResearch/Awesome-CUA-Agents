@@ -158,6 +158,13 @@ def validate_records(rows):
                 dt.datetime.fromisoformat(ev["retrieved_at"].replace("Z", "+00:00"))
             except (ValueError, KeyError):
                 error("invalid evidence timestamp")
+        verified = r.get("last_verified_at")
+        try:
+            if dt.datetime.fromisoformat(verified.replace("Z", "+00:00")).tzinfo is None:
+                raise ValueError
+        except (ValueError, AttributeError):
+            error("invalid last_verified_at")
+            verified = None
         relation_keys = set()
         for relation in r.get("relations", []):
             key = (relation.get("type"), relation.get("target_id"))
@@ -173,7 +180,7 @@ def validate_records(rows):
             if value is not None:
                 try:
                     dt.date.fromisoformat(value)
-                    if value > r["last_verified_at"][:10]:
+                    if verified and value > verified[:10]:
                         error(f"{key} is after its verification date")
                 except (ValueError, KeyError):
                     error(f"invalid {key}")
@@ -615,14 +622,18 @@ def validate(args):
     rows = read_jsonl(DATA / "catalog.jsonl")
     if not rows:
         raise ValueError("No catalog. Run build first.")
-    errors = validate_records(rows)
     # Full published JSON Schema validation is part of the release/CI gate.
     import jsonschema
-    validator = jsonschema.Draft202012Validator(read_json(ROOT / "schemas" / "resource.schema.json"), format_checker=jsonschema.FormatChecker())
+    formats = jsonschema.FormatChecker()
+    # Without the format extras, jsonschema silently skips date-time and uri constraints.
+    if missing := {"date-time", "uri"} - set(formats.checkers):
+        raise ValueError("JSON Schema format checkers unavailable: " + ", ".join(sorted(missing)) + ". Install requirements-dev.txt (jsonschema[format-nongpl]).")
+    errors = validate_records(rows)
+    validator = jsonschema.Draft202012Validator(read_json(ROOT / "schemas" / "resource.schema.json"), format_checker=formats)
     for row in rows:
         errors.extend(f"{row['id']}: {error.message}" for error in validator.iter_errors(row))
     decisions = read_json(DATA/'exclusions.json', [])
-    scope_validator = jsonschema.Draft202012Validator(read_json(ROOT/'schemas/scope-decision.schema.json'), format_checker=jsonschema.FormatChecker())
+    scope_validator = jsonschema.Draft202012Validator(read_json(ROOT/'schemas/scope-decision.schema.json'), format_checker=formats)
     scope_errors = ['Scope decisions: '+error.message for error in scope_validator.iter_errors(decisions)]
     errors.extend(scope_errors)
     if not scope_errors:
