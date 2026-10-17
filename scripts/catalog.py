@@ -559,7 +559,7 @@ def nonnegative(value):
     return number
 
 
-def main():
+def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
     for name, function in [("discover", discover), ("harvest", harvest), ("search-arxiv", search_arxiv), ("verify", verify_editorial), ("enrich", enrich)]:
@@ -584,9 +584,16 @@ def main():
     command.add_argument("--limit", type=nonnegative, default=20, help="0 returns every match")
     command.add_argument("--json", action="store_true")
     command.set_defaults(function=search)
-    args = parser.parse_args()
-    args.function(args)
+    from lookup import get_resource
+    command = sub.add_parser("get", help="read one exact active resource ID; report applied scope exclusions separately")
+    command.add_argument("resource_id", help="stable catalog ID, such as arxiv:2404.07972")
+    command.add_argument("--json", action="store_true", help="emit the original record, or an explicit non-active status")
+    command.add_argument("--related", action="store_true", help="include incoming and outgoing reviewed relations with their evidence")
+    command.set_defaults(function=get_resource)
+    args = parser.parse_args(argv)
+    result = args.function(args)
+    return result if type(result) is int else 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

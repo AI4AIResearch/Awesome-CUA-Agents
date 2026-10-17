@@ -111,6 +111,7 @@ Newest editorial approvals of models, datasets, benchmarks, systems, and tools (
 <!-- RECENT:START -->
 | Reviewed | Resource | Kind | Environments | Description |
 | --- | --- | --- | --- | --- |
+| 2026‑10‑17 | [MoTIF](https://github.com/aburns4/MoTIF) | dataset | android | Mobile task demonstrations and natural-language instructions. |
 | 2026‑10‑17 | [UI-S1 released training examples](https://huggingface.co/datasets/mPLUG/UI_S1_dataset) | dataset | android | A public example subset of the UI-S1 mobile training data, packaged as JSONL annotations and Parquet images. |
 | 2026‑10‑17 | [ScreenSpot-v2 instruction variants](https://huggingface.co/datasets/likaixin/ScreenSpot-v2-variants) | benchmark | cross-platform | Instruction variants over ScreenSpot-v2 screenshots that distinguish original commands, explicit actions, target descriptions and impossible operations. |
 | 2026‑10‑17 | [ScienceBoard VMware environment](https://huggingface.co/OS-Copilot/ScienceBoard-Env) | infrastructure | linux, desktop | A prebuilt Ubuntu virtual-machine archive containing the software environment used for ScienceBoard scientific computer-use tasks. |
@@ -122,7 +123,6 @@ Newest editorial approvals of models, datasets, benchmarks, systems, and tools (
 | 2026‑10‑17 | [Wave UI](https://huggingface.co/datasets/agentsea/wave-ui) | dataset | unspecified | Screenshot-instruction records with target boxes and UI metadata such as OCR, source, element type and platform. |
 | 2026‑10‑17 | [UI-Genie trajectory data](https://huggingface.co/datasets/HanXiao1999/UI-Genie-Agent-16k) | dataset | android | Synthetic mobile GUI trajectory supervision and screenshots released with the UI-Genie agent-training pipeline. |
 | 2026‑10‑17 | [UI-Genie reward data](https://huggingface.co/datasets/HanXiao1999/UI-Genie-RM-517k) | dataset | android | Mobile GUI reward annotations released for training UI-Genie’s trajectory-assessment model. |
-| 2026‑10‑17 | [OS-Genesis mobile training data](https://huggingface.co/datasets/OS-Copilot/OS-Genesis-mobile-data) | dataset | android | Reverse-task-synthesis mobile trajectories released in separate AndroidControl and AndroidWorld training annotation files. |
 <!-- RECENT:END -->
 
 ## Use the data
@@ -136,6 +136,7 @@ Browse the [interactive website](https://awesomecua.github.io/) to search and fi
 - **[Discovery registry](data/sources.json)** and **[candidates](data/candidates.jsonl):** source snapshots and where each identifier was found.
 - **[Review queue](data/review-queue.jsonl):** unresolved evidence, unindexed discoveries, and proposals requiring editorial work.
 - **[JSON Schema](schemas/resource.schema.json)** and **[coverage JSON](data/coverage.json):** machine-checkable contracts and coverage accounting.
+- **[BibTeX](https://awesomecua.github.io/downloads/citations.bib)** and **[CSL JSON](https://awesomecua.github.io/downloads/citations.csl.json):** reviewed-paper citations with recorded authors, dates, and versions. Each resource page also provides its own `record.json`.
 
 ```bash
 # Python 3.11+. Search and export require only the standard library.
@@ -143,9 +144,11 @@ cd Awesome-CUA
 python3 scripts/catalog.py search "grounding" --kind model
 python3 scripts/catalog.py search --kind dataset --environment android
 python3 scripts/catalog.py search --kind product --status curated --json
+python3 scripts/catalog.py get arxiv:2404.07972 --related --json
 python3 scripts/catalog.py build
 # Creates dist/catalog.sqlite and dist/catalog.json, with no network calls.
 python3 scripts/export_rag.py --output dist/rag-documents.jsonl
+python3 scripts/export_citations.py --format bibtex --output dist/citations.bib
 # Add --include-metadata to include every active record, with its review state intact.
 ```
 

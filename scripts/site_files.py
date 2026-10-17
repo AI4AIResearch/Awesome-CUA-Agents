@@ -1,0 +1,23 @@
+"""Reconcile generated page files against the current publication manifest."""
+from pathlib import Path
+
+
+MANAGED_ROOTS = ('resources', 'categories', 'guides')
+MANAGED_FILES = frozenset({'index.html', 'index.md', 'record.json', 'citation.bib', 'citation.csl.json'})
+
+
+def reconcile_generated_pages(directory, pages):
+    directory = Path(directory)
+    expected = {item['path'] for item in pages}
+    for name in MANAGED_ROOTS:
+        root = directory / name
+        if root.is_symlink():
+            raise ValueError('Generated page roots must not be symbolic links: ' + name)
+        if not root.exists():
+            continue
+        for file in root.rglob('*'):
+            if file.name not in MANAGED_FILES or not file.is_file():
+                continue
+            page = '/' + file.parent.relative_to(directory).as_posix() + '/'
+            if page not in expected:
+                file.unlink()

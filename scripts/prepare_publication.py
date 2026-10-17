@@ -6,6 +6,7 @@ import json
 import shutil
 from search_pages import KINDS, SITE, REPO, resource_path
 from agent_pages import CLONE_COMMAND
+from site_files import reconcile_generated_pages
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -28,8 +29,15 @@ def main():
         for item in old.get('pages',[]):
             if item['path'] in new_paths or not item['path'].startswith(('/resources/','/categories/','/guides/')):continue
             folder=site/item['path'].lstrip('/')
-            for filename in ['index.html','index.md']:(folder/filename).unlink(missing_ok=True)
+            for filename in ['index.html','index.md','record.json','citation.bib','citation.csl.json']:(folder/filename).unlink(missing_ok=True)
+    for item in incoming['pages']:
+        if item['path'].startswith('/resources/'):
+            if '..' in Path(item['path']).parts:raise ValueError('Invalid generated resource path')
+            for filename in ['record.json','citation.bib','citation.csl.json']:
+                if not (build/item['path'].lstrip('/')/filename).exists():
+                    (site/item['path'].lstrip('/')/filename).unlink(missing_ok=True)
     shutil.copytree(build,site,dirs_exist_ok=True)
+    reconcile_generated_pages(site,incoming['pages'])
     ignore=site/'.gitignore';ignore_text=ignore.read_text() if ignore.exists() else ''
     for pattern in ['.pipeline/','.cache/','__pycache__/','.DS_Store']:
         if pattern not in ignore_text.splitlines():ignore_text=ignore_text.rstrip()+'\n'+pattern+'\n'

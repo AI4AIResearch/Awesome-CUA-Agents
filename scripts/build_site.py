@@ -12,6 +12,8 @@ sys.path.insert(0,str(ROOT/'scripts'))
 from build import validate_records, write_sqlite
 from search_pages import build_search_pages, resource_path
 from export_rag import build_exports
+from export_citations import build_citation_exports
+from site_files import reconcile_generated_pages
 
 
 def version_script_imports(destination):
@@ -39,14 +41,16 @@ def build_site(output=None):
     (destination/'downloads').mkdir(exist_ok=True)
     keys=['id','name','kind','url','aliases','environments','topics','summary','review_status','published_at','authors','scope','last_verified_at']
     related={row['id']:set() for row in rows}
+    incoming={row['id']:[] for row in rows}
     for row in rows:
         for relation in row['relations']:
             if relation['target_id'] in related:
                 related[relation['target_id']].add(row['id']);related[row['id']].add(relation['target_id'])
+                incoming[relation['target_id']].append({'source_id':row['id'],'type':relation['type'],'evidence_url':relation['evidence_url']})
     index={'coverage':{k:coverage[k] for k in ['as_of_utc','total_records','curated_records','metadata_only_records','by_kind','unindexed_candidates','sources','excluded_records','arxiv_archive_records']},'records':[{**{k:row[k] for k in keys},'page_url':resource_path(row),
         'paper_version':row.get('details',{}).get('arxiv_snapshot',{}).get('version'),
         'paper_source_url':row.get('details',{}).get('arxiv_snapshot',{}).get('versioned_url'),
-        'related_count':len(related[row['id']])} for row in rows]}
+        'related_count':len(related[row['id']]),'incoming_relations':incoming[row['id']]} for row in rows]}
     for filename,payload in [('index.json',index),('records.json',rows)]:
         (destination/'data'/filename).write_text(json.dumps(payload,ensure_ascii=False,separators=(',',':'))+'\n')
     for name in ['catalog.jsonl','coverage.json','sources.json']:
@@ -55,12 +59,14 @@ def build_site(output=None):
     shutil.copy2(ROOT/'data/papers.jsonl',destination/'downloads/arxiv-archive.jsonl')
     write_sqlite(rows,destination/'downloads'/'catalog.sqlite')
     build_exports(rows,destination/'downloads',(ROOT/'data/catalog.jsonl').read_bytes())
+    build_citation_exports(rows,destination/'downloads',(ROOT/'data/catalog.jsonl').read_bytes())
     shutil.copy2(ROOT/'AGENTS.md',destination/'AGENTS.md')
     for name in ('paper-discovery-queries.json','paper-discovery-status.json','conference-discovery.json'):
         if (ROOT/'data'/name).exists():shutil.copy2(ROOT/'data'/name,destination/'downloads'/name)
     shutil.copy2(ROOT/'LICENSE',destination/'LICENSE')
     (destination/'.nojekyll').write_text('')
     manifest=build_search_pages(destination,rows,coverage,ROOT)
+    reconcile_generated_pages(destination,manifest)
     print(f'Built {len(rows):,} searchable resources and {sum(x["indexable"] for x in manifest)} indexable HTML pages → {destination}')
     return destination
 

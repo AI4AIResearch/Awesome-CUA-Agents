@@ -61,3 +61,21 @@ python3 scripts/export_rag.py --include-metadata --output dist/rag-all-records.j
 ```
 
 The default includes reviewed resources; `--include-metadata` includes every active record with its review state intact. Each row contains `id`, `text`, and `metadata`. Keep citation URLs, evidence, dates, recorded arXiv versions, licenses, and `record_sha256` alongside embeddings. Use IDs for upserts and reconcile removed IDs against the full snapshot and scope ledger. The public [RAG manifest](https://awesomecua.github.io/downloads/rag-manifest.json) gives file counts and SHA-256 fingerprints. Embeddings and upstream paper full text are not part of the export.
+
+## Exact identity and reviewed connections
+
+```sh
+python3 scripts/catalog.py get arxiv:2404.07972 --json
+python3 scripts/catalog.py get arxiv:2404.07972 --related --json
+```
+
+Plain lookup returns the full active record. Related lookup wraps it with reviewed incoming and outgoing relationships and the original evidence URL for each assertion. Mere mentions are excluded. Unknown identifiers and scope-excluded identifiers have distinct nonzero exit codes; exclusions return a reason and ledger reference instead of an active record.
+
+## Bibliography exports
+
+```sh
+python3 scripts/export_citations.py --format bibtex --output dist/citations.bib
+python3 scripts/export_citations.py --format csl-json --output dist/citations.csl.json
+```
+
+Reviewed papers and surveys are exported by default; `--include-metadata` explicitly includes unreviewed bibliography entries. Individual paper records also provide `citation.bib` and `citation.csl.json`. Original authors and paper-version URLs are retained. Missing venue or DOI metadata is not inferred from an arXiv ID.

@@ -80,3 +80,24 @@ test('paper curated-first order puts reviewed recent work before older reviewed 
   assert.ok(reviewed.length>0);assert.ok(reviewed.slice(1).every((r,i)=>(reviewed[i].published_at||'')>=(r.published_at||'')));
   assert.ok(result.slice(reviewed.length).every(r=>r.review_status!=='curated'));
 });
+
+test('details request only their own JSON and share concurrent/cached requests',async()=>{
+  const {createRecordLoader}=await import('../web/catalog-core.js');
+  const calls=[];let release;
+  const load=createRecordLoader(url=>{calls.push(url);return new Promise(resolve=>{release=resolve;});});
+  const record={id:'arxiv:2404.07972',page_url:'/resources/arxiv-2404-07972/'};
+  const first=load(record),second=load(record);
+  assert.deepEqual(calls,['/resources/arxiv-2404-07972/record.json']);
+  const full={id:record.id,review_status:'curated',details:{example:true}};
+  release({ok:true,json:async()=>full});
+  assert.deepEqual(await first,full);assert.deepEqual(await second,full);assert.deepEqual(await load(record),full);
+  assert.equal(calls.length,1);
+});
+test('failed, mismatched, or scope-excluded detail payloads are not cached as active records',async()=>{
+  const {createRecordLoader}=await import('../web/catalog-core.js');
+  const record={id:'arxiv:2404.07972',page_url:'/resources/arxiv-2404-07972/'};
+  for(const bad of [{ok:false,status:503},{ok:true,json:async()=>({id:'arxiv:other',review_status:'curated'})},{ok:true,json:async()=>({id:record.id,status:'excluded'})}]){
+    let calls=0;const load=createRecordLoader(async()=>++calls===1?bad:{ok:true,json:async()=>({id:record.id,review_status:'curated'})});
+    await assert.rejects(load(record));assert.equal((await load(record)).id,record.id);assert.equal(calls,2);
+  }
+});

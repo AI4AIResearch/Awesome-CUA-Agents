@@ -30,3 +30,7 @@ Dataset details can include sample count and unit, modalities, languages, downlo
 Source data lives in `editorial.json`, `papers.jsonl`, `primary-evidence.jsonl`, `enrichment.jsonl`, `candidates.jsonl`, and discovery manifests. `catalog.jsonl`, `coverage.json`, `references.jsonl`, `review-queue.jsonl`, and category Markdown are generated views. The ignored `.cache/` directory is not needed to reproduce an offline build.
 
 Reviewed `documented_by` links connect an implementation or dataset to a paper named by its first-party source. They do not imply a training or evaluation dependency. Resource pages expose both outgoing relations and incoming connected assets. The [connections directory](https://awesomecua.github.io/connections/) and [relationship export](https://awesomecua.github.io/downloads/relationships.json) provide a consolidated view.
+
+The citation exports are separate bibliography views of paper/survey records. They retain source authors as literal names, recorded version URLs, first-publication dates, review status, and preferred arXiv identities where known. Unknown venue/DOI values are omitted. The export manifest records counts and file SHA-256 values, tied to the source catalog SHA-256.
+
+`catalog.py get` returns an exact active record with its stable ID. `--related` adds only source-backed reviewed semantic relations; raw reference mentions are not promoted. A scope-excluded ID returns its applied decision and a nonzero exit code, preserving the boundary between the active catalog and retained archive.

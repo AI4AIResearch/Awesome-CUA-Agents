@@ -20,6 +20,8 @@ git clone https://github.com/reacher-z/Awesome-CUA.git
 
 **“全球最全”是建设目标，而不是已经核实的结论。** 我们公开来源范围、审阅状态和剩余缺口。核实书目元数据不等于审阅了资源的相关性或质量。
 
+使用 `python3 scripts/catalog.py get arxiv:2404.07972 --related --json` 可按稳定 ID 取得完整记录与已核实关联。[BibTeX](https://awesomecua.github.io/downloads/citations.bib) 和 [CSL JSON](https://awesomecua.github.io/downloads/citations.csl.json) 提供已审阅论文引用；每条资源页面也有可直接读取的 `record.json`。
+
 <!-- STATS:START -->
 
 **2,545 resource records** · **996 curated** · **2,164 arXiv records** · **44 discovery documents**
@@ -58,9 +60,11 @@ cd Awesome-CUA
 python3 scripts/catalog.py search "grounding" --kind model
 python3 scripts/catalog.py search --kind dataset --environment android
 python3 scripts/catalog.py search --kind product --status curated --json
+python3 scripts/catalog.py get arxiv:2404.07972 --related --json
 python3 scripts/catalog.py build
 # 生成 dist/catalog.sqlite 和 dist/catalog.json，不发起网络请求。
 python3 scripts/export_rag.py --output dist/rag-documents.jsonl
+python3 scripts/export_citations.py --format bibtex --output dist/citations.bib
 # 加 --include-metadata 可包含全部当前记录，并保留各自的审阅状态。
 ```
 

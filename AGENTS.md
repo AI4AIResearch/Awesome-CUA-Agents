@@ -24,6 +24,27 @@ python3 scripts/catalog.py search --kind paper --status curated --topic reinforc
 
 The CLI uses literal, case-insensitive AND matching. `--limit 0` returns every match. An empty result is not evidence that the field lacks a resource: try aliases and inspect the coverage ledger.
 
+For a stable identifier, retrieve the exact source record and its reviewed connections:
+
+```sh
+python3 scripts/catalog.py get arxiv:2404.07972 --json
+python3 scripts/catalog.py get arxiv:2404.07972 --related --json
+```
+
+Plain `get --json` returns the original active record. `--related` wraps that record with direction, relation type, primary relationship evidence, and the connected records. Unknown IDs and scope-excluded IDs return distinct nonzero exit codes; an excluded record is never returned as active. `references.jsonl` mentions are not treated as reviewed semantic relations.
+
+Each resource page also serves its exact active record at `record.json`, for example <https://awesomecua.github.io/resources/arxiv-2404-07972/record.json>. A scope-excluded page returns an explicit `status: excluded` JSON decision instead. These are static files; inspect the JSON status/review fields rather than treating HTTP 200 as approval.
+
+## Export paper citations
+
+```sh
+python3 scripts/export_citations.py --format bibtex --output dist/citations.bib
+python3 scripts/export_citations.py --format csl-json --output dist/citations.csl.json
+python3 scripts/export_citations.py --id arxiv:2404.07972 --format bibtex
+```
+
+The default exports reviewed papers and surveys. Add `--include-metadata` to include bibliography records awaiting relevance review. Citations preserve the recorded version URL and original author names, omit unknown venues and identifiers, and keep first publication separate from version updates. A citation export is bibliographic data, not a claim that findings were reproduced.
+
 ## Prepare retrieval data
 
 ```sh

@@ -2844,7 +2844,7 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "4b2f5a23dc28e96b671272380b953e7fabaf34f4b1e83f3513643846718e3389",
-    "reviewed_at": "2026-10-16T11:51:16Z",
+    "reviewed_at": "2026-10-17T08:18:49Z",
     "details": {
       "dataset_profile": {
         "supervision": [
@@ -2879,6 +2879,9 @@
       "scope",
       "relations",
       "details.dataset_profile"
+    ],
+    "documented_by": [
+      "2202.02312"
     ]
   },
   {
