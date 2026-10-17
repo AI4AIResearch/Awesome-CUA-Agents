@@ -13830,9 +13830,6 @@
       "automation"
     ],
     "summary": "Android device-control platform with screenshots, accessibility telemetry, input actions, and an optional reinforcement-learning task interface.",
-    "aliases": [
-      "https://github.com/deepmind/android_env"
-    ],
     "notes": "Formerly published as deepmind/android_env. That address now redirects to this repository, and both paths serve the same reviewed README, so the project is counted once.",
     "verify_terms": [
       "AndroidEnv"

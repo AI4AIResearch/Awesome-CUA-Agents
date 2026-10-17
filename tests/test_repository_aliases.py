@@ -3,15 +3,14 @@ import io
 import json
 from pathlib import Path
 import sys
-import tempfile
 import types
 import unittest
-from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 import build
-from catalog import read_jsonl, write_json, write_jsonl
+import catalog
+from catalog import read_jsonl
 
 OLD, NEW = "https://github.com/deepmind/android_env", "https://github.com/google-deepmind/android_env"
 
@@ -27,11 +26,6 @@ def alias_errors(rows):
 
 
 class RepositoryAliasTests(unittest.TestCase):
-    def test_only_alias_urls_name_another_identity(self):
-        survivor = record(NEW, aliases=["Android Env", OLD, NEW + "/tree/main"])
-        self.assertEqual(build.identity_aliases([survivor]), {"github:deepmind/android_env": "github:google-deepmind/android_env"})
-        self.assertEqual(alias_errors([survivor]), [])
-
     def test_alias_cannot_hide_a_second_active_record(self):
         errors = alias_errors([record(NEW, aliases=[OLD]), record(OLD)])
         self.assertEqual(errors, [f"github:google-deepmind/android_env: alias {OLD} is the active record github:deepmind/android_env; keep one record"])
@@ -40,30 +34,24 @@ class RepositoryAliasTests(unittest.TestCase):
         errors = alias_errors([record(NEW, aliases=[OLD]), record("https://github.com/example/android_env", aliases=[OLD + "/"])])
         self.assertEqual(errors, [f"github:example/android_env: alias {OLD}/ already resolves to github:google-deepmind/android_env"])
 
-    def test_discovery_and_search_resolve_the_former_address(self):
-        survivor = record(NEW, aliases=[OLD])
-        with tempfile.TemporaryDirectory() as tmp:
-            data = Path(tmp)
-            write_jsonl(data / "catalog.jsonl", [survivor])
-            write_jsonl(data / "publications.jsonl", [])
-            write_jsonl(data / "papers.jsonl", [])
-            write_jsonl(data / "candidates.jsonl", [{"id": "github:deepmind/android_env", "discovered_in": [{"source_id": "fixture"}]}])
-            write_json(data / "sources.json", [{"id": "fixture", "name": "Fixture", "homepage": "https://example.org"}])
-            with mock.patch.object(build, "DATA", data):
-                report = build.coverage([survivor], [], [])
-                args = types.SimpleNamespace(query=OLD + "/tree/main", kind=None, status=None, environment=None, topic=None, limit=0, json=True)
-                with contextlib.redirect_stdout(io.StringIO()) as out:
-                    build.search(args)
-        source = report["sources"][0]
-        self.assertEqual((source["indexed"], source["indexed_resources"], source["resolved_aliases"], source["unindexed"]), (1, 1, 1, 0))
-        self.assertEqual(report["unindexed_candidates"], 0)
-        self.assertEqual([row["id"] for row in json.loads(out.getvalue())["records"]], [survivor["id"]])
+    def test_the_former_address_resolves_through_the_repository_alias_registry(self):
+        rows = read_jsonl(ROOT / "data" / "catalog.jsonl")
+        self.assertEqual(build.source_aliases(rows)["github:deepmind/android_env"], "github:google-deepmind/android_env")
+        args = types.SimpleNamespace(query=OLD + "/tree/main", kind=None, status=None, environment=None, topic=None, limit=0, json=True)
+        with contextlib.redirect_stdout(io.StringIO()) as out:
+            build.search(args)
+        self.assertEqual([row["id"] for row in json.loads(out.getvalue())["records"]], ["github:google-deepmind/android_env"])
+        with contextlib.redirect_stdout(io.StringIO()) as out:
+            self.assertEqual(catalog.main(["get", "github:deepmind/android_env", "--json"]), 0)
+        self.assertEqual(json.loads(out.getvalue())["id"], "github:google-deepmind/android_env")
 
     def test_android_env_is_one_record_under_its_current_owner(self):
         rows = read_jsonl(ROOT / "data" / "catalog.jsonl")
         matches = [row for row in rows if row["name"] == "AndroidEnv"]
         self.assertEqual([row["id"] for row in matches], ["github:google-deepmind/android_env"])
         self.assertIn(OLD, matches[0]["aliases"])
+        self.assertEqual({e["url"] for e in matches[0]["evidence"] if e["method"] == "github_repository_identity"},
+                         {"https://api.github.com/repos/deepmind/android_env", "https://api.github.com/repos/google-deepmind/android_env"})
         self.assertIn("deepmind/android_env", matches[0]["notes"])
         queued = {row["id"] for row in read_jsonl(ROOT / "data" / "review-queue.jsonl")}
         self.assertNotIn("github:deepmind/android_env", queued)

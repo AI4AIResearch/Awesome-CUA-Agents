@@ -133,5 +133,32 @@
         "sha256": "3d3ceb084d374b706842cff1f4ec986fde50c13cba141dc4619d5afe8b631d55"
       }
     ]
+  },
+  {
+    "alias_id": "github:deepmind/android_env",
+    "target_id": "github:google-deepmind/android_env",
+    "repository_id": 360111507,
+    "basis": "official_github_repository_id",
+    "reviewed_at": "2026-10-17T15:37:21Z",
+    "observations": [
+      {
+        "url": "https://api.github.com/repos/deepmind/android_env",
+        "resolved_url": "https://api.github.com/repositories/360111507",
+        "repository_id": 360111507,
+        "full_name": "google-deepmind/android_env",
+        "html_url": "https://github.com/google-deepmind/android_env",
+        "retrieved_at": "2026-10-17T15:37:19Z",
+        "sha256": "de82c4101e81a6980789904be59c3733ab13f2c1f0e769e5fcb1ab35f847cb3e"
+      },
+      {
+        "url": "https://api.github.com/repos/google-deepmind/android_env",
+        "resolved_url": "https://api.github.com/repos/google-deepmind/android_env",
+        "repository_id": 360111507,
+        "full_name": "google-deepmind/android_env",
+        "html_url": "https://github.com/google-deepmind/android_env",
+        "retrieved_at": "2026-10-17T15:37:20Z",
+        "sha256": "de82c4101e81a6980789904be59c3733ab13f2c1f0e769e5fcb1ab35f847cb3e"
+      }
+    ]
   }
 ]

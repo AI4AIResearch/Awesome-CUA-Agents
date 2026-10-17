@@ -148,11 +148,6 @@ LICENSE_FIELDS = {"declared", "url", "retrieved_at", "basis"}
 RFC3339 = re.compile(r"\d{4}-\d\d-\d\d[Tt](?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:\.\d+)?(?:[Zz]|[+-](?:[01]\d|2[0-3]):[0-5]\d)", re.A)
 
 
-def identity_aliases(rows):
-    """A reviewed alias URL, such as a renamed repository's former address, resolves that identity to the record listing it."""
-    return {former[0]: r["id"] for r in rows for alias in r.get("aliases", []) if (former := canonical(alias)) and former[0] != r["id"]}
-
-
 def malformed_fields(r):
     # The semantic checks assume these JSON types; the published schema reports each exact mismatch.
     strings = lambda values: all(isinstance(v, str) for v in values)
@@ -345,7 +340,7 @@ def coverage(rows, pending, scope_decisions):
     sources = read_json(DATA / "sources.json", [])
     excluded = {row['id'] for row in scope_decisions if row['status']=='excluded'}
     source_rows = []
-    aliases = source_aliases(rows) | identity_aliases(rows)
+    aliases = source_aliases(rows)
     for source in sources:
         population = {r["id"] for r in candidates if any(o["source_id"] == source["id"] for o in r["discovered_in"])}
         resolved = {aliases.get(identity, identity) for identity in population}
@@ -835,7 +830,7 @@ def build(args):
     ids = {r["id"] for r in rows}
     excluded = {row['id'] for row in scope_decisions if row['status']=='excluded'}
     candidates = read_jsonl(DATA / "candidates.jsonl")
-    aliases=source_aliases(rows) | identity_aliases(rows)
+    aliases=source_aliases(rows)
     queue = [{**r, "review_status": "candidate", "reason": "discovered identifier; primary evidence and relevance need review"} for r in candidates if aliases.get(r['id'],r['id']) not in ids and aliases.get(r['id'],r['id']) not in excluded]
     editorial_pending = {r["id"]: r for r in pending}
     merged = {r["id"]: r for r in queue}
@@ -955,7 +950,7 @@ def search(args):
     terms = args.query.casefold().split()
     target = publication_identity(args.query)  # a pasted URL folds to its record id (arXiv versions, GitHub paths)
     rows = read_jsonl(DATA / "catalog.jsonl")
-    aliases = source_aliases(rows) | identity_aliases(rows)
+    aliases = source_aliases(rows)
     target_id = aliases.get(target[0],target[0]) if target else None
     result = []
     for row in rows:

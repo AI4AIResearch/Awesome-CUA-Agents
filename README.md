@@ -26,7 +26,7 @@ The goal is comprehensive coverage of public research and industry resources, wi
 
 **3,003 resource records** · **1,429 curated** · **2,578 paper and survey records** · **44 discovery documents**
 
-Evidence through `2026-10-17T14:35:24Z`. 1,574 records have bibliographic verification only; 945 discovered identifiers remain unresolved. 118 scope exclusions retain their original metadata in the archive. Counts overlap as explained below.
+Evidence through `2026-10-17T15:37:20Z`. 1,574 records have bibliographic verification only; 945 discovered identifiers remain unresolved. 118 scope exclusions retain their original metadata in the archive. Counts overlap as explained below.
 
 <!-- STATS:END -->
 
