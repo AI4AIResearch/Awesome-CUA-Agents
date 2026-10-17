@@ -9,7 +9,7 @@ from pathlib import Path
 import re
 import xml.etree.ElementTree as ET
 from collections import defaultdict
-from specifications import PROFILE_KEYS, comparison_body, profile_export, resource_profile_html, count_text
+from specifications import PROFILE_KEYS, comparison_body, profile_export, resource_profile_html, count_text, safe_href
 from agent_pages import agent_guide_body
 
 SITE = "https://awesomecua.github.io"
@@ -25,6 +25,12 @@ def resource_path(record):
     # IDs, rather than mutable display names, keep permalinks stable through renames.
     slug = re.sub(r"[^a-z0-9]+", "-", record["id"].lower()).strip("-")
     return f"/resources/{slug}/"
+
+
+def guide_path(guide):
+    # Guide slugs become output directories and canonical URLs, so they cannot carry path or markup characters.
+    if not isinstance(guide.get("slug"),str) or not re.fullmatch(r"[a-z0-9-]+",guide["slug"]):raise ValueError(f"Invalid guide slug: {guide.get('slug')!r}")
+    return f"/guides/{guide['slug']}/"
 
 
 def eligible(record):
@@ -81,12 +87,12 @@ def incoming_relations(rows):
 def resource_body(record, lookup, incoming=None):
     r=record
     status="AI-assisted editorial review against a primary source" if eligible(r) else "Bibliographic metadata verified; topic relevance and research findings have not been reviewed"
-    body=f'<div class="eyebrow">{esc(KINDS[r["kind"]])}</div><h1>{esc(r["name"])}</h1><p class="answer-lead">{esc(description(r))}</p><p class="review-notice">{esc(status)}. This is a catalog annotation, not an independent reproduction or endorsement.</p><div class="page-actions"><a class="button primary" href="{esc(r["url"])}">Original source ↗</a><a class="button secondary" href="{resource_path(r)}index.md">Read as Markdown</a></div>'
+    body=f'<div class="eyebrow">{esc(KINDS[r["kind"]])}</div><h1>{esc(r["name"])}</h1><p class="answer-lead">{esc(description(r))}</p><p class="review-notice">{esc(status)}. This is a catalog annotation, not an independent reproduction or endorsement.</p><div class="page-actions"><a class="button primary" href="{safe_href(r["url"])}">Original source ↗</a><a class="button secondary" href="{resource_path(r)}index.md">Read as Markdown</a></div>'
     facts=[("Resource type",KINDS[r["kind"]]),("Environment",", ".join(r["environments"])),("Topics",", ".join(r["topics"]) or "Not assigned"),("Publication date",r["published_at"] or "Not recorded"),("Evidence retrieved",r["last_verified_at"]),("Resource ID",r["id"])]
     body+='<h2>What is this resource?</h2><dl class="page-facts">'+''.join(f'<div><dt>{esc(k)}</dt><dd>{esc(v)}</dd></div>' for k,v in facts)+'</dl>'
     snapshot=r['details'].get('arxiv_snapshot')
     if snapshot:
-        version=(f'<a href="{esc(snapshot["versioned_url"])}">arXiv v{esc(snapshot["version"])}</a>' if snapshot.get('versioned_url') else 'Version not recorded')
+        version=(f'<a href="{safe_href(snapshot["versioned_url"])}">arXiv v{esc(snapshot["version"])}</a>' if snapshot.get('versioned_url') else 'Version not recorded')
         body+='<h2>Recorded paper version</h2><p>'+version+'</p>'
         if snapshot.get('updated_at'):body+='<p>Version updated: '+esc(snapshot['updated_at'])+'.</p>'
         body+='<p>This identifies the retained arXiv metadata snapshot; newly observed changes require separate review.</p>'
@@ -95,11 +101,11 @@ def resource_body(record, lookup, incoming=None):
     if r["kind"] not in {"paper","survey"}:
         body+='<h2>What licenses are recorded?</h2><p>Code, training data, weights, and documents can have different terms. A blank declaration means unknown, not unrestricted use.</p><dl class="page-facts">'
         for slot,l in r["licenses"].items():
-            value=f'<a href="{esc(l["url"])}">{esc(l["declared"] if isinstance(l["declared"],str) else ", ".join(l["declared"]))}</a> ({esc(l["basis"])})' if l else "Not recorded"
+            value=f'<a href="{safe_href(l["url"])}">{esc(l["declared"] if isinstance(l["declared"],str) else ", ".join(l["declared"]))}</a> ({esc(l["basis"])})' if l else "Not recorded"
             body+=f'<div><dt>{esc(slot.title())}</dt><dd>{value}</dd></div>'
         body+='</dl>'
     if r['details'].get('license_review'):
-        body+='<h2>License review notes</h2><ul>'+''.join('<li><strong>'+esc(slot.title())+':</strong> '+esc(review['reason'])+' '+''.join(f'<a href="{esc(url)}">Source {i+1}</a> ' for i,url in enumerate(review['evidence_urls']))+'</li>' for slot,review in r['details']['license_review'].items())+'</ul>'
+        body+='<h2>License review notes</h2><ul>'+''.join('<li><strong>'+esc(slot.title())+':</strong> '+esc(review['reason'])+' '+''.join(f'<a href="{safe_href(url)}">Source {i+1}</a> ' for i,url in enumerate(review['evidence_urls']))+'</li>' for slot,review in r['details']['license_review'].items())+'</ul>'
     body+=resource_profile_html(r)
     details=[(k,v) for k,v in r["details"].items() if k not in {*PROFILE_KEYS.values(),'arxiv_snapshot','license_review'} and v is not None and v!=[] and v!=""]
     if details:
@@ -113,11 +119,11 @@ def resource_body(record, lookup, incoming=None):
         body+='<h2>Connected assets</h2><p>These links come from reviewed resource records. A documentation link does not imply a training-data or evaluation dependency.</p><ul>'
         for rel in backlinks:
             source=lookup[rel['source_id']]
-            body+=f'<li>{esc(labels.get(rel["type"],rel["type"].replace("_"," ")))}: <a href="{resource_path(source)}">{esc(source["name"])}</a> · {esc(KINDS[source["kind"]])} · <a href="{esc(rel["evidence_url"])}">relationship evidence</a></li>'
+            body+=f'<li>{esc(labels.get(rel["type"],rel["type"].replace("_"," ")))}: <a href="{resource_path(source)}">{esc(source["name"])}</a> · {esc(KINDS[source["kind"]])} · <a href="{safe_href(rel["evidence_url"])}">relationship evidence</a></li>'
         body+='</ul>'
     body+='<h2>Primary evidence and verification</h2><p>Source retrieval is separate from experiment reproduction. Use the original publication or publisher page when citing claims about the resource.</p><ol class="source-list">'
     for ev in r["evidence"]:
-        body+=f'<li><a href="{esc(ev["url"])}">{esc(ev["method"].replace("_"," "))}</a><p>Retrieved {esc(ev["retrieved_at"])}. Supports: {esc(", ".join(ev["supports"]))}.</p><details><summary>Content fingerprint</summary><code>{esc(ev["sha256"])}</code></details></li>'
+        body+=f'<li><a href="{safe_href(ev["url"])}">{esc(ev["method"].replace("_"," "))}</a><p>Retrieved {esc(ev["retrieved_at"])}. Supports: {esc(", ".join(ev["supports"]))}.</p><details><summary>Content fingerprint</summary><code>{esc(ev["sha256"])}</code></details></li>'
     body+='</ol><h2>Suggest a correction</h2><p><a href="'+REPO+'/issues/new?template=resource.yml">Open a source-backed correction</a>. Include this record ID and the original source. Read our <a href="/about/">editorial policy</a> and <a href="/coverage/">coverage boundaries</a>.</p>'
     return body
 
@@ -180,7 +186,7 @@ def build_search_pages(destination, rows, coverage, root):
         if decision['id'] in lookup:raise ValueError('An excluded record is present in the active catalog')
         path=resource_path(decision)
         evidence=decision['evidence']
-        body=f'<div class="eyebrow">SCOPE REVIEW</div><h1>{esc(decision["name"])}</h1><p class="answer-lead">This bibliographic record is outside the active AwesomeCUA catalog after a primary-abstract scope review.</p><p>{esc(decision["reason"])}</p><p>The decision concerns relevance to computer-use agents, not research quality. Original metadata remains available in the archive.</p><div class="page-actions"><a class="button primary" href="{esc(decision["url"])}">Original paper ↗</a><a class="button secondary" href="/coverage/">Catalog coverage</a></div><dl class="page-facts"><div><dt>Record ID</dt><dd>{esc(decision["id"])}</dd></div><div><dt>Scope reviewed</dt><dd>{esc(decision["reviewed_at"])}</dd></div><div><dt>Source retrieved</dt><dd>{esc(evidence["retrieved_at"])}</dd></div></dl><p><a href="{esc(evidence["url"])}">Primary abstract evidence</a> · <a href="/downloads/exclusions.json">Scope-decision ledger</a> · <a href="/downloads/arxiv-archive.jsonl">Raw metadata archive</a></p><details><summary>Source content fingerprint</summary><code>{esc(evidence["sha256"])}</code></details><p>Decisions can be revised through a <a href="'+REPO+'/issues/new?template=resource.yml">source-backed correction</a>.</p>'
+        body=f'<div class="eyebrow">SCOPE REVIEW</div><h1>{esc(decision["name"])}</h1><p class="answer-lead">This bibliographic record is outside the active AwesomeCUA catalog after a primary-abstract scope review.</p><p>{esc(decision["reason"])}</p><p>The decision concerns relevance to computer-use agents, not research quality. Original metadata remains available in the archive.</p><div class="page-actions"><a class="button primary" href="{safe_href(decision["url"])}">Original paper ↗</a><a class="button secondary" href="/coverage/">Catalog coverage</a></div><dl class="page-facts"><div><dt>Record ID</dt><dd>{esc(decision["id"])}</dd></div><div><dt>Scope reviewed</dt><dd>{esc(decision["reviewed_at"])}</dd></div><div><dt>Source retrieved</dt><dd>{esc(evidence["retrieved_at"])}</dd></div></dl><p><a href="{safe_href(evidence["url"])}">Primary abstract evidence</a> · <a href="/downloads/exclusions.json">Scope-decision ledger</a> · <a href="/downloads/arxiv-archive.jsonl">Raw metadata archive</a></p><details><summary>Source content fingerprint</summary><code>{esc(evidence["sha256"])}</code></details><p>Decisions can be revised through a <a href="'+REPO+'/issues/new?template=resource.yml">source-backed correction</a>.</p>'
         emit(path,page(decision['name'],'A source-backed catalog scope decision; original bibliographic metadata remains preserved.',path,body,index=False),index=False,excluded=True)
         (destination/path.lstrip('/')/'index.md').write_text('\n'.join(['# '+decision['name'],'','Status: excluded from the active CUA catalog after scope review.','',decision['reason'],'','Original paper: '+decision['url'],'Evidence: '+evidence['url'],'Reviewed: '+decision['reviewed_at'],'','Scope decisions: '+SITE+'/downloads/exclusions.json','Raw metadata archive: '+SITE+'/downloads/arxiv-archive.jsonl'])+'\n')
     category_links='<ul class="category-directory">'+''.join(f'<li><a href="/categories/{kind}/">{esc(name)}</a><span>{sum(r["kind"]==kind for r in rows):,} resources</span></li>' for kind,name in KINDS.items())+'</ul>'
@@ -208,13 +214,13 @@ def build_search_pages(destination, rows, coverage, root):
         body+=f'<article><h2><a href="{resource_path(paper)}">{esc(paper["name"])}</a></h2><p>{esc(description(paper))}</p><ul>'
         for rel in incoming[paper['id']]:
             source=lookup[rel['source_id']]
-            body+=f'<li><a href="{resource_path(source)}">{esc(source["name"])}</a> — {esc(KINDS[source["kind"]])} · <a href="{esc(rel["evidence_url"])}">source evidence</a></li>'
+            body+=f'<li><a href="{resource_path(source)}">{esc(source["name"])}</a> — {esc(KINDS[source["kind"]])} · <a href="{safe_href(rel["evidence_url"])}">source evidence</a></li>'
         body+='</ul></article>'
     body+='</div><p><a href="/downloads/relationships.json">Download reviewed relationships as JSON</a> · <a href="/about/">Editorial policy</a></p>'
     emit('/connections/',page('Computer-use papers, code, and datasets','Trace computer-use agent papers to documented implementations, GUI benchmarks, and training datasets using reviewed primary-source relationships.','/connections/',body))
     edges=[{'source_id':r['id'],'source_name':r['name'],'source_kind':r['kind'],**rel} for r in rows for rel in r['relations']]
     (destination/'downloads/relationships.json').write_text(json.dumps({'relation_count':len(edges),'semantics':'Reviewed semantic links only. Documentation does not establish training or evaluation dependency.','relations':edges},ensure_ascii=False,indent=2)+'\n')
-    sources=''.join(f'<tr><td><a href="{esc(s["url"])}">{esc(s["name"])}</a></td><td>{s["discovered"]}</td><td>{s["indexed"]}</td><td>{s["curated"]}</td><td>{s["excluded"]}</td></tr>' for s in coverage['sources'])
+    sources=''.join(f'<tr><td><a href="{safe_href(s["url"])}">{esc(s["name"])}</a></td><td>{s["discovered"]}</td><td>{s["indexed"]}</td><td>{s["curated"]}</td><td>{s["excluded"]}</td></tr>' for s in coverage['sources'])
     body=f'<h1>Coverage and verification ledger</h1><p class="answer-lead">{len(rows):,} resource records: {len(reviewed):,} curated and {coverage["metadata_only_records"]:,} with bibliographic metadata verification only.</p><p>Evidence snapshot: {esc(latest)}. Resource types can refer to different parts of the same project. Source populations overlap and cannot be summed into a global field size.</p><h2>Discovery-source coverage</h2><div class="table-scroll"><table class="coverage-table"><thead><tr><th>Source</th><th>Found</th><th>Indexed</th><th>Curated</th><th>Excluded</th></tr></thead><tbody>{sources}</tbody></table></div><h2>Explicit scope exclusions</h2><p>{coverage["excluded_records"]} records are excluded after individual scope review. The original {coverage["arxiv_archive_records"]:,}-record arXiv metadata archive is retained. <a href="/downloads/exclusions.json">Inspect decisions and source evidence</a> · <a href="/downloads/arxiv-archive.jsonl">Download the raw archive</a>.</p><p>Unresolved-candidate counts exclude these completed scope decisions. A changed or unconfirmed exclusion returns to review; it cannot silently suppress a resource.</p><h2>What remains unverified?</h2><p>Most bibliography entries still require relevance review. Closed datasets, unpublished systems, and regional resources are not exhaustively represented. Asset sizes, model licenses, availability, and experiment protocols need continuing curation. Global completeness has not been established.</p><p>{coverage["unindexed_candidates"]} discovered identifiers remain unresolved, excluding applied scope decisions.</p><p><a href="/downloads/coverage.json">Download the complete coverage ledger</a> · <a href="/about/">Editorial policy</a></p>'
     emit('/coverage/',page('Coverage and verification ledger','Inspect AwesomeCUA source populations, editorial review states, bibliographic verification, unresolved identifiers, and explicit coverage gaps.','/coverage/',body))
     for language,path,title,desc in [
@@ -230,7 +236,7 @@ def build_search_pages(destination, rows, coverage, root):
     body+=f'<h2>Current published catalog</h2><dl class="page-facts"><div><dt>Reviewed papers and surveys</dt><dd>{len(papers):,}</dd></div><div><dt>Other reviewed resources</dt><dd>{len(reviewed)-len(papers):,}</dd></div><div><dt>Total resource records</dt><dd>{len(rows):,}</dd></div></dl><p>These counts include editorial work completed after the scan below. <a href="/papers/">Browse reviewed research</a> or <a href="/coverage/">inspect full coverage</a>.</p>'
     if scan:
         body+=f'<h2>Latest completed scan</h2><dl class="page-facts"><div><dt>Status</dt><dd>{esc(scan["status"])}</dd></div><div><dt>Started</dt><dd>{esc(scan["started_at"])}</dd></div><div><dt>Finished</dt><dd>{esc(scan["finished_at"])}</dd></div><div><dt>Discovery documents fetched</dt><dd>{scan["source_fetches"]["successful"]} / {scan["source_fetches"]["total"]}</dd></div><div><dt>New paper metadata</dt><dd>{len(scan["new_papers"])}</dd></div><div><dt>New candidate identifiers</dt><dd>{scan["new_candidate_count"]}</dd></div><div><dt>Reviewed papers at scan completion</dt><dd>{scan["after"]["curated_papers"]}</dd></div><div><dt>Pending metadata changes</dt><dd>{scan["pending_metadata_changes"]}</dd></div></dl>'
-        if scan.get('run_url'):body+=f'<p><a href="{esc(scan["run_url"])}">Inspect the workflow run and logs</a></p>'
+        if scan.get('run_url'):body+=f'<p><a href="{safe_href(scan["run_url"])}">Inspect the workflow run and logs</a></p>'
         if scan['warnings']:body+='<h3>Recorded gaps</h3><ul>'+''.join('<li>'+esc(w)+'</li>' for w in scan['warnings'])+'</ul>'
         if scan['new_papers']:
             body+='<h2>New to the bibliography</h2><p>These are newly discovered bibliographic records. Relevance and findings still require editorial review.</p><ul>'+''.join(f'<li><a href="{resource_path(r)}">{esc(r["name"])}</a> · metadata verified</li>' for r in scan['new_papers'][:30])+'</ul>'
@@ -265,8 +271,8 @@ def build_search_pages(destination, rows, coverage, root):
     emit('/data/',page('AwesomeCUA computer-use agent dataset and downloads',desc,'/data/',body,dataset))
     guides=json.loads((root/'data/site-guides.json').read_text())
     for guide in guides:
-        emit('/guides/'+guide['slug']+'/',page(guide['title'],guide['description'],'/guides/'+guide['slug']+'/',guide['body'],{"@type":"Article","headline":guide['title'],"description":guide['description'],"author":{"@id":SITE+'/#organization'}}))
-    body='<h1>Guides to computer-use agents</h1><p class="answer-lead">Practical reading guides with direct answers and primary research references. These guides help distinguish interface grounding, task execution, training data, and evaluation.</p><div class="reading-list">'+''.join(f'<article><h2><a href="/guides/{esc(g["slug"])}/">{esc(g["title"])}</a></h2><p>{esc(g["description"])}</p></article>' for g in guides)+'</div>'
+        emit(guide_path(guide),page(guide['title'],guide['description'],guide_path(guide),guide['body'],{"@type":"Article","headline":guide['title'],"description":guide['description'],"author":{"@id":SITE+'/#organization'}}))
+    body='<h1>Guides to computer-use agents</h1><p class="answer-lead">Practical reading guides with direct answers and primary research references. These guides help distinguish interface grounding, task execution, training data, and evaluation.</p><div class="reading-list">'+''.join(f'<article><h2><a href="{guide_path(g)}">{esc(g["title"])}</a></h2><p>{esc(g["description"])}</p></article>' for g in guides)+'</div>'
     emit('/guides/',page('Computer-use agent guides','Understand computer-use agents, choose GUI-agent benchmarks, and find training datasets with clearly scoped primary-source references.','/guides/',body))
     zh=f'<div class="eyebrow">COMPUTER-USE AGENT 资源指南</div><h1>AwesomeCUA：可追溯的智能体资源目录</h1><p class="answer-lead">连接论文、模型、数据集、评测基准、框架、工具、产品与发布方。每条资源保留一手来源与审阅状态。</p><p>当前有 {len(rows):,} 条资源，{len(reviewed):,} 条经过 AI 辅助编辑审阅。数量以资源为单位，不代表独立项目总数。</p><div class="page-actions"><a class="button primary" href="/?lang=zh#catalog">打开中文搜索目录</a><a class="button secondary" href="/data/">下载数据</a></div><h2>研究与训练</h2><ul><li><a href="/papers/">论文与综述阅读列表</a></li><li><a href="/categories/dataset/">训练数据集</a> · <a href="/compare/datasets/">对比数据规格</a></li><li><a href="/categories/benchmark/">GUI、桌面、网页与手机评测基准</a> · <a href="/compare/benchmarks/">对比评测协议</a></li><li><a href="/categories/model/">模型与权重版本</a></li></ul><h2>产业与工程</h2><ul><li><a href="/categories/agent/">智能体</a></li><li><a href="/categories/framework/">开发与训练框架</a></li><li><a href="/categories/product/">产品</a></li><li><a href="/catalog/">浏览全部分类</a></li></ul><h2>如何理解“已核验”？</h2><p>已审阅条目经过一手来源编辑检查。论文元数据仅核实标题、作者和日期，不代表研究结论或实验已复现。代码、数据、权重与文档许可分别记录，未知信息保留为空。</p><h2>是否已经全球最全？</h2><p>全面覆盖是目标，目前没有足够证据证明已达到全球最全。请查看<a href="/coverage/">覆盖台账</a>和<a href="/about/">编辑方法</a>了解边界与缺口。</p>'
     emit('/zh/',page('AwesomeCUA 中文主页：Computer-Use Agent 资源目录','浏览可搜索、可追溯的 Computer-Use Agent 论文、模型、数据集、基准、框架与产品，查看来源证据并下载结构化目录。','/zh/',zh,lang='zh-CN',alternatives=True))

@@ -175,6 +175,15 @@ def validate_records(rows):
     return errors
 
 
+def validate_sources(sources):
+    errors = []
+    for source in sources:
+        parts = urllib.parse.urlsplit(source["homepage"]) if isinstance(source.get("homepage"), str) else None
+        if not parts or parts.scheme != "https" or not parts.netloc:
+            errors.append(f"{source.get('id', '<missing>')}: discovery-source homepage must be an https URL")
+    return errors
+
+
 def coverage(rows, pending, scope_decisions):
     ids = {r["id"] for r in rows}
     by_id = {r["id"]: r for r in rows}
@@ -591,7 +600,7 @@ def validate(args):
     rows = read_jsonl(DATA / "catalog.jsonl")
     if not rows:
         raise ValueError("No catalog. Run build first.")
-    errors = validate_records(rows)
+    errors = validate_records(rows) + validate_sources(read_json(DATA / "sources.json", []))
     # Full published JSON Schema validation is part of the release/CI gate.
     import jsonschema
     validator = jsonschema.Draft202012Validator(read_json(ROOT / "schemas" / "resource.schema.json"), format_checker=jsonschema.FormatChecker())

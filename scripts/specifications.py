@@ -57,6 +57,14 @@ def esc(value):
     return html.escape(str(value), quote=True)
 
 
+def safe_href(value):
+    # Data-supplied links render on the site origin; any other scheme (javascript:, data:) would run there.
+    parts = urllib.parse.urlsplit(str(value or ''))
+    if parts.scheme not in {'https', 'http'} or not parts.netloc:
+        raise ValueError(f'Refusing to render a non-web link: {value!r}')
+    return esc(value)
+
+
 def words(values):
     return ', '.join(values) if values else 'Not recorded'
 
@@ -69,7 +77,7 @@ def count_text(count):
 def counts_html(profile):
     if not profile['counts']:
         return '<span class="unknown-value">Not recorded</span>'
-    return '<ul class="measure-list">' + ''.join(f'<li>{esc(count_text(count))} <a href="{esc(count.get("reference_url",count["evidence_url"]))}" aria-label="Source for {esc(count["population"])}">source</a></li>' for count in profile['counts']) + '</ul>'
+    return '<ul class="measure-list">' + ''.join(f'<li>{esc(count_text(count))} <a href="{safe_href(count.get("reference_url",count["evidence_url"]))}" aria-label="Source for {esc(count["population"])}">source</a></li>' for count in profile['counts']) + '</ul>'
 
 
 def selected_profiles(rows, kind):
@@ -134,9 +142,9 @@ def comparison_body(rows, kind, link_for):
             body += '<p>' + esc(words(profile['focus'])) + '<br>' + esc(profile['setting']) + '</p></td><td><strong>Observe</strong><br>' + esc(words(profile['observations'])) + '<br><strong>Act / output</strong><br>' + esc(words(profile['actions'])) + '</td><td>' + esc(profile['evaluation'] or 'Not recorded') + '</td>'
         else:
             license = row['licenses']['data']
-            declaration = f'<a href="{esc(license["url"])}">{esc(words(license["declared"]) if isinstance(license["declared"],list) else license["declared"])}</a>' if license else 'Not recorded'
+            declaration = f'<a href="{safe_href(license["url"])}">{esc(words(license["declared"]) if isinstance(license["declared"],list) else license["declared"])}</a>' if license else 'Not recorded'
             body += '<p>' + esc(words(profile['supervision'])) + '</p></td><td>' + esc(words(profile['modalities'])) + '<br><strong>Format</strong><br>' + esc(words(profile['formats'])) + '</td><td>' + esc(words(profile['splits'])) + '<br><strong>Data license</strong><br>' + declaration + '</td>'
-        body += '<td>' + counts_html(profile) + '<details><summary>Scope and source notes</summary><p>' + esc(profile['notes']) + '</p><ul>' + ''.join(f'<li><a href="{esc(url)}">Primary evidence {index+1}</a></li>' for index,url in enumerate(profile['evidence_urls'])) + '</ul></details></td></tr>'
+        body += '<td>' + counts_html(profile) + '<details><summary>Scope and source notes</summary><p>' + esc(profile['notes']) + '</p><ul>' + ''.join(f'<li><a href="{safe_href(url)}">Primary evidence {index+1}</a></li>' for index,url in enumerate(profile['evidence_urls'])) + '</ul></details></td></tr>'
     body += '</tbody></table></div><p>Use each resource page for source timestamps, content fingerprints, and separate code, data, and weight licenses.</p>'
     body += f'<p><a href="/downloads/{plural}-profiles.json">Download these profiles as JSON</a> · <a href="/data/">Complete catalog and SQLite</a> · <a href="/compare/{"datasets" if kind=="benchmark" else "benchmarks"}/">Compare {"datasets" if kind=="benchmark" else "benchmarks"}</a></p><script type="module" src="/compare.js"></script>'
     return body
