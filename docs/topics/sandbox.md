@@ -10,9 +10,9 @@
 
 All entries in this section: android.
 
-| Resource | Paper | License | Description | Evidence |
-| --- | --- | --- | --- | --- |
-| [AppSim-Bench](https://github.com/Acrab-Agentic-Labs/AppSim) | [2609.07712](https://arxiv.org/abs/2609.07712) (2026) | — | Simulated mobile applications and evaluation tooling for reproducible GUI-agent tasks with controlled application state. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/Acrab-Agentic-Labs/AppSim/HEAD/README.md) |
+| Resource | Paper | Scale | License | Description | Evidence |
+| --- | --- | --- | --- | --- | --- |
+| [AppSim-Bench](https://github.com/Acrab-Agentic-Labs/AppSim) | [2609.07712](https://arxiv.org/abs/2609.07712) (2026) | [557 tasks](https://arxiv.org/abs/2609.07712) · [17 applications](https://raw.githubusercontent.com/Acrab-Agentic-Labs/AppSim/HEAD/README.md) | — | Simulated mobile applications and evaluation tooling for reproducible GUI-agent tasks with controlled application state. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/Acrab-Agentic-Labs/AppSim/HEAD/README.md) |
 
 ## Frameworks
 

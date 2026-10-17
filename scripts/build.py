@@ -12,7 +12,7 @@ import sqlite3
 import urllib.parse
 
 from catalog import ROOT, DATA, KINDS, ENVIRONMENTS, STATUSES, canonical, editorial_identity, publication_identity, read_json, read_jsonl, write_json, write_jsonl
-from specifications import validate_profiles
+from specifications import PREFIXES, PROFILE_KEYS, validate_profiles
 from scope_review import resolve_exclusions, scope_report
 from arxiv_metadata import validate_snapshot
 from publication_metadata import (alias_owner_errors, attach_publications, duplicate_publication_errors, publication_aliases,
@@ -317,7 +317,10 @@ KIND_COLUMNS = {
     "survey": (("Date", "Resource", "Environments", "Description"), "*Date* retains the arXiv first-submission date, or the publisher-only record's publication date at its known precision; newest first. Titles link primary sources; receipts are in `data/catalog.jsonl`."),
     "product": (("Resource", "Publisher", "Environments", "Description", "Evidence"), "*Publisher* is a reviewed `published_by` relation. " + EVIDENCE_NOTE),
     "company": (("Resource", "Environments", "Description", "Evidence"), EVIDENCE_NOTE),
+    "benchmark": (("Resource", "Environments", "Paper", "Scale", "License", "Description", "Evidence"),
+        "*Scale* is the first publisher-reported or computed count per unit from the reviewed profile, linked to its source; subsets and units are never combined. *Paper* lists reviewed `introduced_by`/`documented_by` arXiv relations with the arXiv submission year. *License* lists publisher declarations by scope. " + EVIDENCE_NOTE),
 }
+KIND_COLUMNS["dataset"] = KIND_COLUMNS["benchmark"]
 
 
 # Category-page sections; a resource spanning several families is cross-platform by definition.
@@ -334,9 +337,18 @@ def table_row(r, columns, by_id):
     primary = next(e for e in r["evidence"] if e["method"] == "editorial_primary_review")
     cells = {"Resource": f"[{md(r['name'])}]({r['url']})", "Environments": ", ".join(r["environments"]),
         "Paper": paper_cell(r, by_id), "License": license_cell(r), "Publisher": publisher_cell(r, by_id),
-        "Date": nowrap(record_date_text(r) or "—"), "Description": md(r["summary"]),
+        "Date": nowrap(record_date_text(r) or "—"), "Description": md(r["summary"]), "Scale": scale_cell(r),
         "Evidence": f"[✓ {nowrap(primary['retrieved_at'][:10])}]({primary['url']})"}
     return "| " + " | ".join(cells[column] for column in columns) + " |"
+
+
+def scale_cell(r):
+    """First count per unit, keeping its precision qualifier and linking its own source; units are never converted or summed."""
+    profile = (r.get("details") or {}).get(PROFILE_KEYS.get(r.get("kind"), "")) or {}
+    first = {}
+    for count in profile.get("counts", []):
+        first.setdefault(count["unit"], count)
+    return " · ".join(f"[{PREFIXES[c['qualifier']]}{c['value']:,} {md(c['unit'])}]({c.get('reference_url') or c['evidence_url']})" for c in first.values()) or "—"
 
 
 def nowrap(date):

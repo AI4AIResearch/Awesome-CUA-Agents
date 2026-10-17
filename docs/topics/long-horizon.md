@@ -8,10 +8,10 @@
 
 ## Benchmarks
 
-| Resource | Environments | Paper | License | Description | Evidence |
-| --- | --- | --- | --- | --- | --- |
-| [MMInA](https://github.com/shulin16/MMInA) | web | [2404.09992](https://arxiv.org/abs/2404.09992) (2024) | — | Multihop multimodal internet navigation tasks. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/shulin16/MMInA/HEAD/README.md) |
-| [OS-Map](https://github.com/OS-Copilot/OS-Map) | desktop, linux | [2507.19132](https://arxiv.org/abs/2507.19132) (2025) | code MIT | An OSWorld-derived desktop benchmark with an Ubuntu virtual-machine environment and expanded task configurations for measuring breadth and depth of computer interaction. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/OS-Copilot/OS-Map/HEAD/README.md) |
+| Resource | Environments | Paper | Scale | License | Description | Evidence |
+| --- | --- | --- | --- | --- | --- | --- |
+| [MMInA](https://github.com/shulin16/MMInA) | web | [2404.09992](https://arxiv.org/abs/2404.09992) (2024) | — | — | Multihop multimodal internet navigation tasks. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/shulin16/MMInA/HEAD/README.md) |
+| [OS-Map](https://github.com/OS-Copilot/OS-Map) | desktop, linux | [2507.19132](https://arxiv.org/abs/2507.19132) (2025) | [416 category/task references](https://raw.githubusercontent.com/OS-Copilot/OS-Map/HEAD/evaluation_examples/all.json) | code MIT | An OSWorld-derived desktop benchmark with an Ubuntu virtual-machine environment and expanded task configurations for measuring breadth and depth of computer interaction. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/OS-Copilot/OS-Map/HEAD/README.md) |
 
 ## Models
 

@@ -8,10 +8,10 @@
 
 ## Datasets
 
-| Resource | Environments | Paper | License | Description | Evidence |
-| --- | --- | --- | --- | --- | --- |
-| [Aguvis stage 2 trajectory data](https://huggingface.co/datasets/xlangai/aguvis-stage2) | cross-platform | [2412.04454](https://arxiv.org/abs/2412.04454) (2024) | data apache-2.0 | The second-stage Aguvis collection of interface trajectories for learning action sequences, planning and reasoning after grounding pretraining. | [✓ 2026‑10‑17](https://huggingface.co/datasets/xlangai/aguvis-stage2/raw/main/README.md) |
-| [Plan-and-Act training data](https://huggingface.co/datasets/xTRam1/plan-and-act-data) | web | [2503.09572](https://arxiv.org/abs/2503.09572) (2025) | data mit | Planner and action-executor training examples for WebArena-Lite and WebVoyager, with model-specific processed files and raw trajectory annotations. | [✓ 2026‑10‑17](https://huggingface.co/datasets/xTRam1/plan-and-act-data/raw/main/README.md) |
+| Resource | Environments | Paper | Scale | License | Description | Evidence |
+| --- | --- | --- | --- | --- | --- | --- |
+| [Aguvis stage 2 trajectory data](https://huggingface.co/datasets/xlangai/aguvis-stage2) | cross-platform | [2412.04454](https://arxiv.org/abs/2412.04454) (2024) | — | data apache-2.0 | The second-stage Aguvis collection of interface trajectories for learning action sequences, planning and reasoning after grounding pretraining. | [✓ 2026‑10‑17](https://huggingface.co/datasets/xlangai/aguvis-stage2/raw/main/README.md) |
+| [Plan-and-Act training data](https://huggingface.co/datasets/xTRam1/plan-and-act-data) | web | [2503.09572](https://arxiv.org/abs/2503.09572) (2025) | — | data mit | Planner and action-executor training examples for WebArena-Lite and WebVoyager, with model-specific processed files and raw trajectory annotations. | [✓ 2026‑10‑17](https://huggingface.co/datasets/xTRam1/plan-and-act-data/raw/main/README.md) |
 
 ## Models
 
