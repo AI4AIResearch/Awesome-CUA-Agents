@@ -3,7 +3,8 @@ from pathlib import Path
 
 
 MANAGED_ROOTS = ('resources', 'categories', 'guides')
-MANAGED_FILES = frozenset({'index.html', 'index.md', 'record.json', 'citation.bib', 'citation.csl.json'})
+MANAGED_FILES = frozenset({'index.html', 'index.md', 'record.json', 'citation.bib', 'citation.csl.json',
+                           'publication-citation.bib', 'publication-citation.csl.json'})
 
 
 def reconcile_generated_pages(directory, pages):

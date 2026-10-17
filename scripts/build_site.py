@@ -14,6 +14,7 @@ from search_pages import build_search_pages, resource_path
 from export_rag import build_exports
 from export_citations import build_citation_exports
 from site_files import reconcile_generated_pages
+from publication_metadata import record_date_parts, record_date_text, publication_search_text
 
 
 def version_script_imports(destination):
@@ -39,6 +40,9 @@ def build_site(output=None):
     version_script_imports(destination)
     (destination/'data').mkdir(exist_ok=True)
     (destination/'downloads').mkdir(exist_ok=True)
+    (destination/'schemas').mkdir(exist_ok=True)
+    for contract in ('resource.schema.json','scope-decision.schema.json','publication-observation.schema.json'):
+        shutil.copy2(ROOT/'schemas'/contract,destination/'schemas'/contract)
     keys=['id','name','kind','url','aliases','environments','topics','summary','review_status','published_at','authors','scope','last_verified_at']
     related={row['id']:set() for row in rows}
     incoming={row['id']:[] for row in rows}
@@ -50,6 +54,9 @@ def build_site(output=None):
     index={'coverage':{k:coverage[k] for k in ['as_of_utc','total_records','curated_records','metadata_only_records','by_kind','unindexed_candidates','sources','excluded_records','arxiv_archive_records']},'records':[{**{k:row[k] for k in keys},'page_url':resource_path(row),
         'paper_version':row.get('details',{}).get('arxiv_snapshot',{}).get('version'),
         'paper_source_url':row.get('details',{}).get('arxiv_snapshot',{}).get('versioned_url'),
+        'paper_date':record_date_text(row),
+        'paper_date_precision':{1:'year',2:'month',3:'day'}.get(len(record_date_parts(row) or [])),
+        'publication_search_text':publication_search_text(row),
         'related_count':len(related[row['id']]),'incoming_relations':incoming[row['id']]} for row in rows]}
     for filename,payload in [('index.json',index),('records.json',rows)]:
         (destination/'data'/filename).write_text(json.dumps(payload,ensure_ascii=False,separators=(',',':'))+'\n')
@@ -57,6 +64,7 @@ def build_site(output=None):
         shutil.copy2(ROOT/'data'/name,destination/'downloads'/name)
     shutil.copy2(ROOT/'data/exclusion-status.json',destination/'downloads/exclusions.json')
     shutil.copy2(ROOT/'data/papers.jsonl',destination/'downloads/arxiv-archive.jsonl')
+    (destination/'downloads/publications.jsonl').write_bytes((ROOT/'data/publications.jsonl').read_bytes() if (ROOT/'data/publications.jsonl').exists() else b'')
     write_sqlite(rows,destination/'downloads'/'catalog.sqlite')
     build_exports(rows,destination/'downloads',(ROOT/'data/catalog.jsonl').read_bytes())
     build_citation_exports(rows,destination/'downloads',(ROOT/'data/catalog.jsonl').read_bytes())

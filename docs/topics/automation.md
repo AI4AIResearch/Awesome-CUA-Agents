@@ -2,9 +2,9 @@
 
 [Home](../../README.md) · [All topics](../topics.md) · [Full arXiv bibliography](../papers.md)
 
-65 source-reviewed resources tagged `automation`. Curated metadata, not a performance ranking; unknown facts are shown as —.
+69 source-reviewed resources tagged `automation`. Curated metadata, not a performance ranking; unknown facts are shown as —.
 
-**Contents:** [Models (1)](#models) · [Agents (3)](#agents) · [Frameworks (3)](#frameworks) · [Tools (7)](#tools) · [Infrastructure (5)](#infrastructure) · [Papers (46)](#papers)
+**Contents:** [Models (1)](#models) · [Agents (3)](#agents) · [Frameworks (3)](#frameworks) · [Tools (7)](#tools) · [Infrastructure (5)](#infrastructure) · [Papers (50)](#papers)
 
 ## Models
 
@@ -102,3 +102,7 @@ All entries in this section: desktop.
 | 2023‑10‑23 | [InstructExcel: A Benchmark for Natural Language Instruction in Excel](https://arxiv.org/abs/2310.14495) | unspecified | Introduces InstructExcel, a benchmark for generating Excel OfficeScripts from natural-language requests, built using scripts recorded from user actions and a collection of existing spreadsheets. |
 | 2023‑04‑14 | [DroidBot-GPT: GPT-powered UI Automation for Android](https://arxiv.org/abs/2304.07061) | android | Transforms Android UI states and available actions into language prompts for an LLM to choose and execute task steps. |
 | 2022‑02‑16 | [A data-driven approach for learning to control computers](https://arxiv.org/abs/2202.08137) | web | Combines reinforcement learning with behavioral priors from human interactions to learn computer control through keyboard and mouse actions. |
+| 2018 | [Rousillon: Scraping Distributed Hierarchical Web Data](https://doi.org/10.1145/3242587.3242661) | web | Introduces Rousillon, which generalizes a demonstration of collecting one hierarchical data row into a browser-automation program that traverses related pages. The paper develops relation-selection and generalization methods and evaluates users building such scripts. |
+| 2010‑04 | [GUI Testing Using Computer Vision](https://doi.org/10.1145/1753326.1753555) | unspecified | Presents visual GUI test scripts that use images to specify actions and expected screen feedback. Recording both input events and screenshots can generate tests from demonstrations, supporting unit, regression, and test-driven workflows. |
+| 2009‑10 | [Sikuli: Using GUI screenshots for search and automation](https://doi.org/10.1145/1622176.1622213) | unspecified | Introduces screenshot-based GUI search and visual scripting, using image patterns to locate interface targets and direct mouse and keyboard events. It evaluates screenshot queries and demonstrates automation and interactive-help tasks. |
+| 1991 | [Eager: Programming Repetitive Tasks by Example](https://acypher.com/Publications/CHI91/EagerCHI.html) | desktop | Describes Eager, which detects repeated HyperCard interactions, generalizes them into loops, and previews predicted actions by highlighting interface objects. Users can then ask it to execute the inferred repetitive task. |

@@ -2,9 +2,9 @@
 
 [Home](../../README.md) · [All topics](../topics.md) · [Full arXiv bibliography](../papers.md)
 
-187 source-reviewed resources tagged `mobile-navigation`. Curated metadata, not a performance ranking; unknown facts are shown as —.
+190 source-reviewed resources tagged `mobile-navigation`. Curated metadata, not a performance ranking; unknown facts are shown as —.
 
-**Contents:** [Benchmarks (10)](#benchmarks) · [Datasets (11)](#datasets) · [Models (14)](#models) · [Agents (12)](#agents) · [Frameworks (7)](#frameworks) · [Tools (2)](#tools) · [Surveys (1)](#surveys) · [Papers (130)](#papers)
+**Contents:** [Benchmarks (10)](#benchmarks) · [Datasets (11)](#datasets) · [Models (14)](#models) · [Agents (12)](#agents) · [Frameworks (7)](#frameworks) · [Tools (2)](#tools) · [Surveys (1)](#surveys) · [Papers (133)](#papers)
 
 ## Benchmarks
 
@@ -234,3 +234,6 @@ All entries in this section: unspecified.
 | 2022‑02‑04 | [A Dataset for Interactive Vision-Language Navigation with Unknown Command Feasibility](https://arxiv.org/abs/2202.02312) | unspecified | Introduces MoTIF mobile-app interactions with feasible and infeasible commands, feasibility explanations, and follow-up questions for ambiguous requests. |
 | 2020‑05‑07 | [Mapping Natural Language Instructions to Mobile UI Action Sequences](https://arxiv.org/abs/2005.03776) | unspecified | Introduces PIXELHELP for predicting mobile UI action sequences from instructions, together with action-phrase annotations and synthetic UI action descriptions for training. Separate Transformers extract instruction steps and ground object descriptions using interface content and screen position. |
 | 2019‑08‑30 | [Interactive Task and Concept Learning from Natural Language Instructions and GUI Demonstrations](https://arxiv.org/abs/1909.00031) | unspecified | Introduces PUMICE, an agent that learns mobile-app procedures and conditional concepts through natural-language conversation and GUI demonstrations, recursively resolving ambiguous instructions with users. |
+| 2018‑06 | [Kite: Building Conversational Bots from Mobile Apps](https://doi.org/10.1145/3210240.3210339) | android | Derives task graphs from demonstrated Android app interactions and layers a conversational question-answer interface over those graphs. The evaluation examines task-model extraction and developer use of the resulting bot templates. |
+| 2018 | [APPINITE: A Multi-Modal Interface for Specifying Data Descriptions in Programming by Demonstration Using Natural Language Instructions](https://ieeexplore.ieee.org/document/8506506) | android | Introduces APPINITE, a conversational interface for specifying the intended targets of demonstrated Android actions. It constructs semantic UI representations and uses an on-screen overlay to preview and refine executable data descriptions. |
+| 2017 | [SUGILITE: Creating Multimodal Smartphone Automation by Demonstration](https://doi.org/10.1145/3025453.3025483) | android | Introduces SUGILITE, which combines spoken instructions, demonstrated Android actions, and UI hierarchies to generate reusable automation scripts. Its interface includes context checking and repairs for unfamiliar situations and changing app interfaces. |

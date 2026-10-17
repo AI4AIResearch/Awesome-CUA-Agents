@@ -2,9 +2,9 @@
 
 [Home](../../README.md) · [All topics](../topics.md) · [Full arXiv bibliography](../papers.md)
 
-274 source-reviewed resources tagged `grounding`. Curated metadata, not a performance ranking; unknown facts are shown as —.
+277 source-reviewed resources tagged `grounding`. Curated metadata, not a performance ranking; unknown facts are shown as —.
 
-**Contents:** [Benchmarks (9)](#benchmarks) · [Datasets (29)](#datasets) · [Models (65)](#models) · [Agents (2)](#agents) · [Frameworks (6)](#frameworks) · [Tools (3)](#tools) · [Products (1)](#products) · [Papers (159)](#papers)
+**Contents:** [Benchmarks (9)](#benchmarks) · [Datasets (29)](#datasets) · [Models (65)](#models) · [Agents (2)](#agents) · [Frameworks (6)](#frameworks) · [Tools (3)](#tools) · [Products (1)](#products) · [Papers (162)](#papers)
 
 ## Benchmarks
 
@@ -321,3 +321,6 @@ All entries in this section: web.
 | 2020‑08‑12 | [Object Detection for Graphical User Interface: Old Fashioned or Deep Learning or a Combination?](https://arxiv.org/abs/2008.05132) | unspecified | Compares seven traditional and learned GUI element detectors on more than 50,000 interface images. The analysis motivates a coarse-to-fine non-text detector combined with a learned text detector to address GUI-specific localization requirements. |
 | 2020‑05‑07 | [Mapping Natural Language Instructions to Mobile UI Action Sequences](https://arxiv.org/abs/2005.03776) | unspecified | Introduces PIXELHELP for predicting mobile UI action sequences from instructions, together with action-phrase annotations and synthetic UI action descriptions for training. Separate Transformers extract instruction steps and ground object descriptions using interface content and screen position. |
 | 2018‑08‑28 | [Mapping Natural Language Commands to Web Elements](https://arxiv.org/abs/1808.09132) | web | Defines language grounding on webpages as choosing the UI element targeted by a natural-language command. A collection of more than 50,000 commands and three baseline models study functional references, relationships between elements, and visual position cues. |
+| 2018 | [APPINITE: A Multi-Modal Interface for Specifying Data Descriptions in Programming by Demonstration Using Natural Language Instructions](https://ieeexplore.ieee.org/document/8506506) | android | Introduces APPINITE, a conversational interface for specifying the intended targets of demonstrated Android actions. It constructs semantic UI representations and uses an on-screen overlay to preview and refine executable data descriptions. |
+| 2010‑04 | [GUI Testing Using Computer Vision](https://doi.org/10.1145/1753326.1753555) | unspecified | Presents visual GUI test scripts that use images to specify actions and expected screen feedback. Recording both input events and screenshots can generate tests from demonstrations, supporting unit, regression, and test-driven workflows. |
+| 2009‑10 | [Sikuli: Using GUI screenshots for search and automation](https://doi.org/10.1145/1622176.1622213) | unspecified | Introduces screenshot-based GUI search and visual scripting, using image patterns to locate interface targets and direct mouse and keyboard events. It evaluates screenshot queries and demonstrates automation and interactive-help tasks. |

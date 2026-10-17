@@ -5,6 +5,7 @@ import hashlib
 import json
 from pathlib import Path
 import sys
+from publication_metadata import publication, record_date_text, format_date_parts
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -31,9 +32,17 @@ def documents(records, include_metadata=False):
         if record['environments']:lines.append('Platforms: '+', '.join(record['environments']))
         if record['topics']:lines.append('Topics: '+', '.join(record['topics']))
         if record.get('published_at'):lines.append('Published: '+record['published_at'])
+        elif record_date_text(record):lines.append('Record publication date (recorded precision): '+record_date_text(record))
         if record.get('authors'):lines.append('Authors: '+', '.join(record['authors']))
         if snapshot and snapshot.get('version'):lines.append(f"Recorded arXiv version: v{snapshot['version']}")
-        specifications={key:value for key,value in record['details'].items() if key!='arxiv_snapshot' and value is not None and value!=[] and value!=''}
+        pub=publication(record)
+        if pub:
+            lines.extend(['', 'Publication edition: '+pub['title'], 'Publication authors: '+', '.join(pub['authors'])])
+            if pub['date_parts']:lines.append('Publication edition date (recorded precision): '+format_date_parts(pub['date_parts']))
+            for key in ('venue','publisher','volume','issue','pages','doi','date_basis','event_dates','notes'):
+                if pub.get(key):lines.append('Publication '+key.replace('_',' ')+': '+pub[key])
+            lines.append('Publication source: '+pub['url'])
+        specifications={key:value for key,value in record['details'].items() if key not in {'arxiv_snapshot','publication'} and value is not None and value!=[] and value!=''}
         if specifications:lines.extend(['','Recorded specifications: '+json.dumps(specifications,ensure_ascii=False,sort_keys=True)])
         if record.get('notes'):lines.extend(['',record['notes']])
         if record['review_status']=='metadata_verified':
@@ -46,7 +55,7 @@ def documents(records, include_metadata=False):
             'published_at':record['published_at'],'updated_at':record['updated_at'],'identifiers':record['identifiers'],
             'last_verified_at':record['last_verified_at'],
             'environments':record['environments'],'topics':record['topics'],'aliases':record['aliases'],
-            'arxiv_snapshot':snapshot,'details':record['details'],'links':record['links'],'authors':record['authors'],
+            'arxiv_snapshot':snapshot,'publication':pub,'details':record['details'],'links':record['links'],'authors':record['authors'],
             'licenses':record['licenses'],'relations':record['relations'],
             'evidence':record['evidence'],'record_sha256':record_digest(record)}}
 

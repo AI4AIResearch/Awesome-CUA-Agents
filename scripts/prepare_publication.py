@@ -6,7 +6,8 @@ import json
 import shutil
 from search_pages import KINDS, SITE, REPO, resource_path
 from agent_pages import CLONE_COMMAND
-from site_files import reconcile_generated_pages
+from site_files import MANAGED_FILES, reconcile_generated_pages
+from publication_metadata import record_date_text
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -29,11 +30,11 @@ def main():
         for item in old.get('pages',[]):
             if item['path'] in new_paths or not item['path'].startswith(('/resources/','/categories/','/guides/')):continue
             folder=site/item['path'].lstrip('/')
-            for filename in ['index.html','index.md','record.json','citation.bib','citation.csl.json']:(folder/filename).unlink(missing_ok=True)
+            for filename in MANAGED_FILES:(folder/filename).unlink(missing_ok=True)
     for item in incoming['pages']:
         if item['path'].startswith('/resources/'):
             if '..' in Path(item['path']).parts:raise ValueError('Invalid generated resource path')
-            for filename in ['record.json','citation.bib','citation.csl.json']:
+            for filename in MANAGED_FILES-{'index.html','index.md'}:
                 if not (build/item['path'].lstrip('/')/filename).exists():
                     (site/item['path'].lstrip('/')/filename).unlink(missing_ok=True)
     shutil.copytree(build,site,dirs_exist_ok=True)
@@ -48,15 +49,15 @@ def main():
     (site/'.github/ISSUE_TEMPLATE').mkdir(parents=True,exist_ok=True)
     shutil.copy2(ROOT/'.github/ISSUE_TEMPLATE/resource.yml',site/'.github/ISSUE_TEMPLATE/resource.yml')
     (site/'schemas').mkdir(exist_ok=True)
-    for name in ['resource.schema.json','scope-decision.schema.json']:
+    for name in ['resource.schema.json','scope-decision.schema.json','publication-observation.schema.json']:
         shutil.copy2(ROOT/'schemas'/name,site/'schemas'/name)
     report=json.loads((ROOT/'data/coverage.json').read_text())
     rows=[json.loads(l) for l in (ROOT/'data/catalog.jsonl').read_text().splitlines()]
-    readme=['# Awesome Computer-Use Agents · AwesomeCUA','', '**A source-backed catalog of computer-use, GUI, browser, and mobile agents.**','', f'[Website]({SITE}/) · [Research papers]({SITE}/papers/) · [中文指南]({SITE}/zh/) · [GitHub organization](https://github.com/AwesomeCUA)','',f'**{report["total_records"]:,} resource records** · **{report["curated_records"]:,} curated** · **{report["bibliographic_records"]:,} arXiv records** · **{len(report["sources"])} discovery documents**','',f'Evidence snapshot: {report["as_of_utc"]}. Bibliography counts overlap review-state counts. Resources are not independent projects.','', '## What is a computer-use agent?','', 'A computer-use agent observes software interfaces, chooses and executes actions, and checks progress toward a user goal. It may operate a browser, desktop application, or phone, sometimes combining graphical interaction with code and tools. See [the primary-source introduction]('+SITE+'/guides/what-are-computer-use-agents/) and [reviewed research]('+SITE+'/papers/).','', '## Explore the ecosystem','', '| Category | Records | Browse |','| --- | ---: | --- |']
+    readme=['# Awesome Computer-Use Agents · AwesomeCUA','', '**A source-backed catalog of computer-use, GUI, browser, and mobile agents.**','', f'[Website]({SITE}/) · [Research papers]({SITE}/papers/) · [中文指南]({SITE}/zh/) · [GitHub organization](https://github.com/AwesomeCUA)','',f'**{report["total_records"]:,} resource records** · **{report["curated_records"]:,} curated** · **{report["bibliographic_records"]:,} paper and survey records** · **{len(report["sources"])} discovery documents**','',f'Evidence snapshot: {report["as_of_utc"]}. Bibliography counts overlap review-state counts. Resources are not independent projects.','', '## What is a computer-use agent?','', 'A computer-use agent observes software interfaces, chooses and executes actions, and checks progress toward a user goal. It may operate a browser, desktop application, or phone, sometimes combining graphical interaction with code and tools. See [the primary-source introduction]('+SITE+'/guides/what-are-computer-use-agents/) and [reviewed research]('+SITE+'/papers/).','', '## Explore the ecosystem','', '| Category | Records | Browse |','| --- | ---: | --- |']
     readme[6:6]=['## For people, RAG systems, and agents','','```sh',CLONE_COMMAND,'```','',f'[Agent instructions]({SITE}/AGENTS.md) · [Agent and RAG guide]({SITE}/agents/) · [中文使用指南]({SITE}/zh/agents/) · [Complete JSONL]({SITE}/downloads/catalog.jsonl)','']
     for kind,name in KINDS.items():readme.append(f'| {name} | {report["by_kind"].get(kind,0):,} | [Open directory]({SITE}/categories/{kind}/) |')
     readme+=['','Category pages highlight reviewed resources; the [interactive catalog]('+SITE+'/#catalog) and downloads also expose metadata-only records with their review state.','', '## Research reading list','']
-    selected=sorted([r for r in rows if r['kind']=='paper' and r['review_status']=='curated'],key=lambda r:r['published_at'] or '',reverse=True)
+    selected=sorted([r for r in rows if r['kind']=='paper' and r['review_status']=='curated'],key=record_date_text,reverse=True)
     for r in selected[:10]:readme.append(f'- [{r["name"]}]({SITE}{resource_path(r)}) — {r["summary"]} [Original paper]({r["url"]}).')
     readme+=['',f'[All reviewed papers and surveys]({SITE}/papers/). Annotations do not independently reproduce experimental findings.','', '## Papers connected to code and data','',f'[Browse reviewed paper–asset relationships]({SITE}/connections/) · [Download relationships JSON]({SITE}/downloads/relationships.json)','','## Choose a benchmark or training dataset','', f'- [GUI-agent benchmark guide]({SITE}/guides/gui-agent-benchmarks/): distinguish grounding, web tasks, mobile interaction, and desktop execution.', f'- [Training-data guide]({SITE}/guides/gui-agent-training-data/): compare supervision types, platform, splits, count units, and licenses.',f'- [Editorial policy]({SITE}/about/) and [coverage ledger]({SITE}/coverage/): understand what was verified and what is still missing.','', '## Download and reuse the data','',f'- [Full resource catalog — JSONL]({SITE}/downloads/catalog.jsonl)',f'- [Queryable database — SQLite]({SITE}/downloads/catalog.sqlite)',f'- [Data documentation]({SITE}/data/) · [JSON Schema](schemas/resource.schema.json)',f'- [Coverage JSON]({SITE}/downloads/coverage.json) · [Source registry]({SITE}/downloads/sources.json)',f'- [Scope decisions]({SITE}/downloads/exclusions.json) · [Raw arXiv archive, including excluded candidates]({SITE}/downloads/arxiv-archive.jsonl)',f'- [Machine-readable navigation]({SITE}/llms.txt) · [Curated Markdown]({SITE}/llms-full.txt) · [Research feed]({SITE}/feed.xml)','', 'The downloads contain metadata and original catalog annotations, not upstream training data, model weights, or paper PDFs. Code, data, weights, and document licenses remain separate.','', '## Website and contributions','', 'This repository hosts the published static website and metadata snapshot. Complete resource pages and guides work without JavaScript; interactive search adds filtering, pagination, and detail dialogs. No API keys, account, paid backend, or external analytics are required.','', '```bash','python3 -m http.server 4173 --bind 127.0.0.1','```','', 'GitHub Pages deploys the validated static artifact through the publication workflow. The `main` branch keeps an inspectable snapshot. Original code and annotations use [MIT](LICENSE); linked assets retain their own terms.', '',f'[Suggest a resource or correction]({REPO}/issues/new?template=resource.yml). Supply a primary source and explain uncertain facts. Global completeness is a goal, not a verified claim.','']
     readme+=['## Automatic updates','',f'[Source catalog and scan code](https://github.com/reacher-z/Awesome-CUA) · [Scan status]({SITE}/updates/)','', 'Discovery runs at 08:17 and 20:17 America/Los_Angeles. This website rebuilds at 08:47 and 20:47 from validated source data. GitHub scheduling can be delayed; the status page records actual completion times.','', 'New discoveries are bibliographic metadata or candidates until a separate editorial review. The publishing workflow uses repository-scoped GitHub tokens and does not require a stored personal access token.','']

@@ -4,7 +4,7 @@
 
 Curated metadata, not a performance ranking. Each entry links its first-party evidence. Unknown facts are shown as —.
 
-*Paper* lists reviewed `introduced_by`/`documented_by` arXiv relations with the arXiv submission year. *License* lists publisher declarations by scope (code, data, weights, document). *Evidence* links the reviewed first-party snapshot and its retrieval date.
+*Paper* lists reviewed `introduced_by`/`documented_by` relations with the record's year. *License* lists publisher declarations by scope (code, data, weights, document). *Evidence* links the reviewed first-party snapshot and its retrieval date.
 
 **74 resources:** [Web (12)](#web) · [Desktop (12)](#desktop) · [Mobile (23)](#mobile) · [Cross-platform (20)](#cross-platform) · [Unspecified (7)](#unspecified)
 
@@ -71,7 +71,7 @@ All entries in this section: android.
 | [MobileViews](https://huggingface.co/datasets/mllmTeam/MobileViews) | [2409.14337](https://arxiv.org/abs/2409.14337) (2024) | data mit | Mobile screenshot and interface hierarchy dataset. | [✓ 2026‑10‑16](https://huggingface.co/api/datasets/mllmTeam/MobileViews) |
 | [MoTIF](https://github.com/aburns4/MoTIF) | [2202.02312](https://arxiv.org/abs/2202.02312) (2022) | — | Mobile task demonstrations and natural-language instructions. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/aburns4/MoTIF/HEAD/README.md) |
 | [OS-Genesis mobile training data](https://huggingface.co/datasets/OS-Copilot/OS-Genesis-mobile-data) | [2412.19723](https://arxiv.org/abs/2412.19723) (2024) | data mit | Reverse-task-synthesis mobile trajectories released in separate AndroidControl and AndroidWorld training annotation files. | [✓ 2026‑10‑17](https://huggingface.co/datasets/OS-Copilot/OS-Genesis-mobile-data/raw/main/README.md) |
-| [Rico](https://www.interactionmining.org/archive/rico) | — | — | Mobile app screenshots, view hierarchies, and interaction traces for UI research. | [✓ 2026‑10‑16](https://www.interactionmining.org/archive/rico) |
+| [Rico](https://www.interactionmining.org/archive/rico) | [Rico: A Mobile App Dataset for Building Data-Driven Design Applications](https://doi.org/10.1145/3126594.3126651) (2017) | — | Mobile app screenshots, view hierarchies, and interaction traces for UI research. | [✓ 2026‑10‑16](https://www.interactionmining.org/archive/rico) |
 | [Screen2Words](https://github.com/google-research-datasets/screen2words) | — | — | Mobile screen descriptions for language-based screen understanding. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/google-research-datasets/screen2words/HEAD/README.md) |
 | [ScreenQA](https://github.com/google-research-datasets/screen_qa) | [2209.08199](https://arxiv.org/abs/2209.08199) (2022) | — | Question-answering data over mobile interface screenshots. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/google-research-datasets/screen_qa/HEAD/README.md) |
 | [UI-AGILE-Data](https://huggingface.co/datasets/KDEGroup/UI-AGILE-Data) | [2507.22025](https://arxiv.org/abs/2507.22025) (2025) | — | UI-AGILE training annotations and screenshots together with converted GUI-grounding and AndroidControl evaluation files. | [✓ 2026‑10‑17](https://huggingface.co/datasets/KDEGroup/UI-AGILE-Data/raw/main/README.md) |

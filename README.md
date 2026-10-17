@@ -1,7 +1,7 @@
 # Awesome Computer-Use Agents
 
 <!-- BADGES:START -->
-[![Resources](https://img.shields.io/badge/resources-2%2C556-4f46e5)](data/catalog.jsonl) [![Curated](https://img.shields.io/badge/source--reviewed-1%2C093-0e8a16)](docs/coverage.md) [![Evidence](https://img.shields.io/badge/evidence%20through-2026--10--17-1d76db)](docs/coverage.md) [![Catalog quality](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml/badge.svg)](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml) [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![Website](https://img.shields.io/badge/website-awesomecua.github.io-6366f1)](https://awesomecua.github.io/)
+[![Resources](https://img.shields.io/badge/resources-2%2C569-4f46e5)](data/catalog.jsonl) [![Curated](https://img.shields.io/badge/source--reviewed-1%2C106-0e8a16)](docs/coverage.md) [![Evidence](https://img.shields.io/badge/evidence%20through-2026--10--17-1d76db)](docs/coverage.md) [![Catalog quality](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml/badge.svg)](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml) [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![Website](https://img.shields.io/badge/website-awesomecua.github.io-6366f1)](https://awesomecua.github.io/)
 <!-- BADGES:END -->
 
 **A source-backed data catalog for computer-use, GUI, browser, and mobile agents.**
@@ -22,9 +22,9 @@ The goal is comprehensive coverage of public research and industry resources, wi
 
 <!-- STATS:START -->
 
-**2,556 resource records** · **1,093 curated** · **2,164 arXiv records** · **44 discovery documents**
+**2,569 resource records** · **1,106 curated** · **2,177 paper and survey records** · **44 discovery documents**
 
-Evidence through `2026-10-17T09:27:51+00:00`. 1,463 records have bibliographic verification only; 1,394 discovered identifiers remain unresolved. 100 scope exclusions retain their original metadata in the archive. Counts overlap as explained below.
+Evidence through `2026-10-17T10:01:32Z`. 1,463 records have bibliographic verification only; 1,391 discovered identifiers remain unresolved. 100 scope exclusions retain their original metadata in the archive. Counts overlap as explained below.
 
 <!-- STATS:END -->
 
@@ -33,7 +33,7 @@ Evidence through `2026-10-17T09:27:51+00:00`. 1,463 records have bibliographic v
 <!-- EXPLORE:START -->
 | Research and training | Engineering and industry |
 | --- | --- |
-| [Research by topic](docs/topics.md) · **689** reviewed papers · [Full bibliography](docs/papers.md) · 2,164 arXiv records | [Agents](docs/agents.md) · **33** |
+| [Research by topic](docs/topics.md) · **702** reviewed papers · [Full bibliography](docs/papers.md) · 2,177 paper and survey records | [Agents](docs/agents.md) · **33** |
 | [Surveys](docs/surveys.md) · **12** | [Frameworks](docs/frameworks.md) · **54** |
 | [Datasets](docs/datasets.md) · **74** | [Infrastructure](docs/infrastructures.md) · **14** |
 | [Benchmarks](docs/benchmarks.md) · **73** | [Tools](docs/tools.md) · **17** |
@@ -111,6 +111,8 @@ Newest editorial approvals of models, datasets, benchmarks, systems, and tools (
 <!-- RECENT:START -->
 | Reviewed | Resource | Kind | Environments | Description |
 | --- | --- | --- | --- | --- |
+| 2026‑10‑17 | [Rico](https://www.interactionmining.org/archive/rico) | dataset | android | Mobile app screenshots, view hierarchies, and interaction traces for UI research. |
+| 2026‑10‑17 | [MiniWoB++](https://github.com/Farama-Foundation/miniwob-plusplus) | benchmark | web | Browser interaction task environment derived from MiniWoB. |
 | 2026‑10‑17 | [Aria-UI context-aware checkpoint](https://huggingface.co/Aria-UI/Aria-UI-context-aware) | model | android, desktop | The context-aware Aria-UI release that uses interaction context to support grounding in dynamic Android and desktop agent tasks. |
 | 2026‑10‑17 | [WONDERBREAD](https://github.com/HazyResearch/wonderbread) | benchmark | web | An offline benchmark of workflow documentation, quality assessment and knowledge transfer using human web-navigation demonstrations, action traces and written procedures. |
 | 2026‑10‑17 | [VEM GUI-Agent-RL](https://github.com/microsoft/GUI-Agent-RL) | framework | android | Training code that learns a value environment model from offline Android interaction data and uses its frozen value estimates to guide GUI policy optimization. |
@@ -121,8 +123,6 @@ Newest editorial approvals of models, datasets, benchmarks, systems, and tools (
 | 2026‑10‑17 | [MobileWorld (Tongyi-MAI)](https://github.com/Tongyi-MAI/MobileWorld) | benchmark | android | A containerized Android evaluation environment with GUI-only, agent-user interaction and MCP-augmented tasks, plus checks on application and backend state. |
 | 2026‑10‑17 | [GUI-ReWalk](https://github.com/bytedance/GUI-ReWalk) | framework | desktop, linux | A desktop trajectory-generation framework that moves from stochastic GUI exploration to inferred goals and multi-stage task completion, with retrospective reasoning annotations. |
 | 2026‑10‑17 | [AutoDroid V2 training data](https://huggingface.co/datasets/BlitherBoom/AutoDroid-V2-Dataset) | dataset | android | Conversation-formatted supervision released for fine-tuning AutoDroid V2, with the project documenting a ShareGPT-style JSON configuration. |
-| 2026‑10‑17 | [AutoDroid V2](https://github.com/MobileLLM/AutoDroid-V2) | agent | android | An Android automation implementation that builds app documentation from exploration traces and evaluates language-model-generated execution code in emulator workflows. |
-| 2026‑10‑17 | [AdvAgent (formerly AdvWeb)](https://github.com/AI-secure/AdvAgent) | framework | web | Research code for constructing and evaluating adversarial inputs to web agents, with a black-box red-team pipeline using Mind2Web data and SeeAct. |
 <!-- RECENT:END -->
 
 ## Use the data
@@ -159,7 +159,7 @@ Use SQLite to join resources, environment/topic facets, and reviewed relations. 
 | State | What has been checked | What has not been established |
 | --- | --- | --- |
 | `curated` | AI-assisted editorial review against a first-party source snapshot, with name, scope, summary, and taxonomy | Independent reproduction, universal availability, or endorsement |
-| `metadata_verified` | Bibliographic identity, title, authors, and dates returned by arXiv | Topic relevance, methodology, findings, or inclusion in the core field |
+| `metadata_verified` | Bibliographic identity, title, authors, and recorded dates checked against retained arXiv or publication sources | Topic relevance, methodology, findings, or inclusion in the core field |
 | `candidate` | A normalized URL or identifier was discovered | Inclusion, correctness, or availability; excluded from the published catalog |
 
 Counts refer to **resources**, not unique projects. A paper, repository, dataset release, model checkpoint, product, and publisher can be separate related resources. Model families and individual checkpoints are explicitly linked where reviewed.
@@ -180,6 +180,6 @@ Network discovery and verification are explicit commands; ordinary builds are of
 
 ## Acknowledgments and reuse
 
-The [source registry](data/sources.json) credits the community collections and surveys used for discovery. The catalog obtains authoritative bibliographic metadata from arXiv and checks selected assets against publisher repositories, documentation, and model/dataset cards. Upstream READMEs, papers, model weights, and datasets are not redistributed here.
+The [source registry](data/sources.json) credits the community collections and surveys used for discovery. Bibliographic records use retained arXiv, publisher, and author sources; publication observations preserve edition-specific titles, authors, and date precision. Selected assets are checked against publisher repositories, documentation, and model/dataset cards. Upstream READMEs, papers, model weights, and datasets are not redistributed here.
 
 Original repository code and annotations use the [MIT license](LICENSE). Linked resources retain their own terms; this repository does not relicense them.

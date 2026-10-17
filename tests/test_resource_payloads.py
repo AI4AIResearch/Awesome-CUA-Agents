@@ -18,7 +18,8 @@ import prepare_publication
 from search_pages import resource_path
 
 
-MANAGED = ('index.html', 'index.md', 'record.json', 'citation.bib', 'citation.csl.json')
+MANAGED = ('index.html', 'index.md', 'record.json', 'citation.bib', 'citation.csl.json',
+           'publication-citation.bib','publication-citation.csl.json')
 
 
 def paper(aid, status='curated', kind='paper'):
@@ -56,6 +57,7 @@ class ResourcePayloadTests(unittest.TestCase):
         self.site = Path(self.temp.name) / 'published'
         (self.site / '.git').mkdir(parents=True)
         shutil.copytree(ROOT / 'web', self.root / 'web')
+        shutil.copytree(ROOT / 'schemas', self.root / 'schemas')
         for name in ('AGENTS.md', 'LICENSE'):
             shutil.copy2(ROOT / name, self.root / name)
         for name in ('schemas/resource.schema.json', 'schemas/scope-decision.schema.json',
@@ -96,7 +98,9 @@ class ResourcePayloadTests(unittest.TestCase):
         data = self.root / 'data'
         data.mkdir(exist_ok=True)
         (data / 'catalog.jsonl').write_text(''.join(json.dumps(r, ensure_ascii=False) + '\n' for r in rows))
-        archive = [self.reviewed, self.metadata, self.survey, self.excluded, self.removed]
+        archive = copy.deepcopy([self.reviewed, self.metadata, self.survey, self.excluded, self.removed])
+        for record in archive:
+            record['details'].pop('publication',None)
         (data / 'papers.jsonl').write_text(''.join(json.dumps(r, ensure_ascii=False) + '\n' for r in archive))
         coverage = {
             'as_of_utc': '2026-10-16T02:00:00Z', 'total_records': len(rows),
@@ -230,6 +234,29 @@ class ResourcePayloadTests(unittest.TestCase):
         self.publish()
         for name in MANAGED:
             self.assertFalse((self.folder(self.site, self.removed) / name).exists(), name)
+
+    def test_publication_citations_keep_their_edition_and_are_removed_with_metadata(self):
+        source='https://publisher.example/paper'
+        self.reviewed['details']['publication']={'type':'conference-paper','title':'Published edition title',
+            'authors':['Publication Author'],'date_parts':[2025,7],'venue':'Example Conference',
+            'url':source,'evidence_urls':[source]}
+        self.reviewed['evidence'].append({'role':'primary','method':'editorial_primary_review',
+            'supports':['details.publication'],'url':source,'sha256':'e'*64,'retrieved_at':'2026-10-16T01:00:00Z'})
+        self.write_inputs(self.rows)
+        self.build_site();self.publish()
+        folder=self.folder(self.site,self.reviewed)
+        retained=json.loads((folder/'citation.csl.json').read_text())
+        published=json.loads((folder/'publication-citation.csl.json').read_text())
+        self.assertEqual(retained['issued']['date-parts'],[[2024,1,2]])
+        self.assertEqual(published['issued']['date-parts'],[[2025,7]])
+        self.assertEqual(published['author'],[{'literal':'Publication Author'}])
+        self.assertEqual(published['URL'],source)
+        self.assertTrue((folder/'publication-citation.bib').exists())
+        self.reviewed['details'].pop('publication')
+        self.write_inputs(self.rows);self.build_site();self.publish()
+        for output in (self.build,self.site):
+            for filename in ('publication-citation.bib','publication-citation.csl.json'):
+                self.assertFalse((self.folder(output,self.reviewed)/filename).exists())
 
 
 if __name__ == '__main__':

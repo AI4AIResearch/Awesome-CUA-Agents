@@ -52,6 +52,14 @@ When a paper documents an implementation that is not cited back by the repositor
 
 ## Paper versions and revision proposals
 
+Publisher bibliography is retained in `data/publications.jsonl` under [publication-observation.schema.json](../schemas/publication-observation.schema.json). Each observation binds a publication edition and its primary receipts to one canonical resource ID. A verified match to a retained arXiv work, including metadata-only or excluded records, attaches to that identity instead of adding a second paper. Publisher-only observations seed metadata-only records; inclusion still requires a separate content-bound editorial review. `data/papers.jsonl` remains the unchanged arXiv input archive.
+
+Publication title and author variants remain separate from the retained arXiv title and authors. Dates retain year, month or day precision in `details.publication.date_parts`; a conference event range, retrieval date, or manuscript revision does not fill a missing publication day. The default citation selects the retained source edition. Explicit publication citations use the publication's own title, authors, date and venue, so preprint and proceedings facts cannot be silently mixed.
+
+Explicit bibliography inputs accept source-backed DOI resolver URLs through a narrow identity rule; ordinary discovery still ignores incidental DOI links. Known publisher and PDF URLs resolve to their reviewed canonical owner. DOI ownership is checked against retained identities, and publisher aliases cannot reopen an excluded work as a new URL record. Similar titles alone do not establish identity.
+
+An already reviewed PDF can retain its content match only when a fresh successful response has the exact reviewed byte digest and a PDF signature. A changed or unreviewed PDF requires renewed review. Required supporting receipts are checked separately; an HTML verification page is never treated as that PDF.
+
 `details.arxiv_snapshot` records facts extracted from the individual Atom entry associated with the retained API receipt. The contract is `arxivSnapshot` in `schemas/resource.schema.json`.
 
 | Field | Meaning |
@@ -72,6 +80,8 @@ The completed offline migration backfilled 1,764 retained paper records from the
 ## Coverage denominator
 
 The coverage ledger measures how many normalized identifiers from each successfully fetched source snapshot have a catalog record. A source may include incidental or out-of-scope links. Multiple sources overlap; their counts cannot be summed into a unique field size. Failed refreshes are shown as failures; previous successful local cache data are not presented as a fresh successful fetch.
+
+Per-source coverage counts matching discovery identifiers. Several reviewed publisher/PDF aliases may point to one canonical resource; `indexed_resources` records that distinct-resource count. Overall bibliography totals count active paper/survey identities and separately expose arXiv, publisher-only, and publication-metadata coverage.
 
 The arXiv title-query population is also bounded. It misses papers with different terminology and work on other publication platforms. Neither list-union coverage nor title-query recall proves global completeness. Regional/language-specific products, closed data, unpublished systems, and detailed benchmark protocols remain active curation gaps.
 

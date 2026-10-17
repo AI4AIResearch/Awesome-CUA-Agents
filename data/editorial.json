@@ -6135,7 +6135,7 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "daa370b9aae5bce9f5171ea81fa4574c6155e04177af1db138529efd76377f89",
-    "reviewed_at": "2026-10-16T06:38:29Z",
+    "reviewed_at": "2026-10-17T11:01:28Z",
     "details": {
       "sample_count": null,
       "sample_unit": "UI screens",
@@ -6149,7 +6149,38 @@
         "view-hierarchy",
         "interaction-trace"
       ]
-    }
+    },
+    "reviewed_relations": [
+      {
+        "type": "documented_by",
+        "target_id": "url:b560b5d6abaab98483f6",
+        "evidence_url": "https://www.interactionmining.org/archive/rico"
+      }
+    ],
+    "notes": "The official project page cites the 2017 Rico paper. The project page reports more than 66,000 screens, while the original publication reports more than 72,000. These source-specific counts are kept separate; the reason for the difference is not established by these sources.",
+    "primary_supports": [
+      "name",
+      "kind",
+      "summary",
+      "environments",
+      "topics",
+      "scope",
+      "relations",
+      "details",
+      "notes"
+    ],
+    "additional_evidence": [
+      {
+        "role": "primary",
+        "method": "editorial_primary_review",
+        "url": "https://danafergan.com/publications/deka2017rico.pdf",
+        "retrieved_at": "2026-10-17T10:01:32Z",
+        "sha256": "a1ec58c526b152c052c5c72f9a62725f1026b5f0e4f45c8fe85fce284295da84",
+        "supports": [
+          "notes"
+        ]
+      }
+    ]
   },
   {
     "name": "Midscene.js",
@@ -6285,7 +6316,7 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "90499776fa1b23e08ac85190ad3be709caa9172ff4f2a0a106b0fa350568e86f",
-    "reviewed_at": "2026-10-17T02:09:27Z",
+    "reviewed_at": "2026-10-17T11:01:28Z",
     "details": {
       "benchmark_protocol": {
         "focus": [
@@ -6326,7 +6357,9 @@
         "role": "primary",
         "method": "editorial_primary_review",
         "supports": [
-          "details.benchmark_protocol"
+          "details.benchmark_protocol",
+          "relations",
+          "notes"
         ],
         "url": "https://raw.githubusercontent.com/Farama-Foundation/miniwob-plusplus/HEAD/README.md",
         "sha256": "90499776fa1b23e08ac85190ad3be709caa9172ff4f2a0a106b0fa350568e86f",
@@ -6352,7 +6385,15 @@
         "sha256": "ae7bf6a3b98b198b985d7ca7b41cb2bdab3cf48e6445467ad9a8d4a2c8df240f",
         "retrieved_at": "2026-10-17T02:03:23Z"
       }
-    ]
+    ],
+    "reviewed_relations": [
+      {
+        "type": "introduced_by",
+        "target_id": "arxiv:1802.08802",
+        "evidence_url": "https://raw.githubusercontent.com/Farama-Foundation/miniwob-plusplus/HEAD/README.md"
+      }
+    ],
+    "notes": "The maintainer README identifies MiniWoB++ as the extension introduced in the 2018 workflow-guided exploration paper. It separately links World of Bits as the source for the original MiniWoB predecessor. The current Farama interface, environment inventory, and maintenance status belong to the retained repository snapshot."
   },
   {
     "name": "Adversarial Web Agents",
@@ -38034,5 +38075,785 @@
         ]
       }
     }
+  },
+  {
+    "id": "url:347925d0f440d6396080",
+    "name": "Ringer: Web Automation by Demonstration",
+    "kind": "paper",
+    "url": "https://doi.org/10.1145/2983990.2984020",
+    "summary": "Introduces Ringer, which converts demonstrated webpage interactions into scripts combining actions, target selectors, and waiting conditions. It evaluates replay robustness on tasks recorded from real websites.",
+    "scope": "core",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "web-navigation",
+      "recording",
+      "robustness"
+    ],
+    "verify_terms": [
+      "Ringer",
+      "Web Automation by Demonstration"
+    ],
+    "evidence_urls": [
+      "https://www.microsoft.com/en-us/research/publication/ringer-web-automation-demonstration/"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "45f65483c3801dac142f4657c4cbe45e17b6a3e081497731e984c1e670c6e8f6",
+    "reviewed_at": "2026-10-17T10:09:57Z",
+    "primary_supports": [
+      "details.publication.identity_basis",
+      "details.publication.notes",
+      "details.publication.title",
+      "environments",
+      "name",
+      "scope",
+      "topics"
+    ],
+    "additional_evidence": [
+      {
+        "role": "primary",
+        "method": "editorial_primary_review",
+        "supports": [
+          "details.publication.authors",
+          "details.publication.date_basis",
+          "details.publication.date_parts",
+          "details.publication.identity_basis",
+          "details.publication.notes",
+          "details.publication.type",
+          "details.publication.venue",
+          "kind"
+        ],
+        "url": "https://www.microsoft.com/en-us/research/publication/ringer-web-automation-demonstration/bibtex/",
+        "retrieved_at": "2026-10-17T09:57:36Z",
+        "sha256": "633aa15e2e14346241de5385cc19d99f1fcdc9ef79fd06d27176dbfa8f38149a"
+      },
+      {
+        "role": "primary",
+        "method": "editorial_primary_review",
+        "supports": [
+          "details.publication.doi",
+          "details.publication.identity_basis",
+          "details.publication.notes",
+          "details.publication.url"
+        ],
+        "url": "https://2016.splashcon.org/track/splash-2016-oopsla",
+        "retrieved_at": "2026-10-17T09:57:36Z",
+        "sha256": "94c6b6bbd127126c9dd259bd346a7757d75366b4d805bdee2959c4c73226df74"
+      },
+      {
+        "role": "primary",
+        "method": "editorial_primary_review",
+        "supports": [
+          "details.publication.authors",
+          "details.publication.identity_basis",
+          "details.publication.notes",
+          "details.publication.pdf_url",
+          "summary"
+        ],
+        "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/12/oopsla16-web.pdf",
+        "retrieved_at": "2026-10-17T09:55:00Z",
+        "sha256": "bfbb69f57aaed39e3a210fae832e1fd98ed62ba1c01217b792238fe57e1a0ad1"
+      }
+    ],
+    "notes": "The annotation was reviewed against retained primary publication sources. Experiments have not been independently reproduced. The original manuscript and MSR BibTeX print Sarah Chasins and Ras Bodik. The official conference profiles expand these to Sarah E. Chasins and Rastislav Bodík; the printed publication names are preserved."
+  },
+  {
+    "id": "url:392a602c660ffa91be46",
+    "name": "SUGILITE: Creating Multimodal Smartphone Automation by Demonstration",
+    "kind": "paper",
+    "url": "https://doi.org/10.1145/3025453.3025483",
+    "summary": "Introduces SUGILITE, which combines spoken instructions, demonstrated Android actions, and UI hierarchies to generate reusable automation scripts. Its interface includes context checking and repairs for unfamiliar situations and changing app interfaces.",
+    "scope": "core",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "mobile-navigation",
+      "recording",
+      "human-in-the-loop",
+      "cross-app"
+    ],
+    "verify_terms": [
+      "SUGILITE",
+      "Smartphone Automation"
+    ],
+    "evidence_urls": [
+      "https://toby.li/files/TobyLi-CHI2017-Sugilite.pdf"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "cc23c19284f0a558c4b99b8b051abca8ed61e274e9e1f1fed1ae91487f4368ad",
+    "reviewed_at": "2026-10-17T10:09:57Z",
+    "primary_supports": [
+      "details.publication.authors",
+      "details.publication.doi",
+      "details.publication.identity_basis",
+      "details.publication.notes",
+      "details.publication.pages",
+      "details.publication.pdf_url",
+      "details.publication.title",
+      "details.publication.url",
+      "environments",
+      "name",
+      "scope",
+      "summary",
+      "topics"
+    ],
+    "additional_evidence": [
+      {
+        "role": "primary",
+        "method": "editorial_primary_review",
+        "supports": [
+          "details.publication.date_basis",
+          "details.publication.date_parts",
+          "details.publication.notes",
+          "details.publication.type",
+          "details.publication.venue",
+          "kind"
+        ],
+        "url": "https://www.cs.cmu.edu/~NatProg/sugilite.html",
+        "retrieved_at": "2026-10-17T09:53:22Z",
+        "sha256": "32ee05ff1a91ed4a22d4bc156a462872aa4e28f5c79abfbce5dbf3655f412033"
+      }
+    ],
+    "notes": "The annotation was reviewed against retained primary publication sources. Experiments have not been independently reproduced. Related to later APPINITE and PUMICE work but distinguished here by its 2017 three-author publication and base demonstration-automation contribution."
+  },
+  {
+    "id": "url:52a3261eb6a19b402e88",
+    "name": "World of Bits: An Open-Domain Platform for Web-Based Agents",
+    "kind": "paper",
+    "url": "https://proceedings.mlr.press/v70/shi17a.html",
+    "summary": "Introduces World of Bits, a web-task platform combining human demonstrations, keyboard and mouse actions, and cached HTTP traffic for repeatable task environments. It evaluates agents trained through behavioral cloning and reinforcement learning.",
+    "scope": "core",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "web-navigation",
+      "reinforcement-learning",
+      "evaluation",
+      "data-generation"
+    ],
+    "verify_terms": [
+      "World of Bits",
+      "Open-Domain Platform"
+    ],
+    "evidence_urls": [
+      "https://proceedings.mlr.press/v70/shi17a.html"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "749d2a150e4c2bcde1b219a0ecb86c95546134a057892544e8495b5e45323c44",
+    "reviewed_at": "2026-10-17T10:09:57Z",
+    "primary_supports": [
+      "details.publication.authors",
+      "details.publication.date_basis",
+      "details.publication.date_parts",
+      "details.publication.identity_basis",
+      "details.publication.notes",
+      "details.publication.pages",
+      "details.publication.series",
+      "details.publication.title",
+      "details.publication.type",
+      "details.publication.url",
+      "details.publication.venue",
+      "details.publication.volume",
+      "kind",
+      "name",
+      "scope",
+      "summary",
+      "topics"
+    ],
+    "additional_evidence": [
+      {
+        "role": "primary",
+        "method": "editorial_primary_review",
+        "supports": [
+          "details.publication.notes",
+          "details.publication.pdf_url",
+          "environments"
+        ],
+        "url": "https://proceedings.mlr.press/v70/shi17a/shi17a.pdf",
+        "retrieved_at": "2026-10-17T09:54:39Z",
+        "sha256": "087008efb9d056df5fd9fbc724413d6a3f20cb14c7f1597d00bacac53d8342d6"
+      }
+    ],
+    "notes": "The annotation was reviewed against retained primary publication sources. Experiments have not been independently reproduced. Publisher citation uses Tianlin Shi and Linxi Fan; the PDF also prints the nicknames Tim and Jim. The ordered publisher author names are retained."
+  },
+  {
+    "id": "url:6262c757080f8838e62c",
+    "name": "GUI Testing Using Computer Vision",
+    "kind": "paper",
+    "url": "https://doi.org/10.1145/1753326.1753555",
+    "summary": "Presents visual GUI test scripts that use images to specify actions and expected screen feedback. Recording both input events and screenshots can generate tests from demonstrations, supporting unit, regression, and test-driven workflows.",
+    "scope": "core",
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "evaluation",
+      "grounding",
+      "automation"
+    ],
+    "verify_terms": [
+      "GUI Testing Using Computer Vision"
+    ],
+    "evidence_urls": [
+      "https://dspace.mit.edu/entities/publication/6a6097ba-1d97-43cf-bc70-04b5af02efd5"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "dbace77c54d1b4ed5dcf825dcb0f4525c32e33ac885e70312e8bb4a731a94e80",
+    "reviewed_at": "2026-10-17T10:09:57Z",
+    "primary_supports": [
+      "details.publication.authors",
+      "details.publication.date_basis",
+      "details.publication.date_parts",
+      "details.publication.doi",
+      "details.publication.identity_basis",
+      "details.publication.notes",
+      "details.publication.pages",
+      "details.publication.title",
+      "details.publication.type",
+      "details.publication.url",
+      "details.publication.venue",
+      "environments",
+      "kind",
+      "name",
+      "scope",
+      "summary",
+      "topics"
+    ],
+    "additional_evidence": [],
+    "notes": "The annotation was reviewed against retained primary publication sources. Experiments have not been independently reproduced. This is a separate visual-testing contribution from the 2009 Sikuli paper, not another version of the same article. MIT PDF download returned HTTP 429; its complete institutional abstract and citation metadata remain the retained review source."
+  },
+  {
+    "id": "url:628b5251757bb3888e89",
+    "name": "PLOW: A Collaborative Task Learning Agent",
+    "kind": "paper",
+    "url": "https://aaai.org/Papers/AAAI/2007/AAAI07-240.pdf",
+    "summary": "Describes PLOW, which learns executable web-task models from a session combining demonstrations, natural-language explanations, and dialogue. Browser instrumentation connects user actions with DOM structure to support task generalization.",
+    "scope": "core",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "web-navigation",
+      "human-in-the-loop",
+      "planning"
+    ],
+    "verify_terms": [
+      "PLOW",
+      "Collaborative Task Learning Agent"
+    ],
+    "evidence_urls": [
+      "https://aaai.org/Papers/AAAI/2007/AAAI07-240.pdf"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "795d275c9f85180561fd101652221d30fb98daca2c2a00faf2b57c397bdfd68d",
+    "reviewed_at": "2026-10-17T10:09:57Z",
+    "primary_supports": [
+      "details.publication.authors",
+      "details.publication.identity_basis",
+      "details.publication.notes",
+      "details.publication.pages",
+      "details.publication.pdf_url",
+      "details.publication.title",
+      "details.publication.url",
+      "environments",
+      "name",
+      "scope",
+      "summary",
+      "topics"
+    ],
+    "additional_evidence": [
+      {
+        "role": "primary",
+        "method": "editorial_primary_review",
+        "supports": [
+          "details.publication.date_basis",
+          "details.publication.date_parts",
+          "details.publication.notes",
+          "details.publication.type",
+          "details.publication.venue",
+          "environments",
+          "kind"
+        ],
+        "url": "https://www.cs.rochester.edu/research/cisd/projects/plow/",
+        "retrieved_at": "2026-10-17T09:53:24Z",
+        "sha256": "c0b3571efd5f2e137e42b38107de29aca6668819bec84109912d514867d85b8c"
+      }
+    ],
+    "notes": "The annotation was reviewed against retained primary publication sources. Experiments have not been independently reproduced. The ordered names follow the original published paper, without expanding initials or replacing names from secondary indexes."
+  },
+  {
+    "id": "url:901ca855640457dfe2f1",
+    "name": "Kite: Building Conversational Bots from Mobile Apps",
+    "kind": "paper",
+    "url": "https://doi.org/10.1145/3210240.3210339",
+    "summary": "Derives task graphs from demonstrated Android app interactions and layers a conversational question-answer interface over those graphs. The evaluation examines task-model extraction and developer use of the resulting bot templates.",
+    "scope": "core",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "mobile-navigation",
+      "workflow",
+      "human-in-the-loop"
+    ],
+    "verify_terms": [
+      "Kite",
+      "Building Conversational Bots"
+    ],
+    "evidence_urls": [
+      "https://www.microsoft.com/en-us/research/wp-content/uploads/2018/05/kite_mobisys18.pdf"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "bfb67283f49dad7974d97e3b3da9d9ff24744d18e83c4d25cbe4f12ecf807071",
+    "reviewed_at": "2026-10-17T10:09:57Z",
+    "primary_supports": [
+      "details.publication.authors",
+      "details.publication.doi",
+      "details.publication.identity_basis",
+      "details.publication.notes",
+      "details.publication.pdf_url",
+      "details.publication.title",
+      "details.publication.type",
+      "details.publication.url",
+      "details.publication.venue",
+      "environments",
+      "kind",
+      "name",
+      "scope",
+      "summary",
+      "topics"
+    ],
+    "additional_evidence": [
+      {
+        "role": "primary",
+        "method": "editorial_primary_review",
+        "supports": [
+          "details.publication.date_basis",
+          "details.publication.date_parts",
+          "details.publication.notes"
+        ],
+        "url": "https://www.microsoft.com/en-us/research/publication/kite-building-conversational-bots-mobile-apps/",
+        "retrieved_at": "2026-10-17T09:59:26Z",
+        "sha256": "e2f5403d77f563ec6a88458e32d057559a8f8ba4d2a80304e70c2c793fb60bb5"
+      }
+    ],
+    "notes": "The annotation was reviewed against retained primary publication sources. Experiments have not been independently reproduced. "
+  },
+  {
+    "id": "url:97c0b1896525632434e2",
+    "name": "Rousillon: Scraping Distributed Hierarchical Web Data",
+    "kind": "paper",
+    "url": "https://doi.org/10.1145/3242587.3242661",
+    "summary": "Introduces Rousillon, which generalizes a demonstration of collecting one hierarchical data row into a browser-automation program that traverses related pages. The paper develops relation-selection and generalization methods and evaluates users building such scripts.",
+    "scope": "core",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "web-navigation",
+      "recording",
+      "automation"
+    ],
+    "verify_terms": [
+      "Rousillon",
+      "Scraping Distributed Hierarchical Web Data"
+    ],
+    "evidence_urls": [
+      "https://schasins.com/assets/papers/rousillon.pdf"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "764dd1f5fe1db398188f403b4b1f6e3658e3238e4d8aac9ceed360dcad87e818",
+    "reviewed_at": "2026-10-17T10:09:57Z",
+    "primary_supports": [
+      "details.publication.authors",
+      "details.publication.doi",
+      "details.publication.identity_basis",
+      "details.publication.notes",
+      "details.publication.pdf_url",
+      "details.publication.title",
+      "details.publication.url",
+      "environments",
+      "name",
+      "scope",
+      "summary",
+      "topics"
+    ],
+    "additional_evidence": [
+      {
+        "role": "primary",
+        "method": "editorial_primary_review",
+        "supports": [
+          "details.publication.date_basis",
+          "details.publication.date_parts",
+          "details.publication.notes",
+          "details.publication.type",
+          "details.publication.venue",
+          "kind"
+        ],
+        "url": "https://schasins.com/papers/",
+        "retrieved_at": "2026-10-17T09:57:38Z",
+        "sha256": "6b7e584bb3862e0de51ca164d0f311c2a853e97bd63d56658ce62f0b49d86557"
+      }
+    ],
+    "notes": "The annotation was reviewed against retained primary publication sources. Experiments have not been independently reproduced. This is browser interaction learned from demonstrations, rather than a generic server-side crawling library."
+  },
+  {
+    "id": "url:a4cdb2ee0d07d3980651",
+    "name": "Sikuli: Using GUI screenshots for search and automation",
+    "kind": "paper",
+    "url": "https://doi.org/10.1145/1622176.1622213",
+    "summary": "Introduces screenshot-based GUI search and visual scripting, using image patterns to locate interface targets and direct mouse and keyboard events. It evaluates screenshot queries and demonstrates automation and interactive-help tasks.",
+    "scope": "core",
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "grounding",
+      "automation",
+      "screen-understanding"
+    ],
+    "verify_terms": [
+      "Sikuli",
+      "GUI screenshots"
+    ],
+    "evidence_urls": [
+      "https://dspace.mit.edu/entities/publication/604a3f79-451d-4186-a94e-d12690ffe40a"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "dbaaf21982522b34857be014b39d6c43fedcda20f808efe40d04958c77243a5a",
+    "reviewed_at": "2026-10-17T10:09:57Z",
+    "primary_supports": [
+      "details.publication.authors",
+      "details.publication.date_basis",
+      "details.publication.date_parts",
+      "details.publication.doi",
+      "details.publication.identity_basis",
+      "details.publication.notes",
+      "details.publication.pages",
+      "details.publication.title",
+      "details.publication.type",
+      "details.publication.url",
+      "details.publication.venue",
+      "environments",
+      "kind",
+      "name",
+      "scope",
+      "summary",
+      "topics"
+    ],
+    "additional_evidence": [],
+    "notes": "The annotation was reviewed against retained primary publication sources. Experiments have not been independently reproduced. MIT identifies the retained content as an author final manuscript record. Its PDF download returned HTTP 429; no retry was made. The complete institutional abstract and bibliographic record were read."
+  },
+  {
+    "id": "url:b560b5d6abaab98483f6",
+    "name": "Rico: A Mobile App Dataset for Building Data-Driven Design Applications",
+    "kind": "paper",
+    "url": "https://doi.org/10.1145/3126594.3126651",
+    "summary": "Introduces Rico, collecting Android interface designs and interaction traces through crowdsourced use followed by automated exploration. The paper demonstrates UI-layout retrieval using learned representations and describes visual, textual, structural, and interaction data.",
+    "scope": "core",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "data-generation",
+      "screen-understanding",
+      "ui-design"
+    ],
+    "verify_terms": [
+      "Rico",
+      "Mobile App Dataset"
+    ],
+    "evidence_urls": [
+      "https://danafergan.com/publications/deka2017rico.pdf"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "a1ec58c526b152c052c5c72f9a62725f1026b5f0e4f45c8fe85fce284295da84",
+    "reviewed_at": "2026-10-17T10:09:57Z",
+    "primary_supports": [
+      "details.publication.authors",
+      "details.publication.date_basis",
+      "details.publication.date_parts",
+      "details.publication.doi",
+      "details.publication.identity_basis",
+      "details.publication.notes",
+      "details.publication.pages",
+      "details.publication.pdf_url",
+      "details.publication.title",
+      "details.publication.type",
+      "details.publication.url",
+      "details.publication.venue",
+      "environments",
+      "kind",
+      "name",
+      "scope",
+      "summary",
+      "topics"
+    ],
+    "additional_evidence": [
+      {
+        "role": "primary",
+        "method": "editorial_primary_review",
+        "supports": [
+          "details.publication.notes"
+        ],
+        "url": "https://dev.interactionmining.org/archive/rico",
+        "retrieved_at": "2026-10-17T09:53:23Z",
+        "sha256": "fb00401fe531ca3aed078dccc57147bcaad33207dacf7cd4cfd4af14f1487ff5"
+      }
+    ],
+    "notes": "The annotation was reviewed against retained primary publication sources. Experiments have not been independently reproduced. The paper is a distinct resource from the already cataloged Rico dataset (url:0b134b082a7bd507fc6a). The publisher PDF describes 9.7k apps and 72k screens; the project page describes 9.3k apps and 66k screens. The annotation intentionally supplies no merged size claim."
+  },
+  {
+    "id": "url:ba2c664c1b3c6f1b172f",
+    "name": "APPINITE: A Multi-Modal Interface for Specifying Data Descriptions in Programming by Demonstration Using Natural Language Instructions",
+    "kind": "paper",
+    "url": "https://ieeexplore.ieee.org/document/8506506",
+    "summary": "Introduces APPINITE, a conversational interface for specifying the intended targets of demonstrated Android actions. It constructs semantic UI representations and uses an on-screen overlay to preview and refine executable data descriptions.",
+    "scope": "core",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "grounding",
+      "human-in-the-loop",
+      "mobile-navigation"
+    ],
+    "verify_terms": [
+      "APPINITE",
+      "Programming by Demonstration"
+    ],
+    "evidence_urls": [
+      "https://toby.li/files/TobyLi-VLHCC18-APPINITE.pdf"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "6e05fd08b187adba32148e0835ef6b9e20cd6a3ba5e0de6e2778eb18c02788ee",
+    "reviewed_at": "2026-10-17T10:09:57Z",
+    "primary_supports": [
+      "details.publication.authors",
+      "details.publication.identity_basis",
+      "details.publication.notes",
+      "details.publication.pdf_url",
+      "details.publication.title",
+      "environments",
+      "name",
+      "scope",
+      "summary",
+      "topics"
+    ],
+    "additional_evidence": [
+      {
+        "role": "primary",
+        "method": "editorial_primary_review",
+        "supports": [
+          "details.publication.date_basis",
+          "details.publication.date_parts",
+          "details.publication.notes",
+          "details.publication.type",
+          "details.publication.venue",
+          "kind"
+        ],
+        "url": "https://www.cs.cmu.edu/~NatProg/sugilite.html",
+        "retrieved_at": "2026-10-17T09:53:22Z",
+        "sha256": "32ee05ff1a91ed4a22d4bc156a462872aa4e28f5c79abfbce5dbf3655f412033"
+      },
+      {
+        "role": "primary",
+        "method": "editorial_primary_review",
+        "supports": [
+          "details.publication.identity_basis",
+          "details.publication.notes",
+          "details.publication.url"
+        ],
+        "url": "https://toby.li/publications/",
+        "retrieved_at": "2026-10-17T09:55:20Z",
+        "sha256": "adfcec73830b612b181d4846ace3fbaab1768e906715c1d90fe657e23fe4d985"
+      }
+    ],
+    "notes": "The annotation was reviewed against retained primary publication sources. Experiments have not been independently reproduced. The base SUGILITE framework and later PUMICE work are distinct publications; this paper focuses on resolving data-description ambiguity in demonstrations."
+  },
+  {
+    "id": "url:beb8f1fd6b945ffc9d93",
+    "name": "GUI-SAGE: Enhancing GUI Automation with Self-Explanatory Learning",
+    "kind": "paper",
+    "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Tang_GUI-SAGE_Enhancing_GUI_Automation_with_Self-Explanatory_Learning_CVPR_2026_paper.html",
+    "summary": "GUI-SAGE generates reasoning conditioned on known actions and weights policy updates using confidence and reward signals. Its experiments use AndroidControl and GUIOdyssey data and separately evaluate interactive AndroidWorld tasks.",
+    "scope": "core",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "reinforcement-learning",
+      "data-generation",
+      "evaluation",
+      "robustness"
+    ],
+    "verify_terms": [
+      "GUI-SAGE",
+      "Self-Explanatory Learning"
+    ],
+    "evidence_urls": [
+      "https://openaccess.thecvf.com/content/CVPR2026/html/Tang_GUI-SAGE_Enhancing_GUI_Automation_with_Self-Explanatory_Learning_CVPR_2026_paper.html"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "1d5ed4e24cf9763cc43f0a8ce14f0e98c01504c73578e5632cea573dfb7da647",
+    "reviewed_at": "2026-10-17T10:03:53+00:00",
+    "primary_supports": [
+      "details.publication.date_basis",
+      "details.publication.date_parts",
+      "details.publication.identity_basis",
+      "details.publication.notes",
+      "details.publication.pages",
+      "details.publication.pdf_url",
+      "details.publication.type",
+      "details.publication.url",
+      "details.publication.venue",
+      "environments",
+      "kind",
+      "scope",
+      "summary",
+      "topics"
+    ],
+    "additional_evidence": [
+      {
+        "role": "primary",
+        "method": "editorial_primary_review",
+        "supports": [
+          "details.publication.authors",
+          "details.publication.identity_basis",
+          "details.publication.notes",
+          "details.publication.title",
+          "environments",
+          "name",
+          "scope",
+          "summary",
+          "topics"
+        ],
+        "url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Tang_GUI-SAGE_Enhancing_GUI_Automation_with_Self-Explanatory_Learning_CVPR_2026_paper.pdf",
+        "retrieved_at": "2026-10-17T09:56:04+00:00",
+        "sha256": "244f40d77a40dfd184e78cf8e1e2dd9e469d3e594a8ce214279c2ce17b8f1012"
+      }
+    ],
+    "notes": "The annotation was reviewed against retained primary publication sources. Experiments have not been independently reproduced. New work proposal from the official CVF accepted open-access version. No invented day, DOI, or arXiv identifier; original annotations describe the reviewed sources and not independent reproduction."
+  },
+  {
+    "id": "url:bf0c11018e49dff6aeec",
+    "name": "Eager: Programming Repetitive Tasks by Example",
+    "kind": "paper",
+    "url": "https://acypher.com/Publications/CHI91/EagerCHI.html",
+    "summary": "Describes Eager, which detects repeated HyperCard interactions, generalizes them into loops, and previews predicted actions by highlighting interface objects. Users can then ask it to execute the inferred repetitive task.",
+    "scope": "core",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "automation",
+      "human-in-the-loop",
+      "interaction-history"
+    ],
+    "verify_terms": [
+      "Eager",
+      "Programming Repetitive Tasks"
+    ],
+    "evidence_urls": [
+      "https://acypher.com/Publications/CHI91/EagerCHI.html"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "876d4c8dfac48443336a5ee97b463642db013631a2b97cacd090e61afd95ad59",
+    "reviewed_at": "2026-10-17T10:09:57Z",
+    "primary_supports": [
+      "details.publication.authors",
+      "details.publication.date_basis",
+      "details.publication.date_parts",
+      "details.publication.identity_basis",
+      "details.publication.notes",
+      "details.publication.pages",
+      "details.publication.type",
+      "details.publication.url",
+      "details.publication.venue",
+      "environments",
+      "kind",
+      "scope",
+      "summary",
+      "topics"
+    ],
+    "additional_evidence": [
+      {
+        "role": "primary",
+        "method": "editorial_primary_review",
+        "supports": [
+          "details.publication.identity_basis",
+          "details.publication.notes",
+          "details.publication.title",
+          "name"
+        ],
+        "url": "https://acypher.com/Eager/",
+        "retrieved_at": "2026-10-17T09:53:27Z",
+        "sha256": "64cffd3fca934465e1ea28bdf62e087bc9abdf50b9b72d04c2e57df0bcf41adb"
+      }
+    ],
+    "notes": "The annotation was reviewed against retained primary publication sources. Experiments have not been independently reproduced. The 1991 conference paper is kept distinct from the 1991 video and 1993/1995 reprints listed on the author project page. Macintosh/HyperCard is tagged desktop; it is not represented as support for contemporary macOS."
+  },
+  {
+    "id": "url:cccd967aa993404d74d0",
+    "name": "Koala: Capture, Share, Automate, Personalize Business Processes on the Web",
+    "kind": "paper",
+    "url": "https://doi.org/10.1145/1240624.1240767",
+    "summary": "Introduces Koala, a collaborative web automation system that records browser interactions as editable pseudo-natural-language scripts. Scripts are shared through a wiki and instantiated with personal or corporate data for reuse by other users.",
+    "scope": "core",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "web-navigation",
+      "workflow",
+      "recording"
+    ],
+    "verify_terms": [
+      "Koala",
+      "Business Processes on the Web"
+    ],
+    "evidence_urls": [
+      "https://plunk.org/eben/PublishedPapers/KoalaCHI.pdf"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "944b6f74a6cdb88fc253009f364dcc71cc42186b4907e04720da128c5292e357",
+    "reviewed_at": "2026-10-17T10:09:57Z",
+    "primary_supports": [
+      "details.publication.authors",
+      "details.publication.date_basis",
+      "details.publication.date_parts",
+      "details.publication.identity_basis",
+      "details.publication.notes",
+      "details.publication.pages",
+      "details.publication.pdf_url",
+      "details.publication.title",
+      "details.publication.type",
+      "details.publication.venue",
+      "environments",
+      "kind",
+      "name",
+      "scope",
+      "summary",
+      "topics"
+    ],
+    "additional_evidence": [
+      {
+        "role": "primary",
+        "method": "editorial_primary_review",
+        "supports": [
+          "details.publication.doi",
+          "details.publication.identity_basis",
+          "details.publication.notes",
+          "details.publication.url"
+        ],
+        "url": "https://research.ibm.com/publications/koala-capture-share-automate-personalize-business-processes-on-the-web",
+        "retrieved_at": "2026-10-17T09:53:23Z",
+        "sha256": "ae61a94cca68e058858244b6ff54ed9409973a5cecaf25c0e325b27adaf0e3dd"
+      }
+    ],
+    "notes": "The annotation was reviewed against retained primary publication sources. Experiments have not been independently reproduced. This proposal is the specific Koala paper. It does not automatically merge every later CoScripter publication or project record."
   }
 ]

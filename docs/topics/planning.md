@@ -2,9 +2,9 @@
 
 [Home](../../README.md) · [All topics](../topics.md) · [Full arXiv bibliography](../papers.md)
 
-187 source-reviewed resources tagged `planning`. Curated metadata, not a performance ranking; unknown facts are shown as —.
+188 source-reviewed resources tagged `planning`. Curated metadata, not a performance ranking; unknown facts are shown as —.
 
-**Contents:** [Datasets (2)](#datasets) · [Models (26)](#models) · [Agents (11)](#agents) · [Frameworks (8)](#frameworks) · [Papers (140)](#papers)
+**Contents:** [Datasets (2)](#datasets) · [Models (26)](#models) · [Agents (11)](#agents) · [Frameworks (8)](#frameworks) · [Papers (141)](#papers)
 
 ## Datasets
 
@@ -217,3 +217,4 @@
 | 2023‑06‑13 | [Synapse: Trajectory-as-Exemplar Prompting with Memory for Computer Control](https://arxiv.org/abs/2306.07863) | web | Synapse filters task-irrelevant page state and places complete abstracted state-action trajectories into the prompt. An embedding-based exemplar memory retrieves relevant demonstrations for new tasks, evaluated on MiniWoB++ and Mind2Web. |
 | 2023‑05‑23 | [Hierarchical Prompting Assists Large Language Model on Web Navigation](https://arxiv.org/abs/2305.14257) | web | Separates web navigation prompting into a SUMMARIZER that extracts action-relevant observations and an ACTOR that chooses the next action from the condensed context. |
 | 2016‑02‑06 | [End-to-End Goal-Driven Web Navigation](https://arxiv.org/abs/1602.02261) | web | Introduces WebNav for converting websites into goal-directed hyperlink navigation tasks and WikiNav for evaluating language-conditioned navigation and question answering on Wikipedia. |
+| 2007 | [PLOW: A Collaborative Task Learning Agent](https://aaai.org/Papers/AAAI/2007/AAAI07-240.pdf) | web | Describes PLOW, which learns executable web-task models from a session combining demonstrations, natural-language explanations, and dialogue. Browser instrumentation connects user actions with DOM structure to support task generalization. |

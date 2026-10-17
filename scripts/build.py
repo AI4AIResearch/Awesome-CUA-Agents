@@ -11,10 +11,12 @@ import re
 import sqlite3
 import urllib.parse
 
-from catalog import ROOT, DATA, KINDS, ENVIRONMENTS, STATUSES, canonical, read_json, read_jsonl, write_json, write_jsonl
+from catalog import ROOT, DATA, KINDS, ENVIRONMENTS, STATUSES, canonical, editorial_identity, publication_identity, read_json, read_jsonl, write_json, write_jsonl
 from specifications import validate_profiles
 from scope_review import resolve_exclusions, scope_report
 from arxiv_metadata import validate_snapshot
+from publication_metadata import (alias_owner_errors, attach_publications, duplicate_publication_errors, publication_aliases,
+    publication_links, publication_search_text, record_date_text, record_year, validate_publication)
 
 
 def apply_license_reviews(editorial, primary, licenses, details):
@@ -39,18 +41,34 @@ def apply_license_reviews(editorial, primary, licenses, details):
 
 
 def source_records(with_scope=False):
-    records = {r["id"]: copy.deepcopy(r) for r in read_jsonl(DATA / "papers.jsonl")}
+    archived = read_jsonl(DATA / "papers.jsonl")
+    if len({r['id'] for r in archived}) != len(archived):
+        raise ValueError('Duplicate arXiv archive identifier')
+    if any(not row['id'].startswith('arxiv:') for row in archived):
+        raise ValueError('papers.jsonl is the arXiv archive; publisher facts belong in publications.jsonl')
+    if any('publication' in row.get('details',{}) for row in archived):
+        raise ValueError('Publisher observations must not be written into the retained arXiv archive')
+    observations=read_jsonl(DATA/'publications.jsonl')
+    records = attach_publications({r['id']: r for r in archived}, observations, publication_identity)
+    aliases=publication_aliases(observations,publication_identity)
     evidence = {r["id"]: r for r in read_jsonl(DATA / "primary-evidence.jsonl")}
     enrichment = {r["id"]: r for r in read_jsonl(DATA / "enrichment.jsonl")}
     pending = []
     for row in records.values():
-        snapshot = row.get('details', {}).get('arxiv_snapshot')
-        row.update(scope="relevance_pending", details={'arxiv_snapshot': snapshot} if snapshot else {})
+        bibliography = {key: copy.deepcopy(value) for key,value in row.get('details', {}).items()
+                        if key in {'arxiv_snapshot','publication'}}
+        row.update(scope="relevance_pending", details=bibliography)
     for editorial in read_json(DATA / "editorial.json", []):
-        parsed = canonical(editorial["url"])
+        if 'publication' in editorial.get('details', {}):
+            raise ValueError('Publisher bibliographic facts belong in publications.jsonl, separately from editorial relevance approval')
+        parsed = editorial_identity(editorial)
         if not parsed:
             raise ValueError(f"Invalid editorial URL: {editorial['url']}")
         rid = editorial.get("id", parsed[0])
+        if aliases.get(parsed[0],rid)!=rid:
+            raise ValueError('Editorial URL belongs to canonical publication resource '+aliases[parsed[0]]+'; do not create '+rid)
+        if editorial.get('kind') in {'paper','survey'} and (rid not in records or parsed[0]!=rid):
+            raise ValueError('Paper editorial entry requires its retained canonical bibliography identity: '+rid)
         ev = evidence.get(rid)
         if not editorial.get("editorial_reviewed") or not ev or not ev.get("content_matched") or editorial.get("reviewed_sha256") != ev.get("sha256"):
             reason = editorial.get("review_note", "editorial review pending")
@@ -100,6 +118,7 @@ def source_records(with_scope=False):
             "relations": relations, "licenses": licenses, "evidence": base.get("evidence", []) + [primary] + editorial.get("additional_evidence", []) + extra.get("evidence", []),
             "last_verified_at": ev["retrieved_at"], "notes": editorial.get("notes", ""), "details": details}
         records[rid] = row
+        row['links'] = publication_links(row)
     changes = {row['id'] for row in read_jsonl(DATA/'metadata-updates.jsonl')}
     decisions = resolve_exclusions(records, read_json(DATA/'exclusions.json', []), changes)
     excluded = {row['id'] for row in decisions if row['status']=='excluded'}
@@ -140,7 +159,7 @@ def validate_records(rows):
             error("missing fields " + ", ".join(sorted(missing)))
         if r.get("kind") not in KINDS:
             error("invalid kind")
-        if not r.get("name") or not canonical(r.get("url", "")):
+        if not r.get("name") or not canonical(r.get("url", ""), allow_doi=r.get("kind") in {"paper","survey"}):
             error("missing name or invalid URL")
         if r.get("review_status") not in STATUSES:
             error("invalid review status")
@@ -153,6 +172,8 @@ def validate_records(rows):
         for issue in validate_profiles(r):
             error(issue)
         for issue in validate_snapshot(r):
+            error(issue)
+        for issue in validate_publication(r):
             error(issue)
         preferred = r.get("identifiers", {}).get("preferred_arxiv")
         if preferred and preferred != r.get("identifiers", {}).get("arxiv"):
@@ -202,6 +223,7 @@ def validate_records(rows):
                         error(f"{key} is after its verification date")
                 except ValueError:
                     error(f"invalid {key}")
+    errors.extend(duplicate_publication_errors(rows))
     return errors
 
 
@@ -213,20 +235,29 @@ def coverage(rows, pending, scope_decisions):
     sources = read_json(DATA / "sources.json", [])
     excluded = {row['id'] for row in scope_decisions if row['status']=='excluded'}
     source_rows = []
+    aliases = publication_aliases(read_jsonl(DATA/'publications.jsonl'), publication_identity)
     for source in sources:
         population = {r["id"] for r in candidates if any(o["source_id"] == source["id"] for o in r["discovered_in"])}
-        present = population & ids
+        resolved = {aliases.get(identity, identity) for identity in population}
+        present = resolved & ids
+        indexed_identifiers = {identity for identity in population if aliases.get(identity,identity) in ids}
+        excluded_identifiers = {identity for identity in population if aliases.get(identity,identity) in excluded}
         source_rows.append({"id": source["id"], "name": source["name"], "url": source["homepage"],
-            "snapshot": runs.get(source["id"]), "discovered": len(population), "indexed": len(present),
-            "curated": sum(by_id[i]["review_status"] == "curated" for i in present), "excluded":len(population & excluded), "unindexed": len(population - ids - excluded)})
+            "snapshot": runs.get(source["id"]), "discovered": len(population), "indexed": len(indexed_identifiers),
+            "indexed_resources":len(present), "resolved_aliases":sum(aliases.get(identity,identity)!=identity for identity in indexed_identifiers),
+            "curated": sum(by_id[aliases.get(i,i)]["review_status"] == "curated" for i in indexed_identifiers),
+            "excluded":len(excluded_identifiers), "unindexed":len(population-indexed_identifiers-excluded_identifiers)})
     latest = max((e["retrieved_at"] for r in rows for e in r["evidence"]), default="")
     return {"as_of_utc": latest, "total_records": len(rows), "curated_records": sum(r["review_status"] == "curated" for r in rows),
-        "bibliographic_records": sum(r["id"].startswith("arxiv:") for r in rows),
+        "bibliographic_records": sum(r['kind'] in {'paper','survey'} for r in rows),
+        "arxiv_active_records": sum(r['kind'] in {'paper','survey'} and r['id'].startswith('arxiv:') for r in rows),
+        "non_arxiv_bibliographic_records": sum(r['kind'] in {'paper','survey'} and not r['id'].startswith('arxiv:') for r in rows),
+        "publication_metadata_records": sum(bool(r.get('details',{}).get('publication')) for r in rows),
         "arxiv_archive_records":len(read_jsonl(DATA/'papers.jsonl')),
         "excluded_records":len(excluded),
         "exclusion_revalidation_pending":sum(row['status']=='revalidation_pending' for row in scope_decisions),
         "metadata_only_records": sum(r["review_status"] == "metadata_verified" for r in rows),
-        "discovery_identifiers": len(candidates), "unindexed_candidates": len({r["id"] for r in candidates} - ids - excluded),
+        "discovery_identifiers": len(candidates), "unindexed_candidates": len({aliases.get(r['id'],r['id']) for r in candidates} - ids - excluded),
         "pending_editorial": pending, "by_kind": dict(sorted(collections.Counter(r["kind"] for r in rows).items())),
         "curated_by_environment": dict(sorted(collections.Counter(e for r in rows if r["review_status"] == "curated" for e in r["environments"]).items())),
         "curated_by_kind_and_environment": {kind: dict(sorted(collections.Counter(e for r in rows if r["review_status"] == "curated" and r["kind"] == kind for e in set(r["environments"])).items()))
@@ -248,12 +279,16 @@ def md(value):
 
 def paper_cell(r, by_id):
     """Reviewed paper relations only; a mention in a README is not a paper link."""
-    targets = list(dict.fromkeys(rel["target_id"] for rel in r["relations"] if rel["type"] in {"introduced_by", "documented_by"} and rel["target_id"].startswith("arxiv:")))
+    targets = list(dict.fromkeys(rel["target_id"] for rel in r["relations"] if rel["type"] in {"introduced_by", "documented_by"}
+                               and (by_id.get(rel['target_id'],{}).get('kind') in {'paper','survey'}
+                                    or (rel['target_id'] not in by_id and re.fullmatch(r'arxiv:\d{4}\.\d{4,5}',rel['target_id'])))))
     cells = []
     for target in targets:
         paper = by_id.get(target)
-        year = f" ({paper['published_at'][:4]})" if paper and paper.get("published_at") else ""
-        cells.append(f"[{target.split(':', 1)[1]}](https://arxiv.org/abs/{target.split(':', 1)[1]}){year}")
+        year = f" ({record_year(paper)})" if paper and record_year(paper) else ""
+        label = target.split(':',1)[1] if target.startswith('arxiv:') else paper['name']
+        url=paper['url'] if paper else 'https://arxiv.org/abs/'+target.split(':',1)[1]
+        cells.append(f"[{md(label)}]({url}){year}")
     return ", ".join(cells) or "—"
 
 
@@ -276,10 +311,10 @@ EVIDENCE_NOTE = "*Evidence* links the reviewed first-party snapshot and its retr
 # Columns per generated category page; facts that cannot apply to a kind are not shown as empty columns.
 KIND_COLUMNS = {
     None: (("Resource", "Environments", "Paper", "License", "Description", "Evidence"),
-        "*Paper* lists reviewed `introduced_by`/`documented_by` arXiv relations with the arXiv submission year. *License* lists publisher declarations by scope (code, data, weights, document). " + EVIDENCE_NOTE),
-    # The arXiv abstract link is the reviewed source; its API receipt stays in data/catalog.jsonl.
-    "paper": (("Date", "Resource", "Environments", "Description"), "*Date* is the arXiv first-submission date; newest first. Each title links the reviewed arXiv record; API receipts are in `data/catalog.jsonl`."),
-    "survey": (("Date", "Resource", "Environments", "Description"), "*Date* is the arXiv first-submission date; newest first. Each title links the reviewed arXiv record; API receipts are in `data/catalog.jsonl`."),
+        "*Paper* lists reviewed `introduced_by`/`documented_by` relations with the record's year. *License* lists publisher declarations by scope (code, data, weights, document). " + EVIDENCE_NOTE),
+    # Each bibliography identity retains its source edition and recorded date precision.
+    "paper": (("Date", "Resource", "Environments", "Description"), "*Date* retains the arXiv first-submission date, or the publisher-only record's publication date at its known precision; newest first. Titles link primary sources; receipts are in `data/catalog.jsonl`."),
+    "survey": (("Date", "Resource", "Environments", "Description"), "*Date* retains the arXiv first-submission date, or the publisher-only record's publication date at its known precision; newest first. Titles link primary sources; receipts are in `data/catalog.jsonl`."),
     "product": (("Resource", "Publisher", "Environments", "Description", "Evidence"), "*Publisher* is a reviewed `published_by` relation. " + EVIDENCE_NOTE),
     "company": (("Resource", "Environments", "Description", "Evidence"), EVIDENCE_NOTE),
 }
@@ -299,7 +334,7 @@ def table_row(r, columns, by_id):
     primary = next(e for e in r["evidence"] if e["method"] == "editorial_primary_review")
     cells = {"Resource": f"[{md(r['name'])}]({r['url']})", "Environments": ", ".join(r["environments"]),
         "Paper": paper_cell(r, by_id), "License": license_cell(r), "Publisher": publisher_cell(r, by_id),
-        "Date": nowrap(r.get("published_at") or "—"), "Description": md(r["summary"]),
+        "Date": nowrap(record_date_text(r) or "—"), "Description": md(r["summary"]),
         "Evidence": f"[✓ {nowrap(primary['retrieved_at'][:10])}]({primary['url']})"}
     return "| " + " | ".join(cells[column] for column in columns) + " |"
 
@@ -345,9 +380,9 @@ def topic_pages(rows):
     for topic in order:
         group = tagged[topic]
         kinds = collections.Counter(r["kind"] for r in group)
-        papers = sorted((r for r in group if r["kind"] in {"paper", "survey"}), key=lambda r: (r.get("published_at") or "", r["name"]), reverse=True)
+        papers = sorted((r for r in group if r["kind"] in {"paper", "survey"}), key=lambda r: (record_date_text(r), r["name"]), reverse=True)
         systems = sum(kinds[k] for k in ("agent", "framework", "tool", "infrastructure", "product", "company"))
-        newest = f"[{md(papers[0]['name'])}]({papers[0]['url']}) · {papers[0]['published_at'] or '—'}" if papers else "—"
+        newest = f"[{md(papers[0]['name'])}]({papers[0]['url']}) · {record_date_text(papers[0]) or '—'}" if papers else "—"
         cell = lambda n: f"{n:,}" if n else "·"
         index.append(f"| [{topic_label(topic)}](topics/{topic}.md) | {len(group):,} | {cell(kinds['benchmark'])} | {cell(kinds['dataset'])} | {cell(kinds['model'])} | {cell(systems)} | {cell(len(papers))} | {newest} |")
         lines = [f"# {topic_label(topic)}", "", f"[Home](../../README.md) · [All topics](../topics.md) · [Full arXiv bibliography](../papers.md)", "",
@@ -360,7 +395,7 @@ def topic_pages(rows):
             columns = KIND_COLUMNS.get(kind, KIND_COLUMNS[None])[0]
             members.sort(key=lambda r: r["name"].casefold())
             if "Date" in columns:
-                members.sort(key=lambda r: r.get("published_at") or "", reverse=True)
+                members.sort(key=record_date_text, reverse=True)
             lines += [f"## {label}", "", *section_table(members, columns, by_id), ""]
         files[f"docs/topics/{topic}.md"] = "\n".join(lines)
     files["docs/topics.md"] = "\n".join(index + [""])
@@ -401,29 +436,29 @@ def documents(rows, report):
         for slug, label in present:
             ordered = sorted(sections[slug], key=lambda r: r["name"].casefold())
             if "Date" in columns:
-                ordered.sort(key=lambda r: r.get("published_at") or "", reverse=True)
+                ordered.sort(key=record_date_text, reverse=True)
             lines += [f"## {label}", "", *section_table(ordered, columns, by_id),
                 "", f"[↑ Back to top](#{title.lower().replace(' ', '-')})", ""]
         lines += ["Detailed notes and separate code/data/weights license declarations are in `data/catalog.jsonl`.", ""]
         filename = "companies" if kind == "company" else kind + "s"
         files[f"docs/{filename}.md"] = "\n".join(lines)
     paper_lines = ["# Research bibliography", "", "[Home](../README.md) · [Reviewed research by topic](topics.md) · [Curated surveys](surveys.md) · [Query examples](query-guide.md)", "",
-        "Official arXiv bibliographic metadata. Most entries have **not** undergone a relevance or methodological review. Discovery includes historical references and adjacent work; this is not a count of confirmed CUA papers.",
-        "Explicit scope exclusions are listed in the [scope-decision ledger](../data/exclusion-status.json); original records remain in the [metadata archive](../data/papers.jsonl).", ""]
+        "Bibliographic records from arXiv and retained publication sources. Metadata-only entries have **not** undergone a relevance or methodological review. Discovery includes historical references and adjacent work; this is not a count of confirmed CUA papers.",
+        "Dates retain their recorded precision: a year or month does not imply a known day. Explicit arXiv scope exclusions are listed in the [scope-decision ledger](../data/exclusion-status.json). The [arXiv archive](../data/papers.jsonl) and [publication observations](../data/publications.jsonl) retain their separate source facts.", ""]
     years = collections.defaultdict(list)
     for r in rows:
-        if r["id"].startswith("arxiv:") or (r["kind"] == "paper" and r["review_status"] == "curated"):
-            years[r["published_at"][:4] if r["published_at"] else "Undated"].append(r)
+        if r['kind'] in {'paper','survey'}:
+            years[record_year(r) or 'Undated'].append(r)
     order = sorted((y for y in years if y != "Undated"), reverse=True) + (["Undated"] if "Undated" in years else [])
     reviewed = lambda group: sum(r["review_status"] == "curated" for r in group)
     paper_lines += ["**Years:** " + " · ".join(f"[{y}](#{y.lower()}) ({len(years[y]):,}; {reviewed(years[y]):,} ⭐)" for y in order), "",
-        "⭐ marks papers with an editorial relevance review; their topics link to the [topic hubs](topics.md). Other rows are arXiv metadata only.", ""]
+        "⭐ marks papers with an editorial relevance review; their topics link to the [topic hubs](topics.md). Other rows are bibliographic metadata only.", ""]
     for year in order:
         paper_lines += [f"## {year}", "", "| Date | Paper | Review | Topics |", "| --- | --- | --- | --- |"]
-        for r in sorted(years[year], key=lambda r: (r["published_at"] or "", r["name"]), reverse=True):
+        for r in sorted(years[year], key=lambda r: (record_date_text(r), r["name"]), reverse=True):
             curated = r["review_status"] == "curated"
             topics = ", ".join(f"[{t}](topics/{t}.md)" for t in sorted(set(r["topics"]))) if curated else ""
-            paper_lines.append(f"| {r['published_at'] or '—'} | [{md(r['name'])}]({r['url']}) | {'⭐ reviewed' if curated else 'metadata'} | {topics} |")
+            paper_lines.append(f"| {record_date_text(r) or '—'} | [{md(r['name'])}]({r['url']}) | {'⭐ reviewed' if curated else 'metadata'} | {topics} |")
         paper_lines.append("")
     files["docs/papers.md"] = "\n".join(paper_lines)
     hubs = topic_pages(rows)
@@ -432,14 +467,14 @@ def documents(rows, report):
     files.update(hubs)
     lines = ["# Coverage and quality ledger", "", f"Evidence snapshot through **{report['as_of_utc']}**. Generated from committed source receipts.", "",
         f"- {report['total_records']:,} resource records: {report['curated_records']:,} curated; {report['metadata_only_records']:,} bibliographic metadata only.",
-        f"- {report['bibliographic_records']:,} arXiv records, including curated surveys. This count overlaps the status counts above.",
+        f"- {report['bibliographic_records']:,} paper and survey records, including {report.get('arxiv_active_records',report['bibliographic_records']):,} arXiv identities and {report.get('non_arxiv_bibliographic_records',0):,} publisher-only identities. This count overlaps the status counts above.",
         f"- {report['arxiv_archive_records']:,} retained arXiv metadata records; {report['excluded_records']:,} explicit scope exclusions are outside the active catalog.",
         f"- {report['discovery_identifiers']:,} discovery identifiers; {report['unindexed_candidates']:,} remain unresolved after accounting for scope exclusions.",
         f"- {len(report['pending_editorial'])} editorial proposals await verification or review.", "",
         "These are distinct resource identifiers, not distinct research projects. Papers, repositories, datasets, products, and publisher entities have different grains.", "",
         "## Curated coverage by kind and environment", "", "Counts of source-reviewed resources. A resource tagged with several environments counts in each column; `·` marks an empty cell, which is where contributions are most needed.", "",
         *matrix_lines(report["curated_by_kind_and_environment"]), "",
-        "## Source snapshot coverage", "", "The denominator is the normalized identifiers extracted from each fetched document, including incidental links. Sources overlap. These figures do not measure global completeness or editorial recall.", "",
+        "## Source snapshot coverage", "", "The denominator is the normalized identifiers extracted from each fetched document, including incidental links. Reviewed publisher/PDF aliases can resolve to one canonical resource; coverage counts matching identifiers, while indexed_resources records distinct resolved resources. Sources overlap. These figures do not measure global completeness or editorial recall.", "",
         "| Source | Discovered | Indexed | Curated | Excluded | Unresolved | Fetch |", "| --- | ---: | ---: | ---: | ---: | ---: | --- |"]
     for s in report["sources"]:
         status = s["snapshot"] or {}
@@ -504,7 +539,7 @@ def explore(rows, report):
         if kind == "paper":
             return f"[{label}]({path}) · **{curated[kind]:,}** reviewed papers"
         if kind == "bibliography":
-            return f"[{label}]({path}) · {report['bibliographic_records']:,} arXiv records"
+            return f"[{label}]({path}) · {report['bibliographic_records']:,} paper and survey records"
         return f"[{label}]({path}) · **{curated[kind]:,}**"
     lines = ["| Research and training | Engineering and industry |", "| --- | --- |"]
     lines += [f"| {' · '.join(link(*item) for item in left)} | {' · '.join(link(*item) for item in right)} |" for left, right in EXPLORE]
@@ -579,12 +614,13 @@ def write_sqlite(rows, path):
 def build(args):
     rows, pending, scope_decisions = source_records(with_scope=True)
     errors = validate_records(rows)
+    errors.extend(alias_owner_errors(rows,publication_aliases(read_jsonl(DATA/'publications.jsonl'),publication_identity),publication_identity))
     if errors:
         raise ValueError("\n".join(errors[:30]))
     report = coverage(rows, pending, scope_decisions)
     files = documents(rows, report)
     stats = (f"\n\n**{report['total_records']:,} resource records** · **{report['curated_records']:,} curated** · "
-        f"**{report['bibliographic_records']:,} arXiv records** · **{len(report['sources'])} discovery documents**\n\n"
+        f"**{report['bibliographic_records']:,} paper and survey records** · **{len(report['sources'])} discovery documents**\n\n"
         f"Evidence through `{report['as_of_utc']}`. {report['metadata_only_records']:,} records have bibliographic verification only; "
         f"{report['unindexed_candidates']:,} discovered identifiers remain unresolved. "
         f"{report['excluded_records']:,} scope exclusions retain their original metadata in the archive. Counts overlap as explained below.\n\n")
@@ -594,7 +630,8 @@ def build(args):
     ids = {r["id"] for r in rows}
     excluded = {row['id'] for row in scope_decisions if row['status']=='excluded'}
     candidates = read_jsonl(DATA / "candidates.jsonl")
-    queue = [{**r, "review_status": "candidate", "reason": "discovered identifier; primary evidence and relevance need review"} for r in candidates if r["id"] not in ids and r['id'] not in excluded]
+    aliases=publication_aliases(read_jsonl(DATA/'publications.jsonl'),publication_identity)
+    queue = [{**r, "review_status": "candidate", "reason": "discovered identifier; primary evidence and relevance need review"} for r in candidates if aliases.get(r['id'],r['id']) not in ids and aliases.get(r['id'],r['id']) not in excluded]
     editorial_pending = {r["id"]: r for r in pending}
     merged = {r["id"]: r for r in queue}
     for rid, item in editorial_pending.items():
@@ -608,7 +645,7 @@ def build(args):
         for ref in r.get("references", []):
             edges.append({"id": hashlib.sha256((r["id"] + "\0" + ref["target_id"]).encode()).hexdigest()[:24], "source_id": r["id"], **ref, "target_in_catalog": ref["target_id"] in ids})
     files["data/references.jsonl"] = "".join(json.dumps(e, ensure_ascii=False, sort_keys=True) + "\n" for e in sorted(edges, key=lambda e: e["id"]))
-    reviewed_at = {(e.get("id") or canonical(e["url"])[0]): e.get("reviewed_at") for e in read_json(DATA / "editorial.json", []) if e.get("editorial_reviewed")}
+    reviewed_at = {(e.get("id") or editorial_identity(e)[0]): e.get("reviewed_at") for e in read_json(DATA / "editorial.json", []) if e.get("editorial_reviewed")}
     blocks = {"STATS": stats, "BADGES": badges(rows, report), "EXPLORE": explore(rows, report), "HIGHLIGHTS": highlights(rows, edges), "RECENT": recently_reviewed(rows, reviewed_at)}
     for filename in ("README.md", "README.zh-CN.md"):
         path = ROOT / filename
@@ -642,14 +679,30 @@ def validate(args):
         raise ValueError("No catalog. Run build first.")
     # Full published JSON Schema validation is part of the release/CI gate.
     import jsonschema
+    from referencing import Registry, Resource
     formats = jsonschema.FormatChecker()
     # Without the format extras, jsonschema silently skips date-time and uri constraints.
     if missing := {"date-time", "uri"} - set(formats.checkers):
         raise ValueError("JSON Schema format checkers unavailable: " + ", ".join(sorted(missing)) + ". Install requirements-dev.txt (jsonschema[format-nongpl]).")
     errors = validate_records(rows)
-    validator = jsonschema.Draft202012Validator(read_json(ROOT / "schemas" / "resource.schema.json"), format_checker=formats)
+    resource_contract=read_json(ROOT/'schemas/resource.schema.json')
+    validator = jsonschema.Draft202012Validator(resource_contract, format_checker=formats)
     for row in rows:
         errors.extend(f"{row['id']}: {error.message}" for error in validator.iter_errors(row))
+    registry=Registry().with_resource(resource_contract['$id'],Resource.from_contents(resource_contract))
+    publication_validator=jsonschema.Draft202012Validator(read_json(ROOT/'schemas/publication-observation.schema.json'),registry=registry,format_checker=formats)
+    publication_observations=read_jsonl(DATA/'publications.jsonl')
+    publication_errors=[]
+    for observation in publication_observations:
+        identity=observation.get('id','<missing>') if isinstance(observation,dict) else '<invalid>'
+        publication_errors.extend(f"Publication {identity}: {error.message}" for error in publication_validator.iter_errors(observation))
+    errors.extend(publication_errors)
+    if not publication_errors:
+        try:
+            attach_publications({row['id']:row for row in read_jsonl(DATA/'papers.jsonl')},publication_observations,publication_identity)
+            errors.extend(alias_owner_errors(rows,publication_aliases(publication_observations,publication_identity),publication_identity))
+        except ValueError as error:
+            errors.append('Publication observations: '+str(error))
     decisions = read_json(DATA/'exclusions.json', [])
     scope_validator = jsonschema.Draft202012Validator(read_json(ROOT/'schemas/scope-decision.schema.json'), format_checker=formats)
     scope_errors = ['Scope decisions: '+error.message for error in scope_validator.iter_errors(decisions)]
@@ -672,7 +725,9 @@ def validate(args):
 def search(args):
     # Literal AND search is intentionally safe and works without a generated database.
     terms = args.query.casefold().split()
-    target = canonical(args.query)  # a pasted URL folds to its record id (arXiv versions, GitHub paths)
+    target = publication_identity(args.query)  # a pasted URL folds to its record id (arXiv versions, GitHub paths)
+    aliases = publication_aliases(read_jsonl(DATA/'publications.jsonl'),publication_identity)
+    target_id = aliases.get(target[0],target[0]) if target else None
     result = []
     for row in read_jsonl(DATA / "catalog.jsonl"):
         if args.kind and row["kind"] != args.kind:
@@ -683,8 +738,8 @@ def search(args):
             continue
         if args.topic and args.topic not in row["topics"]:
             continue
-        haystack = " ".join([row["id"], row["url"], row["name"], row["summary"] or "", *row["aliases"], *row["authors"], *row["topics"], *row["identifiers"].values()]).casefold()
-        if all(term in haystack for term in terms) or (target and target[0] == row["id"]):
+        haystack = " ".join([row["id"], row["url"], row["name"], row["summary"] or "", *row["aliases"], *row["authors"], *row["topics"], *row["identifiers"].values(), publication_search_text(row)]).casefold()
+        if all(term in haystack for term in terms) or target_id == row['id']:
             result.append(row)
     result.sort(key=lambda r: (r["review_status"] != "curated", r["name"].casefold()))
     limited = result[:args.limit] if args.limit else result

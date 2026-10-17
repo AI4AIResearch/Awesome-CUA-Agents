@@ -41,9 +41,12 @@ Each resource page also serves its exact active record at `record.json`, for exa
 python3 scripts/export_citations.py --format bibtex --output dist/citations.bib
 python3 scripts/export_citations.py --format csl-json --output dist/citations.csl.json
 python3 scripts/export_citations.py --id arxiv:2404.07972 --format bibtex
+python3 scripts/export_citations.py --edition publication --format csl-json --output dist/publication-citations.json
 ```
 
-The default exports reviewed papers and surveys. Add `--include-metadata` to include bibliography records awaiting relevance review. Citations preserve the recorded version URL and original author names, omit unknown venues and identifiers, and keep first publication separate from version updates. A citation export is bibliographic data, not a claim that findings were reproduced.
+The default exports reviewed papers and surveys. Add `--include-metadata` to include bibliography records awaiting relevance review. The default arXiv citation preserves its retained preprint title/authors/date/version; `--edition publication` selects only records with a source-backed publication edition, using that edition's own facts. Publisher-only records use their publication by default. Year-only or month-only dates stay partial, and unknown venues/identifiers are omitted. A citation export is bibliographic data, not a claim that findings were reproduced.
+
+`data/publications.jsonl` retains publisher observations separately from the arXiv archive. Attachments to an arXiv ID do not create a second paper or approve a metadata-only record. Read `details.publication.date_parts` when `published_at` is null: a year may be known even when a complete date is not. Preserve the original arXiv and publication author/date variants when they differ.
 
 ## Prepare retrieval data
 

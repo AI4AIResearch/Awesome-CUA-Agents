@@ -1,7 +1,7 @@
 # Awesome Computer-Use Agents
 
 <!-- BADGES:START -->
-[![Resources](https://img.shields.io/badge/resources-2%2C556-4f46e5)](data/catalog.jsonl) [![Curated](https://img.shields.io/badge/source--reviewed-1%2C093-0e8a16)](docs/coverage.md) [![Evidence](https://img.shields.io/badge/evidence%20through-2026--10--17-1d76db)](docs/coverage.md) [![Catalog quality](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml/badge.svg)](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml) [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![Website](https://img.shields.io/badge/website-awesomecua.github.io-6366f1)](https://awesomecua.github.io/)
+[![Resources](https://img.shields.io/badge/resources-2%2C569-4f46e5)](data/catalog.jsonl) [![Curated](https://img.shields.io/badge/source--reviewed-1%2C106-0e8a16)](docs/coverage.md) [![Evidence](https://img.shields.io/badge/evidence%20through-2026--10--17-1d76db)](docs/coverage.md) [![Catalog quality](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml/badge.svg)](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml) [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![Website](https://img.shields.io/badge/website-awesomecua.github.io-6366f1)](https://awesomecua.github.io/)
 <!-- BADGES:END -->
 
 **面向 computer-use、GUI、浏览器和移动端智能体的可溯源数据目录。**
@@ -14,7 +14,7 @@
 git clone https://github.com/reacher-z/Awesome-CUA.git
 ```
 
-[Agent 操作指南](AGENTS.md) · [RAG 与智能体指南](https://awesomecua.github.io/agents/) · [完整 JSONL](https://awesomecua.github.io/downloads/catalog.jsonl) · [检索文档](https://awesomecua.github.io/downloads/rag-documents.jsonl)
+[Agent 操作指南](AGENTS.md) · [RAG 与智能体指南](https://awesomecua.github.io/zh/agents/)（[English](https://awesomecua.github.io/agents/)） · [完整 JSONL](https://awesomecua.github.io/downloads/catalog.jsonl) · [检索文档](https://awesomecua.github.io/downloads/rag-documents.jsonl)
 
 目标是全面覆盖公开的研究和产业资源，并提供可检查的来源证据。论文、模型、训练数据、评测环境、框架、基础设施、产品和发布方都收录在同一个可检索目录中。
 
@@ -24,9 +24,9 @@ git clone https://github.com/reacher-z/Awesome-CUA.git
 
 <!-- STATS:START -->
 
-**2,556 resource records** · **1,093 curated** · **2,164 arXiv records** · **44 discovery documents**
+**2,569 resource records** · **1,106 curated** · **2,177 paper and survey records** · **44 discovery documents**
 
-Evidence through `2026-10-17T09:27:51+00:00`. 1,463 records have bibliographic verification only; 1,394 discovered identifiers remain unresolved. 100 scope exclusions retain their original metadata in the archive. Counts overlap as explained below.
+Evidence through `2026-10-17T10:01:32Z`. 1,463 records have bibliographic verification only; 1,391 discovered identifiers remain unresolved. 100 scope exclusions retain their original metadata in the archive. Counts overlap as explained below.
 
 <!-- STATS:END -->
 
@@ -46,7 +46,7 @@ Evidence through `2026-10-17T09:27:51+00:00`. 1,463 records have bibliographic v
 
 打开[交互式网站](https://awesomecua.github.io/)，可以搜索和筛选全部资源、查看来源证据、切换中英文界面，或下载完整目录。网站开发与发布见 [website.md](docs/website.md)。
 
-[已审阅研究](https://awesomecua.github.io/papers/) · [Computer-use agent 指南](https://awesomecua.github.io/guides/) · [静态资源目录](https://awesomecua.github.io/catalog/) · [搜索与 AI 发现](docs/search-discovery.md)
+[已审阅研究](https://awesomecua.github.io/zh/papers/)（[English](https://awesomecua.github.io/papers/)） · [Computer-use agent 指南](https://awesomecua.github.io/guides/) · [静态资源目录](https://awesomecua.github.io/catalog/) · [搜索与 AI 发现](docs/search-discovery.md)
 
 - **[目录 JSONL](data/catalog.jsonl)：** 每行一个资源，包含稳定 ID、类型化字段、来源证据、按范围区分的许可和审阅状态。
 - **[引用图](data/references.jsonl)：** 一手来源中的对外引用。`mentions` 不等于 `trained_on` 或 `evaluated_on`。
@@ -75,7 +75,7 @@ python3 scripts/export_citations.py --format bibtex --output dist/citations.bib
 | 状态 | 已检查的内容 | 尚未确认的内容 |
 | --- | --- | --- |
 | `curated` | 基于一手来源快照的 AI 辅助编辑审阅，涵盖名称、范围、摘要和分类 | 独立复现、普遍可用性或背书 |
-| `metadata_verified` | arXiv 返回的书目身份、标题、作者和日期 | 主题相关性、方法、结论，或是否属于核心领域 |
+| `metadata_verified` | 对照保留的 arXiv 或出版来源核实书目身份、标题、作者和已记录日期 | 主题相关性、方法、结论，或是否属于核心领域 |
 | `candidate` | 发现了规范化的 URL 或标识符 | 是否收录、是否正确或是否可用；不计入公开目录 |
 
 计数指的是**资源**，而不是独立项目。论文、仓库、数据集发布、模型权重版本、产品和发布方可以是彼此关联的不同资源。模型系列与具体权重版本在审阅后会显式关联。
@@ -96,6 +96,6 @@ python3 scripts/catalog.py build --check
 
 ## 致谢与复用
 
-[来源登记](data/sources.json)列出了用于发现资源的社区合集和综述。目录从 arXiv 获取权威书目元数据，并对照发布方的仓库、文档以及模型/数据集卡片核查部分资源。上游 README、论文、模型权重和数据集不在本仓库中再分发。
+[来源登记](data/sources.json)列出了用于发现资源的社区合集和综述。书目记录依据保留的 arXiv、出版方及作者来源；出版记录分别保留各版本的题名、作者和日期精度。部分资源还会对照发布方的仓库、文档以及模型/数据集卡片核查。上游 README、论文、模型权重和数据集不在本仓库中再分发。
 
 本仓库的原创代码和标注采用 [MIT 许可](LICENSE)。被链接的资源保留各自的条款；本仓库不对其重新授权。

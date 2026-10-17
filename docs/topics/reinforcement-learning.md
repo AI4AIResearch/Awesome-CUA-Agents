@@ -2,9 +2,9 @@
 
 [Home](../../README.md) · [All topics](../topics.md) · [Full arXiv bibliography](../papers.md)
 
-158 source-reviewed resources tagged `reinforcement-learning`. Curated metadata, not a performance ranking; unknown facts are shown as —.
+160 source-reviewed resources tagged `reinforcement-learning`. Curated metadata, not a performance ranking; unknown facts are shown as —.
 
-**Contents:** [Benchmarks (1)](#benchmarks) · [Datasets (5)](#datasets) · [Models (22)](#models) · [Frameworks (15)](#frameworks) · [Infrastructure (2)](#infrastructure) · [Surveys (1)](#surveys) · [Papers (112)](#papers)
+**Contents:** [Benchmarks (1)](#benchmarks) · [Datasets (5)](#datasets) · [Models (22)](#models) · [Frameworks (15)](#frameworks) · [Infrastructure (2)](#infrastructure) · [Surveys (1)](#surveys) · [Papers (114)](#papers)
 
 ## Benchmarks
 
@@ -12,7 +12,7 @@ All entries in this section: web.
 
 | Resource | Paper | License | Description | Evidence |
 | --- | --- | --- | --- | --- |
-| [MiniWoB++](https://github.com/Farama-Foundation/miniwob-plusplus) | — | code MIT | Browser interaction task environment derived from MiniWoB. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/Farama-Foundation/miniwob-plusplus/HEAD/README.md) |
+| [MiniWoB++](https://github.com/Farama-Foundation/miniwob-plusplus) | [1802.08802](https://arxiv.org/abs/1802.08802) (2018) | code MIT | Browser interaction task environment derived from MiniWoB. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/Farama-Foundation/miniwob-plusplus/HEAD/README.md) |
 
 ## Datasets
 
@@ -123,6 +123,7 @@ All entries in this section: cross-platform.
 | 2026‑07‑30 | [Qwen-UI-Agent Technical Report: Toward Next-Generation Real-World Centric Foundation GUI Agents](https://arxiv.org/abs/2607.28227) | cross-platform, web, desktop | Describes a foundation GUI agent with combined GUI and command-line actions, large-scale interaction infrastructure, and iterative environment and task generation. |
 | 2026‑07‑13 | [SCALECUA: Scaling Computer Use Agents with Verifiable Task Synthesis and Efficient Online RL](https://arxiv.org/abs/2607.11185) | desktop | Scales computer-agent reinforcement learning through verifiable task generation, capability-aware rollout allocation, and segmented visual context. |
 | 2026‑06‑30 | [Xiaomi-GUI-0 Technical Report](https://arxiv.org/abs/2606.31410) | android | Describes a mobile GUI agent trained through real-device interaction, corrected failure trajectories, supervised learning, and reinforcement learning. |
+| 2026‑06 | [GUI-SAGE: Enhancing GUI Automation with Self-Explanatory Learning](https://openaccess.thecvf.com/content/CVPR2026/html/Tang_GUI-SAGE_Enhancing_GUI_Automation_with_Self-Explanatory_Learning_CVPR_2026_paper.html) | android | GUI-SAGE generates reasoning conditioned on known actions and weights policy updates using confidence and reward signals. Its experiments use AndroidControl and GUIOdyssey data and separately evaluate interactive AndroidWorld tasks. |
 | 2026‑02‑15 | [Mobile-Agent-v3.5: Multi-platform Fundamental GUI Agents](https://arxiv.org/abs/2602.16855) | cross-platform | Presents GUI-Owl-1.5 variants and a hybrid data pipeline for multimodal GUI interaction, tool use, memory, and multi-platform tasks. |
 | 2026‑02‑09 | [UI-Venus-1.5 Technical Report](https://arxiv.org/abs/2602.09082) | cross-platform, web, android | Describes a GUI-agent family combining broad intermediate training, full-trajectory online reinforcement learning, and merging of specialized models. |
 | 2026‑02‑06 | [POINTS-GUI-G: GUI-Grounding Journey](https://arxiv.org/abs/2602.06391) | cross-platform | Studies GUI-grounding development from a weakly grounded base model through data preparation, visual training, and verifiable rewards. |
@@ -204,3 +205,4 @@ All entries in this section: cross-platform.
 | 2022‑02‑16 | [A data-driven approach for learning to control computers](https://arxiv.org/abs/2202.08137) | web | Combines reinforcement learning with behavioral priors from human interactions to learn computer control through keyboard and mouse actions. |
 | 2021‑05‑27 | [AndroidEnv: A Reinforcement Learning Platform for Android](https://arxiv.org/abs/2105.13231) | android | Presents an Android environment for training and evaluating reinforcement-learning agents through touchscreen interaction. |
 | 2018‑02‑24 | [Reinforcement Learning on Web Interfaces Using Workflow-Guided Exploration](https://arxiv.org/abs/1802.08802) | web | Uses workflows extracted from demonstrations to constrain reinforcement-learning exploration for interactive web tasks. |
+| 2017‑07‑17 | [World of Bits: An Open-Domain Platform for Web-Based Agents](https://proceedings.mlr.press/v70/shi17a.html) | web | Introduces World of Bits, a web-task platform combining human demonstrations, keyboard and mouse actions, and cached HTTP traffic for repeatable task environments. It evaluates agents trained through behavioral cloning and reinforcement learning. |

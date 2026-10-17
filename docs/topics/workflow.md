@@ -2,9 +2,9 @@
 
 [Home](../../README.md) · [All topics](../topics.md) · [Full arXiv bibliography](../papers.md)
 
-71 source-reviewed resources tagged `workflow`. Curated metadata, not a performance ranking; unknown facts are shown as —.
+73 source-reviewed resources tagged `workflow`. Curated metadata, not a performance ranking; unknown facts are shown as —.
 
-**Contents:** [Benchmarks (6)](#benchmarks) · [Datasets (2)](#datasets) · [Agents (5)](#agents) · [Frameworks (6)](#frameworks) · [Products (7)](#products) · [Papers (45)](#papers)
+**Contents:** [Benchmarks (6)](#benchmarks) · [Datasets (2)](#datasets) · [Agents (5)](#agents) · [Frameworks (6)](#frameworks) · [Products (7)](#products) · [Papers (47)](#papers)
 
 ## Benchmarks
 
@@ -105,4 +105,6 @@
 | 2024‑01‑04 | [MobileAgent: enhancing mobile control via human-machine interaction and SOP integration](https://arxiv.org/abs/2401.04124) | android | Combines operating-procedure context with user interaction to guide mobile task automation and handle personalized or sensitive requests. |
 | 2023‑10‑23 | [InstructExcel: A Benchmark for Natural Language Instruction in Excel](https://arxiv.org/abs/2310.14495) | unspecified | Introduces InstructExcel, a benchmark for generating Excel OfficeScripts from natural-language requests, built using scripts recorded from user actions and a collection of existing spreadsheets. |
 | 2023‑10‑05 | [SteP: Stacked LLM Policies for Web Actions](https://arxiv.org/abs/2310.03720) | web | SteP dynamically composes specialized web-action policies through a stack that records the active chain of policy calls. It studies this control structure across WebArena, MiniWoB++, and CRM workflows. |
+| 2018‑06 | [Kite: Building Conversational Bots from Mobile Apps](https://doi.org/10.1145/3210240.3210339) | android | Derives task graphs from demonstrated Android app interactions and layers a conversational question-answer interface over those graphs. The evaluation examines task-model extraction and developer use of the resulting bot templates. |
 | 2018‑02‑24 | [Reinforcement Learning on Web Interfaces Using Workflow-Guided Exploration](https://arxiv.org/abs/1802.08802) | web | Uses workflows extracted from demonstrations to constrain reinforcement-learning exploration for interactive web tasks. |
+| 2007 | [Koala: Capture, Share, Automate, Personalize Business Processes on the Web](https://doi.org/10.1145/1240624.1240767) | web | Introduces Koala, a collaborative web automation system that records browser interactions as editable pseudo-natural-language scripts. Scripts are shared through a wiki and instantiated with personal or corporate data for reuse by other users. |

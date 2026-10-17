@@ -9,12 +9,22 @@ export function createRecordLoader(fetcher) {
   };
 }
 export function normalize(value) { return String(value || '').normalize('NFKC').toLowerCase().replace(/[\p{P}\p{S}]+/gu,' ').replace(/\s+/g,' ').trim(); }
+export function bibliographicDate(record) {
+  if(typeof record.paper_date==='string')return record.paper_date;
+  const publication=record.details?.publication;
+  if(publication&&!record.id?.startsWith('arxiv:')){
+    const parts=publication.date_parts;
+    return Array.isArray(parts)&&parts.length>=1&&parts.length<=3&&parts.every(Number.isInteger)
+      ? parts.map((part,index)=>String(part).padStart(index?2:4,'0')).join('-') : '';
+  }
+  return record.published_at || '';
+}
 export function matches(record, state, ignoreKind = false) {
   if (!ignoreKind && state.kind && record.kind !== state.kind) return false;
   if (state.platform && !record.environments.includes(state.platform)) return false;
   if (state.review && record.review_status !== state.review) return false;
   if (state.topic && !record.topics.includes(state.topic)) return false;
-  if (state.year && (record.published_at || '').slice(0,4) !== state.year) return false;
+  if (state.year && bibliographicDate(record).slice(0,4) !== state.year) return false;
   const terms = normalize(state.q).split(' ').filter(Boolean);
   return terms.every(term => record.search_text.includes(term));
 }
@@ -22,11 +32,11 @@ export function filtered(records, state) {
   const result = records.filter(r => matches(r,state));
   const alpha = (a,b) => a.name.localeCompare(b.name,'en',{sensitivity:'base'});
   if (state.sort === 'name') result.sort(alpha);
-  else if (state.sort === 'newest') result.sort((a,b) => (b.published_at || '').localeCompare(a.published_at || '') || alpha(a,b));
+  else if (state.sort === 'newest') result.sort((a,b) => bibliographicDate(b).localeCompare(bibliographicDate(a)) || alpha(a,b));
   else result.sort((a,b) => {
     const review = Number(a.review_status !== 'curated') - Number(b.review_status !== 'curated');
     if (review) return review;
-    if (['paper','survey'].includes(state.kind)) return (b.published_at || '').localeCompare(a.published_at || '') || alpha(a,b);
+    if (['paper','survey'].includes(state.kind)) return bibliographicDate(b).localeCompare(bibliographicDate(a)) || alpha(a,b);
     const rank = r => r.kind !== 'company' && FEATURED.includes(r.name) ? FEATURED.indexOf(r.name) : FEATURED.length;
     const exact = r => state.q && normalize(r.name) === normalize(state.q) ? -1 : 0;
     return exact(a)-exact(b) || rank(a)-rank(b) || alpha(a,b);

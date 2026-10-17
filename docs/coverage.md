@@ -1,11 +1,11 @@
 # Coverage and quality ledger
 
-Evidence snapshot through **2026-10-17T09:27:51+00:00**. Generated from committed source receipts.
+Evidence snapshot through **2026-10-17T10:01:32Z**. Generated from committed source receipts.
 
-- 2,556 resource records: 1,093 curated; 1,463 bibliographic metadata only.
-- 2,164 arXiv records, including curated surveys. This count overlaps the status counts above.
+- 2,569 resource records: 1,106 curated; 1,463 bibliographic metadata only.
+- 2,177 paper and survey records, including 2,164 arXiv identities and 13 publisher-only identities. This count overlaps the status counts above.
 - 2,264 retained arXiv metadata records; 100 explicit scope exclusions are outside the active catalog.
-- 3,907 discovery identifiers; 1,394 remain unresolved after accounting for scope exclusions.
+- 3,907 discovery identifiers; 1,391 remain unresolved after accounting for scope exclusions.
 - 12 editorial proposals await verification or review.
 
 These are distinct resource identifiers, not distinct research projects. Papers, repositories, datasets, products, and publisher entities have different grains.
@@ -23,29 +23,29 @@ Counts of source-reviewed resources. A resource tagged with several environments
 | [framework](frameworks.md) | 26 | 16 | 1 | 1 | 3 | 13 | 1 | 1 | 5 | 2 |
 | [infrastructure](infrastructures.md) | 4 | 6 | 1 | 2 | 4 | 4 | 1 | · | · | · |
 | [model](models.md) | 25 | 19 | 4 | 4 | 4 | 23 | 4 | · | 46 | 2 |
-| [paper](topics.md) | 250 | 130 | 23 | 8 | 11 | 120 | 5 | · | 92 | 181 |
+| [paper](topics.md) | 255 | 131 | 23 | 8 | 11 | 125 | 5 | · | 92 | 183 |
 | [product](products.md) | 17 | 5 | · | · | · | · | · | · | · | · |
 | [survey](surveys.md) | · | · | · | · | · | 1 | 1 | · | 10 | 1 |
 | [tool](tools.md) | 10 | 1 | 1 | · | · | 4 | 2 | · | 1 | 2 |
 
 ## Source snapshot coverage
 
-The denominator is the normalized identifiers extracted from each fetched document, including incidental links. Sources overlap. These figures do not measure global completeness or editorial recall.
+The denominator is the normalized identifiers extracted from each fetched document, including incidental links. Reviewed publisher/PDF aliases can resolve to one canonical resource; coverage counts matching identifiers, while indexed_resources records distinct resolved resources. Sources overlap. These figures do not measure global completeness or editorial recall.
 
 | Source | Discovered | Indexed | Curated | Excluded | Unresolved | Fetch |
 | --- | ---: | ---: | ---: | ---: | ---: | --- |
-| [ShowLab Awesome GUI Agent](https://github.com/showlab/Awesome-GUI-Agent) | 338 | 200 | 185 | 0 | 138 | OK · 2026-10-17 |
-| [ZJU REAL Awesome GUI Agents](https://github.com/ZJU-REAL/Awesome-GUI-Agents) | 218 | 157 | 151 | 0 | 61 | OK · 2026-10-17 |
+| [ShowLab Awesome GUI Agent](https://github.com/showlab/Awesome-GUI-Agent) | 338 | 202 | 187 | 0 | 136 | OK · 2026-10-17 |
+| [ZJU REAL Awesome GUI Agents](https://github.com/ZJU-REAL/Awesome-GUI-Agents) | 218 | 158 | 152 | 0 | 60 | OK · 2026-10-17 |
 | [OS Agents Survey](https://github.com/OS-Agent-Survey/OS-Agent-Survey) | 224 | 198 | 169 | 0 | 26 | OK · 2026-10-17 |
 | [Awesome Computer Use Agents — wjhou](https://github.com/wjhou/awesome-computer-use-agents) | 132 | 94 | 79 | 0 | 38 | OK · 2026-10-17 |
-| [Steel Awesome Web Agents](https://github.com/steel-dev/awesome-web-agents) | 113 | 22 | 22 | 0 | 91 | OK · 2026-10-17 |
+| [Steel Awesome Web Agents](https://github.com/steel-dev/awesome-web-agents) | 113 | 23 | 23 | 0 | 90 | OK · 2026-10-17 |
 | [Steel Web Agents Archive](https://github.com/steel-dev/awesome-web-agents/blob/main/ARCHIVE.md) | 7 | 1 | 1 | 0 | 6 | OK · 2026-10-17 |
 | [Computer Browser Phone Use Agent Datasets](https://github.com/Khang-9966/Computer-Browser-Phone-Use-Agent-Datasets) | 170 | 111 | 92 | 1 | 58 | OK · 2026-10-17 |
-| [Awesome Multimodal GUI Agents](https://github.com/DeLunnLi/Awesome-Multimodal-GUI-Agents) | 588 | 479 | 336 | 0 | 109 | OK · 2026-10-17 |
+| [Awesome Multimodal GUI Agents](https://github.com/DeLunnLi/Awesome-Multimodal-GUI-Agents) | 588 | 480 | 337 | 0 | 108 | OK · 2026-10-17 |
 | [Awesome Computer Use — TianyuanYang](https://github.com/TianyuanYang/awesome-computer-use) | 94 | 67 | 48 | 0 | 27 | OK · 2026-10-17 |
 | [Computer Use Agents Overview](https://github.com/cdxeve/awesome-computer-use-agents) | 78 | 48 | 31 | 0 | 30 | OK · 2026-10-17 |
 | [Awesome GUI Agents — Supernal](https://github.com/supernalintelligence/Awesome-Gui-Agents) | 63 | 11 | 8 | 0 | 52 | OK · 2026-10-17 |
-| [Yearly GUI Agents](https://github.com/qy0720/awesome-yearly-gui-agents) | 193 | 137 | 131 | 0 | 56 | OK · 2026-10-17 |
+| [Yearly GUI Agents](https://github.com/qy0720/awesome-yearly-gui-agents) | 193 | 138 | 132 | 0 | 55 | OK · 2026-10-17 |
 | [OSU-NLP-Group/GUI-Agents-Paper-List / README.md](https://github.com/OSU-NLP-Group/GUI-Agents-Paper-List) | 544 | 486 | 209 | 0 | 58 | OK · 2026-10-17 |
 | [opendilab/awesome-ui-agents / README.md](https://github.com/opendilab/awesome-ui-agents) | 144 | 89 | 76 | 0 | 55 | OK · 2026-10-17 |
 | [jin-s13/awesome-gui-agent-hub / AWESOME.md](https://github.com/jin-s13/awesome-gui-agent-hub) | 210 | 207 | 90 | 0 | 3 | OK · 2026-10-17 |

@@ -2,12 +2,12 @@
 
 [Home](../README.md) · [Reviewed research by topic](topics.md) · [Curated surveys](surveys.md) · [Query examples](query-guide.md)
 
-Official arXiv bibliographic metadata. Most entries have **not** undergone a relevance or methodological review. Discovery includes historical references and adjacent work; this is not a count of confirmed CUA papers.
-Explicit scope exclusions are listed in the [scope-decision ledger](../data/exclusion-status.json); original records remain in the [metadata archive](../data/papers.jsonl).
+Bibliographic records from arXiv and retained publication sources. Metadata-only entries have **not** undergone a relevance or methodological review. Discovery includes historical references and adjacent work; this is not a count of confirmed CUA papers.
+Dates retain their recorded precision: a year or month does not imply a known day. Explicit arXiv scope exclusions are listed in the [scope-decision ledger](../data/exclusion-status.json). The [arXiv archive](../data/papers.jsonl) and [publication observations](../data/publications.jsonl) retain their separate source facts.
 
-**Years:** [2026](#2026) (693; 213 ⭐) · [2025](#2025) (648; 259 ⭐) · [2024](#2024) (407; 166 ⭐) · [2023](#2023) (161; 36 ⭐) · [2022](#2022) (66; 11 ⭐) · [2021](#2021) (51; 8 ⭐) · [2020](#2020) (28; 4 ⭐) · [2019](#2019) (19; 1 ⭐) · [2018](#2018) (26; 2 ⭐) · [2017](#2017) (8; 0 ⭐) · [2016](#2016) (12; 1 ⭐) · [2015](#2015) (13; 0 ⭐) · [2014](#2014) (14; 0 ⭐) · [2013](#2013) (5; 0 ⭐) · [2012](#2012) (1; 0 ⭐) · [2011](#2011) (4; 0 ⭐) · [2010](#2010) (4; 0 ⭐) · [2009](#2009) (2; 0 ⭐) · [2008](#2008) (2; 0 ⭐)
+**Years:** [2026](#2026) (694; 214 ⭐) · [2025](#2025) (648; 259 ⭐) · [2024](#2024) (407; 166 ⭐) · [2023](#2023) (161; 36 ⭐) · [2022](#2022) (66; 11 ⭐) · [2021](#2021) (51; 8 ⭐) · [2020](#2020) (28; 4 ⭐) · [2019](#2019) (19; 1 ⭐) · [2018](#2018) (29; 5 ⭐) · [2017](#2017) (11; 3 ⭐) · [2016](#2016) (13; 2 ⭐) · [2015](#2015) (13; 0 ⭐) · [2014](#2014) (14; 0 ⭐) · [2013](#2013) (5; 0 ⭐) · [2012](#2012) (1; 0 ⭐) · [2011](#2011) (4; 0 ⭐) · [2010](#2010) (5; 1 ⭐) · [2009](#2009) (3; 1 ⭐) · [2008](#2008) (2; 0 ⭐) · [2007](#2007) (2; 2 ⭐) · [1991](#1991) (1; 1 ⭐)
 
-⭐ marks papers with an editorial relevance review; their topics link to the [topic hubs](topics.md). Other rows are arXiv metadata only.
+⭐ marks papers with an editorial relevance review; their topics link to the [topic hubs](topics.md). Other rows are bibliographic metadata only.
 
 ## 2026
 
@@ -379,6 +379,7 @@ Explicit scope exclusions are listed in the [scope-decision ledger](../data/excl
 | 2026-06-01 | [OpenWebRL: Demystifying Online Multi-turn Reinforcement Learning for Visual Web Agents](https://arxiv.org/abs/2606.02031) | metadata |  |
 | 2026-06-01 | [Multi-Agent Computer Use](https://arxiv.org/abs/2606.01533) | metadata |  |
 | 2026-06-01 | [Context-Aware Workflow Decomposition for Automated Mobile UI Annotation Using Multimodal Large Language Models](https://arxiv.org/abs/2606.02208) | metadata |  |
+| 2026-06 | [GUI-SAGE: Enhancing GUI Automation with Self-Explanatory Learning](https://openaccess.thecvf.com/content/CVPR2026/html/Tang_GUI-SAGE_Enhancing_GUI_Automation_with_Self-Explanatory_Learning_CVPR_2026_paper.html) | ⭐ reviewed | [data-generation](topics/data-generation.md), [evaluation](topics/evaluation.md), [reinforcement-learning](topics/reinforcement-learning.md), [robustness](topics/robustness.md) |
 | 2026-05-31 | [BraveGuard: From Open-World Threats to Safer Computer-Use Agents](https://arxiv.org/abs/2606.01166) | metadata |  |
 | 2026-05-30 | [PersonaTrail: Benchmarking Personalized Web Agents through Browsing Trails](https://arxiv.org/abs/2607.20482) | metadata |  |
 | 2026-05-30 | ["I Strongly Suspect This Website Is a Scam": Benchmarking PII Leakage and Detection without Defense in Autonomous Web Agents](https://arxiv.org/abs/2606.00497) | metadata |  |
@@ -2137,6 +2138,7 @@ Explicit scope exclusions are listed in the [scope-decision ledger](../data/excl
 | 2018-08-13 | [Addressing Client Needs for Cloud Computing using Formal Foundations](https://arxiv.org/abs/1808.04222) | metadata |  |
 | 2018-08-09 | [Scalable Gaussian Process Computations Using Hierarchical Matrices](https://arxiv.org/abs/1808.03215) | metadata |  |
 | 2018-07-27 | [AXNet: ApproXimate computing using an end-to-end trainable neural network](https://arxiv.org/abs/1807.10458) | metadata |  |
+| 2018-06 | [Kite: Building Conversational Bots from Mobile Apps](https://doi.org/10.1145/3210240.3210339) | ⭐ reviewed | [human-in-the-loop](topics/human-in-the-loop.md), [mobile-navigation](topics/mobile-navigation.md), [workflow](topics/workflow.md) |
 | 2018-05-30 | [Predictive Performance Modeling for Distributed Computing using Black-Box Monitoring and Machine Learning](https://arxiv.org/abs/1805.11877) | metadata |  |
 | 2018-05-17 | [Affective computing using speech and eye gaze: a review and bimodal system proposal for continuous affect prediction](https://arxiv.org/abs/1805.06652) | metadata |  |
 | 2018-05-16 | [Experimental quantum mechanics in the class room: Testing basic ideas of quantum mechanics and quantum computing using IBM quantum computer](https://arxiv.org/abs/1805.06275) | metadata |  |
@@ -2152,6 +2154,8 @@ Explicit scope exclusions are listed in the [scope-decision ledger](../data/excl
 | 2018-01-31 | [Privacy-Preserving Secret Shared Computations using MapReduce](https://arxiv.org/abs/1801.10323) | metadata |  |
 | 2018-01-28 | [Fast hybrid density-functional computations using plane-wave basis sets](https://arxiv.org/abs/1801.09263) | metadata |  |
 | 2018-01-09 | [Improvement of accuracy of the spectral element method for elastic wave computation using modified numerical integration operators](https://arxiv.org/abs/1801.02829) | metadata |  |
+| 2018 | [Rousillon: Scraping Distributed Hierarchical Web Data](https://doi.org/10.1145/3242587.3242661) | ⭐ reviewed | [automation](topics/automation.md), [recording](topics/recording.md), [web-navigation](topics/web-navigation.md) |
+| 2018 | [APPINITE: A Multi-Modal Interface for Specifying Data Descriptions in Programming by Demonstration Using Natural Language Instructions](https://ieeexplore.ieee.org/document/8506506) | ⭐ reviewed | [grounding](topics/grounding.md), [human-in-the-loop](topics/human-in-the-loop.md), [mobile-navigation](topics/mobile-navigation.md) |
 
 ## 2017
 
@@ -2160,17 +2164,21 @@ Explicit scope exclusions are listed in the [scope-decision ledger](../data/excl
 | 2017-11-24 | [Big Data Computing Using Cloud-Based Technologies, Challenges and Future Perspectives](https://arxiv.org/abs/1712.05233) | metadata |  |
 | 2017-10-31 | [Correlation between Multivariate Datasets, from Inter-Graph Distance computed using Graphical Models Learnt With Uncertainties](https://arxiv.org/abs/1710.11292) | metadata |  |
 | 2017-10-24 | [Implicit Low-Order Unstructured Finite-Element Multiple Simulation Enhanced by Dense Computation using OpenACC](https://arxiv.org/abs/1710.08679) | metadata |  |
+| 2017-10-20 | [Rico: A Mobile App Dataset for Building Data-Driven Design Applications](https://doi.org/10.1145/3126594.3126651) | ⭐ reviewed | [data-generation](topics/data-generation.md), [screen-understanding](topics/screen-understanding.md), [ui-design](topics/ui-design.md) |
 | 2017-09-21 | [High-Performance Derivative Computations using CoDiPack](https://arxiv.org/abs/1709.07229) | metadata |  |
+| 2017-07-17 | [World of Bits: An Open-Domain Platform for Web-Based Agents](https://proceedings.mlr.press/v70/shi17a.html) | ⭐ reviewed | [data-generation](topics/data-generation.md), [evaluation](topics/evaluation.md), [reinforcement-learning](topics/reinforcement-learning.md), [web-navigation](topics/web-navigation.md) |
 | 2017-05-29 | [Who's to say what's funny? A computer using Language Models and Deep Learning, That's Who!](https://arxiv.org/abs/1705.10272) | metadata |  |
 | 2017-05-04 | [Malware Detection on General-Purpose Computers Using Power Consumption Monitoring: A Proof of Concept and Case Study](https://arxiv.org/abs/1705.01977) | metadata |  |
 | 2017-04-22 | [CAD Adjacency Computation Using Validated Numerics](https://arxiv.org/abs/1704.06856) | metadata |  |
 | 2017-02-23 | [An Efficient Framework for Information Security in Cloud Computing Using Auditing Algorithm Shell (AAS)](https://arxiv.org/abs/1702.07140) | metadata |  |
+| 2017 | [SUGILITE: Creating Multimodal Smartphone Automation by Demonstration](https://doi.org/10.1145/3025453.3025483) | ⭐ reviewed | [cross-app](topics/cross-app.md), [human-in-the-loop](topics/human-in-the-loop.md), [mobile-navigation](topics/mobile-navigation.md), [recording](topics/recording.md) |
 
 ## 2016
 
 | Date | Paper | Review | Topics |
 | --- | --- | --- | --- |
 | 2016-12-01 | [Aggressive Quadrotor Flight through Narrow Gaps with Onboard Sensing and Computing using Active Vision](https://arxiv.org/abs/1612.00291) | metadata |  |
+| 2016-11 | [Ringer: Web Automation by Demonstration](https://doi.org/10.1145/2983990.2984020) | ⭐ reviewed | [recording](topics/recording.md), [robustness](topics/robustness.md), [web-navigation](topics/web-navigation.md) |
 | 2016-09-16 | [Privacy Preserving Distance Computation using Somewhat-trusted Third Parties](https://arxiv.org/abs/1609.05178) | metadata |  |
 | 2016-09-15 | [Parallel Dynamics Computation using Prefix Sum Operations](https://arxiv.org/abs/1609.04493) | metadata |  |
 | 2016-09-15 | [Analog computing using reflective plasmonic metasurfaces](https://arxiv.org/abs/1609.04672) | metadata |  |
@@ -2253,12 +2261,14 @@ Explicit scope exclusions are listed in the [scope-decision ledger](../data/excl
 | 2010-06-24 | [Reply to Comment on "Electron transport through correlated molecules computed using the time-independent Wigner function: Two critical tests''](https://arxiv.org/abs/1006.4865) | metadata |  |
 | 2010-06-18 | [Highly accurate and efficient self-force computations using time-domain methods: Error estimates, validation, and optimization](https://arxiv.org/abs/1006.3788) | metadata |  |
 | 2010-05-10 | [Computation using Noise-based Logic: Efficient String Verification over a Slow Communication Channel](https://arxiv.org/abs/1005.1560) | metadata |  |
+| 2010-04 | [GUI Testing Using Computer Vision](https://doi.org/10.1145/1753326.1753555) | ⭐ reviewed | [automation](topics/automation.md), [evaluation](topics/evaluation.md), [grounding](topics/grounding.md) |
 
 ## 2009
 
 | Date | Paper | Review | Topics |
 | --- | --- | --- | --- |
 | 2009-12-17 | [Comment on "Electron transport through correlated molecules computed using the time-independent Wigner function: Two critical tests"](https://arxiv.org/abs/0912.3431) | metadata |  |
+| 2009-10 | [Sikuli: Using GUI screenshots for search and automation](https://doi.org/10.1145/1622176.1622213) | ⭐ reviewed | [automation](topics/automation.md), [grounding](topics/grounding.md), [screen-understanding](topics/screen-understanding.md) |
 | 2009-06-17 | [Maximum Error Modeling for Fault-Tolerant Computation using Maximum a posteriori (MAP) Hypothesis](https://arxiv.org/abs/0906.3282) | metadata |  |
 
 ## 2008
@@ -2267,3 +2277,16 @@ Explicit scope exclusions are listed in the [scope-decision ledger](../data/excl
 | --- | --- | --- | --- |
 | 2008-09-24 | [State dependent computation using coupled recurrent networks](https://arxiv.org/abs/0809.4296) | metadata |  |
 | 2008-08-12 | [Superstring Sigma Model Computations Using the Pure Spinor Formalism](https://arxiv.org/abs/0808.1755) | metadata |  |
+
+## 2007
+
+| Date | Paper | Review | Topics |
+| --- | --- | --- | --- |
+| 2007 | [PLOW: A Collaborative Task Learning Agent](https://aaai.org/Papers/AAAI/2007/AAAI07-240.pdf) | ⭐ reviewed | [human-in-the-loop](topics/human-in-the-loop.md), [planning](topics/planning.md), [web-navigation](topics/web-navigation.md) |
+| 2007 | [Koala: Capture, Share, Automate, Personalize Business Processes on the Web](https://doi.org/10.1145/1240624.1240767) | ⭐ reviewed | [recording](topics/recording.md), [web-navigation](topics/web-navigation.md), [workflow](topics/workflow.md) |
+
+## 1991
+
+| Date | Paper | Review | Topics |
+| --- | --- | --- | --- |
+| 1991 | [Eager: Programming Repetitive Tasks by Example](https://acypher.com/Publications/CHI91/EagerCHI.html) | ⭐ reviewed | [automation](topics/automation.md), [human-in-the-loop](topics/human-in-the-loop.md), [interaction-history](topics/interaction-history.md) |

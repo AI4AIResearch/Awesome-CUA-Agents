@@ -32,7 +32,39 @@ def paper(rid='2404.07972', status='curated', kind='paper'):
     }
 
 
+def published_edition(parts=None, publication_type='conference-paper'):
+    return {
+        'type': publication_type, 'title': 'The Published GUI Study',
+        'authors': ['Changed Author', 'Éva and 王 Research Team'],
+        'date_parts': [2025] if parts is None else parts,
+        'venue': 'Proceedings of the GUI Research Conference',
+        'publisher': 'Example Research Publisher', 'pages': '101--120',
+        'doi': '10.1234/published_gui', 'url': 'https://example.org/proceedings/gui-study',
+        'evidence_urls': ['https://example.org/proceedings/gui-study'],
+    }
+
+
+def publisher_paper(parts=None, publication_type='conference-paper', status='curated'):
+    pub = published_edition(parts, publication_type)
+    record = paper(status=status)
+    record.update(id='url:' + hashlib.sha256(pub['url'].encode()).hexdigest()[:20],
+                  name=pub['title'], authors=list(pub['authors']), url=pub['url'],
+                  identifiers={'doi': pub['doi']}, updated_at=None,
+                  published_at='-'.join([f'{pub["date_parts"][0]:04d}',
+                                         *(f'{p:02d}' for p in pub['date_parts'][1:])])
+                  if len(pub['date_parts']) == 3 else None,
+                  details={'publication': pub})
+    return record
+
+
 class CitationExportTests(unittest.TestCase):
+    def test_preexisting_arxiv_format_remains_byte_identical_without_publication(self):
+        record = paper()
+        self.assertEqual(hashlib.sha256(citation_bibtex(record).encode()).hexdigest(),
+                         'a099e979996062d242b537f321863c3f7ba88bbf87caa6b694e2f35233d727c3')
+        self.assertEqual(hashlib.sha256(json.dumps(citation_csl(record), ensure_ascii=False, sort_keys=True).encode()).hexdigest(),
+                         '6379bb5c9ed248617d109c9de83837927fd093e143d91f0152eb89b0dedce9c2')
+
     def test_full_literal_names_and_original_title_are_preserved(self):
         record = paper()
         before = copy.deepcopy(record)
@@ -250,16 +282,17 @@ class CitationExportTests(unittest.TestCase):
             self.assertEqual(first, second)
             self.assertEqual(first['catalog_sha256'], hashlib.sha256(source).hexdigest())
             self.assertEqual(set(payloads), {'citations.bib', 'citations.csl.json', 'citations-all.bib',
-                                            'citations-all.csl.json', 'citations-manifest.json'})
+                                            'citations-all.csl.json', 'publication-citations.bib',
+                                            'publication-citations.csl.json', 'citations-manifest.json'})
             self.assertEqual(first, json.loads((path / 'citations-manifest.json').read_bytes()))
             for export in first['exports']:
                 body = (path / export['file']).read_bytes()
                 self.assertEqual(body, payloads[export['file']])
                 self.assertEqual(export['sha256'], hashlib.sha256(body).hexdigest())
                 self.assertEqual(export['bytes'], len(body))
-                count = len(json.loads(body)) if export['format'] == 'csl-json' else len(re.findall(rb'^@misc\{', body, re.M))
+                count = len(json.loads(body)) if export['format'] == 'csl-json' else len(re.findall(rb'^@[a-z]+\{', body, re.M))
                 self.assertEqual(export['records'], count)
-                self.assertEqual(count, 2 if export['includes_metadata_only'] else 1)
+                self.assertEqual(count, 0 if export['edition'] == 'publication' else 2 if export['includes_metadata_only'] else 1)
 
     def test_invalid_input_cannot_leave_partial_or_replace_existing_exports(self):
         records = [paper(), paper('2501.00001', status='metadata_verified')]
@@ -303,13 +336,216 @@ class CitationExportTests(unittest.TestCase):
             self.assertEqual(len(output), len(expected))
             for item in output:
                 record = expected[item['id']]
-                self.assertEqual(item['title'], record['name'])
-                self.assertEqual(item.get('author', []), [{'literal': name} for name in record['authors']])
-                self.assertEqual(item['URL'], (record['details'].get('arxiv_snapshot') or {}).get('versioned_url') or record['url'])
+                pub = record.get('details', {}).get('publication') if not record['id'].startswith('arxiv:') else None
+                self.assertEqual(item['title'], pub['title'] if pub else record['name'])
+                self.assertEqual(item.get('author', []), [{'literal': name} for name in (pub['authors'] if pub else record['authors'])])
+                self.assertEqual(item['URL'], pub['url'] if pub else (record['details'].get('arxiv_snapshot') or {}).get('versioned_url') or record['url'])
                 self.assertEqual(item['custom']['identifiers'], record['identifiers'])
-                self.assertNotIn('container-title', item)
+                if not pub:
+                    self.assertNotIn('container-title', item)
             bib = encode_citations(rows, 'bibtex', include_metadata)
-            self.assertEqual(len(re.findall(rb'^@misc\{', bib, re.M)), len(expected))
+            self.assertEqual(len(re.findall(rb'^@[a-z]+\{', bib, re.M)), len(expected))
+
+    def test_attached_publication_never_changes_default_arxiv_bibliographic_fields(self):
+        record = paper()
+        original = citation_csl(record)
+        original_entry = citation_bibtex(record).split('\n', 1)[1]
+        record['details']['publication'] = published_edition([2025, 7, 9])
+        # Even a publisher DOI copied into generic identifiers is not a preprint DOI.
+        record['identifiers']['doi'] = record['details']['publication']['doi']
+        item = citation_csl(record)
+        self.assertEqual({k: v for k, v in item.items() if k != 'custom'},
+                         {k: v for k, v in original.items() if k != 'custom'})
+        self.assertEqual(citation_bibtex(record).split('\n', 1)[1], original_entry)
+        self.assertEqual(item['custom']['publication'], record['details']['publication'])
+        self.assertEqual(item['custom']['citation_edition'], 'record')
+        comment = json.loads(citation_bibtex(record).splitlines()[0].removeprefix('% AwesomeCUA: '))
+        self.assertEqual(comment['publication'], record['details']['publication'])
+        self.assertEqual(comment['catalog_id'], record['id'])
+
+    def test_explicit_publication_uses_its_own_authors_date_type_url_and_identity(self):
+        record = paper()
+        pub = published_edition([2025, 7, 9])
+        record['details']['publication'] = pub
+        before = copy.deepcopy(record)
+        item = citation_csl(record, edition='publication')
+        self.assertEqual(item['id'], record['id'] + ':publication')
+        self.assertEqual(item['citation-key'], 'arxiv_2404_07972_publication')
+        self.assertEqual(item['custom']['catalog_id'], record['id'])
+        self.assertEqual(item['custom']['citation_edition'], 'publication')
+        self.assertEqual(item['title'], pub['title'])
+        self.assertEqual(item['author'], [{'literal': name} for name in pub['authors']])
+        self.assertEqual(item['issued'], {'date-parts': [[2025, 7, 9]]})
+        self.assertEqual(item['type'], 'paper-conference')
+        self.assertEqual(item['container-title'], pub['venue'])
+        self.assertEqual(item['URL'], pub['url'])
+        self.assertEqual(item['DOI'], pub['doi'])
+        for field in ['archive', 'archive_location', 'version', 'genre']:
+            self.assertNotIn(field, item)
+        self.assertEqual(item['note'], 'Publication date: 2025-07-09.')
+        self.assertEqual(item['custom']['arxiv_snapshot'], record['details']['arxiv_snapshot'])
+        bib = citation_bibtex(record, edition='publication')
+        self.assertIn('@inproceedings{arxiv_2404_07972_publication,', bib)
+        self.assertIn('year = {2025}', bib)
+        self.assertIn('month = jul', bib)
+        self.assertIn('booktitle = {' + pub['venue'] + '}', bib)
+        self.assertIn('{Changed Author} and {Éva and 王 Research Team}', bib)
+        entry = bib.split('\n', 1)[1]
+        for text in ['eprint =', 'archivePrefix =', '2024-04-11', '2026-10-01', 'Recorded arXiv version']:
+            self.assertNotIn(text, entry)
+        self.assertEqual(record, before)
+        item['custom']['publication']['authors'].append('Must not mutate the source')
+        self.assertEqual(record, before)
+
+    def test_publisher_only_defaults_match_explicit_edition_at_all_date_precisions(self):
+        for parts in [[2025], [2025, 7], [2025, 7, 9]]:
+            with self.subTest(parts=parts):
+                record = publisher_paper(parts)
+                item = citation_csl(record)
+                self.assertEqual(item, citation_csl(record, 'publication'))
+                self.assertEqual(citation_bibtex(record), citation_bibtex(record, 'publication'))
+                self.assertEqual(item['id'], record['id'])
+                self.assertEqual(item['citation-key'], citation_key(record))
+                self.assertFalse(item['citation-key'].endswith('_publication'))
+                self.assertEqual(item['issued']['date-parts'], [parts])
+                bib = citation_bibtex(record)
+                self.assertIn('year = {2025}', bib)
+                self.assertEqual('month = jul' in bib, len(parts) >= 2)
+                expected_date = '-'.join([str(parts[0]), *(f'{p:02d}' for p in parts[1:])])
+                self.assertEqual(item['note'], 'Publication date: ' + expected_date + '.')
+                self.assertNotIn('2025-01-01', item['note'])
+
+    def test_journal_and_unknown_publication_fields_are_not_invented(self):
+        record = publisher_paper([2025, 7], 'journal-article')
+        pub = record['details']['publication']
+        pub.update(venue='Journal of GUI Research', volume='12', issue='3', pages='100–120', series='Research Series')
+        item = citation_csl(record)
+        self.assertEqual(item['type'], 'article-journal')
+        for field, value in [('container-title', pub['venue']), ('volume', '12'), ('issue', '3'),
+                             ('page', '100–120'), ('collection-title', 'Research Series')]:
+            self.assertEqual(item[field], value)
+        bib = citation_bibtex(record)
+        self.assertIn('@article{', bib)
+        self.assertIn('journal = {Journal of GUI Research}', bib)
+        self.assertIn('number = {3}', bib)
+        pub.update(date_parts=None, authors=[], doi=None, venue=None, publisher=None,
+                   volume=None, issue=None, pages=None, series=None)
+        record.update(published_at=None, authors=[], identifiers={})
+        item = citation_csl(record)
+        for field in ['issued', 'author', 'DOI', 'container-title', 'publisher', 'volume', 'issue', 'page', 'collection-title', 'note']:
+            self.assertNotIn(field, item)
+        entry = citation_bibtex(record).split('\n', 1)[1]
+        for field in ['year', 'month', 'author', 'doi', 'journal', 'publisher', 'volume', 'number', 'pages', 'note']:
+            self.assertNotRegex(entry, rf'\n  {field}\s*=')
+        for publication_type, csl_type in [('report', 'report'), ('other', 'article')]:
+            pub['type'] = publication_type
+            self.assertEqual(citation_csl(record)['type'], csl_type)
+            self.assertIn('@misc{', citation_bibtex(record))
+            self.assertNotIn('institution =', citation_bibtex(record))
+
+    def test_publication_selection_is_gated_and_missing_single_edition_is_an_error(self):
+        missing = paper()
+        present = paper('2501.00001')
+        present['details']['publication'] = published_edition()
+        pending = paper('2501.00002', status='metadata_verified')
+        pending['details']['publication'] = published_edition()
+        rows = [missing, present, pending]
+        selected = json.loads(encode_citations(rows, 'csl-json', edition='publication'))
+        self.assertEqual([r['custom']['catalog_id'] for r in selected], [present['id']])
+        all_selected = json.loads(encode_citations(rows, 'csl-json', True, edition='publication'))
+        self.assertEqual([r['custom']['catalog_id'] for r in all_selected], [present['id'], pending['id']])
+        with self.assertRaisesRegex(ValueError, 'No recorded publication'):
+            encode_citations(rows, record_id=missing['id'], edition='publication')
+        with self.assertRaisesRegex(ValueError, '--include-metadata'):
+            encode_citations(rows, record_id=pending['id'], edition='publication')
+        with self.assertRaisesRegex(ValueError, 'No recorded publication'):
+            citation_csl(missing, 'publication')
+        with self.assertRaisesRegex(ValueError, 'Unsupported citation edition'):
+            citation_bibtex(present, 'latest')
+
+    def test_publication_comment_and_fields_escape_untrusted_literal_metadata(self):
+        record = publisher_paper([2025])
+        pub = record['details']['publication']
+        pub.update(title='GUI } \\input{secret} & 50% ^^',
+                   authors=['A} and B', '王 \\write18{x}'],
+                   venue='Proceedings {test} #1',
+                   notes='\n@misc{injected}\u2028next line')
+        item = citation_csl(record)
+        self.assertEqual(item['title'], pub['title'])
+        self.assertEqual(item['author'], [{'literal': name} for name in pub['authors']])
+        bib = citation_bibtex(record)
+        comment, entry = bib.split('\n', 1)
+        self.assertEqual(json.loads(comment.removeprefix('% AwesomeCUA: '))['publication'], pub)
+        self.assertNotIn('@', comment)
+        self.assertTrue(comment.isascii())
+        self.assertNotIn(r'\input{', entry)
+        self.assertNotIn(r'\write18{', entry)
+        self.assertNotIn('^^', entry)
+        self.assertNotIn('injected', entry)
+        self.assertIn(r'\textbraceright{}', entry)
+        self.assertIn(r'\& 50\%', entry)
+        self.assertEqual(len(re.findall(r'^@[a-z]+\{', bib, re.M)), 1)
+
+    def test_malformed_publication_facts_or_mixed_identity_fail_before_export(self):
+        mutations = [lambda p: p.update(type='conference'), lambda p: p.update(authors='one author'),
+                     lambda p: p.update(title=''), lambda p: p.update(url='javascript:alert(1)'),
+                     lambda p: p.update(date_parts=[2025, 2, 30]), lambda p: p.update(date_parts=[True]),
+                     lambda p: p.update(doi='https://doi.org/10.1234/x'), lambda p: p.pop('date_parts')]
+        for mutate in mutations:
+            record = publisher_paper()
+            mutate(record['details']['publication'])
+            with self.subTest(record=record), self.assertRaises(ValueError):
+                citation_bibtex(record)
+        record = publisher_paper()
+        record['details']['arxiv_snapshot'] = paper()['details']['arxiv_snapshot']
+        with self.assertRaisesRegex(ValueError, 'arXiv'):
+            citation_csl(record)
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory)
+            record = publisher_paper()
+            record['details']['publication']['date_parts'] = [2025, 13]
+            with self.assertRaises(ValueError):
+                build_citation_exports([paper(), record], path, b'source')
+            self.assertEqual(list(path.iterdir()), [])
+
+    def test_publication_global_bundle_is_reviewed_only_and_hashes_match(self):
+        linked = paper()
+        linked['details']['publication'] = published_edition()
+        native = publisher_paper([2025, 7])
+        pending = paper('2501.00001', status='metadata_verified')
+        pending['details']['publication'] = published_edition()
+        rows = [linked, native, pending, paper('2501.00002')]
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory)
+            manifest = build_citation_exports(rows, path, b'source')
+            self.assertEqual(len(manifest['exports']), 6)
+            pub_items = json.loads((path / 'publication-citations.csl.json').read_bytes())
+            self.assertEqual({r['custom']['catalog_id'] for r in pub_items}, {linked['id'], native['id']})
+            for export in manifest['exports']:
+                body = (path / export['file']).read_bytes()
+                expected = 2 if export['edition'] == 'publication' else 4 if export['includes_metadata_only'] else 3
+                self.assertEqual(export['records'], expected)
+                self.assertEqual(export['sha256'], hashlib.sha256(body).hexdigest())
+                self.assertEqual(export['bytes'], len(body))
+            self.assertIn(citation_bibtex(linked, 'publication').encode(), (path / 'publication-citations.bib').read_bytes())
+
+    def test_cli_publication_edition_missing_record_and_metadata_gate(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'catalog.jsonl'
+            pending = paper('2501.00001', status='metadata_verified')
+            pending['details']['publication'] = published_edition([2025, 7])
+            path.write_text('\n'.join(json.dumps(r) for r in [paper(), pending]), encoding='utf-8')
+            base = [sys.executable, '-S', str(ROOT / 'scripts/export_citations.py'), '--input', str(path), '--edition', 'publication', '--format', 'csl-json']
+            for rid, message in [('arxiv:2404.07972', b'No recorded publication'), (pending['id'], b'--include-metadata')]:
+                run = subprocess.run(base + ['--id', rid], capture_output=True)
+                self.assertNotEqual(run.returncode, 0)
+                self.assertEqual(run.stdout, b'')
+                self.assertIn(message, run.stderr)
+            run = subprocess.run(base + ['--include-metadata', '--id', pending['id']], capture_output=True)
+            self.assertEqual(run.returncode, 0, run.stderr.decode())
+            item = json.loads(run.stdout)[0]
+            self.assertEqual(item['id'], pending['id'] + ':publication')
+            self.assertEqual(item['issued']['date-parts'], [[2025, 7]])
 
 
 if __name__ == '__main__':

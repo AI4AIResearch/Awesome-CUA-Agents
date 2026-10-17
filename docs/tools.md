@@ -4,7 +4,7 @@
 
 Curated metadata, not a performance ranking. Each entry links its first-party evidence. Unknown facts are shown as —.
 
-*Paper* lists reviewed `introduced_by`/`documented_by` arXiv relations with the arXiv submission year. *License* lists publisher declarations by scope (code, data, weights, document). *Evidence* links the reviewed first-party snapshot and its retrieval date.
+*Paper* lists reviewed `introduced_by`/`documented_by` relations with the record's year. *License* lists publisher declarations by scope (code, data, weights, document). *Evidence* links the reviewed first-party snapshot and its retrieval date.
 
 **17 resources:** [Web (9)](#web) · [Mobile (4)](#mobile) · [Cross-platform (2)](#cross-platform) · [Unspecified (2)](#unspecified)
 

@@ -1,14 +1,17 @@
 {
-  "as_of_utc": "2026-10-17T09:27:51+00:00",
-  "total_records": 2556,
-  "curated_records": 1093,
-  "bibliographic_records": 2164,
+  "as_of_utc": "2026-10-17T10:01:32Z",
+  "total_records": 2569,
+  "curated_records": 1106,
+  "bibliographic_records": 2177,
+  "arxiv_active_records": 2164,
+  "non_arxiv_bibliographic_records": 13,
+  "publication_metadata_records": 25,
   "arxiv_archive_records": 2264,
   "excluded_records": 100,
   "exclusion_revalidation_pending": 0,
   "metadata_only_records": 1463,
   "discovery_identifiers": 3907,
-  "unindexed_candidates": 1394,
+  "unindexed_candidates": 1391,
   "pending_editorial": [
     {
       "id": "github:thudm/autoglm",
@@ -91,21 +94,21 @@
     "framework": 54,
     "infrastructure": 14,
     "model": 92,
-    "paper": 2152,
+    "paper": 2165,
     "product": 19,
     "survey": 12,
     "tool": 17
   },
   "curated_by_environment": {
-    "android": 220,
+    "android": 225,
     "cross-platform": 181,
-    "desktop": 221,
+    "desktop": 222,
     "harmonyos": 1,
     "ios": 17,
     "linux": 32,
     "macos": 21,
-    "unspecified": 214,
-    "web": 391,
+    "unspecified": 216,
+    "web": 396,
     "windows": 40
   },
   "curated_by_kind_and_environment": {
@@ -175,14 +178,14 @@
       "windows": 4
     },
     "paper": {
-      "android": 120,
+      "android": 125,
       "cross-platform": 92,
-      "desktop": 130,
+      "desktop": 131,
       "ios": 5,
       "linux": 11,
       "macos": 8,
-      "unspecified": 181,
-      "web": 250,
+      "unspecified": 183,
+      "web": 255,
       "windows": 23
     },
     "product": {
@@ -233,10 +236,12 @@
         "state": "success"
       },
       "discovered": 338,
-      "indexed": 200,
-      "curated": 185,
+      "indexed": 202,
+      "indexed_resources": 201,
+      "resolved_aliases": 1,
+      "curated": 187,
       "excluded": 0,
-      "unindexed": 138
+      "unindexed": 136
     },
     {
       "id": "zju-gui",
@@ -259,10 +264,12 @@
         "state": "success"
       },
       "discovered": 218,
-      "indexed": 157,
-      "curated": 151,
+      "indexed": 158,
+      "indexed_resources": 158,
+      "resolved_aliases": 0,
+      "curated": 152,
       "excluded": 0,
-      "unindexed": 61
+      "unindexed": 60
     },
     {
       "id": "os-agent-survey",
@@ -286,6 +293,8 @@
       },
       "discovered": 224,
       "indexed": 198,
+      "indexed_resources": 198,
+      "resolved_aliases": 0,
       "curated": 169,
       "excluded": 0,
       "unindexed": 26
@@ -312,6 +321,8 @@
       },
       "discovered": 132,
       "indexed": 94,
+      "indexed_resources": 94,
+      "resolved_aliases": 0,
       "curated": 79,
       "excluded": 0,
       "unindexed": 38
@@ -337,10 +348,12 @@
         "state": "success"
       },
       "discovered": 113,
-      "indexed": 22,
-      "curated": 22,
+      "indexed": 23,
+      "indexed_resources": 23,
+      "resolved_aliases": 1,
+      "curated": 23,
       "excluded": 0,
-      "unindexed": 91
+      "unindexed": 90
     },
     {
       "id": "steel-web-archive",
@@ -364,6 +377,8 @@
       },
       "discovered": 7,
       "indexed": 1,
+      "indexed_resources": 1,
+      "resolved_aliases": 0,
       "curated": 1,
       "excluded": 0,
       "unindexed": 6
@@ -390,6 +405,8 @@
       },
       "discovered": 170,
       "indexed": 111,
+      "indexed_resources": 111,
+      "resolved_aliases": 0,
       "curated": 92,
       "excluded": 1,
       "unindexed": 58
@@ -415,10 +432,12 @@
         "state": "success"
       },
       "discovered": 588,
-      "indexed": 479,
-      "curated": 336,
+      "indexed": 480,
+      "indexed_resources": 480,
+      "resolved_aliases": 0,
+      "curated": 337,
       "excluded": 0,
-      "unindexed": 109
+      "unindexed": 108
     },
     {
       "id": "tianyuan-cua",
@@ -442,6 +461,8 @@
       },
       "discovered": 94,
       "indexed": 67,
+      "indexed_resources": 67,
+      "resolved_aliases": 0,
       "curated": 48,
       "excluded": 0,
       "unindexed": 27
@@ -468,6 +489,8 @@
       },
       "discovered": 78,
       "indexed": 48,
+      "indexed_resources": 48,
+      "resolved_aliases": 0,
       "curated": 31,
       "excluded": 0,
       "unindexed": 30
@@ -494,6 +517,8 @@
       },
       "discovered": 63,
       "indexed": 11,
+      "indexed_resources": 11,
+      "resolved_aliases": 0,
       "curated": 8,
       "excluded": 0,
       "unindexed": 52
@@ -519,10 +544,12 @@
         "state": "success"
       },
       "discovered": 193,
-      "indexed": 137,
-      "curated": 131,
+      "indexed": 138,
+      "indexed_resources": 138,
+      "resolved_aliases": 0,
+      "curated": 132,
       "excluded": 0,
-      "unindexed": 56
+      "unindexed": 55
     },
     {
       "id": "osu-gui",
@@ -546,6 +573,8 @@
       },
       "discovered": 544,
       "indexed": 486,
+      "indexed_resources": 486,
+      "resolved_aliases": 0,
       "curated": 209,
       "excluded": 0,
       "unindexed": 58
@@ -572,6 +601,8 @@
       },
       "discovered": 144,
       "indexed": 89,
+      "indexed_resources": 89,
+      "resolved_aliases": 0,
       "curated": 76,
       "excluded": 0,
       "unindexed": 55
@@ -598,6 +629,8 @@
       },
       "discovered": 210,
       "indexed": 207,
+      "indexed_resources": 207,
+      "resolved_aliases": 0,
       "curated": 90,
       "excluded": 0,
       "unindexed": 3
@@ -624,6 +657,8 @@
       },
       "discovered": 9,
       "indexed": 0,
+      "indexed_resources": 0,
+      "resolved_aliases": 0,
       "curated": 0,
       "excluded": 0,
       "unindexed": 9
@@ -650,6 +685,8 @@
       },
       "discovered": 40,
       "indexed": 24,
+      "indexed_resources": 24,
+      "resolved_aliases": 0,
       "curated": 23,
       "excluded": 0,
       "unindexed": 16
@@ -676,6 +713,8 @@
       },
       "discovered": 247,
       "indexed": 186,
+      "indexed_resources": 186,
+      "resolved_aliases": 0,
       "curated": 168,
       "excluded": 0,
       "unindexed": 61
@@ -702,6 +741,8 @@
       },
       "discovered": 91,
       "indexed": 76,
+      "indexed_resources": 76,
+      "resolved_aliases": 0,
       "curated": 61,
       "excluded": 0,
       "unindexed": 15
@@ -728,6 +769,8 @@
       },
       "discovered": 10,
       "indexed": 4,
+      "indexed_resources": 4,
+      "resolved_aliases": 0,
       "curated": 4,
       "excluded": 0,
       "unindexed": 6
@@ -754,6 +797,8 @@
       },
       "discovered": 96,
       "indexed": 57,
+      "indexed_resources": 57,
+      "resolved_aliases": 0,
       "curated": 49,
       "excluded": 0,
       "unindexed": 39
@@ -780,6 +825,8 @@
       },
       "discovered": 18,
       "indexed": 5,
+      "indexed_resources": 5,
+      "resolved_aliases": 0,
       "curated": 5,
       "excluded": 0,
       "unindexed": 13
@@ -806,6 +853,8 @@
       },
       "discovered": 10,
       "indexed": 4,
+      "indexed_resources": 4,
+      "resolved_aliases": 0,
       "curated": 4,
       "excluded": 0,
       "unindexed": 6
@@ -832,6 +881,8 @@
       },
       "discovered": 15,
       "indexed": 9,
+      "indexed_resources": 9,
+      "resolved_aliases": 0,
       "curated": 9,
       "excluded": 0,
       "unindexed": 6
@@ -858,6 +909,8 @@
       },
       "discovered": 28,
       "indexed": 1,
+      "indexed_resources": 1,
+      "resolved_aliases": 0,
       "curated": 1,
       "excluded": 0,
       "unindexed": 27
@@ -884,6 +937,8 @@
       },
       "discovered": 11,
       "indexed": 4,
+      "indexed_resources": 4,
+      "resolved_aliases": 0,
       "curated": 4,
       "excluded": 0,
       "unindexed": 7
@@ -910,6 +965,8 @@
       },
       "discovered": 18,
       "indexed": 5,
+      "indexed_resources": 5,
+      "resolved_aliases": 0,
       "curated": 5,
       "excluded": 0,
       "unindexed": 13
@@ -936,6 +993,8 @@
       },
       "discovered": 5,
       "indexed": 3,
+      "indexed_resources": 3,
+      "resolved_aliases": 0,
       "curated": 3,
       "excluded": 0,
       "unindexed": 2
@@ -962,6 +1021,8 @@
       },
       "discovered": 6,
       "indexed": 2,
+      "indexed_resources": 2,
+      "resolved_aliases": 0,
       "curated": 2,
       "excluded": 0,
       "unindexed": 4
@@ -988,6 +1049,8 @@
       },
       "discovered": 11,
       "indexed": 6,
+      "indexed_resources": 6,
+      "resolved_aliases": 0,
       "curated": 6,
       "excluded": 0,
       "unindexed": 5
@@ -1014,6 +1077,8 @@
       },
       "discovered": 11,
       "indexed": 8,
+      "indexed_resources": 8,
+      "resolved_aliases": 0,
       "curated": 8,
       "excluded": 0,
       "unindexed": 3
@@ -1040,6 +1105,8 @@
       },
       "discovered": 1,
       "indexed": 0,
+      "indexed_resources": 0,
+      "resolved_aliases": 0,
       "curated": 0,
       "excluded": 0,
       "unindexed": 1
@@ -1066,6 +1133,8 @@
       },
       "discovered": 14,
       "indexed": 6,
+      "indexed_resources": 6,
+      "resolved_aliases": 0,
       "curated": 6,
       "excluded": 0,
       "unindexed": 8
@@ -1092,6 +1161,8 @@
       },
       "discovered": 9,
       "indexed": 2,
+      "indexed_resources": 2,
+      "resolved_aliases": 0,
       "curated": 1,
       "excluded": 0,
       "unindexed": 7
@@ -1118,6 +1189,8 @@
       },
       "discovered": 2,
       "indexed": 1,
+      "indexed_resources": 1,
+      "resolved_aliases": 0,
       "curated": 1,
       "excluded": 0,
       "unindexed": 1
@@ -1144,6 +1217,8 @@
       },
       "discovered": 3,
       "indexed": 1,
+      "indexed_resources": 1,
+      "resolved_aliases": 0,
       "curated": 1,
       "excluded": 0,
       "unindexed": 2
@@ -1170,6 +1245,8 @@
       },
       "discovered": 33,
       "indexed": 12,
+      "indexed_resources": 12,
+      "resolved_aliases": 0,
       "curated": 11,
       "excluded": 0,
       "unindexed": 21
@@ -1196,6 +1273,8 @@
       },
       "discovered": 7,
       "indexed": 4,
+      "indexed_resources": 4,
+      "resolved_aliases": 0,
       "curated": 4,
       "excluded": 0,
       "unindexed": 3
@@ -1222,6 +1301,8 @@
       },
       "discovered": 29,
       "indexed": 2,
+      "indexed_resources": 2,
+      "resolved_aliases": 0,
       "curated": 2,
       "excluded": 0,
       "unindexed": 27
@@ -1248,6 +1329,8 @@
       },
       "discovered": 8,
       "indexed": 1,
+      "indexed_resources": 1,
+      "resolved_aliases": 0,
       "curated": 1,
       "excluded": 0,
       "unindexed": 7
@@ -1274,6 +1357,8 @@
       },
       "discovered": 12,
       "indexed": 5,
+      "indexed_resources": 5,
+      "resolved_aliases": 0,
       "curated": 5,
       "excluded": 0,
       "unindexed": 7
@@ -1300,6 +1385,8 @@
       },
       "discovered": 16,
       "indexed": 4,
+      "indexed_resources": 4,
+      "resolved_aliases": 0,
       "curated": 4,
       "excluded": 0,
       "unindexed": 12
@@ -1326,6 +1413,8 @@
       },
       "discovered": 17,
       "indexed": 3,
+      "indexed_resources": 3,
+      "resolved_aliases": 0,
       "curated": 3,
       "excluded": 0,
       "unindexed": 14
@@ -1352,6 +1441,8 @@
       },
       "discovered": 39,
       "indexed": 4,
+      "indexed_resources": 4,
+      "resolved_aliases": 0,
       "curated": 4,
       "excluded": 0,
       "unindexed": 35

@@ -1,6 +1,6 @@
 # Search and SQL
 
-Run commands from the repository root. Search is literal, case-insensitive, AND across words. It covers names, original summaries, aliases, authors, curated topics, record ids such as `arxiv:2404.07972` or `github:xlang-ai/osworld`, URLs, and arXiv numbers. A pasted arXiv, GitHub, or web URL also finds its record after version and path folding. Text output prints each record's id. Default output is limited to 20 matches; use `--limit 0` for all matches.
+Run commands from the repository root. Search is literal, case-insensitive, AND across words. It covers names, original summaries, aliases, authors, curated topics, record ids such as `arxiv:2404.07972` or `github:xlang-ai/osworld`, URLs, arXiv numbers, and recorded publication titles, authors, venues and DOIs. A pasted arXiv, GitHub, or web URL also finds its record after version and path folding; reviewed publisher/PDF/DOI aliases resolve to their canonical paper identity. Text output prints each record's id. Default output is limited to 20 matches; use `--limit 0` for all matches.
 
 ```bash
 python3 scripts/catalog.py search "GUI grounding" --limit 10
@@ -79,3 +79,12 @@ python3 scripts/export_citations.py --format csl-json --output dist/citations.cs
 ```
 
 Reviewed papers and surveys are exported by default; `--include-metadata` explicitly includes unreviewed bibliography entries. Individual paper records also provide `citation.bib` and `citation.csl.json`. Original authors and paper-version URLs are retained. Missing venue or DOI metadata is not inferred from an arXiv ID.
+
+Select a recorded publication edition explicitly when you need its formal venue, authors, and date:
+
+```sh
+python3 scripts/export_citations.py --edition publication --format csl-json --output dist/publication-citations.csl.json
+python3 scripts/catalog.py search "10.1145/3126594.3126651" --json
+```
+
+The default citation for an arXiv identity retains its preprint edition. The publication edition can have a different title, author list, or date. Publisher-only records use their publication in either mode. Year-only and month-only dates remain partial; `published_at` can be null even when `details.publication.date_parts` records a known year. Publication exports include only records with this source-backed edition.

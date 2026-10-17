@@ -2,9 +2,9 @@
 
 [Home](../../README.md) · [All topics](../topics.md) · [Full arXiv bibliography](../papers.md)
 
-182 source-reviewed resources tagged `web-navigation`. Curated metadata, not a performance ranking; unknown facts are shown as —.
+187 source-reviewed resources tagged `web-navigation`. Curated metadata, not a performance ranking; unknown facts are shown as —.
 
-**Contents:** [Benchmarks (11)](#benchmarks) · [Datasets (6)](#datasets) · [Models (10)](#models) · [Agents (6)](#agents) · [Frameworks (16)](#frameworks) · [Tools (3)](#tools) · [Infrastructure (2)](#infrastructure) · [Products (7)](#products) · [Papers (121)](#papers)
+**Contents:** [Benchmarks (11)](#benchmarks) · [Datasets (6)](#datasets) · [Models (10)](#models) · [Agents (6)](#agents) · [Frameworks (16)](#frameworks) · [Tools (3)](#tools) · [Infrastructure (2)](#infrastructure) · [Products (7)](#products) · [Papers (126)](#papers)
 
 ## Benchmarks
 
@@ -245,4 +245,9 @@ All entries in this section: web.
 | 2023‑03‑30 | [Language Models can Solve Computer Tasks](https://arxiv.org/abs/2303.17491) | web | Introduces recursive criticism and improvement prompting for language-model agents performing computer tasks, evaluated on MiniWoB++ with a small number of demonstrations per task. |
 | 2022‑07‑04 | [WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents](https://arxiv.org/abs/2207.01206) | web | Provides a simulated shopping environment where language agents search, configure, and select products from natural-language requirements. |
 | 2021‑03‑30 | [Grounding Open-Domain Instructions to Automate Web Support Tasks](https://arxiv.org/abs/2103.16057) | web | Introduces RUSS, which translates support instructions into a domain-specific language and grounds them in actionable web elements. |
+| 2018 | [Rousillon: Scraping Distributed Hierarchical Web Data](https://doi.org/10.1145/3242587.3242661) | web | Introduces Rousillon, which generalizes a demonstration of collecting one hierarchical data row into a browser-automation program that traverses related pages. The paper develops relation-selection and generalization methods and evaluates users building such scripts. |
+| 2017‑07‑17 | [World of Bits: An Open-Domain Platform for Web-Based Agents](https://proceedings.mlr.press/v70/shi17a.html) | web | Introduces World of Bits, a web-task platform combining human demonstrations, keyboard and mouse actions, and cached HTTP traffic for repeatable task environments. It evaluates agents trained through behavioral cloning and reinforcement learning. |
+| 2016‑11 | [Ringer: Web Automation by Demonstration](https://doi.org/10.1145/2983990.2984020) | web | Introduces Ringer, which converts demonstrated webpage interactions into scripts combining actions, target selectors, and waiting conditions. It evaluates replay robustness on tasks recorded from real websites. |
 | 2016‑02‑06 | [End-to-End Goal-Driven Web Navigation](https://arxiv.org/abs/1602.02261) | web | Introduces WebNav for converting websites into goal-directed hyperlink navigation tasks and WikiNav for evaluating language-conditioned navigation and question answering on Wikipedia. |
+| 2007 | [Koala: Capture, Share, Automate, Personalize Business Processes on the Web](https://doi.org/10.1145/1240624.1240767) | web | Introduces Koala, a collaborative web automation system that records browser interactions as editable pseudo-natural-language scripts. Scripts are shared through a wiki and instantiated with personal or corporate data for reuse by other users. |
+| 2007 | [PLOW: A Collaborative Task Learning Agent](https://aaai.org/Papers/AAAI/2007/AAAI07-240.pdf) | web | Describes PLOW, which learns executable web-task models from a session combining demonstrations, natural-language explanations, and dialogue. Browser instrumentation connects user actions with DOM structure to support task generalization. |

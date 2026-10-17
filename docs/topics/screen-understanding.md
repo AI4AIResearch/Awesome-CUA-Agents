@@ -2,9 +2,9 @@
 
 [Home](../../README.md) · [All topics](../topics.md) · [Full arXiv bibliography](../papers.md)
 
-129 source-reviewed resources tagged `screen-understanding`. Curated metadata, not a performance ranking; unknown facts are shown as —.
+131 source-reviewed resources tagged `screen-understanding`. Curated metadata, not a performance ranking; unknown facts are shown as —.
 
-**Contents:** [Benchmarks (4)](#benchmarks) · [Datasets (15)](#datasets) · [Models (8)](#models) · [Agents (1)](#agents) · [Frameworks (1)](#frameworks) · [Tools (5)](#tools) · [Papers (95)](#papers)
+**Contents:** [Benchmarks (4)](#benchmarks) · [Datasets (15)](#datasets) · [Models (8)](#models) · [Agents (1)](#agents) · [Frameworks (1)](#frameworks) · [Tools (5)](#tools) · [Papers (97)](#papers)
 
 ## Benchmarks
 
@@ -26,7 +26,7 @@
 | [Mobile3M](https://huggingface.co/datasets/xwk123/Mobile3M) | android | — | — | Mobile interface data for multimodal UI research. | [✓ 2026‑10‑16](https://huggingface.co/api/datasets/xwk123/Mobile3M) |
 | [MobileViews](https://huggingface.co/datasets/mllmTeam/MobileViews) | android | [2409.14337](https://arxiv.org/abs/2409.14337) (2024) | data mit | Mobile screenshot and interface hierarchy dataset. | [✓ 2026‑10‑16](https://huggingface.co/api/datasets/mllmTeam/MobileViews) |
 | [MultiUI](https://github.com/neulab/multiui) | web | — | — | Multilingual UI understanding and interaction data. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/neulab/multiui/HEAD/README.md) |
-| [Rico](https://www.interactionmining.org/archive/rico) | android | — | — | Mobile app screenshots, view hierarchies, and interaction traces for UI research. | [✓ 2026‑10‑16](https://www.interactionmining.org/archive/rico) |
+| [Rico](https://www.interactionmining.org/archive/rico) | android | [Rico: A Mobile App Dataset for Building Data-Driven Design Applications](https://doi.org/10.1145/3126594.3126651) (2017) | — | Mobile app screenshots, view hierarchies, and interaction traces for UI research. | [✓ 2026‑10‑16](https://www.interactionmining.org/archive/rico) |
 | [Screen2Words](https://github.com/google-research-datasets/screen2words) | android | — | — | Mobile screen descriptions for language-based screen understanding. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/google-research-datasets/screen2words/HEAD/README.md) |
 | [ScreenQA](https://github.com/google-research-datasets/screen_qa) | android | [2209.08199](https://arxiv.org/abs/2209.08199) (2022) | — | Question-answering data over mobile interface screenshots. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/google-research-datasets/screen_qa/HEAD/README.md) |
 | [ScreenRef](https://huggingface.co/datasets/PrentisAI/ScreenRef) | desktop, web, android, linux | [2610.19100](https://arxiv.org/abs/2610.19100) (2026) | data other | GUI screenshots paired with localization instructions and targets, including absent-target examples; image access is gated under publisher terms. | [✓ 2026‑10‑17](https://huggingface.co/api/datasets/PrentisAI/ScreenRef) |
@@ -173,3 +173,5 @@ All entries in this section: cross-platform.
 | 2020‑12‑22 | [ActionBert: Leveraging User Actions for Semantic Understanding of User Interfaces](https://arxiv.org/abs/2012.12350) | unspecified | Pretrains ActionBert on user interaction traces to combine visual, linguistic, and UI-structure features. It evaluates the resulting UI representations on tasks including icon classification and description-based component retrieval. |
 | 2020‑10‑08 | [Widget Captioning: Generating Natural Language Description for Mobile User Interface Elements](https://arxiv.org/abs/2010.04295) | unspecified | Introduces crowdsourced descriptions of mobile UI elements and studies multimodal models that generate useful widget captions. |
 | 2020‑08‑12 | [Object Detection for Graphical User Interface: Old Fashioned or Deep Learning or a Combination?](https://arxiv.org/abs/2008.05132) | unspecified | Compares seven traditional and learned GUI element detectors on more than 50,000 interface images. The analysis motivates a coarse-to-fine non-text detector combined with a learned text detector to address GUI-specific localization requirements. |
+| 2017‑10‑20 | [Rico: A Mobile App Dataset for Building Data-Driven Design Applications](https://doi.org/10.1145/3126594.3126651) | android | Introduces Rico, collecting Android interface designs and interaction traces through crowdsourced use followed by automated exploration. The paper demonstrates UI-layout retrieval using learned representations and describes visual, textual, structural, and interaction data. |
+| 2009‑10 | [Sikuli: Using GUI screenshots for search and automation](https://doi.org/10.1145/1622176.1622213) | unspecified | Introduces screenshot-based GUI search and visual scripting, using image patterns to locate interface targets and direct mouse and keyboard events. It evaluates screenshot queries and demonstrates automation and interactive-help tasks. |

@@ -2,6 +2,7 @@
 from collections import Counter, defaultdict
 import html
 from urllib.parse import urlencode
+from publication_metadata import publication, record_date_text, record_year
 
 
 PLATFORMS = {
@@ -55,10 +56,10 @@ def paper_library(rows, resource_path, *, language='en', site_url='https://aweso
         return mapping.get(key, (key.replace('-', ' ').capitalize(),) * 2)[int(zh)]
     papers = sorted((r for r in rows if r['kind'] in {'paper', 'survey'}
                      and r['review_status'] == 'curated' and r['scope'] in {'core', 'adjacent'}),
-                    key=lambda r: (r.get('published_at') or '', r['id']), reverse=True)
+                    key=lambda r: (record_date_text(r), r['id']), reverse=True)
     groups = defaultdict(list)
     for row in papers:
-        groups[(row.get('published_at') or 'undated')[:4] if row.get('published_at') else 'undated'].append(row)
+        groups[record_year(row) or 'undated'].append(row)
     topics = Counter(topic for row in papers if row['kind'] == 'paper' for topic in row['topics'])
     survey_count = sum(row['kind'] == 'survey' for row in papers)
     years = sorted(groups, reverse=True)
@@ -85,18 +86,21 @@ def paper_library(rows, resource_path, *, language='en', site_url='https://aweso
     body.append('</nav><div class="library-topics"><span>' + tr('PAPER TOPICS', '论文主题') + '</span>')
     for topic, _count in topics.most_common(8):
         body.append('<a href="' + search_link(topic=topic) + '">' + esc(label(TOPICS, topic)) + '</a>')
-    body.append('</div><p class="library-method">' + tr('AI-assisted editorial review of primary sources; experiments are not independently reproduced. Dates are original publication dates.', '条目经过 AI 辅助的一手来源编辑审阅，实验未独立复现。日期为论文首次发表日期。') + ' <a href="/about/">' + tr('Method', '收录方法') + ' ↗</a></p>')
+    body.append('</div><p class="library-method">' + tr('AI-assisted editorial review of primary sources; experiments are not independently reproduced. Dates keep their recorded precision.', '条目经过 AI 辅助的一手来源编辑审阅，实验未独立复现。发表日期保留来源记录的精度。') + ' <a href="/about/">' + tr('Method', '收录方法') + ' ↗</a></p>')
     for year in years:
         body.append('<section class="paper-year-group" aria-labelledby="papers-' + year + '"><div class="paper-year-heading"><h2 id="papers-' + year + '">' + (tr('Date not recorded', '日期待录') if year == 'undated' else year) + '</h2><span>' + str(len(groups[year])) + ' ' + tr('papers & surveys', '篇论文与综述') + '</span><a href="#library-title">' + tr('Back to years', '回到年份') + ' ↑</a></div>')
         for row in groups[year]:
             path = resource_path(row)
             snapshot = row.get('details', {}).get('arxiv_snapshot', {})
             source = snapshot.get('versioned_url') or row['url']
-            date = row.get('published_at')
+            date = record_date_text(row)
+            pub = publication(row)
             body.append('<article class="paper-entry" data-resource-id="' + esc(row['id']) + '"><div class="paper-date">')
-            body.append('<time datetime="' + esc(date) + '">' + esc(date[:10]) + '</time>' if date else '<span>' + tr('Date unknown', '日期待录') + '</span>')
+            body.append('<time datetime="' + esc(date) + '">' + esc(date) + '</time>' if len(date)==10 else '<span>' + esc(date or tr('Date unknown', '日期待录')) + '</span>')
             if snapshot.get('version'):
                 body.append('<span>arXiv v' + str(snapshot['version']) + '</span>')
+            elif pub and pub.get('publisher'):
+                body.append('<span>' + esc(pub['publisher']) + '</span>')
             if row['kind'] == 'survey':
                 body.append('<span class="paper-survey">' + tr('Survey', '综述') + '</span>')
             body.append('</div><div class="paper-entry-main"><h3><a href="' + path + '">' + esc(row['name']) + '</a></h3>')
@@ -108,6 +112,8 @@ def paper_library(rows, resource_path, *, language='en', site_url='https://aweso
                 body.append('<p class="paper-authors">' + esc(names) + '</p>')
             if row.get('summary'):
                 body.append('<p class="paper-annotation">' + esc(row['summary']) + '</p>')
+            if pub and pub.get('venue'):
+                body.append('<p class="paper-publication"><a href="' + esc(pub['url']) + '">' + esc(pub['venue']) + ' ↗</a></p>')
             body.append('<div class="paper-facets">')
             for platform in row['environments']:
                 if platform != 'unspecified':

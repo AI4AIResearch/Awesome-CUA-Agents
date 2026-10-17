@@ -109,6 +109,7 @@ class SearchPagesTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             source=Path(directory)/'source';source.mkdir()
             shutil.copytree(ROOT/'web',source/'web');shutil.copytree(ROOT/'data',source/'data')
+            shutil.copytree(ROOT/'schemas',source/'schemas')
             shutil.copy2(ROOT/'LICENSE',source/'LICENSE');shutil.copy2(ROOT/'AGENTS.md',source/'AGENTS.md')
             destination=Path(directory)/'site'
             def snapshot():

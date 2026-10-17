@@ -4,7 +4,7 @@
 
 Curated metadata, not a performance ranking. Each entry links its first-party evidence. Unknown facts are shown as —.
 
-*Paper* lists reviewed `introduced_by`/`documented_by` arXiv relations with the arXiv submission year. *License* lists publisher declarations by scope (code, data, weights, document). *Evidence* links the reviewed first-party snapshot and its retrieval date.
+*Paper* lists reviewed `introduced_by`/`documented_by` relations with the record's year. *License* lists publisher declarations by scope (code, data, weights, document). *Evidence* links the reviewed first-party snapshot and its retrieval date.
 
 **73 resources:** [Web (27)](#web) · [Desktop (13)](#desktop) · [Mobile (14)](#mobile) · [Cross-platform (16)](#cross-platform) · [Unspecified (3)](#unspecified)
 
@@ -22,7 +22,7 @@ All entries in this section: web.
 | [BrowserGym](https://github.com/ServiceNow/BrowserGym) | [2412.05467](https://arxiv.org/abs/2412.05467) (2024) | code Apache-2.0 | Unified interfaces for browser-agent tasks and benchmark environments. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/ServiceNow/BrowserGym/HEAD/README.md) |
 | [CUAVerifierBench](https://huggingface.co/datasets/microsoft/CUAVerifierBench) | [2604.06240](https://arxiv.org/abs/2604.06240) (2026) | — | Human-annotated browser-agent trajectories for comparing automated task-success and process-quality verifiers against reviewer judgments. | [✓ 2026‑10‑17](https://huggingface.co/datasets/microsoft/CUAVerifierBench/raw/main/README.md) |
 | [Mind2Web](https://github.com/OSU-NLP-Group/Mind2Web) | [2306.06070](https://arxiv.org/abs/2306.06070) (2023) | code MIT | Human demonstrations and tasks for generalist web navigation research. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/OSU-NLP-Group/Mind2Web/HEAD/README.md) |
-| [MiniWoB++](https://github.com/Farama-Foundation/miniwob-plusplus) | — | code MIT | Browser interaction task environment derived from MiniWoB. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/Farama-Foundation/miniwob-plusplus/HEAD/README.md) |
+| [MiniWoB++](https://github.com/Farama-Foundation/miniwob-plusplus) | [1802.08802](https://arxiv.org/abs/1802.08802) (2018) | code MIT | Browser interaction task environment derived from MiniWoB. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/Farama-Foundation/miniwob-plusplus/HEAD/README.md) |
 | [MMInA](https://github.com/shulin16/MMInA) | [2404.09992](https://arxiv.org/abs/2404.09992) (2024) | — | Multihop multimodal internet navigation tasks. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/shulin16/MMInA/HEAD/README.md) |
 | [MobileGym++ / MobileGym++ Bench](https://github.com/OpenMobile2/MobileGym-plusplus) | [2610.14157](https://arxiv.org/abs/2610.14157) (2026) | code Apache-2.0 | Browser-rendered mobile simulation with resettable app state and a shared task suite for GUI-only and GUI-plus-tool agents. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/OpenMobile2/MobileGym-plusplus/HEAD/README.md) |
 | [Online Mind2Web](https://github.com/OSU-NLP-Group/Online-Mind2Web) | — | code MIT | Live website evaluation of web agents. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/OSU-NLP-Group/Online-Mind2Web/HEAD/README.md) |

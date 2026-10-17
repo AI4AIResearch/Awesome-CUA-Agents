@@ -4,7 +4,7 @@
 
 Curated metadata, not a performance ranking. Each entry links its first-party evidence. Unknown facts are shown as —.
 
-*Date* is the arXiv first-submission date; newest first. Each title links the reviewed arXiv record; API receipts are in `data/catalog.jsonl`.
+*Date* retains the arXiv first-submission date, or the publisher-only record's publication date at its known precision; newest first. Titles link primary sources; receipts are in `data/catalog.jsonl`.
 
 **12 resources:** [Mobile (1)](#mobile) · [Cross-platform (10)](#cross-platform) · [Unspecified (1)](#unspecified)
 

@@ -113,8 +113,23 @@ def fetch(url, refresh=False):
     return info, b""
 
 
-def canonical(url):
+def canonical(url, *, allow_doi=False):
     """Resource identity: arXiv version folding, GitHub repo folding, URL cleanup."""
+    if not isinstance(url,str):return None
+    candidate=html.unescape(url).strip().replace('http://','https://',1)
+    try:
+        doi_parts=urllib.parse.urlsplit(candidate)
+        if (doi_parts.hostname or '').lower() in {'doi.org','www.doi.org','dx.doi.org'}:
+            if not allow_doi or doi_parts.scheme!='https' or doi_parts.username is not None or doi_parts.password is not None:
+                return None
+            if any(not key.startswith('utm_') for key,_ in urllib.parse.parse_qsl(doi_parts.query)):
+                return None
+            doi=urllib.parse.unquote(doi_parts.path.lstrip('/'),errors='strict')
+            if not re.fullmatch(r'10\.\d{4,9}/[^\s\\]+',doi,re.I):return None
+            clean='https://doi.org/'+urllib.parse.quote(doi.casefold(),safe='/():;._-')
+            return 'url:'+hashlib.sha256(clean.encode()).hexdigest()[:20],clean,'url'
+    except (ValueError,UnicodeError):
+        return None
     url = html.unescape(url).strip().rstrip(".,;:)").replace("http://", "https://", 1)
     try:
         parts = urllib.parse.urlsplit(url)
@@ -146,6 +161,15 @@ def canonical(url):
     query = urllib.parse.urlencode([(k, v) for k, v in urllib.parse.parse_qsl(parts.query) if not k.startswith("utm_")])
     clean = urllib.parse.urlunsplit(("https", host, parts.path.rstrip("/"), query, ""))
     return "url:" + hashlib.sha256(clean.encode()).hexdigest()[:20], clean, "url"
+
+
+def publication_identity(url):
+    """Explicit bibliography identity; general discovery still ignores bare DOI links."""
+    return canonical(url,allow_doi=True)
+
+
+def editorial_identity(row):
+    return canonical(row['url'],allow_doi=isinstance(row.get('kind'),str) and row['kind'] in {'paper','survey'})
 
 
 def source_links(source, body):
@@ -403,7 +427,7 @@ def search_arxiv(args):
 
 def require_editorial_identities(rows):
     """Stop before any network work if an editorial URL has no resource identity."""
-    invalid = [f"INVALID {row.get('name', '')}: {row['url']} has no canonical identity" for row in rows if not canonical(row["url"])]
+    invalid = [f"INVALID {row.get('name', '')}: {row['url']} has no canonical identity" for row in rows if not editorial_identity(row)]
     if invalid:
         raise SystemExit("\n".join(invalid))
 
@@ -415,7 +439,7 @@ def verify_editorial(args):
     previous = {r["id"]: r for r in read_jsonl(DATA / "primary-evidence.jsonl")}
 
     def one(row):
-        rid, url, provider = canonical(row["url"])
+        rid, url, provider = editorial_identity(row)
         rid = row.get("id", rid)
         url = row["url"]
         urls = row.get("evidence_urls", [])
@@ -434,13 +458,24 @@ def verify_editorial(args):
             info, body = fetch(evidence_url, args.refresh)
             attempts.append(info)
             if info["ok"]:
-                text = body.decode("utf-8", errors="replace")
-                terms = row.get("verify_terms", [row["name"]])
-                matched = [term for term in terms if " ".join(term.casefold().split()) in " ".join(text.casefold().split())]
-                # A soft-200 challenge/landing page must not be treated as primary evidence.
-                blocked = any(s in text[:15000].lower() for s in ("just a moment...", "checking your browser", "verify you are human"))
-                ok = bool(matched) and not blocked
-                result = {"id": rid, "source_url": url, **info, "content_matched": ok, "matched_terms": matched, "attempts": len(attempts)}
+                if body.startswith(b"%PDF-"):
+                    # Binary PDF text is not a title check. Only unchanged, already
+                    # reviewed bytes may retain their content verification.
+                    matched = []
+                    ok = (row.get("editorial_reviewed") is True
+                          and info.get("sha256") == row.get("reviewed_sha256")
+                          and info.get("sha256") == hashlib.sha256(body).hexdigest())
+                    match_method = "reviewed_pdf_sha256" if ok else None
+                else:
+                    text = body.decode("utf-8", errors="replace")
+                    terms = row.get("verify_terms", [row["name"]])
+                    matched = [term for term in terms if " ".join(term.casefold().split()) in " ".join(text.casefold().split())]
+                    # A soft-200 challenge/landing page must not be treated as primary evidence.
+                    blocked = any(s in text[:15000].lower() for s in ("just a moment...", "checking your browser", "verify you are human"))
+                    ok = bool(matched) and not blocked
+                    match_method = "text_terms" if ok else None
+                result = {"id": rid, "source_url": url, **info, "content_matched": ok, "matched_terms": matched,
+                          "content_match_method": match_method, "attempts": len(attempts)}
                 if ok:
                     for supporting in row.get("additional_evidence", []):
                         supporting_info, _ = fetch(supporting["url"], args.refresh)
@@ -476,7 +511,7 @@ def enrich(args):
     stale, invalid = [], []
 
     def one(row):
-        rid, url, provider = canonical(row["url"])
+        rid, url, provider = editorial_identity(row)
         rid = row.get("id", rid)
         ev = evidence.get(rid)
         if not ev or not ev.get("content_matched"):

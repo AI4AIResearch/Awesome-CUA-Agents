@@ -13,6 +13,7 @@ from specifications import PROFILE_KEYS, comparison_body, profile_export, resour
 from agent_pages import agent_guide_body
 from export_citations import citation_bibtex, citation_csl
 from paper_library import paper_library
+from publication_metadata import publication, format_date_parts, record_date_text
 
 SITE = "https://awesomecua.github.io"
 REPO = "https://github.com/AwesomeCUA/awesomecua.github.io"
@@ -34,7 +35,8 @@ def eligible(record):
 
 
 def description(record):
-    return record.get("summary") or f"Bibliographic record for {record['name']}. Title, authors and dates checked against arXiv; relevance and findings await editorial review."
+    provider='arXiv' if record['id'].startswith('arxiv:') else 'retained publication sources'
+    return record.get("summary") or f"Bibliographic record for {record['name']}. Title, authors and dates checked against {provider}; relevance and findings await editorial review."
 
 
 def jsonld(value):
@@ -77,7 +79,26 @@ def resource_schema(record):
 
 
 def listing(rows):
-    return '<div class="reading-list">'+"".join(f'<article><div class="list-overline">{esc(KINDS[r["kind"]])} · {esc(r["review_status"])}</div><h2><a href="{resource_path(r)}">{esc(r["name"])}</a></h2><p>{esc(description(r))}</p><small>{esc(r.get("published_at") or "Release date not recorded")} · {esc(", ".join(r["environments"]))}</small></article>' for r in rows)+'</div>'
+    return '<div class="reading-list">'+"".join(f'<article><div class="list-overline">{esc(KINDS[r["kind"]])} · {esc(r["review_status"])}</div><h2><a href="{resource_path(r)}">{esc(r["name"])}</a></h2><p>{esc(description(r))}</p><small>{esc(record_date_text(r) or "Release date not recorded")} · {esc(", ".join(r["environments"]))}</small></article>' for r in rows)+'</div>'
+
+
+def publication_body(record):
+    pub=publication(record)
+    if not pub:return ''
+    facts=[('Title',pub['title']),('Authors',', '.join(pub['authors'])),
+           ('Publication date (recorded precision)',format_date_parts(pub['date_parts'])),
+           ('Venue',pub.get('venue')),('Publisher',pub.get('publisher')),('Series',pub.get('series')),
+           ('Volume',pub.get('volume')),('Issue',pub.get('issue')),('Pages',pub.get('pages')),('DOI',pub.get('doi'))]
+    body='<section class="publication-record"><h2>Publication record</h2><dl class="page-facts">'+''.join('<div><dt>'+esc(key)+'</dt><dd>'+esc(value)+'</dd></div>' for key,value in facts if value)+'</dl>'
+    body+='<p><a href="'+esc(pub['url'])+'">Publication source ↗</a>'
+    if pub.get('pdf_url'):body+=' · <a href="'+esc(pub['pdf_url'])+'">Publisher or author PDF ↗</a>'
+    body+='</p><p><a href="'+resource_path(record)+'publication-citation.bib" download>Publication BibTeX</a> · <a href="'+resource_path(record)+'publication-citation.csl.json" download>Publication CSL JSON</a></p>'
+    if record['id'].startswith('arxiv:'):
+        body+='<p>This publication is a separately recorded edition of the same work. Its citation uses its own title, authors and date; the retained arXiv citation above is unchanged.</p>'
+    for key,label in [('date_basis','Date source'),('event_dates','Event dates (not substituted for publication)'),('notes','Source notes')]:
+        if pub.get(key):body+='<p>'+label+': '+esc(pub[key])+'</p>'
+    body+='</section>'
+    return body
 
 
 def incoming_relations(rows):
@@ -92,7 +113,7 @@ def resource_body(record, lookup, incoming=None):
     r=record
     status="AI-assisted editorial review against a primary source" if eligible(r) else "Bibliographic metadata verified; topic relevance and research findings have not been reviewed"
     body=f'<div class="eyebrow">{esc(KINDS[r["kind"]])}</div><h1>{esc(r["name"])}</h1><p class="answer-lead">{esc(description(r))}</p><p class="review-notice">{esc(status)}. This is a catalog annotation, not an independent reproduction or endorsement.</p><div class="page-actions"><a class="button primary" href="{esc(r["url"])}">Original source ↗</a><a class="button secondary" href="{resource_path(r)}index.md">Read as Markdown</a><a class="button secondary" href="{resource_path(r)}record.json">Record JSON</a></div>'
-    facts=[("Resource type",KINDS[r["kind"]]),("Environment",", ".join(r["environments"])),("Topics",", ".join(r["topics"]) or "Not assigned"),("Publication date",r["published_at"] or "Not recorded"),("Evidence retrieved",r["last_verified_at"]),("Resource ID",r["id"])]
+    facts=[("Resource type",KINDS[r["kind"]]),("Environment",", ".join(r["environments"])),("Topics",", ".join(r["topics"]) or "Not assigned"),("Record publication date",record_date_text(r) or "Not recorded"),("Evidence retrieved",r["last_verified_at"]),("Resource ID",r["id"])]
     body+='<h2>What is this resource?</h2><dl class="page-facts">'+''.join(f'<div><dt>{esc(k)}</dt><dd>{esc(v)}</dd></div>' for k,v in facts)+'</dl>'
     snapshot=r['details'].get('arxiv_snapshot')
     if snapshot:
@@ -106,7 +127,8 @@ def resource_body(record, lookup, incoming=None):
     if preferred and preferred in lookup:
         body+='<h2>Preferred paper record</h2><p>The retained source identifies this as an alternate bibliographic record. Follow <a href="'+resource_path(lookup[preferred])+'">'+esc(lookup[preferred]['name'])+'</a> for the preferred arXiv identity. These records should not be counted as independent works.</p>'
     if r['kind'] in {'paper','survey'}:
-        body+='<h2>Cite this paper</h2><p><a href="'+resource_path(r)+'citation.bib" download>Download BibTeX</a> · <a href="'+resource_path(r)+'citation.csl.json" download>Download CSL JSON</a></p><p>Citations preserve recorded authors, the original publication date, and the retained paper version. Unrecorded venues and identifiers are omitted.</p>'
+        body+='<h2>Cite this paper</h2><p><a href="'+resource_path(r)+'citation.bib" download>Download BibTeX</a> · <a href="'+resource_path(r)+'citation.csl.json" download>Download CSL JSON</a></p><p>Citations preserve the selected source edition, its authors and recorded date precision. Unrecorded venues and identifiers are omitted.</p>'
+        body+=publication_body(r)
     if r["kind"] not in {"paper","survey"}:
         body+='<h2>What licenses are recorded?</h2><p>Code, training data, weights, and documents can have different terms. A blank declaration means unknown, not unrestricted use.</p><dl class="page-facts">'
         for slot,l in r["licenses"].items():
@@ -116,7 +138,7 @@ def resource_body(record, lookup, incoming=None):
     if r['details'].get('license_review'):
         body+='<h2>License review notes</h2><ul>'+''.join('<li><strong>'+esc(slot.title())+':</strong> '+esc(review['reason'])+' '+''.join(f'<a href="{esc(url)}">Source {i+1}</a> ' for i,url in enumerate(review['evidence_urls']))+'</li>' for slot,review in r['details']['license_review'].items())+'</ul>'
     body+=resource_profile_html(r)
-    details=[(k,v) for k,v in r["details"].items() if k not in {*PROFILE_KEYS.values(),'arxiv_snapshot','license_review'} and v is not None and v!=[] and v!=""]
+    details=[(k,v) for k,v in r["details"].items() if k not in {*PROFILE_KEYS.values(),'arxiv_snapshot','publication','license_review'} and v is not None and v!=[] and v!=""]
     if details:
         body+='<h2>Recorded specifications</h2><dl class="page-facts">'+''.join(f'<div><dt>{esc(k.replace("_"," "))}</dt><dd>{esc(json.dumps(v,ensure_ascii=False) if isinstance(v,(dict,list,bool)) else v)}</dd></div>' for k,v in details)+'</dl>'
     if r["notes"]:body+='<h2>Scope and limitations</h2><p>'+esc(r["notes"])+'</p>'
@@ -143,6 +165,16 @@ def resource_markdown(r):
     if r["authors"]:lines+=['','## Authors','',', '.join(r["authors"])]
     if r['kind'] in {'paper','survey'}:
         lines+=['','## Citation exports','',f'- BibTeX: {SITE}{resource_path(r)}citation.bib',f'- CSL JSON: {SITE}{resource_path(r)}citation.csl.json']
+    pub=publication(r)
+    if pub:
+        lines+=['','## Publication record','', '- Title: '+pub['title'], '- Authors: '+', '.join(pub['authors']),
+                '- Publication date (recorded precision): '+(format_date_parts(pub['date_parts']) or 'not recorded'),
+                '- Publication source: '+pub['url'],
+                '- Publication BibTeX: '+SITE+resource_path(r)+'publication-citation.bib',
+                '- Publication CSL JSON: '+SITE+resource_path(r)+'publication-citation.csl.json']
+        for key in ('venue','publisher','series','volume','issue','pages','doi','date_basis','event_dates','identity_basis','notes'):
+            if pub.get(key):lines.append('- '+key.replace('_',' ')+': '+pub[key])
+        lines+=['- Publication evidence: '+', '.join(pub['evidence_urls'])]
     snapshot=r['details'].get('arxiv_snapshot')
     if snapshot:
         lines+=['','## Recorded arXiv snapshot','',
@@ -198,6 +230,11 @@ def build_search_pages(destination, rows, coverage, root):
             (destination/path.lstrip('/')/'citation.csl.json').write_text(json.dumps(citation_csl(r),ensure_ascii=False,indent=2)+'\n')
         else:
             for name in ('citation.bib','citation.csl.json'):(destination/path.lstrip('/')/name).unlink(missing_ok=True)
+        if publication(r):
+            (destination/path.lstrip('/')/'publication-citation.bib').write_text(citation_bibtex(r,edition='publication'))
+            (destination/path.lstrip('/')/'publication-citation.csl.json').write_text(json.dumps(citation_csl(r,edition='publication'),ensure_ascii=False,indent=2)+'\n')
+        else:
+            for name in ('publication-citation.bib','publication-citation.csl.json'):(destination/path.lstrip('/')/name).unlink(missing_ok=True)
     scope_status=json.loads((root/'data/exclusion-status.json').read_text())
     for decision in scope_status['decisions']:
         if decision['status']!='excluded':continue
@@ -207,7 +244,7 @@ def build_search_pages(destination, rows, coverage, root):
         target=destination/path.lstrip('/')
         target.mkdir(parents=True,exist_ok=True)
         (target/'record.json').write_text(json.dumps({'status':'excluded','id':decision['id'],'reason':decision['reason'],'decision':decision,'ledger_url':SITE+'/downloads/exclusions.json'},ensure_ascii=False,indent=2)+'\n')
-        for name in ('citation.bib','citation.csl.json'):(target/name).unlink(missing_ok=True)
+        for name in ('citation.bib','citation.csl.json','publication-citation.bib','publication-citation.csl.json'):(target/name).unlink(missing_ok=True)
         body=f'<div class="eyebrow">SCOPE REVIEW</div><h1>{esc(decision["name"])}</h1><p class="answer-lead">This bibliographic record is outside the active AwesomeCUA catalog after a primary-abstract scope review.</p><p>{esc(decision["reason"])}</p><p>The decision concerns relevance to computer-use agents, not research quality. Original metadata remains available in the archive.</p><div class="page-actions"><a class="button primary" href="{esc(decision["url"])}">Original paper ↗</a><a class="button secondary" href="/coverage/">Catalog coverage</a></div><dl class="page-facts"><div><dt>Record ID</dt><dd>{esc(decision["id"])}</dd></div><div><dt>Scope reviewed</dt><dd>{esc(decision["reviewed_at"])}</dd></div><div><dt>Source retrieved</dt><dd>{esc(evidence["retrieved_at"])}</dd></div></dl><p><a href="{esc(evidence["url"])}">Primary abstract evidence</a> · <a href="/downloads/exclusions.json">Scope-decision ledger</a> · <a href="/downloads/arxiv-archive.jsonl">Raw metadata archive</a></p><details><summary>Source content fingerprint</summary><code>{esc(evidence["sha256"])}</code></details><p>Decisions can be revised through a <a href="'+REPO+'/issues/new?template=resource.yml">source-backed correction</a>.</p>'
         emit(path,page(decision['name'],'A source-backed catalog scope decision; original bibliographic metadata remains preserved.',path,body,index=False),index=False,excluded=True)
         (destination/path.lstrip('/')/'index.md').write_text('\n'.join(['# '+decision['name'],'','Status: excluded from the active CUA catalog after scope review.','',decision['reason'],'','Original paper: '+decision['url'],'Evidence: '+evidence['url'],'Reviewed: '+decision['reviewed_at'],'','Scope decisions: '+SITE+'/downloads/exclusions.json','Raw metadata archive: '+SITE+'/downloads/arxiv-archive.jsonl'])+'\n')
@@ -227,7 +264,7 @@ def build_search_pages(destination, rows, coverage, root):
         export=profile_export(rows,kind)
         (destination/f'downloads/{plural}-profiles.json').write_text(json.dumps(export,ensure_ascii=False,indent=2)+'\n')
         emit(path,page(title,f'Compare {plural} by source-reviewed interfaces, scope, counting units, and access information.',path,comparison_body(rows,kind,resource_path),{'@type':'CollectionPage','name':title}))
-    papers=sorted([r for r in reviewed if r['kind'] in {'paper','survey'}],key=lambda r:r.get('published_at') or '',reverse=True)
+    papers=sorted([r for r in reviewed if r['kind'] in {'paper','survey'}],key=record_date_text,reverse=True)
     paper_alternatives={'en':'/papers/','zh-CN':'/zh/papers/','x-default':'/papers/'}
     for language,path,title,summary in [
         ('en','/papers/','Computer-use agent papers and surveys','Browse reviewed computer-use research by publication year, author, environment and topic, with original papers and BibTeX citations.'),
@@ -257,8 +294,8 @@ def build_search_pages(destination, rows, coverage, root):
     scan_path=root/'data/scan-status.json'
     scan=json.loads(scan_path.read_text()) if scan_path.exists() else None
     schedule=', '.join(scan_config['scan_times_local'])+' '+scan_config['timezone']
-    publication=', '.join(scan_config['publish_times_local'])+' '+scan_config['timezone']
-    body=f'<div class="eyebrow">DISCOVERY ACTIVITY</div><h1>Twice-daily catalog updates</h1><p class="answer-lead">Public sources are scanned twice a day. New paper identities are checked against arXiv; editorial annotations and approvals remain separate.</p><dl class="page-facts"><div><dt>Configured scan times</dt><dd>{esc(schedule)}</dd></div><div><dt>Website rebuild times</dt><dd>{esc(publication)}</dd></div></dl><p>GitHub scheduling can be delayed. The completion times below record what actually ran, rather than assuming that a scheduled job executed.</p>'
+    publication_schedule=', '.join(scan_config['publish_times_local'])+' '+scan_config['timezone']
+    body=f'<div class="eyebrow">DISCOVERY ACTIVITY</div><h1>Twice-daily catalog updates</h1><p class="answer-lead">Public sources are scanned twice a day. New paper identities are checked against arXiv; editorial annotations and approvals remain separate.</p><dl class="page-facts"><div><dt>Configured scan times</dt><dd>{esc(schedule)}</dd></div><div><dt>Website rebuild times</dt><dd>{esc(publication_schedule)}</dd></div></dl><p>GitHub scheduling can be delayed. The completion times below record what actually ran, rather than assuming that a scheduled job executed.</p>'
     body+=f'<h2>Current published catalog</h2><dl class="page-facts"><div><dt>Reviewed papers and surveys</dt><dd>{len(papers):,}</dd></div><div><dt>Other reviewed resources</dt><dd>{len(reviewed)-len(papers):,}</dd></div><div><dt>Total resource records</dt><dd>{len(rows):,}</dd></div></dl><p>These counts include editorial work completed after the scan below. <a href="/papers/">Browse reviewed research</a> or <a href="/coverage/">inspect full coverage</a>.</p>'
     if scan:
         body+=f'<h2>Latest completed scan</h2><dl class="page-facts"><div><dt>Status</dt><dd>{esc(scan["status"])}</dd></div><div><dt>Started</dt><dd>{esc(scan["started_at"])}</dd></div><div><dt>Finished</dt><dd>{esc(scan["finished_at"])}</dd></div><div><dt>Discovery documents fetched</dt><dd>{scan["source_fetches"]["successful"]} / {scan["source_fetches"]["total"]}</dd></div><div><dt>New paper metadata</dt><dd>{len(scan["new_papers"])}</dd></div><div><dt>New candidate identifiers</dt><dd>{scan["new_candidate_count"]}</dd></div><div><dt>Reviewed papers at scan completion</dt><dd>{scan["after"]["curated_papers"]}</dd></div><div><dt>Pending metadata changes</dt><dd>{scan["pending_metadata_changes"]}</dd></div></dl>'
@@ -295,6 +332,7 @@ def build_search_pages(destination, rows, coverage, root):
     body=f'<h1>Download the AwesomeCUA data catalog</h1><p class="answer-lead">{desc}</p><p>This snapshot contains {len(rows):,} resource records. A record is a resource, not necessarily an independent project. Evidence snapshot: {esc(latest)}.</p><h2>Data downloads</h2><ul><li><a href="/downloads/catalog.jsonl">Complete resource catalog — JSONL</a></li><li><a href="/downloads/catalog.sqlite">Queryable database — SQLite</a></li><li><a href="/downloads/coverage.json">Coverage and verification ledger — JSON</a></li><li><a href="/downloads/sources.json">Discovery-source registry — JSON</a></li></ul><h2>Compare specifications</h2><p><a href="/compare/benchmarks/">Benchmark protocols</a> · <a href="/compare/datasets/">Dataset profiles</a></p><p><a href="/downloads/benchmarks-profiles.json">Benchmark profiles JSON</a> · <a href="/downloads/datasets-profiles.json">Dataset profiles JSON</a></p><h2>What does a record contain?</h2><p>Stable identifier, resource name, kind, platform and topic facets, concise annotation, review state, bibliographic dates and authors where available, separate code/data/weights/document licenses, source URLs, retrieval times, content fingerprints, and reviewed relationships.</p><h2>Archive and scope decisions</h2><p>The active catalog excludes records with completed out-of-scope decisions. The <a href="/downloads/arxiv-archive.jsonl">raw arXiv metadata archive</a> preserves ingestion snapshots, including excluded candidates; it does not represent current editorial approval. The <a href="/downloads/exclusions.json">scope ledger</a> records the rationale and evidence for each decision.</p><h2>What does this download exclude?</h2><p>It does not contain upstream model weights, training datasets, paper PDFs, or copied full abstracts. Follow each resource’s original source for those assets and their licensing terms.</p><h2>License and attribution</h2><p>Original catalog code and annotations use <a href="/LICENSE">MIT</a>. Third-party titles, bibliographic facts, and linked assets retain their original attribution and applicable terms; the catalog does not relicense the underlying papers, data, or weights.</p><h2>Quality and reuse</h2><p>Retain review status and provenance when redistributing or analyzing records. Missing data is unknown, not zero. Do not interpret metadata-only papers as editorially confirmed CUA research or combine scores across incompatible experiment protocols.</p><p><a href="/about/">Editorial method</a> · <a href="/coverage/">Coverage limits</a></p>'
     body+='<h2>Use the catalog with an agent or RAG pipeline</h2><pre class="command-block"><code>git clone https://github.com/reacher-z/Awesome-CUA.git</code></pre><p><a href="/agents/">Agent and RAG guide</a> · <a href="/zh/agents/">中文使用指南</a> · <a href="/AGENTS.md">AGENTS.md</a></p><p><a href="/downloads/rag-documents.jsonl">Reviewed retrieval documents</a> · <a href="/downloads/rag-all-records.jsonl">All retrieval documents</a> · <a href="/downloads/rag-manifest.json">Export counts and fingerprints</a></p>'
     body+='<h2>Paper citation downloads</h2><p><a href="/downloads/citations.bib">Reviewed papers — BibTeX</a> · <a href="/downloads/citations.csl.json">Reviewed papers — CSL JSON</a> · <a href="/downloads/citations-manifest.json">Citation export manifest</a></p><p>Metadata-only bibliography entries are available explicitly in <a href="/downloads/citations-all.bib">all-record BibTeX</a> and <a href="/downloads/citations-all.csl.json">all-record CSL JSON</a>. Review states and known alternate identities remain recorded. Each active resource page has a <code>record.json</code> file; scope-excluded pages return an explicit exclusion decision.</p>'
+    body+='<h2>Publication editions and date precision</h2><p><a href="/downloads/publication-citations.bib">Reviewed publication editions — BibTeX</a> · <a href="/downloads/publication-citations.csl.json">Reviewed publication editions — CSL JSON</a></p><p>These exports select records with source-backed publication metadata. Default arXiv citations retain their preprint facts; publication citations use the publication edition’s own authors, date, title, venue and identifiers. A year-only or month-only date is never padded with an invented day.</p><p><a href="/downloads/publications.jsonl">Publication observations — JSONL</a> · <a href="/schemas/publication-observation.schema.json">Observation schema</a> · <a href="/schemas/resource.schema.json">Resource schema</a>. Publisher-only observations create metadata records, while known arXiv matches enrich the existing identity. Bibliographic metadata does not itself approve relevance.</p>'
     emit('/data/',page('AwesomeCUA computer-use agent dataset and downloads',desc,'/data/',body,dataset))
     guides=json.loads((root/'data/site-guides.json').read_text())
     for guide in guides:
@@ -325,6 +363,7 @@ def build_search_pages(destination, rows, coverage, root):
     llms += ['', '## Compare source-reviewed specifications', '', f'- [Benchmark protocols]({SITE}/compare/benchmarks/)', f'- [Dataset profiles]({SITE}/compare/datasets/)', f'- [Benchmark profiles JSON]({SITE}/downloads/benchmarks-profiles.json)', f'- [Dataset profiles JSON]({SITE}/downloads/datasets-profiles.json)']
     llms.extend(['', '## Agent and RAG access', '', '```sh', 'git clone https://github.com/reacher-z/Awesome-CUA.git', '```', '', f'- [Agent instructions]({SITE}/AGENTS.md)', f'- [Human and agent guide]({SITE}/agents/)', f'- [中文指南]({SITE}/zh/agents/)', f'- [Reviewed retrieval documents]({SITE}/downloads/rag-documents.jsonl)', f'- [All retrieval documents]({SITE}/downloads/rag-all-records.jsonl)', f'- [Export manifest]({SITE}/downloads/rag-manifest.json)'])
     llms.extend(['', '## Individual records and citations', '', 'Each active resource page serves its complete record at `record.json`. Scope-excluded resources return a JSON object with `status: excluded`, not an active record.', '', f'- [Reviewed paper BibTeX]({SITE}/downloads/citations.bib)', f'- [Reviewed paper CSL JSON]({SITE}/downloads/citations.csl.json)', f'- [Citation manifest]({SITE}/downloads/citations-manifest.json)'])
+    llms.extend(['', '## Publication editions', '', 'Default arXiv citations retain the recorded preprint. Publication editions use their own title/authors/date and do not create extra catalog papers. Date components keep their recorded precision.', '', f'- [Reviewed publication BibTeX]({SITE}/downloads/publication-citations.bib)', f'- [Reviewed publication CSL JSON]({SITE}/downloads/publication-citations.csl.json)', f'- [Publication observations]({SITE}/downloads/publications.jsonl)', f'- [Publication observation schema]({SITE}/schemas/publication-observation.schema.json)', '', 'Resources with publication metadata also serve `publication-citation.bib` and `publication-citation.csl.json` next to their retained-source citation files.'])
     (destination/'llms.txt').write_text('\n'.join(llms)+'\n')
     (destination/'llms-full.txt').write_text('# AwesomeCUA curated resource annotations\n\n'+f'Evidence snapshot: {latest}. These records were reviewed with AI assistance; experiments are not independently reproduced.\n\n'+'\n---\n\n'.join(resource_markdown(r) for r in reviewed))
     robots='User-agent: *\nAllow: /\n\n'+''.join(f'User-agent: {bot}\nAllow: /\n\n' for bot in ['Googlebot','bingbot','OAI-SearchBot','PerplexityBot','Claude-SearchBot'])+f'Sitemap: {SITE}/sitemap.xml\nSitemap: {SITE}/sitemap.txt\n'

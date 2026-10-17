@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/reacher-z/Awesome-CUA/blob/main/schemas/publication-observation.schema.json",
+  "title": "AwesomeCUA retained publication observation",
+  "description": "Source-backed publisher metadata attached to one canonical resource, without asserting editorial relevance approval.",
+  "type": "object",
+  "required": [
+    "id",
+    "publication",
+    "evidence",
+    "last_verified_at"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^(arxiv:|url:)[^\\s]+$"
+    },
+    "publication": {
+      "$ref": "https://github.com/reacher-z/Awesome-CUA/blob/main/schemas/resource.schema.json#/$defs/publication"
+    },
+    "evidence": {
+      "$ref": "https://github.com/reacher-z/Awesome-CUA/blob/main/schemas/resource.schema.json#/properties/evidence"
+    },
+    "last_verified_at": {
+      "$ref": "https://github.com/reacher-z/Awesome-CUA/blob/main/schemas/resource.schema.json#/properties/last_verified_at"
+    }
+  },
+  "additionalProperties": false
+}

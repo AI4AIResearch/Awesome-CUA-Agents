@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {normalize,matches,filtered,parseState,serializeState,escapeHTML,safeURL,PAGE_SIZE} from '../web/catalog-core.js';
+import {normalize,matches,filtered,parseState,serializeState,escapeHTML,safeURL,PAGE_SIZE,bibliographicDate} from '../web/catalog-core.js';
 
 const rows=readFileSync(new URL('../data/catalog.jsonl',import.meta.url),'utf8').trim().split('\n').map(JSON.parse);
 rows.forEach(r=>r.search_text=normalize([r.name,r.summary,...r.aliases,...r.authors,...r.topics,...r.environments].join(' ')));
@@ -29,10 +29,21 @@ test('search uses all terms and normalizes punctuation',()=>{
 });
 test('newest publication sorts known dates first and unknown dates last',()=>{
   const result=filtered(rows,{...initial(),sort:'newest'});
-  assert.ok(result[0].published_at);
-  const index=result.findIndex(r=>!r.published_at);
+  assert.ok(bibliographicDate(result[0]));
+  const index=result.findIndex(r=>!bibliographicDate(r));
   assert.ok(index>0);
-  assert.ok(result.slice(index).every(r=>!r.published_at));
+  assert.ok(result.slice(index).every(r=>!bibliographicDate(r)));
+});
+test('publisher years and months filter and sort without invented days or arXiv date substitution',()=>{
+  const make=(id,parts)=>({id,name:id,kind:'paper',review_status:'curated',environments:['web'],topics:[],search_text:'',published_at:null,details:{publication:{date_parts:parts}}});
+  const year=make('url:year',[2017]),month=make('url:month',[2017,8]),day=make('url:day',[2017,8,10]),unknown=make('url:unknown',null);
+  assert.equal(bibliographicDate(year),'2017');assert.equal(bibliographicDate(month),'2017-08');
+  assert.deepEqual(filtered([unknown,year,month,day],{...initial(),kind:'paper',year:'2017',sort:'newest'}).map(r=>r.id),['url:day','url:month','url:year']);
+  const compact={...year,details:undefined,paper_date:'2017'};
+  assert.ok(matches(compact,{...initial(),year:'2017'}));
+  const preprint={...month,id:'arxiv:2001.00001',published_at:'2020-01-02'};
+  assert.equal(bibliographicDate(preprint),'2020-01-02');
+  assert.equal(matches(preprint,{...initial(),year:'2017'}),false);
 });
 test('deep links round-trip search, filters, layout, language, and a selected record',()=>{
   const state={q:'GUI 定位',kind:'model',platform:'desktop',review:'curated',topic:'grounding',year:'',sort:'name',page:2,view:'list'};
@@ -71,13 +82,13 @@ test('paper browsing defaults to dense rows but explicit layout and year round-t
   const state={...parseState('?kind=paper'),year:'2026',view:'grid'};
   assert.deepEqual(parseState(serializeState(state,'zh')),state);
   const result=filtered(rows,{...state,review:'curated'});
-  assert.ok(result.length>0);assert.ok(result.every(r=>r.published_at.startsWith('2026')));
+  assert.ok(result.length>0);assert.ok(result.every(r=>bibliographicDate(r).slice(0,4)==='2026'));
   assert.equal(parseState('?year=hello').year,'');
 });
 test('paper curated-first order puts reviewed recent work before older reviewed work',()=>{
   const result=filtered(rows,parseState('?kind=paper'));
   const reviewed=result.filter(r=>r.review_status==='curated');
-  assert.ok(reviewed.length>0);assert.ok(reviewed.slice(1).every((r,i)=>(reviewed[i].published_at||'')>=(r.published_at||'')));
+  assert.ok(reviewed.length>0);assert.ok(reviewed.slice(1).every((r,i)=>bibliographicDate(reviewed[i])>=bibliographicDate(r)));
   assert.ok(result.slice(reviewed.length).every(r=>r.review_status!=='curated'));
 });
 

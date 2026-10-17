@@ -1,4 +1,4 @@
-import { KIND_ORDER, PAGE_SIZE, createRecordLoader, normalize, matches, filtered, parseState, serializeState, escapeHTML as e, safeURL } from './catalog-core.js';
+import { KIND_ORDER, PAGE_SIZE, createRecordLoader, bibliographicDate, normalize, matches, filtered, parseState, serializeState, escapeHTML as e, safeURL } from './catalog-core.js';
 
 const TEXT = {
   en: {
@@ -24,8 +24,10 @@ Object.assign(TOPICS, {
 Object.assign(TEXT.en, {agentEyebrow:'DATA FOR PEOPLE & AGENTS',agentTitle:'Clone the catalog. Put it to work.',agentCopy:'Search locally, connect a RAG pipeline, or let your agent explore—with sources and review states intact.',agentGuide:'Agent & RAG guide',copyCommand:'Copy command',commandCopied:'Clone command copied',commandCopyFailed:'Select the command above to copy it.',ragReviewed:'RAG documents · reviewed',ragReviewedCopy:'One retrieval document per reviewed resource, with citations and provenance.',ragAll:'RAG documents · all records',ragAllCopy:'Every active record, including metadata-only entries with their review state.'});
 Object.assign(TEXT.zh, {agentEyebrow:'给人阅读，也给 AGENTS 使用',agentTitle:'克隆完整目录，接入你的工作。',agentCopy:'本地检索、构建 RAG，或让 Agent 继续探索。来源、引用和审阅状态随数据一起保留。',agentGuide:'Agents 与 RAG 使用指南',copyCommand:'复制克隆命令',commandCopied:'克隆命令已复制',commandCopyFailed:'请选择上方命令并复制。',ragReviewed:'RAG 文档 · 已审阅',ragReviewedCopy:'每项已审阅资源对应一份检索文档，保留引用和来源。',ragAll:'RAG 文档 · 全部记录',ragAllCopy:'包含全部当前记录，并明确保留待审阅论文的状态。'});
 const CLONE_COMMAND = 'git clone https://github.com/reacher-z/Awesome-CUA.git';
-Object.assign(TEXT.en,{citePaper:'Cite this paper',copyBibtex:'Copy BibTeX',citationCopied:'BibTeX copied',citationFailed:'Could not copy the citation. Use the download link.',citationNote:'Exports preserve the recorded authors, submission date, and paper version.',paperBibtex:'Paper citations · BibTeX',paperBibtexCopy:'Reviewed papers and surveys, with recorded versions and original authors.',paperCSL:'Paper citations · CSL JSON',paperCSLCopy:'Structured citations for reference managers and research tools.'});
-Object.assign(TEXT.zh,{citePaper:'引用这篇论文',copyBibtex:'复制 BibTeX',citationCopied:'BibTeX 已复制',citationFailed:'暂时无法复制引用，请使用下载链接。',citationNote:'引用保留目录记录的原作者、首次发表日期和论文版本。',paperBibtex:'论文引用 · BibTeX',paperBibtexCopy:'已审阅论文与综述，保留记录的版本及原作者。',paperCSL:'论文引用 · CSL JSON',paperCSLCopy:'可供文献管理工具和研究工作流使用的结构化引用。'});
+Object.assign(TEXT.en,{publicationBib:'Publication editions · BibTeX',publicationBibCopy:'Reviewed publication editions with their own title, authors, venue and date.',publicationCSL:'Publication editions · CSL JSON',publicationCSLCopy:'Source-backed publication metadata with its original date precision.'});
+Object.assign(TEXT.zh,{publicationBib:'出版版引用 · BibTeX',publicationBibCopy:'已审阅出版版，保留该版本的题名、作者、会议／期刊和日期。',publicationCSL:'出版版引用 · CSL JSON',publicationCSLCopy:'有来源可查的出版元数据，保留原日期精度。'});
+Object.assign(TEXT.en,{citePaper:'Cite this paper',copyBibtex:'Copy BibTeX',citationCopied:'BibTeX copied',citationFailed:'Could not copy the citation. Use the download link.',citationNote:'Exports preserve the cited edition, its authors and recorded date precision.',paperBibtex:'Paper citations · BibTeX',paperBibtexCopy:'Reviewed papers and surveys, with recorded versions and original authors.',paperCSL:'Paper citations · CSL JSON',paperCSLCopy:'Structured citations for reference managers and research tools.'});
+Object.assign(TEXT.zh,{citePaper:'引用这篇论文',copyBibtex:'复制 BibTeX',citationCopied:'BibTeX 已复制',citationFailed:'暂时无法复制引用，请使用下载链接。',citationNote:'引用保留所选版本的作者、日期精度和来源。',paperBibtex:'论文引用 · BibTeX',paperBibtexCopy:'已审阅论文与综述，保留记录的版本及原作者。',paperCSL:'论文引用 · CSL JSON',paperCSLCopy:'可供文献管理工具和研究工作流使用的结构化引用。'});
 Object.assign(TEXT.en,{paperLibrary:'Research library',navData:'Data / Agents',year:'Year',allYears:'All years',related:'related',primaryLink:'Primary source',recordLink:'Details',reviewedCount:'reviewed',pendingCount:'metadata only',directoryTitle:'Resource directory'});
 Object.assign(TEXT.zh,{paperLibrary:'论文库',navData:'数据 / Agents',year:'年份',allYears:'全部年份',related:'项关联',primaryLink:'一手来源',recordLink:'详情',reviewedCount:'已审阅',pendingCount:'仅元数据',directoryTitle:'资源目录'});
 const $ = selector => document.querySelector(selector);
@@ -54,7 +56,7 @@ function fillSelects() {
   $('#platform').innerHTML=`<option value="">${e(t('allPlatforms'))}</option>`+Object.keys(PLATFORMS).map(key=>`<option value="${e(key)}">${e(label(PLATFORMS,key))}</option>`).join('');
   const topics=[...new Set(records.flatMap(r=>r.topics))].sort((a,b)=>label(TOPICS,a).localeCompare(label(TOPICS,b)));
   $('#topic').innerHTML=`<option value="">${e(t('allTopics'))}</option>`+topics.map(key=>`<option value="${e(key)}">${e(label(TOPICS,key))}</option>`).join('');
-  const years=[...new Set(records.map(r=>r.published_at?.slice(0,4)).filter(Boolean))].sort().reverse();
+  const years=[...new Set(records.map(r=>bibliographicDate(r).slice(0,4)).filter(Boolean))].sort().reverse();
   if(state.year&&!years.includes(state.year)){years.push(state.year);years.sort().reverse();}
   $('#year').innerHTML=`<option value="">${e(t('allYears'))}</option>`+years.map(year=>`<option value="${year}">${year}</option>`).join('');
   syncControls();
@@ -75,7 +77,7 @@ function card(r) {
   const curated=r.review_status==='curated';
   const summary=r.summary || (r.authors.slice(0,3).join(' · ')+(r.authors.length>3?' et al.':'')+(r.published_at?' · '+r.published_at.slice(0,4):''));
   const tags=r.environments.filter(x=>x!=='unspecified').slice(0,2).map(x=>label(PLATFORMS,x));
-  if(!tags.length && r.published_at) tags.push(r.published_at.slice(0,4),'arXiv');
+  if(!tags.length && bibliographicDate(r)) tags.push(bibliographicDate(r).slice(0,4),r.id.startsWith('arxiv:')?'arXiv':label(KINDS,r.kind));
   if(curated && r.topics.length && tags.length<3) tags.push(label(TOPICS,r.topics[0]));
   return `<article class="resource-card" data-kind="${e(r.kind)}"><div class="card-top"><div class="resource-monogram" aria-hidden="true">${e(initials)}</div><span class="kind-chip">${e(label(KINDS,r.kind))}</span></div><h3 class="card-title"><a href="${e(r.page_url)}" data-record="${e(r.id)}">${e(r.name)}</a></h3><p class="resource-summary ${curated?'':'is-bibliography'}">${e(summary)}</p><div class="card-tags">${tags.map(x=>`<span>${e(x)}</span>`).join('')}</div><div class="card-bottom ${curated?'is-curated':''}"><span class="review-dot"></span><span>${e(t(curated?'curatedBadge':'metadataBadge'))}</span><a class="card-external" href="${e(safeURL(r.url))}" target="_blank" rel="noopener noreferrer" aria-label="${e(t('openSource'))}: ${e(r.name)}">↗</a></div></article>`;
 }
@@ -100,18 +102,19 @@ function render() {
 }
 function denseRow(r) {
   const reviewed=r.review_status==='curated',isPaper=['paper','survey'].includes(r.kind);
-  const date=r.published_at || '—';
+  const date=bibliographicDate(r) || '—';
+  const dateMarkup=date.length===10?`<time datetime="${e(date)}">${e(date)}</time>`:`<span class="row-date-value">${e(date)}</span>`;
   const authors=r.authors.slice(0,2).join(', ')+(r.authors.length>2?' et al.':'');
   const facets=[...r.environments.filter(x=>x!=='unspecified').map(x=>label(PLATFORMS,x)),...r.topics.slice(0,2).map(x=>label(TOPICS,x))];
   const summary=r.summary || t('noTaxonomy');
-  return `<article class="resource-row" data-kind="${e(r.kind)}"><div class="row-date"><time datetime="${e(r.published_at||'')}">${e(date)}</time><span>${r.paper_version?`arXiv v${r.paper_version}`:e(label(KINDS,r.kind))}</span></div><div class="row-main"><h3><a href="${e(r.page_url)}" data-record="${e(r.id)}">${e(r.name)}</a></h3><p class="row-summary">${e(summary)}</p><div class="row-meta">${authors?`<span class="row-authors">${e(authors)}</span>`:''}${facets.map(x=>`<span class="row-tag">${e(x)}</span>`).join('')}${!isPaper?`<span>${e(label(KINDS,r.kind))}</span>`:''}</div></div><div class="row-actions"><span class="row-review ${reviewed?'is-reviewed':''}">${e(t(reviewed?'curatedBadge':'metadataBadge'))}</span><a href="${e(safeURL(r.paper_source_url || r.url))}" target="_blank" rel="noopener noreferrer">${e(t('primaryLink'))} ↗</a><a href="${e(r.page_url)}" data-record="${e(r.id)}">${r.related_count?`${num(r.related_count)} ${e(t('related'))} · `:''}${e(t('recordLink'))}</a></div></article>`;
+  return `<article class="resource-row" data-kind="${e(r.kind)}"><div class="row-date">${dateMarkup}<span>${r.paper_version?`arXiv v${r.paper_version}`:e(label(KINDS,r.kind))}</span></div><div class="row-main"><h3><a href="${e(r.page_url)}" data-record="${e(r.id)}">${e(r.name)}</a></h3><p class="row-summary">${e(summary)}</p><div class="row-meta">${authors?`<span class="row-authors">${e(authors)}</span>`:''}${facets.map(x=>`<span class="row-tag">${e(x)}</span>`).join('')}${!isPaper?`<span>${e(label(KINDS,r.kind))}</span>`:''}</div></div><div class="row-actions"><span class="row-review ${reviewed?'is-reviewed':''}">${e(t(reviewed?'curatedBadge':'metadataBadge'))}</span><a href="${e(safeURL(r.paper_source_url || r.url))}" target="_blank" rel="noopener noreferrer">${e(t('primaryLink'))} ↗</a><a href="${e(r.page_url)}" data-record="${e(r.id)}">${r.related_count?`${num(r.related_count)} ${e(t('related'))} · `:''}${e(t('recordLink'))}</a></div></article>`;
 }
 async function load() {
   loading=true;$('#load-error').hidden=true;$('#results').setAttribute('aria-busy','true');$('#results-count').textContent=t('loading');$('#results').innerHTML=Array.from({length:6},()=>'<div class="skeleton-card" aria-hidden="true"></div>').join('');
   try {
     const response=await fetch('./data/index.json');if(!response.ok)throw new Error('HTTP '+response.status);
     const data=await response.json();report=data.coverage;records=data.records;
-    records.forEach(r=>r.search_text=normalize([r.name,r.summary,...r.aliases,...r.authors,...r.environments.flatMap(x=>PLATFORMS[x] || [x]),...r.topics.flatMap(x=>TOPICS[x] || [x]),...(KINDS[r.kind] || [])].filter(Boolean).join(' ')));
+    records.forEach(r=>r.search_text=normalize([r.name,r.summary,r.publication_search_text,...r.aliases,...r.authors,...r.environments.flatMap(x=>PLATFORMS[x] || [x]),...r.topics.flatMap(x=>TOPICS[x] || [x]),...(KINDS[r.kind] || [])].filter(Boolean).join(' ')));
     if(!Object.hasOwn(PLATFORMS,state.platform))state.platform='';
     if(!records.some(r=>r.topics.includes(state.topic)))state.topic='';
     $('#stat-resources').textContent=num(records.length);$('#stat-curated').textContent=num(report.curated_records);$('#stat-kinds').textContent=num(Object.keys(report.by_kind).length);$('#stat-sources').textContent=num(report.sources.length);
@@ -143,8 +146,14 @@ async function showRecord(id,setURL=true) {
     if(preferred)content+=`<section class="detail-section"><h3>${lang==='zh'?'首选论文记录':'Preferred paper record'}</h3><p>${lang==='zh'?'原始来源明确指出另一个首选 arXiv 标识；这些书目记录不应算作独立成果。':'The original source identifies a preferred arXiv record; these bibliographic identities should not be counted as independent works.'}</p><a class="subtle-link" href="${e(preferred.page_url)}" data-record="${e(preferred.id)}">${e(preferred.name)} ↗</a></section>`;
     if(snapshot)content+=`<section class="detail-section"><h3>${lang==='zh'?'已记录的论文版本':'Recorded paper version'}</h3><p>${snapshot.versioned_url?external(snapshot.versioned_url,`arXiv v${snapshot.version}`):e(t('unknown'))}</p>${snapshot.updated_at?`<p>${lang==='zh'?'版本更新时间':'Version updated'}: ${e(snapshot.updated_at)}</p>`:''}</section>`;
     if(['paper','survey'].includes(r.kind))content+=`<section class="detail-section citation-section"><h3>${e(t('citePaper'))}</h3><div class="citation-actions"><button type="button" class="button secondary" data-copy-citation="${e(found.page_url)}citation.bib">${e(t('copyBibtex'))}</button><a href="${e(found.page_url)}citation.bib" download>BibTeX ↓</a><a href="${e(found.page_url)}citation.csl.json" download>CSL JSON ↓</a></div><p>${e(t('citationNote'))}</p></section>`;
+    const pub=r.details.publication;
+    if(pub){
+      const issued=(pub.date_parts||[]).map((part,index)=>String(part).padStart(index?2:4,'0')).join('-');
+      const fields=[[lang==='zh'?'出版题名':'Publication title',pub.title],[lang==='zh'?'出版作者':'Publication authors',(pub.authors||[]).join(', ')],[lang==='zh'?'出版日期（原精度）':'Publication date (recorded precision)',issued],[lang==='zh'?'会议／期刊':'Venue',pub.venue],[lang==='zh'?'出版社':'Publisher',pub.publisher],[lang==='zh'?'卷／期':'Volume / issue',[pub.volume,pub.issue].filter(Boolean).join(' / ')],[lang==='zh'?'页码':'Pages',pub.pages],['DOI',pub.doi]].filter(([,value])=>value);
+      content+=`<section class="detail-section publication-section"><h3>${lang==='zh'?'出版记录':'Publication record'}</h3><dl class="fact-list">${fields.map(([key,value])=>`<div><dt>${e(key)}</dt><dd>${e(value)}</dd></div>`).join('')}</dl><p>${external(pub.url,lang==='zh'?'出版来源':'Publication source')}</p><div class="citation-actions"><button type="button" class="button secondary" data-copy-citation="${e(found.page_url)}publication-citation.bib">${lang==='zh'?'复制出版版 BibTeX':'Copy publication BibTeX'}</button><a href="${e(found.page_url)}publication-citation.bib" download>BibTeX ↓</a><a href="${e(found.page_url)}publication-citation.csl.json" download>CSL JSON ↓</a></div>${r.id.startsWith('arxiv:')?`<p>${lang==='zh'?'出版版与上方保留的 arXiv 版本分别引用；作者、题名和日期可能不同。':'Cite this publication separately from the retained arXiv version above; its title, authors and date can differ.'}</p>`:''}${pub.notes?`<p>${e(pub.notes)}</p>`:''}</section>`;
+    }
     if(r.details.license_review)content+=`<section class="detail-section"><h3>${lang==='zh'?'许可审阅说明':'License review notes'}</h3>${Object.entries(r.details.license_review).map(([slot,review])=>`<p><strong>${e(t(slot))}:</strong> ${e(review.reason)}</p><p>${review.evidence_urls.map((url,i)=>external(url,`${lang==='zh'?'来源':'Source'} ${i+1}`)).join(' · ')}</p>`).join('')}</section>`;
-    const specifications=Object.fromEntries(Object.entries(r.details).filter(([key])=>!['arxiv_snapshot','license_review'].includes(key)));
+    const specifications=Object.fromEntries(Object.entries(r.details).filter(([key])=>!['arxiv_snapshot','publication','license_review'].includes(key)));
     if(Object.values(specifications).some(v=>v!==null&&v!==''&&(!Array.isArray(v)||v.length)))content+=`<section class="detail-section"><h3>${e(t('details'))}</h3>${resourceFacts(specifications)}</section>`;
     if(r.notes)content+=`<section class="detail-section"><h3>${e(t('notes'))}</h3><p>${e(r.notes)}</p></section>`;
     if(r.relations.length)content+=`<section class="detail-section"><h3>${e(t('relations'))}</h3><ul>${r.relations.map(rel=>{const target=records.find(row=>row.id===rel.target_id);return `<li>${e(rel.type.replaceAll('_',' '))} → <button class="subtle-link" type="button" data-record="${e(rel.target_id)}">${e(target?.name || rel.target_id)}</button></li>`;}).join('')}</ul></section>`;
@@ -158,7 +167,7 @@ function info(type) {
   if(!report)return;
   let content='';
   if(type==='download') {
-    const options=[['catalog.jsonl','fullCatalog','fullCatalogCopy','JSONL'],['catalog.sqlite','sqlite','sqliteCopy','SQLite'],['rag-documents.jsonl','ragReviewed','ragReviewedCopy','JSONL'],['rag-all-records.jsonl','ragAll','ragAllCopy','JSONL'],['citations.bib','paperBibtex','paperBibtexCopy','BibTeX'],['citations.csl.json','paperCSL','paperCSLCopy','JSON'],['coverage.json','coverageFile','coverageFileCopy','JSON'],['sources.json','sourcesFile','sourcesFileCopy','JSON']];
+    const options=[['catalog.jsonl','fullCatalog','fullCatalogCopy','JSONL'],['catalog.sqlite','sqlite','sqliteCopy','SQLite'],['rag-documents.jsonl','ragReviewed','ragReviewedCopy','JSONL'],['rag-all-records.jsonl','ragAll','ragAllCopy','JSONL'],['citations.bib','paperBibtex','paperBibtexCopy','BibTeX'],['citations.csl.json','paperCSL','paperCSLCopy','JSON'],['publication-citations.bib','publicationBib','publicationBibCopy','BibTeX'],['publication-citations.csl.json','publicationCSL','publicationCSLCopy','JSON'],['coverage.json','coverageFile','coverageFileCopy','JSON'],['sources.json','sourcesFile','sourcesFileCopy','JSON']];
     content=`<h2 id="info-title">${e(t('downloadTitle'))}</h2><p>${e(t('downloadCopy'))}</p><div class="download-options">${options.map(([file,title,copy])=>`<a class="download-option" href="./downloads/${file}" download><span><strong>${e(t(title))}</strong><small>${e(t(copy))}</small></span><span>↓</span></a>`).join('')}</div><p>${e(t('licenseNote'))}</p>`;
     content+=`<section class="agent-download"><h3>${e(t('agentTitle'))}</h3><div class="clone-command"><code>${CLONE_COMMAND}</code><button type="button" data-copy-clone>${e(t('copyCommand'))}</button></div><p><a href="${lang==='zh'?'/zh/agents/':'/agents/'}">${e(t('agentGuide'))} ↗</a> · <a href="/AGENTS.md">AGENTS.md</a> · <a href="/downloads/rag-manifest.json">RAG manifest</a></p></section>`;
   }else {
