@@ -260,12 +260,12 @@ class ResourcePayloadTests(unittest.TestCase):
 
     def test_topic_subsets_and_bilingual_pages_remove_stale_members_after_review_changes(self):
         self.reviewed['topics']=['grounding']
-        self.metadata['topics']=['grounding','unreviewed-only']
+        self.metadata['topics']=['grounding','video']
         self.write_inputs(self.rows)
         self.build_site();self.publish()
         self.assertTrue((self.site/'topics/grounding/index.html').exists())
         self.assertTrue((self.site/'zh/topics/grounding/index.md').exists())
-        self.assertFalse((self.site/'topics/unreviewed-only/index.html').exists())
+        self.assertFalse((self.site/'topics/video/index.html').exists())
         exported=[json.loads(line) for line in (self.site/'downloads/topics/grounding/records.jsonl').read_text().splitlines()]
         self.assertEqual(exported,[self.reviewed])
         self.reviewed['topics']=[]

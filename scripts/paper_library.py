@@ -2,6 +2,7 @@
 from collections import Counter, defaultdict
 import html
 from urllib.parse import urlencode
+from catalog import TOPICS as VOCABULARY
 from publication_metadata import publication, record_date_text, record_year
 from specifications import safe_href
 
@@ -13,35 +14,7 @@ PLATFORMS = {
     'windows': ('Windows', 'Windows'), 'harmonyos': ('HarmonyOS', '鸿蒙'),
     'cross-platform': ('Cross-platform', '跨平台'),
 }
-TOPICS = {
-    'grounding': ('GUI grounding', 'GUI 定位'),
-    'evaluation': ('Evaluation', '评测'),
-    'data-generation': ('Data generation', '数据生成'),
-    'reinforcement-learning': ('Reinforcement learning', '强化学习'),
-    'screen-understanding': ('Screen understanding', '界面理解'),
-    'safety-security': ('Safety & security', '安全与防护'),
-    'planning': ('Planning', '规划'), 'memory': ('Memory', '记忆'),
-    'mobile-navigation': ('Mobile navigation', '手机操作'),
-    'web-navigation': ('Web navigation', '网页导航'),
-    'efficiency': ('Efficiency', '效率'), 'robustness': ('Robustness', '鲁棒性'),
-    'long-horizon': ('Long-horizon tasks', '长任务'),
-    'world-models': ('World models', '世界模型'),
-    'tool-integration': ('Tool integration', '工具集成'),
-    'workflow': ('Workflows', '工作流'), 'sandbox': ('Sandboxes', '沙箱'),
-    'human-in-the-loop': ('Human in the loop', '人机协作'),
-    'automation': ('Automation', '自动化'), 'recording': ('Recording', '录制'),
-    'cross-app': ('Cross-app', '跨应用'), 'observability': ('Observability', '可观测性'),
-    'science': ('Scientific workflows', '科学工作流'), 'video': ('Video', '视频'),
-    'history': ('Historical', '历史'), 'survey': ('Surveys', '综述'),
-    'interaction-history': ('Interaction history', '交互历史'),
-    'industry': ('Industry', '产业'), 'self-reflection': ('Self-reflection', '自我反思'),
-    'action-prediction': ('Action prediction', '动作预测'),
-    'state-tracking': ('State tracking', '状态追踪'),
-    'reward-models': ('Reward models', '奖励模型'),
-    'imitation-learning': ('Imitation learning', '模仿学习'),
-    'training-free': ('Training-free methods', '无需训练的方法'),
-    'ui-design': ('Interface design', '界面设计'),
-}
+TOPICS = {topic: (entry['en'], entry['zh']) for topic, entry in VOCABULARY.items()}
 
 
 def esc(value):

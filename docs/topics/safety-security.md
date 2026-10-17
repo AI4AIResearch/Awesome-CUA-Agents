@@ -1,4 +1,4 @@
-# Safety and security
+# Safety & security
 
 [Home](../../README.md) · [All topics](../topics.md) · [Full arXiv bibliography](../papers.md)
 

@@ -37,7 +37,7 @@ In the Required column, `always` means that `build` or `verify` fails without th
 | `kind` | for approval | one of the `kind` values in the [schema](../schemas/resource.schema.json) | — | `source_records`, `enrich` | `kind`; selects dataset/benchmark detail placeholders and the license slot for Hub cards (`data` or `weights`) |
 | `url` | always | HTTPS URL accepted by `canonical` | — | `canonical`, `verify_editorial`, `source_records` | `url` and the `primary` link; default ID and default evidence URLs |
 | `environments` | for approval | non-empty array of schema environments | — | `source_records` | `environments`; `validate` rejects an empty array |
-| `topics` | for approval | array of topic slugs; reuse those in [topics](topics.md) | — | `source_records` | `topics` and topic-hub placement |
+| `topics` | for approval | array of keys from the [topic vocabulary](data-dictionary.md#topic-vocabulary) in `data/topics.json` | — | `source_records` | `topics` and topic-hub placement |
 | `summary` | for approval | string; original, concise | — | `source_records` | `summary`; `validate` rejects an empty one |
 | `editorial_reviewed` | for approval | boolean | `false` | `source_records` | `false` keeps a proposal in the review queue |
 | `reviewed_sha256` | for approval | 64 hex digits | — | `source_records` | Must equal the current primary receipt's `sha256` |

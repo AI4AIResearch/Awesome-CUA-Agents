@@ -11,7 +11,7 @@ import re
 import sqlite3
 import urllib.parse
 
-from catalog import ROOT, DATA, KINDS, ENVIRONMENTS, STATUSES, atomic_write, canonical, editorial_identity, publication_identity, read_json, read_jsonl, write_json, write_jsonl
+from catalog import ROOT, DATA, KINDS, ENVIRONMENTS, STATUSES, TOPICS, atomic_write, canonical, editorial_identity, publication_identity, read_json, read_jsonl, write_json, write_jsonl
 from specifications import PREFIXES, PROFILE_KEYS, validate_profiles
 from scope_review import resolve_exclusions, scope_report
 from arxiv_metadata import validate_snapshot
@@ -172,6 +172,8 @@ def validate_records(rows):
             error("invalid review status")
         if not r.get("environments") or set(r["environments"]) - ENVIRONMENTS:
             error("invalid environments")
+        if unknown := set(r.get("topics", [])) - TOPICS.keys():
+            error("unknown topics " + ", ".join(sorted(unknown)))
         if r.get("scope") not in {"core", "adjacent", "relevance_pending"}:
             error("invalid scope")
         if r.get("review_status") == "curated" and (not r.get("summary") or r.get("scope") == "relevance_pending"):
@@ -382,14 +384,19 @@ def section_table(members, columns, by_id):
     return lines + ["| " + " | ".join(columns) + " |", "|" + " --- |" * len(columns), *(table_row(r, columns, by_id) for r in members)]
 
 
-TOPIC_LABELS = {"safety-security": "Safety and security", "cross-app": "Cross-app workflows", "human-in-the-loop": "Human-in-the-loop",
-    "long-horizon": "Long-horizon tasks", "ui-design": "UI design", "training-free": "Training-free methods", "self-reflection": "Self-reflection"}
+TOPIC_LABELS = {topic: entry["en"] for topic, entry in TOPICS.items()}
 TOPIC_KINDS = [("benchmark", "Benchmarks"), ("dataset", "Datasets"), ("model", "Models"), ("agent", "Agents"), ("framework", "Frameworks"),
     ("tool", "Tools"), ("infrastructure", "Infrastructure"), ("product", "Products"), ("company", "Publishers"), ("survey", "Surveys"), ("paper", "Papers")]
 
 
 def topic_label(topic):
     return TOPIC_LABELS.get(topic, topic.replace("-", " ").capitalize())
+
+
+def topic_vocabulary():
+    """The data dictionary's topic table, generated from data/topics.json."""
+    return "\n" + "\n".join(["| Topic | English label | Chinese label | Meaning |", "| --- | --- | --- | --- |",
+        *(f"| `{topic}` | {md(entry['en'])} | {md(entry['zh'])} | {md(entry['definition'])} |" for topic, entry in TOPICS.items())]) + "\n"
 
 
 def topic_pages(rows):
@@ -763,6 +770,9 @@ def build(args):
                 # A function replacement keeps backslashes in generated Markdown literal.
                 content = re.sub(rf"(?<=<!-- {name}:START -->).*?(?=<!-- {name}:END -->)", lambda _: body, content, flags=re.S)
             files[filename] = content
+    dictionary = ROOT / "docs/data-dictionary.md"
+    if dictionary.exists():
+        files["docs/data-dictionary.md"] = re.sub(r"(?<=<!-- TOPICS:START -->).*?(?=<!-- TOPICS:END -->)", lambda _: topic_vocabulary(), dictionary.read_text(encoding="utf-8"), flags=re.S)
     changed = []
     for relative, content in files.items():
         path = ROOT / relative
@@ -792,6 +802,9 @@ def validate(args):
     if missing := {"date-time", "uri"} - set(formats.checkers):
         raise ValueError("JSON Schema format checkers unavailable: " + ", ".join(sorted(missing)) + ". Install requirements-dev.txt (jsonschema[format-nongpl]).")
     errors = validate_records(rows) + validate_sources(read_json(DATA / "sources.json", []))
+    for entry in read_json(DATA / "editorial.json", []):
+        if unknown := [str(topic) for topic in entry.get("topics", []) if not isinstance(topic, str) or topic not in TOPICS]:
+            errors.append(f"Editorial {entry.get('id') or entry.get('url')}: unknown topics {', '.join(unknown)}")
     resource_contract=read_json(ROOT/'schemas/resource.schema.json')
     validator = jsonschema.Draft202012Validator(resource_contract, format_checker=formats)
     for row in rows:
