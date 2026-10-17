@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 import re
 import xml.etree.ElementTree as ET
-from collections import defaultdict
+from collections import Counter, defaultdict
 from specifications import PROFILE_KEYS, comparison_body, profile_export, resource_profile_html, count_text, safe_href
 from agent_pages import agent_guide_body
 from export_citations import citation_bibtex, citation_csl
@@ -48,6 +48,21 @@ def eligible(record):
     return record["review_status"] == "curated" and record["scope"] in {"core", "adjacent"}
 
 
+def resource_titles(rows):
+    # Indexable pages must not share a <title>: a shared name gains its kind, or its source address when the kind is shared too.
+    named=defaultdict(list)
+    for r in rows:
+        if eligible(r):named[r['name']].append(r)
+    titles={}
+    for name,members in named.items():
+        if len(members)<2:continue
+        kinds=Counter(r['kind'] for r in members)
+        for r in members:
+            label=('publisher' if r['kind']=='company' else r['kind']) if kinds[r['kind']]==1 else re.sub(r'^https?://(www\.)?','',r['url']).rstrip('/')
+            titles[r['id']]=f'{name} ({label})'
+    return titles
+
+
 def description(record):
     provider='arXiv' if record['id'].startswith('arxiv:') else 'retained publication sources'
     return record.get("summary") or f"Bibliographic record for {record['name']}. Title, authors and dates checked against {provider}; relevance and findings await editorial review."
@@ -72,7 +87,8 @@ def page(title, summary, path, body, main=None, index=True, lang="en", alternati
     alternate_paths = alternatives if isinstance(alternatives, dict) else {'en': '/', 'zh-CN': '/zh/', 'x-default': '/'} if alternatives else {}
     alternate=''.join(f'<link rel="alternate" hreflang="{esc(locale)}" href="{SITE}{esc(target)}">' for locale,target in alternate_paths.items())
     robots="index,follow,max-image-preview:large" if index else "noindex,follow"
-    document=f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{esc(title)} | AwesomeCUA</title><meta name="description" content="{esc(summary[:300])}"><meta name="robots" content="{robots}"><link rel="canonical" href="{url}">{alternate}<meta property="og:title" content="{esc(title)} | AwesomeCUA"><meta property="og:description" content="{esc(summary[:300])}"><meta property="og:url" content="{url}"><meta property="og:type" content="website"><meta property="og:site_name" content="AwesomeCUA"><meta property="og:locale" content="{"zh_CN" if lang=="zh-CN" else "en_US"}"><meta property="og:image" content="{SITE}/social.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="AwesomeCUA: The next interface is an agent. Research, models, data, and tools in one source-backed index."><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/pages.css"><link rel="alternate" type="application/atom+xml" href="/feed.xml" title="AwesomeCUA research updates"><script type="application/ld+json">{jsonld({"@context":"https://schema.org","@graph":graph})}</script></head><body><a class="skip-link" href="#content">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="/"><img src="/favicon.svg" width="32" height="32" alt=""><span>Awesome<span class="brand-cua">CUA</span></span></a><nav aria-label="Main navigation"><a href="/catalog/">Catalog</a><a href="/papers/">Papers</a><a href="/topics/">Topics</a><a href="/guides/">Guides</a><a href="/data/">Data</a></nav><a class="github-link" href="{REPO}">GitHub ↗</a></div></header><main id="content" class="reading-shell"><div class="breadcrumbs"><a href="/">AwesomeCUA</a> / <a href="/catalog/">Catalog</a></div>{body}</main><footer class="shell"><a class="brand" href="/">AwesomeCUA</a><a href="/about/">Editorial policy</a><a href="/coverage/">Coverage</a><a href="/data/">Download data</a><a href="/llms.txt">Machine-readable guide</a><a href="https://github.com/AwesomeCUA">GitHub organization ↗</a></footer></body></html>'''
+    full_title=title if 'AwesomeCUA' in title else title+' | AwesomeCUA'
+    document=f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{esc(full_title)}</title><meta name="description" content="{esc(summary[:300])}"><meta name="robots" content="{robots}"><link rel="canonical" href="{url}">{alternate}<meta property="og:title" content="{esc(full_title)}"><meta property="og:description" content="{esc(summary[:300])}"><meta property="og:url" content="{url}"><meta property="og:type" content="website"><meta property="og:site_name" content="AwesomeCUA"><meta property="og:locale" content="{"zh_CN" if lang=="zh-CN" else "en_US"}"><meta property="og:image" content="{SITE}/social.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="AwesomeCUA: The next interface is an agent. Research, models, data, and tools in one source-backed index."><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/pages.css"><link rel="alternate" type="application/atom+xml" href="/feed.xml" title="AwesomeCUA research updates"><script type="application/ld+json">{jsonld({"@context":"https://schema.org","@graph":graph})}</script></head><body><a class="skip-link" href="#content">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="/"><img src="/favicon.svg" width="32" height="32" alt=""><span>Awesome<span class="brand-cua">CUA</span></span></a><nav aria-label="Main navigation"><a href="/catalog/">Catalog</a><a href="/papers/">Papers</a><a href="/topics/">Topics</a><a href="/guides/">Guides</a><a href="/data/">Data</a></nav><a class="github-link" href="{REPO}">GitHub ↗</a></div></header><main id="content" class="reading-shell"><div class="breadcrumbs"><a href="/">AwesomeCUA</a> / <a href="/catalog/">Catalog</a></div>{body}</main><footer class="shell"><a class="brand" href="/">AwesomeCUA</a><a href="/about/">Editorial policy</a><a href="/coverage/">Coverage</a><a href="/data/">Download data</a><a href="/llms.txt">Machine-readable guide</a><a href="https://github.com/AwesomeCUA">GitHub organization ↗</a></footer></body></html>'''
 
     if lang.startswith('zh'):
         chrome={'Skip to content':'跳到正文','Catalog':'目录','Papers':'论文','Topics':'主题','Guides':'指南','Data':'数据','Editorial policy':'收录方法','Coverage':'覆盖台账','Download data':'下载数据','Machine-readable guide':'机器读取指南','GitHub organization ↗':'GitHub 组织 ↗'}
@@ -221,6 +237,7 @@ def resource_markdown(r):
 def build_search_pages(destination, rows, coverage, root):
     lookup={r["id"]:r for r in rows}
     incoming=incoming_relations(rows)
+    titles=resource_titles(rows)
     reviewed=[r for r in rows if eligible(r)]
     latest=coverage["as_of_utc"]
     manifest=[]
@@ -239,7 +256,7 @@ def build_search_pages(destination, rows, coverage, root):
         manifest.append(item)
     for r in rows:
         path=resource_path(r)
-        emit(path,page(r["name"],description(r),path,resource_body(r,lookup,incoming),resource_schema(r),eligible(r)),eligible(r))
+        emit(path,page(titles.get(r["id"],r["name"]),description(r),path,resource_body(r,lookup,incoming),resource_schema(r),eligible(r)),eligible(r))
         (destination/path.lstrip('/')/'index.md').write_text(clean_text(resource_markdown(r)))
         (destination/path.lstrip('/')/'record.json').write_text(json.dumps(r,ensure_ascii=False,sort_keys=True,indent=2)+'\n')
         if r['kind'] in {'paper','survey'}:
