@@ -1,8 +1,8 @@
 # Coverage and quality ledger
 
-Evidence snapshot through **2026-10-17T16:10:54Z**. Generated from committed source receipts.
+Evidence snapshot through **2026-10-17T17:11:36Z**. Generated from committed source receipts.
 
-- 3,003 resource records: 1,429 curated; 1,574 bibliographic metadata only.
+- 3,003 resource records: 1,432 curated; 1,571 bibliographic metadata only.
 - 2,578 paper and survey records, including 2,565 arXiv identities and 13 publisher-only identities. This count overlaps the status counts above.
 - 2,683 retained arXiv metadata records; 118 explicit scope exclusions are outside the active catalog.
 - 3,907 discovery identifiers; 945 remain unresolved after accounting for scope exclusions.
@@ -23,7 +23,7 @@ Counts of source-reviewed resources. A resource tagged with several environments
 | [framework](frameworks.md) | 34 | 18 | 1 | 1 | 3 | 17 | 1 | 1 | 7 | 2 |
 | [infrastructure](infrastructures.md) | 5 | 9 | 1 | 2 | 4 | 3 | 1 | · | · | · |
 | [model](models.md) | 26 | 21 | 4 | 4 | 4 | 23 | 4 | · | 46 | 2 |
-| [paper](topics.md) | 374 | 193 | 32 | 14 | 16 | 160 | 6 | 1 | 94 | 291 |
+| [paper](topics.md) | 375 | 193 | 32 | 14 | 16 | 161 | 6 | 1 | 94 | 292 |
 | [product](products.md) | 17 | 5 | · | · | · | · | · | · | · | · |
 | [survey](surveys.md) | · | · | · | · | · | 1 | 1 | · | 10 | 2 |
 | [tool](tools.md) | 11 | 3 | 3 | 2 | 2 | 5 | 2 | · | 1 | 2 |
@@ -34,18 +34,18 @@ The denominator is the normalized identifiers extracted from each fetched docume
 
 | Source | Discovered | Indexed | Curated | Excluded | Unresolved | Fetch |
 | --- | ---: | ---: | ---: | ---: | ---: | --- |
-| [ShowLab Awesome GUI Agent](https://github.com/showlab/Awesome-GUI-Agent) | 338 | 219 | 207 | 0 | 119 | OK · 2026-10-17 |
+| [ShowLab Awesome GUI Agent](https://github.com/showlab/Awesome-GUI-Agent) | 338 | 219 | 208 | 0 | 119 | OK · 2026-10-17 |
 | [ZJU REAL Awesome GUI Agents](https://github.com/ZJU-REAL/Awesome-GUI-Agents) | 218 | 165 | 162 | 0 | 53 | OK · 2026-10-17 |
-| [OS Agents Survey](https://github.com/OS-Agent-Survey/OS-Agent-Survey) | 224 | 198 | 177 | 0 | 26 | OK · 2026-10-17 |
+| [OS Agents Survey](https://github.com/OS-Agent-Survey/OS-Agent-Survey) | 224 | 198 | 178 | 0 | 26 | OK · 2026-10-17 |
 | [Awesome Computer Use Agents — wjhou](https://github.com/wjhou/awesome-computer-use-agents) | 132 | 94 | 84 | 0 | 38 | OK · 2026-10-17 |
 | [Steel Awesome Web Agents](https://github.com/steel-dev/awesome-web-agents) | 113 | 24 | 24 | 0 | 89 | OK · 2026-10-17 |
 | [Steel Web Agents Archive](https://github.com/steel-dev/awesome-web-agents/blob/main/ARCHIVE.md) | 7 | 1 | 1 | 0 | 6 | OK · 2026-10-17 |
 | [Computer Browser Phone Use Agent Datasets](https://github.com/Khang-9966/Computer-Browser-Phone-Use-Agent-Datasets) | 170 | 114 | 106 | 1 | 55 | OK · 2026-10-17 |
-| [Awesome Multimodal GUI Agents](https://github.com/DeLunnLi/Awesome-Multimodal-GUI-Agents) | 588 | 496 | 430 | 0 | 92 | OK · 2026-10-17 |
+| [Awesome Multimodal GUI Agents](https://github.com/DeLunnLi/Awesome-Multimodal-GUI-Agents) | 588 | 496 | 432 | 0 | 92 | OK · 2026-10-17 |
 | [Awesome Computer Use — TianyuanYang](https://github.com/TianyuanYang/awesome-computer-use) | 94 | 69 | 62 | 0 | 25 | OK · 2026-10-17 |
 | [Computer Use Agents Overview](https://github.com/cdxeve/awesome-computer-use-agents) | 78 | 48 | 32 | 0 | 30 | OK · 2026-10-17 |
 | [Awesome GUI Agents — Supernal](https://github.com/supernalintelligence/Awesome-Gui-Agents) | 63 | 11 | 8 | 0 | 52 | OK · 2026-10-17 |
-| [Yearly GUI Agents](https://github.com/qy0720/awesome-yearly-gui-agents) | 193 | 146 | 142 | 0 | 47 | OK · 2026-10-17 |
+| [Yearly GUI Agents](https://github.com/qy0720/awesome-yearly-gui-agents) | 193 | 146 | 143 | 0 | 47 | OK · 2026-10-17 |
 | [OSU-NLP-Group/GUI-Agents-Paper-List / README.md](https://github.com/OSU-NLP-Group/GUI-Agents-Paper-List) | 544 | 486 | 353 | 0 | 58 | OK · 2026-10-17 |
 | [opendilab/awesome-ui-agents / README.md](https://github.com/opendilab/awesome-ui-agents) | 144 | 92 | 83 | 0 | 52 | OK · 2026-10-17 |
 | [jin-s13/awesome-gui-agent-hub / AWESOME.md](https://github.com/jin-s13/awesome-gui-agent-hub) | 210 | 207 | 116 | 0 | 3 | OK · 2026-10-17 |

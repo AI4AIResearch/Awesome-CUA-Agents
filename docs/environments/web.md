@@ -2,9 +2,9 @@
 
 [Home](../../README.md) · [All platforms](../environments.md) · [Research by topic](../topics.md)
 
-533 source-reviewed resources tagged `web`. Curated metadata, not a performance ranking; unknown facts are shown as —.
+534 source-reviewed resources tagged `web`. Curated metadata, not a performance ranking; unknown facts are shown as —.
 
-**Contents:** [Benchmarks (35)](#benchmarks) · [Datasets (21)](#datasets) · [Models (26)](#models) · [Agents (10)](#agents) · [Frameworks (34)](#frameworks) · [Tools (11)](#tools) · [Infrastructure (5)](#infrastructure) · [Products (17)](#products) · [Papers (374)](#papers)
+**Contents:** [Benchmarks (35)](#benchmarks) · [Datasets (21)](#datasets) · [Models (26)](#models) · [Agents (10)](#agents) · [Frameworks (34)](#frameworks) · [Tools (11)](#tools) · [Infrastructure (5)](#infrastructure) · [Products (17)](#products) · [Papers (375)](#papers)
 
 ## Benchmarks
 
@@ -556,6 +556,7 @@
 | 2023‑11‑21 | [GAIA: a benchmark for General AI Assistants](https://arxiv.org/abs/2311.12983) | web | Introduces questions that test assistant reasoning, multimodal understanding, browsing, and tool use beyond screen-action execution alone. |
 | 2023‑10‑24 | [WebWISE: Web Interface Control and Sequential Exploration with Large Language Models](https://arxiv.org/abs/2310.16042) | web | WebWISE filters DOM elements into observations and generates short programs for click, scroll, and text-entry steps. It evaluates in-context learning from either one supplied example or an example collected during a successful zero-shot MiniWoB++ trial. |
 | 2023‑10‑20 | [AllTogether: Investigating the Efficacy of Spliced Prompt for Web Navigation using Large Language Models](https://arxiv.org/abs/2310.18331) | web | AllTogether standardizes prompts for HTML-based web navigation and compares prompting with instruction fine-tuning. Its analysis examines how HTML context, interaction history, and current environmental feedback affect task execution. |
+| 2023‑10‑16 | [OpenAgents: An Open Platform for Language Agents in the Wild](https://arxiv.org/abs/2310.10634) | web | OpenAgents hosts three language agents, for data analysis, API plugins and autonomous web browsing, behind a web interface for non-expert users, with local deployment for developers. |
 | 2023‑10‑12 | [A Zero-Shot Language Agent for Computer Control with Structured Reflection](https://arxiv.org/abs/2310.08740) | web | Studies a zero-shot computer-control agent that plans executable actions and organizes its own reflections after mistakes. MiniWoB++ experiments examine learning to complete tasks without supplied expert trajectories. |
 | 2023‑10‑08 | [UReader: Universal OCR-free Visually-situated Language Understanding with Multimodal Large Language Model](https://arxiv.org/abs/2310.05126) | web | Introduces UReader, which combines unified instruction tuning, auxiliary text-reading tasks and shape-adaptive image crops for OCR-free visual language understanding. Its evaluation includes webpage screenshots alongside documents, tables, charts and natural images. |
 | 2023‑10‑05 | [SteP: Stacked LLM Policies for Web Actions](https://arxiv.org/abs/2310.03720) | web | SteP dynamically composes specialized web-action policies through a stack that records the active chain of policy calls. It studies this control structure across WebArena, MiniWoB++, and CRM workflows. |

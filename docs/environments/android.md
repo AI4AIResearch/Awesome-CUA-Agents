@@ -2,9 +2,9 @@
 
 [Home](../../README.md) · [All platforms](../environments.md) · [Research by topic](../topics.md)
 
-274 source-reviewed resources tagged `android`. Curated metadata, not a performance ranking; unknown facts are shown as —.
+275 source-reviewed resources tagged `android`. Curated metadata, not a performance ranking; unknown facts are shown as —.
 
-**Contents:** [Benchmarks (17)](#benchmarks) · [Datasets (33)](#datasets) · [Models (23)](#models) · [Agents (15)](#agents) · [Frameworks (17)](#frameworks) · [Tools (5)](#tools) · [Infrastructure (3)](#infrastructure) · [Surveys (1)](#surveys) · [Papers (160)](#papers)
+**Contents:** [Benchmarks (17)](#benchmarks) · [Datasets (33)](#datasets) · [Models (23)](#models) · [Agents (15)](#agents) · [Frameworks (17)](#frameworks) · [Tools (5)](#tools) · [Infrastructure (3)](#infrastructure) · [Surveys (1)](#surveys) · [Papers (161)](#papers)
 
 ## Benchmarks
 
@@ -262,6 +262,7 @@ All entries in this section: android, ios.
 | 2025‑07‑21 | [MobileUse: A GUI Agent with Hierarchical Reflection for Autonomous Mobile Operation](https://arxiv.org/abs/2507.16853) | android | MobileUse reflects on errors at action and task timescales, invoking reflection when needed and using proactive exploration to learn unfamiliar apps. It evaluates this mobile execution framework on AndroidWorld and AndroidLab and describes a toolkit for physical-device operation. |
 | 2025‑06‑25 | [Mobile-R1: Towards Interactive Capability for VLM-Based Mobile Agent via Systematic Training](https://arxiv.org/abs/2506.20332) | android | Uses a staged curriculum from response-format alignment through action feedback to interactive task-level training for mobile agents. |
 | 2025‑06‑12 | [Mirage-1: Augmenting and Updating GUI Agent with Hierarchical Multimodal Skills](https://arxiv.org/abs/2506.10387) | android, web, cross-platform | Mirage-1 organizes interaction trajectories into execution, core, and meta-skills, then uses them to guide Monte Carlo tree search during online GUI tasks. It introduces AndroidLH for long-horizon evaluation and tests the approach on Android and web-navigation benchmarks. |
+| 2025‑06‑09 | [FingerTip 20K: A Benchmark for Proactive and Personalized Mobile LLM Agents](https://arxiv.org/abs/2507.21071) | android | FingerTip 20K gathers 20K human Android demonstrations from users' long-term everyday app use, with user context, to evaluate proactive task suggestion and preference-aware task execution. |
 | 2025‑06‑02 | [AgentCPM-GUI: Building Mobile-Use Agents with Reinforcement Fine-Tuning](https://arxiv.org/abs/2506.01391) | android | Combines grounding pretraining, bilingual interaction trajectories, and reinforcement fine-tuning for mobile GUI actions. |
 | 2025‑05‑29 | [Agent-SAMA: State-Aware Mobile Assistant](https://arxiv.org/abs/2505.23596) | android | Models mobile application execution as a finite-state machine to support planning, verification, and recovery across interface transitions. |
 | 2025‑05‑22 | [GUI-explorer: Autonomous Exploration and Mining of Transition-aware Knowledge for GUI Agent](https://arxiv.org/abs/2505.16827) | android | GUI-explorer generates exploration goals from screenshots and interface structure, then mines observation-action-outcome triples for app-specific transition knowledge. The resulting training-free agent uses this knowledge during mobile task execution, evaluated on SPA-Bench and AndroidWorld. |

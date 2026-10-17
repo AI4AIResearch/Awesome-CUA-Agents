@@ -54673,5 +54673,109 @@
       "notes"
     ],
     "notes": "The annotation was reviewed against the complete retained official abstract. Experimental findings and artifact availability have not been independently reproduced."
+  },
+  {
+    "name": "OpenAgents: An Open Platform for Language Agents in the Wild",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2310.10634",
+    "summary": "OpenAgents hosts three language agents, for data analysis, API plugins and autonomous web browsing, behind a web interface for non-expert users, with local deployment for developers.",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "web-navigation",
+      "tool-integration"
+    ],
+    "scope": "adjacent",
+    "verify_terms": [
+      "OpenAgents: An Open Platform for"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2308.03688%2C2308.15272%2C2309.08172%2C2309.11436%2C2310.04716%2C2310.04869%2C2310.05126%2C2310.06770%2C2310.08740%2C2310.10634%2C2310.11441%2C2310.16042%2C2310.18331%2C2311.01767%2C2311.07562%2C2311.09278%2C2311.12983%2C2311.18751%2C2312.03003%2C2312.06677%2C2312.08914%2C2312.11671%2C2312.13108%2C2312.13771%2C2312.15820%2C2312.16062%2C2401.01614%2C2401.04124%2C2401.07781%2C2401.10935%2C2401.13178%2C2401.13649%2C2401.13919%2C2401.14268%2C2401.16158%2C2402.01030%2C2402.04476%2C2402.04615%2C2402.05930%2C2402.06596%2C2402.07456%2C2402.07939%2C2402.07945%2C2402.08567%2C2402.11941%2C2402.14073%2C2402.15057%2C2402.16965%2C2402.17553%2C2403.02713&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "90df698b27a336e2fb7f0ac60a3b8d3e3897c00035ab7968c593a5ab539d177a",
+    "reviewed_at": "2026-10-17T17:13:33Z",
+    "primary_supports": [
+      "name",
+      "kind",
+      "summary",
+      "environments",
+      "topics",
+      "scope",
+      "notes"
+    ],
+    "read_basis": "Complete original arXiv Atom title and abstract in the retained receipt; its abstract hash matches details.arxiv_snapshot.abstract_sha256.",
+    "notes": "The annotation and scope were reviewed against the complete retained original arXiv abstract. Experimental results and artifact availability have not been independently reproduced. Scope is adjacent: autonomous web browsing is one of three hosted agents, beside data-analysis and API-plugin agents."
+  },
+  {
+    "name": "GUI-CIDER: Mid-training GUI Agents via Causal Internalization and Density-aware Exemplar Reselection",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2605.28534",
+    "summary": "GUI-CIDER turns GUI trajectories into textual planning and causal interface knowledge, reselects exemplars for causal structure and low redundancy, then mid-trains GUI agents on that corpus.",
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "data-generation",
+      "planning"
+    ],
+    "scope": "core",
+    "verify_terms": [
+      "GUI-CIDER: Mid-training GUI Agen"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=200&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "235f1fff1385719d603377b680d74f6803bbe46d112dd6c008bee6b42f105429",
+    "reviewed_at": "2026-10-17T17:13:33Z",
+    "primary_supports": [
+      "name",
+      "kind",
+      "summary",
+      "environments",
+      "topics",
+      "scope",
+      "notes"
+    ],
+    "read_basis": "Complete original arXiv Atom title and abstract in the retained receipt; its abstract hash matches details.arxiv_snapshot.abstract_sha256.",
+    "notes": "The annotation and scope were reviewed against the complete retained original arXiv abstract. Experimental results and artifact availability have not been independently reproduced."
+  },
+  {
+    "name": "FingerTip 20K: A Benchmark for Proactive and Personalized Mobile LLM Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2507.21071",
+    "summary": "FingerTip 20K gathers 20K human Android demonstrations from users' long-term everyday app use, with user context, to evaluate proactive task suggestion and preference-aware task execution.",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "evaluation",
+      "data-generation",
+      "mobile-navigation",
+      "interaction-history"
+    ],
+    "scope": "core",
+    "verify_terms": [
+      "FingerTip 20K: A Benchmark for P"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2506.10387%2C2506.14866%2C2506.20332%2C2507.00008%2C2507.02592%2C2507.03730%2C2507.04227%2C2507.05445%2C2507.05673%2C2507.05720%2C2507.05791%2C2507.14293%2C2507.14799%2C2507.15846%2C2507.16853%2C2507.19132%2C2507.19478%2C2507.21071%2C2507.22025%2C2507.22358%2C2507.23779%2C2508.00935%2C2508.01330%2C2508.03700%2C2508.03923%2C2508.04010%2C2508.04026%2C2508.04482%2C2508.04700%2C2508.05615%2C2508.05731%2C2508.09057%2C2508.09123%2C2508.13167%2C2508.14040%2C2508.15144%2C2508.18689%2C2508.19679%2C2508.20096%2C2509.02544%2C2509.03891%2C2509.06477%2C2509.10723%2C2509.11250%2C2509.11543%2C2509.15221%2C2509.15566%2C2509.15738%2C2509.18119%2C2510.01354&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "90a03448678a584f29ef11ae2afe1ef7040b4f3658c492f6e48eafe8fb6d2fa2",
+    "reviewed_at": "2026-10-17T17:13:33Z",
+    "primary_supports": [
+      "name",
+      "kind",
+      "summary",
+      "environments",
+      "topics",
+      "scope",
+      "notes"
+    ],
+    "read_basis": "Complete original arXiv Atom title and abstract in the retained receipt; its abstract hash matches details.arxiv_snapshot.abstract_sha256.",
+    "notes": "The annotation and scope were reviewed against the complete retained original arXiv abstract. Experimental results and artifact availability have not been independently reproduced."
   }
 ]
