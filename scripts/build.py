@@ -326,6 +326,43 @@ def validate_sources(sources):
     return errors
 
 
+def candidate_reviews(candidates, ids, excluded, aliases):
+    """Reviewed set-aside decisions for unresolved discovered identifiers: links that are not resources, or another address of an active record."""
+    entries = read_json(DATA / "candidate-reviews.json", [])
+    if not isinstance(entries, list):
+        raise ValueError("Candidate reviews must be a list")
+    exact, prefixes = {}, []
+    for entry in entries:
+        if not isinstance(entry, dict) or entry.get("decision") not in {"not_a_resource", "alias"} or not isinstance(entry.get("reason"), str) or not entry["reason"].strip():
+            raise ValueError("Candidate review needs a not_a_resource or alias decision and a reason: " + json.dumps(entry)[:200])
+        alias = entry["decision"] == "alias"
+        if "url_prefix" in entry:
+            prefix = entry["url_prefix"]
+            parts = urllib.parse.urlsplit(prefix) if isinstance(prefix, str) else None
+            # A prefix covers that URL and the paths or queries below it; aliases are one-to-one, so only non-resources take a prefix.
+            if alias or set(entry) != {"url_prefix", "decision", "reason"} or not parts or parts.scheme != "https" or not parts.netloc or parts.query or parts.fragment or prefix.endswith("/"):
+                raise ValueError("Invalid candidate-review prefix: " + str(prefix))
+            prefixes.append(entry)
+            continue
+        if set(entry) != {"id", "url", "decision", "reason", *(("target_id",) if alias else ())} or not isinstance(entry["id"], str) or entry["id"] in exact:
+            raise ValueError("Invalid or duplicate candidate review: " + str(entry.get("id")))
+        if alias and entry["target_id"] not in ids:
+            raise ValueError(f"{entry['id']}: candidate alias target is not an active resource: {entry['target_id']}")
+        exact[entry["id"]] = entry
+    reviews, resolved = {}, ids | excluded
+    for row in candidates:
+        # Indexing or a scope decision wins; an entry for a since-resolved identifier no longer applies.
+        if aliases.get(row["id"], row["id"]) in resolved:
+            continue
+        entry = exact.get(row["id"]) or next((p for p in prefixes if row["url"] == p["url_prefix"] or row["url"].startswith((p["url_prefix"] + "/", p["url_prefix"] + "?"))), None)
+        if not entry:
+            continue
+        if entry.get("url", row["url"]) != row["url"]:
+            raise ValueError(f"{row['id']}: candidate review URL differs from the discovered URL {row['url']}")
+        reviews[row["id"]] = {"resolution": entry["decision"], "reason": entry["reason"], **({"alias_of": entry["target_id"]} if "target_id" in entry else {})}
+    return reviews
+
+
 def coverage(rows, pending, scope_decisions):
     ids = {r["id"] for r in rows}
     by_id = {r["id"]: r for r in rows}
@@ -335,6 +372,7 @@ def coverage(rows, pending, scope_decisions):
     excluded = {row['id'] for row in scope_decisions if row['status']=='excluded'}
     source_rows = []
     aliases = source_aliases(rows)
+    reviews = candidate_reviews(candidates, ids, excluded, aliases)
     for source in sources:
         population = {r["id"] for r in candidates if any(o["source_id"] == source["id"] for o in r["discovered_in"])}
         resolved = {aliases.get(identity, identity) for identity in population}
@@ -345,7 +383,7 @@ def coverage(rows, pending, scope_decisions):
             "snapshot": runs.get(source["id"]), "discovered": len(population), "indexed": len(indexed_identifiers),
             "indexed_resources":len(present), "resolved_aliases":sum(aliases.get(identity,identity)!=identity for identity in indexed_identifiers),
             "curated": sum(by_id[aliases.get(i,i)]["review_status"] == "curated" for i in indexed_identifiers),
-            "excluded":len(excluded_identifiers), "unindexed":len(population-indexed_identifiers-excluded_identifiers)})
+            "excluded":len(excluded_identifiers), "set_aside":len(population & reviews.keys()), "unindexed":len(population-indexed_identifiers-excluded_identifiers-reviews.keys())})
     latest = max((e["retrieved_at"] for r in rows for e in r["evidence"]), default="")
     return {"as_of_utc": latest, "total_records": len(rows), "curated_records": sum(r["review_status"] == "curated" for r in rows),
         "bibliographic_records": sum(r['kind'] in {'paper','survey'} for r in rows),
@@ -356,7 +394,8 @@ def coverage(rows, pending, scope_decisions):
         "excluded_records":len(excluded),
         "exclusion_revalidation_pending":sum(row['status']=='revalidation_pending' for row in scope_decisions),
         "metadata_only_records": sum(r["review_status"] == "metadata_verified" for r in rows),
-        "discovery_identifiers": len(candidates), "unindexed_candidates": len({aliases.get(r['id'],r['id']) for r in candidates} - ids - excluded),
+        "discovery_identifiers": len(candidates), "unindexed_candidates": len({aliases.get(r['id'],r['id']) for r in candidates if r['id'] not in reviews} - ids - excluded),
+        "non_resource_candidates": sum(r["resolution"] == "not_a_resource" for r in reviews.values()), "alias_candidates": sum(r["resolution"] == "alias" for r in reviews.values()),
         "pending_editorial": pending, "by_kind": dict(sorted(collections.Counter(r["kind"] for r in rows).items())),
         "curated_by_environment": dict(sorted(collections.Counter(e for r in rows if r["review_status"] == "curated" for e in r["environments"]).items())),
         "curated_by_kind_and_environment": {kind: dict(sorted(collections.Counter(e for r in rows if r["review_status"] == "curated" and r["kind"] == kind for e in set(r["environments"])).items()))
@@ -622,16 +661,16 @@ def documents(rows, report):
         f"- {report['total_records']:,} resource records: {report['curated_records']:,} curated; {report['metadata_only_records']:,} bibliographic metadata only.",
         f"- {report['bibliographic_records']:,} paper and survey records, including {report.get('arxiv_active_records',report['bibliographic_records']):,} arXiv identities and {report.get('non_arxiv_bibliographic_records',0):,} publisher-only identities. This count overlaps the status counts above.",
         f"- {report['arxiv_archive_records']:,} retained arXiv metadata records; {report['excluded_records']:,} explicit scope exclusions are outside the active catalog.",
-        f"- {report['discovery_identifiers']:,} discovery identifiers; {report['unindexed_candidates']:,} remain unresolved after accounting for scope exclusions.",
+        f"- {report['discovery_identifiers']:,} discovery identifiers; {report['unindexed_candidates']:,} remain unresolved after accounting for scope exclusions and for {report.get('non_resource_candidates',0):,} reviewed non-resource links and {report.get('alias_candidates',0):,} other addresses of indexed resources, which stay in the review queue with their reasons.",
         f"- {len(report['pending_editorial'])} editorial proposals await verification or review.", "",
         "These are distinct resource identifiers, not distinct research projects. Papers, repositories, datasets, products, and publisher entities have different grains.", "",
         "## Curated coverage by kind and environment", "", "Counts of source-reviewed resources. A resource tagged with several environments counts in each column; `·` marks an empty cell, which is where contributions are most needed.", "",
         *matrix_lines(report["curated_by_kind_and_environment"]), "",
         "## Source snapshot coverage", "", "The denominator is the normalized identifiers extracted from each fetched document, including incidental links. Reviewed publisher/PDF aliases and former GitHub names can resolve to one canonical resource; coverage counts matching identifiers, while indexed_resources records distinct resolved resources. Sources overlap. These figures do not measure global completeness or editorial recall.", "",
-        "| Source | Discovered | Indexed | Curated | Excluded | Unresolved | Fetch |", "| --- | ---: | ---: | ---: | ---: | ---: | --- |"]
+        "| Source | Discovered | Indexed | Curated | Excluded | Set aside | Unresolved | Fetch |", "| --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |"]
     for s in report["sources"]:
         status = s["snapshot"] or {}
-        lines.append(f"| [{md(s['name'])}]({s['url']}) | {s['discovered']} | {s['indexed']} | {s['curated']} | {s['excluded']} | {s['unindexed']} | {'OK' if status.get('ok') else 'FAILED'} · {status.get('retrieved_at', '')[:10]} |")
+        lines.append(f"| [{md(s['name'])}]({s['url']}) | {s['discovered']} | {s['indexed']} | {s['curated']} | {s['excluded']} | {s.get('set_aside',0)} | {s['unindexed']} | {'OK' if status.get('ok') else 'FAILED'} · {status.get('retrieved_at', '')[:10]} |")
     search = report["primary_search"]
     discovery = report.get('paper_discovery', {})
     if discovery:
@@ -696,7 +735,7 @@ README_TEXT = {
         "recent_header": "| Reviewed | Resource | Kind | Environments | Description |", "kind_names": {},
         "scopes": {"code": "code", "data": "data", "weights": "weights", "document": "document"},
         "stats": ("**{total:,} resource records** · **{curated:,} curated** · **{arxiv:,} paper and survey records** · **{sources} discovery documents**\n\n"
-            "Evidence through `{as_of}`. {metadata:,} records have bibliographic verification only; {unindexed:,} discovered identifiers remain unresolved. "
+            "Evidence through `{as_of}`. {metadata:,} records have bibliographic verification only; {unindexed:,} discovered identifiers remain unresolved, not counting {set_aside:,} links reviewed as non-resources or other addresses of indexed resources. "
             "{excluded:,} scope exclusions retain their original metadata in the archive. Counts overlap as explained below.")},
     "zh": {"explore_header": "| 研究与训练 | 工程与产业 |",
         "labels": {"topics": "按主题浏览研究", "bibliography": "完整论文目录", "survey": "综述", "dataset": "数据集", "benchmark": "基准",
@@ -710,7 +749,7 @@ README_TEXT = {
             "infrastructure": "基础设施", "product": "产品", "company": "发布方"},
         "scopes": {"code": "代码", "data": "数据", "weights": "权重", "document": "文档"},
         "stats": ("**{total:,} 条资源记录** · **{curated:,} 条已审阅** · **{arxiv:,} 条论文与综述记录** · **{sources} 个发现来源文档**\n\n"
-            "证据截至 `{as_of}`。{metadata:,} 条记录仅完成书目核实；{unindexed:,} 个已发现的标识符尚待处理。"
+            "证据截至 `{as_of}`。{metadata:,} 条记录仅完成书目核实；{unindexed:,} 个已发现的标识符尚待处理，另有 {set_aside:,} 个链接经审阅确认为非资源或已收录资源的其他地址，不计入其中。"
             "{excluded:,} 条范围排除记录在归档中保留原始元数据。各项计数存在重叠，详见下文。")},
 }
 
@@ -718,6 +757,7 @@ README_TEXT = {
 def stats_block(report, lang="en"):
     return "\n\n" + README_TEXT[lang]["stats"].format(total=report["total_records"], curated=report["curated_records"], arxiv=report["bibliographic_records"],
         sources=len(report["sources"]), as_of=report["as_of_utc"], metadata=report["metadata_only_records"], unindexed=report["unindexed_candidates"],
+        set_aside=report.get("non_resource_candidates", 0) + report.get("alias_candidates", 0),
         excluded=report["excluded_records"]) + "\n\n"
 
 
@@ -825,7 +865,9 @@ def build(args):
     excluded = {row['id'] for row in scope_decisions if row['status']=='excluded'}
     candidates = read_jsonl(DATA / "candidates.jsonl")
     aliases=source_aliases(rows)
-    queue = [{**r, "review_status": "candidate", "reason": "discovered identifier; primary evidence and relevance need review"} for r in candidates if aliases.get(r['id'],r['id']) not in ids and aliases.get(r['id'],r['id']) not in excluded]
+    reviews = candidate_reviews(candidates, ids, excluded, aliases)
+    # Set-aside links stay visible with their reviewed resolution and reason; rows without a resolution await review.
+    queue = [{**r, "review_status": "candidate", **reviews.get(r['id'], {"reason": "discovered identifier; primary evidence and relevance need review"})} for r in candidates if aliases.get(r['id'],r['id']) not in ids and aliases.get(r['id'],r['id']) not in excluded]
     editorial_pending = {r["id"]: r for r in pending}
     merged = {r["id"]: r for r in queue}
     for rid, item in editorial_pending.items():

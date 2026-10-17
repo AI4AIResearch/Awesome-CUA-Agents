@@ -28,7 +28,7 @@ git clone https://github.com/reacher-z/Awesome-CUA.git
 
 **3,006 条资源记录** · **1,435 条已审阅** · **2,578 条论文与综述记录** · **44 个发现来源文档**
 
-证据截至 `2026-10-17T17:18:56Z`。1,571 条记录仅完成书目核实；944 个已发现的标识符尚待处理。118 条范围排除记录在归档中保留原始元数据。各项计数存在重叠，详见下文。
+证据截至 `2026-10-17T18:05:46Z`。1,571 条记录仅完成书目核实；849 个已发现的标识符尚待处理，另有 94 个链接经审阅确认为非资源或已收录资源的其他地址，不计入其中。118 条范围排除记录在归档中保留原始元数据。各项计数存在重叠，详见下文。
 
 <!-- STATS:END -->
 
@@ -154,7 +154,7 @@ git clone https://github.com/reacher-z/Awesome-CUA.git
 - **[目录 JSONL](data/catalog.jsonl)：** 每行一个资源，包含稳定 ID、类型化字段、来源证据、按范围区分的许可和审阅状态。
 - **[引用图](data/references.jsonl)：** 一手来源中的对外引用。`mentions` 不等于 `trained_on` 或 `evaluated_on`。
 - **[发现来源登记](data/sources.json)** 和 **[候选条目](data/candidates.jsonl)：** 来源快照，以及每个标识符的发现位置。
-- **[待审队列](data/review-queue.jsonl)：** 未解决的证据、尚未收录的发现，以及需要编辑处理的提议。
+- **[待审队列](data/review-queue.jsonl)：** 未解决的证据、尚未收录的发现，以及需要编辑处理的提议。经审阅确认为非资源或已收录资源其他地址的链接仍保留在队列中，并注明 `resolution` 与理由。
 - **[JSON Schema](schemas/resource.schema.json)** 和 **[覆盖度 JSON](data/coverage.json)：** 可机器检查的数据契约和覆盖度统计。
 
 ```bash

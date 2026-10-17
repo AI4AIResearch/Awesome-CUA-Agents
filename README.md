@@ -26,7 +26,7 @@ The goal is comprehensive coverage of public research and industry resources, wi
 
 **3,006 resource records** · **1,435 curated** · **2,578 paper and survey records** · **44 discovery documents**
 
-Evidence through `2026-10-17T17:18:56Z`. 1,571 records have bibliographic verification only; 944 discovered identifiers remain unresolved. 118 scope exclusions retain their original metadata in the archive. Counts overlap as explained below.
+Evidence through `2026-10-17T18:05:46Z`. 1,571 records have bibliographic verification only; 849 discovered identifiers remain unresolved, not counting 94 links reviewed as non-resources or other addresses of indexed resources. 118 scope exclusions retain their original metadata in the archive. Counts overlap as explained below.
 
 <!-- STATS:END -->
 
@@ -152,7 +152,7 @@ The [download manifest](https://awesomecua.github.io/downloads/manifest.json) re
 - **[Catalog JSONL](data/catalog.jsonl):** one resource per line, with stable IDs, typed fields, provenance, scoped licenses, and review status.
 - **[Reference graph](data/references.jsonl):** outbound references from primary sources. `mentions` does not mean `trained_on` or `evaluated_on`.
 - **[Discovery registry](data/sources.json)** and **[candidates](data/candidates.jsonl):** source snapshots and where each identifier was found.
-- **[Review queue](data/review-queue.jsonl):** unresolved evidence, unindexed discoveries, and proposals requiring editorial work.
+- **[Review queue](data/review-queue.jsonl):** unresolved evidence, unindexed discoveries, and proposals requiring editorial work. Discovered links reviewed as non-resources or as other addresses of indexed resources stay listed with a `resolution` and their reason.
 - **[JSON Schema](schemas/resource.schema.json)** and **[coverage JSON](data/coverage.json):** machine-checkable contracts and coverage accounting.
 - **[BibTeX](https://awesomecua.github.io/downloads/citations.bib)** and **[CSL JSON](https://awesomecua.github.io/downloads/citations.csl.json):** reviewed-paper citations with recorded authors, dates, and versions. Each resource page also provides its own `record.json`.
 
