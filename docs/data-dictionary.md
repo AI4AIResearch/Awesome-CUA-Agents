@@ -25,7 +25,7 @@ The executable contract is [resource.schema.json](../schemas/resource.schema.jso
 
 ## Kind-specific details
 
-The schema checks `dataset_profile`, `benchmark_protocol`, `arxiv_snapshot` and `publication` and accepts any other key, so this table lists every `details` key that catalog records use. Origins:
+The schema checks `dataset_profile`, `benchmark_protocol`, `leaderboard_url`, `arxiv_snapshot` and `publication` and accepts any other key, so this table lists every `details` key that catalog records use. Origins:
 
 - **Editorial**: the `details` object of an [editorial input](editorial-input.md), checked against its retained receipts.
 - **Hub API** and **Dataverse API**: extracted by `catalog.py enrich` from the record's primary Hugging Face or Harvard Dataverse API receipt. An extracted value replaces an editorial value under the same key.
@@ -47,6 +47,7 @@ The schema checks `dataset_profile`, `benchmark_protocol`, `arxiv_snapshot` and 
 | `task_unit` | benchmark | What `task_count` counts, such as `parameterized task definitions` | Editorial (legacy) |
 | `metrics` | benchmark | Metric names the publisher reports, such as `task success` | Editorial (legacy) |
 | `evaluation_type` | benchmark | How results are judged, such as `programmatic state checks` or `rubric-based` | Editorial (legacy) |
+| `leaderboard_url` | benchmark | HTTPS address of the official leaderboard that the reviewed primary source links; the benchmark table links it after the name | Editorial |
 | `modalities` | benchmark, dataset, model | Data modalities, such as `screenshot` or `instruction` | Hub API (`modality:` tags), or editorial |
 | `languages` | benchmark, dataset, model | Natural-language codes, such as `en` | Hub API (card `language`), or editorial |
 | `download_url` | benchmark, dataset, infrastructure, model | Download landing page, not a direct file; the Hub API sets the repository's file tree | Hub API, or editorial |

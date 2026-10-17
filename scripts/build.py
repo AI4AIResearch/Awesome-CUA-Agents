@@ -247,6 +247,8 @@ def validate_records(rows):
             error("invalid scope")
         if r.get("review_status") == "curated" and (not r.get("summary") or r.get("scope") == "relevance_pending"):
             error("curated entry lacks an editorial summary/scope")
+        if "leaderboard_url" in (r.get("details") or {}) and (r.get("kind") != "benchmark" or r.get("review_status") != "curated" or not https(r["details"]["leaderboard_url"])):
+            error("leaderboard_url must be an https URL on a curated benchmark")
         for issue in validate_profiles(r):
             error(issue)
         for issue in validate_snapshot(r):
@@ -477,6 +479,7 @@ KIND_COLUMNS = {
         "*Scale* is the first publisher-reported or computed count per unit from the reviewed profile, linked to its source; subsets and units are never combined. *Paper* lists reviewed `introduced_by`/`documented_by` relations with the record's year. *License* lists publisher declarations by scope (code, data, weights, document). " + EVIDENCE_NOTE),
 }
 KIND_COLUMNS["dataset"] = KIND_COLUMNS["benchmark"]
+KIND_COLUMNS["benchmark"] = (KIND_COLUMNS["dataset"][0], "A *leaderboard* link after the name is the official leaderboard that the reviewed source links. " + KIND_COLUMNS["dataset"][1])
 
 
 # Category-page sections; a resource spanning several families is cross-platform by definition.
@@ -491,7 +494,8 @@ def environment_family(r):
 
 def table_row(r, columns, by_id):
     primary = next(e for e in r["evidence"] if e["method"] == "editorial_primary_review")
-    cells = {"Resource": f"[{md(r['name'])}]({r['url']})", "Environments": ", ".join(r["environments"]),
+    leaderboard = (r.get("details") or {}).get("leaderboard_url")
+    cells = {"Resource": f"[{md(r['name'])}]({r['url']})" + (f" · [leaderboard]({leaderboard})" if leaderboard else ""), "Environments": ", ".join(r["environments"]),
         "Paper": paper_cell(r, by_id), "License": license_cell(r), "Publisher": publisher_cell(r, by_id),
         "Date": nowrap(record_date_text(r) or "—"), "Description": md(r["summary"]), "Scale": scale_cell(r),
         "Evidence": f"[✓ {nowrap(primary['retrieved_at'][:10])}]({primary['url']})"}
