@@ -227,3 +227,13 @@ test('data and coverage buttons respond while the catalog loads and after it fai
     for(const [key,descriptor] of saved)if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];
   }
 });
+test('homepage text stays at least 12px at every width',()=>{
+  const pages=readFileSync(new URL('../web/pages.css',import.meta.url),'utf8');
+  const rules=[...css.matchAll(/([^{}]*)\{([^{}]*)\}/g),...[...pages.matchAll(/([^{}]*)\{([^{}]*)\}/g)].filter(m=>/static-directory|directory-links|resource-page-link/.test(m[1]))];
+  for(const [,selector,body] of rules)for(const [,value] of body.matchAll(/(?:^|;)font(?:-size)?:([^;]*)/g)){const px=value.match(/(\d+(?:\.\d+)?)px/);if(px)assert.ok(Number(px[1])>=12,`${selector.trim()} sets ${px[1]}px`);}
+});
+test('result cards drop to one column on phones instead of squeezing two',()=>{
+  const blocks=[...css.matchAll(/@media\(max-width:(\d+)px\)\{/g)].map(m=>{let depth=1,i=m.index+m[0].length;const start=i;while(depth)depth+=({'{':1,'}':-1}[css[i++]]||0);return [Number(m[1]),css.slice(start,i-1)];});
+  const single=blocks.filter(([,body])=>/(?:^|\})\.resource-grid\{grid-template-columns:1fr\}/.test(body)).map(([width])=>width);
+  assert.ok(Math.max(...single)>=560,`single-column cards start at ${Math.max(...single)}px`);
+});
