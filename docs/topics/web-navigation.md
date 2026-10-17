@@ -2,9 +2,9 @@
 
 [Home](../../README.md) · [All topics](../topics.md) · [Full arXiv bibliography](../papers.md)
 
-246 source-reviewed resources tagged `web-navigation`. Curated metadata, not a performance ranking; unknown facts are shown as —.
+247 source-reviewed resources tagged `web-navigation`. Curated metadata, not a performance ranking; unknown facts are shown as —.
 
-**Contents:** [Benchmarks (12)](#benchmarks) · [Datasets (7)](#datasets) · [Models (11)](#models) · [Agents (8)](#agents) · [Frameworks (22)](#frameworks) · [Tools (3)](#tools) · [Infrastructure (2)](#infrastructure) · [Products (7)](#products) · [Papers (174)](#papers)
+**Contents:** [Benchmarks (12)](#benchmarks) · [Datasets (7)](#datasets) · [Models (11)](#models) · [Agents (8)](#agents) · [Frameworks (22)](#frameworks) · [Tools (3)](#tools) · [Infrastructure (2)](#infrastructure) · [Products (7)](#products) · [Papers (175)](#papers)
 
 ## Benchmarks
 
@@ -290,6 +290,7 @@ All entries in this section: web.
 | 2023‑11‑30 | [Exposing Limitations of Language Model Agents in Sequential-Task Compositions on the Web](https://arxiv.org/abs/2311.18751) | web | CompWoB adds 50 composed web-automation tasks to study generalization from simpler interactions. The paper compares prompted and fine-tuned agents, balances task training data, and probes sensitivity to changes in instruction order. |
 | 2023‑10‑24 | [WebWISE: Web Interface Control and Sequential Exploration with Large Language Models](https://arxiv.org/abs/2310.16042) | web | WebWISE filters DOM elements into observations and generates short programs for click, scroll, and text-entry steps. It evaluates in-context learning from either one supplied example or an example collected during a successful zero-shot MiniWoB++ trial. |
 | 2023‑10‑20 | [AllTogether: Investigating the Efficacy of Spliced Prompt for Web Navigation using Large Language Models](https://arxiv.org/abs/2310.18331) | web | AllTogether standardizes prompts for HTML-based web navigation and compares prompting with instruction fine-tuning. Its analysis examines how HTML context, interaction history, and current environmental feedback affect task execution. |
+| 2023‑10‑16 | [OpenAgents: An Open Platform for Language Agents in the Wild](https://arxiv.org/abs/2310.10634) | web | OpenAgents hosts three language agents, for data analysis, API plugins and autonomous web browsing, behind a web interface for non-expert users, with local deployment for developers. |
 | 2023‑10‑12 | [A Zero-Shot Language Agent for Computer Control with Structured Reflection](https://arxiv.org/abs/2310.08740) | web | Studies a zero-shot computer-control agent that plans executable actions and organizes its own reflections after mistakes. MiniWoB++ experiments examine learning to complete tasks without supplied expert trajectories. |
 | 2023‑10‑05 | [SteP: Stacked LLM Policies for Web Actions](https://arxiv.org/abs/2310.03720) | web | SteP dynamically composes specialized web-action policies through a stack that records the active chain of policy calls. It studies this control structure across WebArena, MiniWoB++, and CRM workflows. |
 | 2023‑09‑15 | [LASER: LLM Agent with State-Space Exploration for Web Navigation](https://arxiv.org/abs/2309.08172) | web | LASER represents web navigation as exploration over a defined set of states, allowing an agent to revisit earlier states after mistakes. The study evaluates this backtracking approach on WebShop and Amazon tasks. |

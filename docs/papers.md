@@ -5,7 +5,7 @@
 Bibliographic records from arXiv and retained publication sources. Metadata-only entries have **not** undergone a relevance or methodological review. Discovery includes historical references and adjacent work; this is not a count of confirmed CUA papers.
 Dates retain their recorded precision: a year or month does not imply a known day. Explicit arXiv scope exclusions are listed in the [scope-decision ledger](../data/exclusion-status.json). The [arXiv archive](../data/papers.jsonl) and [publication observations](../data/publications.jsonl) retain their separate source facts.
 
-**Years:** [2026](#2026) (1,082; 406 ⭐) · [2025](#2025) (661; 342 ⭐) · [2024](#2024) (407; 176 ⭐) · [2023](#2023) (161; 40 ⭐) · [2022](#2022) (66; 12 ⭐) · [2021](#2021) (51; 8 ⭐) · [2020](#2020) (28; 4 ⭐) · [2019](#2019) (19; 1 ⭐) · [2018](#2018) (29; 5 ⭐) · [2017](#2017) (11; 3 ⭐) · [2016](#2016) (13; 2 ⭐) · [2015](#2015) (13; 0 ⭐) · [2014](#2014) (14; 0 ⭐) · [2013](#2013) (5; 0 ⭐) · [2012](#2012) (1; 0 ⭐) · [2011](#2011) (4; 0 ⭐) · [2010](#2010) (5; 1 ⭐) · [2009](#2009) (3; 1 ⭐) · [2008](#2008) (2; 0 ⭐) · [2007](#2007) (2; 2 ⭐) · [1991](#1991) (1; 1 ⭐)
+**Years:** [2026](#2026) (1,082; 407 ⭐) · [2025](#2025) (661; 343 ⭐) · [2024](#2024) (407; 176 ⭐) · [2023](#2023) (161; 41 ⭐) · [2022](#2022) (66; 12 ⭐) · [2021](#2021) (51; 8 ⭐) · [2020](#2020) (28; 4 ⭐) · [2019](#2019) (19; 1 ⭐) · [2018](#2018) (29; 5 ⭐) · [2017](#2017) (11; 3 ⭐) · [2016](#2016) (13; 2 ⭐) · [2015](#2015) (13; 0 ⭐) · [2014](#2014) (14; 0 ⭐) · [2013](#2013) (5; 0 ⭐) · [2012](#2012) (1; 0 ⭐) · [2011](#2011) (4; 0 ⭐) · [2010](#2010) (5; 1 ⭐) · [2009](#2009) (3; 1 ⭐) · [2008](#2008) (2; 0 ⭐) · [2007](#2007) (2; 2 ⭐) · [1991](#1991) (1; 1 ⭐)
 
 ⭐ marks papers with an editorial relevance review; their topics link to the [topic hubs](topics.md). Other rows are bibliographic metadata only.
 
@@ -582,7 +582,7 @@ Dates retain their recorded precision: a year or month does not imply a known da
 | 2026-05-27 | [MaskClaw: Edge-Side Personalized Privacy Arbitration for GUI Agents with Behavior-Driven Skill Evolution](https://arxiv.org/abs/2605.28646) | metadata |  |
 | 2026-05-27 | [MIRAGE: Context-Aware Prompt Injection against Mobile GUI Agents via User-Generated Content](https://arxiv.org/abs/2605.28116) | metadata |  |
 | 2026-05-27 | [Learn from Weaknesses: Automated Domain Specialization for Small Computer-Use Agents](https://arxiv.org/abs/2605.28775) | metadata |  |
-| 2026-05-27 | [GUI-CIDER: Mid-training GUI Agents via Causal Internalization and Density-aware Exemplar Reselection](https://arxiv.org/abs/2605.28534) | metadata |  |
+| 2026-05-27 | [GUI-CIDER: Mid-training GUI Agents via Causal Internalization and Density-aware Exemplar Reselection](https://arxiv.org/abs/2605.28534) | ⭐ reviewed | [data-generation](topics/data-generation.md), [planning](topics/planning.md) |
 | 2026-05-27 | [GUI Agents for Continual Game Generation](https://arxiv.org/abs/2605.28258) | metadata |  |
 | 2026-05-27 | [AI, Take the Wheel: What Drives Delegation and Trust in Human-Computer Cooperative Question Answering?](https://arxiv.org/abs/2605.28255) | metadata |  |
 | 2026-05-26 | [UnityMAS-O: A General RL Optimization Framework for LLM-Based Multi-Agent Systems](https://arxiv.org/abs/2605.26646) | metadata |  |
@@ -1505,7 +1505,7 @@ Dates retain their recorded precision: a year or month does not imply a known da
 | 2025-06-09 | [GUIPilot: A Consistency-based Mobile GUI Testing Approach for Detecting Application-specific Bugs](https://arxiv.org/abs/2506.07385) | ⭐ reviewed | [evaluation](topics/evaluation.md), [mobile-navigation](topics/mobile-navigation.md), [robustness](topics/robustness.md) |
 | 2025-06-09 | [GUI-Reflection: Empowering Multimodal GUI Models with Self-Reflection Behavior](https://arxiv.org/abs/2506.08012) | ⭐ reviewed | [data-generation](topics/data-generation.md), [evaluation](topics/evaluation.md), [mobile-navigation](topics/mobile-navigation.md), [robustness](topics/robustness.md) |
 | 2025-06-09 | [G-Memory: Tracing Hierarchical Memory for Multi-Agent Systems](https://arxiv.org/abs/2506.07398) | metadata |  |
-| 2025-06-09 | [FingerTip 20K: A Benchmark for Proactive and Personalized Mobile LLM Agents](https://arxiv.org/abs/2507.21071) | metadata |  |
+| 2025-06-09 | [FingerTip 20K: A Benchmark for Proactive and Personalized Mobile LLM Agents](https://arxiv.org/abs/2507.21071) | ⭐ reviewed | [data-generation](topics/data-generation.md), [evaluation](topics/evaluation.md), [interaction-history](topics/interaction-history.md), [mobile-navigation](topics/mobile-navigation.md) |
 | 2025-06-09 | [EconWebArena: Benchmarking Autonomous Agents on Economic Tasks in Realistic Web Environments](https://arxiv.org/abs/2506.08136) | ⭐ reviewed | [evaluation](topics/evaluation.md), [planning](topics/planning.md), [web-navigation](topics/web-navigation.md) |
 | 2025-06-08 | [BIMgent: Towards Autonomous Building Modeling via Computer-use Agents](https://arxiv.org/abs/2506.07217) | ⭐ reviewed | [evaluation](topics/evaluation.md), [industry](topics/industry.md), [planning](topics/planning.md), [workflow](topics/workflow.md) |
 | 2025-06-05 | [VideoMolmo: Spatio-Temporal Grounding Meets Pointing](https://arxiv.org/abs/2506.05336) | metadata |  |
@@ -2231,7 +2231,7 @@ Dates retain their recorded precision: a year or month does not imply a known da
 | 2023-10-19 | [3D-GPT: Procedural 3D Modeling with Large Language Models](https://arxiv.org/abs/2310.12945) | metadata |  |
 | 2023-10-17 | [Set-of-Mark Prompting Unleashes Extraordinary Visual Grounding in GPT-4V](https://arxiv.org/abs/2310.11441) | ⭐ reviewed | [grounding](topics/grounding.md) |
 | 2023-10-17 | [Fast Node Vector Distance Computations using Laplacian Solvers](https://arxiv.org/abs/2310.11222) | metadata |  |
-| 2023-10-16 | [OpenAgents: An Open Platform for Language Agents in the Wild](https://arxiv.org/abs/2310.10634) | metadata |  |
+| 2023-10-16 | [OpenAgents: An Open Platform for Language Agents in the Wild](https://arxiv.org/abs/2310.10634) | ⭐ reviewed | [tool-integration](topics/tool-integration.md), [web-navigation](topics/web-navigation.md) |
 | 2023-10-13 | [Qin's Algorithm, Continued Fractions and 2-dimensional Lattices](https://arxiv.org/abs/2310.09103) | metadata |  |
 | 2023-10-12 | [Octopus: Embodied Vision-Language Programmer from Environmental Feedback](https://arxiv.org/abs/2310.08588) | metadata |  |
 | 2023-10-12 | [A Zero-Shot Language Agent for Computer Control with Structured Reflection](https://arxiv.org/abs/2310.08740) | ⭐ reviewed | [planning](topics/planning.md), [self-reflection](topics/self-reflection.md), [web-navigation](topics/web-navigation.md) |

@@ -2,9 +2,9 @@
 
 [Home](../../README.md) · [All topics](../topics.md) · [Full arXiv bibliography](../papers.md)
 
-233 source-reviewed resources tagged `mobile-navigation`. Curated metadata, not a performance ranking; unknown facts are shown as —.
+234 source-reviewed resources tagged `mobile-navigation`. Curated metadata, not a performance ranking; unknown facts are shown as —.
 
-**Contents:** [Benchmarks (14)](#benchmarks) · [Datasets (12)](#datasets) · [Models (14)](#models) · [Agents (15)](#agents) · [Frameworks (8)](#frameworks) · [Tools (2)](#tools) · [Surveys (1)](#surveys) · [Papers (167)](#papers)
+**Contents:** [Benchmarks (14)](#benchmarks) · [Datasets (12)](#datasets) · [Models (14)](#models) · [Agents (15)](#agents) · [Frameworks (8)](#frameworks) · [Tools (2)](#tools) · [Surveys (1)](#surveys) · [Papers (168)](#papers)
 
 ## Benchmarks
 
@@ -202,6 +202,7 @@ All entries in this section: unspecified.
 | 2025‑06‑25 | [Mobile-R1: Towards Interactive Capability for VLM-Based Mobile Agent via Systematic Training](https://arxiv.org/abs/2506.20332) | android | Uses a staged curriculum from response-format alignment through action feedback to interactive task-level training for mobile agents. |
 | 2025‑06‑12 | [Mirage-1: Augmenting and Updating GUI Agent with Hierarchical Multimodal Skills](https://arxiv.org/abs/2506.10387) | android, web, cross-platform | Mirage-1 organizes interaction trajectories into execution, core, and meta-skills, then uses them to guide Monte Carlo tree search during online GUI tasks. It introduces AndroidLH for long-horizon evaluation and tests the approach on Android and web-navigation benchmarks. |
 | 2025‑06‑10 | [Atomic-to-Compositional Generalization for Mobile Agents with A New Benchmark and Scheduling System](https://arxiv.org/abs/2506.08972) | unspecified | UI-NEXUS evaluates compositional mobile tasks in local utility apps and online Chinese and English service apps. AGENT-NEXUS decomposes those long tasks into self-contained atomic subtasks to study generalization beyond isolated screens or short action chains. |
+| 2025‑06‑09 | [FingerTip 20K: A Benchmark for Proactive and Personalized Mobile LLM Agents](https://arxiv.org/abs/2507.21071) | android | FingerTip 20K gathers 20K human Android demonstrations from users' long-term everyday app use, with user context, to evaluate proactive task suggestion and preference-aware task execution. |
 | 2025‑06‑09 | [GUI-Reflection: Empowering Multimodal GUI Models with Self-Reflection Behavior](https://arxiv.org/abs/2506.08012) | unspecified | GUI-Reflection synthesizes reflection and error-correction examples from successful trajectories and adds dedicated learning stages for these behaviors. It introduces a reflection task suite, a mobile environment for online data collection, and iterative reflection tuning. |
 | 2025‑06‑09 | [GUIPilot: A Consistency-based Mobile GUI Testing Approach for Detecting Application-specific Bugs](https://arxiv.org/abs/2506.07385) | unspecified | Introduces GUIPilot, which compares mobile design mock-ups with implemented screens through widget alignment and tests expected transitions by executing inferred UI actions. It evaluates both visual inconsistencies and workflow-specific bugs. |
 | 2025‑06‑02 | [AgentCPM-GUI: Building Mobile-Use Agents with Reinforcement Fine-Tuning](https://arxiv.org/abs/2506.01391) | android | Combines grounding pretraining, bilingual interaction trajectories, and reinforcement fine-tuning for mobile GUI actions. |

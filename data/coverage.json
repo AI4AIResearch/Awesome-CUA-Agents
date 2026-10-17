@@ -1,7 +1,7 @@
 {
-  "as_of_utc": "2026-10-17T16:10:54Z",
+  "as_of_utc": "2026-10-17T17:11:36Z",
   "total_records": 3003,
-  "curated_records": 1429,
+  "curated_records": 1432,
   "bibliographic_records": 2578,
   "arxiv_active_records": 2565,
   "non_arxiv_bibliographic_records": 13,
@@ -9,7 +9,7 @@
   "arxiv_archive_records": 2683,
   "excluded_records": 118,
   "exclusion_revalidation_pending": 0,
-  "metadata_only_records": 1574,
+  "metadata_only_records": 1571,
   "discovery_identifiers": 3907,
   "unindexed_candidates": 945,
   "pending_editorial": [
@@ -100,15 +100,15 @@
     "tool": 20
   },
   "curated_by_environment": {
-    "android": 274,
+    "android": 275,
     "cross-platform": 186,
     "desktop": 298,
     "harmonyos": 2,
     "ios": 18,
     "linux": 40,
     "macos": 29,
-    "unspecified": 326,
-    "web": 533,
+    "unspecified": 327,
+    "web": 534,
     "windows": 51
   },
   "curated_by_kind_and_environment": {
@@ -179,15 +179,15 @@
       "windows": 4
     },
     "paper": {
-      "android": 160,
+      "android": 161,
       "cross-platform": 94,
       "desktop": 193,
       "harmonyos": 1,
       "ios": 6,
       "linux": 16,
       "macos": 14,
-      "unspecified": 291,
-      "web": 374,
+      "unspecified": 292,
+      "web": 375,
       "windows": 32
     },
     "product": {
@@ -243,7 +243,7 @@
       "indexed": 219,
       "indexed_resources": 218,
       "resolved_aliases": 6,
-      "curated": 207,
+      "curated": 208,
       "excluded": 0,
       "unindexed": 119
     },
@@ -299,7 +299,7 @@
       "indexed": 198,
       "indexed_resources": 198,
       "resolved_aliases": 0,
-      "curated": 177,
+      "curated": 178,
       "excluded": 0,
       "unindexed": 26
     },
@@ -439,7 +439,7 @@
       "indexed": 496,
       "indexed_resources": 496,
       "resolved_aliases": 4,
-      "curated": 430,
+      "curated": 432,
       "excluded": 0,
       "unindexed": 92
     },
@@ -551,7 +551,7 @@
       "indexed": 146,
       "indexed_resources": 146,
       "resolved_aliases": 3,
-      "curated": 142,
+      "curated": 143,
       "excluded": 0,
       "unindexed": 47
     },

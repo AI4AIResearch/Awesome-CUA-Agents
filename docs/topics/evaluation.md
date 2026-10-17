@@ -2,9 +2,9 @@
 
 [Home](../../README.md) · [All topics](../topics.md) · [Full arXiv bibliography](../papers.md)
 
-588 source-reviewed resources tagged `evaluation`. Curated metadata, not a performance ranking; unknown facts are shown as —.
+589 source-reviewed resources tagged `evaluation`. Curated metadata, not a performance ranking; unknown facts are shown as —.
 
-**Contents:** [Benchmarks (77)](#benchmarks) · [Datasets (9)](#datasets) · [Models (1)](#models) · [Frameworks (15)](#frameworks) · [Tools (4)](#tools) · [Infrastructure (2)](#infrastructure) · [Surveys (1)](#surveys) · [Papers (479)](#papers)
+**Contents:** [Benchmarks (77)](#benchmarks) · [Datasets (9)](#datasets) · [Models (1)](#models) · [Frameworks (15)](#frameworks) · [Tools (4)](#tools) · [Infrastructure (2)](#infrastructure) · [Surveys (1)](#surveys) · [Papers (480)](#papers)
 
 ## Benchmarks
 
@@ -482,6 +482,7 @@ All entries in this section: unspecified.
 | 2025‑06‑17 | [OS-Harm: A Benchmark for Measuring Safety of Computer Use Agents](https://arxiv.org/abs/2506.14866) | desktop | Extends OSWorld with tasks covering user misuse, prompt injection, and model misbehavior, with assessment of both task success and safety. |
 | 2025‑06‑10 | [Atomic-to-Compositional Generalization for Mobile Agents with A New Benchmark and Scheduling System](https://arxiv.org/abs/2506.08972) | unspecified | UI-NEXUS evaluates compositional mobile tasks in local utility apps and online Chinese and English service apps. AGENT-NEXUS decomposes those long tasks into self-contained atomic subtasks to study generalization beyond isolated screens or short action chains. |
 | 2025‑06‑09 | [EconWebArena: Benchmarking Autonomous Agents on Economic Tasks in Realistic Web Environments](https://arxiv.org/abs/2506.08136) | web | Introduces EconWebArena, a curated benchmark of economic-data tasks requiring live website navigation, multimodal interpretation, and precise extraction. It evaluates visual grounding, planning, and interaction design within multistep workflows. |
+| 2025‑06‑09 | [FingerTip 20K: A Benchmark for Proactive and Personalized Mobile LLM Agents](https://arxiv.org/abs/2507.21071) | android | FingerTip 20K gathers 20K human Android demonstrations from users' long-term everyday app use, with user context, to evaluate proactive task suggestion and preference-aware task execution. |
 | 2025‑06‑09 | [GUI-Reflection: Empowering Multimodal GUI Models with Self-Reflection Behavior](https://arxiv.org/abs/2506.08012) | unspecified | GUI-Reflection synthesizes reflection and error-correction examples from successful trajectories and adds dedicated learning stages for these behaviors. It introduces a reflection task suite, a mobile environment for online data collection, and iterative reflection tuning. |
 | 2025‑06‑09 | [GUIPilot: A Consistency-based Mobile GUI Testing Approach for Detecting Application-specific Bugs](https://arxiv.org/abs/2506.07385) | unspecified | Introduces GUIPilot, which compares mobile design mock-ups with implemented screens through widget alignment and tests expected transitions by executing inferred UI actions. It evaluates both visual inconsistencies and workflow-specific bugs. |
 | 2025‑06‑09 | [MCPWorld: A Unified Benchmarking Testbed for API, GUI, and Hybrid Computer Use Agents](https://arxiv.org/abs/2506.07672) | desktop | MCPWorld evaluates API, GUI, and hybrid computer-use agents with 201 tasks in applications whose source can be instrumented and extended with MCP support. It verifies completion from application behavior and packages the testbed in containers with GPU support. |
