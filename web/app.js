@@ -16,8 +16,8 @@ Object.assign(TEXT.en, {agentEyebrow:'DATA FOR PEOPLE & AGENTS',agentTitle:'Clon
 Object.assign(TEXT.zh, {agentEyebrow:'给人阅读，也给 AGENTS 使用',agentTitle:'克隆完整目录，接入你的工作。',agentCopy:'本地检索、构建 RAG，或让 Agent 继续探索。来源、引用和审阅状态随数据一起保留。',agentGuide:'Agents 与 RAG 使用指南',copyCommand:'复制克隆命令',commandCopied:'克隆命令已复制',commandCopyFailed:'请选择上方命令并复制。',ragReviewed:'RAG 文档 · 已审阅',ragReviewedCopy:'每项已审阅资源对应一份检索文档，保留引用和来源。',ragAll:'RAG 文档 · 全部记录',ragAllCopy:'包含全部当前记录，并明确保留待审阅论文的状态。'});
 Object.assign(TEXT.en,{topicDirectory:'Browse topics'});
 Object.assign(TEXT.zh,{topicDirectory:'浏览主题'});
-Object.assign(TEXT.en,{pageNumber:'Page %s'});
-Object.assign(TEXT.zh,{pageNumber:'第 %s 页'});
+Object.assign(TEXT.en,{pageNumber:'Page %s',pageStatus:'Page %s of %s'});
+Object.assign(TEXT.zh,{pageNumber:'第 %s 页',pageStatus:'第 %s 页，共 %s 页'});
 const CLONE_COMMAND = 'git clone https://github.com/reacher-z/Awesome-CUA.git';
 Object.assign(TEXT.en,{publicationBib:'Publication editions · BibTeX',publicationBibCopy:'Reviewed publication editions with their own title, authors, venue and date.',publicationCSL:'Publication editions · CSL JSON',publicationCSLCopy:'Source-backed publication metadata with its original date precision.'});
 Object.assign(TEXT.zh,{publicationBib:'出版版引用 · BibTeX',publicationBibCopy:'已审阅出版版，保留该版本的题名、作者、会议／期刊和日期。',publicationCSL:'出版版引用 · CSL JSON',publicationCSLCopy:'有来源可查的出版元数据，保留原日期精度。'});
@@ -71,10 +71,13 @@ function change(patch,scroll=false) {
   if(scroll) $('#catalog').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
 }
 function renderCategories() {
+  const focused=document.activeElement?.closest?.('.category-button')?.dataset.kind;
   const eligible=records.filter(r=>matches(r,state,true));
   const counts=Object.fromEntries(KIND_ORDER.map(k=>[k,0]));eligible.forEach(r=>counts[r.kind]++);
   const item=(kind,name,icon,count)=>`<button type="button" class="category-button" data-kind="${kind}" aria-pressed="${state.kind===kind}"><span class="category-icon" aria-hidden="true">${icon}</span><span>${e(name)}</span><span class="category-count">${num(count)}</span></button>`;
   $('#categories').innerHTML=item('',t('allResources'),'⊞',eligible.length)+KIND_ORDER.map(k=>item(k,label(KINDS,k),KINDS[k][2],counts[k])).join('');
+  // Rebuilding the list destroys the focused button; refocus its replacement so keyboard users keep their place.
+  if(focused!==undefined)$(`#categories [data-kind="${focused}"]`).focus();
 }
 function card(r) {
   const monogram=initials(r.name) || KINDS[r.kind]?.[2] || '';
@@ -98,7 +101,7 @@ function render() {
   $('#results').classList.toggle('list-view',state.view==='list');
   $('#view-grid').setAttribute('aria-pressed',String(state.view==='grid'));$('#view-list').setAttribute('aria-pressed',String(state.view==='list'));
   const reviewed=result.filter(r=>r.review_status==='curated').length;
-  $('#results-count').innerHTML=`<strong>${num(result.length)}</strong> ${e(t('showing'))} <span class="result-breakdown">· ${num(reviewed)} ${e(t('reviewedCount'))}${result.length>reviewed?` · ${num(result.length-reviewed)} ${e(t('pendingCount'))}`:''}</span>`;
+  $('#results-count').innerHTML=`<strong>${num(result.length)}</strong> ${e(t('showing'))} <span class="result-breakdown">· ${num(reviewed)} ${e(t('reviewedCount'))}${result.length>reviewed?` · ${num(result.length-reviewed)} ${e(t('pendingCount'))}`:''}</span>${pages>1?`<span class="sr-only"> · ${e(t('pageStatus').replace('%s',state.page).replace('%s',pages))}</span>`:''}`;
   $('#results').setAttribute('aria-busy','false');$('#empty').hidden=result.length!==0;
   $('#clear-filters').hidden=![state.q,state.kind,state.platform,state.review,state.topic,state.year].some(Boolean);
   $('#pagination').hidden=result.length===0;
@@ -194,7 +197,8 @@ document.addEventListener('click',async event=>{
 });
 $('#search').addEventListener('input',event=>change({q:event.target.value}));
 for(const [id,key] of [['platform','platform'],['review','review'],['topic','topic'],['year','year'],['sort','sort']])$('#'+id).addEventListener('change',event=>change({[key]:event.target.value}));
-const reset=()=>change({q:'',kind:'',platform:'',review:'',topic:'',year:'',sort:'featured'});
+// Both reset buttons hide themselves, so focus moves to the result summary, which announces the restored count.
+const reset=()=>{change({q:'',kind:'',platform:'',review:'',topic:'',year:'',sort:'featured'});$('#results-count').focus();};
 $('#clear-filters').addEventListener('click',reset);$('#empty-reset').addEventListener('click',reset);
 $('#view-grid').addEventListener('click',()=>change({view:'grid',page:state.page}));$('#view-list').addEventListener('click',()=>change({view:'list',page:state.page}));
 $('#categories').addEventListener('click',event=>{const button=event.target.closest('[data-kind]');if(button)change({kind:button.dataset.kind,view:['paper','survey'].includes(button.dataset.kind)?'list':state.view});});
@@ -202,7 +206,7 @@ $$('[data-environment]').forEach(button=>button.addEventListener('click',()=>cha
 $$('[data-search]').forEach(button=>button.addEventListener('click',()=>change({q:button.dataset.search,topic:''})));
 $$('[data-topic]').forEach(button=>button.addEventListener('click',()=>change({topic:button.dataset.topic,q:''})));
 document.addEventListener('click',event=>{const button=event.target.closest('[data-record]');if(!button)return;if(button.tagName==='A'&&(event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||event.button!==0))return;event.preventDefault();showRecord(button.dataset.record);});
-$('#pagination').addEventListener('click',event=>{const button=event.target.closest('[data-page]');if(button&&!button.disabled){change({page:Number(button.dataset.page)});$('.results-toolbar').scrollIntoView({block:'start',behavior:'instant'});}});
+$('#pagination').addEventListener('click',event=>{const button=event.target.closest('[data-page]');if(button&&!button.disabled){change({page:Number(button.dataset.page)});$('.results-toolbar').scrollIntoView({block:'start',behavior:'instant'});$('#results-count').focus();}});
 $('#language').addEventListener('click',()=>{lang=lang==='en'?'zh':'en';try{localStorage.setItem('cua-language',lang);}catch{}translate();render();updateURL();if(activeRecord)showRecord(activeRecord,false);});
 for(const id of ['hero-download','sidebar-download'])$('#'+id).addEventListener('click',()=>info('download'));
 for(const id of ['coverage-button','footer-method'])$('#'+id).addEventListener('click',()=>info('coverage'));
