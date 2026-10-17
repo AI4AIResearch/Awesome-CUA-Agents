@@ -42,10 +42,10 @@ class FetchRetryTests(unittest.TestCase):
         return info, body, urlopen.call_count
 
     def test_transient_503_honours_retry_after_then_succeeds(self):
-        info, body, calls = self.fetch(http_error(503, "2"), response())
+        info, body, calls = self.fetch(http_error(503, "5"), response())
         self.assertTrue(info["ok"])
         self.assertEqual((info["status"], info["request_attempts"], calls, body), (200, 2, 2, b"<feed/>"))
-        self.sleep.assert_called_once_with(2)
+        self.sleep.assert_called_once_with(5)
         self.assertEqual(catalog.fetch(URL)[1], b"<feed/>")
         self.assertEqual(catalog.fetch(URL)[0]["sha256"], hashlib.sha256(b"<feed/>").hexdigest())
 
@@ -55,6 +55,16 @@ class FetchRetryTests(unittest.TestCase):
         self.assertTrue(info["ok"])
         self.assertEqual(calls, 2)
         self.assertTrue(20 <= self.sleep.call_args.args[0] <= 30, self.sleep.call_args)
+
+    def test_short_retry_after_keeps_the_arxiv_request_spacing(self):
+        past = email.utils.format_datetime(dt.datetime.now(dt.timezone.utc) - dt.timedelta(seconds=30), usegmt=True)
+        for retry_after in ("0", "2", "3", past):
+            with self.subTest(retry_after=retry_after):
+                self.sleep.reset_mock()
+                info, _, calls = self.fetch(http_error(429, retry_after), response())
+                self.assertEqual((info["ok"], calls), (True, 2))
+                self.sleep.assert_called_once_with(catalog.MIN_RETRY_DELAY)
+        self.assertEqual(catalog.MIN_RETRY_DELAY, 3.1)
 
     def test_client_errors_are_attempted_once(self):
         for status in (400, 403, 404):
@@ -72,16 +82,18 @@ class FetchRetryTests(unittest.TestCase):
         self.assertEqual((info["ok"], info["status"], info["request_attempts"], calls, body), (False, 503, 3, 3, b""))
         delays = [c.args[0] for c in self.sleep.call_args_list]
         self.assertEqual(len(delays), 2)
-        self.assertTrue(1 <= delays[0] <= 1.25 and 2 <= delays[1] <= 2.25, delays)
+        self.assertTrue(3.1 <= delays[0] <= 3.35 and 6.2 <= delays[1] <= 6.45, delays)
         self.assertEqual(catalog.read_json(self.cache / f"{key}.error.json")["status"], 503)
         self.assertEqual(catalog.fetch(URL)[1], b"old good snapshot")
 
     def test_network_errors_and_timeouts_are_retried(self):
         for error in (urllib.error.URLError("temporary failure in name resolution"), TimeoutError("timed out"), ConnectionResetError("reset")):
             with self.subTest(error=type(error).__name__):
+                self.sleep.reset_mock()
                 info, _, calls = self.fetch(error, response())
                 self.assertTrue(info["ok"])
                 self.assertEqual((info["request_attempts"], calls), (2, 2))
+                self.assertTrue(3.1 <= self.sleep.call_args.args[0] <= 3.35, self.sleep.call_args)
 
     def test_retry_after_beyond_the_cap_is_left_to_the_caller(self):
         info, _, calls = self.fetch(http_error(429, str(catalog.MAX_RETRY_AFTER + 1)))

@@ -32,7 +32,8 @@ KINDS = {"paper", "survey", "model", "dataset", "benchmark", "agent", "framework
 ENVIRONMENTS = {"web", "desktop", "android", "ios", "harmonyos", "windows", "macos", "linux", "cross-platform", "unspecified"}
 STATUSES = {"curated", "metadata_verified"}
 SHRINK_FLOOR = 0.5  # A successful source response below this share of its retained candidates is held for review.
-RETRY_STATUSES, MAX_ATTEMPTS, MAX_RETRY_AFTER = {429, 500, 502, 503, 504}, 3, 60
+# MIN_RETRY_DELAY matches the 3.1 s spacing kept between arXiv requests (at most one per 3 s).
+RETRY_STATUSES, MAX_ATTEMPTS, MAX_RETRY_AFTER, MIN_RETRY_DELAY = {429, 500, 502, 503, 504}, 3, 60, 3.1
 
 
 def now():
@@ -71,9 +72,9 @@ def retry_delay(error, attempt):
             when = email.utils.parsedate_to_datetime(header)
             delay = max(0, (when if when.tzinfo else when.replace(tzinfo=dt.timezone.utc)).timestamp() - time.time())
         except (TypeError, ValueError):
-            return 2 ** (attempt - 1) + random.uniform(0, 0.25)
+            return MIN_RETRY_DELAY * 2 ** (attempt - 1) + random.uniform(0, 0.25)
     # A longer pause than one run should spend is left to the caller's rate-limit handling.
-    return delay if delay <= MAX_RETRY_AFTER else None
+    return max(MIN_RETRY_DELAY, delay) if delay <= MAX_RETRY_AFTER else None
 
 
 def fetch(url, refresh=False):
