@@ -117,5 +117,12 @@ class HubRepositoryAliasTests(unittest.TestCase):
         self.assertNotIn("url:8c792416d297293422cf", queued)
 
 
+
+class UnrecordedRenameRobustnessTests(unittest.TestCase):
+    def test_non_hub_url_with_hub_id_is_skipped(self):
+        record = {"id": "github:a/b", "review_status": "curated", "url": "https://github.com/a/b", "details": {"hub_id": "a/b"}}
+        self.assertEqual(unrecorded_hub_renames([record], {}), [])
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -188,7 +188,11 @@ def unrecorded_hub_renames(records, aliases):
         name = record.get('details', {}).get('hub_id')
         if record.get('review_status') != 'curated' or not isinstance(name, str):
             continue
-        path = hub_path(record['url'])
+        try:
+            path = hub_path(record['url'])
+        except ValueError:
+            # A hub_id on a record whose URL is not a Hub repository page cannot be a rename of it.
+            continue
         current = ('datasets/' if path.startswith('datasets/') else '') + name
         if current != path and aliases.get(hub_identity(current)) != record['id']:
             result.append((record['id'], path, current))
