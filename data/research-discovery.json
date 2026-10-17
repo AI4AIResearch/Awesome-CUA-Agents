@@ -7,7 +7,7 @@
     "scope": "ranked search window, not exhaustive",
     "evidence": {
       "url": "https://huggingface.co/api/papers/search?q=computer+use+agent+safety&limit=30",
-      "retrieved_at": "2026-10-17T01:56:48Z",
+      "retrieved_at": "2026-10-17T02:32:14Z",
       "ok": true,
       "status": 200,
       "final_url": "https://huggingface.co/api/papers/search?q=computer+use+agent+safety&limit=30",
@@ -56,7 +56,7 @@
     "scope": "ranked search window, not exhaustive",
     "evidence": {
       "url": "https://huggingface.co/api/papers/search?q=computer+use+agents&limit=30",
-      "retrieved_at": "2026-10-17T01:56:42Z",
+      "retrieved_at": "2026-10-17T02:32:08Z",
       "ok": true,
       "status": 200,
       "final_url": "https://huggingface.co/api/papers/search?q=computer+use+agents&limit=30",
@@ -105,7 +105,7 @@
     "scope": "ranked search window, not exhaustive",
     "evidence": {
       "url": "https://huggingface.co/api/papers/search?q=GUI+agent+memory+planning&limit=30",
-      "retrieved_at": "2026-10-17T01:56:49Z",
+      "retrieved_at": "2026-10-17T02:32:16Z",
       "ok": true,
       "status": 200,
       "final_url": "https://huggingface.co/api/papers/search?q=GUI+agent+memory+planning&limit=30",
@@ -154,7 +154,7 @@
     "scope": "ranked search window, not exhaustive",
     "evidence": {
       "url": "https://huggingface.co/api/papers/search?q=GUI+grounding+benchmark&limit=30",
-      "retrieved_at": "2026-10-17T01:56:43Z",
+      "retrieved_at": "2026-10-17T02:32:09Z",
       "ok": true,
       "status": 200,
       "final_url": "https://huggingface.co/api/papers/search?q=GUI+grounding+benchmark&limit=30",
@@ -203,7 +203,7 @@
     "scope": "ranked search window, not exhaustive",
     "evidence": {
       "url": "https://huggingface.co/api/papers/search?q=mobile+GUI+agent+reinforcement+learning&limit=30",
-      "retrieved_at": "2026-10-17T01:56:44Z",
+      "retrieved_at": "2026-10-17T02:32:11Z",
       "ok": true,
       "status": 200,
       "final_url": "https://huggingface.co/api/papers/search?q=mobile+GUI+agent+reinforcement+learning&limit=30",
@@ -252,7 +252,7 @@
     "scope": "ranked search window, not exhaustive",
     "evidence": {
       "url": "https://huggingface.co/api/papers/search?q=web+agent+dataset+benchmark&limit=30",
-      "retrieved_at": "2026-10-17T01:56:46Z",
+      "retrieved_at": "2026-10-17T02:32:13Z",
       "ok": true,
       "status": 200,
       "final_url": "https://huggingface.co/api/papers/search?q=web+agent+dataset+benchmark&limit=30",
