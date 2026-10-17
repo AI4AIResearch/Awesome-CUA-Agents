@@ -27,6 +27,6 @@ Dataset details can include sample count and unit, modalities, languages, downlo
 
 `references.jsonl` is a separate discovery graph. Its `mentions` relation only means a URL was found in the source. `target_in_catalog` distinguishes indexed and unresolved targets. Strong reviewed relations remain inside each resource record and in the SQLite `relations` table.
 
-Source data lives in `editorial.json`, `papers.jsonl`, `primary-evidence.jsonl`, `enrichment.jsonl`, `candidates.jsonl`, and discovery manifests. `catalog.jsonl`, `coverage.json`, `references.jsonl`, `review-queue.jsonl`, and category Markdown are generated views. The ignored `.cache/` directory is not needed to reproduce an offline build.
+Source data lives in `editorial.json` (see [editorial input](editorial-input.md)), `papers.jsonl`, `primary-evidence.jsonl`, `enrichment.jsonl`, `candidates.jsonl`, and discovery manifests. `catalog.jsonl`, `coverage.json`, `references.jsonl`, `review-queue.jsonl`, and category Markdown are generated views. The ignored `.cache/` directory is not needed to reproduce an offline build.
 
 Reviewed `documented_by` links connect an implementation or dataset to a paper named by its first-party source. They do not imply a training or evaluation dependency. Resource pages expose both outgoing relations and incoming connected assets. The [connections directory](https://awesomecua.github.io/connections/) and [relationship export](https://awesomecua.github.io/downloads/relationships.json) provide a consolidated view.
