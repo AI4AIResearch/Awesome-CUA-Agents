@@ -1,0 +1,16 @@
+version: 2
+updates:
+  # Only .github/workflows is scanned; copy action bumps into automation/publish.yml (tests/test_action_pins.py enforces this).
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      github-actions:
+        patterns: ["*"]
+    labels: ["area:ci"]
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: weekly
+    labels: ["area:ci"]
