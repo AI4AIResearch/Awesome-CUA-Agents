@@ -57,6 +57,15 @@ class ProposalClearingTests(unittest.TestCase):
         self.assertEqual(statuses, ["metadata_revalidation_pending"] * 2)
         self.assertEqual(proposals[old["id"]]["reason"], "snapshot_baseline_requires_review")
 
+    def test_an_older_cached_observation_keeps_a_newer_proposal(self):
+        old = paper()
+        records, proposals = {old["id"]: copy.deepcopy(old)}, {}
+        arxiv_metadata.consider_paper(paper(version=2, updated="2026-10-05T12:00:00Z"), records, proposals, "2026-10-18T00:00:00Z")
+        arxiv_metadata.consider_paper(copy.deepcopy(old), records, proposals, "2026-10-16T00:00:00Z")
+        self.assertEqual(proposals[old["id"]]["review_status"], "metadata_change_pending")
+        arxiv_metadata.consider_paper(copy.deepcopy(old), records, proposals, "2026-10-18T00:00:00Z")
+        self.assertEqual(proposals, {})
+
     def test_other_papers_proposals_are_untouched(self):
         other = {"id": "arxiv:2610.00002", "review_status": "metadata_change_pending"}
         _, proposals = self.observe(paper(), [paper()], {other["id"]: other})

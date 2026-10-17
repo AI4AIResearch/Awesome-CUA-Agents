@@ -112,8 +112,9 @@ def consider_paper(row, records, proposals, observed_at):
         }
         if uncertainty:
             proposals[rid]['reason'] = uncertainty
-    else:
-        # A complete observation that matches the retained record again withdraws a pending proposal.
+    elif observed_at >= proposals.get(rid, {}).get('last_observed_at', ''):
+        # A complete observation that matches the retained record again withdraws a pending proposal,
+        # unless it predates that proposal, as a cached page replayed without --refresh can.
         proposals.pop(rid, None)
     return False
 
