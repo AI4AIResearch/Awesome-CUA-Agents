@@ -1,0 +1,42 @@
+name: Scan freshness
+
+on:
+  schedule:
+    # GitHub can delay or drop any scheduled run, so a check every three hours notices a late or dropped twice-daily scan.
+    - cron: '37 */3 * * *'
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    outputs:
+      stale: ${{ steps.freshness.outputs.stale }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: '3.12'
+      - name: Check the age of the last completed scan
+        id: freshness
+        run: python scripts/scan.py --check-freshness
+  dispatch_scan:
+    # A stale catalog fails the check job, so GitHub sends a failure notice; this job then starts the scan that the missed slot owed.
+    # As in scan.yml, only a job with no checkout holds the actions permission.
+    needs: check
+    if: always() && needs.check.outputs.stale == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      actions: write
+    steps:
+      - name: Dispatch a recovery scan
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run scan.yml --ref main -R "$GITHUB_REPOSITORY"

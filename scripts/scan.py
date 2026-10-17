@@ -208,6 +208,28 @@ def run_scan():
     return 1 if status=='failed' else 0
 
 
+def check_freshness(current=None):
+    """Exit status 1 unless a completed scan finished within max_scan_age_hours; GitHub can delay or drop the scheduled runs."""
+    limit=read_json(DATA/'scan-config.json')['max_scan_age_hours']
+    parse=lambda value:dt.datetime.fromisoformat(value.replace('Z','+00:00'))
+    # A failed scan commits nothing, and a running receipt has no finish time; only success and partial scans refreshed the catalog.
+    finished=[r['finished_at'] for r in [read_json(DATA/'scan-status.json',{}),*read_jsonl(DATA/'scan-history.jsonl')] if r.get('status') in {'success','partial'} and r.get('finished_at')]
+    last=max(finished,key=parse,default=None)
+    age=((current or dt.datetime.now(dt.timezone.utc))-parse(last)).total_seconds()/3600 if last else None
+    if age is not None and age<=limit:
+        print(f'The last completed scan finished at {last}, {age:.1f} h ago, within the {limit} h limit.');return 0
+    message=(f'The last completed scan finished at {last}, {age:.1f} h ago' if last else 'No completed scan is recorded')+f'; scans are expected at least every {limit} h, so a scheduled scan was delayed or dropped.'
+    print(('::error title=Stale scan::' if os.getenv('GITHUB_STEP_SUMMARY') else '')+message)
+    if os.getenv('GITHUB_OUTPUT'):
+        with open(os.getenv('GITHUB_OUTPUT'),'a',encoding='utf-8') as f:f.write('stale=true\n')
+    return 1
+
+
+def main(argv=None):
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--check-freshness',action='store_true',help='Only check that a completed scan finished within max_scan_age_hours of data/scan-config.json; writes no data.')
+    return check_freshness() if parser.parse_args(argv).check_freshness else run_scan()
+
+
 if __name__=='__main__':
-    argparse.ArgumentParser(description=__doc__).parse_args()
-    raise SystemExit(run_scan())
+    raise SystemExit(main())
