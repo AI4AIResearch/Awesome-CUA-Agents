@@ -112,3 +112,33 @@ test('failed, mismatched, or scope-excluded detail payloads are not cached as ac
     await assert.rejects(load(record));assert.equal((await load(record)).id,record.id);assert.equal(calls,2);
   }
 });
+test('data and coverage buttons respond while the catalog loads and after it fails',async()=>{
+  const coverage=JSON.parse(readFileSync(new URL('../data/coverage.json',import.meta.url),'utf8'));
+  const keys=['document','window','location','history','localStorage','fetch'],saved=keys.map(key=>[key,Object.getOwnPropertyDescriptor(globalThis,key)]),consoleError=console.error;
+  const boot=async name=>{
+    let respond;const elements=new Map(),element=selector=>{if(!elements.has(selector))elements.set(selector,{dataset:{},listeners:{},classList:{toggle(){}},open:false,addEventListener(type,fn){(this.listeners[type]??=[]).push(fn);},setAttribute(){},showModal(){this.open=true;},close(){this.open=false;}});return elements.get(selector);};
+    const globals={document:{documentElement:{},body:{classList:{toggle(){}}},addEventListener(){},querySelector:element,querySelectorAll:()=>[]},window:{addEventListener(){}},location:{search:'',pathname:'/',hash:''},history:{replaceState(){}},localStorage:{getItem:()=>null,setItem(){}},fetch:()=>new Promise(resolve=>respond=resolve)};
+    for(const [key,value] of Object.entries(globals))Object.defineProperty(globalThis,key,{value,configurable:true,writable:true});
+    await import(`../web/app.js?${name}`);
+    const dialog=element('#info-dialog');
+    const content=()=>element('#info-content').innerHTML;
+    return {dialog,content,respond:async value=>{respond(value);await new Promise(resolve=>setImmediate(resolve));},open:id=>{dialog.close();element('#'+id).listeners.click[0]();return content();}};
+  };
+  try {
+    console.error=()=>{};
+    const slow=await boot('loading');
+    assert.match(slow.open('hero-download'),/\.\/downloads\/catalog\.jsonl/);assert.equal(slow.dialog.open,true);
+    assert.match(slow.open('footer-method'),/Loading the catalog[\s\S]*href="\/coverage\/"/);
+    await slow.respond({ok:true,json:async()=>({coverage,records:[]})});
+    assert.equal(slow.dialog.open,true);assert.match(slow.content(),/coverage-table/);
+    const failed=await boot('failed');
+    assert.match(failed.open('coverage-button'),/Loading the catalog/);
+    await failed.respond({ok:false,status:503});
+    assert.equal(failed.dialog.open,true);assert.match(failed.content(),/could not be loaded[\s\S]*href="\/coverage\/"/);
+    assert.match(failed.open('footer-method'),/could not be loaded/);
+    assert.match(failed.open('sidebar-download'),/\.\/downloads\/catalog\.sqlite/);
+  } finally {
+    console.error=consoleError;
+    for(const [key,descriptor] of saved)if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];
+  }
+});
