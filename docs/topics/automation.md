@@ -2,9 +2,9 @@
 
 [Home](../../README.md) · [All topics](../topics.md) · [Full arXiv bibliography](../papers.md)
 
-100 source-reviewed resources tagged `automation`. Curated metadata, not a performance ranking; unknown facts are shown as —.
+101 source-reviewed resources tagged `automation`. Curated metadata, not a performance ranking; unknown facts are shown as —.
 
-**Contents:** [Models (1)](#models) · [Agents (5)](#agents) · [Frameworks (3)](#frameworks) · [Tools (9)](#tools) · [Infrastructure (6)](#infrastructure) · [Papers (76)](#papers)
+**Contents:** [Models (1)](#models) · [Agents (5)](#agents) · [Frameworks (3)](#frameworks) · [Tools (9)](#tools) · [Infrastructure (6)](#infrastructure) · [Products (1)](#products) · [Papers (76)](#papers)
 
 ## Models
 
@@ -56,6 +56,14 @@ All entries in this section: desktop.
 | [Playwright](https://github.com/microsoft/playwright) | web | — | code Apache-2.0 | Browser automation library used as an execution layer by agents. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/microsoft/playwright/HEAD/README.md) |
 | [PyAutoGUI](https://github.com/asweigart/pyautogui) | desktop | — | — | Mouse, keyboard, and screenshot automation library. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/asweigart/pyautogui/HEAD/README.md) |
 | [Universe legacy GUI interaction client](https://github.com/openai/universe) | web, desktop | — | code MIT | An archived Gym-compatible client that exposes screen observations and keyboard/mouse actions over VNC for remote application and browser environments, including the historical World of Bits integration. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/openai/universe/HEAD/README.rst) |
+
+## Products
+
+All entries in this section: web.
+
+| Resource | Publisher | Description | Evidence |
+| --- | --- | --- | --- |
+| [Amazon Nova Act](https://aws.amazon.com/nova/act/) | — | AWS service for building and deploying agents that automate browser-based UI workflows from natural language and Python, powered by a custom Nova 2 Lite model. | [✓ 2026‑10‑17](https://aws.amazon.com/nova/act/) |
 
 ## Papers
 

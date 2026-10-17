@@ -1,7 +1,7 @@
 {
-  "as_of_utc": "2026-10-17T17:11:36Z",
-  "total_records": 3003,
-  "curated_records": 1432,
+  "as_of_utc": "2026-10-17T17:18:56Z",
+  "total_records": 3006,
+  "curated_records": 1435,
   "bibliographic_records": 2578,
   "arxiv_active_records": 2565,
   "non_arxiv_bibliographic_records": 13,
@@ -11,7 +11,7 @@
   "exclusion_revalidation_pending": 0,
   "metadata_only_records": 1571,
   "discovery_identifiers": 3907,
-  "unindexed_candidates": 945,
+  "unindexed_candidates": 944,
   "pending_editorial": [
     {
       "id": "github:thudm/autoglm",
@@ -84,23 +84,29 @@
       "name": "LiteCUA implementation",
       "url": "https://github.com/agiresearch/LiteCUA",
       "reason": "primary evidence unresolved: HTTP Error 404: Not Found"
+    },
+    {
+      "id": "url:12d789d450207bd6d5da",
+      "name": "Project Mariner",
+      "url": "https://labs.google.com/mariner/",
+      "reason": "The Project Mariner page on labs.google.com is a client-rendered sign-in shell whose HTML carries only the title, and the former deepmind.google Project Mariner pages now redirect to the DeepMind homepage. Approval needs a readable first-party product page."
     }
   ],
   "by_kind": {
     "agent": 38,
-    "benchmark": 79,
+    "benchmark": 80,
     "company": 16,
     "dataset": 80,
     "framework": 66,
     "infrastructure": 14,
-    "model": 93,
+    "model": 94,
     "paper": 2565,
-    "product": 19,
+    "product": 20,
     "survey": 13,
     "tool": 20
   },
   "curated_by_environment": {
-    "android": 275,
+    "android": 276,
     "cross-platform": 186,
     "desktop": 298,
     "harmonyos": 2,
@@ -108,7 +114,7 @@
     "linux": 40,
     "macos": 29,
     "unspecified": 327,
-    "web": 534,
+    "web": 537,
     "windows": 51
   },
   "curated_by_kind_and_environment": {
@@ -129,7 +135,7 @@
       "linux": 5,
       "macos": 3,
       "unspecified": 3,
-      "web": 35,
+      "web": 36,
       "windows": 4
     },
     "company": {
@@ -168,14 +174,14 @@
       "windows": 1
     },
     "model": {
-      "android": 23,
+      "android": 24,
       "cross-platform": 46,
       "desktop": 21,
       "ios": 4,
       "linux": 4,
       "macos": 4,
       "unspecified": 2,
-      "web": 26,
+      "web": 27,
       "windows": 4
     },
     "paper": {
@@ -192,7 +198,7 @@
     },
     "product": {
       "desktop": 5,
-      "web": 17
+      "web": 18
     },
     "survey": {
       "android": 1,
@@ -213,7 +219,7 @@
     }
   },
   "license_declarations_by_scope": {
-    "code": 164,
+    "code": 166,
     "data": 56,
     "weights": 53,
     "document": 0
@@ -324,12 +330,12 @@
         "state": "success"
       },
       "discovered": 132,
-      "indexed": 94,
-      "indexed_resources": 94,
+      "indexed": 95,
+      "indexed_resources": 95,
       "resolved_aliases": 0,
-      "curated": 84,
+      "curated": 85,
       "excluded": 0,
-      "unindexed": 38
+      "unindexed": 37
     },
     {
       "id": "steel-web",

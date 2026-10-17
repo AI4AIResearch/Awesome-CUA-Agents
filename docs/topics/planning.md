@@ -2,9 +2,9 @@
 
 [Home](../../README.md) · [All topics](../topics.md) · [Full arXiv bibliography](../papers.md)
 
-239 source-reviewed resources tagged `planning`. Curated metadata, not a performance ranking; unknown facts are shown as —.
+240 source-reviewed resources tagged `planning`. Curated metadata, not a performance ranking; unknown facts are shown as —.
 
-**Contents:** [Datasets (4)](#datasets) · [Models (26)](#models) · [Agents (14)](#agents) · [Frameworks (13)](#frameworks) · [Surveys (1)](#surveys) · [Papers (181)](#papers)
+**Contents:** [Datasets (4)](#datasets) · [Models (27)](#models) · [Agents (14)](#agents) · [Frameworks (13)](#frameworks) · [Surveys (1)](#surveys) · [Papers (181)](#papers)
 
 ## Datasets
 
@@ -34,6 +34,7 @@
 | [Holo2 4B](https://huggingface.co/Hcompany/Holo2-4B) | web, desktop, cross-platform | — | weights apache-2.0 | A Qwen3-VL-based checkpoint for navigation and multi-step GUI actions across web, desktop and mobile interfaces. | [✓ 2026‑10‑17](https://huggingface.co/Hcompany/Holo2-4B/raw/main/README.md) |
 | [Holo3 35B-A3B](https://huggingface.co/Hcompany/Holo3-35B-A3B) | web, desktop, cross-platform | — | weights apache-2.0 | A sparse Qwen3.5-based GUI-action checkpoint released for navigation and computer-use workflows. | [✓ 2026‑10‑17](https://huggingface.co/Hcompany/Holo3-35B-A3B/raw/main/README.md) |
 | [InfiGUI-R1](https://github.com/Reallm-Labs/InfiGUI-R1) | cross-platform | [2504.14239](https://arxiv.org/abs/2504.14239) (2025) | code Apache-2.0 | 3B GUI agent trained in two stages: distilling spatial reasoning from teacher models, then reinforcement learning that rewards accurate sub-goals and trains error recovery. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/Reallm-Labs/InfiGUI-R1/HEAD/README.md) |
+| [Magma](https://github.com/microsoft/Magma) | web, android | — | code MIT | Microsoft foundation model for multimodal agents, pretrained with Set-of-Mark and Trace-of-Mark objectives on UI, robotics and video data and fine-tunable for web and mobile UI navigation. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/microsoft/Magma/HEAD/README.md) |
 | [OpenAI CUA](https://openai.com/index/computer-using-agent/) | web, desktop | — | — | Computer-using model introduced with the Operator research preview. | [✓ 2026‑10‑16](https://openai.com/index/computer-using-agent/) |
 | [OpenCUA](https://github.com/xlang-ai/OpenCUA) | desktop | [2508.09123](https://arxiv.org/abs/2508.09123) (2025) | code MIT | Open computer-use research stack including models and training resources. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/xlang-ai/OpenCUA/HEAD/README.md) |
 | [OpenCUA 32B](https://huggingface.co/xlangai/OpenCUA-32B) | desktop, linux, windows, macos | [2508.09123](https://arxiv.org/abs/2508.09123) (2025) | weights mit | A Qwen2.5-VL-based computer-use checkpoint that combines screenshot history with planning and grounded executable actions. | [✓ 2026‑10‑17](https://huggingface.co/xlangai/OpenCUA-32B/raw/main/README.md) |

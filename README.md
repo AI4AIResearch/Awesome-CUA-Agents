@@ -1,7 +1,7 @@
 # Awesome Computer-Use Agents
 
 <!-- BADGES:START -->
-[![Resources](https://img.shields.io/badge/resources-3%2C003-4f46e5)](data/catalog.jsonl) [![Curated](https://img.shields.io/badge/source--reviewed-1%2C432-0e8a16)](docs/coverage.md) [![Evidence](https://img.shields.io/badge/evidence%20through-2026--10--17-1d76db)](docs/coverage.md) [![Catalog quality](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml/badge.svg)](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml) [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![Website](https://img.shields.io/badge/website-awesomecua.github.io-6366f1)](https://awesomecua.github.io/)
+[![Resources](https://img.shields.io/badge/resources-3%2C006-4f46e5)](data/catalog.jsonl) [![Curated](https://img.shields.io/badge/source--reviewed-1%2C435-0e8a16)](docs/coverage.md) [![Evidence](https://img.shields.io/badge/evidence%20through-2026--10--17-1d76db)](docs/coverage.md) [![Catalog quality](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml/badge.svg)](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml) [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![Website](https://img.shields.io/badge/website-awesomecua.github.io-6366f1)](https://awesomecua.github.io/)
 <!-- BADGES:END -->
 
 **A source-backed data catalog for computer-use, GUI, browser, and mobile agents.**
@@ -24,9 +24,9 @@ The goal is comprehensive coverage of public research and industry resources, wi
 
 <!-- STATS:START -->
 
-**3,003 resource records** · **1,432 curated** · **2,578 paper and survey records** · **44 discovery documents**
+**3,006 resource records** · **1,435 curated** · **2,578 paper and survey records** · **44 discovery documents**
 
-Evidence through `2026-10-17T17:11:36Z`. 1,571 records have bibliographic verification only; 945 discovered identifiers remain unresolved. 118 scope exclusions retain their original metadata in the archive. Counts overlap as explained below.
+Evidence through `2026-10-17T17:18:56Z`. 1,571 records have bibliographic verification only; 944 discovered identifiers remain unresolved. 118 scope exclusions retain their original metadata in the archive. Counts overlap as explained below.
 
 <!-- STATS:END -->
 
@@ -38,10 +38,10 @@ Evidence through `2026-10-17T17:11:36Z`. 1,571 records have bibliographic verifi
 | [Research by topic](docs/topics.md) · **994** reviewed papers · [Full bibliography](docs/papers.md) · 2,578 paper and survey records | [Agents](docs/agents.md) · **38** |
 | [Surveys](docs/surveys.md) · **13** | [Frameworks](docs/frameworks.md) · **66** |
 | [Datasets](docs/datasets.md) · **80** | [Infrastructure](docs/infrastructures.md) · **14** |
-| [Benchmarks](docs/benchmarks.md) · **79** | [Tools](docs/tools.md) · **20** |
-| [Models and checkpoint releases](docs/models.md) · **93** | [Products](docs/products.md) · **19** · [Publishers and brands](docs/companies.md) · **16** |
+| [Benchmarks](docs/benchmarks.md) · **80** | [Tools](docs/tools.md) · **20** |
+| [Models and checkpoint releases](docs/models.md) · **94** | [Products](docs/products.md) · **20** · [Publishers and brands](docs/companies.md) · **16** |
 
-**By platform:** [Web](docs/environments/web.md) **534** · [Desktop](docs/environments/desktop.md) **298** · [Windows](docs/environments/windows.md) **51** · [macOS](docs/environments/macos.md) **29** · [Linux](docs/environments/linux.md) **40** · [Android](docs/environments/android.md) **275** · [iOS](docs/environments/ios.md) **18** · [HarmonyOS](docs/environments/harmonyos.md) **2** · [Cross-platform](docs/environments/cross-platform.md) **186**
+**By platform:** [Web](docs/environments/web.md) **537** · [Desktop](docs/environments/desktop.md) **298** · [Windows](docs/environments/windows.md) **51** · [macOS](docs/environments/macos.md) **29** · [Linux](docs/environments/linux.md) **40** · [Android](docs/environments/android.md) **276** · [iOS](docs/environments/ios.md) **18** · [HarmonyOS](docs/environments/harmonyos.md) **2** · [Cross-platform](docs/environments/cross-platform.md) **186**
 <!-- EXPLORE:END -->
 
 Coverage spans web, desktop, Android, iOS, Windows, macOS, Linux, and cross-platform work. Topics include grounding, screen understanding, planning, memory, long-horizon workflows, reinforcement learning, data generation, safety, robustness, and evaluation. Environment facets overlap; framework support is not assumed from a model's benchmark results.
@@ -61,7 +61,7 @@ The most-mentioned curated resources per category: the count is how many other c
 | 2025‑05‑16 | [A Survey on the Safety and Security Threats of Computer-Using Agents: JARVIS or Ultron?](https://arxiv.org/abs/2505.10924) | cross-platform |
 | 2025‑04‑29 | [A Survey on GUI Agents with Foundation Models Enhanced by Reinforcement Learning](https://arxiv.org/abs/2504.20464) | cross-platform |
 
-**Benchmarks** · [all 79 →](docs/benchmarks.md)
+**Benchmarks** · [all 80 →](docs/benchmarks.md)
 
 | Resource | Mentions | Environments | Paper | License | Description |
 | --- | ---: | --- | --- | --- | --- |
@@ -72,11 +72,11 @@ The most-mentioned curated resources per category: the count is how many other c
 | [VisualWebArena](https://github.com/web-arena-x/visualwebarena) | 7 | web | [2401.13649](https://arxiv.org/abs/2401.13649) (2024) | — | Visually grounded web tasks extending the WebArena evaluation setting. |
 | [AndroidWorld](https://github.com/google-research/android_world) | 6 | android | [2405.14573](https://arxiv.org/abs/2405.14573) (2024) | code Apache-2.0 | Android environment with programmatic task evaluation for mobile agents. |
 
-**Models** · [all 93 →](docs/models.md)
+**Models** · [all 94 →](docs/models.md)
 
 | Resource | Mentions | Environments | Paper | License | Description |
 | --- | ---: | --- | --- | --- | --- |
-| [SeeClick](https://github.com/njucckevin/SeeClick) | 7 | cross-platform | [2401.10935](https://arxiv.org/abs/2401.10935) (2024) | code Apache-2.0 | GUI grounding model trained to locate visual interface elements. |
+| [SeeClick](https://github.com/njucckevin/SeeClick) | 8 | cross-platform | [2401.10935](https://arxiv.org/abs/2401.10935) (2024) | code Apache-2.0 | GUI grounding model trained to locate visual interface elements. |
 | [Aguvis](https://github.com/xlang-ai/aguvis) | 5 | cross-platform | [2412.04454](https://arxiv.org/abs/2412.04454) (2024) | — | Vision-based GUI agent models with unified action representations. |
 | [UI-TARS](https://github.com/bytedance/UI-TARS) | 5 | cross-platform | [2501.12326](https://arxiv.org/abs/2501.12326) (2025) | code Apache-2.0 | Native GUI agent models; UI-TARS-1.5 adds reinforcement-learned reasoning before acting and an open 7B checkpoint, and UI-TARS-2 extends to games, code and tool use. |
 | [OpenCUA](https://github.com/xlang-ai/OpenCUA) | 3 | desktop | [2508.09123](https://arxiv.org/abs/2508.09123) (2025) | code MIT | Open computer-use research stack including models and training resources. |
@@ -125,6 +125,9 @@ Newest editorial approvals of models, datasets, benchmarks, systems, and tools (
 <!-- RECENT:START -->
 | Reviewed | Resource | Kind | Environments | Description |
 | --- | --- | --- | --- | --- |
+| 2026‑10‑17 | [Mind2Web 2](https://github.com/OSU-NLP-Group/Mind2Web-2) | benchmark | web | Long-horizon agentic web search benchmark whose Agent-as-a-Judge framework scores time-varying, citation-backed answers, with evaluation scripts for its dev and test sets. |
+| 2026‑10‑17 | [Magma](https://github.com/microsoft/Magma) | model | web, android | Microsoft foundation model for multimodal agents, pretrained with Set-of-Mark and Trace-of-Mark objectives on UI, robotics and video data and fine-tunable for web and mobile UI navigation. |
+| 2026‑10‑17 | [Amazon Nova Act](https://aws.amazon.com/nova/act/) | product | web | AWS service for building and deploying agents that automate browser-based UI workflows from natural language and Python, powered by a custom Nova 2 Lite model. |
 | 2026‑10‑17 | [WebVLN research implementation](https://github.com/WebVLN/WebVLN) | framework | web | Training and evaluation code for question-guided website navigation that combines visual observations with web-specific HTML information. |
 | 2026‑10‑17 | [WebMarker](https://github.com/reidbarber/webmarker) | tool | web | A browser library that labels interactive elements and their boxes for visual prompting, preserving element mappings that automation code can use to execute selected actions. |
 | 2026‑10‑17 | [WebLlama](https://github.com/McGill-NLP/webllama) | framework | web | Training, evaluation and integration tooling for dialogue-guided web agents, including Llama fine-tuning workflows and BrowserGym examples built around WebLINX. |
@@ -134,9 +137,6 @@ Newest editorial approvals of models, datasets, benchmarks, systems, and tools (
 | 2026‑10‑17 | [Self-MAP](https://github.com/magicgh/Self-MAP) | framework | web | A conversational web-agent implementation with candidate ranking and memory-assisted action planning, including optional memory simplification, refinement and self-reflection modules. |
 | 2026‑10‑17 | [OpenAgents Web Agent](https://github.com/xlang-ai/OpenAgents/tree/main/real_agents/web_agent) | agent | web | The OpenAgents browser-control component, connecting a Chrome extension to a web agent and local chat platform for navigating sites and completing interface tasks. |
 | 2026‑10‑17 | [MT-Mind2Web](https://huggingface.co/datasets/magicgh/MT-Mind2Web) | dataset | web | Multi-turn web-navigation conversations constructed from Mind2Web interactions, with dialogue turns, HTML snapshots, element candidates and click/type/select action sequences. |
-| 2026‑10‑17 | [MONDAY annotations](https://huggingface.co/datasets/runamu/MONDAY) | dataset | android, ios | Video-derived mobile navigation annotations that pair scene boundaries and screen or element boxes with action labels for training and evaluating GUI agents. |
-| 2026‑10‑17 | [MobileGPT](https://github.com/fclab-skku/MobileGPT) | agent | android | An Android client and Python-server agent that learns reusable app subtasks through exploration, selection, derivation and memory recall. |
-| 2026‑10‑17 | [MobBench task definitions](https://huggingface.co/datasets/OpenDFM/MobA-MobBench) | benchmark | android | A public set of real-device mobile task definitions used to evaluate MobA, with Chinese and English task material packaged in a versioned JSON release. |
 <!-- RECENT:END -->
 
 ## Use the data
