@@ -412,6 +412,15 @@ class TopicHubTests(unittest.TestCase):
         self.assertIn("| — | [No date](https://example.com/arxiv:2403.00001) | metadata |  |", page)
         self.assertNotIn("None", page)
 
+    def test_curated_non_arxiv_paper_stays_in_bibliography(self):
+        rows = [self.row("url:0123456789abcdef0123", "Workshop paper", "paper", ["grounding"], None)]
+        report = {"as_of_utc": "2026-10-16T00:00:00Z", "total_records": 1, "curated_records": 1, "metadata_only_records": 0, "bibliographic_records": 0,
+            "arxiv_archive_records": 0, "excluded_records": 0, "discovery_identifiers": 0, "unindexed_candidates": 0, "pending_editorial": [], "sources": [],
+            "primary_search": {}, "license_declarations_by_scope": {}, "exclusion_revalidation_pending": 0, "curated_by_kind_and_environment": {}}
+        files = build.documents(rows, report)
+        self.assertIn("[Workshop paper](https://example.com/url:0123456789abcdef0123) | ⭐ reviewed", files["docs/papers.md"])
+        self.assertIn("Workshop paper", files["docs/topics/grounding.md"])
+
     def test_bibliography_owns_papers_page(self):
         rows = [self.row("arxiv:2401.00001", "Reviewed paper", "paper", ["grounding"], "2024-01-01")]
         report = {"as_of_utc": "2026-10-16T00:00:00Z", "total_records": 1, "curated_records": 1, "metadata_only_records": 0, "bibliographic_records": 1,

@@ -355,7 +355,7 @@ def documents(rows, report):
         "Explicit scope exclusions are listed in the [scope-decision ledger](../data/exclusion-status.json); original records remain in the [metadata archive](../data/papers.jsonl).", ""]
     years = collections.defaultdict(list)
     for r in rows:
-        if r["id"].startswith("arxiv:"):
+        if r["id"].startswith("arxiv:") or (r["kind"] == "paper" and r["review_status"] == "curated"):
             years[r["published_at"][:4] if r["published_at"] else "Undated"].append(r)
     order = sorted((y for y in years if y != "Undated"), reverse=True) + (["Undated"] if "Undated" in years else [])
     reviewed = lambda group: sum(r["review_status"] == "curated" for r in group)
@@ -369,7 +369,10 @@ def documents(rows, report):
             paper_lines.append(f"| {r['published_at'] or '—'} | [{md(r['name'])}]({r['url']}) | {'⭐ reviewed' if curated else 'metadata'} | {topics} |")
         paper_lines.append("")
     files["docs/papers.md"] = "\n".join(paper_lines)
-    files.update(topic_pages(rows))
+    hubs = topic_pages(rows)
+    if hubs.keys() & files.keys():
+        raise ValueError("Generated paths assigned twice: " + ", ".join(sorted(hubs.keys() & files.keys())))
+    files.update(hubs)
     lines = ["# Coverage and quality ledger", "", f"Evidence snapshot through **{report['as_of_utc']}**. Generated from committed source receipts.", "",
         f"- {report['total_records']:,} resource records: {report['curated_records']:,} curated; {report['metadata_only_records']:,} bibliographic metadata only.",
         f"- {report['bibliographic_records']:,} arXiv records, including curated surveys. This count overlaps the status counts above.",
