@@ -17,11 +17,16 @@ def record():
 class FormatCheckerTests(unittest.TestCase):
     def test_stdlib_gate_rejects_invalid_last_verified_at(self):
         self.assertNotIn("arxiv:2404.07972: invalid last_verified_at", build.validate_records([record()]))
-        for value in ["not-a-timestamp", "2026-01-01T00:00:00", "2026-01-01", None, 20260101]:
+        for value in ["not-a-timestamp", "2026-01-01T00:00:00", "2026-01-01"]:
             with self.subTest(value=value):
                 row = record()
                 row["last_verified_at"] = value
                 self.assertIn("arxiv:2404.07972: invalid last_verified_at", build.validate_records([row]))
+        for value in [None, 20260101]:
+            with self.subTest(value=value):
+                row = record()
+                row["last_verified_at"] = value
+                self.assertEqual(build.validate_records([row]), ["arxiv:2404.07972: malformed fields last_verified_at"])
 
     def test_schema_enforces_date_time_and_uri_formats(self):
         import jsonschema

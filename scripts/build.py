@@ -108,14 +108,31 @@ def source_records(with_scope=False):
     return (rows,pending,decisions) if with_scope else (rows,pending)
 
 
+FIELD_TYPES = {"id": str, "name": str, "kind": str, "url": str, "aliases": list, "environments": list, "topics": list, "scope": str, "summary": (str, type(None)), "review_status": str,
+    "published_at": (str, type(None)), "updated_at": (str, type(None)), "authors": list, "identifiers": dict, "links": list, "relations": list, "licenses": dict, "evidence": list,
+    "last_verified_at": str, "notes": str, "details": dict}
+
+
+def malformed_fields(r):
+    # The semantic checks assume these JSON types; the published schema reports each exact mismatch.
+    strings = lambda values: all(isinstance(v, str) for v in values)
+    nested = {"aliases": strings, "environments": strings, "topics": strings, "authors": strings, "identifiers": lambda v: strings(v.values()),
+        "evidence": lambda v: all(isinstance(e, dict) and strings(e.get(k, "") for k in ("url", "sha256", "retrieved_at", "role", "method")) and isinstance(e.get("supports", []), list) for e in v),
+        "relations": lambda v: all(isinstance(e, dict) and strings(e.get(k, "") for k in ("type", "target_id", "evidence_url")) for e in v)}
+    return [key for key, kind in FIELD_TYPES.items() if key in r and not (isinstance(r[key], kind) and nested.get(key, lambda v: True)(r[key]))]
+
+
 def validate_records(rows):
     errors, seen = [], set()
-    required = {"id", "name", "kind", "url", "aliases", "environments", "topics", "scope", "summary", "review_status", "published_at", "updated_at", "authors", "identifiers", "links", "relations", "licenses", "evidence", "last_verified_at", "notes", "details"}
-    ids = {r.get("id") for r in rows}
+    required = set(FIELD_TYPES)
+    ids = {r.get("id") for r in rows if isinstance(r.get("id"), str)}
     for r in rows:
         rid = r.get("id", "<missing>")
         def error(message):
             errors.append(f"{rid}: {message}")
+        if malformed := malformed_fields(r):
+            error("malformed fields " + ", ".join(malformed))
+            continue
         if rid in seen:
             error("duplicate identifier")
         seen.add(rid)
@@ -158,11 +175,12 @@ def validate_records(rows):
                 dt.datetime.fromisoformat(ev["retrieved_at"].replace("Z", "+00:00"))
             except (ValueError, KeyError):
                 error("invalid evidence timestamp")
-        verified = r.get("last_verified_at")
+        # Missing or wrongly typed values were reported above; only check the format of strings.
+        verified = r.get("last_verified_at") if isinstance(r.get("last_verified_at"), str) else None
         try:
-            if dt.datetime.fromisoformat(verified.replace("Z", "+00:00")).tzinfo is None:
+            if verified is not None and dt.datetime.fromisoformat(verified.replace("Z", "+00:00")).tzinfo is None:
                 raise ValueError
-        except (ValueError, AttributeError):
+        except ValueError:
             error("invalid last_verified_at")
             verified = None
         relation_keys = set()
@@ -182,7 +200,7 @@ def validate_records(rows):
                     dt.date.fromisoformat(value)
                     if verified and value > verified[:10]:
                         error(f"{key} is after its verification date")
-                except (ValueError, KeyError):
+                except ValueError:
                     error(f"invalid {key}")
     return errors
 
