@@ -71,6 +71,13 @@ test('untrusted names and source URLs cannot inject active HTML',()=>{
   assert.equal(safeURL('data:text/html,hello'),'#');
   assert.equal(safeURL('https://example.org/path'),'https://example.org/path');
 });
+test('card monograms use only letters and digits from the name',async()=>{
+  const {initials}=await import('../web/catalog-core.js');
+  const cases={'"Are We Done Yet?": A Vision-Based Judge':'AW','DSBC : Data Science task Benchmarking':'DD','UI-TARS':'UT','\\textsc{GUI-Spotlight}: Adaptive Iterative Focus':'GS','CALA-$n$: A Quantum Library':'CN','$C^3$-Bench: The Things':'CB','Ponder & Press: Advancing':'PP','[CLS] Token Tells Everything':'CT','Human + AI for Accelerating':'HA','BrowserOS / BrowserOS neo':'BB','GUIOdyssey — current data release':'GC','Qwen2.5-VL':'QV','OSWorld':'O','面向界面 理解':'面理','𝕏 Agent':'𝕏A'};
+  for(const [name,expected] of Object.entries(cases))assert.equal(initials(name),expected,name);
+  for(const name of ['','— / —','$$',null])assert.equal(initials(name),'',String(name));
+  for(const r of rows)assert.match(initials(r.name),/^[\p{L}\p{N}]{1,4}$/u,r.name);
+});
 test('featured project names do not accidentally feature identically named publishers',()=>{
   const result=filtered(rows,initial());
   const framework=result.findIndex(r=>r.name==='Browser Use'&&r.kind==='framework');
