@@ -54803,12 +54803,12 @@
     "kind": "model",
     "url": "https://github.com/microsoft/Magma",
     "environments": [
-      "web",
-      "android"
+      "web"
     ],
     "topics": [
       "grounding",
-      "planning"
+      "planning",
+      "mobile-navigation"
     ],
     "summary": "Microsoft foundation model for multimodal agents, pretrained with Set-of-Mark and Trace-of-Mark objectives on UI, robotics and video data and fine-tunable for web and mobile UI navigation.",
     "verify_terms": [

@@ -106,7 +106,7 @@
     "tool": 20
   },
   "curated_by_environment": {
-    "android": 276,
+    "android": 275,
     "cross-platform": 186,
     "desktop": 298,
     "harmonyos": 2,
@@ -174,7 +174,7 @@
       "windows": 1
     },
     "model": {
-      "android": 24,
+      "android": 23,
       "cross-platform": 46,
       "desktop": 21,
       "ios": 4,

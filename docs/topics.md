@@ -11,7 +11,7 @@
 | [Data generation](topics/data-generation.md) | 307 | · | 51 | 2 | 20 | 234 | [Teaching Agents in their Own Style: Blackbox Teacher Distillation for Web Agents](https://arxiv.org/abs/2610.19834) · 2026-10-14 |
 | [Web navigation](topics/web-navigation.md) | 249 | 13 | 7 | 11 | 43 | 175 | [Why Generate a Click? Plug-in Decision Heads for Web Agents](https://arxiv.org/abs/2610.20107) · 2026-10-14 |
 | [Planning](topics/planning.md) | 240 | · | 4 | 27 | 27 | 182 | [OpenGCUA: Toward a Fully Open Stack for Generalist Computer Use](https://arxiv.org/abs/2610.22200) · 2026-10-15 |
-| [Mobile navigation](topics/mobile-navigation.md) | 234 | 14 | 12 | 14 | 25 | 169 | [How GUI Agents Fail: GraceBench for Execution Stability Diagnosis](https://arxiv.org/abs/2610.19900) · 2026-10-14 |
+| [Mobile navigation](topics/mobile-navigation.md) | 235 | 14 | 12 | 15 | 25 | 169 | [How GUI Agents Fail: GraceBench for Execution Stability Diagnosis](https://arxiv.org/abs/2610.19900) · 2026-10-14 |
 | [Reinforcement learning](topics/reinforcement-learning.md) | 209 | 2 | 5 | 22 | 19 | 161 | [OS-Helix: Unifying GUI Interaction and Code Execution in Native Computer-Using Agents](https://arxiv.org/abs/2610.22234) · 2026-10-15 |
 | [Screen understanding](topics/screen-understanding.md) | 180 | 5 | 17 | 8 | 10 | 140 | [STP-GUI: Spatially-Aware Token Pruning for Efficient Web-GUI Agents](https://arxiv.org/abs/2610.20390) · 2026-10-14 |
 | [Safety & security](topics/safety-security.md) | 147 | 7 | · | · | 5 | 135 | [Task-State Governance: A Virtual Machine for Verifiable and Recoverable GUI Agent Execution](https://arxiv.org/abs/2610.20100) · 2026-10-14 |
