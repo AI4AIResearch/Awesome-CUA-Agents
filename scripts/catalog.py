@@ -9,6 +9,7 @@ import datetime as dt
 import email.utils
 import hashlib
 import html
+import http.client
 import json
 import os
 from pathlib import Path
@@ -99,7 +100,7 @@ def fetch(url, refresh=False):
             body_path.write_bytes(body)
             write_json(info_path, info)
             return info, body
-        except (urllib.error.URLError, TimeoutError, ValueError, OSError) as error:
+        except (urllib.error.URLError, http.client.HTTPException, TimeoutError, ValueError, OSError) as error:
             info.update(error=str(error), status=getattr(error, "code", None))
             headers = getattr(error, "headers", None)
             if headers and headers.get('Retry-After'):
