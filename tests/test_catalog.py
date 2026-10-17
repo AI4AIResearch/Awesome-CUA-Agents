@@ -338,5 +338,33 @@ class CategoryPageTests(unittest.TestCase):
         self.assertEqual(build.table_row(row, build.KIND_COLUMNS["survey"][0], by_id).split(" | ")[0], "| 2025-01-02")
 
 
+
+class ReadmeBlockTests(unittest.TestCase):
+    def row(self, rid, name, kind="benchmark", status="curated"):
+        return {"id": rid, "name": name, "kind": kind, "review_status": status, "url": "https://example.com/" + name, "environments": ["web"],
+            "summary": name + " summary.", "relations": [], "licenses": {"code": None, "data": None, "weights": None, "document": None}}
+
+    def test_highlights_rank_by_distinct_mentioning_resources(self):
+        rows = [self.row("github:a/b", "Beta"), self.row("github:a/a", "Alpha"), self.row("github:a/c", "Gamma"), self.row("github:a/d", "Delta", status="metadata_verified")]
+        edge = lambda source, target: {"source_id": source, "target_id": target, "target_in_catalog": True}
+        edges = [edge("x", "github:a/b"), edge("y", "github:a/b"), edge("x", "github:a/b"), edge("x", "github:a/a"), edge("y", "github:a/c"),
+            edge("github:a/c", "github:a/c"), edge("x", "github:a/d"), {"source_id": "z", "target_id": "github:a/c", "target_in_catalog": False}]
+        table = [line for line in build.highlights(rows, edges).splitlines() if line.startswith("| [")]
+        self.assertEqual([line.split("]")[0][3:] for line in table], ["Beta", "Alpha", "Gamma"])
+        self.assertIn("| 2 |", table[0])
+        self.assertIn("[all 3 →](docs/benchmarks.md)", build.highlights(rows, edges))
+        self.assertEqual(build.highlights(rows, []).strip(), "")
+
+    def test_explore_counts_curated_resources(self):
+        rows = [self.row("a", "A"), self.row("b", "B"), self.row("c", "C", status="metadata_verified"), self.row("d", "D", kind="paper")]
+        table = build.explore(rows, {"bibliographic_records": 1234})
+        self.assertIn("[Benchmarks](docs/benchmarks.md) · **2**", table)
+        self.assertIn("**1** reviewed of 1,234", table)
+
+    def test_shield_escapes_separators(self):
+        self.assertEqual(build.shield("evidence through", "2026-10-17", "1d76db"), "https://img.shields.io/badge/evidence%20through-2026--10--17-1d76db")
+        self.assertEqual(build.shield("a_b", "1,036", "blue"), "https://img.shields.io/badge/a__b-1%2C036-blue")
+
+
 if __name__ == "__main__":
     unittest.main()
