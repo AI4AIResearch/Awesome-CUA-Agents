@@ -69,7 +69,9 @@ class ArxivPathIdentityTests(unittest.TestCase):
                     "https://arxiv.org/pdf/2408.07199", "https://arxiv.org/html/2408.07199v1/#S2", "https://arxiv.org/abs/2408.07199/",
                     "https://www.arxiv.org/abs/2408.07199?context=cs", "https://export.arxiv.org/abs/2408.07199", "https://ARXIV.org/ABS/2408.07199",
                     "https://huggingface.co/papers/2408.07199", "https://huggingface.co/papers/2408.07199#community",
-                    "https://arxiv.org/abs/2408.07199},", "https://arxiv.org/abs/2408.07199**"):
+                    "https://arxiv.org/abs/2408.07199},", "https://arxiv.org/abs/2408.07199**",
+                    # Chinese prose often runs straight into a link; only an ASCII word character extends the ID.
+                    "https://arxiv.org/abs/2408.07199中文", "https://huggingface.co/papers/2408.07199论文"):
             with self.subTest(url=url):
                 self.assertEqual(catalog.canonical(url), PAPER)
 

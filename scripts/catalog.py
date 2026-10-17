@@ -30,8 +30,8 @@ DATA = ROOT / "data"
 UA = "Awesome-CUA/0.1 (+https://github.com/reacher-z/Awesome-CUA)"
 # Matched at the start of the URL path only, so a paper link in a query or fragment is not the URL's identity.
 # The ID must end at a non-word character: extra digits or a malformed version never truncate into another ID.
-ARXIV_RE = re.compile(r"/(?:abs|pdf|html)/(\d{4}\.\d{4,5})(?:v\d+)?(?!\w)", re.I)
-HF_PAPER_RE = re.compile(r"/papers/(\d{4}\.\d{4,5})(?:v\d+)?(?!\w)", re.I)
+ARXIV_RE = re.compile(r"/(?:abs|pdf|html)/(\d{4}\.\d{4,5})(?:v\d+)?(?!\w)", re.I | re.A)
+HF_PAPER_RE = re.compile(r"/papers/(\d{4}\.\d{4,5})(?:v\d+)?(?!\w)", re.I | re.A)
 # A link may contain balanced "(...)", as in Mercury_(planet); the ")" closing a Markdown link is not part of it.
 LINK_RE = re.compile(r"https?://(?:[^\s<>\[\]()\"']|\([^\s<>\[\]()\"']*\)|\()+")
 KINDS = {"paper", "survey", "model", "dataset", "benchmark", "agent", "framework", "infrastructure", "product", "company", "tool", "learning"}
@@ -161,7 +161,7 @@ def canonical(url, *, allow_doi=False):
                 return None
             doi=urllib.parse.unquote(doi_parts.path.lstrip('/'),errors='strict')
             # arXiv's DataCite DOI names the preprint itself, so it folds into the arXiv record even where bare DOIs are ignored.
-            arxiv_doi=re.match(r'10\.48550/arxiv\.(\d{4}\.\d{4,5})(?:v\d+)?(?!\w)',doi,re.I)
+            arxiv_doi=re.match(r'10\.48550/arxiv\.(\d{4}\.\d{4,5})(?:v\d+)?(?!\w)',doi,re.I|re.A)
             if arxiv_doi:return f'arxiv:{arxiv_doi[1]}',f'https://arxiv.org/abs/{arxiv_doi[1]}','arxiv'
             if not allow_doi or not re.fullmatch(r'10\.\d{4,9}/[^\s\\]+',doi,re.I):return None
             clean='https://doi.org/'+urllib.parse.quote(doi.casefold(),safe='/():;._-')

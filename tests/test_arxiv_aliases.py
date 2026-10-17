@@ -20,7 +20,8 @@ class ArxivAliasTests(unittest.TestCase):
 
     def test_arxiv_doi_folds_to_the_paper(self):
         for url in ("https://doi.org/10.48550/arXiv.2408.07199", "http://dx.doi.org/10.48550/ARXIV.2408.07199", "https://www.doi.org/10.48550/arxiv.2408.07199v2",
-                    "https://doi.org/10.48550/arXiv.2408.07199.", "https://doi.org/10.48550%2FarXiv.2408.07199?utm_source=x"):
+                    "https://doi.org/10.48550/arXiv.2408.07199.", "https://doi.org/10.48550%2FarXiv.2408.07199?utm_source=x",
+                    "https://doi.org/10.48550/arXiv.2408.07199中文"):
             with self.subTest(url=url):
                 self.assertEqual(catalog.canonical(url), PAPER)
                 self.assertEqual(catalog.publication_identity(url), PAPER)
@@ -31,7 +32,8 @@ class ArxivAliasTests(unittest.TestCase):
                 self.assertIsNone(catalog.canonical(url))
         self.assertEqual(catalog.publication_identity("https://doi.org/10.1145/3544548.3580000")[2], "url")
         for url in ("https://web3.arxiv.org.example.com/abs/2408.07199", "https://notarxiv.org/abs/2408.07199", "https://hf.co/org/model",
-                    "https://web3.arxiv.org/a/smith_j_1?from=arxiv.org/abs/2408.07199", "https://ar5iv.org/abs/2408.071990", "https://arxiv.org/abs/cs/0601001"):
+                    "https://web3.arxiv.org/a/smith_j_1?from=arxiv.org/abs/2408.07199", "https://ar5iv.org/abs/2408.071990", "https://arxiv.org/abs/cs/0601001",
+                    "https://arxiv.org/abs/２４０８.０７１９９"):
             with self.subTest(url=url):
                 self.assertEqual(catalog.canonical(url)[2], "url")
 
