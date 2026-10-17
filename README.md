@@ -1,7 +1,7 @@
 # Awesome Computer-Use Agents
 
 <!-- BADGES:START -->
-[![Resources](https://img.shields.io/badge/resources-2%2C569-4f46e5)](data/catalog.jsonl) [![Curated](https://img.shields.io/badge/source--reviewed-1%2C106-0e8a16)](docs/coverage.md) [![Evidence](https://img.shields.io/badge/evidence%20through-2026--10--17-1d76db)](docs/coverage.md) [![Catalog quality](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml/badge.svg)](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml) [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![Website](https://img.shields.io/badge/website-awesomecua.github.io-6366f1)](https://awesomecua.github.io/)
+[![Resources](https://img.shields.io/badge/resources-2%2C584-4f46e5)](data/catalog.jsonl) [![Curated](https://img.shields.io/badge/source--reviewed-1%2C215-0e8a16)](docs/coverage.md) [![Evidence](https://img.shields.io/badge/evidence%20through-2026--10--17-1d76db)](docs/coverage.md) [![Catalog quality](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml/badge.svg)](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml) [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![Website](https://img.shields.io/badge/website-awesomecua.github.io-6366f1)](https://awesomecua.github.io/)
 <!-- BADGES:END -->
 
 **A source-backed data catalog for computer-use, GUI, browser, and mobile agents.**
@@ -20,11 +20,13 @@ The goal is comprehensive coverage of public research and industry resources, wi
 
 **Global completeness is a goal, not a verified claim.** We publish the source populations, review states, and remaining gaps. Bibliographic metadata verification is different from reviewing a resource's relevance or quality.
 
+[Browse by topic](https://awesomecua.github.io/topics/) · [Topic subsets and fingerprints](https://awesomecua.github.io/downloads/topics.json)
+
 <!-- STATS:START -->
 
-**2,569 resource records** · **1,106 curated** · **2,177 paper and survey records** · **44 discovery documents**
+**2,584 resource records** · **1,215 curated** · **2,177 paper and survey records** · **44 discovery documents**
 
-Evidence through `2026-10-17T10:01:32Z`. 1,463 records have bibliographic verification only; 1,391 discovered identifiers remain unresolved. 100 scope exclusions retain their original metadata in the archive. Counts overlap as explained below.
+Evidence through `2026-10-17T11:44:12Z`. 1,369 records have bibliographic verification only; 1,382 discovered identifiers remain unresolved. 100 scope exclusions retain their original metadata in the archive. Counts overlap as explained below.
 
 <!-- STATS:END -->
 
@@ -33,10 +35,10 @@ Evidence through `2026-10-17T10:01:32Z`. 1,463 records have bibliographic verifi
 <!-- EXPLORE:START -->
 | Research and training | Engineering and industry |
 | --- | --- |
-| [Research by topic](docs/topics.md) · **702** reviewed papers · [Full bibliography](docs/papers.md) · 2,177 paper and survey records | [Agents](docs/agents.md) · **33** |
-| [Surveys](docs/surveys.md) · **12** | [Frameworks](docs/frameworks.md) · **54** |
-| [Datasets](docs/datasets.md) · **74** | [Infrastructure](docs/infrastructures.md) · **14** |
-| [Benchmarks](docs/benchmarks.md) · **73** | [Tools](docs/tools.md) · **17** |
+| [Research by topic](docs/topics.md) · **796** reviewed papers · [Full bibliography](docs/papers.md) · 2,177 paper and survey records | [Agents](docs/agents.md) · **34** |
+| [Surveys](docs/surveys.md) · **12** | [Frameworks](docs/frameworks.md) · **58** |
+| [Datasets](docs/datasets.md) · **76** | [Infrastructure](docs/infrastructures.md) · **15** |
+| [Benchmarks](docs/benchmarks.md) · **78** | [Tools](docs/tools.md) · **19** |
 | [Models and checkpoint releases](docs/models.md) · **92** | [Products](docs/products.md) · **19** · [Publishers and brands](docs/companies.md) · **16** |
 <!-- EXPLORE:END -->
 
@@ -47,7 +49,7 @@ Coverage spans web, desktop, Android, iOS, Windows, macOS, Linux, and cross-plat
 The most-mentioned curated resources per category: the count is how many other cataloged resources mention each one in their reviewed first-party source (README, model or dataset card). It reflects connectedness inside this catalog, not quality, popularity, or benchmark performance. Every category page lists all reviewed entries.
 
 <!-- HIGHLIGHTS:START -->
-**Benchmarks** · [all 73 →](docs/benchmarks.md)
+**Benchmarks** · [all 78 →](docs/benchmarks.md)
 
 | Resource | Mentions | Environments | Paper | License | Description |
 | --- | ---: | --- | --- | --- | --- |
@@ -69,7 +71,7 @@ The most-mentioned curated resources per category: the count is how many other c
 | [OS-Atlas](https://github.com/OS-Copilot/OS-Atlas) | 3 | cross-platform | [2410.23218](https://arxiv.org/abs/2410.23218) (2024) | code Apache-2.0 | Foundation action models and data for GUI interaction. |
 | [ShowUI](https://github.com/showlab/ShowUI) | 3 | cross-platform | [2411.17465](https://arxiv.org/abs/2411.17465) (2024) | code Apache-2.0 | Vision-language-action model for GUI interaction. |
 
-**Datasets** · [all 74 →](docs/datasets.md)
+**Datasets** · [all 76 →](docs/datasets.md)
 
 | Resource | Mentions | Environments | Paper | License | Description |
 | --- | ---: | --- | --- | --- | --- |
@@ -80,7 +82,7 @@ The most-mentioned curated resources per category: the count is how many other c
 | [GUIEnv-local](https://huggingface.co/datasets/yiye2023/GUIEnv) | 3 | web | [2406.11317](https://arxiv.org/abs/2406.11317) (2024) | — | The released local-supervision portion of GUIEnv, pairing webpage regions and text for OCR and GUI grounding. |
 | [OpenMobile-Data-v2](https://huggingface.co/datasets/OpenMobile-2/OpenMobile-Data-v2) | 3 | android, web | [2610.14157](https://arxiv.org/abs/2610.14157) (2026) | — | Mobile-agent supervision from emulator and simulator trajectories, plus executable tasks with starting states and success checks for reinforcement learning. |
 
-**Frameworks** · [all 54 →](docs/frameworks.md)
+**Frameworks** · [all 58 →](docs/frameworks.md)
 
 | Resource | Mentions | Environments | Paper | License | Description |
 | --- | ---: | --- | --- | --- | --- |
@@ -91,7 +93,7 @@ The most-mentioned curated resources per category: the count is how many other c
 | [UI-Genie](https://github.com/Euphoria16/UI-Genie) | 3 | android | [2505.21496](https://arxiv.org/abs/2505.21496) (2025) | — | Training and evaluation code for a mobile-agent framework that iteratively generates trajectories using agent and reward-model feedback. |
 | [Computer Use OOTB](https://github.com/showlab/computer_use_ootb) | 2 | desktop | — | code Apache-2.0 | Computer-use agent execution toolkit. |
 
-**Agents** · [all 33 →](docs/agents.md)
+**Agents** · [all 34 →](docs/agents.md)
 
 | Resource | Mentions | Environments | Paper | License | Description |
 | --- | ---: | --- | --- | --- | --- |
@@ -111,18 +113,18 @@ Newest editorial approvals of models, datasets, benchmarks, systems, and tools (
 <!-- RECENT:START -->
 | Reviewed | Resource | Kind | Environments | Description |
 | --- | --- | --- | --- | --- |
-| 2026‑10‑17 | [Rico](https://www.interactionmining.org/archive/rico) | dataset | android | Mobile app screenshots, view hierarchies, and interaction traces for UI research. |
-| 2026‑10‑17 | [MiniWoB++](https://github.com/Farama-Foundation/miniwob-plusplus) | benchmark | web | Browser interaction task environment derived from MiniWoB. |
-| 2026‑10‑17 | [Aria-UI context-aware checkpoint](https://huggingface.co/Aria-UI/Aria-UI-context-aware) | model | android, desktop | The context-aware Aria-UI release that uses interaction context to support grounding in dynamic Android and desktop agent tasks. |
-| 2026‑10‑17 | [WONDERBREAD](https://github.com/HazyResearch/wonderbread) | benchmark | web | An offline benchmark of workflow documentation, quality assessment and knowledge transfer using human web-navigation demonstrations, action traces and written procedures. |
-| 2026‑10‑17 | [VEM GUI-Agent-RL](https://github.com/microsoft/GUI-Agent-RL) | framework | android | Training code that learns a value environment model from offline Android interaction data and uses its frozen value estimates to guide GUI policy optimization. |
-| 2026‑10‑17 | [ScreenSuite](https://github.com/huggingface/screensuite) | framework | web, android, desktop | A shared evaluation harness for GUI-model perception, offline action prediction and multi-step interaction, using simple smolagents-based agents across existing benchmarks. |
-| 2026‑10‑17 | [RCI Agent](https://github.com/posgnu/rci-agent) | agent | web | A MiniWoB++ agent that uses explicit and implicit recursive criticism-and-improvement prompts to refine action plans and ground actions to browser state. |
-| 2026‑10‑17 | [OS-Map](https://github.com/OS-Copilot/OS-Map) | benchmark | desktop, linux | An OSWorld-derived desktop benchmark with an Ubuntu virtual-machine environment and expanded task configurations for measuring breadth and depth of computer interaction. |
-| 2026‑10‑17 | [OpenCUA 72B](https://huggingface.co/xlangai/OpenCUA-72B) | model | desktop, linux, windows, macos | A Qwen2.5-VL-based computer-use checkpoint that combines screenshot history and reflective reasoning to predict executable desktop actions. |
-| 2026‑10‑17 | [MobileWorld (Tongyi-MAI)](https://github.com/Tongyi-MAI/MobileWorld) | benchmark | android | A containerized Android evaluation environment with GUI-only, agent-user interaction and MCP-augmented tasks, plus checks on application and backend state. |
-| 2026‑10‑17 | [GUI-ReWalk](https://github.com/bytedance/GUI-ReWalk) | framework | desktop, linux | A desktop trajectory-generation framework that moves from stochastic GUI exploration to inferred goals and multi-stage task completion, with retrospective reasoning annotations. |
-| 2026‑10‑17 | [AutoDroid V2 training data](https://huggingface.co/datasets/BlitherBoom/AutoDroid-V2-Dataset) | dataset | android | Conversation-formatted supervision released for fine-tuning AutoDroid V2, with the project documenting a ShareGPT-style JSON configuration. |
+| 2026‑10‑17 | [Workflow-Guided Exploration research code](https://github.com/stanfordnlp/wge) | framework | web | Research code that learns browser-control policies by constraining exploration with workflows induced from demonstrations, with a Selenium-based MiniWoB environment and experiment harness. |
+| 2026‑10‑17 | [WebTestBench](https://github.com/friedrichor/WebTestBench) | benchmark | web | An end-to-end web-testing benchmark where agents derive test checklists from development instructions, interact with deployed applications and report functional or constraint-related defects. |
+| 2026‑10‑17 | [VisionTasker](https://github.com/AkimotoAyako/VisionTasker) | agent | android | An Android automation implementation that translates screenshot-based UI understanding into language descriptions for step-by-step LLM planning and action execution. |
+| 2026‑10‑17 | [Universe legacy GUI interaction client](https://github.com/openai/universe) | infrastructure | web, desktop | An archived Gym-compatible client that exposes screen observations and keyboard/mouse actions over VNC for remote application and browser environments, including the historical World of Bits integration. |
+| 2026‑10‑17 | [Sikuli legacy research implementation](https://github.com/sikuli/sikuli) | tool | desktop, macos, linux, windows | The original Sikuli source distribution combines screenshot targets with a Jython scripting library and IDE for visual GUI automation and testing. |
+| 2026‑10‑17 | [OS-Critic Bench](https://huggingface.co/datasets/OS-Copilot/OS-Critic-Bench) | benchmark | cross-platform, desktop, web | A cross-platform GUI-critic benchmark with mobile, desktop and web JSONL splits and screenshot assets, accompanied by public inference and accuracy-scoring scripts. |
+| 2026‑10‑17 | [OculiX (SikuliX continuation)](https://github.com/oculix-org/Oculix) | tool | desktop, windows, macos, linux, android | A maintained continuation of SikuliX that locates on-screen targets with image matching and OCR, drives desktop or Android interfaces, and exposes scripting and optional MCP interfaces. |
+| 2026‑10‑17 | [MobileGym](https://github.com/Purewhiter/mobilegym) | benchmark | web | A browser-hosted mobile-app simulator with programmable state, parameterized tasks and deterministic state-checking judges for parallel GUI-agent evaluation and online reinforcement learning. |
+| 2026‑10‑17 | [GUIPivot](https://github.com/ZrW00/GUIPivot) | framework | android | Research tooling for query-inference pivot tasks that connect screenshot grounding with GUI action reasoning, including preprocessing, query refinement and mobile-agent evaluation. |
+| 2026‑10‑17 | [GUIMid training data](https://huggingface.co/datasets/hkust-nlp/GUIMid) | dataset | web, android | A released GUI-agent mid-training mixture and supporting domain datasets, together with a post-training trajectory file and image archives for web and mobile interaction. |
+| 2026‑10‑17 | [GUI-CIDER research code](https://github.com/Wuzheng02/GUI-CIDER) | framework | android | Released data-synthesis and evaluation scripts that distill planning and causal GUI knowledge into text for mid-training mobile interface agents. |
+| 2026‑10‑17 | [GUI-CIDER causal knowledge data](https://huggingface.co/datasets/wuuuuuz/GUI-CIDER) | dataset | android | A published JSONL corpus of synthesized planning and causal knowledge for GUI-agent mid-training, linked directly from the official GUI-CIDER project. |
 <!-- RECENT:END -->
 
 ## Use the data

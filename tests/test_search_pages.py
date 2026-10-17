@@ -1,5 +1,6 @@
 import hashlib
 import html
+from contextlib import closing
 from html.parser import HTMLParser
 import json
 from pathlib import Path
@@ -90,6 +91,30 @@ class SearchPagesTests(unittest.TestCase):
                              [SITE+resource_path({'id':rid}) for rid in ids])
             self.assertIn('href="/downloads/citations.bib"',markup)
             self.assertIn('href="/downloads/citations.csl.json"',markup)
+    def test_topic_pages_exports_and_bilingual_structured_data_share_exact_membership(self):
+        manifest=json.loads((self.dest/'downloads/topics.json').read_text())
+        expected_topics={topic for row in self.rows if eligible(row) for topic in row['topics']}
+        self.assertEqual({item['id'] for item in manifest['topics']},expected_topics)
+        self.assertEqual(manifest['catalog_sha256'],hashlib.sha256((ROOT/'data/catalog.jsonl').read_bytes()).hexdigest())
+        for item in manifest['topics']:
+            expected={row['id']:row for row in self.rows if eligible(row) and item['id'] in row['topics']}
+            self.assertEqual(set(item['resource_ids']),set(expected))
+            for export in item['exports']:
+                content=(self.dest/export['url'].lstrip('/')).read_bytes()
+                self.assertEqual(hashlib.sha256(content).hexdigest(),export['sha256'])
+                if export['url'].endswith('records.jsonl'):
+                    self.assertEqual({r['id']:r for r in map(json.loads,content.splitlines())},expected)
+            for language,path in item['pages'].items():
+                markup=(self.dest/path.lstrip('/')/'index.html').read_text()
+                ids=[html.unescape(value) for value in re.findall(r'data-resource-id="([^"]+)"',markup)]
+                self.assertEqual(set(ids),set(expected),path)
+                self.assertEqual(len(ids),len(expected),path)
+                graph=json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>',markup,re.S)[1])['@graph']
+                listing=next(entity for entity in graph if entity['@type']=='ItemList')
+                self.assertEqual([entry['url'] for entry in listing['itemListElement']],
+                                 [SITE+resource_path(expected[rid]) for rid in ids])
+                self.assertEqual(listing['numberOfItems'],len(expected))
+                self.assertTrue((self.dest/path.lstrip('/')/'index.md').exists())
     def test_script_versions_match_output_bytes_and_final_page_manifest(self):
         pages={item['path']:item for item in self.manifest['pages']}
         for path,script in [('/', 'app.js'),('/compare/benchmarks/','compare.js'),('/compare/datasets/','compare.js')]:
@@ -161,7 +186,7 @@ class SearchPagesTests(unittest.TestCase):
         expected={row['id']:row for row in self.rows}
         exports=[json.loads((self.dest/'data/records.json').read_text()),
                  [json.loads(line) for line in (self.dest/'downloads/catalog.jsonl').read_text().splitlines()]]
-        with sqlite3.connect((self.dest/'downloads/catalog.sqlite').as_uri()+'?mode=ro',uri=True) as database:
+        with closing(sqlite3.connect((self.dest/'downloads/catalog.sqlite').as_uri()+'?mode=ro',uri=True)) as database:
             exports.append([json.loads(row[0]) for row in database.execute('SELECT record_json FROM resources')])
         for rows in exports:
             self.assertEqual(len(rows),len(expected))

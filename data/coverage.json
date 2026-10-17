@@ -1,17 +1,17 @@
 {
-  "as_of_utc": "2026-10-17T10:01:32Z",
-  "total_records": 2569,
-  "curated_records": 1106,
+  "as_of_utc": "2026-10-17T11:44:12Z",
+  "total_records": 2584,
+  "curated_records": 1215,
   "bibliographic_records": 2177,
   "arxiv_active_records": 2164,
   "non_arxiv_bibliographic_records": 13,
-  "publication_metadata_records": 25,
+  "publication_metadata_records": 26,
   "arxiv_archive_records": 2264,
   "excluded_records": 100,
   "exclusion_revalidation_pending": 0,
-  "metadata_only_records": 1463,
+  "metadata_only_records": 1369,
   "discovery_identifiers": 3907,
-  "unindexed_candidates": 1391,
+  "unindexed_candidates": 1382,
   "pending_editorial": [
     {
       "id": "github:thudm/autoglm",
@@ -87,33 +87,33 @@
     }
   ],
   "by_kind": {
-    "agent": 33,
-    "benchmark": 73,
+    "agent": 34,
+    "benchmark": 78,
     "company": 16,
-    "dataset": 74,
-    "framework": 54,
-    "infrastructure": 14,
+    "dataset": 76,
+    "framework": 58,
+    "infrastructure": 15,
     "model": 92,
     "paper": 2165,
     "product": 19,
     "survey": 12,
-    "tool": 17
+    "tool": 19
   },
   "curated_by_environment": {
-    "android": 225,
-    "cross-platform": 181,
-    "desktop": 222,
+    "android": 242,
+    "cross-platform": 182,
+    "desktop": 244,
     "harmonyos": 1,
     "ios": 17,
-    "linux": 32,
-    "macos": 21,
-    "unspecified": 216,
-    "web": 396,
-    "windows": 40
+    "linux": 37,
+    "macos": 23,
+    "unspecified": 255,
+    "web": 439,
+    "windows": 46
   },
   "curated_by_kind_and_environment": {
     "agent": {
-      "android": 12,
+      "android": 13,
       "cross-platform": 1,
       "desktop": 14,
       "ios": 1,
@@ -122,31 +122,31 @@
       "windows": 3
     },
     "benchmark": {
-      "android": 14,
-      "cross-platform": 12,
-      "desktop": 16,
+      "android": 16,
+      "cross-platform": 13,
+      "desktop": 17,
       "ios": 2,
       "linux": 4,
       "macos": 3,
       "unspecified": 3,
-      "web": 32,
+      "web": 35,
       "windows": 4
     },
     "company": {
       "unspecified": 16
     },
     "dataset": {
-      "android": 29,
+      "android": 31,
       "cross-platform": 14,
       "desktop": 14,
       "linux": 6,
       "macos": 2,
       "unspecified": 7,
-      "web": 19,
+      "web": 20,
       "windows": 3
     },
     "framework": {
-      "android": 13,
+      "android": 16,
       "cross-platform": 5,
       "desktop": 16,
       "harmonyos": 1,
@@ -154,16 +154,16 @@
       "linux": 3,
       "macos": 1,
       "unspecified": 2,
-      "web": 26,
+      "web": 27,
       "windows": 1
     },
     "infrastructure": {
       "android": 4,
-      "desktop": 6,
+      "desktop": 7,
       "ios": 1,
       "linux": 4,
       "macos": 2,
-      "web": 4,
+      "web": 5,
       "windows": 1
     },
     "model": {
@@ -178,15 +178,15 @@
       "windows": 4
     },
     "paper": {
-      "android": 125,
+      "android": 133,
       "cross-platform": 92,
-      "desktop": 131,
+      "desktop": 149,
       "ios": 5,
-      "linux": 11,
+      "linux": 14,
       "macos": 8,
-      "unspecified": 183,
-      "web": 255,
-      "windows": 23
+      "unspecified": 222,
+      "web": 292,
+      "windows": 27
     },
     "product": {
       "desktop": 5,
@@ -199,18 +199,20 @@
       "unspecified": 1
     },
     "tool": {
-      "android": 4,
+      "android": 5,
       "cross-platform": 1,
-      "desktop": 1,
+      "desktop": 3,
       "ios": 2,
+      "linux": 2,
+      "macos": 2,
       "unspecified": 2,
       "web": 10,
-      "windows": 1
+      "windows": 3
     }
   },
   "license_declarations_by_scope": {
-    "code": 148,
-    "data": 44,
+    "code": 158,
+    "data": 49,
     "weights": 51,
     "document": 0
   },
@@ -236,12 +238,12 @@
         "state": "success"
       },
       "discovered": 338,
-      "indexed": 202,
-      "indexed_resources": 201,
+      "indexed": 204,
+      "indexed_resources": 203,
       "resolved_aliases": 1,
-      "curated": 187,
+      "curated": 190,
       "excluded": 0,
-      "unindexed": 136
+      "unindexed": 134
     },
     {
       "id": "zju-gui",
@@ -264,12 +266,12 @@
         "state": "success"
       },
       "discovered": 218,
-      "indexed": 158,
-      "indexed_resources": 158,
+      "indexed": 159,
+      "indexed_resources": 159,
       "resolved_aliases": 0,
-      "curated": 152,
+      "curated": 153,
       "excluded": 0,
-      "unindexed": 60
+      "unindexed": 59
     },
     {
       "id": "os-agent-survey",
@@ -323,7 +325,7 @@
       "indexed": 94,
       "indexed_resources": 94,
       "resolved_aliases": 0,
-      "curated": 79,
+      "curated": 83,
       "excluded": 0,
       "unindexed": 38
     },
@@ -407,7 +409,7 @@
       "indexed": 111,
       "indexed_resources": 111,
       "resolved_aliases": 0,
-      "curated": 92,
+      "curated": 93,
       "excluded": 1,
       "unindexed": 58
     },
@@ -432,12 +434,12 @@
         "state": "success"
       },
       "discovered": 588,
-      "indexed": 480,
-      "indexed_resources": 480,
+      "indexed": 486,
+      "indexed_resources": 486,
       "resolved_aliases": 0,
-      "curated": 337,
+      "curated": 376,
       "excluded": 0,
-      "unindexed": 108
+      "unindexed": 102
     },
     {
       "id": "tianyuan-cua",
@@ -463,7 +465,7 @@
       "indexed": 67,
       "indexed_resources": 67,
       "resolved_aliases": 0,
-      "curated": 48,
+      "curated": 54,
       "excluded": 0,
       "unindexed": 27
     },
@@ -544,12 +546,12 @@
         "state": "success"
       },
       "discovered": 193,
-      "indexed": 138,
-      "indexed_resources": 138,
+      "indexed": 139,
+      "indexed_resources": 139,
       "resolved_aliases": 0,
-      "curated": 132,
+      "curated": 134,
       "excluded": 0,
-      "unindexed": 55
+      "unindexed": 54
     },
     {
       "id": "osu-gui",
@@ -575,7 +577,7 @@
       "indexed": 486,
       "indexed_resources": 486,
       "resolved_aliases": 0,
-      "curated": 209,
+      "curated": 258,
       "excluded": 0,
       "unindexed": 58
     },
@@ -603,7 +605,7 @@
       "indexed": 89,
       "indexed_resources": 89,
       "resolved_aliases": 0,
-      "curated": 76,
+      "curated": 77,
       "excluded": 0,
       "unindexed": 55
     },
@@ -684,12 +686,12 @@
         "state": "success"
       },
       "discovered": 40,
-      "indexed": 24,
-      "indexed_resources": 24,
+      "indexed": 25,
+      "indexed_resources": 25,
       "resolved_aliases": 0,
-      "curated": 23,
+      "curated": 24,
       "excluded": 0,
-      "unindexed": 16
+      "unindexed": 15
     },
     {
       "id": "phone-gui",
@@ -712,12 +714,12 @@
         "state": "success"
       },
       "discovered": 247,
-      "indexed": 186,
-      "indexed_resources": 186,
+      "indexed": 189,
+      "indexed_resources": 189,
       "resolved_aliases": 0,
-      "curated": 168,
+      "curated": 171,
       "excluded": 0,
-      "unindexed": 61
+      "unindexed": 58
     },
     {
       "id": "mobile-agents",
@@ -1132,12 +1134,12 @@
         "state": "success"
       },
       "discovered": 14,
-      "indexed": 6,
-      "indexed_resources": 6,
+      "indexed": 7,
+      "indexed_resources": 7,
       "resolved_aliases": 0,
-      "curated": 6,
+      "curated": 7,
       "excluded": 0,
-      "unindexed": 8
+      "unindexed": 7
     },
     {
       "id": "release-mobilegympp",

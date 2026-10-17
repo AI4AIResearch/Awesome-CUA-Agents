@@ -23,6 +23,8 @@ Object.assign(TOPICS, {
 });
 Object.assign(TEXT.en, {agentEyebrow:'DATA FOR PEOPLE & AGENTS',agentTitle:'Clone the catalog. Put it to work.',agentCopy:'Search locally, connect a RAG pipeline, or let your agent explore—with sources and review states intact.',agentGuide:'Agent & RAG guide',copyCommand:'Copy command',commandCopied:'Clone command copied',commandCopyFailed:'Select the command above to copy it.',ragReviewed:'RAG documents · reviewed',ragReviewedCopy:'One retrieval document per reviewed resource, with citations and provenance.',ragAll:'RAG documents · all records',ragAllCopy:'Every active record, including metadata-only entries with their review state.'});
 Object.assign(TEXT.zh, {agentEyebrow:'给人阅读，也给 AGENTS 使用',agentTitle:'克隆完整目录，接入你的工作。',agentCopy:'本地检索、构建 RAG，或让 Agent 继续探索。来源、引用和审阅状态随数据一起保留。',agentGuide:'Agents 与 RAG 使用指南',copyCommand:'复制克隆命令',commandCopied:'克隆命令已复制',commandCopyFailed:'请选择上方命令并复制。',ragReviewed:'RAG 文档 · 已审阅',ragReviewedCopy:'每项已审阅资源对应一份检索文档，保留引用和来源。',ragAll:'RAG 文档 · 全部记录',ragAllCopy:'包含全部当前记录，并明确保留待审阅论文的状态。'});
+Object.assign(TEXT.en,{topicDirectory:'Browse topics'});
+Object.assign(TEXT.zh,{topicDirectory:'浏览主题'});
 const CLONE_COMMAND = 'git clone https://github.com/reacher-z/Awesome-CUA.git';
 Object.assign(TEXT.en,{publicationBib:'Publication editions · BibTeX',publicationBibCopy:'Reviewed publication editions with their own title, authors, venue and date.',publicationCSL:'Publication editions · CSL JSON',publicationCSLCopy:'Source-backed publication metadata with its original date precision.'});
 Object.assign(TEXT.zh,{publicationBib:'出版版引用 · BibTeX',publicationBibCopy:'已审阅出版版，保留该版本的题名、作者、会议／期刊和日期。',publicationCSL:'出版版引用 · CSL JSON',publicationCSLCopy:'有来源可查的出版元数据，保留原日期精度。'});
@@ -49,6 +51,7 @@ function translate() {
   $('#language').textContent=lang==='zh'?'EN':'中文';
   $$('[data-agent-guide]').forEach(link=>link.href=lang==='zh'?'/zh/agents/':'/agents/');
   $$('[data-paper-library]').forEach(link=>link.href=lang==='zh'?'/zh/papers/':'/papers/');
+  $$('[data-topic-directory]').forEach(link=>link.href=lang==='zh'?'/zh/topics/':'/topics/');
   if(report) $('#snapshot-date').textContent=dates(report.as_of_utc);
   fillSelects();
 }

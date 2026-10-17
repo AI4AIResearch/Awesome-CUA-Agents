@@ -8,6 +8,7 @@ from search_pages import KINDS, SITE, REPO, resource_path
 from agent_pages import CLONE_COMMAND
 from site_files import MANAGED_FILES, reconcile_generated_pages
 from publication_metadata import record_date_text
+from topic_pages import reconcile_topic_exports
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -28,7 +29,7 @@ def main():
     if old_path.exists():
         old=json.loads(old_path.read_text());new_paths={p['path'] for p in incoming['pages']}
         for item in old.get('pages',[]):
-            if item['path'] in new_paths or not item['path'].startswith(('/resources/','/categories/','/guides/')):continue
+            if item['path'] in new_paths or not item['path'].startswith(('/resources/','/categories/','/guides/','/topics/','/zh/topics/')):continue
             folder=site/item['path'].lstrip('/')
             for filename in MANAGED_FILES:(folder/filename).unlink(missing_ok=True)
     for item in incoming['pages']:
@@ -39,6 +40,9 @@ def main():
                     (site/item['path'].lstrip('/')/filename).unlink(missing_ok=True)
     shutil.copytree(build,site,dirs_exist_ok=True)
     reconcile_generated_pages(site,incoming['pages'])
+    if (build/'downloads/topics.json').exists():
+        topics=json.loads((build/'downloads/topics.json').read_text())
+        reconcile_topic_exports(site,{item['id'] for item in topics['topics']})
     ignore=site/'.gitignore';ignore_text=ignore.read_text() if ignore.exists() else ''
     for pattern in ['.pipeline/','.cache/','__pycache__/','.DS_Store']:
         if pattern not in ignore_text.splitlines():ignore_text=ignore_text.rstrip()+'\n'+pattern+'\n'

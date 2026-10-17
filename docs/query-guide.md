@@ -14,6 +14,8 @@ python3 scripts/catalog.py search "reinforcement" --kind paper --json
 
 Environment and topic filters refer to reviewed facets. Bibliography entries with unreviewed taxonomy use `unspecified` and will not appear in an Android filter merely because the title mentions Android. Search the title when investigating those entries.
 
+The [topic directory](https://awesomecua.github.io/topics/) groups reviewed papers, benchmarks, datasets, models, and engineering assets. Its [JSON manifest](https://awesomecua.github.io/downloads/topics.json) records exact member IDs, source snapshot SHA-256 and per-file fingerprints. Use a topic page's JSONL download as `--input` to the RAG or citation exporter for a focused corpus. Topic counts overlap and do not represent independent projects or the total size of a research field.
+
 ```bash
 python3 scripts/catalog.py build
 sqlite3 dist/catalog.sqlite

@@ -2,9 +2,9 @@
 
 [Home](../../README.md) · [All topics](../topics.md) · [Full arXiv bibliography](../papers.md)
 
-73 source-reviewed resources tagged `workflow`. Curated metadata, not a performance ranking; unknown facts are shown as —.
+74 source-reviewed resources tagged `workflow`. Curated metadata, not a performance ranking; unknown facts are shown as —.
 
-**Contents:** [Benchmarks (6)](#benchmarks) · [Datasets (2)](#datasets) · [Agents (5)](#agents) · [Frameworks (6)](#frameworks) · [Products (7)](#products) · [Papers (47)](#papers)
+**Contents:** [Benchmarks (6)](#benchmarks) · [Datasets (2)](#datasets) · [Agents (5)](#agents) · [Frameworks (7)](#frameworks) · [Products (7)](#products) · [Papers (47)](#papers)
 
 ## Benchmarks
 
@@ -44,6 +44,7 @@
 | [Skyvern](https://github.com/Skyvern-AI/skyvern) | web | — | — | Visual browser workflow automation framework. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/Skyvern-AI/skyvern/HEAD/README.md) |
 | [Surfkit](https://github.com/agentsea/surfkit) | desktop | — | code MIT | Toolkit for building and deploying computer-use agents. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/agentsea/surfkit/HEAD/README.md) |
 | [Work2Skill](https://github.com/china-qijizhifeng/Work2Skill) | desktop, macos, linux | [2610.12984](https://arxiv.org/abs/2610.12984) (2026) | code MIT | Collects human GUI demonstrations and inspects multimodal evidence to derive reusable agent workflow skills. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/china-qijizhifeng/Work2Skill/HEAD/README.md) |
+| [Workflow-Guided Exploration research code](https://github.com/stanfordnlp/wge) | web | [1802.08802](https://arxiv.org/abs/1802.08802) (2018) | code Apache-2.0 | Research code that learns browser-control policies by constraining exploration with workflows induced from demonstrations, with a Selenium-based MiniWoB environment and experiment harness. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/stanfordnlp/wge/HEAD/README.md) |
 
 ## Products
 

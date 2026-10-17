@@ -86,6 +86,7 @@ def paper_library(rows, resource_path, *, language='en', site_url='https://aweso
     body.append('</nav><div class="library-topics"><span>' + tr('PAPER TOPICS', '论文主题') + '</span>')
     for topic, _count in topics.most_common(8):
         body.append('<a href="' + search_link(topic=topic) + '">' + esc(label(TOPICS, topic)) + '</a>')
+    body.append('<a class="library-all-topics" href="' + ('/zh/topics/' if zh else '/topics/') + '">' + tr('All topics', '全部主题') + ' ↗</a>')
     body.append('</div><p class="library-method">' + tr('AI-assisted editorial review of primary sources; experiments are not independently reproduced. Dates keep their recorded precision.', '条目经过 AI 辅助的一手来源编辑审阅，实验未独立复现。发表日期保留来源记录的精度。') + ' <a href="/about/">' + tr('Method', '收录方法') + ' ↗</a></p>')
     for year in years:
         body.append('<section class="paper-year-group" aria-labelledby="papers-' + year + '"><div class="paper-year-heading"><h2 id="papers-' + year + '">' + (tr('Date not recorded', '日期待录') if year == 'undated' else year) + '</h2><span>' + str(len(groups[year])) + ' ' + tr('papers & surveys', '篇论文与综述') + '</span><a href="#library-title">' + tr('Back to years', '回到年份') + ' ↑</a></div>')

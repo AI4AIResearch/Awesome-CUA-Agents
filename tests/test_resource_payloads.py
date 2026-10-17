@@ -258,6 +258,26 @@ class ResourcePayloadTests(unittest.TestCase):
             for filename in ('publication-citation.bib','publication-citation.csl.json'):
                 self.assertFalse((self.folder(output,self.reviewed)/filename).exists())
 
+    def test_topic_subsets_and_bilingual_pages_remove_stale_members_after_review_changes(self):
+        self.reviewed['topics']=['grounding']
+        self.metadata['topics']=['grounding','unreviewed-only']
+        self.write_inputs(self.rows)
+        self.build_site();self.publish()
+        self.assertTrue((self.site/'topics/grounding/index.html').exists())
+        self.assertTrue((self.site/'zh/topics/grounding/index.md').exists())
+        self.assertFalse((self.site/'topics/unreviewed-only/index.html').exists())
+        exported=[json.loads(line) for line in (self.site/'downloads/topics/grounding/records.jsonl').read_text().splitlines()]
+        self.assertEqual(exported,[self.reviewed])
+        self.reviewed['topics']=[]
+        self.write_inputs(self.rows)
+        self.build_site();self.publish()
+        for output in (self.build,self.site):
+            for prefix in ('topics/','zh/topics/'):
+                self.assertFalse((output/prefix/'grounding/index.html').exists())
+                self.assertFalse((output/prefix/'grounding/index.md').exists())
+            for name in ('records.jsonl','citations.bib','citations.csl.json'):
+                self.assertFalse((output/'downloads/topics/grounding'/name).exists())
+
 
 if __name__ == '__main__':
     unittest.main()

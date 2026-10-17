@@ -24,6 +24,10 @@ python3 scripts/catalog.py search --kind paper --status curated --topic reinforc
 
 The CLI uses literal, case-insensitive AND matching. `--limit 0` returns every match. An empty result is not evidence that the field lacks a resource: try aliases and inspect the coverage ledger.
 
+For a focused field overview, browse <https://awesomecua.github.io/topics/> or read <https://awesomecua.github.io/downloads/topics.json>. The topic manifest gives exact reviewed resource IDs, counts by resource group, and full-record subset downloads with SHA-256 fingerprints. Topic membership uses reviewed tags only and can overlap; it does not imply a dependency between resources. Untagged and metadata-only entries remain in the complete catalog.
+
+Each `/downloads/topics/<topic>/records.jsonl` subset preserves the complete source records and works with `scripts/export_rag.py --input` and `scripts/export_citations.py --input`. Its companion `citations.bib` and `citations.csl.json` include reviewed papers and surveys in that subset. Check the manifest's `catalog_sha256` before mixing snapshots.
+
 For a stable identifier, retrieve the exact source record and its reviewed connections:
 
 ```sh

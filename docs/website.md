@@ -4,6 +4,8 @@ The organization homepage is published at **https://awesomecua.github.io/**. The
 
 The website combines a static interactive application with complete HTML resource pages and reading guides. Search, filters, pagination, English/Chinese navigation, source evidence, and downloads use the committed catalog. Unknown resource metadata remains unknown. [Search and AI discovery](search-discovery.md) documents canonical pages, sitemap policy, structured data, and submission receipts.
 
+The bilingual [topic directory](https://awesomecua.github.io/topics/) connects reviewed papers and assets through their existing topic tags. Each topic has static HTML/Markdown, complete-record JSONL and a matching bibliography. The topic manifest retains source and export fingerprints. These are overlapping catalog views, not a new classification inferred from titles or an assertion of dependencies between related-looking resources.
+
 ## Build and preview
 
 ```bash

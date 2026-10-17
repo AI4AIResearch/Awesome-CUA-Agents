@@ -2,9 +2,17 @@
 
 [Home](../../README.md) · [All topics](../topics.md) · [Full arXiv bibliography](../papers.md)
 
-24 source-reviewed resources tagged `imitation-learning`. Curated metadata, not a performance ranking; unknown facts are shown as —.
+29 source-reviewed resources tagged `imitation-learning`. Curated metadata, not a performance ranking; unknown facts are shown as —.
 
-**Contents:** [Datasets (6)](#datasets) · [Models (3)](#models) · [Frameworks (3)](#frameworks) · [Papers (12)](#papers)
+**Contents:** [Benchmarks (1)](#benchmarks) · [Datasets (8)](#datasets) · [Models (3)](#models) · [Frameworks (5)](#frameworks) · [Papers (12)](#papers)
+
+## Benchmarks
+
+All entries in this section: android.
+
+| Resource | Paper | License | Description | Evidence |
+| --- | --- | --- | --- | --- |
+| [FedMABench](https://github.com/wwh0411/FedMABench) | [2503.05143](https://arxiv.org/abs/2503.05143) (2025) | — | A federated mobile-agent training and evaluation suite that varies user-data heterogeneity and application distribution, with released partition annotations and inference/scoring scripts. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/wwh0411/FedMABench/HEAD/README.md) |
 
 ## Datasets
 
@@ -12,6 +20,8 @@
 | --- | --- | --- | --- | --- | --- |
 | [AutoDroid V2 training data](https://huggingface.co/datasets/BlitherBoom/AutoDroid-V2-Dataset) | android | — | data mit | Conversation-formatted supervision released for fine-tuning AutoDroid V2, with the project documenting a ShareGPT-style JSON configuration. | [✓ 2026‑10‑17](https://huggingface.co/api/datasets/BlitherBoom/AutoDroid-V2-Dataset) |
 | [Go-Browse-WA processed data](https://huggingface.co/datasets/apurvaga/go-browse-wa) | web | [2506.03533](https://arxiv.org/abs/2506.03533) (2025) | — | Flattened web-interaction training records with accessibility-tree observations, assistant completions, trajectory rewards and step-link metadata. | [✓ 2026‑10‑17](https://huggingface.co/api/datasets/apurvaga/go-browse-wa) |
+| [GUI-CIDER causal knowledge data](https://huggingface.co/datasets/wuuuuuz/GUI-CIDER) | android | [2605.28534](https://arxiv.org/abs/2605.28534) (2026) | — | A published JSONL corpus of synthesized planning and causal knowledge for GUI-agent mid-training, linked directly from the official GUI-CIDER project. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/Wuzheng02/GUI-CIDER/HEAD/README.md) |
+| [GUIMid training data](https://huggingface.co/datasets/hkust-nlp/GUIMid) | web, android | [2504.10127](https://arxiv.org/abs/2504.10127) (2025) | data mit | A released GUI-agent mid-training mixture and supporting domain datasets, together with a post-training trajectory file and image archives for web and mobile interaction. | [✓ 2026‑10‑17](https://huggingface.co/datasets/hkust-nlp/GUIMid/raw/main/README.md) |
 | [OS-Genesis mobile training data](https://huggingface.co/datasets/OS-Copilot/OS-Genesis-mobile-data) | android | [2412.19723](https://arxiv.org/abs/2412.19723) (2024) | data mit | Reverse-task-synthesis mobile trajectories released in separate AndroidControl and AndroidWorld training annotation files. | [✓ 2026‑10‑17](https://huggingface.co/datasets/OS-Copilot/OS-Genesis-mobile-data/raw/main/README.md) |
 | [ShowUI-π training data](https://huggingface.co/datasets/showlab/ShowUI-pi-data) | desktop | [2512.24965](https://arxiv.org/abs/2512.24965) (2025) | — | Drag-and-click episode data for the ShowUI-π model, spanning desktop editing, presentation, handwriting and other interface tasks. | [✓ 2026‑10‑17](https://huggingface.co/datasets/showlab/ShowUI-pi-data/raw/main/README.md) |
 | [UI-Genie trajectory data](https://huggingface.co/datasets/HanXiao1999/UI-Genie-Agent-16k) | android | [2505.21496](https://arxiv.org/abs/2505.21496) (2025) | data mit | Synthetic mobile GUI trajectory supervision and screenshots released with the UI-Genie agent-training pipeline. | [✓ 2026‑10‑17](https://huggingface.co/datasets/HanXiao1999/UI-Genie-Agent-16k/raw/main/README.md) |
@@ -30,6 +40,8 @@
 | Resource | Environments | Paper | License | Description | Evidence |
 | --- | --- | --- | --- | --- | --- |
 | [Go-Browse](https://github.com/ApGa/Go-Browse) | web | [2506.03533](https://arxiv.org/abs/2506.03533) (2025) | code MIT | Structured website-exploration and data-processing code that revisits discovered pages, proposes tasks and collects trajectories for web-agent fine-tuning. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/ApGa/Go-Browse/HEAD/README.md) |
+| [GUI-CIDER research code](https://github.com/Wuzheng02/GUI-CIDER) | android | [2605.28534](https://arxiv.org/abs/2605.28534) (2026) | — | Released data-synthesis and evaluation scripts that distill planning and causal GUI knowledge into text for mid-training mobile interface agents. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/Wuzheng02/GUI-CIDER/HEAD/README.md) |
+| [GUIPivot](https://github.com/ZrW00/GUIPivot) | android | [2503.00401](https://arxiv.org/abs/2503.00401) (2025) | code GPL-3.0 | Research tooling for query-inference pivot tasks that connect screenshot grounding with GUI action reasoning, including preprocessing, query refinement and mobile-agent evaluation. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/ZrW00/GUIPivot/HEAD/README.md) |
 | [UI-Genie](https://github.com/Euphoria16/UI-Genie) | android | [2505.21496](https://arxiv.org/abs/2505.21496) (2025) | — | Training and evaluation code for a mobile-agent framework that iteratively generates trajectories using agent and reward-model feedback. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/Euphoria16/UI-Genie/HEAD/README.md) |
 | [VideoCAD training and evaluation code](https://github.com/UDGOK/videocad) | unspecified | [2505.24838](https://arxiv.org/abs/2505.24838) (2025) | — | VideoCADFormer training, action-log preprocessing and evaluation code for learning long sequences of CAD interface operations from screen recordings. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/UDGOK/videocad/HEAD/README.md) |
 
