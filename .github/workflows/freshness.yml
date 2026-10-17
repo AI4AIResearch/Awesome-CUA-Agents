@@ -39,4 +39,11 @@ jobs:
       - name: Dispatch a recovery scan
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh workflow run scan.yml --ref main -R "$GITHUB_REPOSITORY"
+        # A scan that is still queued or running will refresh the catalog; never stack recovery scans on rate-limited sources.
+        run: |
+          active=$(gh run list -R "$GITHUB_REPOSITORY" --workflow scan.yml --limit 20 --json status --jq '[.[] | select(.status != "completed")] | length')
+          if [ "$active" -gt 0 ]; then
+            echo "::notice::A scan is already queued or running; no recovery scan dispatched."
+          else
+            gh workflow run scan.yml --ref main -R "$GITHUB_REPOSITORY"
+          fi

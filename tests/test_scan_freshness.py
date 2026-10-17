@@ -110,7 +110,10 @@ class FreshnessWorkflowTests(unittest.TestCase):
         self.assertIn("if: always() && needs.check.outputs.stale == 'true'\n", dispatch)
         self.assertIn("permissions:\n      actions: write\n", dispatch)
         self.assertNotIn("uses:", dispatch)
-        self.assertIn('run: gh workflow run scan.yml --ref main -R "$GITHUB_REPOSITORY"', dispatch)
+        self.assertIn('gh workflow run scan.yml --ref main -R "$GITHUB_REPOSITORY"', dispatch)
+        # A queued or running scan suppresses the recovery dispatch.
+        self.assertIn('--workflow scan.yml --limit 20 --json status --jq \'[.[] | select(.status != "completed")] | length\'', dispatch)
+        self.assertLess(dispatch.index('if [ "$active" -gt 0 ]'), dispatch.index("gh workflow run scan.yml"))
         self.assertEqual(self.text.count("actions: write"), 1)
 
 
