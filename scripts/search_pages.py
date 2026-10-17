@@ -136,10 +136,17 @@ def build_search_pages(destination, rows, coverage, root):
     reviewed=[r for r in rows if eligible(r)]
     latest=coverage["as_of_utc"]
     manifest=[]
+    script_versions={name:hashlib.sha256((destination/name).read_bytes()).hexdigest() for name in ('app.js','compare.js')}
+    script_src=re.compile(r'''(?P<start><script\b[^>]*\bsrc\s*=\s*)(?P<quote>["'])(?P<path>(?:\./|/)(?:app|compare)\.js)(?:\?[^"'\r\n]*)?(?P=quote)''')
+    def version_script_src(match):
+        version=script_versions[Path(match['path']).name]
+        return f"{match['start']}{match['quote']}{match['path']}?v={version}{match['quote']}"
     def emit(path,content,index=True,excluded=False):
+        # Hash the final bytes, after replacing only the scripts this page uses.
+        content=script_src.sub(version_script_src,content).encode('utf-8')
         target=destination/path.lstrip('/')/'index.html' if path.endswith('/') else destination/path.lstrip('/')
-        target.parent.mkdir(parents=True,exist_ok=True);target.write_text(content)
-        item={"path":path,"indexable":index,"sha256":hashlib.sha256(content.encode()).hexdigest()}
+        target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(content)
+        item={"path":path,"indexable":index,"sha256":hashlib.sha256(content).hexdigest()}
         if excluded:item["scope_excluded"]=True
         manifest.append(item)
     for r in rows:

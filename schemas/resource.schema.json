@@ -390,6 +390,7 @@
               "editorial_primary_review",
               "huggingface_api",
               "huggingface_card",
+              "dataverse_api",
               "license_header"
             ]
           },

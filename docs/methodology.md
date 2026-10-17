@@ -44,6 +44,8 @@ Some dataset cards contain only licensing metadata. For these entries, Hub metad
 
 License declarations are scoped to code, data, weights, or documents. Repository LICENSE headers never establish permissions for weights or embedded third-party data. No blanket permissive license is inferred from public availability.
 
+Provider-specific API parsing checks the actual host and URL path. Harvard Dataverse records retain the dataset-version license declaration, first publication date, version release time, and file count separately. A package-file count is not a trajectory or sample count; the API does not imply a Hugging Face download path or access policy.
+
 `mentions` edges record references found in a primary README/card. They do not establish training, evaluation, derivation, partnership, or endorsement. Stronger relations are explicit editorial assertions with evidence.
 
 When a paper documents an implementation that is not cited back by the repository, an editorial `reviewed_relations` entry may cite the paper's retained evidence receipt. Its evidence URL must exist in the resource's evidence list. This does not imply that current code reproduces the paper's results.

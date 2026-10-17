@@ -1,14 +1,14 @@
 {
-  "as_of_utc": "2026-10-17T01:52:51Z",
-  "total_records": 2010,
-  "curated_records": 606,
-  "bibliographic_records": 1724,
+  "as_of_utc": "2026-10-17T02:12:09Z",
+  "total_records": 2008,
+  "curated_records": 714,
+  "bibliographic_records": 1694,
   "arxiv_archive_records": 1764,
-  "excluded_records": 40,
+  "excluded_records": 70,
   "exclusion_revalidation_pending": 0,
-  "metadata_only_records": 1404,
+  "metadata_only_records": 1294,
   "discovery_identifiers": 2797,
-  "unindexed_candidates": 822,
+  "unindexed_candidates": 817,
   "pending_editorial": [
     {
       "id": "github:mobilellm/autodroid-v2",
@@ -69,37 +69,55 @@
       "name": "GraceBench task and evaluation release",
       "url": "https://iaie-physicalai.github.io/GraceBench",
       "reason": "Primary project page reviewed; task definitions, data, and evaluation-code release remain pending. The paper is cataloged separately."
+    },
+    {
+      "id": "github:zackhuiiiii/winspot",
+      "name": "WinSpot",
+      "url": "https://github.com/zackhuiiiii/WinSpot",
+      "reason": "Primary README and repository tree reviewed; the benchmark data release is still pending."
+    },
+    {
+      "id": "url:72301bf2dec104205c8d",
+      "name": "PAE data",
+      "url": "https://huggingface.co/datasets/yifeizhou/pae-data",
+      "reason": "Hub metadata and the project README disagree on dataset-license scope; review remains pending without requesting gated access."
+    },
+    {
+      "id": "url:ac62da857db91f68376b",
+      "name": "Aguvis-7B-720P checkpoint",
+      "url": "https://huggingface.co/xlangai/Aguvis-7B-720P",
+      "reason": "Weight files are listed, but the official README still marks the release in progress and the inspected Hub metadata lacks weight terms; review remains pending."
     }
   ],
   "by_kind": {
     "agent": 30,
     "benchmark": 61,
     "company": 16,
-    "dataset": 47,
-    "framework": 35,
+    "dataset": 55,
+    "framework": 44,
     "infrastructure": 12,
-    "model": 56,
-    "paper": 1713,
+    "model": 66,
+    "paper": 1683,
     "product": 19,
     "survey": 11,
-    "tool": 10
+    "tool": 11
   },
   "curated_by_environment": {
-    "android": 129,
-    "cross-platform": 147,
-    "desktop": 138,
+    "android": 149,
+    "cross-platform": 155,
+    "desktop": 157,
     "harmonyos": 1,
-    "ios": 13,
-    "linux": 13,
-    "macos": 9,
-    "unspecified": 66,
-    "web": 191,
-    "windows": 20
+    "ios": 14,
+    "linux": 14,
+    "macos": 11,
+    "unspecified": 93,
+    "web": 242,
+    "windows": 23
   },
   "license_declarations_by_scope": {
-    "code": 126,
-    "data": 30,
-    "weights": 22,
+    "code": 130,
+    "data": 35,
+    "weights": 29,
     "document": 0
   },
   "sources": [
@@ -121,7 +139,7 @@
       },
       "discovered": 338,
       "indexed": 199,
-      "curated": 156,
+      "curated": 159,
       "excluded": 0,
       "unindexed": 139
     },
@@ -143,7 +161,7 @@
       },
       "discovered": 218,
       "indexed": 156,
-      "curated": 132,
+      "curated": 135,
       "excluded": 0,
       "unindexed": 62
     },
@@ -187,7 +205,7 @@
       },
       "discovered": 132,
       "indexed": 93,
-      "curated": 64,
+      "curated": 68,
       "excluded": 0,
       "unindexed": 39
     },
@@ -252,10 +270,10 @@
         "unique_resources": 170
       },
       "discovered": 170,
-      "indexed": 108,
-      "curated": 71,
+      "indexed": 110,
+      "curated": 77,
       "excluded": 0,
-      "unindexed": 62
+      "unindexed": 60
     },
     {
       "id": "delunn-multimodal",
@@ -274,10 +292,10 @@
         "unique_resources": 588
       },
       "discovered": 588,
-      "indexed": 474,
-      "curated": 250,
+      "indexed": 476,
+      "curated": 262,
       "excluded": 0,
-      "unindexed": 114
+      "unindexed": 112
     },
     {
       "id": "tianyuan-cua",
@@ -297,7 +315,7 @@
       },
       "discovered": 94,
       "indexed": 67,
-      "curated": 36,
+      "curated": 39,
       "excluded": 0,
       "unindexed": 27
     },
@@ -363,7 +381,7 @@
       },
       "discovered": 193,
       "indexed": 137,
-      "curated": 118,
+      "curated": 121,
       "excluded": 0,
       "unindexed": 56
     },
@@ -385,7 +403,7 @@
       },
       "discovered": 544,
       "indexed": 486,
-      "curated": 53,
+      "curated": 93,
       "excluded": 0,
       "unindexed": 58
     },
@@ -407,7 +425,7 @@
       },
       "discovered": 144,
       "indexed": 88,
-      "curated": 62,
+      "curated": 63,
       "excluded": 0,
       "unindexed": 56
     },
@@ -429,7 +447,7 @@
       },
       "discovered": 206,
       "indexed": 203,
-      "curated": 30,
+      "curated": 48,
       "excluded": 0,
       "unindexed": 3
     },
@@ -494,10 +512,10 @@
         "unique_resources": 247
       },
       "discovered": 247,
-      "indexed": 183,
-      "curated": 141,
+      "indexed": 184,
+      "curated": 146,
       "excluded": 0,
-      "unindexed": 64
+      "unindexed": 63
     },
     {
       "id": "mobile-agents",
@@ -561,7 +579,7 @@
       },
       "discovered": 96,
       "indexed": 57,
-      "curated": 40,
+      "curated": 42,
       "excluded": 0,
       "unindexed": 39
     },

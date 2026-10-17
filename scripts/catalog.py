@@ -329,20 +329,22 @@ def enrich(args):
             article = re.search(r"<article\b[^>]*>(.*?)</article>", raw, re.S)
             raw = article.group(1) if article else ""
         result = {"id": rid, "evidence_sha256": ev["sha256"], "licenses": {}, "details": {}, "references": [], "evidence": []}
+        source = urllib.parse.urlsplit(ev["url"])
+        hub_source = source.hostname == "huggingface.co"
         # A raw Hub card may be the reviewed primary source rather than the API.
         # Read only an explicit scalar declaration in its metadata header; do not
         # inherit a dataset/model license from a linked repository or prose.
-        if urllib.parse.urlsplit(ev["url"]).hostname == "huggingface.co" and "/raw/" in ev["url"]:
+        if hub_source and "/raw/" in source.path:
             header = re.match(r"\A---\r?\n(.*?)\r?\n---", raw, re.S)
             declaration = re.search(r"^license:[ \t]*([a-zA-Z0-9][a-zA-Z0-9_.-]*)[ \t]*$", header[1], re.M) if header else None
             slot = "data" if row["kind"] == "dataset" else "weights" if row["kind"] == "model" else None
             if declaration and slot:
                 result["licenses"][slot] = {"declared": declaration[1], "url": ev["url"], "retrieved_at": ev["retrieved_at"], "basis": "publisher model/dataset card metadata; third-party assets retain their own terms"}
                 result["evidence"].append({"role": "primary", "method": "huggingface_card", "supports": [f"licenses.{slot}"], **{k: ev[k] for k in ("url", "sha256", "retrieved_at")}})
-        if "/api/datasets/" in ev["url"] or "/api/models/" in ev["url"]:
+        if hub_source and source.path.startswith(("/api/datasets/", "/api/models/")):
             payload = json.loads(raw)
             card = payload.get("cardData") or {}
-            slot = "data" if "/api/datasets/" in ev["url"] else "weights"
+            slot = "data" if source.path.startswith("/api/datasets/") else "weights"
             license_name = card.get("license")
             if license_name:
                 result["licenses"][slot] = {"declared": license_name, "url": row["url"], "retrieved_at": ev["retrieved_at"], "basis": "publisher model/dataset card"}
@@ -351,6 +353,36 @@ def enrich(args):
                 "size_category_reported": card.get("size_categories"), "download_url": row["url"] + "/tree/main"}
             # Dataset size tags may count archive files, not samples; never convert them into sample counts.
             result["evidence"].append({"role": "primary", "method": "huggingface_api", "url": ev["url"], "sha256": ev["sha256"], "retrieved_at": ev["retrieved_at"], "supports": ["details", f"licenses.{slot}"]})
+        elif row["kind"] == "dataset" and source.hostname == "dataverse.harvard.edu" and source.path.startswith("/api/datasets/"):
+            try:
+                payload = json.loads(raw)
+            except json.JSONDecodeError:
+                payload = None
+            dataset = payload.get("data") if isinstance(payload, dict) and payload.get("status") == "OK" else None
+            version = dataset.get("latestVersion") if isinstance(dataset, dict) else None
+            if (isinstance(version, dict) and dataset.get("datasetType") == "dataset"
+                    and version.get("datasetType") == "dataset" and isinstance(version.get("metadataBlocks"), dict)):
+                license_metadata = version.get("license")
+                if not isinstance(license_metadata, dict):
+                    license_metadata = None
+                result["details"]["dataverse"] = {
+                    "publisher": dataset.get("publisher"), "persistent_url": dataset.get("persistentUrl"),
+                    "publication_date": dataset.get("publicationDate"), "version_number": version.get("versionNumber"),
+                    "version_minor_number": version.get("versionMinorNumber"), "version_state": version.get("versionState"),
+                    "released_at": version.get("releaseTime"), "license": license_metadata,
+                    "file_count": len(version["files"]) if isinstance(version.get("files"), list) else None,
+                }
+                # Keep the publisher's license text/URI verbatim, including its scheme.
+                # The HTTPS API receipt is the license source; files are not samples,
+                # and neither fileAccessRequest nor a DOI establishes a download URL.
+                supports = ["details.dataverse"]
+                license_name = license_metadata.get("name") if license_metadata else None
+                if isinstance(license_name, str) and license_name.strip():
+                    result["licenses"]["data"] = {"declared": license_name, "url": ev["url"], "retrieved_at": ev["retrieved_at"],
+                        "basis": "publisher Dataverse dataset-version license metadata; original declaration and URI retained in details.dataverse.license"}
+                    supports.append("licenses.data")
+                result["evidence"].append({"role": "primary", "method": "dataverse_api", "supports": supports,
+                    **{k: ev[k] for k in ("url", "sha256", "retrieved_at")}})
         if provider == "github":
             repo = url.split("github.com/", 1)[1]
             for filename in ("LICENSE", "LICENSE.md", "LICENSE.txt"):

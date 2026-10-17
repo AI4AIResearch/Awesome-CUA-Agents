@@ -11,6 +11,15 @@ const TEXT = {
 const KINDS = {paper:['Papers','论文','▤'],survey:['Surveys','综述','≋'],model:['Models','模型','◈'],dataset:['Datasets','数据集','▦'],benchmark:['Benchmarks','评测基准','◎'],agent:['Agents','智能体','↗'],framework:['Frameworks','框架','◇'],infrastructure:['Infrastructure','基础设施','▧'],tool:['Tools','工具','⚒'],product:['Products','产品','□'],company:['Publishers','发布方','⌂']};
 const PLATFORMS = {'harmonyos':['HarmonyOS','鸿蒙'],web:['Web','浏览器'],desktop:['Desktop','桌面'],android:['Android','Android'],ios:['iOS','iOS'],windows:['Windows','Windows'],macos:['macOS','macOS'],linux:['Linux','Linux'],'cross-platform':['Cross-platform','跨平台'],unspecified:['Unassigned','待标注']};
 const TOPICS = {'world-models':['World models','世界模型'],'grounding':['GUI grounding','GUI 定位'],'reinforcement-learning':['Reinforcement learning','强化学习'],'safety-security':['Safety & security','安全与防护'],'planning':['Planning','规划'],'data-generation':['Data generation','数据生成'],'screen-understanding':['Screen understanding','界面理解'],'evaluation':['Evaluation','评测'],'mobile-navigation':['Mobile navigation','手机操作'],'web-navigation':['Web navigation','网页导航'],'workflow':['Workflows','工作流'],'memory':['Memory','记忆'],'long-horizon':['Long-horizon tasks','长任务'],'robustness':['Robustness','鲁棒性'],'sandbox':['Sandboxes','沙箱'],'tool-integration':['Tool integration','工具集成'],'automation':['Automation','自动化'],'cross-app':['Cross-app','跨应用'],'efficiency':['Efficiency','效率'],'video':['Video','视频'],'recording':['Recording','录制'],'human-in-the-loop':['Human in the loop','人机协作'],'observability':['Observability','可观测性'],'science':['Scientific workflows','科学工作流'],'history':['Historical','历史'],'survey':['Survey','综述'],'industry':['Industry','产业']};
+Object.assign(TOPICS, {
+  'action-prediction':['Action prediction','动作预测'],
+  'imitation-learning':['Imitation learning','模仿学习'],
+  'reward-models':['Reward models','奖励模型'],
+  'self-reflection':['Self-reflection','自我反思'],
+  'state-tracking':['State tracking','状态追踪'],
+  'training-free':['Training-free methods','无需训练的方法'],
+  'ui-design':['UI design','界面设计']
+});
 const $ = selector => document.querySelector(selector);
 const $$ = selector => [...document.querySelectorAll(selector)];
 let lang = new URLSearchParams(location.search).get('lang') === 'zh' ? 'zh' : 'en';

@@ -18,6 +18,26 @@ import catalog
 import build
 
 
+DATAVERSE_URL = "https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/WX8PCK"
+DATAVERSE_API = "https://dataverse.harvard.edu/api/datasets/:persistentId/?persistentId=doi:10.7910/DVN/WX8PCK"
+
+
+def dataverse_dataset():
+    # Reduced from the reviewed VideoCAD API response; files count archive units.
+    return {"status": "OK", "data": {
+        "datasetType": "dataset", "publisher": "Harvard Dataverse",
+        "persistentUrl": "https://doi.org/10.7910/DVN/WX8PCK", "publicationDate": "2025-05-15",
+        "latestVersion": {
+            "datasetType": "dataset", "versionNumber": 5, "versionMinorNumber": 0,
+            "versionState": "RELEASED", "releaseTime": "2026-03-11T01:35:02Z", "fileAccessRequest": True,
+            "license": {"name": "CC0 1.0", "uri": "http://creativecommons.org/publicdomain/zero/1.0",
+                        "rightsIdentifier": "CC0-1.0", "rightsIdentifierScheme": "SPDX"},
+            "metadataBlocks": {"citation": {"fields": []}},
+            "files": [{"dataFile": {"filename": f"{index:04d}.zip"}} for index in range(261)],
+        },
+    }}
+
+
 def paper():
     element = ET.fromstring('''<entry xmlns="http://www.w3.org/2005/Atom">
       <id>http://arxiv.org/abs/2404.07972v3</id>
@@ -52,6 +72,19 @@ class IdentityTests(unittest.TestCase):
 
 
 class SourceTests(unittest.TestCase):
+    def _enrich_source(self, kind, url, primary, content):
+        body = content.encode() if isinstance(content, str) else json.dumps(content).encode()
+        with tempfile.TemporaryDirectory() as directory, mock.patch.object(catalog, "DATA", Path(directory)):
+            rid = catalog.canonical(url)[0]
+            catalog.write_json(Path(directory) / "editorial.json", [{"url": url, "kind": kind}])
+            catalog.write_jsonl(Path(directory) / "primary-evidence.jsonl", [{"id": rid, "url": primary,
+                "content_matched": True, "sha256": hashlib.sha256(body).hexdigest(), "retrieved_at": "2026-10-17T02:03:20Z"}])
+            with mock.patch.object(catalog, "cached_body", return_value=body), \
+                    mock.patch.object(catalog, "fetch", side_effect=AssertionError("Unexpected network request")), \
+                    contextlib.redirect_stdout(io.StringIO()):
+                catalog.enrich(types.SimpleNamespace(refresh=False))
+            return catalog.read_jsonl(Path(directory) / "enrichment.jsonl")[0]
+
     def test_metadata_verification_does_not_imply_editorial_review(self):
         row = paper()
         self.assertEqual(row["review_status"], "metadata_verified")
@@ -119,6 +152,100 @@ class SourceTests(unittest.TestCase):
                 self.assertEqual({scope: value["declared"] for scope, value in result["licenses"].items()}, expected)
                 for receipt in result["evidence"]:
                     self.assertEqual(receipt["url"], url + "/raw/main/README.md")
+
+    def test_hub_api_preserves_dataset_and_model_metadata(self):
+        cases = [
+            ("dataset", "datasets/example/data", "datasets/example/data", "data", "cc-by-4.0"),
+            ("model", "example/model", "models/example/model", "weights", "apache-2.0"),
+        ]
+        for kind, path, api_path, slot, license_name in cases:
+            with self.subTest(kind=kind):
+                url = "https://huggingface.co/" + path
+                primary = "https://huggingface.co/api/" + api_path
+                payload = {"id": "example/resource", "gated": False, "disabled": False, "tags": ["modality:image"],
+                    "cardData": {"license": license_name, "language": ["en"], "size_categories": ["1K<n<10K"]}}
+                result = self._enrich_source(kind, url, primary, payload)
+                self.assertEqual(set(result["licenses"]), {slot})
+                self.assertEqual(result["licenses"][slot]["declared"], license_name)
+                self.assertEqual(result["details"]["hub_id"], "example/resource")
+                self.assertEqual(result["details"]["download_url"], url + "/tree/main")
+                self.assertEqual(result["details"]["modalities"], ["image"])
+                self.assertEqual(result["details"]["size_category_reported"], ["1K<n<10K"])
+                self.assertNotIn("sample_count", result["details"])
+                self.assertEqual(result["evidence"][0]["method"], "huggingface_api")
+                self.assertEqual(result["evidence"][0]["url"], primary)
+
+    def test_hub_parsing_requires_the_real_host_and_url_path(self):
+        api_payload = {"id": "example/data", "cardData": {"license": "mit"}}
+        card = "---\nlicense: mit\n---\nDataset card"
+        cases = [
+            ("https://example.org/api/datasets/example/data", api_payload),
+            ("https://huggingface.co.example.org/api/models/example/model", api_payload),
+            ("https://huggingface.co/datasets/example/data?source=/api/datasets/example/data", api_payload),
+            ("https://example.org/datasets/example/data/raw/main/README.md", card),
+            ("https://huggingface.co/datasets/example/data?source=/raw/main/README.md", card),
+        ]
+        for primary, content in cases:
+            with self.subTest(primary=primary):
+                result = self._enrich_source("dataset", "https://example.org/data", primary, content)
+                self.assertEqual(result["licenses"], {})
+                self.assertEqual(result["details"], {})
+                self.assertEqual(result["evidence"], [])
+
+    def test_dataverse_preserves_declared_license_and_release_metadata(self):
+        import jsonschema
+        payload = dataverse_dataset()
+        result = self._enrich_source("dataset", DATAVERSE_URL, DATAVERSE_API, payload)
+        metadata = result["details"]["dataverse"]
+        self.assertEqual(metadata["license"], payload["data"]["latestVersion"]["license"])
+        self.assertEqual(metadata["publisher"], "Harvard Dataverse")
+        self.assertEqual(metadata["persistent_url"], "https://doi.org/10.7910/DVN/WX8PCK")
+        self.assertEqual(metadata["publication_date"], "2025-05-15")
+        self.assertEqual((metadata["version_number"], metadata["version_minor_number"]), (5, 0))
+        self.assertEqual(metadata["version_state"], "RELEASED")
+        self.assertEqual(metadata["released_at"], "2026-03-11T01:35:02Z")
+        self.assertEqual(metadata["file_count"], 261)
+        self.assertEqual(set(result["licenses"]), {"data"})
+        self.assertEqual(result["licenses"]["data"]["declared"], "CC0 1.0")
+        self.assertEqual(result["licenses"]["data"]["url"], DATAVERSE_API)
+        for field in ("hub_id", "download_url", "gated", "sample_count"):
+            self.assertNotIn(field, result["details"])
+            self.assertNotIn(field, metadata)
+        receipt = result["evidence"][0]
+        self.assertEqual(receipt["method"], "dataverse_api")
+        self.assertEqual(receipt["url"], DATAVERSE_API)
+        self.assertEqual(receipt["sha256"], hashlib.sha256(json.dumps(payload).encode()).hexdigest())
+        self.assertEqual(receipt["retrieved_at"], "2026-10-17T02:03:20Z")
+        self.assertEqual(receipt["supports"], ["details.dataverse", "licenses.data"])
+        schema = catalog.read_json(catalog.ROOT / "schemas/resource.schema.json")
+        jsonschema.Draft202012Validator(schema["properties"]["evidence"]["items"], format_checker=jsonschema.FormatChecker()).validate(receipt)
+        jsonschema.Draft202012Validator(schema["properties"]["licenses"]["properties"]["data"], format_checker=jsonschema.FormatChecker()).validate(result["licenses"]["data"])
+
+    def test_dataverse_without_license_does_not_inherit_linked_code_terms(self):
+        payload = dataverse_dataset()
+        del payload["data"]["latestVersion"]["license"]
+        payload["data"]["latestVersion"]["metadataBlocks"]["citation"]["fields"] = [
+            {"typeName": "dsDescription", "value": "Related code https://github.com/example/code is MIT licensed."}]
+        result = self._enrich_source("dataset", DATAVERSE_URL, DATAVERSE_API, payload)
+        self.assertEqual(result["licenses"], {})
+        self.assertIsNone(result["details"]["dataverse"]["license"])
+        self.assertEqual(result["details"]["dataverse"]["version_state"], "RELEASED")
+        self.assertNotIn("licenses.data", result["evidence"][0]["supports"])
+
+    def test_dataverse_requires_dataset_kind_host_and_structure(self):
+        cases = [
+            ("model", DATAVERSE_API, dataverse_dataset()),
+            ("dataset", DATAVERSE_API.replace("dataverse.harvard.edu", "example.org"), dataverse_dataset()),
+            ("dataset", DATAVERSE_API, {"status": "OK", "data": {"license": {"name": "CC0 1.0"}}}),
+            ("dataset", DATAVERSE_API, {"status": "ERROR", "data": dataverse_dataset()["data"]}),
+            ("dataset", DATAVERSE_API, "<html>Service unavailable</html>"),
+        ]
+        for kind, primary, content in cases:
+            with self.subTest(kind=kind, primary=primary, content_type=type(content).__name__):
+                result = self._enrich_source(kind, DATAVERSE_URL, primary, content)
+                self.assertEqual(result["licenses"], {})
+                self.assertEqual(result["details"], {})
+                self.assertEqual(result["evidence"], [])
 
     def test_supporting_source_change_revokes_primary_review_match(self):
         with tempfile.TemporaryDirectory() as directory, mock.patch.object(catalog, "DATA", Path(directory)):

@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Build the portable AwesomeCUA site from the committed catalog; no network required."""
+import hashlib
 import json
 from pathlib import Path
+import re
 import shutil
 import sys
 
@@ -9,6 +11,16 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts'))
 from build import validate_records, write_sqlite
 from search_pages import build_search_pages, resource_path
+
+
+def version_script_imports(destination):
+    # Version dependencies before hashing their consumers for the generated HTML.
+    core_version=hashlib.sha256((destination/'catalog-core.js').read_bytes()).hexdigest().encode()
+    pattern=rb"(\bfrom\s*)(['\"])\./catalog-core\.js(?:\?[^'\"\r\n]*)?\2"
+    for name in ('app.js','compare.js'):
+        target=destination/name
+        content=re.sub(pattern,lambda m:m[1]+m[2]+b'./catalog-core.js?v='+core_version+m[2],target.read_bytes())
+        target.write_bytes(content)
 
 
 def build_site(output=None):
@@ -21,6 +33,7 @@ def build_site(output=None):
     destination.mkdir(parents=True,exist_ok=True)
     for path in (ROOT/'web').iterdir():
         if path.is_file():shutil.copy2(path,destination/path.name)
+    version_script_imports(destination)
     (destination/'data').mkdir(exist_ok=True)
     (destination/'downloads').mkdir(exist_ok=True)
     keys=['id','name','kind','url','aliases','environments','topics','summary','review_status','published_at','authors','scope','last_verified_at']

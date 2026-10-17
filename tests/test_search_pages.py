@@ -1,11 +1,14 @@
+import hashlib
 import html
 from html.parser import HTMLParser
 import json
 from pathlib import Path
 import re
+import shutil
 import sys
 import tempfile
 import unittest
+from unittest import mock
 import urllib.parse
 import urllib.robotparser
 import xml.etree.ElementTree as ET
@@ -19,13 +22,14 @@ ROOT=Path(__file__).resolve().parents[1]
 
 class PageParser(HTMLParser):
     def __init__(self,text):
-        super().__init__();self.canonical=[];self.robots=[];self.links=[];self.heading_count=0
+        super().__init__();self.canonical=[];self.robots=[];self.links=[];self.scripts=[];self.heading_count=0
         self.feed(text)
     def handle_starttag(self,tag,attrs):
         a=dict(attrs)
         if tag=='link' and a.get('rel')=='canonical':self.canonical.append(a['href'])
         if tag=='meta' and a.get('name')=='robots':self.robots.append(a['content'])
         if tag=='a' and 'href' in a:self.links.append(a['href'])
+        if tag=='script' and 'src' in a:self.scripts.append(a['src'])
         if tag=='h1':self.heading_count+=1
 
 
@@ -71,6 +75,41 @@ class SearchPagesTests(unittest.TestCase):
         self.assertIn('/papers/',p.links);self.assertIn('/catalog/',p.links);self.assertIn('/data/',p.links)
         self.assertIn(f'id="stat-resources">{len(self.rows):,}</span>',text)
         self.assertIn('Computer-use agent research and resources',text)
+    def test_script_versions_match_output_bytes_and_final_page_manifest(self):
+        pages={item['path']:item for item in self.manifest['pages']}
+        for path,script in [('/', 'app.js'),('/compare/benchmarks/','compare.js'),('/compare/datasets/','compare.js')]:
+            content=(self.dest/path.lstrip('/')/'index.html').read_bytes()
+            sources=PageParser(content.decode('utf-8')).scripts
+            self.assertEqual(len(sources),1,path)
+            url=urllib.parse.urlsplit(sources[0])
+            self.assertEqual(Path(url.path).name,script)
+            self.assertEqual(urllib.parse.parse_qs(url.query),{'v':[hashlib.sha256((self.dest/script).read_bytes()).hexdigest()]})
+            self.assertEqual(pages[path]['sha256'],hashlib.sha256(content).hexdigest())
+        for script in ('app.js','compare.js'):
+            imports=re.findall(r'''\bfrom\s+['"]([^'"]+)['"]''',(self.dest/script).read_text())
+            core=[urllib.parse.urlsplit(url) for url in imports if urllib.parse.urlsplit(url).path=='./catalog-core.js']
+            self.assertEqual(len(core),1,script)
+            self.assertEqual(urllib.parse.parse_qs(core[0].query),{'v':[hashlib.sha256((self.dest/'catalog-core.js').read_bytes()).hexdigest()]})
+    def test_core_change_updates_only_consumer_pages_and_rebuild_is_stable(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source=Path(directory)/'source';source.mkdir()
+            shutil.copytree(ROOT/'web',source/'web');shutil.copytree(ROOT/'data',source/'data')
+            shutil.copy2(ROOT/'LICENSE',source/'LICENSE')
+            destination=Path(directory)/'site'
+            def snapshot():
+                manifest=json.loads((destination/'data/search-manifest.json').read_text())
+                return {item['path']:item['sha256'] for item in manifest['pages']}
+            with mock.patch('build_site.ROOT',source):
+                build_site(destination);before=snapshot()
+                original_app=(destination/'app.js').read_bytes()
+                core=source/'web/catalog-core.js';core.write_bytes(core.read_bytes()+b'\n// Dependency version regression fixture.\n')
+                build_site(destination);after=snapshot()
+                self.assertNotEqual((destination/'app.js').read_bytes(),original_app)
+                self.assertEqual({path for path in before if before[path]!=after[path]},{'/','/compare/benchmarks/','/compare/datasets/'})
+                scripts={name:(destination/name).read_bytes() for name in ('app.js','compare.js')}
+                build_site(destination)
+                self.assertEqual(snapshot(),after)
+                self.assertEqual({name:(destination/name).read_bytes() for name in scripts},scripts)
     def test_machine_navigation_and_verified_files_exist(self):
         config=json.loads((ROOT/'data/site-discovery.json').read_text())
         self.assertEqual((self.dest/(config['indexnow_key']+'.txt')).read_text(),config['indexnow_key'])
