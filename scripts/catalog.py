@@ -434,12 +434,18 @@ def cached_body(url):
     return path.read_bytes() if path.exists() else b""
 
 
+def string_list(value):
+    """Hub card fields may hold a scalar or a list; keep only the strings."""
+    return [value] if isinstance(value, str) else [v for v in value if isinstance(v, str)] if isinstance(value, list) else []
+
+
 def enrich(args):
     """Extract declared licenses and outbound references without inferring semantic relationships."""
     rows = read_json(DATA / "editorial.json", [])
     require_editorial_identities(rows)
     evidence = {r["id"]: r for r in read_jsonl(DATA / "primary-evidence.jsonl")}
     previous = {r["id"]: r for r in read_jsonl(DATA / "enrichment.jsonl")}
+    stale, invalid = [], []
 
     def one(row):
         rid, url, provider = canonical(row["url"])
@@ -447,7 +453,12 @@ def enrich(args):
         ev = evidence.get(rid)
         if not ev or not ev.get("content_matched"):
             return None
-        raw = cached_body(ev["url"]).decode("utf-8", errors="replace")
+        body = cached_body(ev["url"])
+        # Results are stamped with the receipt digest, so derive them only from that exact body.
+        if hashlib.sha256(body).hexdigest() != ev["sha256"]:
+            stale.append(rid)
+            return None
+        raw = body.decode("utf-8", errors="replace")
         if provider == "github" and "<html" in raw.lower():
             # Restrict reference extraction to the rendered README, excluding site navigation.
             article = re.search(r"<article\b[^>]*>(.*?)</article>", raw, re.S)
@@ -466,17 +477,25 @@ def enrich(args):
                 result["licenses"][slot] = {"declared": declaration[1], "url": ev["url"], "retrieved_at": ev["retrieved_at"], "basis": "publisher model/dataset card metadata; third-party assets retain their own terms"}
                 result["evidence"].append({"role": "primary", "method": "huggingface_card", "supports": [f"licenses.{slot}"], **{k: ev[k] for k in ("url", "sha256", "retrieved_at")}})
         if hub_source and source.path.startswith(("/api/datasets/", "/api/models/")):
-            payload = json.loads(raw)
-            card = payload.get("cardData") or {}
-            slot = "data" if source.path.startswith("/api/datasets/") else "weights"
-            license_name = card.get("license")
-            if license_name:
-                result["licenses"][slot] = {"declared": license_name, "url": row["url"], "retrieved_at": ev["retrieved_at"], "basis": "publisher model/dataset card"}
-            result["details"] = {"hub_id": payload.get("id"), "gated": payload.get("gated"), "disabled": payload.get("disabled"),
-                "languages": card.get("language", []), "modalities": [t.split(":", 1)[1] for t in payload.get("tags", []) if t.startswith("modality:")],
-                "size_category_reported": card.get("size_categories"), "download_url": row["url"] + "/tree/main"}
-            # Dataset size tags may count archive files, not samples; never convert them into sample counts.
-            result["evidence"].append({"role": "primary", "method": "huggingface_api", "url": ev["url"], "sha256": ev["sha256"], "retrieved_at": ev["retrieved_at"], "supports": ["details", f"licenses.{slot}"]})
+            try:
+                payload = json.loads(raw)
+            except json.JSONDecodeError:
+                payload = None
+            if not isinstance(payload, dict):
+                invalid.append(rid)
+            else:
+                card = payload.get("cardData") if isinstance(payload.get("cardData"), dict) else {}
+                slot = "data" if source.path.startswith("/api/datasets/") else "weights"
+                license_name = card.get("license")
+                # A card may declare one license or a list of them; keep the string, or the list's string entries.
+                declared = string_list(license_name) if isinstance(license_name, list) else license_name if isinstance(license_name, str) and license_name.strip() else None
+                if declared:
+                    result["licenses"][slot] = {"declared": declared, "url": row["url"], "retrieved_at": ev["retrieved_at"], "basis": "publisher model/dataset card"}
+                result["details"] = {"hub_id": payload.get("id"), "gated": payload.get("gated"), "disabled": payload.get("disabled"),
+                    "languages": string_list(card.get("language")), "modalities": [t.split(":", 1)[1] for t in string_list(payload.get("tags")) if t.startswith("modality:")],
+                    "size_category_reported": string_list(card.get("size_categories")) or None, "download_url": row["url"] + "/tree/main"}
+                # Dataset size tags may count archive files, not samples; never convert them into sample counts.
+                result["evidence"].append({"role": "primary", "method": "huggingface_api", "url": ev["url"], "sha256": ev["sha256"], "retrieved_at": ev["retrieved_at"], "supports": ["details", f"licenses.{slot}"]})
         elif row["kind"] == "dataset" and source.hostname == "dataverse.harvard.edu" and source.path.startswith("/api/datasets/"):
             try:
                 payload = json.loads(raw)
@@ -513,7 +532,15 @@ def enrich(args):
                 license_url = f"https://raw.githubusercontent.com/{repo}/HEAD/{filename}"
                 info, body = fetch(license_url, args.refresh)
                 if not info["ok"]:
-                    continue
+                    if info.get("status") == 404:
+                        continue
+                    # An unreachable candidate is unknown, not absent, and a later candidate must not outrank it:
+                    # keep the recorded code license and its receipt.
+                    old = previous.get(rid, {})
+                    if "code" in old.get("licenses", {}):
+                        result["licenses"]["code"] = old["licenses"]["code"]
+                        result["evidence"] += [e for e in old.get("evidence", []) if e.get("method") == "license_header"]
+                    break
                 license_text = body.decode("utf-8", errors="replace")
                 declared = None
                 if re.search(r"^\s*(?:The )?MIT License", license_text, re.I):
@@ -549,7 +576,11 @@ def enrich(args):
             if result:
                 previous[result["id"]] = result
     write_jsonl(DATA / "enrichment.jsonl", previous.values())
-    print(f"Enrichment receipts: {len(previous)}")
+    for rid in sorted(invalid):
+        print(f"INVALID {rid}: Hugging Face API body is not a JSON object; no Hub metadata extracted")
+    for rid in sorted(stale):
+        print(f"STALE {rid}: cached evidence body is missing or differs from its receipt; previous enrichment kept, rerun verify")
+    print(f"Enrichment receipts: {len(previous)}; {len(stale)} skipped for missing or stale evidence bodies")
 
 
 def nonnegative(value):
