@@ -11,7 +11,7 @@ import re
 import sqlite3
 import urllib.parse
 
-from catalog import ROOT, DATA, KINDS, ENVIRONMENTS, STATUSES, canonical, editorial_identity, publication_identity, read_json, read_jsonl, write_json, write_jsonl
+from catalog import ROOT, DATA, KINDS, ENVIRONMENTS, STATUSES, atomic_write, canonical, editorial_identity, publication_identity, read_json, read_jsonl, write_json, write_jsonl
 from specifications import PREFIXES, PROFILE_KEYS, validate_profiles
 from scope_review import resolve_exclusions, scope_report
 from arxiv_metadata import validate_snapshot
@@ -762,8 +762,7 @@ def build(args):
         if not path.exists() or path.read_text(encoding="utf-8") != content:
             changed.append(relative)
             if not args.check:
-                path.parent.mkdir(parents=True, exist_ok=True)
-                path.write_text(content, encoding="utf-8")
+                atomic_write(path, content.encode())
     if args.check:
         if changed:
             raise ValueError("Generated files are stale: " + ", ".join(changed))

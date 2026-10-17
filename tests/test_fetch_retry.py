@@ -76,7 +76,7 @@ class FetchRetryTests(unittest.TestCase):
 
     def test_persistent_server_errors_stop_after_bounded_backoff(self):
         key = hashlib.sha256(URL.encode()).hexdigest()
-        catalog.write_json(self.cache / f"{key}.json", {"ok": True, "url": URL, "sha256": "a" * 64})
+        catalog.write_json(self.cache / f"{key}.json", {"ok": True, "url": URL, "sha256": hashlib.sha256(b"old good snapshot").hexdigest()})
         (self.cache / f"{key}.body").write_bytes(b"old good snapshot")
         info, body, calls = self.fetch(*[http_error(503)] * catalog.MAX_ATTEMPTS)
         self.assertEqual((info["ok"], info["status"], info["request_attempts"], calls, body), (False, 503, 3, 3, b""))

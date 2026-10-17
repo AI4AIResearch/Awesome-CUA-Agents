@@ -57,13 +57,28 @@ def read_jsonl(path):
 
 
 def write_json(path, value):
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    atomic_write(path, (json.dumps(value, ensure_ascii=False, indent=2) + "\n").encode())
 
 
 def write_jsonl(path, rows):
+    atomic_write(path, "".join(json.dumps(r, ensure_ascii=False, sort_keys=True) + "\n" for r in sorted(rows, key=lambda r: r["id"])).encode())
+
+
+def atomic_write(path, data):
+    """Replace path through a flushed same-directory temporary, so a kill or full disk leaves the old file whole."""
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text("".join(json.dumps(r, ensure_ascii=False, sort_keys=True) + "\n" for r in sorted(rows, key=lambda r: r["id"])), encoding="utf-8")
+    temporary = path.with_name(f".{path.name}.{os.urandom(6).hex()}.tmp")
+    try:
+        # Mode 0o666 lets the umask decide a new file's permissions, as Path.write_bytes would.
+        with open(os.open(temporary, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o666), "wb") as stream:
+            if path.exists():
+                os.fchmod(stream.fileno(), path.stat().st_mode & 0o7777)
+            stream.write(data)
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.replace(temporary, path)
+    finally:
+        temporary.unlink(missing_ok=True)
 
 
 def retry_delay(error, attempt):
@@ -90,9 +105,14 @@ def fetch(url, refresh=False):
     CACHE.mkdir(parents=True, exist_ok=True)
     key = hashlib.sha256(url.encode()).hexdigest()
     info_path, body_path = CACHE / f"{key}.json", CACHE / f"{key}.body"
-    old = read_json(info_path, {})
-    if not refresh and old.get("ok") and body_path.exists():
-        return old, body_path.read_bytes()
+    try:
+        old = {} if refresh else read_json(info_path, {})
+    except ValueError:  # Torn metadata is a cache miss; a successful fetch rewrites it.
+        old = {}
+    body = body_path.read_bytes() if old.get("ok") and body_path.exists() else None
+    # The body is replaced before its metadata, so a run killed in between leaves a digest mismatch: refetch.
+    if body is not None and hashlib.sha256(body).hexdigest() == old.get("sha256"):
+        return old, body
     for attempt in range(1, MAX_ATTEMPTS + 1):
         info = {"url": url, "retrieved_at": now(), "ok": False, "request_attempts": attempt}
         try:
@@ -104,7 +124,7 @@ def fetch(url, refresh=False):
                 info.update(ok=True, status=response.status, final_url=response.url,
                             content_type=response.headers.get("Content-Type", ""),
                             sha256=hashlib.sha256(body).hexdigest(), bytes=len(body))
-            body_path.write_bytes(body)
+            atomic_write(body_path, body)
             write_json(info_path, info)
             return info, body
         except (urllib.error.URLError, http.client.HTTPException, TimeoutError, ValueError, OSError) as error:

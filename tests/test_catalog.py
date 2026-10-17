@@ -100,7 +100,7 @@ class SourceTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory, mock.patch.object(catalog, "CACHE", Path(directory)):
             url = "https://example.org/source"
             key = hashlib.sha256(url.encode()).hexdigest()
-            catalog.write_json(Path(directory) / f"{key}.json", {"ok": True, "url": url, "sha256": "a" * 64})
+            catalog.write_json(Path(directory) / f"{key}.json", {"ok": True, "url": url, "sha256": hashlib.sha256(b"old good snapshot").hexdigest()})
             (Path(directory) / f"{key}.body").write_bytes(b"old good snapshot")
             error = urllib.error.HTTPError(url, 429, "rate limited", {}, None)
             with mock.patch("urllib.request.urlopen", side_effect=error), mock.patch("time.sleep"):
