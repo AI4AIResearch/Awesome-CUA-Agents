@@ -6,6 +6,12 @@ Curated metadata, not a performance ranking. Each entry links its first-party ev
 
 *Evidence* links the reviewed first-party snapshot and its retrieval date.
 
+**16 resources:** [Unspecified (16)](#unspecified)
+
+Resources tagged with environments from more than one family are listed under *Cross-platform*; their exact environments stay in the table.
+
+## Unspecified
+
 | Resource | Environments | Description | Evidence |
 | --- | --- | --- | --- |
 | [Anthropic](https://claude.com/chrome) | unspecified | Publisher or product brand associated with Anthropic computer-use or browser automation offerings. | [✓ 2026-10-16](https://claude.com/chrome) |
@@ -24,5 +30,7 @@ Curated metadata, not a performance ranking. Each entry links its first-party ev
 | [Skyvern](https://www.skyvern.com/) | unspecified | Publisher or product brand associated with Skyvern computer-use or browser automation offerings. | [✓ 2026-10-16](https://www.skyvern.com/) |
 | [Steel](https://steel.dev/) | unspecified | Publisher or product brand associated with Steel computer-use or browser automation offerings. | [✓ 2026-10-16](https://steel.dev/) |
 | [TinyFish](https://www.tinyfish.ai/) | unspecified | Publisher or product brand associated with TinyFish computer-use or browser automation offerings. | [✓ 2026-10-16](https://www.tinyfish.ai/) |
+
+[↑ Back to top](#company-catalog)
 
 Detailed notes and separate code/data/weights license declarations are in `data/catalog.jsonl`.

@@ -328,6 +328,15 @@ class CategoryPageTests(unittest.TestCase):
         self.assertEqual(build.license_cell({"licenses": licenses}), "code MIT · data cc-by-4.0/odc-by")
         self.assertEqual(build.license_cell({"licenses": {"code": None, "data": None, "weights": None, "document": None}}), "—")
 
+    def test_environment_family_sections(self):
+        family = lambda *envs: build.environment_family({"environments": list(envs)})
+        self.assertEqual(family("web"), "web")
+        self.assertEqual(family("desktop", "linux", "windows", "macos"), "desktop")
+        self.assertEqual(family("android", "ios"), "mobile")
+        self.assertEqual(family("desktop", "web"), "cross-platform")
+        self.assertEqual(family("cross-platform"), "cross-platform")
+        self.assertEqual(family("unspecified"), "unspecified")
+
     def test_kind_specific_columns(self):
         row = {"name": "A|B", "url": "https://example.com/a", "environments": ["web"], "summary": "Short.", "published_at": "2025-01-02",
             "relations": [{"type": "published_by", "target_id": "company:x"}], "licenses": {"code": None, "data": None, "weights": None, "document": None},

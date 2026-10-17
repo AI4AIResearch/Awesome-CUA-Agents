@@ -253,6 +253,16 @@ KIND_COLUMNS = {
 }
 
 
+# Category-page sections; a resource spanning several families is cross-platform by definition.
+ENVIRONMENT_FAMILIES = [("web", "Web", {"web"}), ("desktop", "Desktop", {"desktop", "windows", "macos", "linux"}),
+    ("mobile", "Mobile", {"android", "ios", "harmonyos"}), ("cross-platform", "Cross-platform", {"cross-platform"}), ("unspecified", "Unspecified", {"unspecified"})]
+
+
+def environment_family(r):
+    families = {slug for slug, _, members in ENVIRONMENT_FAMILIES if members & set(r["environments"])}
+    return families.pop() if len(families) == 1 else "cross-platform"
+
+
 def table_row(r, columns, by_id):
     primary = next(e for e in r["evidence"] if e["method"] == "editorial_primary_review")
     cells = {"Resource": f"[{md(r['name'])}]({r['url']})", "Environments": ", ".join(r["environments"]),
@@ -322,14 +332,22 @@ def documents(rows, report):
             # Reviewed papers are published by topic (docs/topics/); docs/papers.md is the full bibliography.
             continue
         columns, legend = KIND_COLUMNS.get(kind, KIND_COLUMNS[None])
-        lines = [f"# {kind.title()} catalog", "", "[Home](../README.md) · [Methodology](methodology.md) · [Machine-readable catalog](../data/catalog.jsonl)", "",
+        title = f"{kind.title()} catalog"
+        sections = collections.defaultdict(list)
+        for r in group:
+            sections[environment_family(r)].append(r)
+        present = [(slug, label) for slug, label, _ in ENVIRONMENT_FAMILIES if sections[slug]]
+        lines = [f"# {title}", "", "[Home](../README.md) · [Methodology](methodology.md) · [Machine-readable catalog](../data/catalog.jsonl)", "",
             "Curated metadata, not a performance ranking. Each entry links its first-party evidence. Unknown facts are shown as —.", "", legend, "",
-            "| " + " | ".join(columns) + " |", "|" + " --- |" * len(columns)]
-        ordered = sorted(group, key=lambda r: r["name"].casefold())
-        if "Date" in columns:
-            ordered.sort(key=lambda r: r.get("published_at") or "", reverse=True)
-        lines += [table_row(r, columns, by_id) for r in ordered]
-        lines += ["", "Detailed notes and separate code/data/weights license declarations are in `data/catalog.jsonl`.", ""]
+            f"**{len(group)} resources:** " + " · ".join(f"[{label} ({len(sections[slug])})](#{slug})" for slug, label in present), "",
+            "Resources tagged with environments from more than one family are listed under *Cross-platform*; their exact environments stay in the table.", ""]
+        for slug, label in present:
+            ordered = sorted(sections[slug], key=lambda r: r["name"].casefold())
+            if "Date" in columns:
+                ordered.sort(key=lambda r: r.get("published_at") or "", reverse=True)
+            lines += [f"## {label}", "", "| " + " | ".join(columns) + " |", "|" + " --- |" * len(columns), *(table_row(r, columns, by_id) for r in ordered),
+                "", f"[↑ Back to top](#{title.lower().replace(' ', '-')})", ""]
+        lines += ["Detailed notes and separate code/data/weights license declarations are in `data/catalog.jsonl`.", ""]
         filename = "companies" if kind == "company" else kind + "s"
         files[f"docs/{filename}.md"] = "\n".join(lines)
     paper_lines = ["# Research bibliography", "", "[Home](../README.md) · [Reviewed research by topic](topics.md) · [Curated surveys](surveys.md) · [Query examples](query-guide.md)", "",
