@@ -28,6 +28,8 @@ jobs:
       repeated_partial: ${{ steps.scan.outputs.repeated_partial }}
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
         with:
           python-version: '3.12'
@@ -54,7 +56,12 @@ jobs:
         id: commit
         # The push targets main, so a run on any other ref would fast-forward main to that unreviewed branch.
         if: github.ref == 'refs/heads/main' && !inputs.dry_run
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
+          # Checkouts keep no credentials: only the push and pull below get the token, as a per-command header the rest of this step never sees.
+          auth=(GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=http.https://github.com/.extraheader "GIT_CONFIG_VALUE_0=AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 | tr -d '\n')")
+          unset GH_TOKEN
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add data docs README.md README.zh-CN.md
@@ -67,9 +74,9 @@ jobs:
             git commit -m 'Update public-source scan and verified metadata'
             # main can move during the scan: replay the commit onto it and rebuild the generated files from both sides' inputs before retrying.
             for attempt in 1 2 3; do
-              if git push origin HEAD:main; then break; fi
+              if env "${auth[@]}" git push origin HEAD:main; then break; fi
               if [ "$attempt" = 3 ]; then echo '::error::The scan commit was not pushed to main after 3 attempts'; exit 1; fi
-              git pull --rebase origin main || { echo '::error::main moved during the scan and the scan commit could not be rebased onto it; re-dispatch the scan'; git rebase --abort; exit 1; }
+              env "${auth[@]}" git pull --rebase origin main || { echo '::error::main moved during the scan and the scan commit could not be rebased onto it; re-dispatch the scan'; git rebase --abort; exit 1; }
               python scripts/catalog.py build
               python scripts/catalog.py validate
               git add data docs README.md README.zh-CN.md
