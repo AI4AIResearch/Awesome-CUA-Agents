@@ -725,6 +725,9 @@ def main(argv=None):
     command.set_defaults(function=build)
     command = sub.add_parser("validate", help="validate catalog against JSON Schema and quality invariants")
     command.set_defaults(function=validate)
+    from summary_lint import SUMMARY_LIMIT, lint
+    command = sub.add_parser("lint", help=f"report curated summaries over {SUMMARY_LIMIT} characters, without a terminal period, or with superlatives; never fails")
+    command.set_defaults(function=lint)
     command = sub.add_parser("search", help="search names, descriptions, aliases, authors, curated topics, ids and URLs")
     command.add_argument("query", nargs="?", default="")
     command.add_argument("--kind", choices=sorted(KINDS))

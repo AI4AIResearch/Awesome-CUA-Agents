@@ -38,7 +38,7 @@ In the Required column, `always` means that `build` or `verify` fails without th
 | `url` | always | HTTPS URL accepted by `canonical` | — | `canonical`, `verify_editorial`, `source_records` | `url` and the `primary` link; default ID and default evidence URLs |
 | `environments` | for approval | non-empty array of schema environments | — | `source_records` | `environments`; `validate` rejects an empty array |
 | `topics` | for approval | array of keys from the [topic vocabulary](data-dictionary.md#topic-vocabulary) in `data/topics.json` | — | `source_records` | `topics` and topic-hub placement |
-| `summary` | for approval | string; original, concise | — | `source_records` | `summary`; `validate` rejects an empty one |
+| `summary` | for approval | string; original and concise: at most 220 characters, ending with a period, without superlatives | — | `source_records` | `summary`; `validate` rejects an empty one. `catalog.py lint` reports a curated summary over 220 characters, without a terminal period, or with "state-of-the-art", "best" or "revolutionary"; the report is advisory and never fails |
 | `editorial_reviewed` | for approval | boolean | `false` | `source_records` | `false` keeps a proposal in the review queue |
 | `reviewed_sha256` | for approval | 64 hex digits | — | `source_records` | Must equal the current primary receipt's `sha256` |
 | `reviewed_at` | no | ISO 8601 UTC time of the review | — | `build` (README) | Informational. It does not gate approval and is not compared with the receipt. It orders the README's Recently reviewed table, which omits papers, surveys, and entries without it |

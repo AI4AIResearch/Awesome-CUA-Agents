@@ -41,6 +41,9 @@ python3 scripts/catalog.py enrich
 # Review changed snapshots before updating editorial approval digests.
 python3 scripts/catalog.py build
 
+# Advisory: list curated summaries over 220 characters, without a terminal period, or with superlatives. Never fails.
+python3 scripts/catalog.py lint
+
 # Run the same checks as CI, in order; see "Maintain and verify" in the README.
 .venv/bin/python scripts/catalog.py validate
 .venv/bin/python scripts/catalog.py build --check
