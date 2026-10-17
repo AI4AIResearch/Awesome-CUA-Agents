@@ -1,0 +1,83 @@
+name: Data release
+
+on:
+  push:
+    tags: ['v*']
+  # Dispatch on a v* tag to retry its release; dispatch on a branch builds the same assets as an artifact without publishing.
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: data-release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+      - run: python -m pip install --require-hashes -r requirements-dev.txt
+      - name: Validate the source catalog
+        run: |
+          python scripts/catalog.py validate
+          python scripts/catalog.py build --check
+      - name: Build the exports
+        run: |
+          python scripts/catalog.py build
+          python scripts/build_site.py
+      - name: Collect release assets, checksums and notes
+        run: |
+          mkdir -p release/assets
+          cp data/catalog.jsonl data/coverage.json dist/catalog.json dist/catalog.sqlite release/assets/
+          cp dist/site/downloads/topics.json dist/site/downloads/benchmarks-profiles.json dist/site/downloads/datasets-profiles.json release/assets/
+          (cd release/assets && sha256sum -- * > SHA256SUMS)
+          python - "$(git rev-parse HEAD)" > release/notes.md <<'EOF'
+          import json, os, sys
+          commit, repo = sys.argv[1], os.environ['GITHUB_REPOSITORY']
+          read = lambda name: json.load(open('release/assets/' + name, encoding='utf-8'))
+          coverage, topics = read('coverage.json'), read('topics.json')
+          rows = [('Active records', coverage['total_records']), ('Curated', coverage['curated_records']), ('Metadata only', coverage['metadata_only_records'])]
+          rows += [(f'Kind: {kind}', count) for kind, count in sorted(coverage['by_kind'].items())]
+          rows += [('Benchmark profiles', read('benchmarks-profiles.json')['profile_count']), ('Dataset profiles', read('datasets-profiles.json')['profile_count']), ('Topics', len(topics['topics']))]
+          print(f'Catalog exports built from source commit [`{commit}`](https://github.com/{repo}/tree/{commit}), with coverage as of {coverage["as_of_utc"]}.\n')
+          print('| Records | Count |\n| --- | ---: |\n' + '\n'.join(f'| {label} | {count:,} |' for label, count in rows) + '\n')
+          print('Counts are resources, not independent projects; topic memberships overlap. Check the downloads with `sha256sum -c SHA256SUMS`, and cite this release by its tag.')
+          EOF
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: release-assets
+          path: release/
+          if-no-files-found: error
+          retention-days: 7
+      - name: Report a preview build
+        if: ${{ !startsWith(github.ref, 'refs/tags/v') }}
+        run: echo "::notice::Built release assets from $GITHUB_REF without publishing; dispatch on a v* tag to release"
+  release:
+    # Only this job, with no checkout, can write; it publishes the files the build job made.
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+        with:
+          name: release-assets
+          path: release
+      - name: Publish the GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        # --verify-tag fails instead of creating a missing tag; no workflow creates or moves release tags.
+        run: gh release create "$GITHUB_REF_NAME" release/assets/* --verify-tag --title "Awesome CUA catalog $GITHUB_REF_NAME" --notes-file release/notes.md -R "$GITHUB_REPOSITORY"
