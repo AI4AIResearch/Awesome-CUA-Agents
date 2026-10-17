@@ -256,7 +256,7 @@ test('pagination is a nav of numbered page buttons with the current page marked 
   const records=Array.from({length:PAGE_SIZE*7+1},(_,i)=>({id:`url:page-${i}`,name:`Fixture ${String(i).padStart(3,'0')}`,kind:'tool',url:'https://example.org/',page_url:`/resources/page-${i}/`,aliases:[],environments:['web'],topics:[],authors:[],summary:'Fixture.',review_status:'curated',published_at:null,scope:'core',paper_version:null,paper_source_url:null,paper_date:null,related_count:0,incoming_relations:[]}));
   const keys=['document','window','location','history','localStorage','fetch'],saved=keys.map(key=>[key,Object.getOwnPropertyDescriptor(globalThis,key)]);
   const boot=async(search,name)=>{
-    const elements=new Map(),element=selector=>{if(!elements.has(selector))elements.set(selector,{dataset:{},listeners:{},classList:{toggle(){}},addEventListener(type,fn){(this.listeners[type]??=[]).push(fn);},setAttribute(){},scrollIntoView(){},showModal(){},close(){}});return elements.get(selector);};
+    const elements=new Map(),element=selector=>{if(!elements.has(selector))elements.set(selector,{dataset:{},listeners:{},classList:{toggle(){}},addEventListener(type,fn){(this.listeners[type]??=[]).push(fn);},setAttribute(){},scrollIntoView(){},focus(){},showModal(){},close(){}});return elements.get(selector);};
     const globals={document:{documentElement:{},body:{classList:{toggle(){}}},addEventListener(){},querySelector:element,querySelectorAll:()=>[]},window:{addEventListener(){}},location:{search,pathname:'/',hash:''},history:{replaceState(){}},localStorage:{getItem:()=>null,setItem(){}},fetch:async()=>({ok:true,json:async()=>({coverage,records:structuredClone(records)})})};
     for(const [key,value] of Object.entries(globals))Object.defineProperty(globalThis,key,{value,configurable:true,writable:true});
     await import(`../web/app.js?${name}`);await new Promise(resolve=>setImmediate(resolve));
@@ -272,6 +272,42 @@ test('pagination is a nav of numbered page buttons with the current page marked 
     assert.match(html(),/data-page="8" aria-label="Page 8" aria-current="page">8<\/button><\/span><button type="button" data-page="9" disabled>/);
     const zh=await boot('?page=2&lang=zh','pager-zh');
     assert.match(zh.innerHTML,/data-page="2" aria-label="第 2 页" aria-current="page">2<\/button>/);
+  } finally {
+    for(const [key,descriptor] of saved)if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];
+  }
+});
+test('keyboard focus lands on a control and paging is announced after categories, pages and resets re-render',async()=>{
+  const coverage=JSON.parse(readFileSync(new URL('../data/coverage.json',import.meta.url),'utf8'));
+  const records=Array.from({length:PAGE_SIZE*2+1},(_,i)=>({id:`url:focus-${i}`,name:`Fixture ${i}`,kind:i%2?'tool':'dataset',url:'https://example.org/',page_url:`/resources/focus-${i}/`,aliases:[],environments:['web'],topics:[],authors:[],summary:'Fixture.',review_status:'curated',published_at:null,scope:'core',paper_version:null,paper_source_url:null,paper_date:null,related_count:0,incoming_relations:[]}));
+  const keys=['document','window','location','history','localStorage','fetch'],saved=keys.map(key=>[key,Object.getOwnPropertyDescriptor(globalThis,key)]);
+  const boot=async(search,name)=>{
+    const doc={documentElement:{},body:{classList:{toggle(){}}},addEventListener(){},querySelectorAll:()=>[]};
+    const elements=new Map(),element=selector=>{if(!elements.has(selector))elements.set(selector,{dataset:{},listeners:{},classList:{toggle(){}},addEventListener(type,fn){(this.listeners[type]??=[]).push(fn);},setAttribute(){},scrollIntoView(){},focus(){doc.activeElement=this;},showModal(){},close(){}});return elements.get(selector);};
+    doc.querySelector=element;
+    const globals={document:doc,window:{addEventListener(){}},location:{search,pathname:'/',hash:''},history:{replaceState(){}},localStorage:{getItem:()=>null,setItem(){}},fetch:async()=>({ok:true,json:async()=>({coverage,records:structuredClone(records)})})};
+    for(const [key,value] of Object.entries(globals))Object.defineProperty(globalThis,key,{value,configurable:true,writable:true});
+    await import(`../web/app.js?${name}`);await new Promise(resolve=>setImmediate(resolve));
+    return {doc,element,status:()=>element('#results-count').innerHTML};
+  };
+  try {
+    const {doc,element,status}=await boot('?kind=tool','focus-en');
+    for(const kind of ['dataset','']){
+      doc.activeElement={dataset:{kind},closest:()=>doc.activeElement};
+      element('#categories').listeners.click[0]({target:doc.activeElement});
+      assert.equal(doc.activeElement,element(`#categories [data-kind="${kind}"]`),`category ${kind}`);
+    }
+    assert.match(status(),/<span class="sr-only"> · Page 1 of 3<\/span>$/);
+    element('#pagination').listeners.click[0]({target:{closest:()=>({disabled:false,dataset:{page:'2'}})}});
+    assert.equal(doc.activeElement,element('#results-count'));
+    assert.match(status(),/<span class="sr-only"> · Page 2 of 3<\/span>$/);
+    for(const id of ['#clear-filters','#empty-reset']){
+      element('#search').listeners.input[0]({target:{value:'Fixture 7'}});
+      assert.doesNotMatch(status(),/sr-only/);
+      doc.activeElement=element(id);element(id).listeners.click[0]();
+      assert.equal(doc.activeElement,element('#results-count'),id);
+      assert.match(status(),/Page 1 of 3/);
+    }
+    assert.match((await boot('?page=2&lang=zh','focus-zh')).status(),/<span class="sr-only"> · 第 2 页，共 3 页<\/span>$/);
   } finally {
     for(const [key,descriptor] of saved)if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];
   }
