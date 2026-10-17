@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/reacher-z/Awesome-CUA/blob/main/schemas/resource.schema.json",
   "title": "Awesome CUA resource",
-  "description": "One resource, not one project. Bibliographic verification and editorial curation are different states.",
+  "description": "One resource, not one project. Bibliographic verification and editorial curation are different states. This schema checks each record on its own, including the rules for curated records and kind-specific details. catalog.py validate and build also enforce rules that need other fields, other records or data/topics.json: canonical URL identities, the topic vocabulary, relation targets and their evidence receipts, profile and publication evidence receipts, arXiv version links, known duplicates, and dates relative to verification.",
   "type": "object",
   "required": [
     "id",
@@ -447,6 +447,160 @@
     }
   },
   "additionalProperties": false,
+  "allOf": [
+    {
+      "description": "A curated record carries an editorial summary and a decided scope.",
+      "if": {
+        "properties": {
+          "review_status": {
+            "const": "curated"
+          }
+        },
+        "required": [
+          "review_status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "summary": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope": {
+            "enum": [
+              "core",
+              "adjacent"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "description": "A benchmark protocol belongs to a curated benchmark.",
+      "if": {
+        "properties": {
+          "details": {
+            "type": "object",
+            "required": [
+              "benchmark_protocol"
+            ]
+          }
+        },
+        "required": [
+          "details"
+        ]
+      },
+      "then": {
+        "properties": {
+          "kind": {
+            "const": "benchmark"
+          },
+          "review_status": {
+            "const": "curated"
+          }
+        }
+      }
+    },
+    {
+      "description": "A dataset profile belongs to a curated dataset.",
+      "if": {
+        "properties": {
+          "details": {
+            "type": "object",
+            "required": [
+              "dataset_profile"
+            ]
+          }
+        },
+        "required": [
+          "details"
+        ]
+      },
+      "then": {
+        "properties": {
+          "kind": {
+            "const": "dataset"
+          },
+          "review_status": {
+            "const": "curated"
+          }
+        }
+      }
+    },
+    {
+      "description": "An arXiv snapshot belongs to an arXiv paper or survey and is backed by an arXiv API receipt that supports it.",
+      "if": {
+        "properties": {
+          "details": {
+            "type": "object",
+            "required": [
+              "arxiv_snapshot"
+            ]
+          }
+        },
+        "required": [
+          "details"
+        ]
+      },
+      "then": {
+        "properties": {
+          "id": {
+            "pattern": "^arxiv:"
+          },
+          "kind": {
+            "enum": [
+              "paper",
+              "survey"
+            ]
+          },
+          "evidence": {
+            "contains": {
+              "required": [
+                "method",
+                "supports"
+              ],
+              "properties": {
+                "method": {
+                  "const": "arxiv_api"
+                },
+                "supports": {
+                  "contains": {
+                    "const": "details.arxiv_snapshot"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "description": "Publisher metadata belongs to a paper or survey.",
+      "if": {
+        "properties": {
+          "details": {
+            "type": "object",
+            "required": [
+              "publication"
+            ]
+          }
+        },
+        "required": [
+          "details"
+        ]
+      },
+      "then": {
+        "properties": {
+          "kind": {
+            "enum": [
+              "paper",
+              "survey"
+            ]
+          }
+        }
+      }
+    }
+  ],
   "$defs": {
     "countObservation": {
       "type": "object",
