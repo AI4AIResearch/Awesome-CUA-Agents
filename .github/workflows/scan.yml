@@ -65,7 +65,16 @@ jobs:
           if [ -n "$untracked" ]; then printf 'Untracked files outside the committed paths:\n%s\n' "$untracked"; exit 1; fi
           if ! git diff --cached --quiet; then
             git commit -m 'Update public-source scan and verified metadata'
-            git push origin HEAD:main
+            # main can move during the scan: replay the commit onto it and rebuild the generated files from both sides' inputs before retrying.
+            for attempt in 1 2 3; do
+              if git push origin HEAD:main; then break; fi
+              if [ "$attempt" = 3 ]; then echo '::error::The scan commit was not pushed to main after 3 attempts'; exit 1; fi
+              git pull --rebase origin main || { echo '::error::main moved during the scan and the scan commit could not be rebased onto it; re-dispatch the scan'; git rebase --abort; exit 1; }
+              python scripts/catalog.py build
+              python scripts/catalog.py validate
+              git add data docs README.md README.zh-CN.md
+              git diff --cached --quiet || git commit -q --amend --no-edit
+            done
             echo 'pushed=true' >> "$GITHUB_OUTPUT"
           fi
       - name: Retain scan evidence
