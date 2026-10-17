@@ -21,7 +21,7 @@ class ActionPinTests(unittest.TestCase):
                     self.assertRegex(tag, r"^v\d+\.\d+\.\d+$")
 
     def test_publish_workflow_shares_pins_with_the_watched_workflows(self):
-        # Dependabot reads only .github/workflows, so its bumps must be copied into automation/publish.yml by hand.
+        # Dependabot's grouped bump covers both directories; a hand edit to one workflow must be copied to the others.
         found = {}
         for path in WORKFLOWS:
             for action, ref, tag in pins(path):
@@ -33,8 +33,9 @@ class ActionPinTests(unittest.TestCase):
         updates = {block.split("\n", 1)[0].strip(): block for block in (ROOT / ".github/dependabot.yml").read_text().split("- package-ecosystem:")[1:]}
         self.assertEqual(sorted(updates), ["github-actions", "pip"])
         for block in updates.values():
-            self.assertIn("directory: /\n", block)
             self.assertIn("interval: weekly", block)
+        self.assertIn('directories: ["/", "/automation"]\n', updates["github-actions"])
+        self.assertIn("directory: /\n", updates["pip"])
         self.assertRegex(updates["github-actions"], r'groups:\n +[\w-]+:\n +patterns: \["\*"\]')
         self.assertTrue((ROOT / "requirements-dev.txt").exists())
 

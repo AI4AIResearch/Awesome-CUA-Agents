@@ -1,8 +1,8 @@
 version: 2
 updates:
-  # Only .github/workflows is scanned; copy action bumps into automation/publish.yml (tests/test_action_pins.py enforces this).
+  # "/" covers .github/workflows; "/automation" adds publish.yml. With directories, one grouped PR bumps both.
   - package-ecosystem: github-actions
-    directory: /
+    directories: ["/", "/automation"]
     schedule:
       interval: weekly
     groups:
