@@ -62,6 +62,8 @@ class ExplicitEncodingTests(unittest.TestCase):
                 if not isinstance(node, ast.Call) or any(k.arg == "encoding" for k in node.keywords):
                     continue
                 method = isinstance(node.func, ast.Attribute)
+                if method and getattr(node.func.value, "id", "") == "os":
+                    continue  # os.open returns a file descriptor and takes no encoding.
                 name = node.func.attr if method else getattr(node.func, "id", "")
                 # Path.open(mode) takes the mode first; the builtin open(file, mode) second.
                 position = 0 if method else 1
