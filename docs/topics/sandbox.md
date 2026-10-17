@@ -1,4 +1,4 @@
-# Sandbox
+# Sandboxes
 
 [Home](../../README.md) · [All topics](../topics.md) · [Full arXiv bibliography](../papers.md)
 

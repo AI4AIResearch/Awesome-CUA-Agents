@@ -363,3 +363,30 @@ test('Chinese mode localizes the title, accessible names, skip link, static dire
     for(const [key,descriptor] of saved)if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];
   }
 });
+test('topic labels come from data/topics.json through the index payload',async()=>{
+  const vocabulary=JSON.parse(readFileSync(new URL('../data/topics.json',import.meta.url),'utf8'));
+  assert.deepEqual([...new Set(rows.flatMap(r=>r.topics))].filter(key=>!Object.hasOwn(vocabulary,key)),[]);
+  assert.deepEqual(Object.keys(TOPIC_ALIASES).filter(key=>!Object.hasOwn(vocabulary,key)),[]);
+  assert.doesNotMatch(readFileSync(new URL('../web/app.js',import.meta.url),'utf8'),/'(?:grounding|ui-design|world-models)':\[/);
+  const coverage=JSON.parse(readFileSync(new URL('../data/coverage.json',import.meta.url),'utf8'));
+  const topics=Object.fromEntries(Object.entries(vocabulary).map(([key,entry])=>[key,[entry.en,entry.zh]]));
+  const record={id:'url:design',name:'Design study',kind:'paper',url:'https://example.org/',page_url:'/resources/design/',aliases:[],environments:['web'],topics:['ui-design','grounding'],authors:[],scope:'core',review_status:'curated',summary:'Fixture summary.',published_at:null,paper_version:null,paper_source_url:null,paper_date:null,related_count:0,incoming_relations:[],paper_arxiv:null,declared_licenses:{}};
+  const keys=['document','window','location','history','localStorage','fetch'],saved=keys.map(key=>[key,Object.getOwnPropertyDescriptor(globalThis,key)]);
+  const render=async(search,name)=>{
+    const elements=new Map(),element=selector=>{if(!elements.has(selector))elements.set(selector,{dataset:{},classList:{toggle(){}},addEventListener(){},setAttribute(){},showModal(){},close(){}});return elements.get(selector);};
+    const globals={document:{documentElement:{},body:{classList:{toggle(){}}},addEventListener(){},querySelector:element,querySelectorAll:()=>[]},window:{addEventListener(){}},location:{search,pathname:'/',hash:''},history:{replaceState(){}},localStorage:{getItem:()=>null,setItem(){}},fetch:async()=>({ok:true,json:async()=>({coverage,topics,records:[structuredClone(record)]})})};
+    for(const [key,value] of Object.entries(globals))Object.defineProperty(globalThis,key,{value,configurable:true,writable:true});
+    await import(`../web/app.js?${name}`);await new Promise(resolve=>setImmediate(resolve));
+    return {options:element('#topic').innerHTML,results:element('#results').innerHTML};
+  };
+  try {
+    const en=await render('','topics-en'),zh=await render('?lang=zh','topics-zh');
+    for(const [view,language] of [[en,0],[zh,1]]){
+      assert.match(view.options,new RegExp(`<option value="ui-design">${topics['ui-design'][language]}</option>`));
+      assert.match(view.options,new RegExp(`<option value="grounding">${topics.grounding[language]}</option>`));
+      assert.ok(view.results.includes(topics['ui-design'][language]));
+    }
+  } finally {
+    for(const [key,descriptor] of saved)if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];
+  }
+});

@@ -10,17 +10,8 @@ const TEXT = {
 };
 const KINDS = {paper:['Papers','论文','▤'],survey:['Surveys','综述','≋'],model:['Models','模型','◈'],dataset:['Datasets','数据集','▦'],benchmark:['Benchmarks','评测基准','◎'],agent:['Agents','智能体','↗'],framework:['Frameworks','框架','◇'],infrastructure:['Infrastructure','基础设施','▧'],tool:['Tools','工具','⚒'],product:['Products','产品','□'],company:['Publishers','发布方','⌂']};
 const PLATFORMS = {web:['Web','浏览器'],desktop:['Desktop','桌面'],windows:['Windows','Windows'],macos:['macOS','macOS'],linux:['Linux','Linux'],mobile:['Mobile','移动设备'],android:['Android','Android'],ios:['iOS','iOS'],harmonyos:['HarmonyOS','鸿蒙'],'cross-platform':['Cross-platform','跨平台'],unspecified:['Unassigned','待标注']};
-const TOPICS = {'world-models':['World models','世界模型'],'grounding':['GUI grounding','GUI 定位'],'reinforcement-learning':['Reinforcement learning','强化学习'],'safety-security':['Safety & security','安全与防护'],'planning':['Planning','规划'],'data-generation':['Data generation','数据生成'],'screen-understanding':['Screen understanding','界面理解'],'evaluation':['Evaluation','评测'],'mobile-navigation':['Mobile navigation','手机操作'],'web-navigation':['Web navigation','网页导航'],'workflow':['Workflows','工作流'],'memory':['Memory','记忆'],'long-horizon':['Long-horizon tasks','长任务'],'robustness':['Robustness','鲁棒性'],'sandbox':['Sandboxes','沙箱'],'tool-integration':['Tool integration','工具集成'],'automation':['Automation','自动化'],'cross-app':['Cross-app','跨应用'],'efficiency':['Efficiency','效率'],'video':['Video','视频'],'recording':['Recording','录制'],'human-in-the-loop':['Human in the loop','人机协作'],'observability':['Observability','可观测性'],'science':['Scientific workflows','科学工作流'],'history':['Historical','历史'],'survey':['Survey','综述'],'industry':['Industry','产业']};
-Object.assign(TOPICS, {
-  'action-prediction':['Action prediction','动作预测'],
-  'imitation-learning':['Imitation learning','模仿学习'],
-  'reward-models':['Reward models','奖励模型'],
-  'interaction-history':['Interaction history','交互历史'],
-  'self-reflection':['Self-reflection','自我反思'],
-  'state-tracking':['State tracking','状态追踪'],
-  'training-free':['Training-free methods','无需训练的方法'],
-  'ui-design':['UI design','界面设计']
-});
+// Topic labels come from data/topics.json through data/index.json.
+let TOPICS = {};
 Object.assign(TEXT.en, {agentEyebrow:'DATA FOR PEOPLE & AGENTS',agentTitle:'Clone the catalog. Put it to work.',agentCopy:'Search locally, connect a RAG pipeline, or let your agent explore—with sources and review states intact.',agentGuide:'Agent & RAG guide',copyCommand:'Copy command',commandCopied:'Clone command copied',commandCopyFailed:'Select the command above to copy it.',ragReviewed:'RAG documents · reviewed',ragReviewedCopy:'One retrieval document per reviewed resource, with citations and provenance.',ragAll:'RAG documents · all records',ragAllCopy:'Every active record, including metadata-only entries with their review state.'});
 Object.assign(TEXT.zh, {agentEyebrow:'给人阅读，也给 AGENTS 使用',agentTitle:'克隆完整目录，接入你的工作。',agentCopy:'本地检索、构建 RAG，或让 Agent 继续探索。来源、引用和审阅状态随数据一起保留。',agentGuide:'Agents 与 RAG 使用指南',copyCommand:'复制克隆命令',commandCopied:'克隆命令已复制',commandCopyFailed:'请选择上方命令并复制。',ragReviewed:'RAG 文档 · 已审阅',ragReviewedCopy:'每项已审阅资源对应一份检索文档，保留引用和来源。',ragAll:'RAG 文档 · 全部记录',ragAllCopy:'包含全部当前记录，并明确保留待审阅论文的状态。'});
 Object.assign(TEXT.en,{topicDirectory:'Browse topics'});
@@ -125,7 +116,7 @@ async function load() {
   loading=true;$('#load-error').hidden=true;$('#results').setAttribute('aria-busy','true');$('#results-count').textContent=t('loading');$('#results').innerHTML=Array.from({length:6},()=>'<div class="skeleton-card" aria-hidden="true"></div>').join('');
   try {
     const response=await fetch('./data/index.json');if(!response.ok)throw new Error('HTTP '+response.status);
-    const data=await response.json();report=data.coverage;records=data.records;
+    const data=await response.json();report=data.coverage;records=data.records;TOPICS=data.topics || {};
     records.forEach(r=>r.search_text=searchText([r.name,r.summary,r.publication_search_text,...r.aliases,...r.authors,...r.environments.flatMap(x=>PLATFORMS[x] || [x]),...r.topics.flatMap(x=>[...(TOPICS[x] || [x]),...(TOPIC_ALIASES[x] || [])]),...(KINDS[r.kind] || [])]));
     if(!Object.hasOwn(PLATFORMS,state.platform))state.platform='';
     if(!records.some(r=>r.topics.includes(state.topic)))state.topic='';

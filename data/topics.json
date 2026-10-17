@@ -1,0 +1,177 @@
+{
+  "action-prediction": {
+    "en": "Action prediction",
+    "zh": "动作预测",
+    "definition": "Predicting the next UI action or action sequence from an instruction and the current screen."
+  },
+  "automation": {
+    "en": "Automation",
+    "zh": "自动化",
+    "definition": "Automating repetitive GUI tasks with scripts, programs, or agents."
+  },
+  "cross-app": {
+    "en": "Cross-app",
+    "zh": "跨应用",
+    "definition": "Tasks that carry information or control across several applications or websites."
+  },
+  "data-generation": {
+    "en": "Data generation",
+    "zh": "数据生成",
+    "definition": "Collecting, synthesizing, or annotating screens, instructions, and trajectories for training or evaluation."
+  },
+  "efficiency": {
+    "en": "Efficiency",
+    "zh": "效率",
+    "definition": "Reducing the latency, tokens, steps, or compute an agent needs to perceive, plan, or act."
+  },
+  "evaluation": {
+    "en": "Evaluation",
+    "zh": "评测",
+    "definition": "Benchmarks, metrics, and evaluation methods for agents and their components."
+  },
+  "grounding": {
+    "en": "GUI grounding",
+    "zh": "GUI 定位",
+    "definition": "Locating the on-screen element or coordinates that an instruction refers to."
+  },
+  "history": {
+    "en": "Historical",
+    "zh": "历史",
+    "definition": "Archived, legacy, or discontinued resources kept for historical context."
+  },
+  "human-in-the-loop": {
+    "en": "Human in the loop",
+    "zh": "人机协作",
+    "definition": "Agents that ask people, learn from them, or are corrected by them during a task."
+  },
+  "imitation-learning": {
+    "en": "Imitation learning",
+    "zh": "模仿学习",
+    "definition": "Learning policies from human or synthetic demonstrations."
+  },
+  "industry": {
+    "en": "Industry",
+    "zh": "产业",
+    "definition": "Companies, commercial deployments, and enterprise or industrial application domains."
+  },
+  "interaction-history": {
+    "en": "Interaction history",
+    "zh": "交互历史",
+    "definition": "Using earlier screens, actions, or trajectories as context for the next decision."
+  },
+  "long-horizon": {
+    "en": "Long-horizon tasks",
+    "zh": "长任务",
+    "definition": "Tasks that need many dependent steps, subgoals, or long-term planning."
+  },
+  "memory": {
+    "en": "Memory",
+    "zh": "记忆",
+    "definition": "Storing and retrieving experience, app knowledge, or skills across steps or tasks."
+  },
+  "mobile-navigation": {
+    "en": "Mobile navigation",
+    "zh": "手机操作",
+    "definition": "Operating smartphone and tablet apps."
+  },
+  "observability": {
+    "en": "Observability",
+    "zh": "可观测性",
+    "definition": "Inspecting agent runs through traces, intermediate progress, failure analysis, and diagnostics."
+  },
+  "planning": {
+    "en": "Planning",
+    "zh": "规划",
+    "definition": "Decomposing goals into subtasks and choosing action sequences."
+  },
+  "recording": {
+    "en": "Recording",
+    "zh": "录制",
+    "definition": "Capturing human screen sessions, input events, or interaction traces."
+  },
+  "reinforcement-learning": {
+    "en": "Reinforcement learning",
+    "zh": "强化学习",
+    "definition": "Training agents from rewards with online or offline reinforcement learning."
+  },
+  "reward-models": {
+    "en": "Reward models",
+    "zh": "奖励模型",
+    "definition": "Models or signals that score actions, steps, or outcomes for training or guidance."
+  },
+  "robustness": {
+    "en": "Robustness",
+    "zh": "鲁棒性",
+    "definition": "Reliability under perturbations, distribution shift, errors, or changing interfaces."
+  },
+  "safety-security": {
+    "en": "Safety & security",
+    "zh": "安全与防护",
+    "definition": "Attacks, defenses, privacy, policy compliance, and the risks of agent actions."
+  },
+  "sandbox": {
+    "en": "Sandboxes",
+    "zh": "沙箱",
+    "definition": "Isolated, reproducible environments such as virtual machines, emulators, and browsers for running agents."
+  },
+  "science": {
+    "en": "Scientific workflows",
+    "zh": "科学工作流",
+    "definition": "Agents for scientific, engineering, and data-science software."
+  },
+  "screen-understanding": {
+    "en": "Screen understanding",
+    "zh": "界面理解",
+    "definition": "Perceiving and describing interface layouts, elements, text, and structure."
+  },
+  "self-reflection": {
+    "en": "Self-reflection",
+    "zh": "自我反思",
+    "definition": "Agents that critique, verify, or revise their own actions and plans."
+  },
+  "state-tracking": {
+    "en": "State tracking",
+    "zh": "状态追踪",
+    "definition": "Estimating and monitoring interface or task state, including whether an action took effect."
+  },
+  "survey": {
+    "en": "Survey",
+    "zh": "综述",
+    "definition": "Literature surveys and overviews of the field."
+  },
+  "tool-integration": {
+    "en": "Tool integration",
+    "zh": "工具集成",
+    "definition": "Combining GUI actions with APIs, code, terminals, or other tools."
+  },
+  "training-free": {
+    "en": "Training-free methods",
+    "zh": "无需训练的方法",
+    "definition": "Improving agents through prompting or inference-time methods without training."
+  },
+  "ui-design": {
+    "en": "UI design",
+    "zh": "界面设计",
+    "definition": "How interface design affects agents and users, and agents that evaluate or generate interfaces."
+  },
+  "video": {
+    "en": "Video",
+    "zh": "视频",
+    "definition": "Learning from, or evaluating on, screen recordings and tutorial videos."
+  },
+  "web-navigation": {
+    "en": "Web navigation",
+    "zh": "网页导航",
+    "definition": "Operating websites and web applications in a browser."
+  },
+  "workflow": {
+    "en": "Workflows",
+    "zh": "工作流",
+    "definition": "Multi-step procedures, business processes, and reusable task workflows."
+  },
+  "world-models": {
+    "en": "World models",
+    "zh": "世界模型",
+    "definition": "Predicting how an interface changes after an action, for planning or training."
+  }
+}

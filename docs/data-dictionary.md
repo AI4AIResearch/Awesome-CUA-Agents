@@ -11,7 +11,7 @@ The executable contract is [resource.schema.json](../schemas/resource.schema.jso
 | `scope` | `core`, `adjacent`, or `relevance_pending` |
 | `review_status` | `curated` or `metadata_verified`; candidates live outside the catalog |
 | `environments` | Reviewed platform facets; `cross-platform` is not a claim of support for every OS |
-| `topics` | Editorial topic facets; empty for unreviewed bibliography entries |
+| `topics` | Editorial topic facets from the [topic vocabulary](#topic-vocabulary); empty for unreviewed bibliography entries |
 | `summary` | Original concise annotation; null for metadata-only entries |
 | `published_at`, `updated_at` | Exact calendar dates where established, otherwise null; a known year/month remains in `details.publication.date_parts` |
 | `authors`, `identifiers` | Official bibliographic attribution and IDs |
@@ -22,6 +22,50 @@ The executable contract is [resource.schema.json](../schemas/resource.schema.jso
 | `last_verified_at` | Time of the primary identity/content check; not a promise of current runtime availability |
 | `details` | Kind-specific facts, with unknown quantities preserved as null |
 | `notes` | Renames, historical context, and material limitations |
+
+## Topic vocabulary
+
+`data/topics.json` is the only list of topic keys. It gives each key its English and Chinese label and a one-line definition. `catalog.py validate` and `build` reject a catalog record or `editorial.json` entry that uses any other key. The Markdown topic hubs, the website and its static topic pages all take their labels from this file. To add or rename a topic, edit the file and run `catalog.py build`, which regenerates the table below.
+
+<!-- TOPICS:START -->
+| Topic | English label | Chinese label | Meaning |
+| --- | --- | --- | --- |
+| `action-prediction` | Action prediction | 动作预测 | Predicting the next UI action or action sequence from an instruction and the current screen. |
+| `automation` | Automation | 自动化 | Automating repetitive GUI tasks with scripts, programs, or agents. |
+| `cross-app` | Cross-app | 跨应用 | Tasks that carry information or control across several applications or websites. |
+| `data-generation` | Data generation | 数据生成 | Collecting, synthesizing, or annotating screens, instructions, and trajectories for training or evaluation. |
+| `efficiency` | Efficiency | 效率 | Reducing the latency, tokens, steps, or compute an agent needs to perceive, plan, or act. |
+| `evaluation` | Evaluation | 评测 | Benchmarks, metrics, and evaluation methods for agents and their components. |
+| `grounding` | GUI grounding | GUI 定位 | Locating the on-screen element or coordinates that an instruction refers to. |
+| `history` | Historical | 历史 | Archived, legacy, or discontinued resources kept for historical context. |
+| `human-in-the-loop` | Human in the loop | 人机协作 | Agents that ask people, learn from them, or are corrected by them during a task. |
+| `imitation-learning` | Imitation learning | 模仿学习 | Learning policies from human or synthetic demonstrations. |
+| `industry` | Industry | 产业 | Companies, commercial deployments, and enterprise or industrial application domains. |
+| `interaction-history` | Interaction history | 交互历史 | Using earlier screens, actions, or trajectories as context for the next decision. |
+| `long-horizon` | Long-horizon tasks | 长任务 | Tasks that need many dependent steps, subgoals, or long-term planning. |
+| `memory` | Memory | 记忆 | Storing and retrieving experience, app knowledge, or skills across steps or tasks. |
+| `mobile-navigation` | Mobile navigation | 手机操作 | Operating smartphone and tablet apps. |
+| `observability` | Observability | 可观测性 | Inspecting agent runs through traces, intermediate progress, failure analysis, and diagnostics. |
+| `planning` | Planning | 规划 | Decomposing goals into subtasks and choosing action sequences. |
+| `recording` | Recording | 录制 | Capturing human screen sessions, input events, or interaction traces. |
+| `reinforcement-learning` | Reinforcement learning | 强化学习 | Training agents from rewards with online or offline reinforcement learning. |
+| `reward-models` | Reward models | 奖励模型 | Models or signals that score actions, steps, or outcomes for training or guidance. |
+| `robustness` | Robustness | 鲁棒性 | Reliability under perturbations, distribution shift, errors, or changing interfaces. |
+| `safety-security` | Safety & security | 安全与防护 | Attacks, defenses, privacy, policy compliance, and the risks of agent actions. |
+| `sandbox` | Sandboxes | 沙箱 | Isolated, reproducible environments such as virtual machines, emulators, and browsers for running agents. |
+| `science` | Scientific workflows | 科学工作流 | Agents for scientific, engineering, and data-science software. |
+| `screen-understanding` | Screen understanding | 界面理解 | Perceiving and describing interface layouts, elements, text, and structure. |
+| `self-reflection` | Self-reflection | 自我反思 | Agents that critique, verify, or revise their own actions and plans. |
+| `state-tracking` | State tracking | 状态追踪 | Estimating and monitoring interface or task state, including whether an action took effect. |
+| `survey` | Survey | 综述 | Literature surveys and overviews of the field. |
+| `tool-integration` | Tool integration | 工具集成 | Combining GUI actions with APIs, code, terminals, or other tools. |
+| `training-free` | Training-free methods | 无需训练的方法 | Improving agents through prompting or inference-time methods without training. |
+| `ui-design` | UI design | 界面设计 | How interface design affects agents and users, and agents that evaluate or generate interfaces. |
+| `video` | Video | 视频 | Learning from, or evaluating on, screen recordings and tutorial videos. |
+| `web-navigation` | Web navigation | 网页导航 | Operating websites and web applications in a browser. |
+| `workflow` | Workflows | 工作流 | Multi-step procedures, business processes, and reusable task workflows. |
+| `world-models` | World models | 世界模型 | Predicting how an interface changes after an action, for planning or training. |
+<!-- TOPICS:END -->
 
 Dataset details can include sample count and unit, modalities, languages, download landing page, gated status, and explicitly approximate reported scale. Benchmark details can include task count, metric names, evaluation type, and leaderboard URL. Counts of episodes, actions, screenshots, tasks, and instructions are different units. Models can include `artifact_type: model-checkpoint`; family relations prevent treating every checkpoint as an independent project.
 
@@ -70,6 +114,7 @@ Edit authored files by hand and review them in a pull request. Do not hand-edit 
 | `scan-config.json` | Authored | Scan schedule and limits read by `scan.py` and the website status page |
 | `site-guides.json`, `site-discovery.json` | Authored | Website guides and search-discovery settings read by `build_site.py` and `submit_indexnow.py` |
 | `conference-discovery.json`, `discovery-audits.json` | Authored | Records of a manual proceedings sweep and an arXiv query audit; no script rewrites them |
+| `topics.json` | Authored | Topic vocabulary read by `catalog.py validate`, `catalog.py build`, `build_site.py` and the website; see [topic vocabulary](#topic-vocabulary) |
 | `search-submissions.json` | Authored | Hand-recorded search-console receipts; `submit_indexnow.py --submit` with default paths also appends here |
 | `primary-evidence.jsonl` | Command output | `catalog.py verify` |
 | `enrichment.jsonl` | Command output | `catalog.py enrich` |
@@ -84,6 +129,7 @@ Edit authored files by hand and review them in a pull request. Do not hand-edit 
 | `docs/agents.md`, `docs/benchmarks.md`, `docs/companies.md`, `docs/datasets.md`, `docs/frameworks.md`, `docs/infrastructures.md`, `docs/models.md`, `docs/products.md`, `docs/surveys.md`, `docs/tools.md` | Build output | `catalog.py build` |
 | `docs/papers.md`, `docs/coverage.md`, `docs/topics.md`, `docs/topics/*.md` | Build output | `catalog.py build` |
 | `BADGES`, `STATS`, `EXPLORE`, `HIGHLIGHTS`, and `RECENT` blocks in `README.md` and `README.zh-CN.md` | Build output | `catalog.py build` replaces the text between each block's `START` and `END` markers; the rest of both READMEs is authored |
+| `TOPICS` block in `docs/data-dictionary.md` | Build output | `catalog.py build` regenerates the topic table from `topics.json`; the rest of this file is authored |
 | `dist/catalog.sqlite`, `dist/catalog.json`, `dist/site/` | Ignored build output | `catalog.py build` and `build_site.py`; never committed |
 
 The scheduled scan runs `discover`, `discover_papers.py`, the recent arXiv search, `harvest`, and `build`. It commits everything it changes under `data/`, `docs/`, and both READMEs, so it can rewrite any command output above except `primary-evidence.jsonl`, `enrichment.jsonl`, and `arxiv-search.json`, and any committed build output. The other docs in `docs/` and the text outside the generated blocks are authored. [CONTRIBUTING](../CONTRIBUTING.md#resolving-conflicts-with-the-scheduled-scan) explains how to resolve the resulting conflicts.
