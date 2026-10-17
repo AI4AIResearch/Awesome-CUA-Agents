@@ -5,7 +5,7 @@ Evidence snapshot through **2026-10-17T19:15:20Z**. Generated from committed sou
 - 3,006 resource records: 1,435 curated; 1,571 bibliographic metadata only.
 - 2,578 paper and survey records, including 2,565 arXiv identities and 13 publisher-only identities. This count overlaps the status counts above.
 - 2,683 retained arXiv metadata records; 118 explicit scope exclusions are outside the active catalog.
-- 3,907 discovery identifiers; 846 remain unresolved after accounting for scope exclusions and for 83 reviewed non-resource links and 11 other addresses of indexed resources, which stay in the review queue with their reasons.
+- 3,908 discovery identifiers; 852 remain unresolved after accounting for scope exclusions and for 80 reviewed non-resource links and 9 other addresses of indexed resources, which stay in the review queue with their reasons.
 - 13 editorial proposals await verification or review.
 
 These are distinct resource identifiers, not distinct research projects. Papers, repositories, datasets, products, and publisher entities have different grains.
@@ -34,7 +34,7 @@ The denominator is the normalized identifiers extracted from each fetched docume
 
 | Source | Discovered | Indexed | Curated | Excluded | Set aside | Unresolved | Fetch |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| [ShowLab Awesome GUI Agent](https://github.com/showlab/Awesome-GUI-Agent) | 338 | 219 | 208 | 0 | 3 | 116 | OK · 2026-10-17 |
+| [ShowLab Awesome GUI Agent](https://github.com/showlab/Awesome-GUI-Agent) | 338 | 221 | 209 | 0 | 1 | 116 | OK · 2026-10-17 |
 | [ZJU REAL Awesome GUI Agents](https://github.com/ZJU-REAL/Awesome-GUI-Agents) | 218 | 165 | 162 | 0 | 4 | 49 | OK · 2026-10-17 |
 | [OS Agents Survey](https://github.com/OS-Agent-Survey/OS-Agent-Survey) | 224 | 198 | 178 | 0 | 1 | 25 | OK · 2026-10-17 |
 | [Awesome Computer Use Agents — wjhou](https://github.com/wjhou/awesome-computer-use-agents) | 132 | 95 | 85 | 0 | 1 | 36 | OK · 2026-10-17 |
@@ -45,18 +45,18 @@ The denominator is the normalized identifiers extracted from each fetched docume
 | [Awesome Computer Use — TianyuanYang](https://github.com/TianyuanYang/awesome-computer-use) | 94 | 69 | 62 | 0 | 1 | 24 | OK · 2026-10-17 |
 | [Computer Use Agents Overview](https://github.com/cdxeve/awesome-computer-use-agents) | 78 | 48 | 32 | 0 | 2 | 28 | OK · 2026-10-17 |
 | [Awesome GUI Agents — Supernal](https://github.com/supernalintelligence/Awesome-Gui-Agents) | 63 | 11 | 8 | 0 | 2 | 50 | OK · 2026-10-17 |
-| [Yearly GUI Agents](https://github.com/qy0720/awesome-yearly-gui-agents) | 193 | 146 | 143 | 0 | 1 | 46 | OK · 2026-10-17 |
+| [Yearly GUI Agents](https://github.com/qy0720/awesome-yearly-gui-agents) | 193 | 147 | 144 | 0 | 0 | 46 | OK · 2026-10-17 |
 | [OSU-NLP-Group/GUI-Agents-Paper-List / README.md](https://github.com/OSU-NLP-Group/GUI-Agents-Paper-List) | 544 | 486 | 353 | 0 | 45 | 13 | OK · 2026-10-17 |
 | [opendilab/awesome-ui-agents / README.md](https://github.com/opendilab/awesome-ui-agents) | 144 | 92 | 83 | 0 | 2 | 50 | OK · 2026-10-17 |
 | [jin-s13/awesome-gui-agent-hub / AWESOME.md](https://github.com/jin-s13/awesome-gui-agent-hub) | 210 | 207 | 116 | 0 | 1 | 2 | OK · 2026-10-17 |
-| [ZJU-REAL/Awesome-GUI-Agents / ICLR2026/Paperlist.md](https://github.com/ZJU-REAL/Awesome-GUI-Agents) | 9 | 0 | 0 | 0 | 0 | 9 | OK · 2026-10-17 |
+| [ZJU-REAL/Awesome-GUI-Agents / ICLR2026/Paperlist.md](https://github.com/ZJU-REAL/Awesome-GUI-Agents) | 7 | 0 | 0 | 0 | 0 | 7 | OK · 2026-10-17 |
 | [dqtz5vpvj9-create/awesome-mobile-gui-agents / README.md](https://github.com/dqtz5vpvj9-create/awesome-mobile-gui-agents) | 40 | 26 | 25 | 0 | 0 | 14 | OK · 2026-10-17 |
 | [PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents](https://github.com/PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents) | 247 | 195 | 182 | 0 | 2 | 50 | OK · 2026-10-17 |
 | [aialt/awesome-mobile-agents](https://github.com/aialt/awesome-mobile-agents) | 91 | 77 | 66 | 0 | 2 | 12 | OK · 2026-10-17 |
 | [albzni/Awesome-LLM-based-Web-Agent-and-Tools](https://github.com/albzni/Awesome-LLM-based-Web-Agent-and-Tools) | 10 | 4 | 4 | 0 | 0 | 6 | OK · 2026-10-17 |
 | [ranpox/awesome-computer-use](https://github.com/ranpox/awesome-computer-use) | 96 | 59 | 55 | 0 | 0 | 37 | OK · 2026-10-17 |
 | [Fara — first-party releases](https://github.com/microsoft/fara) | 18 | 5 | 5 | 0 | 2 | 11 | OK · 2026-10-17 |
-| [UI-Venus — first-party releases](https://github.com/inclusionAI/UI-Venus) | 10 | 4 | 4 | 0 | 3 | 3 | OK · 2026-10-17 |
+| [UI-Venus — first-party releases](https://github.com/inclusionAI/UI-Venus) | 9 | 4 | 4 | 0 | 2 | 3 | OK · 2026-10-17 |
 | [OpenGVLab ScaleCUA — first-party releases](https://github.com/OpenGVLab/ScaleCUA) | 15 | 9 | 9 | 0 | 1 | 5 | OK · 2026-10-17 |
 | [THUDM SCALE-CUA — first-party releases](https://github.com/THUDM/SCALE-CUA) | 28 | 1 | 1 | 0 | 1 | 26 | OK · 2026-10-17 |
 | [ShowUI-π — first-party releases](https://github.com/showlab/showui-pi) | 11 | 4 | 4 | 0 | 3 | 4 | OK · 2026-10-17 |
@@ -65,9 +65,9 @@ The denominator is the normalized identifiers extracted from each fetched docume
 | [NNetNav — first-party releases](https://github.com/MurtyShikhar/NNetnav) | 6 | 2 | 2 | 0 | 2 | 2 | OK · 2026-10-17 |
 | [GroundGUI — first-party releases](https://github.com/PrentisAI/GroundGUI) | 11 | 6 | 6 | 0 | 0 | 5 | OK · 2026-10-17 |
 | [Seg2Click — first-party releases](https://github.com/jcwang0602/Seg2Click) | 11 | 8 | 8 | 0 | 1 | 2 | OK · 2026-10-17 |
-| [SwitchMem — first-party releases](https://github.com/dmis-lab/SwitchMem) | 1 | 0 | 0 | 0 | 1 | 0 | OK · 2026-10-17 |
-| [OpenMobile-2 — first-party releases](https://github.com/OpenMobile2/OpenMobile2-Code) | 14 | 7 | 7 | 0 | 2 | 5 | OK · 2026-10-17 |
-| [MobileGym++ — first-party releases](https://github.com/OpenMobile2/MobileGym-plusplus) | 9 | 4 | 4 | 0 | 2 | 3 | OK · 2026-10-17 |
+| [SwitchMem — first-party releases](https://github.com/dmis-lab/SwitchMem) | 0 | 0 | 0 | 0 | 0 | 0 | OK · 2026-10-17 |
+| [OpenMobile-2 — first-party releases](https://github.com/OpenMobile2/OpenMobile2-Code) | 12 | 7 | 7 | 0 | 0 | 5 | OK · 2026-10-17 |
+| [MobileGym++ — first-party releases](https://github.com/OpenMobile2/MobileGym-plusplus) | 8 | 4 | 4 | 0 | 1 | 3 | OK · 2026-10-17 |
 | [CarryOn — first-party releases](https://github.com/Ethannju/carryon) | 2 | 1 | 1 | 0 | 0 | 1 | OK · 2026-10-17 |
 | [GraceBench — first-party releases](https://iaie-physicalai.github.io/GraceBench) | 3 | 1 | 1 | 0 | 0 | 2 | OK · 2026-10-17 |
 | [MobileAgent / GUI-Owl / UI-S1 — first-party release index](https://github.com/X-PLUG/MobileAgent) | 33 | 12 | 12 | 0 | 4 | 17 | OK · 2026-10-17 |
@@ -81,7 +81,7 @@ The denominator is the normalized identifiers extracted from each fetched docume
 
 ## Paper-discovery query coverage
 
-Latest pass: 2026-10-17T07:57:26Z; **32/32** query windows succeeded. 1,491 distinct identifiers; 1 new to the candidate queue.
+Latest pass: 2026-10-17T23:22:24Z; **32/32** query windows succeeded. 1,491 distinct identifiers; 0 new to the candidate queue.
 
 These are ranked search windows, not a field-wide denominator. New identifiers still require primary metadata verification and relevance review.
 
