@@ -1,4 +1,4 @@
-import { KIND_ORDER, PAGE_SIZE, createRecordLoader, bibliographicDate, normalize, matches, filtered, parseState, serializeState, escapeHTML as e, safeURL } from './catalog-core.js';
+import { KIND_ORDER, PAGE_SIZE, FACT_LABELS, TOPIC_ALIASES, createRecordLoader, bibliographicDate, matches, filtered, parseState, serializeState, searchText, escapeHTML as e, safeURL, formatDate, formatFact } from './catalog-core.js';
 
 const TEXT = {
   en: {
@@ -41,7 +41,7 @@ const label = (dict,key) => dict[key]?.[lang === 'zh' ? 1 : 0] || key;
 const num = n => Number(n).toLocaleString(lang === 'zh' ? 'zh-CN' : 'en-US');
 let state = parseState(location.search), records = [], report, activeRecord='', loading=true, toastTimer, pendingInfo='';
 const getDetails=createRecordLoader(url=>fetch(url));
-const dates = value => value ? new Date(value.length === 10 ? value+'T00:00:00Z' : value).toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US',{year:'numeric',month:'short',day:'numeric',timeZone:'UTC'}) : t('unknown');
+const dates = value => value ? formatDate(value,lang) : t('unknown');
 function updateURL() {const query=serializeState(state,lang,activeRecord); history.replaceState(null,'',location.pathname+(query?'?'+query:'')+location.hash);}
 function toast(message) {clearTimeout(toastTimer);$('#toast').textContent=message;$('#toast').hidden=false;toastTimer=setTimeout(()=>$('#toast').hidden=true,2600);}
 function translate() {
@@ -117,7 +117,7 @@ async function load() {
   try {
     const response=await fetch('./data/index.json');if(!response.ok)throw new Error('HTTP '+response.status);
     const data=await response.json();report=data.coverage;records=data.records;
-    records.forEach(r=>r.search_text=normalize([r.name,r.summary,r.publication_search_text,...r.aliases,...r.authors,...r.environments.flatMap(x=>PLATFORMS[x] || [x]),...r.topics.flatMap(x=>TOPICS[x] || [x]),...(KINDS[r.kind] || [])].filter(Boolean).join(' ')));
+    records.forEach(r=>r.search_text=searchText([r.name,r.summary,r.publication_search_text,...r.aliases,...r.authors,...r.environments.flatMap(x=>PLATFORMS[x] || [x]),...r.topics.flatMap(x=>[...(TOPICS[x] || [x]),...(TOPIC_ALIASES[x] || [])]),...(KINDS[r.kind] || [])]));
     if(!Object.hasOwn(PLATFORMS,state.platform))state.platform='';
     if(!records.some(r=>r.topics.includes(state.topic)))state.topic='';
     $('#stat-resources').textContent=num(records.length);$('#stat-curated').textContent=num(report.curated_records);$('#stat-kinds').textContent=num(Object.keys(report.by_kind).length);$('#stat-sources').textContent=num(report.sources.length);
@@ -128,9 +128,7 @@ async function load() {
 }
 const external=(url,text)=>`<a href="${e(safeURL(url))}" target="_blank" rel="noopener noreferrer">${e(text)} ↗</a>`;
 function resourceFacts(details) {
-  const labels={sample_count:['Sample count','样本数'],sample_unit:['Sample unit','样本单位'],screen_count:['Screen count','界面数量'],example_count:['Example count','示例数量'],modalities:['Modalities','数据模态'],languages:['Languages','语言'],gated:['Access gated','访问需申请'],disabled:['Disabled on Hub','Hub 已停用'],hub_id:['Hub identifier','Hub 标识'],download_url:['Download location','下载入口'],size_category_reported:['Publisher size category','发布方规模分类'],reported_scale:['Reported scale','发布方描述规模'],artifact_type:['Artifact type','资产类型'],task_count:['Task count','任务数量'],task_unit:['Task unit','任务单位'],metrics:['Metrics','评测指标'],evaluation_type:['Evaluation method','评测方式'],access:['Access','访问方式'],pricing_url:['Pricing','价格页面'],availability:['Availability','可用性'],leaderboard_url:['Leaderboard','排行榜']};
-  const value=v=>typeof v==='boolean'?(lang==='zh'?(v?'是':'否'):(v?'Yes':'No')):Array.isArray(v)?v.join(' · '):typeof v==='object'?Object.entries(v).map(([k,x])=>k==='value'?num(x):String(x)).join(' '):typeof v==='number'?num(v):String(v);
-  return '<dl class="fact-list">'+Object.entries(details).filter(([,v])=>v!==null&&v!==''&&(!Array.isArray(v)||v.length)).map(([key,v])=>'<div><dt>'+e(label(labels,key))+'</dt><dd>'+(key.endsWith('_url')&&typeof v==='string'?external(v,lang==='zh'?'打开链接':'Open link'):e(value(v)))+'</dd></div>').join('')+'</dl>';
+  return '<dl class="fact-list">'+Object.entries(details).map(([key,v])=>[key,v,formatFact(key,v,lang)]).filter(([,,text])=>text).map(([key,v,text])=>'<div><dt>'+e(label(FACT_LABELS,key))+'</dt><dd>'+(key.endsWith('_url')&&typeof v==='string'?external(v,lang==='zh'?'打开链接':'Open link'):e(text).replaceAll('\n','<br>'))+'</dd></div>').join('')+'</dl>';
 }
 async function showRecord(id,setURL=true) {
   const found=records.find(r=>r.id===id);if(!found){activeRecord='';if($('#detail-dialog').open)$('#detail-dialog').close();toast(t('noRecord'));return;}
@@ -148,7 +146,7 @@ async function showRecord(id,setURL=true) {
     const snapshot=r.details.arxiv_snapshot;
     const preferred=r.identifiers.preferred_arxiv?records.find(row=>row.id==='arxiv:'+r.identifiers.preferred_arxiv):null;
     if(preferred)content+=`<section class="detail-section"><h3>${lang==='zh'?'首选论文记录':'Preferred paper record'}</h3><p>${lang==='zh'?'原始来源明确指出另一个首选 arXiv 标识；这些书目记录不应算作独立成果。':'The original source identifies a preferred arXiv record; these bibliographic identities should not be counted as independent works.'}</p><a class="subtle-link" href="${e(preferred.page_url)}" data-record="${e(preferred.id)}">${e(preferred.name)} ↗</a></section>`;
-    if(snapshot)content+=`<section class="detail-section"><h3>${lang==='zh'?'已记录的论文版本':'Recorded paper version'}</h3><p>${snapshot.versioned_url?external(snapshot.versioned_url,`arXiv v${snapshot.version}`):e(t('unknown'))}</p>${snapshot.updated_at?`<p>${lang==='zh'?'版本更新时间':'Version updated'}: ${e(snapshot.updated_at)}</p>`:''}</section>`;
+    if(snapshot)content+=`<section class="detail-section"><h3>${lang==='zh'?'已记录的论文版本':'Recorded paper version'}</h3><p>${snapshot.versioned_url?external(snapshot.versioned_url,`arXiv v${snapshot.version}`):e(t('unknown'))}</p>${snapshot.updated_at?`<p>${lang==='zh'?'版本更新时间':'Version updated'}: ${e(dates(snapshot.updated_at))}</p>`:''}</section>`;
     if(['paper','survey'].includes(r.kind))content+=`<section class="detail-section citation-section"><h3>${e(t('citePaper'))}</h3><div class="citation-actions"><button type="button" class="button secondary" data-copy-citation="${e(found.page_url)}citation.bib">${e(t('copyBibtex'))}</button><a href="${e(found.page_url)}citation.bib" download>BibTeX ↓</a><a href="${e(found.page_url)}citation.csl.json" download>CSL JSON ↓</a></div><p>${e(t('citationNote'))}</p></section>`;
     const pub=r.details.publication;
     if(pub){
@@ -158,7 +156,7 @@ async function showRecord(id,setURL=true) {
     }
     if(r.details.license_review)content+=`<section class="detail-section"><h3>${lang==='zh'?'许可审阅说明':'License review notes'}</h3>${Object.entries(r.details.license_review).map(([slot,review])=>`<p><strong>${e(t(slot))}:</strong> ${e(review.reason)}</p><p>${review.evidence_urls.map((url,i)=>external(url,`${lang==='zh'?'来源':'Source'} ${i+1}`)).join(' · ')}</p>`).join('')}</section>`;
     const specifications=Object.fromEntries(Object.entries(r.details).filter(([key])=>!['arxiv_snapshot','publication','license_review'].includes(key)));
-    if(Object.values(specifications).some(v=>v!==null&&v!==''&&(!Array.isArray(v)||v.length)))content+=`<section class="detail-section"><h3>${e(t('details'))}</h3>${resourceFacts(specifications)}</section>`;
+    if(Object.entries(specifications).some(([key,v])=>formatFact(key,v,lang)))content+=`<section class="detail-section"><h3>${e(t('details'))}</h3>${resourceFacts(specifications)}</section>`;
     if(r.notes)content+=`<section class="detail-section"><h3>${e(t('notes'))}</h3><p>${e(r.notes)}</p></section>`;
     if(r.relations.length)content+=`<section class="detail-section"><h3>${e(t('relations'))}</h3><ul>${r.relations.map(rel=>{const target=records.find(row=>row.id===rel.target_id);return `<li>${e(rel.type.replaceAll('_',' '))} → <button class="subtle-link" type="button" data-record="${e(rel.target_id)}">${e(target?.name || rel.target_id)}</button></li>`;}).join('')}</ul></section>`;
     const connected=(found.incoming_relations||[]).map(relation=>({source:records.find(row=>row.id===relation.source_id),relation})).filter(item=>item.source);
