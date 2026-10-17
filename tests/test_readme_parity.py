@@ -34,9 +34,12 @@ class ReadmeParityTests(unittest.TestCase):
     def test_language_toggles_and_generated_status_are_shared(self):
         self.assertIn("[简体中文](README.zh-CN.md)", self.en)
         self.assertIn("[English](README.md)", self.zh)
-        for name in ["BADGES", "STATS"]:
-            block = re.compile(rf"<!-- {name}:START -->.*?<!-- {name}:END -->", re.S)
-            self.assertEqual(block.search(self.zh).group(0), block.search(self.en).group(0))
+        block = re.compile(r"<!-- BADGES:START -->.*?<!-- BADGES:END -->", re.S)
+        self.assertEqual(block.search(self.zh).group(0), block.search(self.en).group(0))
+        # The other generated blocks are localized, but both pages carry every one of them.
+        for name in ["STATS", "EXPLORE", "HIGHLIGHTS", "RECENT"]:
+            for text in (self.en, self.zh):
+                self.assertIn(f"<!-- {name}:START -->", text)
 
 
 if __name__ == "__main__":
