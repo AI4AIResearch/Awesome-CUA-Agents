@@ -14,16 +14,16 @@ Otherwise the entry stays in `data/review-queue.jsonl` and the coverage ledger. 
 
 ## Resource ID
 
-The ID is `id` when given, otherwise the first value of `canonical(url)` in `scripts/catalog.py`. The same ID keys the entry's receipt in `primary-evidence.jsonl`, its row in `enrichment.jsonl`, and the published record, so changing `url` or `id` requires `verify` and another review.
+The ID is `id` when given, otherwise the first value of `editorial_identity(entry)` in `scripts/catalog.py`. That is `canonical(url)`, except that `paper` and `survey` entries may also use an HTTPS `doi.org` URL: the DOI is case-folded into `https://doi.org/<doi>` and receives a `url:` ID. Other kinds reject bare DOI links, as discovery does. The same ID keys the entry's receipt in `primary-evidence.jsonl`, its row in `enrichment.jsonl`, and the published record, so changing `url` or `id` requires `verify` and another review.
 
 ```bash
-python3 -c "import sys; sys.path.insert(0,'scripts'); from catalog import canonical; print(canonical('https://github.com/xlang-ai/OSWorld/tree/main')[0])"
+python3 -c "import sys; sys.path.insert(0,'scripts'); from catalog import editorial_identity; print(editorial_identity({'url': 'https://github.com/xlang-ai/OSWorld/tree/main', 'kind': 'benchmark'})[0])"
 # github:xlang-ai/osworld
 ```
 
 - arXiv abstract, PDF and HTML URLs, versioned URLs, and Hugging Face paper pages become `arxiv:<id>`.
 - GitHub repository URLs, including `tree/` and `blob/` links, become `github:<owner>/<repo>` in lowercase.
-- Every other URL, including Hugging Face models and datasets, becomes `url:` plus the first 20 hex digits of the SHA-256 of the cleaned URL (HTTPS, lowercase host, no fragment, trailing slash, or `utm_` parameters). `canonical` rejects non-HTTPS URLs, images, badges, and social links.
+- Every other URL, including Hugging Face models and datasets, becomes `url:` plus the first 20 hex digits of the SHA-256 of the cleaned URL (HTTPS, lowercase host, no fragment, trailing slash, or `utm_` parameters). Bibliographic records also use `data/publications.jsonl`. `canonical` rejects non-HTTPS URLs, images, badges, and social links.
 
 An entry for an arXiv paper replaces the bibliographic record from `papers.jsonl`. The published record keeps that record's dates, authors, identifiers, `details.arxiv_snapshot` and `arxiv_api` evidence.
 
@@ -45,7 +45,7 @@ In the Required column, `always` means that `build` or `verify` fails without th
 | `review_note` | no | string | `"editorial review pending"` | `source_records` | Review-queue reason for an unapproved entry whose evidence matches |
 | `verify_terms` | no | array of strings | `[name]` | `verify_editorial` | A source matches when at least one term occurs, ignoring case and whitespace runs. Bot-challenge pages never match |
 | `evidence_urls` | no | array of HTTPS URLs | GitHub: raw `README.md`, `README.MD`, `readme.md` at `HEAD`, then the repository page. Hugging Face dataset: `/api/datasets/<id>`. Other Hugging Face page except a collection: `/api/models/<id>`. Otherwise `url` | `verify_editorial` | Tried in order. The first matching response becomes the primary receipt, and its retrieval time becomes `last_verified_at` |
-| `id` | no | `arxiv:`, `github:`, `url:`, `component:` or `organization:` ID | `canonical(url)[0]` | `verify_editorial`, `enrich`, `source_records` | Record `id`. Use `component:<owner>/<path>` for one asset inside a monorepo and `organization:<slug>` for a publisher |
+| `id` | no | `arxiv:`, `github:`, `url:`, `component:` or `organization:` ID | `editorial_identity(entry)[0]` | `verify_editorial`, `enrich`, `source_records` | Record `id`. Use `component:<owner>/<path>` for one asset inside a monorepo and `organization:<slug>` for a publisher |
 | `aliases` | no | array of strings | `[]` | `source_records` | `aliases`; searched by the CLI and SQLite |
 | `scope` | no | `core` or `adjacent` | `"core"` | `source_records` | `scope` |
 | `notes` | no | string | `""` | `source_records` | `notes` |
