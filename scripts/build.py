@@ -175,11 +175,12 @@ def validate_records(rows):
                 dt.datetime.fromisoformat(ev["retrieved_at"].replace("Z", "+00:00"))
             except (ValueError, KeyError):
                 error("invalid evidence timestamp")
-        verified = r.get("last_verified_at")
+        # Missing or wrongly typed values were reported above; only check the format of strings.
+        verified = r.get("last_verified_at") if isinstance(r.get("last_verified_at"), str) else None
         try:
-            if dt.datetime.fromisoformat(verified.replace("Z", "+00:00")).tzinfo is None:
+            if verified is not None and dt.datetime.fromisoformat(verified.replace("Z", "+00:00")).tzinfo is None:
                 raise ValueError
-        except (ValueError, AttributeError):
+        except ValueError:
             error("invalid last_verified_at")
             verified = None
         relation_keys = set()
