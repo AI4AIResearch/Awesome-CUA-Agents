@@ -120,7 +120,10 @@ class SearchPagesTests(unittest.TestCase):
             parsed=PageParser(content)
             self.assertIn('noindex',parsed.robots[0]);self.assertIn(row['url'],parsed.links)
             self.assertIn(html.escape(row['reason'],quote=True),content)
-            self.assertIn('excluded from the active CUA catalog',(self.dest/path.lstrip('/')/'index.md').read_text())
+            markdown=(self.dest/path.lstrip('/')/'index.md').read_text()
+            self.assertIn('excluded from the active CUA catalog',markdown)
+            self.assertTrue(markdown.endswith('\n'))
+            self.assertFalse(markdown.endswith('\n\n'))
         self.assertEqual(self.manifest['excluded_pages'],len(excluded))
         self.assertEqual(self.manifest['metadata_only_pages'],sum(row['review_status']=='metadata_verified' for row in self.rows))
 
