@@ -6,7 +6,7 @@
 
 **A source-backed data catalog for computer-use, GUI, browser, and mobile agents.**
 
-[Highlights](#highlights) · [Explore](#explore) · [Use the data](#use-the-data) · [Website](https://awesomecua.github.io/) · [GitHub organization](https://github.com/AwesomeCUA) · [简体中文](README.zh-CN.md) · [Coverage ledger](docs/coverage.md) · [Contribute](CONTRIBUTING.md)
+[Highlights](#highlights) · [Recently reviewed](#recently-reviewed) · [Explore](#explore) · [Use the data](#use-the-data) · [Website](https://awesomecua.github.io/) · [GitHub organization](https://github.com/AwesomeCUA) · [简体中文](README.zh-CN.md) · [Coverage ledger](docs/coverage.md) · [Contribute](CONTRIBUTING.md)
 
 **For people, RAG systems, and agents — clone the complete catalog:**
 
@@ -49,7 +49,7 @@ The most-mentioned curated resources per category: the count is how many other c
 <!-- HIGHLIGHTS:START -->
 **Benchmarks** · [all 70 →](docs/benchmarks.md)
 
-| Resource | Mentioned by | Environments | Paper | License | Description |
+| Resource | Mentions | Environments | Paper | License | Description |
 | --- | ---: | --- | --- | --- | --- |
 | [OSWorld](https://github.com/xlang-ai/OSWorld) | 20 | desktop, linux, windows, macos | [2404.07972](https://arxiv.org/abs/2404.07972) (2024) | code Apache-2.0 | Execution-based evaluation of agents performing tasks in real desktop environments. |
 | [WebArena](https://github.com/web-arena-x/webarena) | 13 | web | [2307.13854](https://arxiv.org/abs/2307.13854) (2023) | code Apache-2.0 | Self-hosted web environments and tasks for evaluating autonomous web agents. |
@@ -60,7 +60,7 @@ The most-mentioned curated resources per category: the count is how many other c
 
 **Models** · [all 91 →](docs/models.md)
 
-| Resource | Mentioned by | Environments | Paper | License | Description |
+| Resource | Mentions | Environments | Paper | License | Description |
 | --- | ---: | --- | --- | --- | --- |
 | [SeeClick](https://github.com/njucckevin/SeeClick) | 7 | cross-platform | [2401.10935](https://arxiv.org/abs/2401.10935) (2024) | code Apache-2.0 | GUI grounding model trained to locate visual interface elements. |
 | [Aguvis](https://github.com/xlang-ai/aguvis) | 5 | cross-platform | [2412.04454](https://arxiv.org/abs/2412.04454) (2024) | — | Vision-based GUI agent models with unified action representations. |
@@ -71,7 +71,7 @@ The most-mentioned curated resources per category: the count is how many other c
 
 **Datasets** · [all 73 →](docs/datasets.md)
 
-| Resource | Mentioned by | Environments | Paper | License | Description |
+| Resource | Mentions | Environments | Paper | License | Description |
 | --- | ---: | --- | --- | --- | --- |
 | [ScreenSpot-Pro data](https://huggingface.co/datasets/likaixin/ScreenSpot-Pro) | 4 | desktop, windows, macos, linux | — | data mit | High-resolution professional interface screenshots and target annotations for evaluating instruction-based GUI localization. |
 | [GUI-Odyssey](https://github.com/OpenGVLab/GUI-Odyssey) | 3 | android | [2406.08451](https://arxiv.org/abs/2406.08451) (2024) | — | Cross-application mobile interaction trajectories. |
@@ -82,7 +82,7 @@ The most-mentioned curated resources per category: the count is how many other c
 
 **Frameworks** · [all 50 →](docs/frameworks.md)
 
-| Resource | Mentioned by | Environments | Paper | License | Description |
+| Resource | Mentions | Environments | Paper | License | Description |
 | --- | ---: | --- | --- | --- | --- |
 | [Browser Use](https://github.com/browser-use/browser-use) | 7 | web | — | code MIT | Framework for browser interaction by AI agents. |
 | [AgentLab](https://github.com/ServiceNow/AgentLab) | 5 | web | [2412.05467](https://arxiv.org/abs/2412.05467) (2024) | code Apache-2.0 | Experiment framework for developing and evaluating browser agents. |
@@ -93,7 +93,7 @@ The most-mentioned curated resources per category: the count is how many other c
 
 **Agents** · [all 31 →](docs/agents.md)
 
-| Resource | Mentioned by | Environments | Paper | License | Description |
+| Resource | Mentions | Environments | Paper | License | Description |
 | --- | ---: | --- | --- | --- | --- |
 | [Mobile-Agent](https://github.com/X-PLUG/MobileAgent) | 8 | android, cross-platform | [2401.16158](https://arxiv.org/abs/2401.16158) (2024), [2406.01014](https://arxiv.org/abs/2406.01014) (2024), [2508.15144](https://arxiv.org/abs/2508.15144) (2025), [2602.16855](https://arxiv.org/abs/2602.16855) (2026) | code MIT | Mobile device agent family using visual interface interaction. |
 | [Agent S](https://github.com/simular-ai/Agent-S) | 2 | desktop | [2410.08164](https://arxiv.org/abs/2410.08164) (2024), [2504.00906](https://arxiv.org/abs/2504.00906) (2025) | code Apache-2.0 | Agent framework for general computer interaction. |
@@ -103,6 +103,27 @@ The most-mentioned curated resources per category: the count is how many other c
 | [Open-AutoGLM](https://github.com/zai-org/Open-AutoGLM) | 1 | android, ios | — | code Apache-2.0 | Phone agent model and framework with device interaction tooling. |
 
 <!-- HIGHLIGHTS:END -->
+
+## Recently reviewed
+
+Newest editorial approvals of models, datasets, benchmarks, systems, and tools (newest first). New papers appear by date in the [topic hubs](docs/topics.md).
+
+<!-- RECENT:START -->
+| Reviewed | Resource | Kind | Environments | Description |
+| --- | --- | --- | --- | --- |
+| 2026‑10‑17 | [UI-S1 released training examples](https://huggingface.co/datasets/mPLUG/UI_S1_dataset) | dataset | android | A public example subset of the UI-S1 mobile training data, packaged as JSONL annotations and Parquet images. |
+| 2026‑10‑17 | [ScreenSpot-v2 instruction variants](https://huggingface.co/datasets/likaixin/ScreenSpot-v2-variants) | benchmark | cross-platform | Instruction variants over ScreenSpot-v2 screenshots that distinguish original commands, explicit actions, target descriptions and impossible operations. |
+| 2026‑10‑17 | [ScienceBoard VMware environment](https://huggingface.co/OS-Copilot/ScienceBoard-Env) | infrastructure | linux, desktop | A prebuilt Ubuntu virtual-machine archive containing the software environment used for ScienceBoard scientific computer-use tasks. |
+| 2026‑10‑17 | [ScienceBoard evaluation trajectories](https://huggingface.co/datasets/OS-Copilot/ScienceBoard-Traj) | dataset | desktop, linux | Archives of ScienceBoard agent evaluation runs, separated by agent configuration and screenshot, accessibility-tree or set-of-marks observation mode. |
+| 2026‑10‑17 | [Mobile-Bench-v2 released data](https://huggingface.co/datasets/xwk123/MobileBench-v2) | benchmark | android | Offline mobile-agent task data spanning common tasks and released noisy, contaminated and ambiguous-instruction subsets. |
+| 2026‑10‑17 | [MAI-UI inference and evaluation code](https://github.com/Tongyi-MAI/MAI-UI) | framework | android | Published MAI-UI grounding and navigation-agent implementations with inference demos and evaluation scripts. |
+| 2026‑10‑17 | [Holo4 35B-A3B BF16](https://huggingface.co/Hcompany/Holo4-35B-A3B) | model | desktop, web | A Qwen3.6-based computer-use checkpoint designed to request GUI actions, code execution and tool calls through an external agent harness. |
+| 2026‑10‑17 | [WebPRM checklist-generation data](https://huggingface.co/datasets/LangAGI-Lab/WebPRMCollection_checklist_generation) | dataset | web | Web-task context, starting observations and action history paired with structured checklists and subgoal analyses for checklist generation. |
+| 2026‑10‑17 | [Wave UI](https://huggingface.co/datasets/agentsea/wave-ui) | dataset | unspecified | Screenshot-instruction records with target boxes and UI metadata such as OCR, source, element type and platform. |
+| 2026‑10‑17 | [UI-Genie trajectory data](https://huggingface.co/datasets/HanXiao1999/UI-Genie-Agent-16k) | dataset | android | Synthetic mobile GUI trajectory supervision and screenshots released with the UI-Genie agent-training pipeline. |
+| 2026‑10‑17 | [UI-Genie reward data](https://huggingface.co/datasets/HanXiao1999/UI-Genie-RM-517k) | dataset | android | Mobile GUI reward annotations released for training UI-Genie’s trajectory-assessment model. |
+| 2026‑10‑17 | [OS-Genesis mobile training data](https://huggingface.co/datasets/OS-Copilot/OS-Genesis-mobile-data) | dataset | android | Reverse-task-synthesis mobile trajectories released in separate AndroidControl and AndroidWorld training annotation files. |
+<!-- RECENT:END -->
 
 ## Use the data
 

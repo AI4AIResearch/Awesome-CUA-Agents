@@ -369,6 +369,13 @@ class ReadmeBlockTests(unittest.TestCase):
         self.assertIn("[all 3 →](docs/benchmarks.md)", build.highlights(rows, edges))
         self.assertEqual(build.highlights(rows, []).strip(), "")
 
+    def test_recently_reviewed_orders_non_paper_approvals(self):
+        rows = [self.row("a", "Alpha"), self.row("b", "Beta"), self.row("c", "Gamma", kind="paper"), self.row("d", "Delta", status="metadata_verified"), self.row("e", "Eps")]
+        reviewed = {"a": "2026-10-16T01:00:00Z", "b": "2026-10-17T01:00:00Z", "c": "2026-10-18T00:00:00Z", "d": "2026-10-18T00:00:00Z"}
+        table = [line for line in build.recently_reviewed(rows, reviewed).splitlines() if line.startswith("| 2026")]
+        self.assertEqual([line.split("[")[1].split("]")[0] for line in table], ["Beta", "Alpha"])
+        self.assertEqual(build.recently_reviewed(rows, {}), "\n")
+
     def test_explore_counts_curated_resources(self):
         rows = [self.row("a", "A"), self.row("b", "B"), self.row("c", "C", status="metadata_verified"), self.row("d", "D", kind="paper")]
         table = build.explore(rows, {"bibliographic_records": 1234})
