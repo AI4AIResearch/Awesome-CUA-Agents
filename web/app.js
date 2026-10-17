@@ -40,7 +40,8 @@ let state = parseState(location.search), records = [], report, activeRecord='', 
 const getDetails=createRecordLoader(url=>fetch(url));
 const dates = value => value ? formatDate(value,lang) : t('unknown');
 function updateURL() {const query=serializeState(state,lang,activeRecord); history.replaceState(null,'',location.pathname+(query?'?'+query:'')+location.hash);}
-function toast(message) {clearTimeout(toastTimer);$('#toast').textContent=message;$('#toast').hidden=false;toastTimer=setTimeout(()=>$('#toast').hidden=true,2600);}
+// Live regions must exist before their text changes, and an open modal dialog makes the rest of the page inert, so write to the open dialog's own region.
+function toast(message) {clearTimeout(toastTimer);const box=$$('dialog').find(dialog=>dialog.open)?.querySelector('.toast')||$('#toast');$$('.toast').forEach(other=>other.textContent='');box.textContent=message;toastTimer=setTimeout(()=>box.textContent='',2600);}
 function translate() {
   document.documentElement.lang=lang==='zh'?'zh-CN':'en';
   document.title=t('pageTitle');
@@ -124,7 +125,7 @@ async function load() {
     loading=false;translate();render();updateURL();
     if(pendingInfo&&$('#info-dialog').open)info(pendingInfo);
     const rid=new URLSearchParams(location.search).get('record');if(rid)await showRecord(rid,false);
-  } catch(error) {loading=false;$('#results').innerHTML='';$('#results').setAttribute('aria-busy','false');$('#load-error').hidden=false;$('#results-count').textContent='';console.error('Catalog loading failed:',error);if(pendingInfo&&$('#info-dialog').open)info(pendingInfo);}
+  } catch(error) {loading=false;$('#results').innerHTML='';$('#results').setAttribute('aria-busy','false');$('#load-error').hidden=false;$('#results-count').innerHTML=`<span class="sr-only">${e(t('errorTitle'))}</span>`;console.error('Catalog loading failed:',error);if(pendingInfo&&$('#info-dialog').open)info(pendingInfo);}
 }
 const external=(url,text)=>`<a href="${e(safeURL(url))}" target="_blank" rel="noopener noreferrer">${e(text)} ↗</a>`;
 function resourceFacts(details) {

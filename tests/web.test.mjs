@@ -313,6 +313,44 @@ test('data and coverage buttons respond while the catalog loads and after it fai
     for(const [key,descriptor] of saved)if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];
   }
 });
+test('load failures and toasts are announced through live regions that exist before their text changes',async t=>{
+  const html=readFileSync(new URL('../web/index.html',import.meta.url),'utf8');
+  assert.match(html,/<div id="toast" class="toast" role="status" aria-live="polite"><\/div>/);
+  for(const id of ['detail','info'])assert.match(html,new RegExp(`<dialog id="${id}-dialog"[^>]*>.*<div class="toast" role="status" aria-live="polite"></div></dialog>`),id);
+  assert.match(css,/(?:^|[}\n])\.toast:empty\{padding:0;box-shadow:none\}/);
+  const coverage=JSON.parse(readFileSync(new URL('../data/coverage.json',import.meta.url),'utf8'));
+  const records=[{id:'url:toast',name:'Toast fixture',kind:'tool',url:'https://example.org/',page_url:'/resources/toast/',aliases:[],environments:['web'],topics:[],authors:[],summary:'Fixture.',review_status:'curated',published_at:null,scope:'core',paper_version:null,paper_source_url:null,paper_date:null,related_count:0,incoming_relations:[]}];
+  const keys=['document','window','location','history','localStorage','fetch'],saved=keys.map(key=>[key,Object.getOwnPropertyDescriptor(globalThis,key)]),consoleError=console.error;
+  const boot=async(name,ok)=>{
+    const make=extra=>({dataset:{},listeners:{},textContent:'',classList:{toggle(){}},open:false,addEventListener(type,fn){(this.listeners[type]??=[]).push(fn);},setAttribute(){},showModal(){this.open=true;},close(){this.open=false;},...extra});
+    const toasts=[make(),make(),make()],clicks=[],elements=new Map([['#toast',toasts[0]],['#detail-dialog',make({querySelector:()=>toasts[1]})],['#info-dialog',make({querySelector:()=>toasts[2]})]]);
+    const element=selector=>{if(!elements.has(selector))elements.set(selector,make());return elements.get(selector);};
+    const lists={dialog:[element('#detail-dialog'),element('#info-dialog')],'.toast':toasts};
+    const globals={document:{documentElement:{},body:{classList:{toggle(){}}},addEventListener(type,fn){if(type==='click')clicks.push(fn);},querySelector:element,querySelectorAll:selector=>lists[selector]||[]},window:{addEventListener(){}},location:{search:'',pathname:'/',hash:''},history:{replaceState(){}},localStorage:{getItem:()=>null,setItem(){}},fetch:async()=>ok?{ok:true,json:async()=>({coverage,records:structuredClone(records)})}:{ok:false,status:503}};
+    for(const [key,value] of Object.entries(globals))Object.defineProperty(globalThis,key,{value,configurable:true,writable:true});
+    await import(`../web/app.js?${name}`);await new Promise(resolve=>setImmediate(resolve));
+    return {element,toasts,clicks};
+  };
+  try {
+    console.error=()=>{};
+    const failed=await boot('announce-failure',false);
+    assert.equal(failed.element('#load-error').hidden,false);
+    assert.equal(failed.element('#results-count').innerHTML,'<span class="sr-only">The catalog could not be loaded.</span>');
+    t.mock.timers.enable({apis:['setTimeout']});
+    const {element,toasts,clicks}=await boot('announce-toast',true),texts=()=>toasts.map(x=>x.textContent);
+    const dialog=element('#detail-dialog');dialog.showModal();
+    await Promise.all(dialog.listeners.click.map(listener=>listener({target:{closest:selector=>selector==='[data-copy-link]'?{}:null}})));
+    assert.deepEqual(texts(),['','Copy the URL from your address bar.','']);
+    dialog.close();
+    await Promise.all(clicks.map(listener=>listener({target:{closest:selector=>selector==='[data-copy-clone]'?{}:null}})));
+    assert.deepEqual(texts(),['Select the command above to copy it.','','']);
+    t.mock.timers.tick(2600);
+    assert.deepEqual(texts(),['','','']);
+  } finally {
+    console.error=consoleError;
+    for(const [key,descriptor] of saved)if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];
+  }
+});
 test('homepage text stays at least 12px at every width',()=>{
   const pages=readFileSync(new URL('../web/pages.css',import.meta.url),'utf8');
   const rules=[...css.matchAll(/([^{}]*)\{([^{}]*)\}/g),...[...pages.matchAll(/([^{}]*)\{([^{}]*)\}/g)].filter(m=>/static-directory|directory-links|resource-page-link/.test(m[1]))];
