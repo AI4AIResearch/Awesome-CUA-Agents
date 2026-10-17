@@ -20,8 +20,69 @@ The executable contract is [resource.schema.json](../schemas/resource.schema.jso
 | `licenses` | Four separate nullable declarations: code, data, weights, document |
 | `evidence` | Primary source URL, retrieval time in UTC, response digest, method, supported fields |
 | `last_verified_at` | Time of the primary identity/content check; not a promise of current runtime availability |
-| `details` | Kind-specific facts, with unknown quantities preserved as null |
+| `details` | Kind-specific facts, with unknown quantities preserved as null; see [kind-specific details](#kind-specific-details) |
 | `notes` | Renames, historical context, and material limitations |
+
+## Kind-specific details
+
+The schema checks `dataset_profile`, `benchmark_protocol`, `arxiv_snapshot` and `publication` and accepts any other key, so this table lists every `details` key that catalog records use. Origins:
+
+- **Editorial**: the `details` object of an [editorial input](editorial-input.md), checked against its retained receipts.
+- **Hub API** and **Dataverse API**: extracted by `catalog.py enrich` from the record's primary Hugging Face or Harvard Dataverse API receipt. An extracted value replaces an editorial value under the same key.
+- **Placeholder**: `catalog.py build` adds the key to every curated dataset or benchmark that lacks it, as null or `[]`.
+- **License review**: `catalog.py build` copies each `reviewed_licenses` decision's reason and evidence URLs here; the value itself goes in `licenses`.
+- **Bibliography**: copied from the retained arXiv archive (`papers.jsonl`) or from publication observations (`publications.jsonl`).
+
+| Key | Kinds | Meaning | Origin |
+| --- | --- | --- | --- |
+| `arxiv_snapshot` | paper, survey | Version, first-submission and version timestamps, and abstract digest from the retained arXiv Atom entry; see [paper versions and revision proposals](methodology.md#paper-versions-and-revision-proposals) | Bibliography (`papers.jsonl`) |
+| `publication` | paper, survey | Publication edition: title, literal authors, type, venue, publisher, DOI and `date_parts`; see `details.publication` below | Bibliography (`publications.jsonl`) |
+| `dataset_profile` | dataset | Supervision, modalities, formats, splits, notes, evidence URLs and `counts`; see [dataset and benchmark specifications](specifications.md) | Editorial |
+| `benchmark_protocol` | benchmark | Focus, setting, observations, actions, evaluation, notes, evidence URLs and `counts`; see [dataset and benchmark specifications](specifications.md) | Editorial |
+| `sample_count` | dataset | Number of samples, in `sample_unit` | Placeholder, or editorial |
+| `sample_unit` | dataset | What `sample_count` counts, such as `episodes` or `screen summaries` | Placeholder, or editorial |
+| `example_count` | dataset | Publisher-stated number of examples, a different unit from `sample_unit` | Editorial |
+| `screen_count` | dataset | Number of distinct UI screens the samples refer to | Editorial |
+| `reported_scale` | dataset | One publisher-stated size as `{value, unit, comparison}`; `comparison` (`approximately`, `>`) keeps the source's precision | Editorial |
+| `task_count` | benchmark | Number of tasks, in `task_unit` when given | Placeholder, or editorial |
+| `task_unit` | benchmark | What `task_count` counts, such as `parameterized task definitions` | Editorial |
+| `metrics` | benchmark | Metric names the publisher reports, such as `task success` | Placeholder, or editorial |
+| `evaluation_type` | benchmark | How results are judged, such as `programmatic state checks` or `rubric-based` | Placeholder, or editorial |
+| `leaderboard_url` | benchmark | Official leaderboard page | Placeholder |
+| `modalities` | benchmark, dataset, model | Data modalities, such as `screenshot` or `instruction` | Hub API (`modality:` tags), editorial, or placeholder for datasets |
+| `languages` | benchmark, dataset, model | Natural-language codes, such as `en` | Hub API (card `language`), editorial, or placeholder for datasets |
+| `download_url` | benchmark, dataset, infrastructure, model | Download landing page, not a direct file; the Hub API sets the repository's file tree | Hub API, editorial, or placeholder for datasets |
+| `hub_id` | benchmark, dataset, infrastructure, model | Hugging Face repository ID as the API reports it | Hub API, or editorial |
+| `gated` | benchmark, dataset, infrastructure, model | Hub access gate: `false`, `"auto"` (approved automatically) or `"manual"` (approved by the publisher) | Hub API, or editorial |
+| `disabled` | benchmark, dataset, infrastructure, model | Whether Hugging Face has disabled the repository | Hub API, or editorial |
+| `size_category_reported` | benchmark, dataset, model | Hub size band, such as `10K<n<100K`, or null; it can count files, so it is never a sample count | Hub API |
+| `dataverse` | dataset | Dataverse publisher, persistent URL, publication date, version number, minor number and state, release time, verbatim license object, and file count | Dataverse API |
+| `license_review` | agent, benchmark, dataset, framework, infrastructure, model, tool | Per license slot, the `reason` and `evidence_urls` of a reviewed license decision | License review |
+| `license_name` | dataset, model | License the publisher names without an SPDX identifier, such as `qwen-research` | Editorial |
+| `license_conflict` | framework | Conflicting license declarations that remain unresolved | Editorial |
+| `license_components_note` | framework, tool | Component or dependency notices that differ from the root project license | Editorial |
+| `artifact_type` | infrastructure, model | What the artifact is, such as `model-checkpoint` or `Ubuntu VMware image`; family relations keep a checkpoint from counting as an independent project | Editorial |
+| `base_model` | model | Hub ID of the model a checkpoint was trained from | Editorial |
+| `architecture` | model | Architecture class in the model configuration, such as `LlamaForCausalLM` | Editorial |
+| `parameter_label` | model | Parameter size as the publisher labels it, such as `8B` | Editorial |
+| `training_data_note` | model | What the publisher states about training data | Editorial |
+| `listed_weight_files` | model | Weight file names in the inspected Hub manifest | Editorial |
+| `artifact_inspection` | model | How far the artifact was inspected, such as the file manifest only | Editorial |
+| `hub_revision` | model | Hub commit whose manifest gave `listed_weight_files` | Editorial |
+| `release_revision` | benchmark, dataset, model | Hub commit of the inspected release | Editorial |
+| `repository_revision` | agent, benchmark, dataset, framework, infrastructure, tool | Git commit of the inspected source tree | Editorial |
+| `release_tag` | agent, benchmark, framework, infrastructure, tool | Inspected release tag, such as `v0.8.8` | Editorial |
+| `package_version` | agent, tool | Inspected package version, such as an npm release | Editorial |
+| `dataset_release` | benchmark | DOI of a separately published data release | Editorial |
+| `component_path` | agent | Path of a component record inside its repository | Editorial |
+| `availability` | agent, benchmark, dataset, framework, infrastructure, model, product, tool | What is publicly released and what is missing, such as source without checkpoints | Editorial |
+| `access` | dataset, product | How access is obtained, such as `publisher-managed` | Editorial |
+| `pricing_url` | product | Official pricing page, or null when not established | Editorial |
+| `maintenance_status` | infrastructure, tool | Publisher-stated status, such as `archived and deprecated` | Editorial |
+| `evaluation_caution` | framework | Evaluation behaviour that can distort reported results | Editorial |
+| `platform_constraints` | framework | Map from an environment key to a stated support limit | Editorial |
+
+The flat `sample_count`, `sample_unit`, `task_count`, `metrics`, `evaluation_type` and `leaderboard_url` keys are placeholders: they stay null or empty unless an editor sets them, which few records do. The authoritative quantities are the `counts` in `dataset_profile` and `benchmark_protocol`, where each count carries its own unit, precision qualifier, population, basis and evidence URL. A flat count is a single editorial figure without that context; when both exist, use the profile. Counts of episodes, actions, screenshots, tasks, and instructions are different units and are never summed.
 
 ## Topic vocabulary
 
@@ -66,8 +127,6 @@ The executable contract is [resource.schema.json](../schemas/resource.schema.jso
 | `workflow` | Workflows | 工作流 | Multi-step procedures, business processes, and reusable task workflows. |
 | `world-models` | World models | 世界模型 | Predicting how an interface changes after an action, for planning or training. |
 <!-- TOPICS:END -->
-
-Dataset details can include sample count and unit, modalities, languages, download landing page, gated status, and explicitly approximate reported scale. Benchmark details can include task count, metric names, evaluation type, and leaderboard URL. Counts of episodes, actions, screenshots, tasks, and instructions are different units. Models can include `artifact_type: model-checkpoint`; family relations prevent treating every checkpoint as an independent project.
 
 `references.jsonl` is a separate discovery graph. Its `mentions` relation only means a URL was found in the source. `target_in_catalog` distinguishes indexed and unresolved targets. Strong reviewed relations remain inside each resource record and in the SQLite `relations` table.
 
