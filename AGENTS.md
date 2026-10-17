@@ -12,6 +12,10 @@ git rev-parse HEAD
 
 `data/catalog.jsonl` contains every active resource in this checkout, one JSON object per line. `data/coverage.json` describes coverage and remaining gaps. Record the Git commit when producing a reproducible report. The website provides the same catalog at <https://awesomecua.github.io/downloads/catalog.jsonl>.
 
+Find public exports in the [English data hub](https://awesomecua.github.io/data/) or [中文数据中心](https://awesomecua.github.io/zh/data/). Both organize the published snapshot into six groups: complete catalog, RAG documents, citations, topics and comparisons, sources and review status, and schemas. Cloning remains the entry point to the complete source catalog.
+
+Read the [download manifest](https://awesomecua.github.io/downloads/manifest.json) to select an artifact by `path`, `format`, and `scope`. Each listed export records its actual `count.value` and `count.unit`, exact `bytes`, and `sha256`. Resource, document, citation, archive, and topic counts have different or overlapping populations; do not add them together. Verify the downloaded bytes and compare `catalog_sha256` with the RAG, citation, and topic manifests before combining snapshots. The [manifest schema](https://awesomecua.github.io/schemas/download-manifest.schema.json) defines the fields.
+
 ## Search before reading the whole catalog
 
 Python 3.11+ is sufficient for search and export; no package installation, model endpoint, or account is required.

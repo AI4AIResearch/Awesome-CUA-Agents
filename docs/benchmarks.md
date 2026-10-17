@@ -6,7 +6,7 @@ Curated metadata, not a performance ranking. Each entry links its first-party ev
 
 *Paper* lists reviewed `introduced_by`/`documented_by` relations with the record's year. *License* lists publisher declarations by scope (code, data, weights, document). *Evidence* links the reviewed first-party snapshot and its retrieval date.
 
-**78 resources:** [Web (29)](#web) · [Desktop (13)](#desktop) · [Mobile (16)](#mobile) · [Cross-platform (17)](#cross-platform) · [Unspecified (3)](#unspecified)
+**79 resources:** [Web (29)](#web) · [Desktop (13)](#desktop) · [Mobile (17)](#mobile) · [Cross-platform (17)](#cross-platform) · [Unspecified (3)](#unspecified)
 
 Resources tagged with environments from more than one family are listed under *Cross-platform*; their exact environments stay in the table.
 
@@ -81,6 +81,7 @@ All entries in this section: web.
 | [FedMABench](https://github.com/wwh0411/FedMABench) | android | [2503.05143](https://arxiv.org/abs/2503.05143) (2025) | — | A federated mobile-agent training and evaluation suite that varies user-data heterogeneity and application distribution, with released partition annotations and inference/scoring scripts. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/wwh0411/FedMABench/HEAD/README.md) |
 | [iOSWorld](https://github.com/ljang0/iOSWorld) | ios | — | code Apache-2.0 | Native iPhone-simulator benchmark with shared user data, application workflows, agent runners, and rubric-based scoring. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/ljang0/iOSWorld/HEAD/README.md) |
 | [LlamaTouch](https://github.com/LlamaTouch/LlamaTouch) | android | — | — | Mobile UI task evaluation using application state information. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/LlamaTouch/LlamaTouch/HEAD/README.md) |
+| [MobBench task definitions](https://huggingface.co/datasets/OpenDFM/MobA-MobBench) | android | [2410.13757](https://arxiv.org/abs/2410.13757) (2024) | data cc-by-nc-sa-4.0 | A public set of real-device mobile task definitions used to evaluate MobA, with Chinese and English task material packaged in a versioned JSON release. | [✓ 2026‑10‑17](https://huggingface.co/datasets/OpenDFM/MobA-MobBench/raw/main/README.md) |
 | [Mobile-Bench-v2 released data](https://huggingface.co/datasets/xwk123/MobileBench-v2) | android | [2505.11891](https://arxiv.org/abs/2505.11891) (2025) | — | Offline mobile-agent task data spanning common tasks and released noisy, contaminated and ambiguous-instruction subsets. | [✓ 2026‑10‑17](https://huggingface.co/datasets/xwk123/MobileBench-v2/raw/main/README.md) |
 | [MobileAgentBench](https://github.com/MobileAgentBench/mobile-agent-bench) | android | — | — | Evaluation toolkit and tasks for mobile agents. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/MobileAgentBench/mobile-agent-bench/HEAD/README.md) |
 | [MobileSafetyBench](https://github.com/jylee425/mobilesafetybench) | android | — | code Apache-2.0 | Benchmark for safety behavior of mobile device agents. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/jylee425/mobilesafetybench/HEAD/README.md) |

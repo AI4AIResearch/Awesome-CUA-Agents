@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://awesomecua.github.io/schemas/download-manifest.schema.json",
+  "title": "AwesomeCUA download artifact manifest",
+  "type": "object",
+  "required": ["schema_version", "catalog_sha256", "source_repository", "source_catalog", "publication_build_info", "count_policy", "fingerprint_policy", "artifacts"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "catalog_sha256": {"$ref": "#/$defs/sha256"},
+    "source_repository": {"type": "string", "format": "uri", "pattern": "^https://"},
+    "source_catalog": {"const": "/downloads/catalog.jsonl"},
+    "publication_build_info": {"const": "/data/build-info.json"},
+    "count_policy": {"type": "string", "minLength": 1},
+    "fingerprint_policy": {"type": "string", "minLength": 1},
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "path", "group", "title", "description", "format", "media_type", "count", "scope", "bytes", "sha256"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+          "path": {"type": "string", "pattern": "^/(?:downloads|data|schemas)/[a-z0-9.-]+$"},
+          "group": {"enum": ["catalog", "rag", "citations", "research", "provenance", "contracts"]},
+          "title": {"$ref": "#/$defs/localized"},
+          "description": {"$ref": "#/$defs/localized"},
+          "format": {"enum": ["JSONL", "JSON", "SQLite", "BibTeX", "CSL JSON", "JSON Schema"]},
+          "media_type": {"type": "string", "minLength": 1},
+          "count": {
+            "type": "object",
+            "required": ["value", "unit"],
+            "properties": {
+              "value": {"type": "integer", "minimum": 0},
+              "unit": {"enum": ["resources", "documents", "citations", "profiles", "relations", "topics", "papers", "decisions", "sources", "editions", "exports", "reports", "schemas"]}
+            },
+            "additionalProperties": false
+          },
+          "scope": {"enum": ["active", "reviewed", "reviewed-publication", "recorded-publication", "archive", "provenance", "contract"]},
+          "bytes": {"type": "integer", "minimum": 0},
+          "sha256": {"$ref": "#/$defs/sha256"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "localized": {
+      "type": "object",
+      "required": ["en", "zh"],
+      "properties": {"en": {"type": "string", "minLength": 1}, "zh": {"type": "string", "minLength": 1}},
+      "additionalProperties": false
+    }
+  }
+}

@@ -29,6 +29,19 @@ Dataset details can include sample count and unit, modalities, languages, downlo
 
 Source data lives in `editorial.json`, `papers.jsonl`, `publications.jsonl`, `primary-evidence.jsonl`, `enrichment.jsonl`, `candidates.jsonl`, and discovery manifests. `catalog.jsonl`, `coverage.json`, `references.jsonl`, `review-queue.jsonl`, and category Markdown are generated views. The ignored `.cache/` directory is not needed to reproduce an offline build.
 
+The [English data hub](https://awesomecua.github.io/data/) and [中文数据中心](https://awesomecua.github.io/zh/data/) expose downloads from the same source catalog available by cloning the repository. Their [download manifest](https://awesomecua.github.io/downloads/manifest.json) follows [download-manifest.schema.json](../schemas/download-manifest.schema.json). Its `artifacts` array records each listed export's `path`, format, group, actual `count.value` and `count.unit`, `scope`, exact `bytes`, and file `sha256`. The top-level `catalog_sha256` identifies the source catalog snapshot; compare it with the RAG, citation and topic manifests before combining artifacts.
+
+| Manifest group | Contents |
+| --- | --- |
+| `catalog` | Complete active records as JSONL, a JSON array, and SQLite |
+| `rag` | Reviewed or metadata-inclusive retrieval documents and their manifest |
+| `citations` | Retained-source and publication-edition citations, with selection and edition metadata |
+| `research` | Topic subsets, benchmark/dataset profiles, and reviewed relationships |
+| `provenance` | Sources, coverage, review decisions, retained arXiv archive, and publication observations |
+| `contracts` | Machine-readable JSON Schemas |
+
+An artifact count measures its declared unit and population, not extra catalog resources. JSONL and SQLite can contain the same records; reviewed RAG documents overlap the active corpus; topic memberships and citation editions also overlap. Do not sum artifact counts or mix units. `scope` distinguishes active records, reviewed selections, publication editions, the retained archive, provenance, and contracts. A matching SHA-256 identifies file bytes; it does not add editorial approval or permissions to the underlying resources.
+
 `papers.jsonl` remains the arXiv archive. Each `publications.jsonl` observation has `id`, `publication`, `evidence`, and `last_verified_at`, following [publication-observation.schema.json](../schemas/publication-observation.schema.json). An existing arXiv ID receives publication metadata without replacing its original title, authors, dates or version. A new publisher URL identity creates a metadata-only record; relevance approval is still a separate editorial decision. A known publisher or PDF alias resolves to the same resource instead of adding another paper.
 
 `details.publication` retains the publication edition's title, literal authors, type, venue, publisher, DOI, volume/issue/pages and source receipts. `date_parts` is `[year]`, `[year, month]`, `[year, month, day]`, or null. Unknown components are never filled with `01`; event dates are kept separately. `published_at IS NULL` therefore does not necessarily mean the publication year is unknown. Catalogue years use the retained arXiv submission date for arXiv identities, and the publication's recorded precision for publisher-only identities. Undated records sort last; partial dates sort after more precise dates in the same year/month, without asserting an earlier calendar day.

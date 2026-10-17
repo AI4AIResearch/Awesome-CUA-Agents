@@ -2,15 +2,16 @@
 
 [Home](../../README.md) · [All topics](../topics.md) · [Full arXiv bibliography](../papers.md)
 
-13 source-reviewed resources tagged `survey`. Curated metadata, not a performance ranking; unknown facts are shown as —.
+14 source-reviewed resources tagged `survey`. Curated metadata, not a performance ranking; unknown facts are shown as —.
 
-**Contents:** [Surveys (12)](#surveys) · [Papers (1)](#papers)
+**Contents:** [Surveys (13)](#surveys) · [Papers (1)](#papers)
 
 ## Surveys
 
 | Date | Resource | Environments | Description |
 | --- | --- | --- | --- |
 | 2026‑09‑02 | [Efficient GUI Agents: A Systems Survey of Observation, Memory, Action, and Runtime Optimization](https://arxiv.org/abs/2609.02309) | cross-platform | Survey of research directions in GUI or computer-use agents. |
+| 2026‑02‑12 | [Agent Skills for Large Language Models: Architecture, Acquisition, Security, and the Path Forward](https://arxiv.org/abs/2602.12430) | unspecified | This survey organizes agent skills by architecture, acquisition, deployment and security, including their role in computer-use systems and GUI grounding. It also proposes a permission and lifecycle governance framework for skill deployment. |
 | 2025‑08‑06 | [OS Agents: A Survey on MLLM-based Agents for General Computing Devices Use](https://arxiv.org/abs/2508.04482) | cross-platform | Survey of research directions in GUI or computer-use agents. |
 | 2025‑05‑16 | [A Survey on the Safety and Security Threats of Computer-Using Agents: JARVIS or Ultron?](https://arxiv.org/abs/2505.10924) | cross-platform | Survey of research directions in GUI or computer-use agents. |
 | 2025‑04‑29 | [A Survey on GUI Agents with Foundation Models Enhanced by Reinforcement Learning](https://arxiv.org/abs/2504.20464) | cross-platform | Survey of research directions in GUI or computer-use agents. |

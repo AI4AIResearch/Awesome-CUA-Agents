@@ -25,10 +25,13 @@ ROOT=Path(__file__).resolve().parents[1]
 class PageParser(HTMLParser):
     def __init__(self,text):
         super().__init__();self.canonical=[];self.robots=[];self.links=[];self.scripts=[];self.heading_count=0
+        self.alternates={};self.language=None
         self.feed(text)
     def handle_starttag(self,tag,attrs):
         a=dict(attrs)
         if tag=='link' and a.get('rel')=='canonical':self.canonical.append(a['href'])
+        if tag=='link' and a.get('rel')=='alternate' and 'hreflang' in a:self.alternates[a['hreflang']]=a['href']
+        if tag=='html':self.language=a.get('lang')
         if tag=='meta' and a.get('name')=='robots':self.robots.append(a['content'])
         if tag=='a' and 'href' in a:self.links.append(a['href'])
         if tag=='script' and 'src' in a:self.scripts.append(a['src'])
@@ -117,7 +120,8 @@ class SearchPagesTests(unittest.TestCase):
                 self.assertTrue((self.dest/path.lstrip('/')/'index.md').exists())
     def test_script_versions_match_output_bytes_and_final_page_manifest(self):
         pages={item['path']:item for item in self.manifest['pages']}
-        for path,script in [('/', 'app.js'),('/compare/benchmarks/','compare.js'),('/compare/datasets/','compare.js')]:
+        for path,script in [('/', 'app.js'),('/compare/benchmarks/','compare.js'),('/compare/datasets/','compare.js'),
+                            ('/data/','downloads.js'),('/zh/data/','downloads.js')]:
             content=(self.dest/path.lstrip('/')/'index.html').read_bytes()
             sources=PageParser(content.decode('utf-8')).scripts
             self.assertEqual(len(sources),1,path)
@@ -130,6 +134,62 @@ class SearchPagesTests(unittest.TestCase):
             core=[urllib.parse.urlsplit(url) for url in imports if urllib.parse.urlsplit(url).path=='./catalog-core.js']
             self.assertEqual(len(core),1,script)
             self.assertEqual(urllib.parse.parse_qs(core[0].query),{'v':[hashlib.sha256((self.dest/'catalog-core.js').read_bytes()).hexdigest()]})
+    def test_data_hub_pages_have_complete_downloads_and_reciprocal_language_links(self):
+        download_manifest=json.loads((self.dest/'downloads/manifest.json').read_text())
+        pages={item['path']:item for item in self.manifest['pages']}
+        expected_alternates={'en':SITE+'/data/','zh-CN':SITE+'/zh/data/','x-default':SITE+'/data/'}
+        for path,language in [('/data/','en'),('/zh/data/','zh-CN')]:
+            with self.subTest(path=path):
+                content=(self.dest/path.lstrip('/')/'index.html').read_bytes()
+                markup=content.decode();parsed=PageParser(markup)
+                self.assertEqual(parsed.language,language)
+                self.assertEqual(parsed.canonical,[SITE+path])
+                self.assertEqual(parsed.alternates,expected_alternates)
+                self.assertIn('/zh/data/' if language=='en' else '/data/',parsed.links)
+                self.assertIn('/downloads/manifest.json',parsed.links)
+                self.assertEqual(pages[path]['sha256'],hashlib.sha256(content).hexdigest())
+                self.assertTrue(pages[path]['indexable'])
+                self.assertEqual(set(re.findall(r'data-artifact-id="([^"]+)"',markup)),
+                                 {item['id'] for item in download_manifest['artifacts']})
+                for item in download_manifest['artifacts']:
+                    self.assertIn(item['path'],parsed.links)
+                    self.assertTrue((self.dest/item['path'].lstrip('/')).is_file())
+                    self.assertIn(item['sha256'],markup)
+                for link in parsed.links:
+                    url=urllib.parse.urlsplit(urllib.parse.urljoin(SITE+path,link))
+                    if url.netloc!=urllib.parse.urlsplit(SITE).netloc:continue
+                    target=self.dest/url.path.lstrip('/')
+                    if url.path.endswith('/'):target=target/'index.html'
+                    self.assertTrue(target.exists(),f'{path} -> {link}')
+                graph=json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>',markup,re.S)[1])['@graph']
+                dataset=next(item for item in graph if item['@type']=='Dataset')
+                self.assertEqual(dataset['url'],SITE+path)
+                self.assertEqual({item['contentUrl'] for item in dataset['distribution']},
+                                 {SITE+'/downloads/catalog.jsonl',SITE+'/data/records.json',SITE+'/downloads/catalog.sqlite'})
+        self.assertIn('href="/zh/data/">数据</a>',(self.dest/'zh/data/index.html').read_text())
+        self.assertIn(SITE+'/downloads/manifest.json',(self.dest/'llms.txt').read_text())
+
+    def test_download_script_change_versions_only_data_hub_pages(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source=Path(directory)/'source';source.mkdir()
+            for name in ('web','data','schemas'):shutil.copytree(ROOT/name,source/name)
+            for name in ('LICENSE','AGENTS.md'):shutil.copy2(ROOT/name,source/name)
+            destination=Path(directory)/'site'
+            def snapshot():
+                return {item['path']:item['sha256'] for item in
+                        json.loads((destination/'data/search-manifest.json').read_text())['pages']}
+            with mock.patch('build_site.ROOT',source):
+                build_site(destination);before=snapshot()
+                script=source/'web/downloads.js'
+                script.write_bytes(script.read_bytes()+b'\n// Clipboard dependency version fixture.\n')
+                build_site(destination);after=snapshot()
+                self.assertEqual({path for path in before if before[path]!=after[path]}, {'/data/','/zh/data/'})
+                expected=hashlib.sha256((destination/'downloads.js').read_bytes()).hexdigest()
+                for path in ('data/index.html','zh/data/index.html'):
+                    parsed=PageParser((destination/path).read_text())
+                    self.assertEqual(parsed.scripts,['/downloads.js?v='+expected])
+                build_site(destination)
+                self.assertEqual(snapshot(),after)
     def test_core_change_updates_only_consumer_pages_and_rebuild_is_stable(self):
         with tempfile.TemporaryDirectory() as directory:
             source=Path(directory)/'source';source.mkdir()

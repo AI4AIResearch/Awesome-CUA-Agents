@@ -1,17 +1,17 @@
 {
-  "as_of_utc": "2026-10-17T11:44:12Z",
-  "total_records": 2584,
-  "curated_records": 1215,
-  "bibliographic_records": 2177,
-  "arxiv_active_records": 2164,
+  "as_of_utc": "2026-10-17T12:45:23Z",
+  "total_records": 3022,
+  "curated_records": 1322,
+  "bibliographic_records": 2596,
+  "arxiv_active_records": 2583,
   "non_arxiv_bibliographic_records": 13,
   "publication_metadata_records": 26,
-  "arxiv_archive_records": 2264,
+  "arxiv_archive_records": 2683,
   "excluded_records": 100,
   "exclusion_revalidation_pending": 0,
-  "metadata_only_records": 1369,
+  "metadata_only_records": 1700,
   "discovery_identifiers": 3907,
-  "unindexed_candidates": 1382,
+  "unindexed_candidates": 950,
   "pending_editorial": [
     {
       "id": "github:thudm/autoglm",
@@ -87,42 +87,42 @@
     }
   ],
   "by_kind": {
-    "agent": 34,
-    "benchmark": 78,
+    "agent": 38,
+    "benchmark": 79,
     "company": 16,
-    "dataset": 76,
-    "framework": 58,
+    "dataset": 80,
+    "framework": 66,
     "infrastructure": 15,
-    "model": 92,
-    "paper": 2165,
+    "model": 93,
+    "paper": 2583,
     "product": 19,
-    "survey": 12,
-    "tool": 19
+    "survey": 13,
+    "tool": 20
   },
   "curated_by_environment": {
-    "android": 242,
-    "cross-platform": 182,
-    "desktop": 244,
-    "harmonyos": 1,
-    "ios": 17,
-    "linux": 37,
-    "macos": 23,
-    "unspecified": 255,
-    "web": 439,
-    "windows": 46
+    "android": 262,
+    "cross-platform": 186,
+    "desktop": 256,
+    "harmonyos": 2,
+    "ios": 19,
+    "linux": 38,
+    "macos": 25,
+    "unspecified": 293,
+    "web": 483,
+    "windows": 47
   },
   "curated_by_kind_and_environment": {
     "agent": {
-      "android": 13,
+      "android": 15,
       "cross-platform": 1,
       "desktop": 14,
       "ios": 1,
       "macos": 1,
-      "web": 8,
+      "web": 10,
       "windows": 3
     },
     "benchmark": {
-      "android": 16,
+      "android": 17,
       "cross-platform": 13,
       "desktop": 17,
       "ios": 2,
@@ -136,25 +136,26 @@
       "unspecified": 16
     },
     "dataset": {
-      "android": 31,
+      "android": 33,
       "cross-platform": 14,
       "desktop": 14,
+      "ios": 1,
       "linux": 6,
       "macos": 2,
-      "unspecified": 7,
-      "web": 20,
+      "unspecified": 8,
+      "web": 21,
       "windows": 3
     },
     "framework": {
-      "android": 16,
-      "cross-platform": 5,
-      "desktop": 16,
+      "android": 17,
+      "cross-platform": 7,
+      "desktop": 18,
       "harmonyos": 1,
       "ios": 1,
       "linux": 3,
       "macos": 1,
       "unspecified": 2,
-      "web": 27,
+      "web": 34,
       "windows": 1
     },
     "infrastructure": {
@@ -174,19 +175,20 @@
       "linux": 4,
       "macos": 4,
       "unspecified": 2,
-      "web": 25,
+      "web": 26,
       "windows": 4
     },
     "paper": {
-      "android": 133,
-      "cross-platform": 92,
-      "desktop": 149,
-      "ios": 5,
-      "linux": 14,
-      "macos": 8,
-      "unspecified": 222,
-      "web": 292,
-      "windows": 27
+      "android": 147,
+      "cross-platform": 94,
+      "desktop": 159,
+      "harmonyos": 1,
+      "ios": 6,
+      "linux": 15,
+      "macos": 10,
+      "unspecified": 258,
+      "web": 324,
+      "windows": 28
     },
     "product": {
       "desktop": 5,
@@ -196,7 +198,7 @@
       "android": 1,
       "cross-platform": 10,
       "ios": 1,
-      "unspecified": 1
+      "unspecified": 2
     },
     "tool": {
       "android": 5,
@@ -206,14 +208,14 @@
       "linux": 2,
       "macos": 2,
       "unspecified": 2,
-      "web": 10,
+      "web": 11,
       "windows": 3
     }
   },
   "license_declarations_by_scope": {
-    "code": 158,
-    "data": 49,
-    "weights": 51,
+    "code": 165,
+    "data": 53,
+    "weights": 52,
     "document": 0
   },
   "sources": [
@@ -238,12 +240,12 @@
         "state": "success"
       },
       "discovered": 338,
-      "indexed": 204,
-      "indexed_resources": 203,
+      "indexed": 215,
+      "indexed_resources": 214,
       "resolved_aliases": 1,
-      "curated": 190,
+      "curated": 201,
       "excluded": 0,
-      "unindexed": 134
+      "unindexed": 123
     },
     {
       "id": "zju-gui",
@@ -266,12 +268,12 @@
         "state": "success"
       },
       "discovered": 218,
-      "indexed": 159,
-      "indexed_resources": 159,
+      "indexed": 165,
+      "indexed_resources": 165,
       "resolved_aliases": 0,
-      "curated": 153,
+      "curated": 161,
       "excluded": 0,
-      "unindexed": 59
+      "unindexed": 53
     },
     {
       "id": "os-agent-survey",
@@ -350,12 +352,12 @@
         "state": "success"
       },
       "discovered": 113,
-      "indexed": 23,
-      "indexed_resources": 23,
+      "indexed": 24,
+      "indexed_resources": 24,
       "resolved_aliases": 1,
-      "curated": 23,
+      "curated": 24,
       "excluded": 0,
-      "unindexed": 90
+      "unindexed": 89
     },
     {
       "id": "steel-web-archive",
@@ -406,12 +408,12 @@
         "state": "success"
       },
       "discovered": 170,
-      "indexed": 111,
-      "indexed_resources": 111,
+      "indexed": 113,
+      "indexed_resources": 113,
       "resolved_aliases": 0,
-      "curated": 93,
+      "curated": 102,
       "excluded": 1,
-      "unindexed": 58
+      "unindexed": 56
     },
     {
       "id": "delunn-multimodal",
@@ -434,12 +436,12 @@
         "state": "success"
       },
       "discovered": 588,
-      "indexed": 486,
-      "indexed_resources": 486,
+      "indexed": 493,
+      "indexed_resources": 493,
       "resolved_aliases": 0,
-      "curated": 376,
+      "curated": 410,
       "excluded": 0,
-      "unindexed": 102
+      "unindexed": 95
     },
     {
       "id": "tianyuan-cua",
@@ -462,12 +464,12 @@
         "state": "success"
       },
       "discovered": 94,
-      "indexed": 67,
-      "indexed_resources": 67,
+      "indexed": 69,
+      "indexed_resources": 69,
       "resolved_aliases": 0,
-      "curated": 54,
+      "curated": 59,
       "excluded": 0,
-      "unindexed": 27
+      "unindexed": 25
     },
     {
       "id": "cdxeve-cua",
@@ -546,12 +548,12 @@
         "state": "success"
       },
       "discovered": 193,
-      "indexed": 139,
-      "indexed_resources": 139,
+      "indexed": 144,
+      "indexed_resources": 144,
       "resolved_aliases": 0,
-      "curated": 134,
+      "curated": 139,
       "excluded": 0,
-      "unindexed": 54
+      "unindexed": 49
     },
     {
       "id": "osu-gui",
@@ -577,7 +579,7 @@
       "indexed": 486,
       "indexed_resources": 486,
       "resolved_aliases": 0,
-      "curated": 258,
+      "curated": 297,
       "excluded": 0,
       "unindexed": 58
     },
@@ -602,12 +604,12 @@
         "state": "success"
       },
       "discovered": 144,
-      "indexed": 89,
-      "indexed_resources": 89,
+      "indexed": 91,
+      "indexed_resources": 91,
       "resolved_aliases": 0,
-      "curated": 77,
+      "curated": 80,
       "excluded": 0,
-      "unindexed": 55
+      "unindexed": 53
     },
     {
       "id": "jin-gui-hub",
@@ -633,7 +635,7 @@
       "indexed": 207,
       "indexed_resources": 207,
       "resolved_aliases": 0,
-      "curated": 90,
+      "curated": 91,
       "excluded": 0,
       "unindexed": 3
     },
@@ -714,12 +716,12 @@
         "state": "success"
       },
       "discovered": 247,
-      "indexed": 189,
-      "indexed_resources": 189,
+      "indexed": 192,
+      "indexed_resources": 192,
       "resolved_aliases": 0,
-      "curated": 171,
+      "curated": 174,
       "excluded": 0,
-      "unindexed": 58
+      "unindexed": 55
     },
     {
       "id": "mobile-agents",
@@ -742,12 +744,12 @@
         "state": "success"
       },
       "discovered": 91,
-      "indexed": 76,
-      "indexed_resources": 76,
+      "indexed": 77,
+      "indexed_resources": 77,
       "resolved_aliases": 0,
-      "curated": 61,
+      "curated": 62,
       "excluded": 0,
-      "unindexed": 15
+      "unindexed": 14
     },
     {
       "id": "web-research",
@@ -798,12 +800,12 @@
         "state": "success"
       },
       "discovered": 96,
-      "indexed": 57,
-      "indexed_resources": 57,
+      "indexed": 59,
+      "indexed_resources": 59,
       "resolved_aliases": 0,
-      "curated": 49,
+      "curated": 51,
       "excluded": 0,
-      "unindexed": 39
+      "unindexed": 37
     },
     {
       "id": "release-fara",
@@ -1165,7 +1167,7 @@
       "indexed": 2,
       "indexed_resources": 2,
       "resolved_aliases": 0,
-      "curated": 1,
+      "curated": 2,
       "excluded": 0,
       "unindexed": 7
     },

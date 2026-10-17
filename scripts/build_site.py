@@ -41,7 +41,7 @@ def build_site(output=None):
     (destination/'data').mkdir(exist_ok=True)
     (destination/'downloads').mkdir(exist_ok=True)
     (destination/'schemas').mkdir(exist_ok=True)
-    for contract in ('resource.schema.json','scope-decision.schema.json','publication-observation.schema.json'):
+    for contract in ('resource.schema.json','scope-decision.schema.json','publication-observation.schema.json','download-manifest.schema.json'):
         shutil.copy2(ROOT/'schemas'/contract,destination/'schemas'/contract)
     keys=['id','name','kind','url','aliases','environments','topics','summary','review_status','published_at','authors','scope','last_verified_at']
     related={row['id']:set() for row in rows}

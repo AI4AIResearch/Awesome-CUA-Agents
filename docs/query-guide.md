@@ -57,6 +57,10 @@ SQLite uses `resources`, `facets`, `relations`, and `resource_search`. The full 
 
 Clone the complete source catalog with `git clone https://github.com/reacher-z/Awesome-CUA.git`. [AGENTS.md](../AGENTS.md) contains executable local-search examples and a citation-preserving retrieval workflow.
 
+For ready-made exports, use the [English data hub](https://awesomecua.github.io/data/) or [中文数据中心](https://awesomecua.github.io/zh/data/). The six groups cover the complete catalog, RAG, citations, topics and comparisons, sources and review status, and schemas. These downloads and the clone are entry points to the same catalog; use the published snapshot's [download manifest](https://awesomecua.github.io/downloads/manifest.json) to select a file by `path`, format, and `scope`.
+
+Check each selected file's actual `count.value`, `count.unit`, `bytes`, and `sha256`, and require matching `catalog_sha256` values across the download, RAG, citation and topic manifests. Counts for resources, retrieval documents, citations and archive records can overlap and must not be added together. A successful file check does not turn metadata-only records into reviewed resources. See the [data dictionary](data-dictionary.md) for the manifest fields and populations.
+
 ```sh
 python3 scripts/export_rag.py --output dist/rag-documents.jsonl
 python3 scripts/export_rag.py --include-metadata --output dist/rag-all-records.jsonl
