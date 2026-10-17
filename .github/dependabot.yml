@@ -9,6 +9,7 @@ updates:
       github-actions:
         patterns: ["*"]
     labels: ["area:ci"]
+  # requirements-dev.txt is pip-compile output from requirements-dev.in; Dependabot recompiles it with the hashes its header asks for.
   - package-ecosystem: pip
     directory: /
     schedule:

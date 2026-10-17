@@ -189,7 +189,7 @@ python3 scripts/export_citations.py --format bibtex --output dist/citations.bib
 
 ```bash
 python3 -m venv .venv
-.venv/bin/python -m pip install -r requirements-dev.txt
+.venv/bin/python -m pip install --require-hashes -r requirements-dev.txt
 .venv/bin/python scripts/catalog.py validate
 .venv/bin/python scripts/catalog.py build --check
 .venv/bin/python -m unittest discover -s tests -v
