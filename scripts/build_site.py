@@ -27,6 +27,13 @@ def version_script_imports(destination):
         target.write_bytes(content)
 
 
+def compact_facts(row):
+    # Index rows carry only recorded facts: the paper ID (the record's own, else the first arXiv paper that introduces or documents it) and declared licenses.
+    papers=sorted((r for r in row['relations'] if r['type'] in ('introduced_by','documented_by') and r['target_id'].startswith('arxiv:')),key=lambda r:r['type']!='introduced_by')
+    licenses={slot:', '.join(l['declared']) if isinstance(l['declared'],list) else l['declared'] for slot in ('code','data','weights','document') if (l:=row['licenses'].get(slot)) and l.get('declared')}
+    return {'paper_arxiv':row['identifiers'].get('arxiv') or (papers[0]['target_id'][6:] if papers else None),'declared_licenses':licenses}
+
+
 def build_site(output=None):
     destination=Path(output) if output else ROOT/'dist'/'site'
     rows=[json.loads(line) for line in (ROOT/'data/catalog.jsonl').read_text().splitlines() if line.strip()]
@@ -57,7 +64,7 @@ def build_site(output=None):
         'paper_date':record_date_text(row),
         'paper_date_precision':{1:'year',2:'month',3:'day'}.get(len(record_date_parts(row) or [])),
         'publication_search_text':publication_search_text(row),
-        'related_count':len(related[row['id']]),'incoming_relations':incoming[row['id']]} for row in rows]}
+        'related_count':len(related[row['id']]),'incoming_relations':incoming[row['id']],**compact_facts(row)} for row in rows]}
     for filename,payload in [('index.json',index),('records.json',rows)]:
         (destination/'data'/filename).write_text(json.dumps(payload,ensure_ascii=False,separators=(',',':'))+'\n')
     for name in ['catalog.jsonl','coverage.json','sources.json']:

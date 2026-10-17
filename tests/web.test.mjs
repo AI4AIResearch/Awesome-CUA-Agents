@@ -187,6 +187,39 @@ test('record facts label every published detail and never print raw objects',()=
   assert.equal(formatFact('dataverse',{publisher:'Harvard Dataverse',version_number:5,version_minor_number:0,file_count:261,license:{name:'CC0 1.0'},publication_date:'2025-05-15'},'en'),'Harvard Dataverse · v5.0 · 261 files · CC0 1.0 · published May 15, 2025');
   for(const empty of [null,'',[]])assert.equal(formatFact('languages',empty,'en'),'');
 });
+test('compact card facts list only recorded year, arXiv paper and declared licenses',async()=>{
+  const {compactFacts}=await import('../web/catalog-core.js');
+  const osworld={id:'github:xlang-ai/osworld',published_at:null,paper_arxiv:'2404.07972',declared_licenses:{code:'Apache-2.0',weights:'MIT'}};
+  assert.deepEqual(compactFacts(osworld),[{key:'paper',text:'arXiv 2404.07972',url:'https://arxiv.org/abs/2404.07972'},{key:'license',text:'code Apache-2.0'},{key:'license',text:'weights MIT'}]);
+  assert.deepEqual(compactFacts({...osworld,published_at:'2024-04-11'},slot=>({code:'代码',weights:'模型权重'})[slot]).map(f=>f.text),['2024','arXiv 2404.07972','代码 Apache-2.0','模型权重 MIT']);
+  assert.deepEqual(compactFacts({id:'url:bare',published_at:null,paper_arxiv:null,declared_licenses:{}}),[]);
+  assert.deepEqual(compactFacts({id:'url:bare',published_at:null}),[]);
+  for(const r of rows)for(const fact of compactFacts(r))assert.match(fact.text,/^\d{4}$/,r.id);
+});
+test('cards and list rows render compact facts without placeholders',async()=>{
+  const coverage=JSON.parse(readFileSync(new URL('../data/coverage.json',import.meta.url),'utf8'));
+  const base={aliases:[],environments:['desktop'],topics:[],authors:[],scope:'core',review_status:'curated',summary:'Fixture summary.',paper_version:null,paper_source_url:null,paper_date:null,related_count:0,incoming_relations:[]};
+  const records=[{...base,id:'github:xlang-ai/osworld',name:'OSWorld',kind:'benchmark',url:'https://github.com/xlang-ai/OSWorld',page_url:'/resources/osworld/',published_at:null,paper_arxiv:'2404.07972',declared_licenses:{code:'Apache-2.0'}},
+    {...base,id:'url:bare',name:'Bare tool',kind:'tool',url:'https://example.org/',page_url:'/resources/bare/',published_at:null,paper_arxiv:null,declared_licenses:{}}];
+  const keys=['document','window','location','history','localStorage','fetch'],saved=keys.map(key=>[key,Object.getOwnPropertyDescriptor(globalThis,key)]);
+  const render=async(search,name)=>{
+    const elements=new Map(),element=selector=>{if(!elements.has(selector))elements.set(selector,{dataset:{},classList:{toggle(){}},addEventListener(){},setAttribute(){},showModal(){},close(){}});return elements.get(selector);};
+    const globals={document:{documentElement:{},body:{classList:{toggle(){}}},addEventListener(){},querySelector:element,querySelectorAll:()=>[]},window:{addEventListener(){}},location:{search,pathname:'/',hash:''},history:{replaceState(){}},localStorage:{getItem:()=>null,setItem(){}},fetch:async()=>({ok:true,json:async()=>({coverage,records:structuredClone(records)})})};
+    for(const [key,value] of Object.entries(globals))Object.defineProperty(globalThis,key,{value,configurable:true,writable:true});
+    await import(`../web/app.js?${name}`);await new Promise(resolve=>setImmediate(resolve));
+    return element('#results').innerHTML.split(/(?=<article )/);
+  };
+  try {
+    const [card,bare]=await render('','facts-grid');
+    assert.match(card,/<p class="card-facts"><a href="https:\/\/arxiv\.org\/abs\/2404\.07972"[^>]*>arXiv 2404\.07972<\/a>\u00a0· <span title="Code Apache-2\.0">Code Apache-2\.0<\/span><\/p>/);
+    assert.doesNotMatch(bare,/card-facts/);
+    const [row,bareRow]=await render('?view=list&lang=zh','facts-list');
+    assert.match(row,/>arXiv 2404\.07972<\/a><span title="代码 Apache-2\.0">代码 Apache-2\.0<\/span>/);
+    for(const html of [row,bareRow])assert.doesNotMatch(html,/—|<time|row-date-value/);
+  } finally {
+    for(const [key,descriptor] of saved)if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];
+  }
+});
 const css=readFileSync(new URL('../web/styles.css',import.meta.url),'utf8');
 const declaration=(selector,prop)=>{const block=css.match(new RegExp(`(?:^|[}\\n])${selector.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}\\{([^}]*)`))[1];const value=block.match(new RegExp(`(?:^|;)${prop}:([^;]+)`))[1].replace(/^var\(--([\w-]+)\)$/,(_,name)=>declaration(':root','--'+name));return value.length===4?'#'+[...value.slice(1)].map(c=>c+c).join(''):value;};
 const luminance=hex=>{const [r,g,b]=hex.slice(1).match(/../g).map(x=>parseInt(x,16)/255).map(x=>x<=.04045?x/12.92:((x+.055)/1.055)**2.4);return .2126*r+.7152*g+.0722*b;};
