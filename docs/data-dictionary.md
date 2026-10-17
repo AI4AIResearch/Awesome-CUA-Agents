@@ -27,7 +27,7 @@ Dataset details can include sample count and unit, modalities, languages, downlo
 
 `references.jsonl` is a separate discovery graph. Its `mentions` relation only means a URL was found in the source. `target_in_catalog` distinguishes indexed and unresolved targets. Strong reviewed relations remain inside each resource record and in the SQLite `relations` table.
 
-Source data lives in `editorial.json`, `papers.jsonl`, `publications.jsonl`, `primary-evidence.jsonl`, `enrichment.jsonl`, `candidates.jsonl`, and discovery manifests. `catalog.jsonl`, `coverage.json`, `references.jsonl`, `review-queue.jsonl`, and category Markdown are generated views. The ignored `.cache/` directory is not needed to reproduce an offline build.
+Source data lives in `editorial.json` (see [editorial input](editorial-input.md)), `papers.jsonl`, `publications.jsonl`, `primary-evidence.jsonl`, `enrichment.jsonl`, `candidates.jsonl`, and discovery manifests. `catalog.jsonl`, `coverage.json`, `references.jsonl`, `review-queue.jsonl`, and category Markdown are generated views. The ignored `.cache/` directory is not needed to reproduce an offline build.
 
 `papers.jsonl` remains the arXiv archive. Each `publications.jsonl` observation has `id`, `publication`, `evidence`, and `last_verified_at`, following [publication-observation.schema.json](../schemas/publication-observation.schema.json). An existing arXiv ID receives publication metadata without replacing its original title, authors, dates or version. A new publisher URL identity creates a metadata-only record; relevance approval is still a separate editorial decision. A known publisher or PDF alias resolves to the same resource instead of adding another paper.
 
