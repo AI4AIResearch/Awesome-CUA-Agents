@@ -30,7 +30,7 @@
 | [GUI-G2 7B](https://huggingface.co/inclusionAI/GUI-G2-7B) | cross-platform | [2507.15846](https://arxiv.org/abs/2507.15846) (2025) | weights apache-2.0 | A Qwen2.5-VL grounding checkpoint trained with Gaussian point and coverage rewards whose granularity adapts to interface-element scale. | [✓ 2026‑10‑17](https://huggingface.co/inclusionAI/GUI-G2-7B/raw/main/README.md) |
 | [WebJudge 7B](https://huggingface.co/osunlp/WebJudge-7B) | web | [2504.01382](https://arxiv.org/abs/2504.01382) (2025) | weights apache-2.0 | A visual trajectory judge that retains selected intermediate screenshots to evaluate whether a web agent completed its task. | [✓ 2026‑10‑17](https://huggingface.co/osunlp/WebJudge-7B/raw/main/README.md) |
 | [WebRL outcome reward model 8B](https://huggingface.co/zai-org/webrl-orm-llama-3.1-8b) | web | [2411.02337](https://arxiv.org/abs/2411.02337) (2024) | — | The outcome-supervision checkpoint used by WebRL to score browser trajectories during policy training. | [✓ 2026‑10‑17](https://huggingface.co/api/models/zai-org/webrl-orm-llama-3.1-8b) |
-| [WebShepherd 3B](https://huggingface.co/LangAGI-Lab/WebShepherd_3B) | web | — | — | A public text-based process-reward checkpoint from the Web-Shepherd collection for scoring web-agent decisions against task checklists. | [✓ 2026‑10‑17](https://huggingface.co/api/models/LangAGI-Lab/WebShepherd_3B) |
+| [WebShepherd 3B](https://huggingface.co/LangAGI-Lab/WebShepherd_3B) | web | [2505.15277](https://arxiv.org/abs/2505.15277) (2025) | — | A public text-based process-reward checkpoint from the Web-Shepherd collection for scoring web-agent decisions against task checklists. | [✓ 2026‑10‑17](https://huggingface.co/api/models/LangAGI-Lab/WebShepherd_3B) |
 
 ## Frameworks
 

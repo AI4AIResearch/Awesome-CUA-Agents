@@ -5842,6 +5842,13 @@
     "editorial_reviewed": true,
     "reviewed_sha256": "356a8dca28fa3dc46bc05b13eaf04a3db273e63c06be4fd15d0e87e0343c0824",
     "reviewed_at": "2026-10-16T06:38:26Z",
+    "reviewed_relations": [
+      {
+        "type": "documented_by",
+        "target_id": "arxiv:2409.14818",
+        "evidence_url": "https://huggingface.co/datasets/xwk123/Mobile3M/raw/3df26694ff9186604eb44a8e633894d3ece67ed9/README.md"
+      }
+    ],
     "reviewed_licenses": {
       "data": {
         "value": null,
@@ -5892,7 +5899,8 @@
         "role": "primary",
         "method": "editorial_primary_review",
         "supports": [
-          "details.dataset_profile"
+          "details.dataset_profile",
+          "relations"
         ]
       },
       {
@@ -5967,7 +5975,20 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "70928db908760c1561bfc8e0cd7d925e0103ffddef4676fbaa7c1756a804b99a",
-    "reviewed_at": "2026-10-16T06:38:26Z"
+    "reviewed_at": "2026-10-16T06:38:26Z",
+    "notes": "The card links the WebUI project's ACM publication (DOI 10.1145/3544548.3581158) and website, not an arXiv record or a catalogued repository, so no paper or family relation is recorded.",
+    "additional_evidence": [
+      {
+        "role": "primary",
+        "method": "editorial_primary_review",
+        "supports": [
+          "notes"
+        ],
+        "url": "https://huggingface.co/datasets/biglab/webui-all/raw/main/README.md",
+        "sha256": "93bd04914735f748d687b71597970a79d95ae8636e7ed75d267ebd6954d11a8f",
+        "retrieved_at": "2026-10-17T16:10:53Z"
+      }
+    ]
   },
   {
     "name": "CMGUI",
@@ -5985,7 +6006,26 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "aa1e063e73269acd0cb06adcef67d6230f0fe9498ed361d92234053dcf035685",
-    "reviewed_at": "2026-10-16T06:38:26Z"
+    "reviewed_at": "2026-10-16T06:38:26Z",
+    "reviewed_relations": [
+      {
+        "type": "documented_by",
+        "target_id": "arxiv:2603.08533",
+        "evidence_url": "https://huggingface.co/datasets/alibabagroup/CMGUI/raw/main/README.md"
+      }
+    ],
+    "additional_evidence": [
+      {
+        "role": "primary",
+        "method": "editorial_primary_review",
+        "supports": [
+          "relations"
+        ],
+        "url": "https://huggingface.co/datasets/alibabagroup/CMGUI/raw/main/README.md",
+        "sha256": "6f43b9e5f2c783f91cc3271f51db6a9a521c29f21954a2a30ad0cfa186e1c1b7",
+        "retrieved_at": "2026-10-17T16:10:26Z"
+      }
+    ]
   },
   {
     "name": "UGround V1 Data",
@@ -6005,6 +6045,13 @@
     "editorial_reviewed": true,
     "reviewed_sha256": "0342862bd7857dd21e389ee5d351375dfea722cad4725c8e33271efc93e009f6",
     "reviewed_at": "2026-10-16T06:38:26Z",
+    "reviewed_relations": [
+      {
+        "type": "component_of",
+        "target_id": "github:osu-nlp-group/uground",
+        "evidence_url": "https://raw.githubusercontent.com/OSU-NLP-Group/UGround/HEAD/README.md"
+      }
+    ],
     "details": {
       "dataset_profile": {
         "supervision": [
@@ -6044,7 +6091,8 @@
         "role": "primary",
         "method": "editorial_primary_review",
         "supports": [
-          "details.dataset_profile"
+          "details.dataset_profile",
+          "relations"
         ]
       }
     ]
@@ -6066,6 +6114,13 @@
     "editorial_reviewed": true,
     "reviewed_sha256": "84bd2ef05ea837eaeebb248002b2942dd5c72f072beb29a9bd70eda1ea433a31",
     "reviewed_at": "2026-10-17T02:09:27Z",
+    "reviewed_relations": [
+      {
+        "type": "component_of",
+        "target_id": "github:showlab/showui",
+        "evidence_url": "https://huggingface.co/datasets/showlab/ShowUI-desktop-8K/raw/main/README.md"
+      }
+    ],
     "details": {
       "dataset_profile": {
         "supervision": [
@@ -6104,7 +6159,8 @@
         "role": "primary",
         "method": "editorial_primary_review",
         "supports": [
-          "details.dataset_profile"
+          "details.dataset_profile",
+          "relations"
         ],
         "url": "https://huggingface.co/datasets/showlab/ShowUI-desktop-8K/raw/main/README.md",
         "sha256": "577a78efa03cde05141c23033222014094681cb5d04786dbb4a698df8543b3df",
@@ -6129,6 +6185,13 @@
     "editorial_reviewed": true,
     "reviewed_sha256": "dca4b89176c7653e83545363e4868bd2d5f0bf618df007b68a7e25407262f1ac",
     "reviewed_at": "2026-10-17T02:09:27Z",
+    "reviewed_relations": [
+      {
+        "type": "documented_by",
+        "target_id": "arxiv:2509.15221",
+        "evidence_url": "https://huggingface.co/datasets/OpenGVLab/ScaleCUA-Data/raw/main/README.md"
+      }
+    ],
     "details": {
       "dataset_profile": {
         "supervision": [
@@ -6167,7 +6230,8 @@
         "role": "primary",
         "method": "editorial_primary_review",
         "supports": [
-          "details.dataset_profile"
+          "details.dataset_profile",
+          "relations"
         ],
         "url": "https://huggingface.co/datasets/OpenGVLab/ScaleCUA-Data/raw/main/README.md",
         "sha256": "8c545d66cc7199a9258bd91ed48930691d0d99555bc30ee457fae9bf656fd18d",
@@ -6191,7 +6255,20 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "cdb8be8c4692a8ddcf8a66c1f0be666a9214718445925fb3c88615a0d641bf3a",
-    "reviewed_at": "2026-10-16T06:38:26Z"
+    "reviewed_at": "2026-10-16T06:38:26Z",
+    "notes": "The card links its paper (arXiv 2601.06031) and code repository (OSU-NLP-Group/GUI-Drag). Neither is a reviewed catalog record yet, so no relation is recorded.",
+    "additional_evidence": [
+      {
+        "role": "primary",
+        "method": "editorial_primary_review",
+        "supports": [
+          "notes"
+        ],
+        "url": "https://huggingface.co/datasets/osunlp/GUI-Drag-dataset/raw/main/README.md",
+        "sha256": "907c8a5169c180491ef8c26c9428b2c67bc4e26f472d6423ce3715cbe47f76ef",
+        "retrieved_at": "2026-10-17T16:10:54Z"
+      }
+    ]
   },
   {
     "name": "DragOn",
@@ -6209,7 +6286,20 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "08b5529ce01781143147d56e2278aec2e5bdd972ba7e2fae6ba7e65e62688d40",
-    "reviewed_at": "2026-10-16T06:38:26Z"
+    "reviewed_at": "2026-10-16T06:38:26Z",
+    "notes": "The card cites a workshop paper titled \"DragOn: A Drag-Grounding Benchmark and Training Dataset for GUI Agents\" without an arXiv link. arXiv 2606.06322 has a different title, so no paper relation is recorded.",
+    "additional_evidence": [
+      {
+        "role": "primary",
+        "method": "editorial_primary_review",
+        "supports": [
+          "notes"
+        ],
+        "url": "https://huggingface.co/datasets/Hcompany/DragOn/raw/main/README.md",
+        "sha256": "e7ef94cafcfd155961beec373f2f4e727715b7d517a819f52b5407fc2dec4009",
+        "retrieved_at": "2026-10-17T16:10:54Z"
+      }
+    ]
   },
   {
     "name": "CUA-Gym",
@@ -6228,7 +6318,26 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "43b8ebde3b971e1b8b61d789c786ead59b45a2490bc6ed19e204bafc03a31f44",
-    "reviewed_at": "2026-10-16T06:38:26Z"
+    "reviewed_at": "2026-10-16T06:38:26Z",
+    "reviewed_relations": [
+      {
+        "type": "documented_by",
+        "target_id": "arxiv:2605.25624",
+        "evidence_url": "https://huggingface.co/datasets/xlangai/CUA-Gym/raw/main/README.md"
+      }
+    ],
+    "additional_evidence": [
+      {
+        "role": "primary",
+        "method": "editorial_primary_review",
+        "supports": [
+          "relations"
+        ],
+        "url": "https://huggingface.co/datasets/xlangai/CUA-Gym/raw/main/README.md",
+        "sha256": "962cd9162bea83f7adfedb3da50129bcf4203ae65176bdf53f0af6788b9603ef",
+        "retrieved_at": "2026-10-17T16:10:25Z"
+      }
+    ]
   },
   {
     "name": "RecreationBench",
@@ -14376,6 +14485,9 @@
     "editorial_reviewed": true,
     "reviewed_sha256": "c73b46acc2ff034a443fb8dbde327de1888535267199c9fb1819adf66898f1d7",
     "reviewed_at": "2026-10-16T11:51:16Z",
+    "documented_by": [
+      "2502.01977"
+    ],
     "primary_supports": [
       "name",
       "kind",
@@ -15881,7 +15993,8 @@
           "environments",
           "topics",
           "scope",
-          "details.dataset_profile"
+          "details.dataset_profile",
+          "relations"
         ],
         "url": "https://raw.githubusercontent.com/AriaUI/Aria-UI/HEAD/README.md",
         "sha256": "a2a3c5ad115e4e2109b56686c9e0b073bcfec6d9f052a58bc92683af44933480",
@@ -15894,6 +16007,13 @@
     "editorial_reviewed": true,
     "reviewed_sha256": "79f91aab71bb8a0ec3ad9859cbc42d70227e01db729ec80dc5690b466b259cad",
     "reviewed_at": "2026-10-16T11:51:16Z",
+    "reviewed_relations": [
+      {
+        "type": "component_of",
+        "target_id": "github:ariaui/aria-ui",
+        "evidence_url": "https://raw.githubusercontent.com/AriaUI/Aria-UI/HEAD/README.md"
+      }
+    ],
     "details": {
       "dataset_profile": {
         "supervision": [
@@ -16047,7 +16167,8 @@
           "summary",
           "environments",
           "topics",
-          "scope"
+          "scope",
+          "relations"
         ],
         "url": "https://raw.githubusercontent.com/MurtyShikhar/NNetnav/HEAD/README.md",
         "sha256": "3095f7262b7d4ff916c6f58c55e6fc9902c08f77d09bf3951199945501148bb3",
@@ -16059,7 +16180,14 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "d8f8571dfc583d3a46d5b3a6a285e77f17057b36a8111d416d711513aa4ecf16",
-    "reviewed_at": "2026-10-16T11:15:49Z"
+    "reviewed_at": "2026-10-16T11:15:49Z",
+    "reviewed_relations": [
+      {
+        "type": "component_of",
+        "target_id": "github:murtyshikhar/nnetnav",
+        "evidence_url": "https://raw.githubusercontent.com/MurtyShikhar/NNetnav/HEAD/README.md"
+      }
+    ]
   },
   {
     "url": "https://huggingface.co/datasets/stanfordnlp/nnetnav-wa",
@@ -16090,7 +16218,8 @@
           "summary",
           "environments",
           "topics",
-          "scope"
+          "scope",
+          "relations"
         ],
         "url": "https://raw.githubusercontent.com/MurtyShikhar/NNetnav/HEAD/README.md",
         "sha256": "3095f7262b7d4ff916c6f58c55e6fc9902c08f77d09bf3951199945501148bb3",
@@ -16102,7 +16231,14 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "3fe40a45aa2bf9d6f0cefffc65ea6382849c3543b44017200a4a8d43ab61e9eb",
-    "reviewed_at": "2026-10-16T11:15:49Z"
+    "reviewed_at": "2026-10-16T11:15:49Z",
+    "reviewed_relations": [
+      {
+        "type": "component_of",
+        "target_id": "github:murtyshikhar/nnetnav",
+        "evidence_url": "https://raw.githubusercontent.com/MurtyShikhar/NNetnav/HEAD/README.md"
+      }
+    ]
   },
   {
     "url": "https://huggingface.co/datasets/h-siyuan/ScreenDrag",
@@ -16158,6 +16294,25 @@
     "editorial_reviewed": true,
     "reviewed_sha256": "39c7c028f7ef5ca5c75f79b59a107c7e25444776095a2a08bb7535c4f523f7fa",
     "reviewed_at": "2026-10-16T11:51:16Z",
+    "reviewed_relations": [
+      {
+        "type": "component_of",
+        "target_id": "github:showlab/showui-pi",
+        "evidence_url": "https://raw.githubusercontent.com/showlab/showui-pi/HEAD/README.md"
+      }
+    ],
+    "additional_evidence": [
+      {
+        "role": "primary",
+        "method": "editorial_primary_review",
+        "supports": [
+          "relations"
+        ],
+        "url": "https://raw.githubusercontent.com/showlab/showui-pi/HEAD/README.md",
+        "sha256": "88df552ccbe80efd7020905d77d526f4f9efe2d09a11fed2714b083988f9dcef",
+        "retrieved_at": "2026-10-16T11:09:28Z"
+      }
+    ],
     "primary_supports": [
       "name",
       "kind",
@@ -16790,6 +16945,7 @@
     "editorial_reviewed": true,
     "reviewed_sha256": "76ae2231564fe84af029f8625c02d9cd7fb6cf85c5f8af1b2a2593e2107719d9",
     "reviewed_at": "2026-10-16T12:02:14Z",
+    "component_of": "https://github.com/likaixin2000/ScreenSpot-Pro-GUI-Grounding",
     "evidence_urls": [
       "https://huggingface.co/datasets/likaixin/ScreenSpot-Pro/raw/main/README.md"
     ],
@@ -18935,7 +19091,7 @@
     ],
     "reviewed_relations": [
       {
-        "type": "uses",
+        "type": "variant_of",
         "target_id": "github:prentisai/groundgui",
         "evidence_url": "https://huggingface.co/PrentisAI/GroundGUI-8B/raw/main/README.md"
       },
@@ -18995,7 +19151,7 @@
     ],
     "reviewed_relations": [
       {
-        "type": "uses",
+        "type": "variant_of",
         "target_id": "github:jcwang0602/seg2click",
         "evidence_url": "https://huggingface.co/jcwang0602/Seg2Click-Qwen3.5-0.8B/raw/main/README.md"
       }
@@ -19051,7 +19207,7 @@
     ],
     "reviewed_relations": [
       {
-        "type": "uses",
+        "type": "variant_of",
         "target_id": "github:jcwang0602/seg2click",
         "evidence_url": "https://huggingface.co/jcwang0602/Seg2Click-Qwen3.5-2B/raw/main/README.md"
       }
@@ -19107,7 +19263,7 @@
     ],
     "reviewed_relations": [
       {
-        "type": "uses",
+        "type": "variant_of",
         "target_id": "github:jcwang0602/seg2click",
         "evidence_url": "https://huggingface.co/jcwang0602/Seg2Click-Qwen2.5-VL-3B/raw/main/README.md"
       }
@@ -19164,7 +19320,7 @@
     ],
     "reviewed_relations": [
       {
-        "type": "uses",
+        "type": "variant_of",
         "target_id": "github:jcwang0602/seg2click",
         "evidence_url": "https://huggingface.co/jcwang0602/Seg2Click-Qwen3.5-4B/raw/main/README.md"
       }
@@ -19220,7 +19376,7 @@
     ],
     "reviewed_relations": [
       {
-        "type": "uses",
+        "type": "variant_of",
         "target_id": "github:jcwang0602/seg2click",
         "evidence_url": "https://huggingface.co/jcwang0602/Seg2Click-Qwen3.5-9B/raw/main/README.md"
       }
@@ -19278,7 +19434,7 @@
     ],
     "reviewed_relations": [
       {
-        "type": "uses",
+        "type": "variant_of",
         "target_id": "github:openmobile2/openmobile2-code",
         "evidence_url": "https://huggingface.co/OpenMobile-2/OpenMobile-2-9B/raw/main/README.md"
       },
@@ -19350,7 +19506,7 @@
     ],
     "reviewed_relations": [
       {
-        "type": "uses",
+        "type": "variant_of",
         "target_id": "github:openmobile2/openmobile2-code",
         "evidence_url": "https://huggingface.co/OpenMobile-2/OpenMobile-2-27B/raw/main/README.md"
       },
@@ -26423,6 +26579,13 @@
     "editorial_reviewed": true,
     "reviewed_sha256": "c64f72eae3dd50d28996f99ab744a5093896e8bb29caa6f7b33a2f60a0b530a5",
     "reviewed_at": "2026-10-17T02:47:16Z",
+    "reviewed_relations": [
+      {
+        "type": "component_of",
+        "target_id": "github:microsoft/phi-ground",
+        "evidence_url": "https://raw.githubusercontent.com/microsoft/Phi-Ground/HEAD/README.md"
+      }
+    ],
     "additional_evidence": [
       {
         "role": "primary",
@@ -26439,7 +26602,8 @@
         "method": "editorial_primary_review",
         "supports": [
           "summary",
-          "release_status"
+          "release_status",
+          "relations"
         ],
         "url": "https://raw.githubusercontent.com/microsoft/Phi-Ground/HEAD/README.md",
         "sha256": "a0609394a736dc495d077cd57a2945b018123e5b3f9514d7d5bafb9e690aeae2",
@@ -26916,6 +27080,7 @@
     "editorial_reviewed": true,
     "reviewed_sha256": "de2c8e7a9792c3d129451ec813d458f83263460a5808cf87c45b04b260a376c9",
     "reviewed_at": "2026-10-17T02:48:39Z",
+    "family_url": "https://github.com/THUDM/CogAgent",
     "details": {
       "hub_id": "zai-org/cogagent-9b-20241220",
       "gated": false,
@@ -27715,13 +27880,21 @@
     "editorial_reviewed": true,
     "reviewed_sha256": "6f28e86a99b286a575c5e7f8d24d6901655971e9a091493950b59948f4b9ad9b",
     "reviewed_at": "2026-10-17T02:50:49Z",
+    "reviewed_relations": [
+      {
+        "type": "documented_by",
+        "target_id": "arxiv:2505.15277",
+        "evidence_url": "https://huggingface.co/api/collections/LangAGI-Lab/web-shepherd-advancing-prms-for-reinforcing-web-agents-682b4f4ad607fc27c4dc49e8"
+      }
+    ],
     "additional_evidence": [
       {
         "role": "primary",
         "method": "editorial_primary_review",
         "supports": [
           "identity",
-          "summary"
+          "summary",
+          "relations"
         ],
         "url": "https://huggingface.co/api/collections/LangAGI-Lab/web-shepherd-advancing-prms-for-reinforcing-web-agents-682b4f4ad607fc27c4dc49e8",
         "sha256": "647d9e7bdad5fe2c03a8cfcd34d93f3b2bf7c1553b517a4a843bc0113fa47456",
