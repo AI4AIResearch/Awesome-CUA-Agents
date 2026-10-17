@@ -115,7 +115,7 @@ def topic_index_body(manifest, *, language='en', site_url='https://awesomecua.gi
     def tr(en, cn): return cn if zh else en
     entries = sorted(manifest['topics'], key=lambda item: (-item['counts']['total'], item['id']))
     body = ['<section class="topic-directory"><div class="library-heading"><div><div class="eyebrow">RESEARCH · DATA · TOOLS</div><h1>',
-            tr('Explore by topic', '<span class="topic-title-name">Computer-Use</span> 主题目录'), '</h1></div><a class="library-language" href="',
+            tr('Explore by topic', '<span class="topic-title-name">Computer-Use</span> <span class="topic-title-name">主题目录</span>'), '</h1></div><a class="library-language" href="',
             topic_path(language='en' if zh else 'zh'), '">', 'English' if zh else '中文', '</a></div>',
             '<p class="topic-intro">', tr('Find the papers, models, datasets, benchmarks, and tools that belong together.', '把同一方向的论文、模型、数据集、评测基准与工具放在一起看。'), '</p>',
             '<div class="topic-overview"><span><strong>', str(len(entries)), '</strong> ', tr('topics', '个主题'), '</span><span><strong>',
