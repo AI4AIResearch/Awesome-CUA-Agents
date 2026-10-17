@@ -40,7 +40,7 @@ All entries in this section: web.
 | --- | --- | --- | --- | --- | --- |
 | [AndroidEnv](https://github.com/google-deepmind/android_env) | android | [2105.13231](https://arxiv.org/abs/2105.13231) (2021) | code Apache-2.0 | Android device-control platform with screenshots, accessibility telemetry, input actions, and an optional reinforcement-learning task interface. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/google-deepmind/android_env/HEAD/README.md) |
 | [Appium](https://github.com/appium/appium) | android, ios | — | code Apache-2.0 | Cross-platform UI automation infrastructure. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/appium/appium/HEAD/README.md) |
-| [Mobile Env](https://github.com/X-LANCE/Mobile-Env) | android | — | code Apache-2.0 | Environment toolkit for mobile interaction agents. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/X-LANCE/Mobile-Env/HEAD/README.md) |
+| [Mobile Env](https://github.com/X-LANCE/Mobile-Env) | android | [2305.08144](https://arxiv.org/abs/2305.08144) (2023) | code Apache-2.0 | Environment toolkit for mobile interaction agents. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/X-LANCE/Mobile-Env/HEAD/README.md) |
 
 [↑ Back to top](#infrastructure-catalog)
 

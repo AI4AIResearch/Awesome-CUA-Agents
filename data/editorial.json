@@ -1898,6 +1898,9 @@
     "editorial_reviewed": true,
     "reviewed_sha256": "4c4fe0fa92961f7286b6553b13117b2942e8482a48b7120a79e57dce2f8d42b9",
     "reviewed_at": "2026-10-17T02:09:27Z",
+    "documented_by": [
+      "2404.16054"
+    ],
     "details": {
       "benchmark_protocol": {
         "focus": [
@@ -2055,6 +2058,9 @@
     "editorial_reviewed": true,
     "reviewed_sha256": "4c3fe93aa740dbf4a279a246ddd836f2590a2a36f39b820abe166e38cb484577",
     "reviewed_at": "2026-10-16T06:35:58Z",
+    "documented_by": [
+      "2505.19897"
+    ],
     "details": {
       "benchmark_protocol": {
         "focus": [
@@ -2173,6 +2179,9 @@
     "editorial_reviewed": true,
     "reviewed_sha256": "e3edf30ab45da16382b46d8c542607c1bbbfcf077b6df57a2decf938fc84ff0f",
     "reviewed_at": "2026-10-17T02:09:27Z",
+    "documented_by": [
+      "2407.10956"
+    ],
     "details": {
       "benchmark_protocol": {
         "focus": [
@@ -2279,6 +2288,9 @@
     "editorial_reviewed": true,
     "reviewed_sha256": "35db9fca3ed1c1a3513924fefff4ccd224bc70cd7eb4bf8c54fcb9048851988e",
     "reviewed_at": "2026-10-16T11:51:16Z",
+    "documented_by": [
+      "2507.19478"
+    ],
     "details": {
       "benchmark_protocol": {
         "focus": [
@@ -2486,6 +2498,9 @@
     "editorial_reviewed": true,
     "reviewed_sha256": "9857bd8ae9f521f152761ae3bd85debe4e7471aad34c9eb47618332948bca6c9",
     "reviewed_at": "2026-10-16T06:35:59Z",
+    "documented_by": [
+      "2604.27776"
+    ],
     "details": {
       "benchmark_protocol": {
         "focus": [
@@ -2649,7 +2664,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "c984f114df33af953a97d22e14e14246f8a98e0866edcaf283900b309b71d8d1",
-    "reviewed_at": "2026-10-16T06:35:59Z"
+    "reviewed_at": "2026-10-16T06:35:59Z",
+    "documented_by": [
+      "2506.00618"
+    ]
   },
   {
     "name": "SaaS-Bench",
@@ -2669,7 +2687,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "8cfab6fca80090adb47c4ef634f89eedd49a6204dbdc2b5b8e0d6f04c32db289",
-    "reviewed_at": "2026-10-16T06:35:59Z"
+    "reviewed_at": "2026-10-16T06:35:59Z",
+    "documented_by": [
+      "2605.15777"
+    ]
   },
   {
     "name": "MCPWorld",
@@ -2907,7 +2928,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "b00a072dfde61f774db6acf94fcde9bd32337b1b4f16a178998378d842bbbe4d",
-    "reviewed_at": "2026-10-16T06:35:59Z"
+    "reviewed_at": "2026-10-16T06:35:59Z",
+    "documented_by": [
+      "2601.15876"
+    ]
   },
   {
     "name": "ScaleCUA",
@@ -3265,7 +3289,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "f9ecdf208ed4b7845ea4dbd1a7c936c016d11f7ec28f17e71338ab3c2f5b5c0d",
-    "reviewed_at": "2026-10-16T06:36:00Z"
+    "reviewed_at": "2026-10-16T06:36:00Z",
+    "documented_by": [
+      "2507.15846"
+    ]
   },
   {
     "name": "UI-AGILE",
@@ -3398,7 +3425,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "91cffd585c667d169486506a785c6cbc3068fe28409efc97abf8911f9d0bd5a5",
-    "reviewed_at": "2026-10-16T06:36:01Z"
+    "reviewed_at": "2026-10-16T06:36:01Z",
+    "documented_by": [
+      "2602.09662"
+    ]
   },
   {
     "name": "GUI-Odyssey",
@@ -4553,7 +4583,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "40d9a4010ab122ab50242a0cd7a5320e2fd16b3e53494d988eecdbd94fd8e6e8",
-    "reviewed_at": "2026-10-16T06:36:02Z"
+    "reviewed_at": "2026-10-16T06:36:02Z",
+    "documented_by": [
+      "2402.07939"
+    ]
   },
   {
     "name": "MagenticLite / Magentic UI",
@@ -4706,7 +4739,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "fc3099072ca60acf2294a63dd2c3e343e90c901a7c7581f723cfdccc5a1edc2b",
-    "reviewed_at": "2026-10-16T06:36:03Z"
+    "reviewed_at": "2026-10-16T06:36:03Z",
+    "documented_by": [
+      "2407.13032"
+    ]
   },
   {
     "name": "PC-Agent",
@@ -4863,7 +4899,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "101595fa1f62d30271b0560f8aaa54286d7f6fc006e2aa9d8b73086583b27656",
-    "reviewed_at": "2026-10-16T06:36:03Z"
+    "reviewed_at": "2026-10-16T06:36:03Z",
+    "documented_by": [
+      "2507.16853"
+    ]
   },
   {
     "name": "OpenAdapt",
@@ -5024,7 +5063,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "3f0aaefce32210dfba428fcf9e609e04e75d4d1520d24a3a6377611a9b83fa6d",
-    "reviewed_at": "2026-10-16T06:36:03Z"
+    "reviewed_at": "2026-10-16T06:36:03Z",
+    "documented_by": [
+      "2604.11784"
+    ]
   },
   {
     "name": "ComputerRL",
@@ -5065,7 +5107,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "752fad8ebd8b8eda03648329a6fc2585e5bcb2b96875b8aa2ce7d9f3fff78153",
-    "reviewed_at": "2026-10-16T06:36:04Z"
+    "reviewed_at": "2026-10-16T06:36:04Z",
+    "documented_by": [
+      "2509.18119"
+    ]
   },
   {
     "name": "DigiRL",
@@ -5316,7 +5361,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "fa70fd96c57a163404b77431f89dd16864ed104d7160e347742ff87587229961",
-    "reviewed_at": "2026-10-16T06:36:04Z"
+    "reviewed_at": "2026-10-16T06:36:04Z",
+    "documented_by": [
+      "2305.08144"
+    ]
   },
   {
     "name": "Playwright",
@@ -7695,7 +7743,10 @@
     ],
     "editorial_reviewed": true,
     "reviewed_sha256": "42bf4aea8369ac2909bf27bcb1078756c2c26567e2b46284c8f3a9e4c4f636c1",
-    "reviewed_at": "2026-10-16T06:40:54Z"
+    "reviewed_at": "2026-10-16T06:40:54Z",
+    "documented_by": [
+      "2510.24411"
+    ]
   },
   {
     "name": "Comet",
