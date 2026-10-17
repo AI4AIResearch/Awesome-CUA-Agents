@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {normalize,matches,filtered,parseState,serializeState,escapeHTML,safeURL,PAGE_SIZE} from '../web/catalog-core.js';
+import {FACT_LABELS,formatFact} from '../web/catalog-core.js';
 
 const rows=readFileSync(new URL('../data/catalog.jsonl',import.meta.url),'utf8').trim().split('\n').map(JSON.parse);
 rows.forEach(r=>r.search_text=normalize([r.name,r.summary,...r.aliases,...r.authors,...r.topics,...r.environments].join(' ')));
@@ -100,4 +101,20 @@ test('failed, mismatched, or scope-excluded detail payloads are not cached as ac
     let calls=0;const load=createRecordLoader(async()=>++calls===1?bad:{ok:true,json:async()=>({id:record.id,review_status:'curated'})});
     await assert.rejects(load(record));assert.equal((await load(record)).id,record.id);assert.equal(calls,2);
   }
+});
+test('record facts label every published detail and never print raw objects',()=>{
+  for(const r of rows)for(const [key,value] of Object.entries(r.details)){
+    if(['arxiv_snapshot','license_review'].includes(key))continue;
+    assert.ok(FACT_LABELS[key]?.[0]&&FACT_LABELS[key]?.[1],`${key} needs English and Chinese labels`);
+    for(const lang of ['en','zh'])assert.doesNotMatch(formatFact(key,value,lang),/\[object |undefined/,`${r.id} ${key}`);
+  }
+  assert.equal(formatFact('reported_scale',{comparison:'>',unit:'demonstrations',value:15000},'en'),'> 15,000 demonstrations');
+  const profile={counts:[{basis:'reported',qualifier:'more-than',unit:'demonstrations',value:15000,population:'AndroidControl collection'},{basis:'computed',qualifier:'exact',unit:'applications',value:833,population:'app list'}],evidence_urls:['https://example.org'],formats:[],modalities:['screenshots','accessibility trees'],notes:'n',splits:[],supervision:['trajectories']};
+  assert.equal(formatFact('dataset_profile',profile,'en'),'Supervision: trajectories\nModalities: screenshots, accessibility trees\nScale: > 15,000 demonstrations (AndroidControl collection); 833 applications (app list, computed)');
+  assert.ok(formatFact('dataset_profile',profile,'zh').startsWith('监督信号：trajectories\n'));
+  assert.equal(formatFact('gated','auto','en'),'Yes, approved automatically');
+  assert.equal(formatFact('gated',false,'zh'),'否');
+  assert.equal(formatFact('platform_constraints',{harmonyos:'HarmonyOS 4 or earlier'},'en'),'harmonyos: HarmonyOS 4 or earlier');
+  assert.equal(formatFact('dataverse',{publisher:'Harvard Dataverse',version_number:5,version_minor_number:0,file_count:261,license:{name:'CC0 1.0'},publication_date:'2025-05-15'},'en'),'Harvard Dataverse · v5.0 · 261 files · CC0 1.0 · published May 15, 2025');
+  for(const empty of [null,'',[]])assert.equal(formatFact('languages',empty,'en'),'');
 });
