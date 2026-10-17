@@ -25,6 +25,7 @@ jobs:
       contents: write
     outputs:
       pushed: ${{ steps.commit.outputs.pushed }}
+      repeated_partial: ${{ steps.scan.outputs.repeated_partial }}
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
@@ -37,6 +38,7 @@ jobs:
           node-version: '24'
       - run: python -m pip install -r requirements-dev.txt
       - name: Discover and verify public metadata
+        id: scan
         run: python scripts/scan.py
       - name: Check generated data and review boundaries
         run: |
@@ -94,3 +96,14 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow run catalog.yml --ref main -R "$GITHUB_REPOSITORY"
+  report_repeated_partial:
+    # A partial scan stays green so its verified data is committed; a run of them fails this job so GitHub sends a failure notice.
+    needs: scan
+    if: needs.scan.outputs.repeated_partial == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Fail after repeated partial scans
+        run: |
+          echo '::error title=Repeated partial scans::Consecutive scans were partial; see the scan job annotations and the warnings in data/scan-status.json.'
+          exit 1

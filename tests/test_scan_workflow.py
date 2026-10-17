@@ -45,7 +45,7 @@ class ScanWorkflowTests(unittest.TestCase):
     def test_only_the_dispatch_job_can_write_actions(self):
         self.assertEqual(section("permissions"), "{}")
         self.assertEqual(section("jobs", "scan", "permissions"), "contents: write\n")
-        self.assertEqual(section("jobs", "scan", "outputs"), "pushed: ${{ steps.commit.outputs.pushed }}\n")
+        self.assertEqual(section("jobs", "scan", "outputs"), "pushed: ${{ steps.commit.outputs.pushed }}\nrepeated_partial: ${{ steps.scan.outputs.repeated_partial }}\n")
         self.assertEqual(section("jobs", "dispatch_quality", "needs"), "scan")
         self.assertEqual(section("jobs", "dispatch_quality", "if"), "needs.scan.outputs.pushed == 'true'")
         self.assertEqual(section("jobs", "dispatch_quality", "permissions"), "actions: write\n")
