@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+from collections import Counter
 import concurrent.futures
 import datetime as dt
 import hashlib
@@ -28,6 +29,7 @@ ARXIV_RE = re.compile(r"(?:arxiv\.org/(?:abs|pdf|html)/|huggingface\.co/papers/)
 KINDS = {"paper", "survey", "model", "dataset", "benchmark", "agent", "framework", "infrastructure", "product", "company", "tool", "learning"}
 ENVIRONMENTS = {"web", "desktop", "android", "ios", "harmonyos", "windows", "macos", "linux", "cross-platform", "unspecified"}
 STATUSES = {"curated", "metadata_verified"}
+SHRINK_FLOOR = 0.5  # A successful source response below this share of its retained candidates is held for review.
 
 
 def now():
@@ -182,6 +184,9 @@ def discover(args):
     existing = {r["id"]: r for r in read_jsonl(DATA / "candidates.jsonl")}
     previous = {r["id"]: r for r in read_json(DATA / "discovery-runs.json", [])}
     retain_discovery_evidence(existing.values(), previous)
+    # Count retained provenance rather than the last manifest, which a failed run resets to zero.
+    retained = Counter(sid for row in existing.values() for sid in {o["source_id"] for o in row["discovered_in"]})
+    accepted = set(getattr(args, "accept_shrink", None) or ())
     manifests, rate_limited_hosts = {}, set()
     started = now()
     for source in sources:
@@ -207,11 +212,7 @@ def discover(args):
             manifests[source['id']] = {**manifest, 'ok': False, 'parse_error': str(error)}
             print(f"FAILED {source['id']}: {error}", flush=True)
             continue
-        # Replace this source's old occurrences so deleted links remain historical candidates,
-        # but cannot inflate current source coverage.
-        for row in existing.values():
-            row["discovered_in"] = [o for o in row["discovered_in"] if o["source_id"] != source["id"]]
-        seen = set()
+        seen, found = set(), []
         for line_no, heading, url in links:
             parsed = canonical(url)
             if not parsed:
@@ -220,6 +221,18 @@ def discover(args):
             if rid in seen or clean.lower() == source["homepage"].rstrip("/").lower():
                 continue
             seen.add(rid)
+            found.append((line_no, heading, rid, clean, provider))
+        before = retained[source["id"]]
+        if len(seen) < before * SHRINK_FLOOR and source["id"] not in accepted:
+            error = f"suspicious shrink: {before} -> {len(seen)}; previous provenance retained (rerun with --accept-shrink {source['id']} to apply)"
+            manifests[source["id"]] = {**manifest, "ok": False, "error": error}
+            print(f"FAILED {source['id']}: {error}", flush=True)
+            continue
+        # Replace this source's old occurrences so deleted links remain historical candidates,
+        # but cannot inflate current source coverage.
+        for row in existing.values():
+            row["discovered_in"] = [o for o in row["discovered_in"] if o["source_id"] != source["id"]]
+        for line_no, heading, rid, clean, provider in found:
             row = existing.setdefault(rid, {"id": rid, "url": clean, "provider": provider,
                 "first_discovered_at": info["retrieved_at"], "discovered_in": []})
             row["discovered_in"].append(discovery_occurrence(source['id'],
@@ -232,7 +245,6 @@ def discover(args):
         row["discovered_in"].sort(key=lambda x: (x["source_id"], x["line"]))
     write_jsonl(DATA / "candidates.jsonl", existing.values())
     write_json(DATA / "discovery-runs.json", sorted(manifests.values(), key=lambda r: r["id"]))
-    from collections import Counter
     print(json.dumps(Counter(r["provider"] for r in existing.values())))
 
 
@@ -527,6 +539,8 @@ def main():
         command = sub.add_parser(name)
         command.add_argument("--refresh", action="store_true", help="fetch new snapshots instead of reusing local cache")
         command.add_argument("--limit", type=int, default=0)
+        if function is discover:
+            command.add_argument("--accept-shrink", action="append", metavar="SOURCE_ID", help="apply a successful response that drops this source below half its retained candidates")
         command.set_defaults(function=function)
     from build import build, validate, search
     command = sub.add_parser("build", help="generate catalog, category docs, coverage, JSON and SQLite exports offline")
