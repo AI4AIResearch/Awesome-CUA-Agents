@@ -102,7 +102,7 @@
   "curated_by_environment": {
     "android": 275,
     "cross-platform": 186,
-    "desktop": 277,
+    "desktop": 278,
     "harmonyos": 2,
     "ios": 19,
     "linux": 39,
@@ -181,7 +181,7 @@
     "paper": {
       "android": 160,
       "cross-platform": 94,
-      "desktop": 180,
+      "desktop": 181,
       "harmonyos": 1,
       "ios": 6,
       "linux": 16,

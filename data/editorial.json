@@ -54000,6 +54000,7 @@
     "url": "https://arxiv.org/abs/2609.22000",
     "summary": "RecreationWorld gives hybrid agents running reference applications to explore and recreate using native GUI controls and coding tools. Its multi-platform benchmark checks interaction-dependent behavior with programmatic and visual assertions, while trajectory-training transfer is evaluated separately.",
     "environments": [
+      "desktop",
       "linux",
       "macos",
       "windows",

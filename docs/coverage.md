@@ -23,7 +23,7 @@ Counts of source-reviewed resources. A resource tagged with several environments
 | [framework](frameworks.md) | 34 | 18 | 1 | 1 | 3 | 17 | 1 | 1 | 7 | 2 |
 | [infrastructure](infrastructures.md) | 5 | 7 | 1 | 2 | 4 | 4 | 1 | · | · | · |
 | [model](models.md) | 26 | 19 | 4 | 4 | 4 | 23 | 4 | · | 46 | 2 |
-| [paper](topics.md) | 374 | 180 | 32 | 14 | 16 | 160 | 6 | 1 | 94 | 291 |
+| [paper](topics.md) | 374 | 181 | 32 | 14 | 16 | 160 | 6 | 1 | 94 | 291 |
 | [product](products.md) | 17 | 5 | · | · | · | · | · | · | · | · |
 | [survey](surveys.md) | · | · | · | · | · | 1 | 1 | · | 10 | 2 |
 | [tool](tools.md) | 11 | 3 | 3 | 2 | 2 | 5 | 2 | · | 1 | 2 |
