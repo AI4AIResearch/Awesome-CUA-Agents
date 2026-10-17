@@ -80,3 +80,23 @@ test('paper curated-first order puts reviewed recent work before older reviewed 
   assert.ok(reviewed.length>0);assert.ok(reviewed.slice(1).every((r,i)=>(reviewed[i].published_at||'')>=(r.published_at||'')));
   assert.ok(result.slice(reviewed.length).every(r=>r.review_status!=='curated'));
 });
+test('desktop and mobile platforms include their operating systems',()=>{
+  const ids=platform=>new Set(filtered(rows,{...initial(),platform}).map(r=>r.id));
+  const desktop=ids('desktop'),mobile=ids('mobile');
+  for(const r of rows){
+    assert.equal(desktop.has(r.id),r.environments.some(x=>['desktop','windows','macos','linux'].includes(x)),r.name);
+    assert.equal(mobile.has(r.id),r.environments.some(x=>['android','ios','harmonyos'].includes(x)),r.name);
+  }
+  assert.ok(rows.some(r=>mobile.has(r.id)&&r.environments.includes('ios')&&!r.environments.includes('android')));
+  assert.ok(rows.some(r=>desktop.has(r.id)&&r.environments.includes('windows')&&!r.environments.includes('desktop')));
+  assert.ok(filtered(rows,{...initial(),platform:'windows'}).every(r=>r.environments.includes('windows')));
+  assert.equal(parseState(serializeState({...initial(),platform:'mobile'},'en')).platform,'mobile');
+});
+test('hero shortcuts and the platform menu offer grouped platforms in order',()=>{
+  const html=readFileSync(new URL('../web/index.html',import.meta.url),'utf8');
+  const platforms=[...readFileSync(new URL('../web/app.js',import.meta.url),'utf8').match(/const PLATFORMS = (\{.*?\});/)[1].matchAll(/[{,]'?([\w-]+)'?:\[/g)].map(m=>m[1]);
+  assert.deepEqual(platforms,['web','desktop','windows','macos','linux','mobile','android','ios','harmonyos','cross-platform','unspecified']);
+  assert.deepEqual([...html.matchAll(/data-environment="([^"]+)"/g)].map(m=>m[1]),['web','desktop','mobile']);
+  assert.ok(filtered(rows,{...initial(),platform:'mobile'}).some(r=>r.name==='iOSWorld'));
+  assert.ok(filtered(rows,{...initial(),platform:'desktop'}).some(r=>r.name.startsWith('Windows Agent Arena')));
+});

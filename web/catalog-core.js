@@ -1,10 +1,11 @@
 export const KIND_ORDER = ['paper','survey','model','dataset','benchmark','agent','framework','infrastructure','tool','product','company'];
 export const FEATURED = ['OSWorld','UI-TARS','Browser Use','OpenCUA','AgentNet','AndroidWorld','WebArena','UI-Venus','Stagehand','ScreenSpot Pro','Agent S','Holo Model Family'];
 export const PAGE_SIZE = 24;
+export const PLATFORM_GROUPS = {desktop:['desktop','windows','macos','linux'],mobile:['android','ios','harmonyos']};
 export function normalize(value) { return String(value || '').normalize('NFKC').toLowerCase().replace(/[\p{P}\p{S}]+/gu,' ').replace(/\s+/g,' ').trim(); }
 export function matches(record, state, ignoreKind = false) {
   if (!ignoreKind && state.kind && record.kind !== state.kind) return false;
-  if (state.platform && !record.environments.includes(state.platform)) return false;
+  if (state.platform && !(PLATFORM_GROUPS[state.platform] || [state.platform]).some(x => record.environments.includes(x))) return false;
   if (state.review && record.review_status !== state.review) return false;
   if (state.topic && !record.topics.includes(state.topic)) return false;
   if (state.year && (record.published_at || '').slice(0,4) !== state.year) return false;
