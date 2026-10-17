@@ -356,11 +356,17 @@ def documents(rows, report):
     years = collections.defaultdict(list)
     for r in rows:
         if r["id"].startswith("arxiv:"):
-            years[(r["published_at"] or "unknown")[:4]].append(r)
-    for year in sorted(years, reverse=True):
-        paper_lines += [f"## {year}", "", "| Date | Paper | Review |", "| --- | --- | --- |"]
-        for r in sorted(years[year], key=lambda r: (r["published_at"], r["name"]), reverse=True):
-            paper_lines.append(f"| {r['published_at']} | [{md(r['name'])}]({r['url']}) | {r['review_status']} |")
+            years[r["published_at"][:4] if r["published_at"] else "Undated"].append(r)
+    order = sorted((y for y in years if y != "Undated"), reverse=True) + (["Undated"] if "Undated" in years else [])
+    reviewed = lambda group: sum(r["review_status"] == "curated" for r in group)
+    paper_lines += ["**Years:** " + " · ".join(f"[{y}](#{y.lower()}) ({len(years[y]):,}; {reviewed(years[y]):,} ⭐)" for y in order), "",
+        "⭐ marks papers with an editorial relevance review; their topics link to the [topic hubs](topics.md). Other rows are arXiv metadata only.", ""]
+    for year in order:
+        paper_lines += [f"## {year}", "", "| Date | Paper | Review | Topics |", "| --- | --- | --- | --- |"]
+        for r in sorted(years[year], key=lambda r: (r["published_at"] or "", r["name"]), reverse=True):
+            curated = r["review_status"] == "curated"
+            topics = ", ".join(f"[{t}](topics/{t}.md)" for t in sorted(set(r["topics"]))) if curated else ""
+            paper_lines.append(f"| {r['published_at'] or '—'} | [{md(r['name'])}]({r['url']}) | {'⭐ reviewed' if curated else 'metadata'} | {topics} |")
         paper_lines.append("")
     files["docs/papers.md"] = "\n".join(paper_lines)
     files.update(topic_pages(rows))

@@ -399,6 +399,19 @@ class TopicHubTests(unittest.TestCase):
         self.assertLess(index.index("[Grounding]"), index.index("[Safety and security]"))
         self.assertIn("| [Grounding](topics/grounding.md) | 3 | 1 | · | · | · | 2 | [Newer paper]", index)
 
+    def test_bibliography_year_index_marks_reviews_and_undated_records(self):
+        rows = [self.row("arxiv:2401.00001", "Reviewed", "paper", ["grounding"], "2024-01-01"),
+            self.row("arxiv:2402.00001", "Metadata", "paper", [], "2024-02-01", status="metadata_verified"),
+            self.row("arxiv:2403.00001", "No date", "paper", [], None, status="metadata_verified")]
+        report = {"as_of_utc": "2026-10-16T00:00:00Z", "total_records": 3, "curated_records": 1, "metadata_only_records": 2, "bibliographic_records": 3,
+            "arxiv_archive_records": 3, "excluded_records": 0, "discovery_identifiers": 0, "unindexed_candidates": 0, "pending_editorial": [], "sources": [],
+            "primary_search": {}, "license_declarations_by_scope": {}, "exclusion_revalidation_pending": 0}
+        page = build.documents(rows, report)["docs/papers.md"]
+        self.assertIn("**Years:** [2024](#2024) (2; 1 ⭐) · [Undated](#undated) (1; 0 ⭐)", page)
+        self.assertIn("| 2024-01-01 | [Reviewed](https://example.com/arxiv:2401.00001) | ⭐ reviewed | [grounding](topics/grounding.md) |", page)
+        self.assertIn("| — | [No date](https://example.com/arxiv:2403.00001) | metadata |  |", page)
+        self.assertNotIn("None", page)
+
     def test_bibliography_owns_papers_page(self):
         rows = [self.row("arxiv:2401.00001", "Reviewed paper", "paper", ["grounding"], "2024-01-01")]
         report = {"as_of_utc": "2026-10-16T00:00:00Z", "total_records": 1, "curated_records": 1, "metadata_only_records": 0, "bibliographic_records": 1,
