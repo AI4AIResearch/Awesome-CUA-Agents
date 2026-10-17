@@ -186,7 +186,7 @@ def build_download_manifest(destination, rows, catalog_bytes):
     if attach_repository_aliases(rows,repository_declarations) != rows:
         raise ValueError('Repository aliases differ from their catalog owners and evidence')
     add('repository-aliases', '/downloads/repository-aliases.json', 'provenance', ('Former repository names', '仓库旧地址映射'),
-        ('Former and canonical GitHub names verified against the same numeric repository ID. They do not add resources.', '通过相同 GitHub 仓库数字 ID 核实旧名与规范名称。它们不增加资源记录。'),
+        ('Former and canonical GitHub or Hugging Face names verified against the same repository ID. They do not add resources.', '通过相同的 GitHub 或 Hugging Face 仓库 ID 核实旧名与规范名称。它们不增加资源记录。'),
         'JSON', 'application/json', len(repository_declarations), 'aliases', 'provenance')
     for name, title in [
         ('resource.schema.json', ('Resource schema', '资源记录规范')),

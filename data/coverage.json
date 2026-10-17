@@ -1,5 +1,5 @@
 {
-  "as_of_utc": "2026-10-17T18:05:46Z",
+  "as_of_utc": "2026-10-17T19:15:20Z",
   "total_records": 3006,
   "curated_records": 1435,
   "bibliographic_records": 2578,
@@ -11,7 +11,7 @@
   "exclusion_revalidation_pending": 0,
   "metadata_only_records": 1571,
   "discovery_identifiers": 3907,
-  "unindexed_candidates": 849,
+  "unindexed_candidates": 846,
   "non_resource_candidates": 83,
   "alias_candidates": 11,
   "pending_editorial": [
@@ -1016,13 +1016,13 @@
         "state": "success"
       },
       "discovered": 18,
-      "indexed": 5,
-      "indexed_resources": 5,
-      "resolved_aliases": 0,
-      "curated": 5,
+      "indexed": 6,
+      "indexed_resources": 6,
+      "resolved_aliases": 1,
+      "curated": 6,
       "excluded": 0,
       "set_aside": 3,
-      "unindexed": 10
+      "unindexed": 9
     },
     {
       "id": "release-webdreamer",
@@ -1219,13 +1219,13 @@
         "state": "success"
       },
       "discovered": 9,
-      "indexed": 2,
-      "indexed_resources": 2,
-      "resolved_aliases": 0,
-      "curated": 2,
+      "indexed": 4,
+      "indexed_resources": 4,
+      "resolved_aliases": 2,
+      "curated": 4,
       "excluded": 0,
       "set_aside": 2,
-      "unindexed": 5
+      "unindexed": 3
     },
     {
       "id": "release-carryon",

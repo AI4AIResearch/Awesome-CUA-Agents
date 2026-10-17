@@ -187,5 +187,329 @@
         "sha256": "3fff7137bc4f39a3a757f3b820892fb330449044ef2721e9f9d7719d23ff2b98"
       }
     ]
+  },
+  {
+    "alias_id": "url:f4bcd696942ee04dcc42",
+    "target_id": "url:7abb418096432f56c685",
+    "repository_id": "6616a35f75f203eb75e90f03",
+    "basis": "official_huggingface_repository_id",
+    "reviewed_at": "2026-10-17T19:15:21Z",
+    "observations": [
+      {
+        "url": "https://huggingface.co/api/datasets/bevaya/ScreenSpot",
+        "resolved_url": "https://huggingface.co/api/datasets/bevaya/ScreenSpot",
+        "repository_id": "6616a35f75f203eb75e90f03",
+        "full_name": "bevaya/ScreenSpot",
+        "html_url": "https://huggingface.co/datasets/bevaya/ScreenSpot",
+        "retrieved_at": "2026-10-17T19:14:56Z",
+        "sha256": "af0c4babeff84158ff196b54bf47242923bbf502d2805a1dd4eb52dba44be89c"
+      },
+      {
+        "url": "https://huggingface.co/api/datasets/rootsautomation/ScreenSpot",
+        "resolved_url": "https://huggingface.co/api/datasets/bevaya/ScreenSpot",
+        "repository_id": "6616a35f75f203eb75e90f03",
+        "full_name": "bevaya/ScreenSpot",
+        "html_url": "https://huggingface.co/datasets/bevaya/ScreenSpot",
+        "retrieved_at": "2026-10-17T19:14:56Z",
+        "sha256": "af0c4babeff84158ff196b54bf47242923bbf502d2805a1dd4eb52dba44be89c"
+      }
+    ]
+  },
+  {
+    "alias_id": "url:a6db151f939a6748ff76",
+    "target_id": "url:f976dec3d1c5e0bedbd7",
+    "repository_id": "67469d478d94d45f6b82de45",
+    "basis": "official_huggingface_repository_id",
+    "reviewed_at": "2026-10-17T19:15:21Z",
+    "observations": [
+      {
+        "url": "https://huggingface.co/api/datasets/showlab/ShowUI-desktop",
+        "resolved_url": "https://huggingface.co/api/datasets/showlab/ShowUI-desktop",
+        "repository_id": "67469d478d94d45f6b82de45",
+        "full_name": "showlab/ShowUI-desktop",
+        "html_url": "https://huggingface.co/datasets/showlab/ShowUI-desktop",
+        "retrieved_at": "2026-10-17T19:14:57Z",
+        "sha256": "57eaa720c20e9e3a4428c8292c150e1949f3372c75c6890e424ba3c6600a5e5d"
+      },
+      {
+        "url": "https://huggingface.co/api/datasets/showlab/ShowUI-desktop-8K",
+        "resolved_url": "https://huggingface.co/api/datasets/showlab/ShowUI-desktop",
+        "repository_id": "67469d478d94d45f6b82de45",
+        "full_name": "showlab/ShowUI-desktop",
+        "html_url": "https://huggingface.co/datasets/showlab/ShowUI-desktop",
+        "retrieved_at": "2026-10-17T19:14:58Z",
+        "sha256": "57eaa720c20e9e3a4428c8292c150e1949f3372c75c6890e424ba3c6600a5e5d"
+      }
+    ]
+  },
+  {
+    "alias_id": "url:4338ec0f1a67bdb6a139",
+    "target_id": "url:a4da77ee63f879cc8e63",
+    "repository_id": "6903b4fb878e4db4fad7a8b9",
+    "basis": "official_huggingface_repository_id",
+    "reviewed_at": "2026-10-17T19:15:21Z",
+    "observations": [
+      {
+        "url": "https://huggingface.co/api/models/microsoft/Fara-7B",
+        "resolved_url": "https://huggingface.co/api/models/microsoft/Fara-7B",
+        "repository_id": "6903b4fb878e4db4fad7a8b9",
+        "full_name": "microsoft/Fara-7B",
+        "html_url": "https://huggingface.co/microsoft/Fara-7B",
+        "retrieved_at": "2026-10-17T19:14:59Z",
+        "sha256": "cd1f83cd2ebf30d45501d1a31ecbe3bcb2039928d580c750733d2edb49916398"
+      },
+      {
+        "url": "https://huggingface.co/api/models/microsoft/Fara-7b",
+        "resolved_url": "https://huggingface.co/api/models/microsoft/Fara-7B",
+        "repository_id": "6903b4fb878e4db4fad7a8b9",
+        "full_name": "microsoft/Fara-7B",
+        "html_url": "https://huggingface.co/microsoft/Fara-7B",
+        "retrieved_at": "2026-10-17T19:15:00Z",
+        "sha256": "cd1f83cd2ebf30d45501d1a31ecbe3bcb2039928d580c750733d2edb49916398"
+      }
+    ]
+  },
+  {
+    "alias_id": "url:d416331cdf9730afd6b9",
+    "target_id": "url:a4da77ee63f879cc8e63",
+    "repository_id": "6903b4fb878e4db4fad7a8b9",
+    "basis": "official_huggingface_repository_id",
+    "reviewed_at": "2026-10-17T19:15:21Z",
+    "observations": [
+      {
+        "url": "https://huggingface.co/api/models/microsoft/fara-7b",
+        "resolved_url": "https://huggingface.co/api/models/microsoft/Fara-7B",
+        "repository_id": "6903b4fb878e4db4fad7a8b9",
+        "full_name": "microsoft/Fara-7B",
+        "html_url": "https://huggingface.co/microsoft/Fara-7B",
+        "retrieved_at": "2026-10-17T19:15:01Z",
+        "sha256": "cd1f83cd2ebf30d45501d1a31ecbe3bcb2039928d580c750733d2edb49916398"
+      },
+      {
+        "url": "https://huggingface.co/api/models/microsoft/Fara-7b",
+        "resolved_url": "https://huggingface.co/api/models/microsoft/Fara-7B",
+        "repository_id": "6903b4fb878e4db4fad7a8b9",
+        "full_name": "microsoft/Fara-7B",
+        "html_url": "https://huggingface.co/microsoft/Fara-7B",
+        "retrieved_at": "2026-10-17T19:15:00Z",
+        "sha256": "cd1f83cd2ebf30d45501d1a31ecbe3bcb2039928d580c750733d2edb49916398"
+      }
+    ]
+  },
+  {
+    "alias_id": "url:5f4cb613bda51b45d9c7",
+    "target_id": "url:611df37e5f3caa6befd7",
+    "repository_id": "6a8efd9303987f55d6da2a35",
+    "basis": "official_huggingface_repository_id",
+    "reviewed_at": "2026-10-17T19:15:21Z",
+    "observations": [
+      {
+        "url": "https://huggingface.co/api/models/inclusionAI/UI-Venus-2-9B",
+        "resolved_url": "https://huggingface.co/api/models/inclusionAI/UI-Venus-2-9B",
+        "repository_id": "6a8efd9303987f55d6da2a35",
+        "full_name": "inclusionAI/UI-Venus-2-9B",
+        "html_url": "https://huggingface.co/inclusionAI/UI-Venus-2-9B",
+        "retrieved_at": "2026-10-17T19:15:02Z",
+        "sha256": "3ec7929329e8e1b09f31dee4a3e67128d68cddc95220a5944f4cd6102dae327e"
+      },
+      {
+        "url": "https://huggingface.co/api/models/inclusionAI/UI-Venus-2-9b",
+        "resolved_url": "https://huggingface.co/api/models/inclusionAI/UI-Venus-2-9B",
+        "repository_id": "6a8efd9303987f55d6da2a35",
+        "full_name": "inclusionAI/UI-Venus-2-9B",
+        "html_url": "https://huggingface.co/inclusionAI/UI-Venus-2-9B",
+        "retrieved_at": "2026-10-17T19:15:03Z",
+        "sha256": "3ec7929329e8e1b09f31dee4a3e67128d68cddc95220a5944f4cd6102dae327e"
+      }
+    ]
+  },
+  {
+    "alias_id": "url:8c792416d297293422cf",
+    "target_id": "url:4a0b1692589594745a3c",
+    "repository_id": "68dd0f41c34ce48c242d8095",
+    "basis": "official_huggingface_repository_id",
+    "reviewed_at": "2026-10-17T19:15:21Z",
+    "observations": [
+      {
+        "url": "https://huggingface.co/api/models/xlangai/OpenCUA-72B-preview",
+        "resolved_url": "https://huggingface.co/api/models/xlangai/OpenCUA-72B",
+        "repository_id": "68dd0f41c34ce48c242d8095",
+        "full_name": "xlangai/OpenCUA-72B",
+        "html_url": "https://huggingface.co/xlangai/OpenCUA-72B",
+        "retrieved_at": "2026-10-17T19:15:04Z",
+        "sha256": "ff0ee40df2f44a2b3aa1b8117c31752013a40fdb6a85d66cdc596e096583ac5d"
+      },
+      {
+        "url": "https://huggingface.co/api/models/xlangai/OpenCUA-72B",
+        "resolved_url": "https://huggingface.co/api/models/xlangai/OpenCUA-72B",
+        "repository_id": "68dd0f41c34ce48c242d8095",
+        "full_name": "xlangai/OpenCUA-72B",
+        "html_url": "https://huggingface.co/xlangai/OpenCUA-72B",
+        "retrieved_at": "2026-10-17T19:15:05Z",
+        "sha256": "ff0ee40df2f44a2b3aa1b8117c31752013a40fdb6a85d66cdc596e096583ac5d"
+      }
+    ]
+  },
+  {
+    "alias_id": "url:2f67f5ad7954632dfc4e",
+    "target_id": "url:a6ee20fea67438d91e06",
+    "repository_id": "672a381c1ce27b1cefa9dac1",
+    "basis": "official_huggingface_repository_id",
+    "reviewed_at": "2026-10-17T19:15:21Z",
+    "observations": [
+      {
+        "url": "https://huggingface.co/api/models/THUDM/webrl-llama-3.1-8b",
+        "resolved_url": "https://huggingface.co/api/models/zai-org/webrl-llama-3.1-8b",
+        "repository_id": "672a381c1ce27b1cefa9dac1",
+        "full_name": "zai-org/webrl-llama-3.1-8b",
+        "html_url": "https://huggingface.co/zai-org/webrl-llama-3.1-8b",
+        "retrieved_at": "2026-10-17T19:15:06Z",
+        "sha256": "96621f060dddec91453d8c2b451b3793a34b34810d82c7cd13ce4cb05ca90a76"
+      },
+      {
+        "url": "https://huggingface.co/api/models/zai-org/webrl-llama-3.1-8b",
+        "resolved_url": "https://huggingface.co/api/models/zai-org/webrl-llama-3.1-8b",
+        "repository_id": "672a381c1ce27b1cefa9dac1",
+        "full_name": "zai-org/webrl-llama-3.1-8b",
+        "html_url": "https://huggingface.co/zai-org/webrl-llama-3.1-8b",
+        "retrieved_at": "2026-10-17T19:15:06Z",
+        "sha256": "96621f060dddec91453d8c2b451b3793a34b34810d82c7cd13ce4cb05ca90a76"
+      }
+    ]
+  },
+  {
+    "alias_id": "url:1ff6b78a764bdcc6dd03",
+    "target_id": "url:2e1927450da2183a5abe",
+    "repository_id": "6835d3a28b9951cb4fcfb3b1",
+    "basis": "official_huggingface_repository_id",
+    "reviewed_at": "2026-10-17T19:15:21Z",
+    "observations": [
+      {
+        "url": "https://huggingface.co/api/datasets/HanXiao1999/UI-Genie-Agent-5k",
+        "resolved_url": "https://huggingface.co/api/datasets/HanXiao1999/UI-Genie-Agent-16k",
+        "repository_id": "6835d3a28b9951cb4fcfb3b1",
+        "full_name": "HanXiao1999/UI-Genie-Agent-16k",
+        "html_url": "https://huggingface.co/datasets/HanXiao1999/UI-Genie-Agent-16k",
+        "retrieved_at": "2026-10-17T19:15:09Z",
+        "sha256": "66006a586e03be3eb1dfc29dc9c951241fd7e4204430e7db258da1037e17ac6e"
+      },
+      {
+        "url": "https://huggingface.co/api/datasets/HanXiao1999/UI-Genie-Agent-16k",
+        "resolved_url": "https://huggingface.co/api/datasets/HanXiao1999/UI-Genie-Agent-16k",
+        "repository_id": "6835d3a28b9951cb4fcfb3b1",
+        "full_name": "HanXiao1999/UI-Genie-Agent-16k",
+        "html_url": "https://huggingface.co/datasets/HanXiao1999/UI-Genie-Agent-16k",
+        "retrieved_at": "2026-10-17T19:15:10Z",
+        "sha256": "66006a586e03be3eb1dfc29dc9c951241fd7e4204430e7db258da1037e17ac6e"
+      }
+    ]
+  },
+  {
+    "alias_id": "url:1ab38d1d6a4c46a8eb3e",
+    "target_id": "url:1611de0e6d606165d12d",
+    "repository_id": "6abb2486857f4e028b4f02df",
+    "basis": "official_huggingface_repository_id",
+    "reviewed_at": "2026-10-17T19:15:21Z",
+    "observations": [
+      {
+        "url": "https://huggingface.co/api/models/OpenMobile-2/OpenMobile-27B",
+        "resolved_url": "https://huggingface.co/api/models/OpenMobile-2/OpenMobile-2-27B",
+        "repository_id": "6abb2486857f4e028b4f02df",
+        "full_name": "OpenMobile-2/OpenMobile-2-27B",
+        "html_url": "https://huggingface.co/OpenMobile-2/OpenMobile-2-27B",
+        "retrieved_at": "2026-10-17T19:15:11Z",
+        "sha256": "f669181b7f1b92bbbcb8ab71f0d15d8c3cf93b3665d73d20e9b9f0dc3a36e158"
+      },
+      {
+        "url": "https://huggingface.co/api/models/OpenMobile-2/OpenMobile-2-27B",
+        "resolved_url": "https://huggingface.co/api/models/OpenMobile-2/OpenMobile-2-27B",
+        "repository_id": "6abb2486857f4e028b4f02df",
+        "full_name": "OpenMobile-2/OpenMobile-2-27B",
+        "html_url": "https://huggingface.co/OpenMobile-2/OpenMobile-2-27B",
+        "retrieved_at": "2026-10-17T19:15:12Z",
+        "sha256": "f669181b7f1b92bbbcb8ab71f0d15d8c3cf93b3665d73d20e9b9f0dc3a36e158"
+      }
+    ]
+  },
+  {
+    "alias_id": "url:4a309ef39b33a7d1e543",
+    "target_id": "url:c5eb975c0d66f8a2954f",
+    "repository_id": "6765196d59e2ef96ec15b689",
+    "basis": "official_huggingface_repository_id",
+    "reviewed_at": "2026-10-17T19:15:21Z",
+    "observations": [
+      {
+        "url": "https://huggingface.co/api/models/THUDM/cogagent-9b-20241220",
+        "resolved_url": "https://huggingface.co/api/models/zai-org/cogagent-9b-20241220",
+        "repository_id": "6765196d59e2ef96ec15b689",
+        "full_name": "zai-org/cogagent-9b-20241220",
+        "html_url": "https://huggingface.co/zai-org/cogagent-9b-20241220",
+        "retrieved_at": "2026-10-17T19:15:13Z",
+        "sha256": "35bbe72f95711e042dab7a94bf2711e30a3da50190c7315178c37de5725cc1d9"
+      },
+      {
+        "url": "https://huggingface.co/api/models/zai-org/cogagent-9b-20241220",
+        "resolved_url": "https://huggingface.co/api/models/zai-org/cogagent-9b-20241220",
+        "repository_id": "6765196d59e2ef96ec15b689",
+        "full_name": "zai-org/cogagent-9b-20241220",
+        "html_url": "https://huggingface.co/zai-org/cogagent-9b-20241220",
+        "retrieved_at": "2026-10-17T19:15:14Z",
+        "sha256": "35bbe72f95711e042dab7a94bf2711e30a3da50190c7315178c37de5725cc1d9"
+      }
+    ]
+  },
+  {
+    "alias_id": "url:cab7bd78abb1faa469e7",
+    "target_id": "url:35b9879a351cc3b3d7d5",
+    "repository_id": "6803ccde6158004f9fd2391b",
+    "basis": "official_huggingface_repository_id",
+    "reviewed_at": "2026-10-17T19:15:21Z",
+    "observations": [
+      {
+        "url": "https://huggingface.co/api/models/Reallm-Labs/InfiGUI-R1-3B",
+        "resolved_url": "https://huggingface.co/api/models/InfiX-ai/InfiGUI-R1-3B",
+        "repository_id": "6803ccde6158004f9fd2391b",
+        "full_name": "InfiX-ai/InfiGUI-R1-3B",
+        "html_url": "https://huggingface.co/InfiX-ai/InfiGUI-R1-3B",
+        "retrieved_at": "2026-10-17T19:15:15Z",
+        "sha256": "213a5181a3516cf15d5f7b746986bc1e36cd6579acabd8aa1c2fb16a23a51ee0"
+      },
+      {
+        "url": "https://huggingface.co/api/models/InfiX-ai/InfiGUI-R1-3B",
+        "resolved_url": "https://huggingface.co/api/models/InfiX-ai/InfiGUI-R1-3B",
+        "repository_id": "6803ccde6158004f9fd2391b",
+        "full_name": "InfiX-ai/InfiGUI-R1-3B",
+        "html_url": "https://huggingface.co/InfiX-ai/InfiGUI-R1-3B",
+        "retrieved_at": "2026-10-17T19:15:16Z",
+        "sha256": "213a5181a3516cf15d5f7b746986bc1e36cd6579acabd8aa1c2fb16a23a51ee0"
+      }
+    ]
+  },
+  {
+    "alias_id": "url:a778c3411858c38c0f39",
+    "target_id": "url:546e6c95825d1318c98d",
+    "repository_id": "6aba3ab3a03bba13483b22c7",
+    "basis": "official_huggingface_repository_id",
+    "reviewed_at": "2026-10-17T19:15:21Z",
+    "observations": [
+      {
+        "url": "https://huggingface.co/api/datasets/OpenMobile-2/OpenMobile-Data",
+        "resolved_url": "https://huggingface.co/api/datasets/OpenMobile-2/OpenMobile-Data-v2",
+        "repository_id": "6aba3ab3a03bba13483b22c7",
+        "full_name": "OpenMobile-2/OpenMobile-Data-v2",
+        "html_url": "https://huggingface.co/datasets/OpenMobile-2/OpenMobile-Data-v2",
+        "retrieved_at": "2026-10-17T19:15:18Z",
+        "sha256": "14b1211ed709147f4022f311c17303ca70faaffa22be143617eb431d966eec1a"
+      },
+      {
+        "url": "https://huggingface.co/api/datasets/OpenMobile-2/OpenMobile-Data-v2",
+        "resolved_url": "https://huggingface.co/api/datasets/OpenMobile-2/OpenMobile-Data-v2",
+        "repository_id": "6aba3ab3a03bba13483b22c7",
+        "full_name": "OpenMobile-2/OpenMobile-Data-v2",
+        "html_url": "https://huggingface.co/datasets/OpenMobile-2/OpenMobile-Data-v2",
+        "retrieved_at": "2026-10-17T19:15:20Z",
+        "sha256": "14b1211ed709147f4022f311c17303ca70faaffa22be143617eb431d966eec1a"
+      }
+    ]
   }
 ]

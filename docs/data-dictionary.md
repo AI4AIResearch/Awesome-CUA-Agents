@@ -5,7 +5,7 @@ The executable contract is [resource.schema.json](../schemas/resource.schema.jso
 | Field | Meaning |
 | --- | --- |
 | `id` | Stable resource identity; prefixes distinguish arXiv, repositories, URLs, components, and publishers. An `arxiv:`, `github:` or `url:` ID must be the canonical identity of `url`, and an `arxiv:` ID must equal `identifiers.arxiv`; editors assign `component:` and `organization:` IDs, whose URLs resolve elsewhere |
-| `name`, `aliases` | Display name and explicitly reviewed alternative names; former GitHub names recorded in `repository-aliases.json` are added here with their identity receipts |
+| `name`, `aliases` | Display name and explicitly reviewed alternative names; former GitHub and Hugging Face names recorded in `repository-aliases.json` are added here with their identity receipts |
 | `kind` | Primary resource type; model families and checkpoints are distinguished by details/relations |
 | `url` | Primary landing page; not necessarily a direct binary download |
 | `scope` | `core`, `adjacent`, or `relevance_pending` |
@@ -146,7 +146,9 @@ A `web-navigation` topic requires `web` or `cross-platform`. A `mobile-navigatio
 
 `repository-aliases.json` records former GitHub names and their canonical owners, following [repository-alias.schema.json](../schemas/repository-alias.schema.json). Each mapping has two official API observations: the former-name URL and the canonical-name URL must identify the same numeric repository ID and canonical `full_name`. Case normalization, similar titles, a shared project, or a repository-to-dataset link cannot establish a migration. Mappings must point directly to an active reviewed repository; conflicting owners, cycles, chains and active records under the former ID fail validation.
 
-The materializer adds verified former IDs, names and URLs to the owner's `aliases`, with primary `github_repository_identity` receipts that support only that field. It preserves the canonical ID, content review, licenses and relationships. `get` accepts exact recorded former IDs, and `search` resolves recorded former repository URLs. Both return the canonical resource; no additional record is created. Discovery and mention inputs keep their observed identifiers. Coverage resolves matching identifiers while `indexed_resources` counts distinct owners.
+A Hugging Face mapping (`basis: official_huggingface_repository_id`) pairs the `/api/models/` or `/api/datasets/` responses for two names of one model or dataset. Both must return the same repository object `_id` (recorded as `repository_id`) and the same current `id` (`full_name`), and `resolved_url` records where the API redirected. Hub `url:` IDs hash the path with its case, so a renamed or re-cased repository splits into several IDs; the mapping points the other name's ID at the existing record, whichever name that record's URL uses, and keeps its ID stable. `validate` lists a curated record whose Hub API `details.hub_id` differs from its URL path without a mapping for that name.
+
+The materializer adds verified former IDs, names and URLs to the owner's `aliases`, with primary `github_repository_identity` or `huggingface_repository_identity` receipts that support only that field. It preserves the canonical ID, content review, licenses and relationships. `get` accepts exact recorded former IDs, and `search` resolves recorded former repository URLs. Both return the canonical resource; no additional record is created. Discovery and mention inputs keep their observed identifiers. Coverage resolves matching identifiers while `indexed_resources` counts distinct owners.
 
 The [English data hub](https://awesomecua.github.io/data/) and [中文数据中心](https://awesomecua.github.io/zh/data/) expose downloads from the same source catalog available by cloning the repository. Their [download manifest](https://awesomecua.github.io/downloads/manifest.json) follows [download-manifest.schema.json](../schemas/download-manifest.schema.json). Its `artifacts` array records each listed export's `path`, format, group, actual `count.value` and `count.unit`, `scope`, exact `bytes`, and file `sha256`. The top-level `catalog_sha256` identifies the source catalog snapshot; compare it with the RAG, citation and topic manifests before combining artifacts.
 
@@ -197,7 +199,7 @@ Edit authored files by hand and review them in a pull request. Do not hand-edit 
 | `editorial.json` | Authored | Editorial proposals and approvals; see [editorial input](editorial-input.md) |
 | `exclusions.json` | Authored | Scope decisions; see [scope review](scope-review.md) |
 | `publications.jsonl` | Authored | Reviewed publication observations |
-| `repository-aliases.json` | Authored | Paired official GitHub identity observations for reviewed former repository names |
+| `repository-aliases.json` | Authored | Paired official GitHub or Hugging Face identity observations for reviewed former or other repository names |
 | `candidate-reviews.json` | Authored | Discovered links reviewed as non-resources or as other addresses of active records; see [methodology](methodology.md#identity-and-deduplication) |
 | `sources.json` | Authored | Discovery-source registry read by `catalog.py discover` |
 | `paper-discovery-queries.json` | Authored | Hugging Face search registry read by `discover_papers.py` |
