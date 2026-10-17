@@ -10,6 +10,24 @@ Evidence snapshot through **2026-10-17T07:57:59Z**. Generated from committed sou
 
 These are distinct resource identifiers, not distinct research projects. Papers, repositories, datasets, products, and publisher entities have different grains.
 
+## Curated coverage by kind and environment
+
+Counts of source-reviewed resources. A resource tagged with several environments counts in each column; `·` marks an empty cell, which is where contributions are most needed.
+
+| Kind | web | desktop | windows | macos | linux | android | ios | harmonyos | cross-platform | unspecified |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| [agent](agents.md) | 7 | 14 | 3 | 1 | · | 11 | 1 | · | 1 | · |
+| [benchmark](benchmarks.md) | 31 | 15 | 4 | 3 | 3 | 13 | 2 | · | 12 | 3 |
+| [company](companies.md) | · | · | · | · | · | · | · | · | · | 16 |
+| [dataset](datasets.md) | 19 | 14 | 3 | 2 | 6 | 28 | · | · | 14 | 7 |
+| [framework](frameworks.md) | 24 | 14 | 1 | 1 | 2 | 11 | 1 | 1 | 5 | 2 |
+| [infrastructure](infrastructures.md) | 4 | 6 | 1 | 2 | 4 | 4 | 1 | · | · | · |
+| [model](models.md) | 25 | 18 | 3 | 3 | 3 | 23 | 4 | · | 46 | 2 |
+| [paper](topics.md) | 217 | 119 | 22 | 7 | 11 | 107 | 5 | · | 89 | 145 |
+| [product](products.md) | 17 | 5 | · | · | · | · | · | · | · | · |
+| [survey](surveys.md) | · | · | · | · | · | 1 | 1 | · | 10 | · |
+| [tool](tools.md) | 10 | 1 | 1 | · | · | 4 | 2 | · | 1 | 2 |
+
 ## Source snapshot coverage
 
 The denominator is the normalized identifiers extracted from each fetched document, including incidental links. Sources overlap. These figures do not measure global completeness or editorial recall.

@@ -337,6 +337,11 @@ class CategoryPageTests(unittest.TestCase):
         self.assertEqual(family("cross-platform"), "cross-platform")
         self.assertEqual(family("unspecified"), "unspecified")
 
+    def test_coverage_matrix_marks_gaps(self):
+        lines = build.matrix_lines({"benchmark": {"web": 2, "ios": 1}, "company": {"unspecified": 3}})
+        self.assertEqual(lines[2], "| [benchmark](benchmarks.md) | 2 | · | · | · | · | · | 1 | · | · | · |")
+        self.assertTrue(lines[3].startswith("| [company](companies.md) | · |"))
+
     def test_kind_specific_columns(self):
         row = {"name": "A|B", "url": "https://example.com/a", "environments": ["web"], "summary": "Short.", "published_at": "2025-01-02",
             "relations": [{"type": "published_by", "target_id": "company:x"}], "licenses": {"code": None, "data": None, "weights": None, "document": None},
@@ -405,7 +410,7 @@ class TopicHubTests(unittest.TestCase):
             self.row("arxiv:2403.00001", "No date", "paper", [], None, status="metadata_verified")]
         report = {"as_of_utc": "2026-10-16T00:00:00Z", "total_records": 3, "curated_records": 1, "metadata_only_records": 2, "bibliographic_records": 3,
             "arxiv_archive_records": 3, "excluded_records": 0, "discovery_identifiers": 0, "unindexed_candidates": 0, "pending_editorial": [], "sources": [],
-            "primary_search": {}, "license_declarations_by_scope": {}, "exclusion_revalidation_pending": 0}
+            "primary_search": {}, "license_declarations_by_scope": {}, "exclusion_revalidation_pending": 0, "curated_by_kind_and_environment": {}}
         page = build.documents(rows, report)["docs/papers.md"]
         self.assertIn("**Years:** [2024](#2024) (2; 1 ⭐) · [Undated](#undated) (1; 0 ⭐)", page)
         self.assertIn("| 2024-01-01 | [Reviewed](https://example.com/arxiv:2401.00001) | ⭐ reviewed | [grounding](topics/grounding.md) |", page)
@@ -425,7 +430,7 @@ class TopicHubTests(unittest.TestCase):
         rows = [self.row("arxiv:2401.00001", "Reviewed paper", "paper", ["grounding"], "2024-01-01")]
         report = {"as_of_utc": "2026-10-16T00:00:00Z", "total_records": 1, "curated_records": 1, "metadata_only_records": 0, "bibliographic_records": 1,
             "arxiv_archive_records": 1, "excluded_records": 0, "discovery_identifiers": 0, "unindexed_candidates": 0, "pending_editorial": [], "sources": [],
-            "primary_search": {}, "license_declarations_by_scope": {}, "exclusion_revalidation_pending": 0}
+            "primary_search": {}, "license_declarations_by_scope": {}, "exclusion_revalidation_pending": 0, "curated_by_kind_and_environment": {}}
         files = build.documents(rows, report)
         self.assertTrue(files["docs/papers.md"].startswith("# Research bibliography"))
         self.assertIn("Reviewed paper", files["docs/topics/grounding.md"])
