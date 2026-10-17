@@ -1,0 +1,28 @@
+name: Website or tooling bug
+description: Report a problem with the website, a script, a workflow, or the documentation.
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Website
+        - Scripts, build, or exports
+        - Workflows or automation
+        - Documentation
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened
+      description: Include the page URL or exact command, what you expected, and what you saw.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Browser and device, or OS with Python and Node versions.
