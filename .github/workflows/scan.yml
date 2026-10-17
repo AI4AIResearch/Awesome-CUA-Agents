@@ -100,7 +100,7 @@ jobs:
           retention-days: 30
   dispatch_quality:
     # Pushes made with GITHUB_TOKEN start no push workflows; dispatch is the documented exception.
-    # Only this job, with no checkout, holds the actions permission; the scan, its dependencies and its persisted token never do.
+    # Only this job, with no checkout, holds the actions permission; the scan job and its dependencies never do.
     needs: scan
     if: needs.scan.outputs.pushed == 'true'
     runs-on: ubuntu-latest
