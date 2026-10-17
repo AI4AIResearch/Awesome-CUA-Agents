@@ -13,7 +13,7 @@ All entries in this section: ios.
 | Resource | Paper | Scale | License | Description | Evidence |
 | --- | --- | --- | --- | --- | --- |
 | [iOSWorld](https://github.com/ljang0/iOSWorld) | — | [133 tasks](https://raw.githubusercontent.com/ljang0/iOSWorld/HEAD/README.md) · [26 applications](https://raw.githubusercontent.com/ljang0/iOSWorld/HEAD/README.md) | code Apache-2.0 | Native iPhone-simulator benchmark with shared user data, application workflows, agent runners, and rubric-based scoring. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/ljang0/iOSWorld/HEAD/README.md) |
-| [RiOSWorld](https://github.com/yjyddq/RiOSWorld) | [2506.00618](https://arxiv.org/abs/2506.00618) (2025) | — | — | Evaluation environment for agents operating iOS interfaces. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/yjyddq/RiOSWorld/HEAD/README.md) |
+| [RiOSWorld](https://github.com/yjyddq/RiOSWorld) | [2506.00618](https://arxiv.org/abs/2506.00618) (2025) | — | — | Measures risky behavior of multimodal computer-use agents in an Ubuntu virtual machine, with risk scenarios such as phishing emails and released evaluation trajectories. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/yjyddq/RiOSWorld/HEAD/README.md) |
 
 ## Datasets
 
@@ -27,8 +27,8 @@ All entries in this section: android, ios.
 
 | Resource | Environments | Paper | License | Description | Evidence |
 | --- | --- | --- | --- | --- | --- |
-| [AutoGLM Phone 9B](https://huggingface.co/zai-org/AutoGLM-Phone-9B) | android, ios | — | weights mit | Released model checkpoint associated with Open-AutoGLM. | [✓ 2026‑10‑16](https://huggingface.co/api/models/zai-org/AutoGLM-Phone-9B) |
-| [AutoGLM Phone 9B Multilingual](https://huggingface.co/zai-org/AutoGLM-Phone-9B-Multilingual) | android, ios | — | weights mit | Released model checkpoint associated with Open-AutoGLM. | [✓ 2026‑10‑16](https://huggingface.co/api/models/zai-org/AutoGLM-Phone-9B-Multilingual) |
+| [AutoGLM Phone 9B](https://huggingface.co/zai-org/AutoGLM-Phone-9B) | android, ios | — | weights mit | AutoGLM phone-agent checkpoint for Open-AutoGLM, fine-tuned from GLM-4.1V-9B-Base with about 10.3B BF16 parameters and tagged for Chinese. | [✓ 2026‑10‑16](https://huggingface.co/api/models/zai-org/AutoGLM-Phone-9B) |
+| [AutoGLM Phone 9B Multilingual](https://huggingface.co/zai-org/AutoGLM-Phone-9B-Multilingual) | android, ios | — | weights mit | Multilingual variant of the AutoGLM phone-agent checkpoint for Open-AutoGLM, likewise fine-tuned from GLM-4.1V-9B-Base with about 10.3B BF16 parameters. | [✓ 2026‑10‑16](https://huggingface.co/api/models/zai-org/AutoGLM-Phone-9B-Multilingual) |
 | [Ferret-UI](https://github.com/apple/ml-ferret) | android, ios | [2404.05719](https://arxiv.org/abs/2404.05719) (2024) | — | Screen understanding research within the Ferret model family. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/apple-aiml-research/ml-ferret/main/ferretui/README.md) |
 | [SeeClick checkpoint](https://huggingface.co/cckevinn/SeeClick) | web, desktop, android, ios | [2401.10935](https://arxiv.org/abs/2401.10935) (2024) | — | The released SeeClick visual grounding checkpoint for mapping an interface screenshot and referring instruction to a point or bounding box. | [✓ 2026‑10‑17](https://huggingface.co/api/models/cckevinn/SeeClick) |
 
