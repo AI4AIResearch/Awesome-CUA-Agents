@@ -138,6 +138,34 @@ test('failed, mismatched, or scope-excluded detail payloads are not cached as ac
     await assert.rejects(load(record));assert.equal((await load(record)).id,record.id);assert.equal(calls,2);
   }
 });
+test('related records opened inside the dialog start at the top with focus on the new title',async()=>{
+  const coverage=JSON.parse(readFileSync(new URL('../data/coverage.json',import.meta.url),'utf8'));
+  const base={kind:'dataset',url:'https://example.org/',aliases:[],environments:['web'],topics:[],authors:[],summary:'Fixture.',review_status:'curated',published_at:null,scope:'core',paper_version:null,paper_source_url:null,paper_date:null,related_count:1,incoming_relations:[]};
+  const records=[{...base,id:'url:first',name:'First fixture',page_url:'/resources/first/'},{...base,id:'url:second',name:'Second fixture',page_url:'/resources/second/'}];
+  const full=r=>({...r,licenses:{},details:{},identifiers:{},relations:[{type:'related_to',target_id:r.id==='url:first'?'url:second':'url:first'}],notes:'',evidence:[],last_verified_at:'2026-10-01'});
+  const keys=['document','window','location','history','localStorage','fetch'],saved=keys.map(key=>[key,Object.getOwnPropertyDescriptor(globalThis,key)]);
+  const clicks=[],doc={documentElement:{},body:{classList:{toggle(){}}},addEventListener(type,fn){if(type==='click')clicks.push(fn);},querySelectorAll:()=>[]};
+  const elements=new Map(),element=selector=>{if(!elements.has(selector))elements.set(selector,{dataset:{},classList:{toggle(){}},open:false,addEventListener(){},setAttribute(){},focus(){doc.activeElement=this;},showModal(){this.open=true;},close(){this.open=false;}});return elements.get(selector);};
+  doc.querySelector=element;
+  const globals={document:doc,window:{addEventListener(){}},location:{search:'',pathname:'/',hash:''},history:{replaceState(){}},localStorage:{getItem:()=>null,setItem(){}},fetch:async url=>({ok:true,json:async()=>url.endsWith('record.json')?full(records.find(r=>url===r.page_url+'record.json')):{coverage,records:structuredClone(records)}})};
+  const settle=()=>new Promise(resolve=>setImmediate(resolve));
+  const open=async(id,tagName)=>{for(const listener of clicks)listener({target:{closest:selector=>selector==='[data-record]'?{tagName,dataset:{record:id}}:null},button:0,preventDefault(){}});await settle();};
+  try {
+    for(const [key,value] of Object.entries(globals))Object.defineProperty(globalThis,key,{value,configurable:true,writable:true});
+    await import('../web/app.js?related-focus');await settle();
+    const dialog=element('#detail-dialog'),content=()=>element('#detail-content').innerHTML;
+    dialog.scrollTop=120;
+    await open('url:first','A');
+    assert.equal(dialog.open,true);assert.equal(dialog.scrollTop,120);assert.equal(doc.activeElement,undefined);
+    assert.match(content(),/^<h2 id="detail-title" tabindex="-1">First fixture<\/h2>[\s\S]*data-record="url:second">Second fixture<\/button>/);
+    dialog.scrollTop=591;
+    await open('url:second','BUTTON');
+    assert.equal(dialog.scrollTop,0);assert.equal(doc.activeElement,element('#detail-title'));
+    assert.match(content(),/^<h2 id="detail-title" tabindex="-1">Second fixture<\/h2>/);
+  } finally {
+    for(const [key,descriptor] of saved)if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];
+  }
+});
 test('sorting keeps the previous order without a collator or query normalization per comparison',()=>{
   const alpha=(a,b)=>a.name.localeCompare(b.name,'en',{sensitivity:'base'}),newer=(a,b)=>bibliographicDate(b).localeCompare(bibliographicDate(a));
   const legacy=state=>{

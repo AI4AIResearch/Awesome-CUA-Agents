@@ -143,12 +143,13 @@ async function showRecord(id,setURL=true) {
   const found=records.find(r=>r.id===id);if(!found){activeRecord='';if($('#detail-dialog').open)$('#detail-dialog').close();toast(t('noRecord'));return;}
   activeRecord=id;if(setURL)updateURL();
   $('#detail-overline').textContent=label(KINDS,found.kind);
-  $('#detail-content').innerHTML=`<h2 id="detail-title">${e(found.name)}</h2><p>${e(t('loading'))}</p>`;
-  if(!$('#detail-dialog').open)$('#detail-dialog').showModal();
+  $('#detail-content').innerHTML=`<h2 id="detail-title" tabindex="-1">${e(found.name)}</h2><p>${e(t('loading'))}</p>`;
+  // A record opened from inside the dialog replaces the activated link, so start it at the top and move focus to its title once rendered.
+  const inside=$('#detail-dialog').open;if(inside)$('#detail-dialog').scrollTop=0;else $('#detail-dialog').showModal();
   try {
     const r=await getDetails(found);if(activeRecord!==id)return;
     const scope={core:'scopeCore',adjacent:'scopeAdjacent',relevance_pending:'scopePending'}[r.scope];
-    let content=`<h2 id="detail-title">${e(r.name)}</h2><p class="detail-description">${e(r.summary || t('noTaxonomy'))}</p><div class="detail-badges"><span>${e(t(r.review_status==='curated'?'curated':'metadata'))}</span><span>${e(t(scope))}</span>${r.environments.filter(x=>x!=='unspecified').map(x=>`<span>${e(label(PLATFORMS,x))}</span>`).join('')}</div><div class="detail-actions"><a class="button primary" href="${e(safeURL(r.url))}" target="_blank" rel="noopener noreferrer">${e(t('openSource'))} ↗</a><button class="button secondary" type="button" data-copy-link>${e(t('copyLink'))} ⧉</button><a class="resource-page-link" href="${e(found.page_url)}">${lang==='zh'?'打开完整资源页':'Open full resource page'} ↗</a></div><div class="detail-dates"><div>${e(t('verified'))}<strong>${e(dates(r.last_verified_at))}</strong></div>${r.published_at?`<div>${e(t('published'))}<strong>${e(dates(r.published_at))}</strong></div>`:''}</div>`;
+    let content=`<h2 id="detail-title" tabindex="-1">${e(r.name)}</h2><p class="detail-description">${e(r.summary || t('noTaxonomy'))}</p><div class="detail-badges"><span>${e(t(r.review_status==='curated'?'curated':'metadata'))}</span><span>${e(t(scope))}</span>${r.environments.filter(x=>x!=='unspecified').map(x=>`<span>${e(label(PLATFORMS,x))}</span>`).join('')}</div><div class="detail-actions"><a class="button primary" href="${e(safeURL(r.url))}" target="_blank" rel="noopener noreferrer">${e(t('openSource'))} ↗</a><button class="button secondary" type="button" data-copy-link>${e(t('copyLink'))} ⧉</button><a class="resource-page-link" href="${e(found.page_url)}">${lang==='zh'?'打开完整资源页':'Open full resource page'} ↗</a></div><div class="detail-dates"><div>${e(t('verified'))}<strong>${e(dates(r.last_verified_at))}</strong></div>${r.published_at?`<div>${e(t('published'))}<strong>${e(dates(r.published_at))}</strong></div>`:''}</div>`;
     if(r.topics.length)content+=`<section class="detail-section"><h3>${e(t('topics'))}</h3><p>${r.topics.map(x=>e(label(TOPICS,x))).join(' · ')}</p></section>`;
     if(r.authors.length)content+=`<section class="detail-section"><h3>${e(t('authors'))}</h3><p>${r.authors.map(e).join(', ')}</p></section>`;
     if(r.kind!=='paper'&&r.kind!=='survey')content+=`<section class="detail-section"><h3>${e(t('licenses'))}</h3><div class="license-grid">${['code','data','weights','document'].map(slot=>{const l=r.licenses[slot];return `<div class="license-item"><span>${e(t(slot))}</span>${l?external(l.url,Array.isArray(l.declared)?l.declared.join(', '):l.declared):e(t('unknown'))}</div>`;}).join('')}</div><p>${e(t('licenseCaution'))}</p></section>`;
@@ -172,7 +173,8 @@ async function showRecord(id,setURL=true) {
     if(connected.length)content+=`<section class="detail-section"><h3>${lang==='zh'?'关联资产':'Connected assets'}</h3><ul>${connected.map(({source,relation})=>`<li><a class="subtle-link" href="${e(records.find(x=>x.id===source.id)?.page_url || '#')}" data-record="${e(source.id)}">${e(source.name)}</a> · ${e(label(KINDS,source.kind))} · ${external(relation.evidence_url,lang==='zh'?'关联证据':'Evidence')}</li>`).join('')}</ul></section>`;
     content+=`<section class="detail-section"><h3>${e(t('evidence'))}</h3>${r.evidence.map(ev=>`<div class="evidence-item">${external(ev.url,new URL(ev.url).hostname)}<p>${e(t('referenceDate'))}: ${e(dates(ev.retrieved_at))} · ${e(ev.method.replaceAll('_',' '))}</p><details><summary>SHA-256</summary><p class="detail-meta">${e(ev.sha256)}</p></details></div>`).join('')}</section><section class="detail-section"><h3>${e(t('recordID'))}</h3><div class="detail-meta">${e(r.id)}</div></section>`;
     $('#detail-content').innerHTML=content;
-  }catch(error){if(activeRecord!==id)return;$('#detail-content').innerHTML=`<h2 id="detail-title">${e(found.name)}</h2><p>${e(t('errorDetail'))}</p><button type="button" class="button secondary" data-record="${e(id)}">${e(t('retry'))}</button>`;}
+  }catch(error){if(activeRecord!==id)return;$('#detail-content').innerHTML=`<h2 id="detail-title" tabindex="-1">${e(found.name)}</h2><p>${e(t('errorDetail'))}</p><button type="button" class="button secondary" data-record="${e(id)}">${e(t('retry'))}</button>`;}
+  if(inside)$('#detail-title').focus();
 }
 function info(type) {
   let content='';
