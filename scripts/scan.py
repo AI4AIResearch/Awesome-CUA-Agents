@@ -133,6 +133,11 @@ def summarize_phases(phases,source_runs,hf_runs,harvest_failures):
     return ('failed' if fatal else 'partial' if problems else 'success'),problems
 
 
+def workflow_message(text):
+    """Escape text for a GitHub workflow command, which ends at the first newline."""
+    return text.replace('%','%25').replace('\r','%0D').replace('\n','%0A')
+
+
 def run_scan():
     config=read_json(DATA/'scan-config.json')
     if not 1<=config['recent_lookback_days']<=31 or not 1<=config['recent_max_results']<=2000:raise ValueError('Unbounded recent-search configuration')
@@ -178,12 +183,21 @@ def run_scan():
     history=read_jsonl(DATA/'scan-history.jsonl');history.append({k:v for k,v in report.items() if k!='phases'})
     write_jsonl(DATA/'scan-history.jsonl',history[-config['history_limit']:])
     summary=f'Scan {status}: {len(new_papers)} new paper metadata records; {report["new_candidate_count"]} new candidates; {report["after"]["curated_papers"]} reviewed papers.'
-    print(summary)
+    streak=next((i for i,r in enumerate(reversed(history)) if r.get('status')!='partial'),len(history))
+    repeated=streak>=config.get('max_consecutive_partial',float('inf'))
+    notes=problems+([f'The last {streak} scans were all partial; the recorded gaps are not clearing on their own.'] if repeated else [])
+    print(summary);print(''.join('- '+n+'\n' for n in notes),end='')
     summary_file=os.getenv('GITHUB_STEP_SUMMARY')
     if summary_file:
+        # In Actions, annotations put each gap on the run page; a partial scan still exits 0 so its verified data is committed.
+        for problem in problems:print(f'::{"error" if status=="failed" else "warning"} title=Scan {status}::'+workflow_message(problem))
+        if repeated:print('::error title=Repeated partial scans::'+notes[-1])
         with open(summary_file,'a',encoding='utf-8') as f:
             f.write('## AwesomeCUA scan\n\n'+summary+'\n\n'+f'Scheduled at {", ".join(config["scan_times_local"])} {config["timezone"]}.\n\n')
-            f.write('\n'.join('- '+p for p in problems)+'\n')
+            f.write('\n'.join('- '+n for n in notes)+'\n')
+    # scan.yml fails a separate job on this output, after the scan job has committed this run's data.
+    if repeated and os.getenv('GITHUB_OUTPUT'):
+        with open(os.getenv('GITHUB_OUTPUT'),'a',encoding='utf-8') as f:f.write('repeated_partial=true\n')
     return 1 if status=='failed' else 0
 
 
