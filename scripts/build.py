@@ -751,7 +751,7 @@ def build(args):
         if path.exists():
             blocks = {"STATS": stats_block(report, lang), "BADGES": shared_badges, "EXPLORE": explore(rows, report, lang),
                 "HIGHLIGHTS": highlights(rows, edges, lang=lang), "RECENT": recently_reviewed(rows, reviewed_at, lang=lang)}
-            content = path.read_text()
+            content = path.read_text(encoding="utf-8")
             for name, body in blocks.items():
                 # A function replacement keeps backslashes in generated Markdown literal.
                 content = re.sub(rf"(?<=<!-- {name}:START -->).*?(?=<!-- {name}:END -->)", lambda _: body, content, flags=re.S)
@@ -759,11 +759,11 @@ def build(args):
     changed = []
     for relative, content in files.items():
         path = ROOT / relative
-        if not path.exists() or path.read_text() != content:
+        if not path.exists() or path.read_text(encoding="utf-8") != content:
             changed.append(relative)
             if not args.check:
                 path.parent.mkdir(parents=True, exist_ok=True)
-                path.write_text(content)
+                path.write_text(content, encoding="utf-8")
     if args.check:
         if changed:
             raise ValueError("Generated files are stale: " + ", ".join(changed))

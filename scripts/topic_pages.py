@@ -96,7 +96,7 @@ def write_topic_exports(destination, rows, catalog_bytes):
                 'citation_policy': 'Default retained-source edition; source-specific author/date precision and paper versions are preserved.',
                 'reviewed_resources': len(reviewed), 'resources_with_topics': len(covered),
                 'reviewed_resources_without_topics': len(reviewed) - len(covered), 'topics': entries}
-    (destination / 'downloads/topics.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
+    (destination / 'downloads/topics.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     return manifest, grouped
 
 
