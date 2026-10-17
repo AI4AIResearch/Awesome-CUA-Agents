@@ -45,7 +45,7 @@ def record(rid, date, **changes):
             'scope': 'core', 'published_at': date, 'url': 'https://example.org/' + rid,
             'authors': ['First Author', 'Second Author', 'Third Author'],
             'summary': 'An original annotation.', 'topics': ['grounding'],
-            'environments': ['web'], 'details': {}, **changes}
+            'environments': ['web'], 'details': {}, 'relations': [], 'evidence': [], **changes}
 
 
 class PaperLibraryTests(unittest.TestCase):

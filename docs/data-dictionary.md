@@ -29,6 +29,10 @@ Dataset details can include sample count and unit, modalities, languages, downlo
 
 [Authored and generated files](#authored-and-generated-files) lists every file in `data/` and every generated view, with the command that writes it. The ignored `.cache/` directory is not needed to reproduce an offline build.
 
+`repository-aliases.json` records former GitHub names and their canonical owners, following [repository-alias.schema.json](../schemas/repository-alias.schema.json). Each mapping has two official API observations: the former-name URL and the canonical-name URL must identify the same numeric repository ID and canonical `full_name`. Case normalization, similar titles, a shared project, or a repository-to-dataset link cannot establish a migration. Mappings must point directly to an active reviewed repository; conflicting owners, cycles, chains and active records under the former ID fail validation.
+
+The materializer adds verified former IDs, names and URLs to the owner's `aliases`, with primary `github_repository_identity` receipts that support only that field. It preserves the canonical ID, content review, licenses and relationships. `get` accepts exact recorded former IDs, and `search` resolves recorded former repository URLs. Both return the canonical resource; no additional record is created. Discovery and mention inputs keep their observed identifiers. Coverage resolves matching identifiers while `indexed_resources` counts distinct owners.
+
 The [English data hub](https://awesomecua.github.io/data/) and [中文数据中心](https://awesomecua.github.io/zh/data/) expose downloads from the same source catalog available by cloning the repository. Their [download manifest](https://awesomecua.github.io/downloads/manifest.json) follows [download-manifest.schema.json](../schemas/download-manifest.schema.json). Its `artifacts` array records each listed export's `path`, format, group, actual `count.value` and `count.unit`, `scope`, exact `bytes`, and file `sha256`. The top-level `catalog_sha256` identifies the source catalog snapshot; compare it with the RAG, citation and topic manifests before combining artifacts.
 
 | Manifest group | Contents |
@@ -37,7 +41,7 @@ The [English data hub](https://awesomecua.github.io/data/) and [中文数据中�
 | `rag` | Reviewed or metadata-inclusive retrieval documents and their manifest |
 | `citations` | Retained-source and publication-edition citations, with selection and edition metadata |
 | `research` | Topic subsets, benchmark/dataset profiles, and reviewed relationships |
-| `provenance` | Sources, coverage, review decisions, retained arXiv archive, and publication observations |
+| `provenance` | Sources, coverage, review decisions, repository identities, retained arXiv archive, and publication observations |
 | `contracts` | Machine-readable JSON Schemas |
 
 An artifact count measures its declared unit and population, not extra catalog resources. JSONL and SQLite can contain the same records; reviewed RAG documents overlap the active corpus; topic memberships and citation editions also overlap. Do not sum artifact counts or mix units. `scope` distinguishes active records, reviewed selections, publication editions, the retained archive, provenance, and contracts. A matching SHA-256 identifies file bytes; it does not add editorial approval or permissions to the underlying resources.
@@ -46,7 +50,7 @@ An artifact count measures its declared unit and population, not extra catalog r
 
 `details.publication` retains the publication edition's title, literal authors, type, venue, publisher, DOI, volume/issue/pages and source receipts. `date_parts` is `[year]`, `[year, month]`, `[year, month, day]`, or null. Unknown components are never filled with `01`; event dates are kept separately. `published_at IS NULL` therefore does not necessarily mean the publication year is unknown. Catalogue years use the retained arXiv submission date for arXiv identities, and the publication's recorded precision for publisher-only identities. Undated records sort last; partial dates sort after more precise dates in the same year/month, without asserting an earlier calendar day.
 
-Coverage counts distinguish `bibliographic_records` (all active papers/surveys), `arxiv_active_records`, `non_arxiv_bibliographic_records`, and `publication_metadata_records` (including publication attachments to arXiv). The arXiv archive count remains separate. Per-source `indexed` counts matched discovery identifiers; `indexed_resources` counts distinct canonical resources, so multiple publisher/PDF aliases cannot inflate the catalog's resource total.
+Coverage counts distinguish `bibliographic_records` (all active papers/surveys), `arxiv_active_records`, `non_arxiv_bibliographic_records`, and `publication_metadata_records` (including publication attachments to arXiv). The arXiv archive count remains separate. Per-source `indexed` counts matched discovery identifiers; `indexed_resources` counts distinct canonical resources, so multiple publisher/PDF aliases or former GitHub names cannot inflate the catalog's resource total.
 
 The website's `downloads/topics.json` is a derived index of reviewed topic membership, tied to the source catalog SHA-256. Each topic lists canonical resource IDs, counts, bilingual page URLs, and export fingerprints. `resources_with_topics` counts distinct reviewed resources across all topics; individual topic totals overlap and must not be summed. Per-topic JSONL preserves the complete source records, including evidence, license scopes and review state. Shared tags are not reviewed resource relationships. Rebuilds remove obsolete generated topic pages and exports when a topic loses all reviewed members.
 
@@ -65,6 +69,7 @@ Edit authored files by hand and review them in a pull request. Do not hand-edit 
 | `editorial.json` | Authored | Editorial proposals and approvals; see [editorial input](editorial-input.md) |
 | `exclusions.json` | Authored | Scope decisions; see [scope review](scope-review.md) |
 | `publications.jsonl` | Authored | Reviewed publication observations |
+| `repository-aliases.json` | Authored | Paired official GitHub identity observations for reviewed former repository names |
 | `sources.json` | Authored | Discovery-source registry read by `catalog.py discover` |
 | `paper-discovery-queries.json` | Authored | Hugging Face search registry read by `discover_papers.py` |
 | `scan-config.json` | Authored | Scan schedule and limits read by `scan.py` and the website status page |

@@ -1498,5 +1498,275 @@
       "sha256": "ae98e77b8bb125e45277aacec768a047e7bb0e13f33ca9ff6ca7c19e29e56cca",
       "retrieved_at": "2026-10-16T06:36:47Z"
     }
+  },
+  {
+    "id": "arxiv:2602.03361",
+    "name": "Z3D: Zero-Shot 3D Visual Grounding from Images",
+    "url": "https://arxiv.org/abs/2602.03361",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "Z3D localizes objects in 3D scenes from multi-view images, optionally using camera poses and depth maps. Its ScanRefer/Nr3D evaluations concern 3D scene grounding rather than GUI element grounding or software-interface control.",
+    "reviewed_at": "2026-10-17T14:31:31.479688+00:00",
+    "metadata_fingerprint": "1d1c31e2ff0a63e9a705479be31971aea644ddd2fafbbc98bb3f71c8bcca7d2c",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?id_list=2601.13462%2C2601.14232%2C2601.15331%2C2601.17548%2C2601.18418%2C2601.18491%2C2601.18827%2C2601.20171%2C2601.20613%2C2601.20742%2C2601.21233%2C2601.21253%2C2601.22037%2C2601.22154%2C2601.22511%2C2601.22607%2C2602.01550%2C2602.03117%2C2602.03361%2C2602.05665%2C2602.05746%2C2602.05877%2C2602.06052%2C2602.07398%2C2602.07458%2C2602.07918%2C2602.09007%2C2602.09463%2C2602.09514%2C2602.10122%2C2602.10525%2C2602.11224%2C2602.12268%2C2602.12430%2C2602.13318%2C2602.13543%2C2602.13692%2C2602.14038%2C2602.14337%2C2602.14364%2C2602.16313%2C2602.16317%2C2602.16666%2C2602.16901%2C2602.16930%2C2602.17547%2C2602.17646%2C2602.18846%2C2602.19320%2C2602.19594&max_results=50",
+      "sha256": "c8c95278aa5dcc6a8f2eda3f3b44d61ec1f35adcb6a4c6c9ab328691a1a4f102",
+      "retrieved_at": "2026-10-17T12:31:12Z"
+    }
+  },
+  {
+    "id": "arxiv:2603.16065",
+    "name": "Large Reward Models: Generalizable Online Robot Reward Generation with Vision-Language Models",
+    "url": "https://arxiv.org/abs/2603.16065",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "Large Reward Models generate visual rewards for refining robot manipulation policies. Its data, PPO refinement and real-world behavioral-cloning evaluations concern robot actions, not graphical software operation.",
+    "reviewed_at": "2026-10-17T14:31:31.479562+00:00",
+    "metadata_fingerprint": "089b4815d3add82bbeaff9dd1ed7e8850d1b1569d7dffcbe5f14343403e9d971",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?id_list=2602.19870%2C2602.22769%2C2602.23166%2C2602.23320%2C2603.00198%2C2603.00842%2C2603.00991%2C2603.01050%2C2603.01145%2C2603.02236%2C2603.02795%2C2603.03278%2C2603.04549%2C2603.06713%2C2603.07106%2C2603.07670%2C2603.07853%2C2603.08706%2C2603.09716%2C2603.10002%2C2603.10664%2C2603.11139%2C2603.11320%2C2603.12483%2C2603.13026%2C2603.13247%2C2603.15714%2C2603.16065%2C2603.16289%2C2603.16839%2C2603.17216%2C2603.17378%2C2603.19313%2C2603.19685%2C2603.21489%2C2603.22527%2C2603.23638%2C2603.24157%2C2603.24639%2C2603.27646%2C2603.28069%2C2603.28407%2C2603.29418%2C2603.29847%2C2604.00528%2C2604.00886%2C2604.01194%2C2604.01438%2C2604.01560%2C2604.02985&max_results=50",
+      "sha256": "9289bc047b59e93f75703b72f5e92d9277e115238427519c343df550220e351b",
+      "retrieved_at": "2026-10-17T12:31:16Z"
+    }
+  },
+  {
+    "id": "arxiv:2604.15671",
+    "name": "Long-Term Memory for VLA-based Agents in Open-World Task Execution",
+    "url": "https://arxiv.org/abs/2604.15671",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "ChemBot integrates agent memory with a VLA controller for collaborative robots performing chemical laboratory protocols. Its operations, safety and precision results concern physical experimentation, not computer-interface tasks.",
+    "reviewed_at": "2026-10-17T14:30:31.862260+00:00",
+    "metadata_fingerprint": "a4b021c6cfcbe2f799acdd796ffd1b113cf28c28fdc744676b2ffa8d0907c209",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?id_list=2604.03598%2C2604.04759%2C2604.05547%2C2604.06170%2C2604.07340%2C2604.10547%2C2604.10938%2C2604.11978%2C2604.12282%2C2604.13018%2C2604.13346%2C2604.13954%2C2604.15579%2C2604.15671%2C2604.15715%2C2604.16520%2C2604.18240%2C2604.18934%2C2604.19572%2C2604.19667%2C2604.19742%2C2604.20841%2C2604.20987%2C2604.22436%2C2604.23781%2C2604.24479%2C2604.26148%2C2604.27621%2C2604.27996%2C2604.28093%2C2604.28139%2C2604.28181%2C2605.00425%2C2605.01462%2C2605.02240%2C2605.03042%2C2605.03242%2C2605.04811%2C2605.05191%2C2605.05811%2C2605.06110%2C2605.07073%2C2605.07358%2C2605.08374%2C2605.08985%2C2605.10912%2C2605.10966%2C2605.11363%2C2605.11732%2C2605.11817&max_results=50",
+      "sha256": "05ec5d668ac75d3d7c5b71ea7d6e76a3fbf5ebeb742e0843db2329e5e41aa208",
+      "retrieved_at": "2026-10-17T12:31:19Z"
+    }
+  },
+  {
+    "id": "arxiv:2604.20841",
+    "name": "DeVI: Physics-based Dexterous Human-Object Interaction via Synthetic Video Imitation",
+    "url": "https://arxiv.org/abs/2604.20841",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "DeVI learns physics-based character motion and dexterous human–object interaction from synthetic video. It evaluates physical-motion reconstruction and manipulation rather than software-interface agents.",
+    "reviewed_at": "2026-10-17T14:30:31.862259+00:00",
+    "metadata_fingerprint": "93850aa8de82f5a3d98c62931eaabc5784e162c3d0798b70ca68e903ce7cdf71",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?id_list=2604.03598%2C2604.04759%2C2604.05547%2C2604.06170%2C2604.07340%2C2604.10547%2C2604.10938%2C2604.11978%2C2604.12282%2C2604.13018%2C2604.13346%2C2604.13954%2C2604.15579%2C2604.15671%2C2604.15715%2C2604.16520%2C2604.18240%2C2604.18934%2C2604.19572%2C2604.19667%2C2604.19742%2C2604.20841%2C2604.20987%2C2604.22436%2C2604.23781%2C2604.24479%2C2604.26148%2C2604.27621%2C2604.27996%2C2604.28093%2C2604.28139%2C2604.28181%2C2605.00425%2C2605.01462%2C2605.02240%2C2605.03042%2C2605.03242%2C2605.04811%2C2605.05191%2C2605.05811%2C2605.06110%2C2605.07073%2C2605.07358%2C2605.08374%2C2605.08985%2C2605.10912%2C2605.10966%2C2605.11363%2C2605.11732%2C2605.11817&max_results=50",
+      "sha256": "05ec5d668ac75d3d7c5b71ea7d6e76a3fbf5ebeb742e0843db2329e5e41aa208",
+      "retrieved_at": "2026-10-17T12:31:19Z"
+    }
+  },
+  {
+    "id": "arxiv:2604.27621",
+    "name": "Robot Learning from Human Videos: A Survey",
+    "url": "https://arxiv.org/abs/2604.27621",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "This survey reviews transferring human video demonstrations into robot manipulation skills and the data supporting that transfer. Its scope is embodied robotics, not learning to operate graphical software interfaces.",
+    "reviewed_at": "2026-10-17T14:30:31.862258+00:00",
+    "metadata_fingerprint": "8f1e775fcdade2f13ef31c6b32b10846fb30214c0e8a3297583049c2f15f12f9",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?id_list=2604.03598%2C2604.04759%2C2604.05547%2C2604.06170%2C2604.07340%2C2604.10547%2C2604.10938%2C2604.11978%2C2604.12282%2C2604.13018%2C2604.13346%2C2604.13954%2C2604.15579%2C2604.15671%2C2604.15715%2C2604.16520%2C2604.18240%2C2604.18934%2C2604.19572%2C2604.19667%2C2604.19742%2C2604.20841%2C2604.20987%2C2604.22436%2C2604.23781%2C2604.24479%2C2604.26148%2C2604.27621%2C2604.27996%2C2604.28093%2C2604.28139%2C2604.28181%2C2605.00425%2C2605.01462%2C2605.02240%2C2605.03042%2C2605.03242%2C2605.04811%2C2605.05191%2C2605.05811%2C2605.06110%2C2605.07073%2C2605.07358%2C2605.08374%2C2605.08985%2C2605.10912%2C2605.10966%2C2605.11363%2C2605.11732%2C2605.11817&max_results=50",
+      "sha256": "05ec5d668ac75d3d7c5b71ea7d6e76a3fbf5ebeb742e0843db2329e5e41aa208",
+      "retrieved_at": "2026-10-17T12:31:19Z"
+    }
+  },
+  {
+    "id": "arxiv:2605.13119",
+    "name": "Towards Long-horizon Embodied Agents with Tool-Aligned Vision-Language-Action Models",
+    "url": "https://arxiv.org/abs/2605.13119",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "VLAs-as-Tools coordinates vision-language-action policies for bounded physical robot operations. The evaluations concern simulated manipulation and real Franka robot tasks rather than graphical software control.",
+    "reviewed_at": "2026-10-17T14:30:31.862255+00:00",
+    "metadata_fingerprint": "d3dcc1263ac9135af3abacf49b6e7b2fdd8c5132fca8a6cc20b592bb61bc2502",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?id_list=2605.12233%2C2605.12493%2C2605.12978%2C2605.13119%2C2605.14133%2C2605.16909%2C2605.17260%2C2605.17324%2C2605.17448%2C2605.17656%2C2605.17721%2C2605.19447%2C2605.19587%2C2605.20894%2C2605.22642%2C2605.23204%2C2605.25233%2C2605.25901%2C2605.26086%2C2605.26144%2C2605.26252%2C2605.26646%2C2605.27209%2C2605.27705%2C2605.27898%2C2605.28158%2C2605.28255%2C2605.29341%2C2605.29463%2C2605.29801%2C2605.30010%2C2605.30052%2C2605.30126%2C2605.30434%2C2605.30907%2C2605.30914%2C2605.31264%2C2605.31557%2C2606.00530%2C2606.00543%2C2606.00856%2C2606.01057%2C2606.01961%2C2606.02540%2C2606.03103%2C2606.03889%2C2606.03895%2C2606.04315%2C2606.04455%2C2606.05525&max_results=50",
+      "sha256": "9a71e95803ce58c462c84e2b45a891555e31d1fb409e643bb3ca4675a44c96e6",
+      "retrieved_at": "2026-10-17T12:31:23Z"
+    }
+  },
+  {
+    "id": "arxiv:2605.20894",
+    "name": "Mobile UMI: Cross-View Diffusion Policy with Decoupled Kinematics for Mobile Manipulation",
+    "url": "https://arxiv.org/abs/2605.20894",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "Mobile UMI studies human-motion capture, kinematic separation and latency alignment for mobile robot manipulation. Its household tasks involve physical base and hand motion, not mobile-phone interfaces.",
+    "reviewed_at": "2026-10-17T14:30:31.862092+00:00",
+    "metadata_fingerprint": "6f1cd59efe37915c8ce911141bd847ca38cfbab4ffb00b60dd9f819abed06782",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?id_list=2605.12233%2C2605.12493%2C2605.12978%2C2605.13119%2C2605.14133%2C2605.16909%2C2605.17260%2C2605.17324%2C2605.17448%2C2605.17656%2C2605.17721%2C2605.19447%2C2605.19587%2C2605.20894%2C2605.22642%2C2605.23204%2C2605.25233%2C2605.25901%2C2605.26086%2C2605.26144%2C2605.26252%2C2605.26646%2C2605.27209%2C2605.27705%2C2605.27898%2C2605.28158%2C2605.28255%2C2605.29341%2C2605.29463%2C2605.29801%2C2605.30010%2C2605.30052%2C2605.30126%2C2605.30434%2C2605.30907%2C2605.30914%2C2605.31264%2C2605.31557%2C2606.00530%2C2606.00543%2C2606.00856%2C2606.01057%2C2606.01961%2C2606.02540%2C2606.03103%2C2606.03889%2C2606.03895%2C2606.04315%2C2606.04455%2C2606.05525&max_results=50",
+      "sha256": "9a71e95803ce58c462c84e2b45a891555e31d1fb409e643bb3ca4675a44c96e6",
+      "retrieved_at": "2026-10-17T12:31:23Z"
+    }
+  },
+  {
+    "id": "arxiv:2605.30914",
+    "name": "Automating Formal Verification with Reinforcement Learning and Recursive Inference",
+    "url": "https://arxiv.org/abs/2605.30914",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "This thesis trains and searches for machine-checked programs and proofs in Dafny and Lean. Its verification and code-correctness tasks are mathematical/software-proof problems rather than computer-interface agent workflows.",
+    "reviewed_at": "2026-10-17T14:31:31.479686+00:00",
+    "metadata_fingerprint": "f1c360b462268ff177d490c35f758d679e3cb7f42871c571ea55ec5bcaf8beaf",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?id_list=2605.12233%2C2605.12493%2C2605.12978%2C2605.13119%2C2605.14133%2C2605.16909%2C2605.17260%2C2605.17324%2C2605.17448%2C2605.17656%2C2605.17721%2C2605.19447%2C2605.19587%2C2605.20894%2C2605.22642%2C2605.23204%2C2605.25233%2C2605.25901%2C2605.26086%2C2605.26144%2C2605.26252%2C2605.26646%2C2605.27209%2C2605.27705%2C2605.27898%2C2605.28158%2C2605.28255%2C2605.29341%2C2605.29463%2C2605.29801%2C2605.30010%2C2605.30052%2C2605.30126%2C2605.30434%2C2605.30907%2C2605.30914%2C2605.31264%2C2605.31557%2C2606.00530%2C2606.00543%2C2606.00856%2C2606.01057%2C2606.01961%2C2606.02540%2C2606.03103%2C2606.03889%2C2606.03895%2C2606.04315%2C2606.04455%2C2606.05525&max_results=50",
+      "sha256": "9a71e95803ce58c462c84e2b45a891555e31d1fb409e643bb3ca4675a44c96e6",
+      "retrieved_at": "2026-10-17T12:31:23Z"
+    }
+  },
+  {
+    "id": "arxiv:2606.06556",
+    "name": "Robots Need More than VLA and World Models",
+    "url": "https://arxiv.org/abs/2606.06556",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "This position paper proposes data, embodiment, world-model and reward interfaces for generalist robotics. The interfaces concern physical motion retargeting and robot supervision, not graphical software interaction.",
+    "reviewed_at": "2026-10-17T14:29:57.522343+00:00",
+    "metadata_fingerprint": "a05059d8fafa2e786129a88e4740f9ee9449da879c798085216a8e7c9ee334a6",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?id_list=2606.05646%2C2606.05670%2C2606.06556%2C2606.06891%2C2606.07367%2C2606.07594%2C2606.07682%2C2606.07723%2C2606.07867%2C2606.10394%2C2606.10525%2C2606.11290%2C2606.12203%2C2606.12736%2C2606.13040%2C2606.13368%2C2606.13578%2C2606.13669%2C2606.13802%2C2606.13898%2C2606.14397%2C2606.15057%2C2606.15300%2C2606.15441%2C2606.17162%2C2606.18425%2C2606.19336%2C2606.19409%2C2606.19704%2C2606.20950%2C2606.21033%2C2606.21565%2C2606.23521%2C2606.23654%2C2606.24775%2C2606.25084%2C2606.26080%2C2606.27406%2C2606.27634%2C2606.28430%2C2606.28480%2C2606.29955%2C2606.30616%2C2607.00692%2C2607.01084%2C2607.02032%2C2607.02448%2C2607.02490%2C2607.02577%2C2607.02911&max_results=50",
+      "sha256": "7eaa9a5430d3a45049e612a117da345c1daafc54277a35a7cf56b42fbb1e8618",
+      "retrieved_at": "2026-10-17T12:31:28Z"
+    }
+  },
+  {
+    "id": "arxiv:2606.07723",
+    "name": "VoLo: A Physical Orchestrator for Open-Vocabulary Long-Horizon Manipulation",
+    "url": "https://arxiv.org/abs/2606.07723",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "VoLoAgent coordinates interruptible robot policies and action primitives for open-vocabulary physical manipulation. Its benchmark and real-robot validation address physical-world planning and recovery, outside the CUA scope.",
+    "reviewed_at": "2026-10-17T14:29:57.522342+00:00",
+    "metadata_fingerprint": "62ce7ab2ed75539a7fedb0d49c763d1dc9b36f300e7287996d72fb9a4aef3ca8",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?id_list=2606.05646%2C2606.05670%2C2606.06556%2C2606.06891%2C2606.07367%2C2606.07594%2C2606.07682%2C2606.07723%2C2606.07867%2C2606.10394%2C2606.10525%2C2606.11290%2C2606.12203%2C2606.12736%2C2606.13040%2C2606.13368%2C2606.13578%2C2606.13669%2C2606.13802%2C2606.13898%2C2606.14397%2C2606.15057%2C2606.15300%2C2606.15441%2C2606.17162%2C2606.18425%2C2606.19336%2C2606.19409%2C2606.19704%2C2606.20950%2C2606.21033%2C2606.21565%2C2606.23521%2C2606.23654%2C2606.24775%2C2606.25084%2C2606.26080%2C2606.27406%2C2606.27634%2C2606.28430%2C2606.28480%2C2606.29955%2C2606.30616%2C2607.00692%2C2607.01084%2C2607.02032%2C2607.02448%2C2607.02490%2C2607.02577%2C2607.02911&max_results=50",
+      "sha256": "7eaa9a5430d3a45049e612a117da345c1daafc54277a35a7cf56b42fbb1e8618",
+      "retrieved_at": "2026-10-17T12:31:28Z"
+    }
+  },
+  {
+    "id": "arxiv:2606.13040",
+    "name": "Robo2Process: Benchmarking and Learning Process-Aware Understanding in Vision-Language Robotic Manipulation",
+    "url": "https://arxiv.org/abs/2606.13040",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "Robo2Process builds question-answer supervision and diagnostics from robot manipulation traces. The studied visual states, motion, progress and primitives concern physical robotic execution rather than software-interface behavior.",
+    "reviewed_at": "2026-10-17T14:29:57.522341+00:00",
+    "metadata_fingerprint": "d7382c77fb95e2dfe3c9013d2e559ae98744ec9357b83e26be425e30efa1f0cf",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?id_list=2606.05646%2C2606.05670%2C2606.06556%2C2606.06891%2C2606.07367%2C2606.07594%2C2606.07682%2C2606.07723%2C2606.07867%2C2606.10394%2C2606.10525%2C2606.11290%2C2606.12203%2C2606.12736%2C2606.13040%2C2606.13368%2C2606.13578%2C2606.13669%2C2606.13802%2C2606.13898%2C2606.14397%2C2606.15057%2C2606.15300%2C2606.15441%2C2606.17162%2C2606.18425%2C2606.19336%2C2606.19409%2C2606.19704%2C2606.20950%2C2606.21033%2C2606.21565%2C2606.23521%2C2606.23654%2C2606.24775%2C2606.25084%2C2606.26080%2C2606.27406%2C2606.27634%2C2606.28430%2C2606.28480%2C2606.29955%2C2606.30616%2C2607.00692%2C2607.01084%2C2607.02032%2C2607.02448%2C2607.02490%2C2607.02577%2C2607.02911&max_results=50",
+      "sha256": "7eaa9a5430d3a45049e612a117da345c1daafc54277a35a7cf56b42fbb1e8618",
+      "retrieved_at": "2026-10-17T12:31:28Z"
+    }
+  },
+  {
+    "id": "arxiv:2607.07403",
+    "name": "Multi-Agent Robotic Control with Onboard Vision-Language Models",
+    "url": "https://arxiv.org/abs/2607.07403",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The system controls an autonomous mobile manipulator in a simulated industrial warehouse using onboard vision-language agents. Mobile here refers to a robot, with inspection and warehouse tasks rather than phone or GUI automation.",
+    "reviewed_at": "2026-10-17T14:29:57.522339+00:00",
+    "metadata_fingerprint": "7373bfcef7e6519560ebc6ef13240da211bbddf27e321ae3b19036b7000f4ced",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?id_list=2607.03726%2C2607.05120%2C2607.05465%2C2607.05743%2C2607.06008%2C2607.06595%2C2607.07403%2C2607.07744%2C2607.08252%2C2607.08964%2C2607.10455%2C2607.10608%2C2607.12406%2C2607.12756%2C2607.13085%2C2607.13594%2C2607.13884%2C2607.13988%2C2607.15899%2C2607.16352%2C2607.16636%2C2607.16900%2C2607.17044%2C2607.20064%2C2607.20121%2C2607.21522%2C2607.22738%2C2607.23722%2C2607.24720%2C2607.26300%2C2607.26769%2C2607.27881%2C2607.28229%2C2607.28272%2C2607.28430%2C2608.00548%2C2608.02163%2C2608.03223%2C2608.03451%2C2608.03499%2C2608.05013%2C2608.05430%2C2608.06811%2C2608.07873%2C2608.09268%2C2608.10357%2C2608.10669%2C2608.11274%2C2608.11434%2C2608.15089&max_results=50",
+      "sha256": "5128028eea81e3ae80715cb038513012598c0c81a7cbfe8c0d4d6adb6c00e518",
+      "retrieved_at": "2026-10-17T12:31:32Z"
+    }
+  },
+  {
+    "id": "arxiv:2607.27881",
+    "name": "RoboBRIDGE: A Modular Framework for Bridging Policies to Robust Real-World Robotic Agents",
+    "url": "https://arxiv.org/abs/2607.27881",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "RoboBRIDGE orchestrates pretrained robot policies for manipulation, physical failure recovery and embodiment transfer. Its evaluations use robotics simulators and robot platforms rather than graphical software environments.",
+    "reviewed_at": "2026-10-17T14:29:57.522190+00:00",
+    "metadata_fingerprint": "d752de50871cdfc00e14b2e74845fa22a0b763f670fcd417f75912cc0c5586e8",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?id_list=2607.03726%2C2607.05120%2C2607.05465%2C2607.05743%2C2607.06008%2C2607.06595%2C2607.07403%2C2607.07744%2C2607.08252%2C2607.08964%2C2607.10455%2C2607.10608%2C2607.12406%2C2607.12756%2C2607.13085%2C2607.13594%2C2607.13884%2C2607.13988%2C2607.15899%2C2607.16352%2C2607.16636%2C2607.16900%2C2607.17044%2C2607.20064%2C2607.20121%2C2607.21522%2C2607.22738%2C2607.23722%2C2607.24720%2C2607.26300%2C2607.26769%2C2607.27881%2C2607.28229%2C2607.28272%2C2607.28430%2C2608.00548%2C2608.02163%2C2608.03223%2C2608.03451%2C2608.03499%2C2608.05013%2C2608.05430%2C2608.06811%2C2608.07873%2C2608.09268%2C2608.10357%2C2608.10669%2C2608.11274%2C2608.11434%2C2608.15089&max_results=50",
+      "sha256": "5128028eea81e3ae80715cb038513012598c0c81a7cbfe8c0d4d6adb6c00e518",
+      "retrieved_at": "2026-10-17T12:31:32Z"
+    }
+  },
+  {
+    "id": "arxiv:2608.22301",
+    "name": "The Imitator Game: Benchmarking Robot Imitative Ability Beyond Action Prediction",
+    "url": "https://arxiv.org/abs/2608.22301",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The Imitator Game evaluates physical robot imitation of human demonstrations across objects, layouts and affordances. Its paired human–robot dataset and manipulation tasks do not constitute computer-interface agent evaluation.",
+    "reviewed_at": "2026-10-17T14:29:24.825113+00:00",
+    "metadata_fingerprint": "3338d4b4e7fc324aab1b9a0b8ea540da844994b33eba9d1087ff053171b247ce",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?id_list=2608.16211%2C2608.16391%2C2608.17067%2C2608.17975%2C2608.19741%2C2608.21500%2C2608.22301%2C2608.22510%2C2608.23035%2C2608.23320%2C2608.26238%2C2608.26546%2C2608.26991%2C2608.27260%2C2608.29814%2C2608.31076%2C2609.02292%2C2609.04173%2C2609.04298%2C2609.05776%2C2609.06059%2C2609.07529%2C2609.08149%2C2609.08418%2C2609.09187%2C2609.11561%2C2609.12533%2C2609.15096%2C2609.15544%2C2609.20732%2C2609.21293%2C2609.23986%2C2609.24971%2C2609.24997%2C2609.27455%2C2609.29647%2C2609.29964%2C2609.30798%2C2609.32835%2C2609.34428%2C2609.35002%2C2609.35232%2C2609.35394%2C2609.35581%2C2609.36071%2C2609.36352%2C2609.36777%2C2609.37017%2C2609.38923%2C2609.39222&max_results=50",
+      "sha256": "6499b4f4917eec0765d16d6e26a08d7edc5146a30753b19cf8218517656bb070",
+      "retrieved_at": "2026-10-17T12:31:35Z"
+    }
+  },
+  {
+    "id": "arxiv:2608.23320",
+    "name": "ROS2SmolVLA: Enabling Small Vision-Language-Action Models for Integration into Industrial-Grade Lightweight Robots",
+    "url": "https://arxiv.org/abs/2608.23320",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "ROS2SmolVLA integrates a vision-language-action policy with an industrial robot and validates a physical pick-and-place task. The described interface is ROS 2 robot control, outside the software-interface agent scope.",
+    "reviewed_at": "2026-10-17T14:29:24.825111+00:00",
+    "metadata_fingerprint": "f1e0df96a7db5177cc12e3a28c1f8d54495aa771809df1c646136c44a048a0a4",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?id_list=2608.16211%2C2608.16391%2C2608.17067%2C2608.17975%2C2608.19741%2C2608.21500%2C2608.22301%2C2608.22510%2C2608.23035%2C2608.23320%2C2608.26238%2C2608.26546%2C2608.26991%2C2608.27260%2C2608.29814%2C2608.31076%2C2609.02292%2C2609.04173%2C2609.04298%2C2609.05776%2C2609.06059%2C2609.07529%2C2609.08149%2C2609.08418%2C2609.09187%2C2609.11561%2C2609.12533%2C2609.15096%2C2609.15544%2C2609.20732%2C2609.21293%2C2609.23986%2C2609.24971%2C2609.24997%2C2609.27455%2C2609.29647%2C2609.29964%2C2609.30798%2C2609.32835%2C2609.34428%2C2609.35002%2C2609.35232%2C2609.35394%2C2609.35581%2C2609.36071%2C2609.36352%2C2609.36777%2C2609.37017%2C2609.38923%2C2609.39222&max_results=50",
+      "sha256": "6499b4f4917eec0765d16d6e26a08d7edc5146a30753b19cf8218517656bb070",
+      "retrieved_at": "2026-10-17T12:31:35Z"
+    }
+  },
+  {
+    "id": "arxiv:2609.29964",
+    "name": "World Action Agent: Harnessing VLMs for Robot Manipulation via World Action Rehearsal",
+    "url": "https://arxiv.org/abs/2609.29964",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "World Action Agent pilots robot manipulation through scene views, action rehearsal and low-level physical execution. Its studied tasks and transfer experiments concern robot scenes, not graphical software operation.",
+    "reviewed_at": "2026-10-17T14:29:24.825109+00:00",
+    "metadata_fingerprint": "860e7bab8afdce28fd6550451c0a9d30f441af4c8a3752906140aea27567f1a0",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?id_list=2608.16211%2C2608.16391%2C2608.17067%2C2608.17975%2C2608.19741%2C2608.21500%2C2608.22301%2C2608.22510%2C2608.23035%2C2608.23320%2C2608.26238%2C2608.26546%2C2608.26991%2C2608.27260%2C2608.29814%2C2608.31076%2C2609.02292%2C2609.04173%2C2609.04298%2C2609.05776%2C2609.06059%2C2609.07529%2C2609.08149%2C2609.08418%2C2609.09187%2C2609.11561%2C2609.12533%2C2609.15096%2C2609.15544%2C2609.20732%2C2609.21293%2C2609.23986%2C2609.24971%2C2609.24997%2C2609.27455%2C2609.29647%2C2609.29964%2C2609.30798%2C2609.32835%2C2609.34428%2C2609.35002%2C2609.35232%2C2609.35394%2C2609.35581%2C2609.36071%2C2609.36352%2C2609.36777%2C2609.37017%2C2609.38923%2C2609.39222&max_results=50",
+      "sha256": "6499b4f4917eec0765d16d6e26a08d7edc5146a30753b19cf8218517656bb070",
+      "retrieved_at": "2026-10-17T12:31:35Z"
+    }
+  },
+  {
+    "id": "arxiv:2609.35581",
+    "name": "QC-Stark: A Multi-Task Benchmark Revealing Capability Dissociations in LLMs Evaluated on Quantum Computing Tasks",
+    "url": "https://arxiv.org/abs/2609.35581",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The benchmark evaluates LLMs on quantum-circuit construction, debugging, compilation, error correction and simulation. These are quantum-computing problem-solving tasks rather than computer-interface agent operations.",
+    "reviewed_at": "2026-10-17T14:29:24.825106+00:00",
+    "metadata_fingerprint": "845fed75ec4af1683317d9adf232fae71aaa8bff659bf02a1834d154491ab13c",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?id_list=2608.16211%2C2608.16391%2C2608.17067%2C2608.17975%2C2608.19741%2C2608.21500%2C2608.22301%2C2608.22510%2C2608.23035%2C2608.23320%2C2608.26238%2C2608.26546%2C2608.26991%2C2608.27260%2C2608.29814%2C2608.31076%2C2609.02292%2C2609.04173%2C2609.04298%2C2609.05776%2C2609.06059%2C2609.07529%2C2609.08149%2C2609.08418%2C2609.09187%2C2609.11561%2C2609.12533%2C2609.15096%2C2609.15544%2C2609.20732%2C2609.21293%2C2609.23986%2C2609.24971%2C2609.24997%2C2609.27455%2C2609.29647%2C2609.29964%2C2609.30798%2C2609.32835%2C2609.34428%2C2609.35002%2C2609.35232%2C2609.35394%2C2609.35581%2C2609.36071%2C2609.36352%2C2609.36777%2C2609.37017%2C2609.38923%2C2609.39222&max_results=50",
+      "sha256": "6499b4f4917eec0765d16d6e26a08d7edc5146a30753b19cf8218517656bb070",
+      "retrieved_at": "2026-10-17T12:31:35Z"
+    }
+  },
+  {
+    "id": "arxiv:2610.01939",
+    "name": "Fewer Tokens, Better Action: GPT-6 Astra Robot Agents with 14% Higher Success Rate but 65% Fewer Tokens",
+    "url": "https://arxiv.org/abs/2610.01939",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract studies Python-mediated control of robot primitives and VLA policies on robotic manipulation benchmarks. Its code-execution mechanism serves physical robot actions, not computer-interface tasks.",
+    "reviewed_at": "2026-10-17T14:29:24.824538+00:00",
+    "metadata_fingerprint": "486bb662bae6ad0be899d32508bce7f7d96a148ab375f750c1f3cdd45c86c218",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?id_list=2609.39924%2C2610.00346%2C2610.00583%2C2610.01939%2C2610.05099%2C2610.09127%2C2610.09484%2C2610.09633%2C2610.11251%2C2610.11922%2C2610.13098%2C2610.13166%2C2610.13361%2C2610.13623%2C2610.16117%2C2610.17953%2C2610.18067%2C2610.19366%2C2610.20424&max_results=19",
+      "sha256": "c52e4e283e0dae88ef8b3ce67b7424b1d4b48e8f41015d872f4da69f98782eaa",
+      "retrieved_at": "2026-10-17T12:31:39Z"
+    }
   }
 ]

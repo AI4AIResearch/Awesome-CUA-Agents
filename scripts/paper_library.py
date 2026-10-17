@@ -43,6 +43,36 @@ TOPICS = {
     'ui-design': ('Interface design', '界面设计'),
 }
 
+ASSET_KINDS = {
+    'agent': ('code', 'Agent', '智能体'), 'framework': ('code', 'Code', '代码'),
+    'tool': ('code', 'Tool', '工具'), 'infrastructure': ('code', 'Runtime', '运行环境'),
+    'dataset': ('data', 'Data', '数据'), 'model': ('model', 'Model', '模型'),
+    'benchmark': ('benchmark', 'Benchmark', '基准'), 'product': ('product', 'Product', '产品'),
+}
+ASSET_ORDER = {'code': 0, 'data': 1, 'model': 2, 'benchmark': 3, 'product': 4}
+
+
+def connected_assets(rows):
+    """Only explicitly documented or introduced assets, never mentions or shared tags."""
+    by_id = {row['id']: row for row in rows}
+    linked = defaultdict(dict)
+    for row in rows:
+        if row['kind'] not in ASSET_KINDS or row['review_status'] != 'curated' or row['scope'] not in {'core', 'adjacent'}:
+            continue
+        for relation in row['relations']:
+            if relation['type'] not in {'introduced_by', 'documented_by'}:
+                continue
+            paper = by_id.get(relation['target_id'])
+            if not paper or paper['kind'] not in {'paper', 'survey'} or paper['review_status'] != 'curated' or paper['scope'] not in {'core', 'adjacent'}:
+                continue
+            if not any(receipt['url'] == relation['evidence_url'] and receipt['role'] == 'primary'
+                       and 'relations' in receipt['supports'] for receipt in row['evidence']):
+                raise ValueError('Paper asset link lacks relationship-scoped evidence: ' + row['id'])
+            linked[paper['id']][row['id']] = row
+    return {identity: sorted(assets.values(), key=lambda row: (
+        ASSET_ORDER[ASSET_KINDS[row['kind']][0]], row['name'].casefold(), row['id']))
+        for identity, assets in linked.items()}
+
 
 def esc(value):
     return html.escape(str(value), quote=True)
@@ -58,6 +88,7 @@ def paper_library(rows, resource_path, *, language='en', site_url='https://aweso
     papers = sorted((r for r in rows if r['kind'] in {'paper', 'survey'}
                      and r['review_status'] == 'curated' and r['scope'] in {'core', 'adjacent'}),
                     key=lambda r: (record_date_text(r), r['id']), reverse=True)
+    assets = connected_assets(rows)
     groups = defaultdict(list)
     for row in papers:
         groups[record_year(row) or 'undated'].append(row)
@@ -75,7 +106,8 @@ def paper_library(rows, resource_path, *, language='en', site_url='https://aweso
             '<h1 id="library-title">' + title_markup + '</h1></div>',
             '<a class="library-language" href="' + ('/papers/' if zh else '/zh/papers/') + '">' + ('English' if zh else '中文') + '</a></div>',
             '<p class="library-intro">' + tr('Source-backed papers on GUI grounding, agents, training, evaluation, and safety.', '从 GUI 定位到智能体训练、评测与安全，每篇都可追溯到原始论文。') + '</p>',
-            '<div class="library-toolbar"><p class="library-count"><strong>' + f'{len(papers):,}' + '</strong> ' + tr('reviewed papers & surveys', '篇已审阅论文与综述') + '</p>',
+            '<div class="library-toolbar"><p class="library-count"><strong>' + f'{len(papers):,}' + '</strong> ' + tr('reviewed papers & surveys', '篇已审阅论文与综述')
+            + ('<a class="library-connected-count" href="/connections/">' + str(len(assets)) + ' ' + tr('with recorded resource links', '篇附有已审阅的资源关联') + ' ↗</a>' if assets else '') + '</p>',
             '<div class="library-downloads"><a class="button primary" href="' + search_link() + '">' + tr('Search papers', '检索论文') + ' ↗</a>',
             ('<a class="button secondary" href="' + search_link(kind='survey') + '">' + tr('Surveys', '综述') + ' ' + str(survey_count) + '</a>') if survey_count else '',
             '<a class="button secondary" href="/downloads/citations.bib" download>BibTeX ↓</a>',
@@ -88,7 +120,7 @@ def paper_library(rows, resource_path, *, language='en', site_url='https://aweso
     for topic, _count in topics.most_common(8):
         body.append('<a href="' + search_link(topic=topic) + '">' + esc(label(TOPICS, topic)) + '</a>')
     body.append('<a class="library-all-topics" href="' + ('/zh/topics/' if zh else '/topics/') + '">' + tr('All topics', '全部主题') + ' ↗</a>')
-    body.append('</div><p class="library-method">' + tr('AI-assisted editorial review of primary sources; experiments are not independently reproduced. Dates keep their recorded precision.', '条目经过 AI 辅助的一手来源编辑审阅，实验未独立复现。发表日期保留来源记录的精度。') + ' <a href="/about/">' + tr('Method', '收录方法') + ' ↗</a></p>')
+    body.append('</div><p class="library-method">' + tr('AI-assisted editorial review of primary sources; experiments are not independently reproduced. Dates keep their recorded precision. Resource links below follow reviewed introduction or documentation relationships.', '条目经过 AI 辅助的一手来源编辑审阅，实验未独立复现。发表日期保留来源记录的精度。下方资源链接来自已审阅的介绍或文档关系。') + ' <a href="/about/">' + tr('Method', '收录方法') + ' ↗</a></p>')
     for year in years:
         body.append('<section class="paper-year-group" aria-labelledby="papers-' + year + '"><div class="paper-year-heading"><h2 id="papers-' + year + '">' + (tr('Date not recorded', '日期待录') if year == 'undated' else year) + '</h2><span>' + str(len(groups[year])) + ' ' + tr('papers & surveys', '篇论文与综述') + '</span><a href="#library-title">' + tr('Back to years', '回到年份') + ' ↑</a></div>')
         for row in groups[year]:
@@ -124,7 +156,22 @@ def paper_library(rows, resource_path, *, language='en', site_url='https://aweso
                 body.append('<a href="' + search_link(kind=row['kind'],topic=topic) + '">' + esc(label(TOPICS, topic)) + '</a>')
             if row['scope'] == 'adjacent':
                 body.append('<span class="paper-adjacent">' + tr('Adjacent research', '相关研究') + '</span>')
-            body.append('</div></div><div class="paper-entry-links"><a href="' + safe_href(source) + '">' + tr('Paper', '原论文') + ' ↗</a><a href="' + path + 'citation.bib" download aria-label="' + esc(tr('BibTeX for ', 'BibTeX：') + row['name']) + '">BibTeX ↓</a><a href="' + path + '">' + tr('Details', '详情') + ' →</a></div></article>')
+            body.append('</div>')
+            linked = assets.get(row['id'], [])
+            if linked:
+                body.append('<div class="paper-assets" aria-label="' + tr('Source-reviewed connected resources', '有来源支持的关联资源') + '">')
+                for asset in linked[:3]:
+                    group, en, cn = ASSET_KINDS[asset['kind']]
+                    asset_label = tr(en, cn)
+                    body.append('<a class="paper-asset paper-asset-' + group + '" data-asset-id="' + esc(asset['id'])
+                                + '" href="' + safe_href(asset['url']) + '" title="' + esc(asset_label + ': ' + asset['name'])
+                                + '"><span class="paper-asset-kind">' + esc(asset_label) + '</span><span class="paper-asset-name">'
+                                + esc(asset['name']) + '</span><span aria-hidden="true">↗</span></a>')
+                if len(linked) > 3:
+                    body.append('<a class="paper-asset-more" href="' + path + '#connected-assets">+'
+                                + str(len(linked) - 3) + ' ' + tr('resources', '项资源') + '</a>')
+                body.append('</div>')
+            body.append('</div><div class="paper-entry-links"><a href="' + safe_href(source) + '">' + tr('Paper', '原论文') + ' ↗</a><a href="' + path + 'citation.bib" download aria-label="' + esc(tr('BibTeX for ', 'BibTeX：') + row['name']) + '">BibTeX ↓</a><a href="' + path + '">' + tr('Details', '详情') + ' →</a></div></article>')
         body.append('</section>')
     body.append('<p class="library-footer">' + tr('Explore the complete catalog, including bibliography entries awaiting relevance review.', '完整目录还包含相关性待审阅的论文元数据，并明确标注审阅状态。') + ' <a href="/?kind=paper&amp;lang=' + ('zh' if zh else 'en') + '#catalog">' + tr('All paper records', '全部论文记录') + ' ↗</a> · <a href="/?kind=survey&amp;lang=' + ('zh' if zh else 'en') + '#catalog">' + tr('All survey records', '全部综述记录') + ' ↗</a></p></section>')
     schema = {'@type': 'ItemList', 'name': title, 'numberOfItems': len(papers),

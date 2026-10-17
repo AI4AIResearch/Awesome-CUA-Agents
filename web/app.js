@@ -126,7 +126,7 @@ async function load() {
   try {
     const response=await fetch('./data/index.json');if(!response.ok)throw new Error('HTTP '+response.status);
     const data=await response.json();report=data.coverage;records=data.records;
-    records.forEach(r=>r.search_text=searchText([r.name,r.summary,r.publication_search_text,...r.aliases,...r.authors,...r.environments.flatMap(x=>PLATFORMS[x] || [x]),...r.topics.flatMap(x=>[...(TOPICS[x] || [x]),...(TOPIC_ALIASES[x] || [])]),...(KINDS[r.kind] || [])]));
+    records.forEach(r=>r.search_text=searchText([r.id,r.url,r.name,r.summary,r.publication_search_text,...r.aliases,...r.authors,...r.environments.flatMap(x=>PLATFORMS[x] || [x]),...r.topics.flatMap(x=>[...(TOPICS[x] || [x]),...(TOPIC_ALIASES[x] || [])]),...(KINDS[r.kind] || [])]));
     if(!Object.hasOwn(PLATFORMS,state.platform))state.platform='';
     if(!records.some(r=>r.topics.includes(state.topic)))state.topic='';
     $('#stat-resources').textContent=num(records.length);$('#stat-curated').textContent=num(report.curated_records);$('#stat-kinds').textContent=num(Object.keys(report.by_kind).length);$('#stat-sources').textContent=num(report.sources.length);

@@ -1,17 +1,17 @@
 {
-  "as_of_utc": "2026-10-17T12:45:23Z",
-  "total_records": 3022,
-  "curated_records": 1322,
-  "bibliographic_records": 2596,
-  "arxiv_active_records": 2583,
+  "as_of_utc": "2026-10-17T14:35:24Z",
+  "total_records": 3004,
+  "curated_records": 1430,
+  "bibliographic_records": 2578,
+  "arxiv_active_records": 2565,
   "non_arxiv_bibliographic_records": 13,
   "publication_metadata_records": 26,
   "arxiv_archive_records": 2683,
-  "excluded_records": 100,
+  "excluded_records": 118,
   "exclusion_revalidation_pending": 0,
-  "metadata_only_records": 1700,
+  "metadata_only_records": 1574,
   "discovery_identifiers": 3907,
-  "unindexed_candidates": 950,
+  "unindexed_candidates": 945,
   "pending_editorial": [
     {
       "id": "github:thudm/autoglm",
@@ -94,22 +94,22 @@
     "framework": 66,
     "infrastructure": 15,
     "model": 93,
-    "paper": 2583,
+    "paper": 2565,
     "product": 19,
     "survey": 13,
     "tool": 20
   },
   "curated_by_environment": {
-    "android": 262,
+    "android": 275,
     "cross-platform": 186,
-    "desktop": 256,
+    "desktop": 277,
     "harmonyos": 2,
     "ios": 19,
-    "linux": 38,
-    "macos": 25,
-    "unspecified": 293,
-    "web": 483,
-    "windows": 47
+    "linux": 39,
+    "macos": 29,
+    "unspecified": 326,
+    "web": 533,
+    "windows": 51
   },
   "curated_by_kind_and_environment": {
     "agent": {
@@ -179,16 +179,16 @@
       "windows": 4
     },
     "paper": {
-      "android": 147,
+      "android": 160,
       "cross-platform": 94,
-      "desktop": 159,
+      "desktop": 180,
       "harmonyos": 1,
       "ios": 6,
-      "linux": 15,
-      "macos": 10,
-      "unspecified": 258,
-      "web": 324,
-      "windows": 28
+      "linux": 16,
+      "macos": 14,
+      "unspecified": 291,
+      "web": 374,
+      "windows": 32
     },
     "product": {
       "desktop": 5,
@@ -240,12 +240,12 @@
         "state": "success"
       },
       "discovered": 338,
-      "indexed": 215,
-      "indexed_resources": 214,
-      "resolved_aliases": 1,
-      "curated": 201,
+      "indexed": 219,
+      "indexed_resources": 218,
+      "resolved_aliases": 5,
+      "curated": 207,
       "excluded": 0,
-      "unindexed": 123
+      "unindexed": 119
     },
     {
       "id": "zju-gui",
@@ -271,7 +271,7 @@
       "indexed": 165,
       "indexed_resources": 165,
       "resolved_aliases": 0,
-      "curated": 161,
+      "curated": 162,
       "excluded": 0,
       "unindexed": 53
     },
@@ -299,7 +299,7 @@
       "indexed": 198,
       "indexed_resources": 198,
       "resolved_aliases": 0,
-      "curated": 169,
+      "curated": 177,
       "excluded": 0,
       "unindexed": 26
     },
@@ -327,7 +327,7 @@
       "indexed": 94,
       "indexed_resources": 94,
       "resolved_aliases": 0,
-      "curated": 83,
+      "curated": 84,
       "excluded": 0,
       "unindexed": 38
     },
@@ -408,12 +408,12 @@
         "state": "success"
       },
       "discovered": 170,
-      "indexed": 113,
-      "indexed_resources": 113,
-      "resolved_aliases": 0,
-      "curated": 102,
+      "indexed": 114,
+      "indexed_resources": 114,
+      "resolved_aliases": 1,
+      "curated": 106,
       "excluded": 1,
-      "unindexed": 56
+      "unindexed": 55
     },
     {
       "id": "delunn-multimodal",
@@ -436,12 +436,12 @@
         "state": "success"
       },
       "discovered": 588,
-      "indexed": 493,
-      "indexed_resources": 493,
-      "resolved_aliases": 0,
-      "curated": 410,
+      "indexed": 496,
+      "indexed_resources": 496,
+      "resolved_aliases": 3,
+      "curated": 430,
       "excluded": 0,
-      "unindexed": 95
+      "unindexed": 92
     },
     {
       "id": "tianyuan-cua",
@@ -467,7 +467,7 @@
       "indexed": 69,
       "indexed_resources": 69,
       "resolved_aliases": 0,
-      "curated": 59,
+      "curated": 62,
       "excluded": 0,
       "unindexed": 25
     },
@@ -495,7 +495,7 @@
       "indexed": 48,
       "indexed_resources": 48,
       "resolved_aliases": 0,
-      "curated": 31,
+      "curated": 32,
       "excluded": 0,
       "unindexed": 30
     },
@@ -548,12 +548,12 @@
         "state": "success"
       },
       "discovered": 193,
-      "indexed": 144,
-      "indexed_resources": 144,
-      "resolved_aliases": 0,
-      "curated": 139,
+      "indexed": 146,
+      "indexed_resources": 146,
+      "resolved_aliases": 2,
+      "curated": 142,
       "excluded": 0,
-      "unindexed": 49
+      "unindexed": 47
     },
     {
       "id": "osu-gui",
@@ -579,7 +579,7 @@
       "indexed": 486,
       "indexed_resources": 486,
       "resolved_aliases": 0,
-      "curated": 297,
+      "curated": 353,
       "excluded": 0,
       "unindexed": 58
     },
@@ -604,12 +604,12 @@
         "state": "success"
       },
       "discovered": 144,
-      "indexed": 91,
-      "indexed_resources": 91,
-      "resolved_aliases": 0,
-      "curated": 80,
+      "indexed": 92,
+      "indexed_resources": 92,
+      "resolved_aliases": 1,
+      "curated": 83,
       "excluded": 0,
-      "unindexed": 53
+      "unindexed": 52
     },
     {
       "id": "jin-gui-hub",
@@ -635,7 +635,7 @@
       "indexed": 207,
       "indexed_resources": 207,
       "resolved_aliases": 0,
-      "curated": 91,
+      "curated": 116,
       "excluded": 0,
       "unindexed": 3
     },
@@ -688,12 +688,12 @@
         "state": "success"
       },
       "discovered": 40,
-      "indexed": 25,
-      "indexed_resources": 25,
-      "resolved_aliases": 0,
-      "curated": 24,
+      "indexed": 26,
+      "indexed_resources": 26,
+      "resolved_aliases": 1,
+      "curated": 25,
       "excluded": 0,
-      "unindexed": 15
+      "unindexed": 14
     },
     {
       "id": "phone-gui",
@@ -716,12 +716,12 @@
         "state": "success"
       },
       "discovered": 247,
-      "indexed": 192,
-      "indexed_resources": 192,
-      "resolved_aliases": 0,
-      "curated": 174,
+      "indexed": 194,
+      "indexed_resources": 194,
+      "resolved_aliases": 2,
+      "curated": 181,
       "excluded": 0,
-      "unindexed": 55
+      "unindexed": 53
     },
     {
       "id": "mobile-agents",
@@ -747,7 +747,7 @@
       "indexed": 77,
       "indexed_resources": 77,
       "resolved_aliases": 0,
-      "curated": 62,
+      "curated": 66,
       "excluded": 0,
       "unindexed": 14
     },
@@ -803,7 +803,7 @@
       "indexed": 59,
       "indexed_resources": 59,
       "resolved_aliases": 0,
-      "curated": 51,
+      "curated": 55,
       "excluded": 0,
       "unindexed": 37
     },
@@ -1251,7 +1251,7 @@
       "indexed": 12,
       "indexed_resources": 12,
       "resolved_aliases": 0,
-      "curated": 11,
+      "curated": 12,
       "excluded": 0,
       "unindexed": 21
     },

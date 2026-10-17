@@ -90,6 +90,7 @@ class DataHubTests(unittest.TestCase):
         self.write_json('downloads/datasets-profiles.json', {'profile_count': 1, 'records': [{'id': dataset['id']}]})
         self.write_json('downloads/relationships.json', {'relation_count': 0, 'relations': []})
         self.write_json('downloads/sources.json', [{'id': 'source-a'}, {'id': 'source-b'}])
+        self.write_json('downloads/repository-aliases.json', [])
         self.write_json('downloads/exclusions.json', {'decisions': [{'id': 'arxiv:2601.99999', 'status': 'excluded'}]})
         self.write_json('downloads/coverage.json', {'total_records': len(self.rows)})
         archive = [reviewed, pending, record('2601.99999', 'metadata_verified')]
@@ -98,7 +99,7 @@ class DataHubTests(unittest.TestCase):
         (self.destination / 'downloads/publications.jsonl').write_text(
             ''.join(json.dumps({'id': row['id'], 'publication': row['details']['publication']}) + '\n'
                     for row in (reviewed, pending)))
-        for name in ('resource', 'scope-decision', 'publication-observation', 'download-manifest'):
+        for name in ('resource', 'scope-decision', 'publication-observation', 'download-manifest', 'repository-alias'):
             shutil.copy2(ROOT / 'schemas' / (name + '.schema.json'), self.destination / 'schemas')
 
     def write_json(self, relative, value):

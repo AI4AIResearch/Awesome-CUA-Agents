@@ -41,6 +41,15 @@ python3 scripts/catalog.py get arxiv:2404.07972 --related --json
 
 Plain `get --json` returns the original active record. `--related` wraps that record with direction, relation type, primary relationship evidence, and the connected records. Unknown IDs and scope-excluded IDs return distinct nonzero exit codes; an excluded record is never returned as active. `references.jsonl` mentions are not treated as reviewed semantic relations.
 
+Source-reviewed former GitHub IDs also resolve to the canonical record in this snapshot:
+
+```sh
+python3 scripts/catalog.py get github:mnotgod96/appagent --json
+python3 scripts/catalog.py search "https://github.com/mnotgod96/AppAgent" --json
+```
+
+Use the returned `id` for citations and upserts; a former name is not another resource. [Repository identity observations](https://awesomecua.github.io/downloads/repository-aliases.json) retain paired official API receipts and the same numeric repository ID. They describe the recorded snapshot, not release completeness or licensing. Aliases and their scoped evidence also travel with the catalog and RAG documents. Raw discovery occurrences and mention edges retain their original identifiers.
+
 Each resource page also serves its exact active record at `record.json`, for example <https://awesomecua.github.io/resources/arxiv-2404-07972/record.json>. A scope-excluded page returns an explicit `status: excluded` JSON decision instead. These are static files; inspect the JSON status/review fields rather than treating HTTP 200 as approval.
 
 ## Export paper citations

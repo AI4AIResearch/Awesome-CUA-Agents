@@ -15,8 +15,17 @@ from catalog import ROOT, DATA, KINDS, ENVIRONMENTS, STATUSES, canonical, editor
 from specifications import PREFIXES, PROFILE_KEYS, validate_profiles
 from scope_review import resolve_exclusions, scope_report
 from arxiv_metadata import validate_snapshot
+from repository_identity import repository_aliases, attach_repository_aliases
 from publication_metadata import (alias_owner_errors, attach_publications, duplicate_publication_errors, publication_aliases,
     publication_links, publication_search_text, record_date_text, record_year, validate_publication)
+
+
+def source_aliases(rows=None):
+    aliases = publication_aliases(read_jsonl(DATA/'publications.jsonl'), publication_identity)
+    repositories = repository_aliases(read_json(DATA/'repository-aliases.json', []), rows)
+    if any(key in aliases and aliases[key] != value for key, value in repositories.items()):
+        raise ValueError('Source identity aliases have conflicting owners')
+    return {**aliases, **repositories}
 
 
 def apply_license_reviews(editorial, primary, licenses, details):
@@ -124,6 +133,7 @@ def source_records(with_scope=False):
     excluded = {row['id'] for row in decisions if row['status']=='excluded'}
     pending += [{'id':row['id'],'name':records[row['id']]['name'],'url':row['url'],'reason':row['status_reason']} for row in decisions if row['status']=='revalidation_pending']
     rows = sorted((row for rid,row in records.items() if rid not in excluded), key=lambda r:r['id'])
+    rows = attach_repository_aliases(rows, read_json(DATA/'repository-aliases.json', []))
     return (rows,pending,decisions) if with_scope else (rows,pending)
 
 
@@ -212,8 +222,9 @@ def validate_records(rows):
             relation_keys.add(key)
             if relation.get("target_id") not in ids:
                 error(f"dangling reviewed relation {relation.get('target_id')}")
-            if relation.get('evidence_url') not in {e.get('url') for e in r.get('evidence',[])}:
-                error('reviewed relation lacks a retained primary evidence receipt')
+            if not any(e.get('url')==relation.get('evidence_url') and e.get('role')=='primary'
+                       and 'relations' in e.get('supports',[]) for e in r.get('evidence',[])):
+                error('reviewed relation lacks a retained primary evidence receipt scoped to relations')
         for key in ("published_at", "updated_at"):
             value = r.get(key)
             if value is not None:
@@ -244,7 +255,7 @@ def coverage(rows, pending, scope_decisions):
     sources = read_json(DATA / "sources.json", [])
     excluded = {row['id'] for row in scope_decisions if row['status']=='excluded'}
     source_rows = []
-    aliases = publication_aliases(read_jsonl(DATA/'publications.jsonl'), publication_identity)
+    aliases = source_aliases(rows)
     for source in sources:
         population = {r["id"] for r in candidates if any(o["source_id"] == source["id"] for o in r["discovered_in"])}
         resolved = {aliases.get(identity, identity) for identity in population}
@@ -532,7 +543,7 @@ def documents(rows, report):
         "These are distinct resource identifiers, not distinct research projects. Papers, repositories, datasets, products, and publisher entities have different grains.", "",
         "## Curated coverage by kind and environment", "", "Counts of source-reviewed resources. A resource tagged with several environments counts in each column; `·` marks an empty cell, which is where contributions are most needed.", "",
         *matrix_lines(report["curated_by_kind_and_environment"]), "",
-        "## Source snapshot coverage", "", "The denominator is the normalized identifiers extracted from each fetched document, including incidental links. Reviewed publisher/PDF aliases can resolve to one canonical resource; coverage counts matching identifiers, while indexed_resources records distinct resolved resources. Sources overlap. These figures do not measure global completeness or editorial recall.", "",
+        "## Source snapshot coverage", "", "The denominator is the normalized identifiers extracted from each fetched document, including incidental links. Reviewed publisher/PDF aliases and former GitHub names can resolve to one canonical resource; coverage counts matching identifiers, while indexed_resources records distinct resolved resources. Sources overlap. These figures do not measure global completeness or editorial recall.", "",
         "| Source | Discovered | Indexed | Curated | Excluded | Unresolved | Fetch |", "| --- | ---: | ---: | ---: | ---: | ---: | --- |"]
     for s in report["sources"]:
         status = s["snapshot"] or {}
@@ -729,7 +740,7 @@ def build(args):
     ids = {r["id"] for r in rows}
     excluded = {row['id'] for row in scope_decisions if row['status']=='excluded'}
     candidates = read_jsonl(DATA / "candidates.jsonl")
-    aliases=publication_aliases(read_jsonl(DATA/'publications.jsonl'),publication_identity)
+    aliases=source_aliases(rows)
     queue = [{**r, "review_status": "candidate", "reason": "discovered identifier; primary evidence and relevance need review"} for r in candidates if aliases.get(r['id'],r['id']) not in ids and aliases.get(r['id'],r['id']) not in excluded]
     editorial_pending = {r["id"]: r for r in pending}
     merged = {r["id"]: r for r in queue}
@@ -790,6 +801,16 @@ def validate(args):
     validator = jsonschema.Draft202012Validator(resource_contract, format_checker=formats)
     for row in rows:
         errors.extend(f"{row['id']}: {error.message}" for error in validator.iter_errors(row))
+    repository_declarations=read_json(DATA/'repository-aliases.json', [])
+    repository_validator=jsonschema.Draft202012Validator(read_json(ROOT/'schemas/repository-alias.schema.json'),format_checker=formats)
+    repository_errors=['Repository aliases: '+error.message for error in repository_validator.iter_errors(repository_declarations)]
+    errors.extend(repository_errors)
+    if not repository_errors:
+        try:
+            if attach_repository_aliases(rows,repository_declarations)!=rows:
+                errors.append('Catalog is missing recorded repository aliases or their evidence; rebuild the catalog')
+        except (ValueError,KeyError,TypeError) as error:
+            errors.append('Repository aliases: '+str(error))
     registry=Registry().with_resource(resource_contract['$id'],Resource.from_contents(resource_contract))
     publication_validator=jsonschema.Draft202012Validator(read_json(ROOT/'schemas/publication-observation.schema.json'),registry=registry,format_checker=formats)
     publication_observations=read_jsonl(DATA/'publications.jsonl')
@@ -827,10 +848,11 @@ def search(args):
     # Literal AND search is intentionally safe and works without a generated database.
     terms = args.query.casefold().split()
     target = publication_identity(args.query)  # a pasted URL folds to its record id (arXiv versions, GitHub paths)
-    aliases = publication_aliases(read_jsonl(DATA/'publications.jsonl'),publication_identity)
+    rows = read_jsonl(DATA / "catalog.jsonl")
+    aliases = source_aliases(rows)
     target_id = aliases.get(target[0],target[0]) if target else None
     result = []
-    for row in read_jsonl(DATA / "catalog.jsonl"):
+    for row in rows:
         if args.kind and row["kind"] != args.kind:
             continue
         if args.status and row["review_status"] != args.status:

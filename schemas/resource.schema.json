@@ -389,6 +389,7 @@
             "enum": [
               "arxiv_api",
               "editorial_primary_review",
+              "github_repository_identity",
               "huggingface_api",
               "huggingface_card",
               "dataverse_api",

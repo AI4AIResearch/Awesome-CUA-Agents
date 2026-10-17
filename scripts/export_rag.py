@@ -29,6 +29,7 @@ def documents(records, include_metadata=False):
         source_url=(snapshot or {}).get('versioned_url') or record['url']
         lines=[record['name'],f"Resource type: {record['kind']}",f"Review status: {record['review_status']}",f"Scope: {record['scope']}"]
         if record.get('summary'):lines.extend(['',record['summary']])
+        if record.get('aliases'):lines.append('Recorded aliases: '+', '.join(record['aliases']))
         if record['environments']:lines.append('Platforms: '+', '.join(record['environments']))
         if record['topics']:lines.append('Topics: '+', '.join(record['topics']))
         if record.get('published_at'):lines.append('Published: '+record['published_at'])

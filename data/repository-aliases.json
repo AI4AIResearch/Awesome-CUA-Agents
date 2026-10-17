@@ -1,0 +1,137 @@
+[
+  {
+    "alias_id": "github:mnotgod96/appagent",
+    "target_id": "github:tencentqqgylab/appagent",
+    "repository_id": 733899994,
+    "basis": "official_github_repository_id",
+    "reviewed_at": "2026-10-17T14:13:59Z",
+    "observations": [
+      {
+        "url": "https://api.github.com/repos/mnotgod96/AppAgent",
+        "resolved_url": "https://api.github.com/repositories/733899994",
+        "repository_id": 733899994,
+        "full_name": "TencentQQGYLab/AppAgent",
+        "html_url": "https://github.com/TencentQQGYLab/AppAgent",
+        "retrieved_at": "2026-10-17T14:13:57Z",
+        "sha256": "cd15c021e5023f43c17cc6365a58177c08ae91ac7e854c64c0e531f4ed3c5d5f"
+      },
+      {
+        "url": "https://api.github.com/repos/TencentQQGYLab/AppAgent",
+        "resolved_url": "https://api.github.com/repos/TencentQQGYLab/AppAgent",
+        "repository_id": 733899994,
+        "full_name": "TencentQQGYLab/AppAgent",
+        "html_url": "https://github.com/TencentQQGYLab/AppAgent",
+        "retrieved_at": "2026-10-17T14:13:58Z",
+        "sha256": "cd15c021e5023f43c17cc6365a58177c08ae91ac7e854c64c0e531f4ed3c5d5f"
+      }
+    ]
+  },
+  {
+    "alias_id": "github:cooelf/auto-ui",
+    "target_id": "github:cooelf/auto-gui",
+    "repository_id": 694036243,
+    "basis": "official_github_repository_id",
+    "reviewed_at": "2026-10-17T14:14:01Z",
+    "observations": [
+      {
+        "url": "https://api.github.com/repos/cooelf/Auto-UI",
+        "resolved_url": "https://api.github.com/repositories/694036243",
+        "repository_id": 694036243,
+        "full_name": "cooelf/Auto-GUI",
+        "html_url": "https://github.com/cooelf/Auto-GUI",
+        "retrieved_at": "2026-10-17T14:13:59Z",
+        "sha256": "569f3c779e6a0b8210a764c9096e49e8a5199c107a64f7fcfb7a011257bf2a12"
+      },
+      {
+        "url": "https://api.github.com/repos/cooelf/Auto-GUI",
+        "resolved_url": "https://api.github.com/repos/cooelf/Auto-GUI",
+        "repository_id": 694036243,
+        "full_name": "cooelf/Auto-GUI",
+        "html_url": "https://github.com/cooelf/Auto-GUI",
+        "retrieved_at": "2026-10-17T14:14:00Z",
+        "sha256": "569f3c779e6a0b8210a764c9096e49e8a5199c107a64f7fcfb7a011257bf2a12"
+      }
+    ]
+  },
+  {
+    "alias_id": "github:eric-ai-lab/screen-point-and-read",
+    "target_id": "github:ucsb-ai/screen-point-and-read",
+    "repository_id": 820996010,
+    "basis": "official_github_repository_id",
+    "reviewed_at": "2026-10-17T14:14:02Z",
+    "observations": [
+      {
+        "url": "https://api.github.com/repos/eric-ai-lab/Screen-Point-and-Read",
+        "resolved_url": "https://api.github.com/repositories/820996010",
+        "repository_id": 820996010,
+        "full_name": "UCSB-AI/Screen-Point-and-Read",
+        "html_url": "https://github.com/UCSB-AI/Screen-Point-and-Read",
+        "retrieved_at": "2026-10-17T14:14:01Z",
+        "sha256": "868e18717ff76355c6552a5629b15de9fed1add1262fa5801ecabd7a7fb333d4"
+      },
+      {
+        "url": "https://api.github.com/repos/UCSB-AI/Screen-Point-and-Read",
+        "resolved_url": "https://api.github.com/repos/UCSB-AI/Screen-Point-and-Read",
+        "repository_id": 820996010,
+        "full_name": "UCSB-AI/Screen-Point-and-Read",
+        "html_url": "https://github.com/UCSB-AI/Screen-Point-and-Read",
+        "retrieved_at": "2026-10-17T14:14:02Z",
+        "sha256": "868e18717ff76355c6552a5629b15de9fed1add1262fa5801ecabd7a7fb333d4"
+      }
+    ]
+  },
+  {
+    "alias_id": "github:gimme1dollar/b-moca",
+    "target_id": "github:jylee425/b-moca",
+    "repository_id": 790019000,
+    "basis": "official_github_repository_id",
+    "reviewed_at": "2026-10-17T14:14:04Z",
+    "observations": [
+      {
+        "url": "https://api.github.com/repos/gimme1dollar/b-moca",
+        "resolved_url": "https://api.github.com/repositories/790019000",
+        "repository_id": 790019000,
+        "full_name": "jylee425/b-moca",
+        "html_url": "https://github.com/jylee425/b-moca",
+        "retrieved_at": "2026-10-17T14:14:03Z",
+        "sha256": "9d4706306b04960f0eb4298887496961efdee6b7d41445e82abcac489d63779f"
+      },
+      {
+        "url": "https://api.github.com/repos/jylee425/b-moca",
+        "resolved_url": "https://api.github.com/repos/jylee425/b-moca",
+        "repository_id": 790019000,
+        "full_name": "jylee425/b-moca",
+        "html_url": "https://github.com/jylee425/b-moca",
+        "retrieved_at": "2026-10-17T14:14:04Z",
+        "sha256": "9d4706306b04960f0eb4298887496961efdee6b7d41445e82abcac489d63779f"
+      }
+    ]
+  },
+  {
+    "alias_id": "github:mobilegptsys/mobilegpt",
+    "target_id": "github:fclab-skku/mobilegpt",
+    "repository_id": 814476533,
+    "basis": "official_github_repository_id",
+    "reviewed_at": "2026-10-17T14:14:06Z",
+    "observations": [
+      {
+        "url": "https://api.github.com/repos/mobilegptsys/MobileGPT",
+        "resolved_url": "https://api.github.com/repositories/814476533",
+        "repository_id": 814476533,
+        "full_name": "fclab-skku/MobileGPT",
+        "html_url": "https://github.com/fclab-skku/MobileGPT",
+        "retrieved_at": "2026-10-17T14:14:04Z",
+        "sha256": "3d3ceb084d374b706842cff1f4ec986fde50c13cba141dc4619d5afe8b631d55"
+      },
+      {
+        "url": "https://api.github.com/repos/fclab-skku/MobileGPT",
+        "resolved_url": "https://api.github.com/repos/fclab-skku/MobileGPT",
+        "repository_id": 814476533,
+        "full_name": "fclab-skku/MobileGPT",
+        "html_url": "https://github.com/fclab-skku/MobileGPT",
+        "retrieved_at": "2026-10-17T14:14:06Z",
+        "sha256": "3d3ceb084d374b706842cff1f4ec986fde50c13cba141dc4619d5afe8b631d55"
+      }
+    ]
+  }
+]

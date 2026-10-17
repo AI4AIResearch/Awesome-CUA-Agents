@@ -124,7 +124,9 @@ class LookupTests(unittest.TestCase):
         self.assertEqual(outgoing['resource'], self.paper)
         self.assertEqual(incoming['resource'], self.model)
         for edge, owner in [(outgoing, self.repo), (incoming, self.model)]:
-            self.assertEqual(edge['evidence'], [r for r in owner['evidence'] if r['url'] == edge['evidence_url']])
+            self.assertEqual(edge['evidence'], [r for r in owner['evidence']
+                                              if r['url'] == edge['evidence_url']
+                                              and r['role'] == 'primary' and 'relations' in r['supports']])
 
     def test_mentions_and_metadata_owned_edges_are_not_reviewed_relations(self):
         repo, paper, model, metadata = self.records

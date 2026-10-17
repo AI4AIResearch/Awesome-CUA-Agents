@@ -9,6 +9,7 @@ import sqlite3
 from agent_pages import CLONE_COMMAND
 from export_citations import encode_citations
 from export_rag import encode_documents
+from repository_identity import attach_repository_aliases
 
 
 GROUPS = {
@@ -27,6 +28,7 @@ UNITS = {
     'sources': ('discovery documents', '份发现文档'), 'editions': ('publication editions', '份出版记录'),
     'exports': ('export files', '个导出文件'), 'reports': ('report', '份报告'),
     'schemas': ('schema', '份规范'),
+    'aliases': ('former repository names', '个仓库旧标识'),
 }
 SCOPE_LABELS = {
     'active': ('All active records', '全部当前记录'),
@@ -180,11 +182,18 @@ def build_download_manifest(destination, rows, catalog_bytes):
         ('Retained ingestion snapshots, including excluded records. This is not the active catalog.', '保留的采集快照，包含已排除记录；其范围不同于当前有效目录。'), 'JSONL', 'application/x-ndjson', archive_count, 'papers', 'archive')
     add('publications', '/downloads/publications.jsonl', 'provenance', ('Publication observations', '出版来源记录'),
         ('Publication facts attached to canonical paper identities; not a second paper count.', '附加到规范论文身份的出版事实，不作为另一篇论文重复计数。'), 'JSONL', 'application/x-ndjson', publication_count, 'editions', 'recorded-publication')
+    repository_declarations = read_json('/downloads/repository-aliases.json')
+    if attach_repository_aliases(rows,repository_declarations) != rows:
+        raise ValueError('Repository aliases differ from their catalog owners and evidence')
+    add('repository-aliases', '/downloads/repository-aliases.json', 'provenance', ('Former repository names', '仓库旧地址映射'),
+        ('Former and canonical GitHub names verified against the same numeric repository ID. They do not add resources.', '通过相同 GitHub 仓库数字 ID 核实旧名与规范名称。它们不增加资源记录。'),
+        'JSON', 'application/json', len(repository_declarations), 'aliases', 'provenance')
     for name, title in [
         ('resource.schema.json', ('Resource schema', '资源记录规范')),
         ('scope-decision.schema.json', ('Scope-decision schema', '范围决定规范')),
         ('publication-observation.schema.json', ('Publication-observation schema', '出版来源规范')),
         ('download-manifest.schema.json', ('Download-manifest schema', '下载清单规范')),
+        ('repository-alias.schema.json', ('Repository-alias schema', '仓库地址映射规范')),
     ]:
         add(name.replace('.', '-'), '/schemas/' + name, 'contracts', title,
             ('Machine-readable field and format contract.', '可供程序读取的字段与格式约束。'), 'JSON Schema', 'application/schema+json', 1, 'schemas', 'contract')

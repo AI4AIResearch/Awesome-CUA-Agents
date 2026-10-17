@@ -24,6 +24,7 @@ Supporting automation libraries and workflow recording tools may be marked `adja
 - `organization:` IDs distinguish publisher/brand entities from their offerings; these do not assert legal incorporation or ownership.
 - Other URLs lose fragments and common tracking parameters. Similar titles are not automatically merged.
 - Redirects, project renames, dataset mirrors, and model variants require continued editorial entity resolution. Source coverage is conservative and does not assume that similar names are equivalent.
+- Former GitHub repository names can be recorded in `data/repository-aliases.json` after both official name endpoints identify the same numeric repository ID and canonical owner. These dated observations resolve search and exact former-ID lookups without creating another resource. They cannot map a repository to its dataset, a monorepo component, or an unreviewed target. Renew or correct the mapping when its identity evidence changes; inactive or conflicting owners fail validation rather than being silently reassigned.
 - When an author explicitly identifies an accidental duplicate submission, `identifiers.preferred_arxiv` records the preferred identifier with primary evidence. The duplicate stays accessible as bibliographic provenance and cannot be promoted as another curated paper. Similar titles alone do not establish this relationship.
 
 ## Explicit scope review

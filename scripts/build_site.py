@@ -15,6 +15,7 @@ from export_rag import build_exports
 from export_citations import build_citation_exports
 from site_files import reconcile_generated_pages
 from publication_metadata import record_date_parts, record_date_text, publication_search_text
+from repository_identity import attach_repository_aliases
 
 
 def version_script_imports(destination):
@@ -38,7 +39,11 @@ def build_site(output=None):
     destination=Path(output) if output else ROOT/'dist'/'site'
     rows=[json.loads(line) for line in (ROOT/'data/catalog.jsonl').read_text().splitlines() if line.strip()]
     coverage=json.loads((ROOT/'data/coverage.json').read_text())
+    alias_file=ROOT/'data/repository-aliases.json'
+    repository_declarations=json.loads(alias_file.read_text()) if alias_file.exists() else []
     errors=validate_records(rows)
+    if attach_repository_aliases(rows,repository_declarations)!=rows:
+        errors.append('Catalog repository aliases differ from their reviewed source declarations; rebuild catalog first.')
     if errors:raise ValueError('\n'.join(errors[:10]))
     if len(rows)!=coverage['total_records']:raise ValueError('Catalog/coverage count mismatch; rebuild catalog first.')
     destination.mkdir(parents=True,exist_ok=True)
@@ -48,7 +53,7 @@ def build_site(output=None):
     (destination/'data').mkdir(exist_ok=True)
     (destination/'downloads').mkdir(exist_ok=True)
     (destination/'schemas').mkdir(exist_ok=True)
-    for contract in ('resource.schema.json','scope-decision.schema.json','publication-observation.schema.json','download-manifest.schema.json'):
+    for contract in ('resource.schema.json','scope-decision.schema.json','publication-observation.schema.json','download-manifest.schema.json','repository-alias.schema.json'):
         shutil.copy2(ROOT/'schemas'/contract,destination/'schemas'/contract)
     keys=['id','name','kind','url','aliases','environments','topics','summary','review_status','published_at','authors','scope','last_verified_at']
     related={row['id']:set() for row in rows}
@@ -72,6 +77,7 @@ def build_site(output=None):
     shutil.copy2(ROOT/'data/exclusion-status.json',destination/'downloads/exclusions.json')
     shutil.copy2(ROOT/'data/papers.jsonl',destination/'downloads/arxiv-archive.jsonl')
     (destination/'downloads/publications.jsonl').write_bytes((ROOT/'data/publications.jsonl').read_bytes() if (ROOT/'data/publications.jsonl').exists() else b'')
+    (destination/'downloads/repository-aliases.json').write_text(json.dumps(repository_declarations,ensure_ascii=False,indent=2)+'\n')
     write_sqlite(rows,destination/'downloads'/'catalog.sqlite')
     build_exports(rows,destination/'downloads',(ROOT/'data/catalog.jsonl').read_bytes())
     build_citation_exports(rows,destination/'downloads',(ROOT/'data/catalog.jsonl').read_bytes())

@@ -30,7 +30,7 @@
             "required": ["value", "unit"],
             "properties": {
               "value": {"type": "integer", "minimum": 0},
-              "unit": {"enum": ["resources", "documents", "citations", "profiles", "relations", "topics", "papers", "decisions", "sources", "editions", "exports", "reports", "schemas"]}
+              "unit": {"enum": ["resources", "documents", "citations", "profiles", "relations", "topics", "papers", "decisions", "sources", "editions", "exports", "reports", "schemas", "aliases"]}
             },
             "additionalProperties": false
           },

@@ -1,11 +1,11 @@
 # Coverage and quality ledger
 
-Evidence snapshot through **2026-10-17T12:45:23Z**. Generated from committed source receipts.
+Evidence snapshot through **2026-10-17T14:35:24Z**. Generated from committed source receipts.
 
-- 3,022 resource records: 1,322 curated; 1,700 bibliographic metadata only.
-- 2,596 paper and survey records, including 2,583 arXiv identities and 13 publisher-only identities. This count overlaps the status counts above.
-- 2,683 retained arXiv metadata records; 100 explicit scope exclusions are outside the active catalog.
-- 3,907 discovery identifiers; 950 remain unresolved after accounting for scope exclusions.
+- 3,004 resource records: 1,430 curated; 1,574 bibliographic metadata only.
+- 2,578 paper and survey records, including 2,565 arXiv identities and 13 publisher-only identities. This count overlaps the status counts above.
+- 2,683 retained arXiv metadata records; 118 explicit scope exclusions are outside the active catalog.
+- 3,907 discovery identifiers; 945 remain unresolved after accounting for scope exclusions.
 - 12 editorial proposals await verification or review.
 
 These are distinct resource identifiers, not distinct research projects. Papers, repositories, datasets, products, and publisher entities have different grains.
@@ -23,38 +23,38 @@ Counts of source-reviewed resources. A resource tagged with several environments
 | [framework](frameworks.md) | 34 | 18 | 1 | 1 | 3 | 17 | 1 | 1 | 7 | 2 |
 | [infrastructure](infrastructures.md) | 5 | 7 | 1 | 2 | 4 | 4 | 1 | · | · | · |
 | [model](models.md) | 26 | 19 | 4 | 4 | 4 | 23 | 4 | · | 46 | 2 |
-| [paper](topics.md) | 324 | 159 | 28 | 10 | 15 | 147 | 6 | 1 | 94 | 258 |
+| [paper](topics.md) | 374 | 180 | 32 | 14 | 16 | 160 | 6 | 1 | 94 | 291 |
 | [product](products.md) | 17 | 5 | · | · | · | · | · | · | · | · |
 | [survey](surveys.md) | · | · | · | · | · | 1 | 1 | · | 10 | 2 |
 | [tool](tools.md) | 11 | 3 | 3 | 2 | 2 | 5 | 2 | · | 1 | 2 |
 
 ## Source snapshot coverage
 
-The denominator is the normalized identifiers extracted from each fetched document, including incidental links. Reviewed publisher/PDF aliases can resolve to one canonical resource; coverage counts matching identifiers, while indexed_resources records distinct resolved resources. Sources overlap. These figures do not measure global completeness or editorial recall.
+The denominator is the normalized identifiers extracted from each fetched document, including incidental links. Reviewed publisher/PDF aliases and former GitHub names can resolve to one canonical resource; coverage counts matching identifiers, while indexed_resources records distinct resolved resources. Sources overlap. These figures do not measure global completeness or editorial recall.
 
 | Source | Discovered | Indexed | Curated | Excluded | Unresolved | Fetch |
 | --- | ---: | ---: | ---: | ---: | ---: | --- |
-| [ShowLab Awesome GUI Agent](https://github.com/showlab/Awesome-GUI-Agent) | 338 | 215 | 201 | 0 | 123 | OK · 2026-10-17 |
-| [ZJU REAL Awesome GUI Agents](https://github.com/ZJU-REAL/Awesome-GUI-Agents) | 218 | 165 | 161 | 0 | 53 | OK · 2026-10-17 |
-| [OS Agents Survey](https://github.com/OS-Agent-Survey/OS-Agent-Survey) | 224 | 198 | 169 | 0 | 26 | OK · 2026-10-17 |
-| [Awesome Computer Use Agents — wjhou](https://github.com/wjhou/awesome-computer-use-agents) | 132 | 94 | 83 | 0 | 38 | OK · 2026-10-17 |
+| [ShowLab Awesome GUI Agent](https://github.com/showlab/Awesome-GUI-Agent) | 338 | 219 | 207 | 0 | 119 | OK · 2026-10-17 |
+| [ZJU REAL Awesome GUI Agents](https://github.com/ZJU-REAL/Awesome-GUI-Agents) | 218 | 165 | 162 | 0 | 53 | OK · 2026-10-17 |
+| [OS Agents Survey](https://github.com/OS-Agent-Survey/OS-Agent-Survey) | 224 | 198 | 177 | 0 | 26 | OK · 2026-10-17 |
+| [Awesome Computer Use Agents — wjhou](https://github.com/wjhou/awesome-computer-use-agents) | 132 | 94 | 84 | 0 | 38 | OK · 2026-10-17 |
 | [Steel Awesome Web Agents](https://github.com/steel-dev/awesome-web-agents) | 113 | 24 | 24 | 0 | 89 | OK · 2026-10-17 |
 | [Steel Web Agents Archive](https://github.com/steel-dev/awesome-web-agents/blob/main/ARCHIVE.md) | 7 | 1 | 1 | 0 | 6 | OK · 2026-10-17 |
-| [Computer Browser Phone Use Agent Datasets](https://github.com/Khang-9966/Computer-Browser-Phone-Use-Agent-Datasets) | 170 | 113 | 102 | 1 | 56 | OK · 2026-10-17 |
-| [Awesome Multimodal GUI Agents](https://github.com/DeLunnLi/Awesome-Multimodal-GUI-Agents) | 588 | 493 | 410 | 0 | 95 | OK · 2026-10-17 |
-| [Awesome Computer Use — TianyuanYang](https://github.com/TianyuanYang/awesome-computer-use) | 94 | 69 | 59 | 0 | 25 | OK · 2026-10-17 |
-| [Computer Use Agents Overview](https://github.com/cdxeve/awesome-computer-use-agents) | 78 | 48 | 31 | 0 | 30 | OK · 2026-10-17 |
+| [Computer Browser Phone Use Agent Datasets](https://github.com/Khang-9966/Computer-Browser-Phone-Use-Agent-Datasets) | 170 | 114 | 106 | 1 | 55 | OK · 2026-10-17 |
+| [Awesome Multimodal GUI Agents](https://github.com/DeLunnLi/Awesome-Multimodal-GUI-Agents) | 588 | 496 | 430 | 0 | 92 | OK · 2026-10-17 |
+| [Awesome Computer Use — TianyuanYang](https://github.com/TianyuanYang/awesome-computer-use) | 94 | 69 | 62 | 0 | 25 | OK · 2026-10-17 |
+| [Computer Use Agents Overview](https://github.com/cdxeve/awesome-computer-use-agents) | 78 | 48 | 32 | 0 | 30 | OK · 2026-10-17 |
 | [Awesome GUI Agents — Supernal](https://github.com/supernalintelligence/Awesome-Gui-Agents) | 63 | 11 | 8 | 0 | 52 | OK · 2026-10-17 |
-| [Yearly GUI Agents](https://github.com/qy0720/awesome-yearly-gui-agents) | 193 | 144 | 139 | 0 | 49 | OK · 2026-10-17 |
-| [OSU-NLP-Group/GUI-Agents-Paper-List / README.md](https://github.com/OSU-NLP-Group/GUI-Agents-Paper-List) | 544 | 486 | 297 | 0 | 58 | OK · 2026-10-17 |
-| [opendilab/awesome-ui-agents / README.md](https://github.com/opendilab/awesome-ui-agents) | 144 | 91 | 80 | 0 | 53 | OK · 2026-10-17 |
-| [jin-s13/awesome-gui-agent-hub / AWESOME.md](https://github.com/jin-s13/awesome-gui-agent-hub) | 210 | 207 | 91 | 0 | 3 | OK · 2026-10-17 |
+| [Yearly GUI Agents](https://github.com/qy0720/awesome-yearly-gui-agents) | 193 | 146 | 142 | 0 | 47 | OK · 2026-10-17 |
+| [OSU-NLP-Group/GUI-Agents-Paper-List / README.md](https://github.com/OSU-NLP-Group/GUI-Agents-Paper-List) | 544 | 486 | 353 | 0 | 58 | OK · 2026-10-17 |
+| [opendilab/awesome-ui-agents / README.md](https://github.com/opendilab/awesome-ui-agents) | 144 | 92 | 83 | 0 | 52 | OK · 2026-10-17 |
+| [jin-s13/awesome-gui-agent-hub / AWESOME.md](https://github.com/jin-s13/awesome-gui-agent-hub) | 210 | 207 | 116 | 0 | 3 | OK · 2026-10-17 |
 | [ZJU-REAL/Awesome-GUI-Agents / ICLR2026/Paperlist.md](https://github.com/ZJU-REAL/Awesome-GUI-Agents) | 9 | 0 | 0 | 0 | 9 | OK · 2026-10-17 |
-| [dqtz5vpvj9-create/awesome-mobile-gui-agents / README.md](https://github.com/dqtz5vpvj9-create/awesome-mobile-gui-agents) | 40 | 25 | 24 | 0 | 15 | OK · 2026-10-17 |
-| [PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents](https://github.com/PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents) | 247 | 192 | 174 | 0 | 55 | OK · 2026-10-17 |
-| [aialt/awesome-mobile-agents](https://github.com/aialt/awesome-mobile-agents) | 91 | 77 | 62 | 0 | 14 | OK · 2026-10-17 |
+| [dqtz5vpvj9-create/awesome-mobile-gui-agents / README.md](https://github.com/dqtz5vpvj9-create/awesome-mobile-gui-agents) | 40 | 26 | 25 | 0 | 14 | OK · 2026-10-17 |
+| [PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents](https://github.com/PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents) | 247 | 194 | 181 | 0 | 53 | OK · 2026-10-17 |
+| [aialt/awesome-mobile-agents](https://github.com/aialt/awesome-mobile-agents) | 91 | 77 | 66 | 0 | 14 | OK · 2026-10-17 |
 | [albzni/Awesome-LLM-based-Web-Agent-and-Tools](https://github.com/albzni/Awesome-LLM-based-Web-Agent-and-Tools) | 10 | 4 | 4 | 0 | 6 | OK · 2026-10-17 |
-| [ranpox/awesome-computer-use](https://github.com/ranpox/awesome-computer-use) | 96 | 59 | 51 | 0 | 37 | OK · 2026-10-17 |
+| [ranpox/awesome-computer-use](https://github.com/ranpox/awesome-computer-use) | 96 | 59 | 55 | 0 | 37 | OK · 2026-10-17 |
 | [Fara — first-party releases](https://github.com/microsoft/fara) | 18 | 5 | 5 | 0 | 13 | OK · 2026-10-17 |
 | [UI-Venus — first-party releases](https://github.com/inclusionAI/UI-Venus) | 10 | 4 | 4 | 0 | 6 | OK · 2026-10-17 |
 | [OpenGVLab ScaleCUA — first-party releases](https://github.com/OpenGVLab/ScaleCUA) | 15 | 9 | 9 | 0 | 6 | OK · 2026-10-17 |
@@ -70,7 +70,7 @@ The denominator is the normalized identifiers extracted from each fetched docume
 | [MobileGym++ — first-party releases](https://github.com/OpenMobile2/MobileGym-plusplus) | 9 | 2 | 2 | 0 | 7 | OK · 2026-10-17 |
 | [CarryOn — first-party releases](https://github.com/Ethannju/carryon) | 2 | 1 | 1 | 0 | 1 | OK · 2026-10-17 |
 | [GraceBench — first-party releases](https://iaie-physicalai.github.io/GraceBench) | 3 | 1 | 1 | 0 | 2 | OK · 2026-10-17 |
-| [MobileAgent / GUI-Owl / UI-S1 — first-party release index](https://github.com/X-PLUG/MobileAgent) | 33 | 12 | 11 | 0 | 21 | OK · 2026-10-17 |
+| [MobileAgent / GUI-Owl / UI-S1 — first-party release index](https://github.com/X-PLUG/MobileAgent) | 33 | 12 | 12 | 0 | 21 | OK · 2026-10-17 |
 | [GUICourse — first-party release checklist](https://github.com/yiye3/GUICourse) | 7 | 4 | 4 | 0 | 3 | OK · 2026-10-17 |
 | [OS-Genesis — first-party training assets](https://github.com/OS-Copilot/OS-Genesis) | 29 | 2 | 2 | 0 | 27 | OK · 2026-10-17 |
 | [MultiUI / UIX — first-party release index](https://github.com/neulab/multiui) | 8 | 1 | 1 | 0 | 7 | OK · 2026-10-17 |
@@ -158,7 +158,7 @@ A code license never fills a data or weights field. Hub declarations are publish
 
 ## Scope exclusions
 
-100 records have an applied scope decision; 0 require another review after a change. See the [decision ledger](../data/exclusion-status.json) for each rationale and source fingerprint. These decisions concern catalog relevance, not research quality. Original bibliographic metadata is retained, and previous resource URLs explain the decision rather than silently disappearing.
+118 records have an applied scope decision; 0 require another review after a change. See the [decision ledger](../data/exclusion-status.json) for each rationale and source fingerprint. These decisions concern catalog relevance, not research quality. Original bibliographic metadata is retained, and previous resource URLs explain the decision rather than silently disappearing.
 
 ## Known gaps
 

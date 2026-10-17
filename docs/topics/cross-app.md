@@ -2,9 +2,9 @@
 
 [Home](../../README.md) · [All topics](../topics.md) · [Full arXiv bibliography](../papers.md)
 
-47 source-reviewed resources tagged `cross-app`. Curated metadata, not a performance ranking; unknown facts are shown as —.
+48 source-reviewed resources tagged `cross-app`. Curated metadata, not a performance ranking; unknown facts are shown as —.
 
-**Contents:** [Benchmarks (10)](#benchmarks) · [Datasets (2)](#datasets) · [Agents (2)](#agents) · [Frameworks (1)](#frameworks) · [Papers (32)](#papers)
+**Contents:** [Benchmarks (10)](#benchmarks) · [Datasets (2)](#datasets) · [Agents (2)](#agents) · [Frameworks (1)](#frameworks) · [Papers (33)](#papers)
 
 ## Benchmarks
 
@@ -19,7 +19,7 @@
 | [OS-Map](https://github.com/OS-Copilot/OS-Map) | desktop, linux | [2507.19132](https://arxiv.org/abs/2507.19132) (2025) | [416 category/task references](https://raw.githubusercontent.com/OS-Copilot/OS-Map/HEAD/evaluation_examples/all.json) | code MIT | An OSWorld-derived desktop benchmark with an Ubuntu virtual-machine environment and expanded task configurations for measuring breadth and depth of computer interaction. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/OS-Copilot/OS-Map/HEAD/README.md) |
 | [OSWorld](https://github.com/xlang-ai/OSWorld) | desktop, linux, windows, macos | [2404.07972](https://arxiv.org/abs/2404.07972) (2024) | [369 task definitions](https://raw.githubusercontent.com/xlang-ai/OSWorld/HEAD/evaluation_examples/test_all.json) | code Apache-2.0 | Execution-based evaluation of agents performing tasks in real desktop environments. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/xlang-ai/OSWorld/HEAD/README.md) |
 | [TheAgentCompany](https://github.com/TheAgentCompany/TheAgentCompany) | web, desktop | [2412.14161](https://arxiv.org/abs/2412.14161) (2024) | [175 task images](https://raw.githubusercontent.com/TheAgentCompany/TheAgentCompany/HEAD/README.md) | code MIT | Self-contained workplace environment for evaluating agents on professional tasks involving websites, files, code, and simulated coworkers. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/TheAgentCompany/TheAgentCompany/HEAD/README.md) |
-| [WindowsWorld](https://github.com/HITsz-TMG/WindowsWorld) | windows | — | — | code Apache-2.0 | Cross-application Windows benchmark with intermediate task evaluation. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/HITsz-TMG/WindowsWorld/HEAD/README.md) |
+| [WindowsWorld](https://github.com/HITsz-TMG/WindowsWorld) | windows | — | [181 tasks](https://raw.githubusercontent.com/HITsz-TMG/WindowsWorld/HEAD/README.md) · [17 desktop applications](https://raw.githubusercontent.com/HITsz-TMG/WindowsWorld/HEAD/README.md) | code Apache-2.0 | Cross-application Windows benchmark with intermediate task evaluation. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/HITsz-TMG/WindowsWorld/HEAD/README.md) |
 
 ## Datasets
 
@@ -57,6 +57,7 @@ All entries in this section: desktop, linux.
 | 2026‑06‑16 | [Beyond the GUI Paradigm: Do Mobile Agents Need the Phone Screen?](https://arxiv.org/abs/2606.19388) | android | This study compares general coding agents using mobile command-line access with reproducible GUI agents on AndroidWorld and MobileWorld. It also supplies oracle CLI analyses and a separate task suite for operations such as bulk changes, filtering and hidden device state. |
 | 2026‑06‑15 | [MyPCBench: A Benchmark for Personally Intelligent Computer-Use Agents](https://arxiv.org/abs/2606.16748) | linux, web | MyPCBench tests personal-assistant tasks on a Linux desktop with simulated web applications and data for a single fictional persona. A shared computer-and-shell interface enables evaluation of cross-application workflows that depend on personal context and account-like state. |
 | 2026‑06‑08 | [iOSWorld: A Benchmark for Personally Intelligent Phone Agents](https://arxiv.org/abs/2606.09764) | ios | Introduces a native iOS simulator benchmark with persistent user data, multi-app tasks, and personalization-dependent phone workflows. |
+| 2026‑05‑15 | [SaaS-Bench: Can Computer-Use Agents Leverage Real-World SaaS to Solve Professional Workflows?](https://arxiv.org/abs/2605.15777) | web | SaaS-Bench evaluates browser agents on professional workflows across self-hosted applications. Weighted checkpoints measure task completion and partial progress, with application-state checks and configured content judges documented in the official harness. |
 | 2026‑04‑30 | [WindowsWorld: A Process-Centric Benchmark of Autonomous GUI Agents in Professional Cross-Application Environments](https://arxiv.org/abs/2604.27776) | desktop | Introduces WindowsWorld for professional workflows spanning multiple desktop applications, with generated tasks refined through human review. Intermediate subgoals support process-oriented evaluation of cross-application reasoning and execution efficiency. |
 | 2026‑02‑05 | [UI-Mem: Self-Evolving Experience Memory for Online Reinforcement Learning in Mobile GUI Agents](https://arxiv.org/abs/2602.05832) | unspecified | UI-Mem stores workflows, skills and failure patterns as reusable templates to guide online GUI reinforcement learning. It varies guidance within rollout groups and continually updates the memory so an unguided policy can learn from guided experiences. |
 | 2026‑02‑03 | [MemGUI-Bench: Benchmarking Memory of Mobile GUI Agents in Dynamic Environments](https://arxiv.org/abs/2602.06075) | unspecified | MemGUI-Bench evaluates short-term retention and cross-session experience reuse in mobile GUI agents using paired tasks and repeated-attempt protocols. Its staged evaluator measures memory fidelity, learning and execution efficiency. |

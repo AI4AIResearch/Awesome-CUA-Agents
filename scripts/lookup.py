@@ -4,6 +4,7 @@ from __future__ import annotations
 import copy
 import json
 from pathlib import Path
+from repository_identity import repository_aliases
 
 DATA = Path(__file__).resolve().parents[1] / 'data'
 EXCLUSION_LEDGER_URL = 'https://awesomecua.github.io/downloads/exclusions.json'
@@ -43,9 +44,9 @@ def related_resources(resource_id, records):
             if not isinstance(receipts, list) or any(not isinstance(e, dict) for e in receipts):
                 raise ValueError('Primary evidence receipts must be a list of objects: ' + source_id)
             evidence = [e for e in receipts
-                        if e.get('role') == 'primary' and e.get('url') == evidence_url]
+                        if e.get('role') == 'primary' and e.get('url') == evidence_url and 'relations' in e.get('supports', [])]
             if not evidence_url or not evidence:
-                raise ValueError('A reviewed relation lacks its retained primary receipt: ' + source_id)
+                raise ValueError('A reviewed relation lacks its retained primary receipt scoped to relations: ' + source_id)
             key = (direction, relation['type'], source_id, target_id, evidence_url)
             if key in seen:
                 continue
@@ -60,7 +61,7 @@ def related_resources(resource_id, records):
         r['direction'] != 'outgoing', r['type'], r['source_id'], r['target_id'], r['evidence_url']))
 
 
-def lookup(resource_id, records, decisions=(), *, related=False):
+def lookup(resource_id, records, decisions=(), *, related=False, aliases=None):
     """Return (JSON-compatible payload, exit code), preserving active records verbatim."""
     by_id = {}
     for record in records:
@@ -69,6 +70,11 @@ def lookup(resource_id, records, decisions=(), *, related=False):
         if record['id'] in by_id:
             raise ValueError('Duplicate catalog resource ID: ' + record['id'])
         by_id[record['id']] = record
+    if aliases and resource_id in aliases:
+        target = aliases[resource_id]
+        if resource_id in by_id or target not in by_id or target in aliases:
+            raise ValueError('Repository alias must resolve directly to its sole active owner')
+        resource_id = target
     matches = [d for d in decisions if d.get('id') == resource_id and d.get('status') == 'excluded']
     if len(matches) > 1:
         raise ValueError('Duplicate applied exclusion for resource ID: ' + resource_id)
@@ -98,7 +104,10 @@ def read_lookup(resource_id, *, related=False, data_dir=None):
         raise ValueError('Missing or unsupported applied exclusion ledger')
     if any(not isinstance(d, dict) or not isinstance(d.get('id'), str) for d in ledger['decisions']):
         raise ValueError('Scope decisions require a string ID')
-    return lookup(resource_id, records, ledger['decisions'], related=related)
+    alias_path = directory / 'repository-aliases.json'
+    declarations = json.loads(alias_path.read_text()) if alias_path.exists() else []
+    return lookup(resource_id, records, ledger['decisions'], related=related,
+                  aliases=repository_aliases(declarations, records))
 
 
 def get_resource(args):
