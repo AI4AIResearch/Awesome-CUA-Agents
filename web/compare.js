@@ -1,4 +1,4 @@
-import {normalize} from './catalog-core.js';
+import {normalize,profileVisible} from './catalog-core.js';
 
 const query = document.querySelector('#compare-query');
 const environment = document.querySelector('#compare-environment');
@@ -12,7 +12,7 @@ function apply() {
   const terms = normalize(query.value).split(' ').filter(Boolean);
   let count = 0;
   for (const row of rows) {
-    const visible = (!environment.value || row.environments.includes(environment.value)) && terms.every(term => row.text.includes(term));
+    const visible = profileVisible(row.text, row.environments, terms, environment.value);
     row.element.hidden = !visible;
     count += Number(visible);
   }

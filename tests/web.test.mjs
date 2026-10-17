@@ -3,11 +3,14 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {normalize,matches,filtered,parseState,serializeState,escapeHTML,safeURL,PAGE_SIZE,bibliographicDate} from '../web/catalog-core.js';
 import {FEATURED} from '../web/catalog-core.js';
-import {TOPIC_ALIASES,searchText} from '../web/catalog-core.js';
+import {TOPIC_ALIASES,searchText,recordSearchText,KIND_ORDER,KINDS,PLATFORMS,profileVisible} from '../web/catalog-core.js';
 import {FACT_LABELS,formatFact} from '../web/catalog-core.js';
 
 const rows=readFileSync(new URL('../data/catalog.jsonl',import.meta.url),'utf8').trim().split('\n').map(JSON.parse);
-rows.forEach(r=>r.search_text=searchText([r.name,r.summary,...r.aliases,...r.authors,...r.topics,...r.topics.flatMap(x=>TOPIC_ALIASES[x] || []),...r.environments]));
+const vocabulary=JSON.parse(readFileSync(new URL('../data/topics.json',import.meta.url),'utf8'));
+// The same topic labels the website receives in index.json.
+const topicLabels=Object.fromEntries(Object.entries(vocabulary).map(([key,entry])=>[key,[entry.en,entry.zh]]));
+rows.forEach(r=>r.search_text=recordSearchText(r,topicLabels));
 const initial=()=>parseState('');
 
 test('all published resources are searchable without dropping metadata-only records',()=>{
@@ -238,11 +241,57 @@ test('desktop and mobile platforms include their operating systems',()=>{
 });
 test('hero shortcuts and the platform menu offer grouped platforms in order',()=>{
   const html=readFileSync(new URL('../web/index.html',import.meta.url),'utf8');
-  const platforms=[...readFileSync(new URL('../web/app.js',import.meta.url),'utf8').match(/const PLATFORMS = (\{.*?\});/)[1].matchAll(/[{,]'?([\w-]+)'?:\[/g)].map(m=>m[1]);
-  assert.deepEqual(platforms,['web','desktop','windows','macos','linux','mobile','android','ios','harmonyos','cross-platform','unspecified']);
+  assert.deepEqual(Object.keys(PLATFORMS),['web','desktop','windows','macos','linux','mobile','android','ios','harmonyos','cross-platform','unspecified']);
   assert.deepEqual([...html.matchAll(/data-environment="([^"]+)"/g)].map(m=>m[1]),['web','desktop','mobile']);
   assert.ok(filtered(rows,{...initial(),platform:'mobile'}).some(r=>r.name==='iOSWorld'));
   assert.ok(filtered(rows,{...initial(),platform:'desktop'}).some(r=>r.name.startsWith('Windows Agent Arena')));
+});
+test('search finds records by their English and Chinese kind, platform and topic labels',()=>{
+  const grounding=rows.filter(r=>r.topics.includes('grounding')),datasets=rows.filter(r=>r.kind==='dataset'),web=rows.filter(r=>r.environments.includes('web'));
+  for(const [q,expected] of [['GUI 定位',grounding],['GUI grounding',grounding],['数据集',datasets],['Datasets',datasets],['浏览器',web]]){
+    const result=new Set(filtered(rows,{...initial(),q}));
+    assert.ok(expected.length>0&&expected.every(r=>result.has(r)),q);
+  }
+  const record={name:'Fixture',summary:null,aliases:[],authors:[],kind:'benchmark',environments:['unspecified','harmonyos'],topics:['reinforcement-learning']};
+  record.search_text=recordSearchText(record,topicLabels);
+  for(const q of ['评测基准','Benchmarks','待标注','Unassigned','鸿蒙','强化学习','Reinforcement learning','RL'])assert.ok(matches(record,{...initial(),q}),q);
+  assert.equal(matches(record,{...initial(),q:'unspecified'}),false);
+});
+test('every catalog kind, platform and topic has English and Chinese labels',()=>{
+  const labelled=labels=>Array.isArray(labels)&&labels.slice(0,2).filter(x=>typeof x==='string'&&x.trim()).length===2;
+  for(const kind of new Set([...KIND_ORDER,...rows.map(r=>r.kind)]))assert.ok(labelled(KINDS[kind]),`kind ${kind}`);
+  for(const platform of new Set(rows.flatMap(r=>r.environments)))assert.ok(labelled(PLATFORMS[platform]),`platform ${platform}`);
+  for(const topic of new Set(rows.flatMap(r=>r.topics)))assert.ok(labelled(topicLabels[topic]),`topic ${topic}`);
+});
+test('comparison profiles must be in the chosen environment and contain every term',()=>{
+  const text=normalize('AndroidControl android screenshots accessibility-tree JSON annotations'),terms=q=>normalize(q).split(' ').filter(Boolean);
+  assert.ok(profileVisible(text,['android'],[],''));
+  assert.ok(profileVisible(text,['android'],terms('json SCREENSHOTS'),'android'));
+  assert.ok(profileVisible(text,['android','web'],terms('accessibility tree'),'web'));
+  assert.equal(profileVisible(text,['android'],terms('json video'),''),false);
+  assert.equal(profileVisible(text,['android'],terms('json'),'web'),false);
+});
+test('the comparison page hides rows outside the filter and keeps it in the URL',async()=>{
+  const keys=['document','location','history'],saved=keys.map(key=>[key,Object.getOwnPropertyDescriptor(globalThis,key)]);
+  const profiles=[['OSWorld desktop screenshots execution-based checks','desktop linux'],['AndroidWorld android screenshots programmatic state checks','android'],['WebArena web accessibility tree','web']].map(([search,environments])=>({dataset:{search,environments},hidden:false}));
+  const listeners={},control=name=>({value:'',addEventListener:(type,listener)=>listeners[name]=listener});
+  const query=control('query'),environment={...control('environment'),options:['','android','desktop','linux','web'].map(value=>({value}))},output={textContent:''},urls=[];
+  const elements={'#compare-query':query,'#compare-environment':environment,'#compare-results':output};
+  const globals={document:{querySelector:selector=>elements[selector],querySelectorAll:selector=>selector==='[data-profile-row]'?profiles:[]},
+    location:{search:'?q=screenshots&environment=android',href:'https://awesomecua.github.io/compare/benchmarks/?q=screenshots&environment=android'},history:{replaceState:(data,title,url)=>urls.push(String(url))}};
+  for(const [key,value] of Object.entries(globals))Object.defineProperty(globalThis,key,{value,configurable:true,writable:true});
+  try {
+    await import('../web/compare.js?filter');
+    assert.deepEqual([query.value,environment.value],['screenshots','android']);
+    assert.deepEqual(profiles.map(row=>row.hidden),[true,false,true]);
+    assert.equal(output.textContent,'Showing 1 of 3 profiles.');
+    query.value='checks';environment.value='';listeners.environment();
+    assert.deepEqual(profiles.map(row=>row.hidden),[false,false,true]);
+    assert.equal(output.textContent,'Showing 2 of 3 profiles.');
+    assert.equal(new URL(urls.at(-1)).search,'?q=checks');
+  } finally {
+    for(const [key,descriptor] of saved)if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];
+  }
 });
 test('search matches Latin terms at word starts while keeping CJK substrings and topic abbreviations',()=>{
   const rl=filtered(rows,{...initial(),q:'rl'}),tagged=rows.filter(r=>r.topics.includes('reinforcement-learning'));
@@ -527,6 +576,9 @@ test('topic labels come from data/topics.json through the index payload',async()
       assert.match(view.options,new RegExp(`<option value="grounding">${topics.grounding[language]}</option>`));
       assert.ok(view.results.includes(topics['ui-design'][language]));
     }
+    // app.js indexes the same labels it shows, in both languages, whichever language is active.
+    for(const [index,q] of ['界面设计','GUI 定位','UI design','论文','Papers','浏览器'].entries())assert.ok((await render('?q='+encodeURIComponent(q),'search-'+index)).results.includes('Design study'),q);
+    assert.equal((await render('?q=xyzq987654&lang=zh','search-none')).results.includes('Design study'),false);
   } finally {
     for(const [key,descriptor] of saved)if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];
   }
