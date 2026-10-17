@@ -100,3 +100,25 @@ Review scope exclusions in `data/exclusion-status.json`. An upstream-change prop
 Reviewed license decisions can override machine extraction through `reviewed_licenses` on an editorial input. Each scope retains a value (including null for an unresolved conflict), a reason, and evidence URLs bound to retained receipts that explicitly support that license scope. The public record keeps the reason and sources in `details.license_review`. A model-hosting namespace does not imply that an environment archive contains model weights.
 
 Discovery occurrences preserve `receipt_id` and the source URL, SHA-256 and retrieval time in `evidence`; a later failed source run cannot erase that provenance or masquerade as a successful refresh. Backfilling older occurrences requires a matching retained successful receipt. HTTP 429 deferral is scoped to the provider host; unrelated sources can continue. A successful response that yields fewer than half of a source's retained candidates, including an empty body, is recorded as a failed `suspicious shrink` run and keeps the earlier occurrences. After confirming the upstream change, apply it with `python3 scripts/catalog.py discover --refresh --accept-shrink <source-id>`.
+
+## Versioned data releases
+
+The website's downloads always show the latest snapshot, and the `cua-catalog` artifact of a Catalog quality run expires after 90 days. A pinned, citable version is a GitHub release made by `.github/workflows/release.yml`. Releases are cut by hand, and no workflow creates or moves a tag. Tag a `main` commit whose Catalog quality run passed, using the snapshot date as the version, and push the tag:
+
+```bash
+git fetch origin
+git tag -a v2026.10.17 -m 'Catalog snapshot 2026-10-17' origin/main
+git push origin v2026.10.17
+```
+
+Push the tag with git, not through the GitHub release form: the form publishes its own release, and the workflow then fails at the publish step. The tag push starts the workflow. Its build job checks out the tag without saved credentials, runs `catalog.py validate` and `build --check`, rebuilds the exports with `catalog.py build` and `build_site.py`, and writes their checksums to `SHA256SUMS`. The release job, the only one with `contents: write`, checks out nothing and runs no repository code. It publishes those files as the release of the existing tag with `gh release create --verify-tag`, which fails rather than create a missing tag. The release notes give the source commit, the coverage time, and the record counts by review state and kind, with the profile and topic counts.
+
+| Asset | Contents |
+| --- | --- |
+| `catalog.jsonl`, `catalog.json`, `catalog.sqlite` | The active catalog as JSONL, a JSON array, and the SQLite database in the [query guide](query-guide.md) |
+| `coverage.json` | The coverage ledger |
+| `topics.json` | Reviewed topic memberships with exact resource IDs |
+| `benchmarks-profiles.json`, `datasets-profiles.json` | Source-reviewed benchmark and dataset profiles |
+| `SHA256SUMS` | SHA-256 of every other asset; check them with `sha256sum -c SHA256SUMS` |
+
+Asset names are the same in every release, so a pinned download is `https://github.com/reacher-z/Awesome-CUA/releases/download/<tag>/catalog.jsonl`. To retry a failed run, re-run it, or dispatch the workflow on the tag with `gh workflow run release.yml --ref <tag>`; a tag pushed with another workflow's `GITHUB_TOKEN` starts no run and needs this dispatch. A run for a tag that already has a release fails at the publish step, so delete that release before rebuilding it. Dispatched on a branch, the workflow builds the same files into a `release-assets` artifact without publishing, which previews a release.

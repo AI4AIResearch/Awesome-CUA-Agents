@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use this catalog, please cite it as below. The data changes with every scan, so also record the commit you used."
+message: "If you use this catalog, please cite it as below. The data changes with every scan, so also record the release tag or commit you used. Each tagged release attaches versioned catalog downloads with SHA-256 checksums."
 type: dataset
 title: "Awesome Computer-Use Agents: a source-backed catalog of computer-use, GUI, browser, and mobile agents"
 abstract: "A source-backed data catalog of computer-use agent papers, models, training datasets, benchmarks, frameworks, tools, infrastructure, products, and publishers, with retained primary-source evidence and review states."
@@ -10,6 +10,10 @@ authors:
 license: MIT
 repository-code: "https://github.com/reacher-z/Awesome-CUA"
 url: "https://awesomecua.github.io/"
+identifiers:
+  - type: url
+    value: "https://github.com/reacher-z/Awesome-CUA/releases"
+    description: "Versioned data releases with SHA-256 checksums"
 keywords:
   - computer-use agents
   - GUI agents

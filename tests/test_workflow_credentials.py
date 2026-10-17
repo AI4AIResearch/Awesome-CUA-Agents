@@ -18,7 +18,7 @@ TOKEN = "ghs_exampletoken"
 HEADER = "AUTHORIZATION: basic " + base64.b64encode(f"x-access-token:{TOKEN}".encode()).decode()
 PUSH_STEPS = {("scan.yml", "scan", "Commit verified scan output"), ("scan.yml", "dispatch_quality", "Run Catalog quality on the scan commit"),
               ("publish.yml", "build", "Commit the public website snapshot"), ("publish.yml", "notify_search", "Preserve accepted state and actual submission receipts"),
-              ("freshness.yml", "dispatch_scan", "Dispatch a recovery scan")}
+              ("freshness.yml", "dispatch_scan", "Dispatch a recovery scan"), ("release.yml", "release", "Publish the GitHub release")}
 
 
 def steps(path):
@@ -56,7 +56,7 @@ class WorkflowCredentialTests(unittest.TestCase):
                     checkouts += 1
                     with self.subTest(workflow=path.name, job=job, step=name):
                         self.assertIn("          persist-credentials: false", lines)
-        self.assertEqual(checkouts, 7)
+        self.assertEqual(checkouts, 8)
 
     def test_only_push_and_dispatch_steps_receive_the_token(self):
         found = set()
