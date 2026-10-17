@@ -18,15 +18,15 @@ All entries in this section: web.
 | --- | --- | --- | --- |
 | [AgentQL](https://www.agentql.com/) | — | Natural-language querying and interaction tools for web interfaces. | [✓ 2026‑10‑16](https://www.agentql.com/) |
 | [Amazon Nova Act](https://aws.amazon.com/nova/act/) | — | AWS service for building and deploying agents that automate browser-based UI workflows from natural language and Python, powered by a custom Nova 2 Lite model. | [✓ 2026‑10‑17](https://aws.amazon.com/nova/act/) |
-| [Browser Use Cloud](https://browser-use.com/) | [Browser Use](https://browser-use.com/) | Hosted Browser Use offering with task-finishing Browser Use Agents and remote browsers for other agents, connected through SDK, REST or CDP, with automatic CAPTCHA solving and pay-as-you-go pricing. | [✓ 2026‑10‑16](https://browser-use.com/) |
+| [Browser Use Cloud](https://browser-use.com/) | [Browser Use](https://browser-use.com/) | Hosted browser-agent platform from Browser Use. | [✓ 2026‑10‑16](https://browser-use.com/) |
 | [BrowserAct](https://www.browseract.com/) | [BrowserAct](https://www.browseract.com/) | Managed web scraping platform with reusable browser interaction workflows. | [✓ 2026‑10‑16](https://www.browseract.com/) |
-| [Browserbase Cloud](https://www.browserbase.com/) | [Browserbase](https://www.browserbase.com/) | Cloud browser platform for agents that pairs browser sessions with Search, Fetch and agent APIs, identity and observability tools, and the open-source Stagehand framework and Browse CLI. | [✓ 2026‑10‑16](https://www.browserbase.com/) |
-| [Browserless](https://www.browserless.io/) | [Browserless](https://www.browserless.io/) | Headless-browser service for automation and AI agents, reached via Puppeteer, Playwright, HTTP APIs or an MCP server, with stealth, CAPTCHA solving, reusable logged-in profiles and self-hosting. | [✓ 2026‑10‑16](https://www.browserless.io/) |
+| [Browserbase Cloud](https://www.browserbase.com/) | [Browserbase](https://www.browserbase.com/) | Managed browser infrastructure for agent applications. | [✓ 2026‑10‑16](https://www.browserbase.com/) |
+| [Browserless](https://www.browserless.io/) | [Browserless](https://www.browserless.io/) | Hosted browser infrastructure for automation applications. | [✓ 2026‑10‑16](https://www.browserless.io/) |
 | [ChatGPT Atlas](https://openai.com/index/introducing-chatgpt-atlas/) | [OpenAI](https://openai.com/index/computer-using-agent/) | OpenAI browser product integrating ChatGPT and agent capabilities. | [✓ 2026‑10‑16](https://openai.com/index/introducing-chatgpt-atlas/) |
-| [Claude for Chrome](https://claude.com/chrome) | [Anthropic](https://claude.com/chrome) | Chrome extension that lets Claude read signed-in pages and click, type and fill forms across a group of tabs, used from a side panel, inside Claude Cowork or from Claude Code. | [✓ 2026‑10‑16](https://claude.com/chrome) |
+| [Claude for Chrome](https://claude.com/chrome) | [Anthropic](https://claude.com/chrome) | Claude browser extension for interacting with websites. | [✓ 2026‑10‑16](https://claude.com/chrome) |
 | [HoloTab](https://hcompany.ai/newsroom/meet-holotab) | [H](https://hcompany.ai/research/models) | H browser extension for executing tasks through website interfaces. | [✓ 2026‑10‑16](https://hcompany.ai/newsroom/meet-holotab) |
 | [Hyperbrowser](https://www.hyperbrowser.ai/) | [Hyperbrowser](https://www.hyperbrowser.ai/) | Browser infrastructure and automation services for AI agents. | [✓ 2026‑10‑16](https://www.hyperbrowser.ai/) |
-| [Manus](https://manus.im/) | [Manus](https://manus.im/) | Agent product that carries out tasks rather than only answering, such as making slides, websites, games and videos, offered as a web app with desktop and mobile apps, an API and Slack integration. | [✓ 2026‑10‑16](https://manus.im/) |
+| [Manus](https://manus.im/) | [Manus](https://manus.im/) | General agent platform with browser-based task execution. | [✓ 2026‑10‑16](https://manus.im/) |
 | [Operator](https://openai.com/index/introducing-operator/) | [OpenAI](https://openai.com/index/computer-using-agent/) | Historical OpenAI browser-agent research preview. | [✓ 2026‑10‑16](https://openai.com/index/introducing-operator/) |
 | [Skyvern Cloud](https://www.skyvern.com/) | [Skyvern](https://www.skyvern.com/) | Hosted Skyvern service for AI browser workflows such as invoice downloads and form filling, with built-in CAPTCHA and 2FA handling, proxy geotargeting, run explanations and JSON or CSV output. | [✓ 2026‑10‑16](https://www.skyvern.com/) |
 | [Steel Cloud](https://steel.dev/) | [Steel](https://steel.dev/) | Managed browser infrastructure associated with Steel Browser. | [✓ 2026‑10‑16](https://steel.dev/) |
@@ -40,8 +40,8 @@ All entries in this section: desktop.
 
 | Resource | Publisher | Description | Evidence |
 | --- | --- | --- | --- |
-| [E2B](https://e2b.dev/) | [E2B](https://e2b.dev/) | Agent cloud giving each agent session its own Firecracker microVM with shell, filesystem, browser and network, for coding, computer use, background jobs and RL rollouts, in E2B's or the user's cloud. | [✓ 2026‑10‑16](https://e2b.dev/) |
-| [Simular](https://www.simular.ai/) | [Simular](https://www.simular.ai/) | Site of Simular, which builds Sai, an assistant that runs screen tasks on the user's device and on cloud computers, along with the open-source Agent S framework and an autonomous computer API. | [✓ 2026‑10‑16](https://www.simular.ai/) |
+| [E2B](https://e2b.dev/) | [E2B](https://e2b.dev/) | Sandbox infrastructure for executing agent workloads. | [✓ 2026‑10‑16](https://e2b.dev/) |
+| [Simular](https://www.simular.ai/) | [Simular](https://www.simular.ai/) | Computer-use products and research from Simular. | [✓ 2026‑10‑16](https://www.simular.ai/) |
 
 [↑ Back to top](#product-catalog)
 

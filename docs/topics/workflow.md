@@ -55,9 +55,9 @@
 | [AskUI](https://www.askui.com/) | [AskUI](https://www.askui.com/) | desktop, web | Agentic test-automation platform running plain-language test cases from pixels rather than selectors on desktop apps, Citrix, in-car head units and mobile devices, deployable on-premise or air-gapped. | [✓ 2026‑10‑16](https://www.askui.com/) |
 | [BrowserAct](https://www.browseract.com/) | [BrowserAct](https://www.browseract.com/) | web | Managed web scraping platform with reusable browser interaction workflows. | [✓ 2026‑10‑16](https://www.browseract.com/) |
 | [ChatGPT Agent](https://openai.com/index/introducing-chatgpt-agent/) | [OpenAI](https://openai.com/index/computer-using-agent/) | web, desktop | Hosted agent combining browser interaction, tools, and computer-based tasks. | [✓ 2026‑10‑16](https://openai.com/index/introducing-chatgpt-agent/) |
-| [Manus](https://manus.im/) | [Manus](https://manus.im/) | web | Agent product that carries out tasks rather than only answering, such as making slides, websites, games and videos, offered as a web app with desktop and mobile apps, an API and Slack integration. | [✓ 2026‑10‑16](https://manus.im/) |
+| [Manus](https://manus.im/) | [Manus](https://manus.im/) | web | General agent platform with browser-based task execution. | [✓ 2026‑10‑16](https://manus.im/) |
 | [Scribe](https://scribehow.com/) | — | desktop, web | Workflow recording and documentation product adjacent to agent data collection. | [✓ 2026‑10‑16](https://scribehow.com/) |
-| [Simular](https://www.simular.ai/) | [Simular](https://www.simular.ai/) | desktop | Site of Simular, which builds Sai, an assistant that runs screen tasks on the user's device and on cloud computers, along with the open-source Agent S framework and an autonomous computer API. | [✓ 2026‑10‑16](https://www.simular.ai/) |
+| [Simular](https://www.simular.ai/) | [Simular](https://www.simular.ai/) | desktop | Computer-use products and research from Simular. | [✓ 2026‑10‑16](https://www.simular.ai/) |
 | [Skyvern Cloud](https://www.skyvern.com/) | [Skyvern](https://www.skyvern.com/) | web | Hosted Skyvern service for AI browser workflows such as invoice downloads and form filling, with built-in CAPTCHA and 2FA handling, proxy geotargeting, run explanations and JSON or CSV output. | [✓ 2026‑10‑16](https://www.skyvern.com/) |
 
 ## Papers

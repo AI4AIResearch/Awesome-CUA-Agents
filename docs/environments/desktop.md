@@ -147,9 +147,9 @@
 | --- | --- | --- | --- | --- |
 | [AskUI](https://www.askui.com/) | [AskUI](https://www.askui.com/) | desktop, web | Agentic test-automation platform running plain-language test cases from pixels rather than selectors on desktop apps, Citrix, in-car head units and mobile devices, deployable on-premise or air-gapped. | [✓ 2026‑10‑16](https://www.askui.com/) |
 | [ChatGPT Agent](https://openai.com/index/introducing-chatgpt-agent/) | [OpenAI](https://openai.com/index/computer-using-agent/) | web, desktop | Hosted agent combining browser interaction, tools, and computer-based tasks. | [✓ 2026‑10‑16](https://openai.com/index/introducing-chatgpt-agent/) |
-| [E2B](https://e2b.dev/) | [E2B](https://e2b.dev/) | desktop | Agent cloud giving each agent session its own Firecracker microVM with shell, filesystem, browser and network, for coding, computer use, background jobs and RL rollouts, in E2B's or the user's cloud. | [✓ 2026‑10‑16](https://e2b.dev/) |
+| [E2B](https://e2b.dev/) | [E2B](https://e2b.dev/) | desktop | Sandbox infrastructure for executing agent workloads. | [✓ 2026‑10‑16](https://e2b.dev/) |
 | [Scribe](https://scribehow.com/) | — | desktop, web | Workflow recording and documentation product adjacent to agent data collection. | [✓ 2026‑10‑16](https://scribehow.com/) |
-| [Simular](https://www.simular.ai/) | [Simular](https://www.simular.ai/) | desktop | Site of Simular, which builds Sai, an assistant that runs screen tasks on the user's device and on cloud computers, along with the open-source Agent S framework and an autonomous computer API. | [✓ 2026‑10‑16](https://www.simular.ai/) |
+| [Simular](https://www.simular.ai/) | [Simular](https://www.simular.ai/) | desktop | Computer-use products and research from Simular. | [✓ 2026‑10‑16](https://www.simular.ai/) |
 
 ## Papers
 

@@ -37,9 +37,9 @@ All entries in this section: web, desktop.
 
 | Resource | Publisher | Environments | Description | Evidence |
 | --- | --- | --- | --- | --- |
-| [Browserbase Cloud](https://www.browserbase.com/) | [Browserbase](https://www.browserbase.com/) | web | Cloud browser platform for agents that pairs browser sessions with Search, Fetch and agent APIs, identity and observability tools, and the open-source Stagehand framework and Browse CLI. | [✓ 2026‑10‑16](https://www.browserbase.com/) |
-| [Browserless](https://www.browserless.io/) | [Browserless](https://www.browserless.io/) | web | Headless-browser service for automation and AI agents, reached via Puppeteer, Playwright, HTTP APIs or an MCP server, with stealth, CAPTCHA solving, reusable logged-in profiles and self-hosting. | [✓ 2026‑10‑16](https://www.browserless.io/) |
-| [E2B](https://e2b.dev/) | [E2B](https://e2b.dev/) | desktop | Agent cloud giving each agent session its own Firecracker microVM with shell, filesystem, browser and network, for coding, computer use, background jobs and RL rollouts, in E2B's or the user's cloud. | [✓ 2026‑10‑16](https://e2b.dev/) |
+| [Browserbase Cloud](https://www.browserbase.com/) | [Browserbase](https://www.browserbase.com/) | web | Managed browser infrastructure for agent applications. | [✓ 2026‑10‑16](https://www.browserbase.com/) |
+| [Browserless](https://www.browserless.io/) | [Browserless](https://www.browserless.io/) | web | Hosted browser infrastructure for automation applications. | [✓ 2026‑10‑16](https://www.browserless.io/) |
+| [E2B](https://e2b.dev/) | [E2B](https://e2b.dev/) | desktop | Sandbox infrastructure for executing agent workloads. | [✓ 2026‑10‑16](https://e2b.dev/) |
 | [Hyperbrowser](https://www.hyperbrowser.ai/) | [Hyperbrowser](https://www.hyperbrowser.ai/) | web | Browser infrastructure and automation services for AI agents. | [✓ 2026‑10‑16](https://www.hyperbrowser.ai/) |
 | [Steel Cloud](https://steel.dev/) | [Steel](https://steel.dev/) | web | Managed browser infrastructure associated with Steel Browser. | [✓ 2026‑10‑16](https://steel.dev/) |
 

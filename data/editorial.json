@@ -6871,7 +6871,7 @@
     "topics": [
       "sandbox"
     ],
-    "summary": "Cloud browser platform for agents that pairs browser sessions with Search, Fetch and agent APIs, identity and observability tools, and the open-source Stagehand framework and Browse CLI.",
+    "summary": "Managed browser infrastructure for agent applications.",
     "verify_terms": [
       "Browserbase"
     ],
@@ -6895,7 +6895,7 @@
     "topics": [
       "web-navigation"
     ],
-    "summary": "Hosted Browser Use offering with task-finishing Browser Use Agents and remote browsers for other agents, connected through SDK, REST or CDP, with automatic CAPTCHA solving and pay-as-you-go pricing.",
+    "summary": "Hosted browser-agent platform from Browser Use.",
     "verify_terms": [
       "Browser Use",
       "Browser-Use"
@@ -6970,7 +6970,7 @@
     "topics": [
       "workflow"
     ],
-    "summary": "Site of Simular, which builds Sai, an assistant that runs screen tasks on the user's device and on cloud computers, along with the open-source Agent S framework and an autonomous computer API.",
+    "summary": "Computer-use products and research from Simular.",
     "verify_terms": [
       "Simular"
     ],
@@ -6994,7 +6994,7 @@
     "topics": [
       "workflow"
     ],
-    "summary": "Agent product that carries out tasks rather than only answering, such as making slides, websites, games and videos, offered as a web app with desktop and mobile apps, an API and Slack integration.",
+    "summary": "General agent platform with browser-based task execution.",
     "verify_terms": [
       "Manus"
     ],
@@ -7042,7 +7042,7 @@
     "topics": [
       "sandbox"
     ],
-    "summary": "Agent cloud giving each agent session its own Firecracker microVM with shell, filesystem, browser and network, for coding, computer use, background jobs and RL rollouts, in E2B's or the user's cloud.",
+    "summary": "Sandbox infrastructure for executing agent workloads.",
     "verify_terms": [
       "E2B"
     ],
@@ -7066,7 +7066,7 @@
     "topics": [
       "sandbox"
     ],
-    "summary": "Headless-browser service for automation and AI agents, reached via Puppeteer, Playwright, HTTP APIs or an MCP server, with stealth, CAPTCHA solving, reusable logged-in profiles and self-hosting.",
+    "summary": "Hosted browser infrastructure for automation applications.",
     "verify_terms": [
       "Browserless",
       "browserless"
@@ -7889,7 +7889,7 @@
     "topics": [
       "web-navigation"
     ],
-    "summary": "Chrome extension that lets Claude read signed-in pages and click, type and fill forms across a group of tabs, used from a side panel, inside Claude Cowork or from Claude Code.",
+    "summary": "Claude browser extension for interacting with websites.",
     "verify_terms": [
       "Chrome",
       "chrome"
