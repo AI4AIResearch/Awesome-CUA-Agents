@@ -158,7 +158,12 @@ def validate_records(rows):
                 dt.datetime.fromisoformat(ev["retrieved_at"].replace("Z", "+00:00"))
             except (ValueError, KeyError):
                 error("invalid evidence timestamp")
+        relation_keys = set()
         for relation in r.get("relations", []):
+            key = (relation.get("type"), relation.get("target_id"))
+            if key in relation_keys:
+                error(f"duplicate relation {key[0]} {key[1]}")
+            relation_keys.add(key)
             if relation.get("target_id") not in ids:
                 error(f"dangling reviewed relation {relation.get('target_id')}")
             if relation.get('evidence_url') not in {e.get('url') for e in r.get('evidence',[])}:
@@ -288,28 +293,32 @@ def write_sqlite(rows, path):
     temporary = path.with_suffix(".tmp")
     temporary.unlink(missing_ok=True)
     con = sqlite3.connect(temporary)
-    con.executescript("""
-        CREATE TABLE resources(id TEXT PRIMARY KEY, name TEXT NOT NULL, kind TEXT NOT NULL, url TEXT NOT NULL,
-          review_status TEXT NOT NULL, scope TEXT NOT NULL, published_at TEXT, summary TEXT, record_json TEXT NOT NULL);
-        CREATE TABLE facets(resource_id TEXT NOT NULL REFERENCES resources(id), facet TEXT NOT NULL, value TEXT NOT NULL,
-          PRIMARY KEY(resource_id, facet, value));
-        CREATE TABLE relations(source_id TEXT NOT NULL REFERENCES resources(id), relation TEXT NOT NULL, target_id TEXT NOT NULL,
-          evidence_url TEXT NOT NULL, PRIMARY KEY(source_id, relation, target_id));
-        CREATE VIRTUAL TABLE resource_search USING fts5(id UNINDEXED, name, summary, aliases, authors, topics);
-        CREATE INDEX resources_kind ON resources(kind, review_status);
-        CREATE INDEX facets_lookup ON facets(facet, value);
-    """)
-    for row in rows:
-        con.execute("INSERT INTO resources VALUES(?,?,?,?,?,?,?,?,?)", (row["id"], row["name"], row["kind"], row["url"], row["review_status"], row["scope"], row["published_at"], row["summary"], json.dumps(row, ensure_ascii=False)))
-        for facet in ("environments", "topics"):
-            for value in sorted(set(row[facet])):
-                con.execute("INSERT INTO facets VALUES(?,?,?)", (row["id"], facet, value))
-        for relation in row["relations"]:
-            con.execute("INSERT INTO relations VALUES(?,?,?,?)", (row["id"], relation["type"], relation["target_id"], relation["evidence_url"]))
-        con.execute("INSERT INTO resource_search VALUES(?,?,?,?,?,?)", (row["id"], row["name"], row["summary"] or "", " ".join(row["aliases"]), " ".join(row["authors"]), " ".join(row["topics"])))
-    con.commit()
-    con.close()
-    temporary.replace(path)
+    try:
+        con.executescript("""
+            CREATE TABLE resources(id TEXT PRIMARY KEY, name TEXT NOT NULL, kind TEXT NOT NULL, url TEXT NOT NULL,
+              review_status TEXT NOT NULL, scope TEXT NOT NULL, published_at TEXT, summary TEXT, record_json TEXT NOT NULL);
+            CREATE TABLE facets(resource_id TEXT NOT NULL REFERENCES resources(id), facet TEXT NOT NULL, value TEXT NOT NULL,
+              PRIMARY KEY(resource_id, facet, value));
+            CREATE TABLE relations(source_id TEXT NOT NULL REFERENCES resources(id), relation TEXT NOT NULL, target_id TEXT NOT NULL,
+              evidence_url TEXT NOT NULL, PRIMARY KEY(source_id, relation, target_id));
+            CREATE VIRTUAL TABLE resource_search USING fts5(id UNINDEXED, name, summary, aliases, authors, topics);
+            CREATE INDEX resources_kind ON resources(kind, review_status);
+            CREATE INDEX facets_lookup ON facets(facet, value);
+        """)
+        for row in rows:
+            con.execute("INSERT INTO resources VALUES(?,?,?,?,?,?,?,?,?)", (row["id"], row["name"], row["kind"], row["url"], row["review_status"], row["scope"], row["published_at"], row["summary"], json.dumps(row, ensure_ascii=False)))
+            for facet in ("environments", "topics"):
+                for value in sorted(set(row[facet])):
+                    con.execute("INSERT INTO facets VALUES(?,?,?)", (row["id"], facet, value))
+            for relation in row["relations"]:
+                con.execute("INSERT INTO relations VALUES(?,?,?,?)", (row["id"], relation["type"], relation["target_id"], relation["evidence_url"]))
+            con.execute("INSERT INTO resource_search VALUES(?,?,?,?,?,?)", (row["id"], row["name"], row["summary"] or "", " ".join(row["aliases"]), " ".join(row["authors"]), " ".join(row["topics"])))
+        con.commit()
+        con.close()
+        temporary.replace(path)
+    finally:
+        con.close()
+        temporary.unlink(missing_ok=True)
 
 
 def build(args):
