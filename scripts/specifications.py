@@ -7,6 +7,10 @@ import urllib.parse
 
 PROFILE_KEYS = {'benchmark': 'benchmark_protocol', 'dataset': 'dataset_profile'}
 PREFIXES = {'exact': '', 'approximately': '≈ ', 'at-least': '≥ ', 'more-than': '> '}
+# Rendered list fields, each mapped to whether it needs at least one entry.
+PROFILE_LISTS = {'benchmark': {'focus': True, 'observations': False, 'actions': False}, 'dataset': {'supervision': True, 'modalities': False, 'formats': False, 'splits': False}}
+PROFILE_TEXT = {'benchmark': ('evaluation', 'notes'), 'dataset': ('notes',)}
+SETTINGS = ('interactive', 'offline', 'mixed')
 
 
 def validate_profiles(record):
@@ -20,11 +24,22 @@ def validate_profiles(record):
             errors.append(f'{key} requires a curated {kind} record')
         if not isinstance(profile, dict):
             errors.append(f'{key} must be an object'); continue
+        for field, required in PROFILE_LISTS[kind].items():
+            values = profile.get(field)
+            if not isinstance(values, list) or (required and not values) or any(not isinstance(value, str) or not value.strip() for value in values) or len(set(values)) != len(values):
+                errors.append(f'{key} {field} must be a {"non-empty " if required else ""}list of distinct non-empty strings')
+        for field in PROFILE_TEXT[kind]:
+            if not isinstance(profile.get(field), str):
+                errors.append(f'{key} {field} must be a string')
+        if kind == 'benchmark' and profile.get('setting') not in SETTINGS:
+            errors.append(f'{key} setting must be one of ' + ', '.join(SETTINGS))
         sources = profile.get('evidence_urls', [])
         if not isinstance(sources, list) or not sources or any(not isinstance(url, str) or url not in known_sources for url in sources):
             errors.append(f'{key} references missing evidence receipts')
             sources = []
-        counts = profile.get('counts', [])
+        elif len(set(sources)) != len(sources):
+            errors.append(f'{key} has duplicate evidence receipts')
+        counts = profile.get('counts')
         if not isinstance(counts, list):
             errors.append(f'{key} counts must be a list'); continue
         seen = set()
@@ -34,7 +49,7 @@ def validate_profiles(record):
             value = count.get('value')
             if type(value) not in (int, float) or not math.isfinite(value) or value < 0:
                 errors.append(f'{key} count must be a finite nonnegative number')
-            if count.get('qualifier') not in PREFIXES or count.get('basis') not in {'reported', 'computed'}:
+            if not isinstance(count.get('qualifier'), str) or count['qualifier'] not in PREFIXES or count.get('basis') not in ('reported', 'computed'):
                 errors.append(f'{key} count lacks a precision qualifier or counting basis')
             if not isinstance(count.get('unit'), str) or not count['unit'].strip() or not isinstance(count.get('population'), str) or not count['population'].strip():
                 errors.append(f'{key} count lacks its unit or population')
