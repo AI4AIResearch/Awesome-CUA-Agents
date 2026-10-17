@@ -500,10 +500,22 @@ def require_editorial_identities(rows):
         raise SystemExit("\n".join(invalid))
 
 
+def select_editorial(rows, ids):
+    """Keep only the entries named by --id; an unknown ID stops the run before any network work."""
+    if not ids:
+        return rows
+    known = {row.get("id", editorial_identity(row)[0]) for row in rows}
+    unknown = [rid for rid in ids if rid not in known]
+    if unknown:
+        raise SystemExit("\n".join(f"UNKNOWN {rid}: no entry in data/editorial.json has this ID" for rid in unknown))
+    return [row for row in rows if row.get("id", editorial_identity(row)[0]) in ids]
+
+
 def verify_editorial(args):
     """Retrieve first-party evidence for editorial entries; never promote on HTTP status alone."""
     rows = read_json(DATA / "editorial.json", [])
     require_editorial_identities(rows)
+    rows = select_editorial(rows, getattr(args, "id", None))
     previous = {r["id"]: r for r in read_jsonl(DATA / "primary-evidence.jsonl")}
 
     def one(row):
@@ -632,6 +644,7 @@ def enrich(args):
     """Extract declared licenses and outbound references without inferring semantic relationships."""
     rows = read_json(DATA / "editorial.json", [])
     require_editorial_identities(rows)
+    rows = select_editorial(rows, getattr(args, "id", None))
     evidence = {r["id"]: r for r in read_jsonl(DATA / "primary-evidence.jsonl")}
     previous = {r["id"]: r for r in read_jsonl(DATA / "enrichment.jsonl")}
     stale, invalid = [], []
@@ -778,6 +791,8 @@ def main(argv=None):
         command = sub.add_parser(name)
         command.add_argument("--refresh", action="store_true", help="fetch new snapshots instead of reusing local cache")
         command.add_argument("--limit", type=int, default=0)
+        if function in (verify_editorial, enrich):
+            command.add_argument("--id", action="append", metavar="ID", help="only the editorial entry with this catalog ID (repeatable); other receipts are left unchanged")
         if function is discover:
             command.add_argument("--accept-shrink", action="append", metavar="SOURCE_ID", help="apply a successful response that drops this source below half its retained candidates")
         command.set_defaults(function=function)

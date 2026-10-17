@@ -38,6 +38,10 @@ python3 scripts/catalog.py search-arxiv
 python3 scripts/catalog.py verify --refresh
 python3 scripts/catalog.py enrich
 
+# Refresh and enrich only the named entries; repeat --id for several.
+python3 scripts/catalog.py verify --refresh --id github:xlang-ai/osworld
+python3 scripts/catalog.py enrich --id github:xlang-ai/osworld
+
 # Review changed snapshots before updating editorial approval digests.
 python3 scripts/catalog.py build
 
@@ -52,7 +56,9 @@ node --test tests/web.test.mjs
 .venv/bin/python scripts/build_site.py
 ```
 
-`--limit` bounds a harvest or search. Search manifests explicitly report incomplete pagination. Successful responses are cached; failed requests are recorded separately and never overwrite the last successful response. A failed refresh remains a failure in the latest run manifest. Re-running without `--refresh` can reuse an older successful cache response, retaining its original retrieval timestamp.
+`--limit` bounds a harvest or search; it does not select editorial entries. Search manifests explicitly report incomplete pagination. Successful responses are cached; failed requests are recorded separately and never overwrite the last successful response. A failed refresh remains a failure in the latest run manifest. Re-running without `--refresh` can reuse an older successful cache response, retaining its original retrieval timestamp.
+
+`--id <catalog id>` restricts `verify` and `enrich` to the editorial entries with that ID, which is the entry's `id` when given, otherwise its URL's identity ([Editorial input](editorial-input.md#resource-id)). It can be repeated. Every other receipt in `primary-evidence.jsonl` and row in `enrichment.jsonl` is written back unchanged, so adding or correcting one resource neither refetches the whole editorial list nor restamps every retrieval time. An ID that no editorial entry has stops the command before any request or write.
 
 `enrich` reads each primary-evidence body from the local `.cache/http/` and uses it only when its SHA-256 equals the recorded receipt. A missing or different body (a fresh clone, another machine, or receipts pulled from CI) leaves that record's previous enrichment untouched and is reported as `STALE`; run `verify` on the same machine first. A LICENSE request that fails with anything other than 404 keeps the previously recorded code license.
 
