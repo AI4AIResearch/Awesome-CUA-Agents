@@ -4,7 +4,7 @@ The executable contract is [resource.schema.json](../schemas/resource.schema.jso
 
 | Field | Meaning |
 | --- | --- |
-| `id` | Stable resource identity; prefixes distinguish arXiv, repositories, URLs, components, and publishers |
+| `id` | Stable resource identity; prefixes distinguish arXiv, repositories, URLs, components, and publishers. An `arxiv:`, `github:` or `url:` ID must be the canonical identity of `url`, and an `arxiv:` ID must equal `identifiers.arxiv`; editors assign `component:` and `organization:` IDs, whose URLs resolve elsewhere |
 | `name`, `aliases` | Display name and explicitly reviewed alternative names |
 | `kind` | Primary resource type; model families and checkpoints are distinguished by details/relations |
 | `url` | Primary landing page; not necessarily a direct binary download |

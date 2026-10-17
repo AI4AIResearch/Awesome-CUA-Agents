@@ -159,8 +159,15 @@ def validate_records(rows):
             error("missing fields " + ", ".join(sorted(missing)))
         if r.get("kind") not in KINDS:
             error("invalid kind")
-        if not r.get("name") or not canonical(r.get("url", ""), allow_doi=r.get("kind") in {"paper","survey"}):
+        parsed = canonical(r.get("url", ""), allow_doi=r.get("kind") in {"paper","survey"})
+        if not r.get("name") or not parsed:
             error("missing name or invalid URL")
+        # Editors assign component: and organization: identities; every other id is its URL's canonical identity.
+        if parsed and rid.split(":", 1)[0] in {"arxiv", "github", "url"} and parsed[0] != rid:
+            error(f"url resolves to {parsed[0]}, not to its id")
+        # preferred_arxiv may name another paper; arxiv must be this record's own identifier.
+        if rid.startswith("arxiv:") and r.get("identifiers", {}).get("arxiv") != rid[6:]:
+            error("identifiers.arxiv does not match the arXiv id")
         if r.get("review_status") not in STATUSES:
             error("invalid review status")
         if not r.get("environments") or set(r["environments"]) - ENVIRONMENTS:
