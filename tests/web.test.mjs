@@ -235,7 +235,8 @@ test('desktop and mobile platforms include their operating systems',()=>{
     assert.equal(mobile.has(r.id),r.environments.some(x=>['android','ios','harmonyos'].includes(x)),r.name);
   }
   assert.ok(rows.some(r=>mobile.has(r.id)&&r.environments.includes('ios')&&!r.environments.includes('android')));
-  assert.ok(rows.some(r=>desktop.has(r.id)&&r.environments.includes('windows')&&!r.environments.includes('desktop')));
+  // The catalog lists desktop with every desktop OS, so the group's expansion is checked on a record tagged only with one.
+  assert.ok(matches({...rows[0],environments:['windows']},{...initial(),platform:'desktop'}));
   assert.ok(filtered(rows,{...initial(),platform:'windows'}).every(r=>r.environments.includes('windows')));
   assert.equal(parseState(serializeState({...initial(),platform:'mobile'},'en')).platform,'mobile');
 });
