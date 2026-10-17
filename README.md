@@ -40,6 +40,8 @@ Evidence through `2026-10-17T12:45:23Z`. 1,700 records have bibliographic verifi
 | [Datasets](docs/datasets.md) · **80** | [Infrastructure](docs/infrastructures.md) · **15** |
 | [Benchmarks](docs/benchmarks.md) · **79** | [Tools](docs/tools.md) · **20** |
 | [Models and checkpoint releases](docs/models.md) · **93** | [Products](docs/products.md) · **19** · [Publishers and brands](docs/companies.md) · **16** |
+
+**By platform:** [Web](docs/environments/web.md) **483** · [Desktop](docs/environments/desktop.md) **256** · [Windows](docs/environments/windows.md) **47** · [macOS](docs/environments/macos.md) **25** · [Linux](docs/environments/linux.md) **38** · [Android](docs/environments/android.md) **262** · [iOS](docs/environments/ios.md) **19** · [HarmonyOS](docs/environments/harmonyos.md) **2** · [Cross-platform](docs/environments/cross-platform.md) **186**
 <!-- EXPLORE:END -->
 
 Coverage spans web, desktop, Android, iOS, Windows, macOS, Linux, and cross-platform work. Topics include grounding, screen understanding, planning, memory, long-horizon workflows, reinforcement learning, data generation, safety, robustness, and evaluation. Environment facets overlap; framework support is not assumed from a model's benchmark results.
@@ -178,9 +180,14 @@ Code, data, weights, and document licenses are separate. Missing values are `nul
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements-dev.txt
 .venv/bin/python scripts/catalog.py validate
+.venv/bin/python scripts/catalog.py build --check
 .venv/bin/python -m unittest discover -s tests -v
-python3 scripts/catalog.py build --check
+.venv/bin/python scripts/catalog.py build
+node --test tests/web.test.mjs
+.venv/bin/python scripts/build_site.py
 ```
+
+These commands match the checks that [Catalog quality](.github/workflows/catalog.yml) runs on every push and pull request, in the same order. They need Python 3.11+ and Node.js 24+, the `engines` version in `package.json` (CI uses Python 3.12 and Node.js 24). The web tests use only the built-in Node.js test runner, so nothing needs to be installed with npm. `npm run test:web` and `npm run build:web` are shortcuts for the last two commands.
 
 Network discovery and verification are explicit commands; ordinary builds are offline. Changed primary snapshots require another editorial review before publication. [Maintenance guide](docs/maintenance.md) · [Methodology](docs/methodology.md) · [Data dictionary](docs/data-dictionary.md)
 
@@ -189,3 +196,5 @@ Network discovery and verification are explicit commands; ordinary builds are of
 The [source registry](data/sources.json) credits the community collections and surveys used for discovery. Bibliographic records use retained arXiv, publisher, and author sources; publication observations preserve edition-specific titles, authors, and date precision. Selected assets are checked against publisher repositories, documentation, and model/dataset cards. Upstream READMEs, papers, model weights, and datasets are not redistributed here.
 
 Original repository code and annotations use the [MIT license](LICENSE). Linked resources retain their own terms; this repository does not relicense them.
+
+To cite the catalog, use [CITATION.cff](CITATION.cff) or GitHub's "Cite this repository" button. The data changes with every scan, so pin the exact version you used: record the commit from `git rev-parse HEAD` in your clone, or link files at that commit, such as `https://github.com/reacher-z/Awesome-CUA/blob/<commit>/data/catalog.jsonl`.

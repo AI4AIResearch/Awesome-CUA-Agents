@@ -1,0 +1,23 @@
+name: Improvement or question
+description: Suggest a website, export, or tooling improvement, or ask a question that is not a bug.
+title: "[idea] "
+labels: ["enhancement"]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Website
+        - Scripts, build, or exports
+        - Workflows or automation
+        - Documentation
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal or question
+      description: Describe the change or question, who it helps, and any example page, command, or record.
+    validations:
+      required: true

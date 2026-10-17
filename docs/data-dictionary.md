@@ -27,7 +27,7 @@ Dataset details can include sample count and unit, modalities, languages, downlo
 
 `references.jsonl` is a separate discovery graph. Its `mentions` relation only means a URL was found in the source. `target_in_catalog` distinguishes indexed and unresolved targets. Strong reviewed relations remain inside each resource record and in the SQLite `relations` table.
 
-Source data lives in `editorial.json` (see [editorial input](editorial-input.md)), `papers.jsonl`, `publications.jsonl`, `primary-evidence.jsonl`, `enrichment.jsonl`, `candidates.jsonl`, and discovery manifests. `catalog.jsonl`, `coverage.json`, `references.jsonl`, `review-queue.jsonl`, and category Markdown are generated views. The ignored `.cache/` directory is not needed to reproduce an offline build.
+[Authored and generated files](#authored-and-generated-files) lists every file in `data/` and every generated view, with the command that writes it. The ignored `.cache/` directory is not needed to reproduce an offline build.
 
 The [English data hub](https://awesomecua.github.io/data/) and [中文数据中心](https://awesomecua.github.io/zh/data/) expose downloads from the same source catalog available by cloning the repository. Their [download manifest](https://awesomecua.github.io/downloads/manifest.json) follows [download-manifest.schema.json](../schemas/download-manifest.schema.json). Its `artifacts` array records each listed export's `path`, format, group, actual `count.value` and `count.unit`, `scope`, exact `bytes`, and file `sha256`. The top-level `catalog_sha256` identifies the source catalog snapshot; compare it with the RAG, citation and topic manifests before combining artifacts.
 
@@ -55,3 +55,35 @@ Reviewed `documented_by` links connect an implementation or dataset to a paper n
 The citation exports retain literal source authors, source dates at their known precision, review status, and stable catalog identity. The default arXiv citation keeps its retained preprint version; `--edition publication` explicitly selects the publication's own title/authors/date/venue/DOI. Publisher-only records cite their publication in either mode. Unknown facts are omitted. Publication citation IDs can have an edition suffix while `custom.catalog_id` retains the canonical resource ID. The export manifest records editions, counts and file SHA-256 values, tied to the source catalog SHA-256.
 
 `catalog.py get` returns an exact active record with its stable ID. `--related` adds only source-backed reviewed semantic relations; raw reference mentions are not promoted. A scope-excluded ID returns its applied decision and a nonzero exit code, preserving the boundary between the active catalog and retained archive.
+
+## Authored and generated files
+
+Edit authored files by hand and review them in a pull request. Do not hand-edit command or build outputs: rerun the command, because hand edits are overwritten on the next run, and `build --check` fails when a build output is stale. All paths are in `data/` unless shown otherwise.
+
+| File | Type | Written by |
+| --- | --- | --- |
+| `editorial.json` | Authored | Editorial proposals and approvals; see [editorial input](editorial-input.md) |
+| `exclusions.json` | Authored | Scope decisions; see [scope review](scope-review.md) |
+| `publications.jsonl` | Authored | Reviewed publication observations |
+| `sources.json` | Authored | Discovery-source registry read by `catalog.py discover` |
+| `paper-discovery-queries.json` | Authored | Hugging Face search registry read by `discover_papers.py` |
+| `scan-config.json` | Authored | Scan schedule and limits read by `scan.py` and the website status page |
+| `site-guides.json`, `site-discovery.json` | Authored | Website guides and search-discovery settings read by `build_site.py` and `submit_indexnow.py` |
+| `conference-discovery.json`, `discovery-audits.json` | Authored | Records of a manual proceedings sweep and an arXiv query audit; no script rewrites them |
+| `search-submissions.json` | Authored | Hand-recorded search-console receipts; `submit_indexnow.py --submit` with default paths also appends here |
+| `primary-evidence.jsonl` | Command output | `catalog.py verify` |
+| `enrichment.jsonl` | Command output | `catalog.py enrich` |
+| `arxiv-search.json` | Command output | `catalog.py search-arxiv` |
+| `candidates.jsonl` | Command output | `catalog.py discover`, `discover_papers.py`, `catalog.py search-arxiv`, `scan.py` |
+| `papers.jsonl`, `metadata-updates.jsonl` | Command output | `catalog.py harvest`, `catalog.py search-arxiv`, `scan.py`; `backfill_arxiv_snapshots.py --write` also writes `papers.jsonl` |
+| `harvest-failures.jsonl` | Command output | `catalog.py harvest`, run by `scan.py` |
+| `discovery-runs.json` | Command output | `catalog.py discover`, run by `scan.py` |
+| `research-discovery.json`, `paper-discovery-status.json` | Command output | `discover_papers.py`, run by `scan.py` |
+| `recent-paper-search.json`, `scan-status.json`, `scan-history.jsonl` | Command output | `scan.py` |
+| `catalog.jsonl`, `coverage.json`, `exclusion-status.json`, `references.jsonl`, `review-queue.jsonl` | Build output | `catalog.py build` |
+| `docs/agents.md`, `docs/benchmarks.md`, `docs/companies.md`, `docs/datasets.md`, `docs/frameworks.md`, `docs/infrastructures.md`, `docs/models.md`, `docs/products.md`, `docs/surveys.md`, `docs/tools.md` | Build output | `catalog.py build` |
+| `docs/papers.md`, `docs/coverage.md`, `docs/topics.md`, `docs/topics/*.md` | Build output | `catalog.py build` |
+| `BADGES`, `STATS`, `EXPLORE`, `HIGHLIGHTS`, and `RECENT` blocks in `README.md` and `README.zh-CN.md` | Build output | `catalog.py build` replaces the text between each block's `START` and `END` markers; the rest of both READMEs is authored |
+| `dist/catalog.sqlite`, `dist/catalog.json`, `dist/site/` | Ignored build output | `catalog.py build` and `build_site.py`; never committed |
+
+The scheduled scan runs `discover`, `discover_papers.py`, the recent arXiv search, `harvest`, and `build`. It commits everything it changes under `data/`, `docs/`, and both READMEs, so it can rewrite any command output above except `primary-evidence.jsonl`, `enrichment.jsonl`, and `arxiv-search.json`, and any committed build output. The other docs in `docs/` and the text outside the generated blocks are authored. [CONTRIBUTING](../CONTRIBUTING.md#resolving-conflicts-with-the-scheduled-scan) explains how to resolve the resulting conflicts.

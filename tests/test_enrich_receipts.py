@@ -143,6 +143,40 @@ class EnrichReceiptTests(unittest.TestCase):
                 jsonschema.Draft202012Validator(schema, format_checker=jsonschema.FormatChecker()).validate(enriched[rid]["licenses"]["weights"])
                 self.assertEqual(enriched[rid]["evidence"][0]["supports"], ["details", "licenses.weights"])
 
+    def test_detect_code_license_table(self):
+        cases = [
+            ("title-first MIT", "MIT License\n\nCopyright (c) 2024 Example\n", "MIT"),
+            ("The MIT License title-first", "  The MIT License  \n\nCopyright (c) 2024 Example\n", "MIT"),
+            ("copyright-first MIT (microsoft/UFO)", "Copyright (c) Microsoft Corporation.\n\nMIT License\n\nPermission is hereby granted", "MIT"),
+            ("copyright-first MIT with CRLF", "Copyright (c) 2024 Example.\r\n\r\nThe MIT License\r\n\r\nPermission is hereby granted", "MIT"),
+            ("Apache 2.0 header", "                                 Apache License\n                           Version 2.0, January 2004\n", "Apache-2.0"),
+            ("BSD 3-Clause header", "BSD 3-Clause License\n\nCopyright (c) 2024 Example\n", "BSD-3-Clause"),
+            ("BSD 2-Clause header", "BSD 2-Clause License\n\nCopyright (c) 2024 Example\n", "BSD-2-Clause"),
+            ("prose mention only", "This project and its subpackages are licensed under the MIT License.\n", None),
+            ("inline MIT License with trailing words", "MIT License with additional non-commercial restrictions\n", None),
+            ("composite MIT + CC-BY header (<1000 chars)", "MIT License\n\nCode is MIT; dataset weights are CC-BY-NC-4.0.\n", None),
+            ("custom proprietary preamble (<1000 chars)", "Custom Proprietary License\n\nSubcomponent:\nMIT License\n", None),
+            ("composite/custom notice beyond 1000 chars", "Custom Notice\n" + ("x" * 1050) + "\nMIT License\n", None),
+            ("custom license text", "All rights reserved. For research evaluation only.\n", None),
+        ]
+        for label, text, expected in cases:
+            with self.subTest(label=label):
+                self.assertEqual(catalog.detect_code_license(text), expected)
+
+    def test_enrich_records_copyright_first_mit_license(self):
+        url = "https://github.com/microsoft/UFO"
+        primary = "https://raw.githubusercontent.com/microsoft/UFO/HEAD/README.md"
+        row, rid = {"url": url, "kind": "framework", "name": "UFO"}, catalog.canonical(url)[0]
+        license_url = "https://raw.githubusercontent.com/microsoft/UFO/HEAD/LICENSE"
+        ufo_mit = b"Copyright (c) Microsoft Corporation.\n\nMIT License\n\nPermission is hereby granted"
+        fetch = lambda u, refresh=False: (
+            {"url": u, "ok": True, "status": 200, "sha256": sha(ufo_mit), "retrieved_at": "2026-10-17T00:00:00Z"},
+            ufo_mit if u == license_url else b"",
+        )
+        enriched, _ = self.run_enrich([(row, primary, sha(README))], {primary: README}, fetch)
+        self.assertEqual(enriched[rid]["licenses"]["code"]["declared"], "MIT")
+        self.assertEqual(enriched[rid]["licenses"]["code"]["url"], license_url)
+
 
 if __name__ == "__main__":
     unittest.main()

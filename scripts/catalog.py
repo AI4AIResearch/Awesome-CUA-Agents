@@ -502,6 +502,27 @@ def string_list(value):
     return [value] if isinstance(value, str) else [v for v in value if isinstance(v, str)] if isinstance(value, list) else []
 
 
+def detect_code_license(text):
+    """Identify a standard code license from the opening header of a LICENSE file."""
+    head = text[:1000]
+    composite_or_custom = bool(
+        re.search(
+            r"\b(?:Apache License|BSD [23]-Clause|GNU (?:Affero |Lesser )?General Public License|[AL]?GPL(?:v[23])?|Mozilla Public License|Creative Commons|CC-BY|Proprietary)\b",
+            head,
+            re.I,
+        )
+    )
+    if not composite_or_custom and re.search(r"^[ \t]*(?:The )?MIT License[ \t]*\r?$", head, re.I | re.M):
+        return "MIT"
+    if "Apache License" in text[:250] and "Version 2.0" in text[:300]:
+        return "Apache-2.0"
+    if "BSD 3-Clause" in text[:100]:
+        return "BSD-3-Clause"
+    if "BSD 2-Clause" in text[:100]:
+        return "BSD-2-Clause"
+    return None
+
+
 def enrich(args):
     """Extract declared licenses and outbound references without inferring semantic relationships."""
     rows = read_json(DATA / "editorial.json", [])
@@ -605,15 +626,7 @@ def enrich(args):
                         result["evidence"] += [e for e in old.get("evidence", []) if e.get("method") == "license_header"]
                     break
                 license_text = body.decode("utf-8", errors="replace")
-                declared = None
-                if re.search(r"^\s*(?:The )?MIT License", license_text, re.I):
-                    declared = "MIT"
-                elif "Apache License" in license_text[:250] and "Version 2.0" in license_text[:300]:
-                    declared = "Apache-2.0"
-                elif "BSD 3-Clause" in license_text[:100]:
-                    declared = "BSD-3-Clause"
-                elif "BSD 2-Clause" in license_text[:100]:
-                    declared = "BSD-2-Clause"
+                declared = detect_code_license(license_text)
                 # Ambiguous/custom/composite declarations stay unknown rather than being guessed.
                 if declared:
                     result["licenses"]["code"] = {"declared": declared, "url": license_url, "retrieved_at": info["retrieved_at"], "basis": "repository LICENSE header; not a weights/data license"}

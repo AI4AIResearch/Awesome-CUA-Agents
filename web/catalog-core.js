@@ -10,6 +10,8 @@ export function createRecordLoader(fetcher) {
   };
 }
 export function normalize(value) { return String(value || '').normalize('NFKC').toLowerCase().replace(/[\p{P}\p{S}]+/gu,' ').replace(/\s+/g,' ').trim(); }
+// Skip LaTeX command names and tokens without letters or digits: \textsc{GUI-Spotlight} gives GS and "DSBC : Data" gives DD.
+export function initials(name) { return String(name || '').replace(/\\[a-zA-Z]+/g,'').split(/[\s-]+/).map(word => word.match(/[\p{L}\p{N}]/u)?.[0]).filter(Boolean).slice(0,2).join('').toUpperCase(); }
 export function bibliographicDate(record) {
   if(typeof record.paper_date==='string')return record.paper_date;
   const publication=record.details?.publication;
@@ -19,6 +21,10 @@ export function bibliographicDate(record) {
       ? parts.map((part,index)=>String(part).padStart(index?2:4,'0')).join('-') : '';
   }
   return record.published_at || '';
+}
+export function compactFacts(record, slotLabel = slot => slot) {
+  const year=bibliographicDate(record).slice(0,4), arxiv=record.paper_arxiv;
+  return [year&&{key:'year',text:year},arxiv&&{key:'paper',text:'arXiv '+arxiv,url:'https://arxiv.org/abs/'+arxiv},...Object.entries(record.declared_licenses || {}).map(([slot,name])=>({key:'license',text:slotLabel(slot)+' '+name}))].filter(Boolean);
 }
 export const TOPIC_ALIASES = {'reinforcement-learning':['RL'],'human-in-the-loop':['HITL']};
 const CJK = /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]/u;
@@ -70,6 +76,11 @@ export function serializeState(state, lang, record='') {
   if (lang === 'zh') p.set('lang','zh');
   if (record) p.set('record',record);
   return p.toString();
+}
+// First, last and neighbouring pages; null marks a gap, and a gap of one page shows that page instead.
+export function pageWindow(page, pages) {
+  const shown = [...new Set([1,page-1,page,page+1,pages])].filter(n => n>=1 && n<=pages).sort((a,b) => a-b);
+  return shown.flatMap((n,i) => !i || n-shown[i-1]===1 ? [n] : n-shown[i-1]===2 ? [n-1,n] : [null,n]);
 }
 export function escapeHTML(value) { return String(value ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 export function safeURL(value) { try {const u=new URL(value); return ['https:','http:'].includes(u.protocol) ? u.href : '#';} catch {return '#';} }

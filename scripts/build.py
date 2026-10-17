@@ -423,6 +423,42 @@ def topic_pages(rows):
     return files
 
 
+PLATFORMS = [("web", "Web"), ("desktop", "Desktop"), ("windows", "Windows"), ("macos", "macOS"), ("linux", "Linux"),
+    ("android", "Android"), ("ios", "iOS"), ("harmonyos", "HarmonyOS"), ("cross-platform", "Cross-platform")]
+
+
+def environment_pages(rows):
+    """One generated hub per platform facet, listing every reviewed resource that carries it."""
+    by_id = {r["id"]: r for r in rows}
+    curated = [r for r in rows if r["review_status"] == "curated"]
+    files = {}
+    index = ["# Reviewed resources by platform", "", "[Home](../README.md) · [Research by topic](topics.md) · [Coverage](coverage.md)", "",
+        "Environment facets come from the editorial review and overlap: a resource tagged with several platforms appears in each hub. `unspecified` records are listed only in the category pages.", "",
+        "| Platform | All | Benchmarks | Datasets | Models | Systems | Papers |", "| --- | ---: | ---: | ---: | ---: | ---: | ---: |"]
+    cell = lambda n: f"{n:,}" if n else "·"
+    for env, label in PLATFORMS:
+        group = [r for r in curated if env in r["environments"]]
+        if not group:
+            continue
+        kinds = collections.Counter(r["kind"] for r in group)
+        systems = sum(kinds[k] for k in ("agent", "framework", "tool", "infrastructure", "product", "company"))
+        index.append(f"| [{label}](environments/{env}.md) | {len(group):,} | {cell(kinds['benchmark'])} | {cell(kinds['dataset'])} | {cell(kinds['model'])} | {cell(systems)} | {cell(kinds['paper'] + kinds['survey'])} |")
+        lines = [f"# {label}", "", "[Home](../../README.md) · [All platforms](../environments.md) · [Research by topic](../topics.md)", "",
+            f"{len(group):,} source-reviewed resources tagged `{env}`. Curated metadata, not a performance ranking; unknown facts are shown as —.", "",
+            "**Contents:** " + " · ".join(f"[{name} ({kinds[kind]})](#{name.lower()})" for kind, name in TOPIC_KINDS if kinds[kind]), ""]
+        for kind, name in TOPIC_KINDS:
+            members = sorted((r for r in group if r["kind"] == kind), key=lambda r: r["name"].casefold())
+            if not members:
+                continue
+            columns = KIND_COLUMNS.get(kind, KIND_COLUMNS[None])[0]
+            if "Date" in columns:
+                members.sort(key=record_date_text, reverse=True)
+            lines += [f"## {name}", "", *section_table(members, columns, by_id), ""]
+        files[f"docs/environments/{env}.md"] = "\n".join(lines)
+    files["docs/environments.md"] = "\n".join(index + [""])
+    return files
+
+
 MATRIX_ENVIRONMENTS = ["web", "desktop", "windows", "macos", "linux", "android", "ios", "harmonyos", "cross-platform", "unspecified"]
 
 
@@ -483,6 +519,7 @@ def documents(rows, report):
         paper_lines.append("")
     files["docs/papers.md"] = "\n".join(paper_lines)
     hubs = topic_pages(rows)
+    hubs.update(environment_pages(rows))
     if hubs.keys() & files.keys():
         raise ValueError("Generated paths assigned twice: " + ", ".join(sorted(hubs.keys() & files.keys())))
     files.update(hubs)
@@ -558,7 +595,7 @@ README_TEXT = {
         "labels": {"topics": "Research by topic", "bibliography": "Full bibliography", "survey": "Surveys", "dataset": "Datasets", "benchmark": "Benchmarks",
             "model": "Models and checkpoint releases", "agent": "Agents", "framework": "Frameworks", "infrastructure": "Infrastructure", "tool": "Tools",
             "product": "Products", "company": "Publishers and brands"},
-        "reviewed_papers": "**{n:,}** reviewed papers", "arxiv_records": "{n:,} paper and survey records",
+        "by_platform": "By platform:", "reviewed_papers": "**{n:,}** reviewed papers", "arxiv_records": "{n:,} paper and survey records",
         "kinds": {"benchmark": "Benchmarks", "model": "Models", "dataset": "Datasets", "framework": "Frameworks", "agent": "Agents"},
         "all": "all {n} →", "highlight_header": "| Resource | Mentions | Environments | Paper | License | Description |",
         "recent_header": "| Reviewed | Resource | Kind | Environments | Description |", "kind_names": {},
@@ -570,7 +607,7 @@ README_TEXT = {
         "labels": {"topics": "按主题浏览研究", "bibliography": "完整论文目录", "survey": "综述", "dataset": "数据集", "benchmark": "基准",
             "model": "模型与权重版本", "agent": "智能体", "framework": "框架", "infrastructure": "基础设施", "tool": "工具",
             "product": "产品", "company": "发布方与品牌"},
-        "reviewed_papers": "**{n:,}** 篇已审阅论文", "arxiv_records": "{n:,} 条论文与综述记录",
+        "by_platform": "按平台：", "reviewed_papers": "**{n:,}** 篇已审阅论文", "arxiv_records": "{n:,} 条论文与综述记录",
         "kinds": {"benchmark": "基准", "model": "模型", "dataset": "数据集", "framework": "框架", "agent": "智能体"},
         "all": "全部 {n} 项 →", "highlight_header": "| 资源 | 被提及 | 环境 | 论文 | 许可 | 简介（英文） |",
         "recent_header": "| 审阅日期 | 资源 | 类型 | 环境 | 简介（英文） |",
@@ -601,6 +638,8 @@ def explore(rows, report, lang="en"):
         return f"[{label}]({path}) · **{curated[kind]:,}**"
     lines = [text["explore_header"], "| --- | --- |"]
     lines += [f"| {' · '.join(link(*item) for item in left)} | {' · '.join(link(*item) for item in right)} |" for left, right in EXPLORE]
+    platforms = collections.Counter(e for r in rows if r["review_status"] == "curated" for e in set(r["environments"]))
+    lines += ["", f"**{text['by_platform']}** " + " · ".join(f"[{label}](docs/environments/{env}.md) **{platforms[env]:,}**" for env, label in PLATFORMS if platforms[env])]
     return "\n" + "\n".join(lines) + "\n"
 
 

@@ -42,6 +42,8 @@ git clone https://github.com/reacher-z/Awesome-CUA.git
 | [数据集](docs/datasets.md) · **80** | [基础设施](docs/infrastructures.md) · **15** |
 | [基准](docs/benchmarks.md) · **79** | [工具](docs/tools.md) · **20** |
 | [模型与权重版本](docs/models.md) · **93** | [产品](docs/products.md) · **19** · [发布方与品牌](docs/companies.md) · **16** |
+
+**按平台：** [Web](docs/environments/web.md) **483** · [Desktop](docs/environments/desktop.md) **256** · [Windows](docs/environments/windows.md) **47** · [macOS](docs/environments/macos.md) **25** · [Linux](docs/environments/linux.md) **38** · [Android](docs/environments/android.md) **262** · [iOS](docs/environments/ios.md) **19** · [HarmonyOS](docs/environments/harmonyos.md) **2** · [Cross-platform](docs/environments/cross-platform.md) **186**
 <!-- EXPLORE:END -->
 
 覆盖 Web、桌面、Android、iOS、Windows、macOS、Linux 和跨平台工作。主题包括 grounding、屏幕理解、规划、记忆、长流程任务、强化学习、数据生成、安全、鲁棒性和评测。环境分面可以重叠；不会根据模型的基准成绩推定框架支持。
@@ -179,9 +181,14 @@ python3 scripts/export_citations.py --format bibtex --output dist/citations.bib
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements-dev.txt
 .venv/bin/python scripts/catalog.py validate
+.venv/bin/python scripts/catalog.py build --check
 .venv/bin/python -m unittest discover -s tests -v
-python3 scripts/catalog.py build --check
+.venv/bin/python scripts/catalog.py build
+node --test tests/web.test.mjs
+.venv/bin/python scripts/build_site.py
 ```
+
+这些命令与 [Catalog quality](.github/workflows/catalog.yml) 在每次推送和拉取请求时运行的检查一致，顺序也相同。需要 Python 3.11+ 和 Node.js 24+，即 `package.json` 中 `engines` 声明的版本（CI 使用 Python 3.12 和 Node.js 24）。网页测试只使用 Node.js 内置的测试运行器，无需用 npm 安装任何依赖。`npm run test:web` 和 `npm run build:web` 分别是最后两条命令的快捷方式。
 
 网络发现和核实需要显式运行相应命令；常规构建不联网。一手来源快照发生变化后，必须重新进行编辑审阅才能发布。[维护指南](docs/maintenance.md) · [方法说明](docs/methodology.md) · [数据字典](docs/data-dictionary.md)
 
@@ -190,3 +197,5 @@ python3 scripts/catalog.py build --check
 [来源登记](data/sources.json)列出了用于发现资源的社区合集和综述。书目记录依据保留的 arXiv、出版方及作者来源；出版记录分别保留各版本的题名、作者和日期精度。部分资源还会对照发布方的仓库、文档以及模型/数据集卡片核查。上游 README、论文、模型权重和数据集不在本仓库中再分发。
 
 本仓库的原创代码和标注采用 [MIT 许可](LICENSE)。被链接的资源保留各自的条款；本仓库不对其重新授权。
+
+引用本目录时，请使用 [CITATION.cff](CITATION.cff) 或 GitHub 的“Cite this repository”按钮。数据随每次扫描更新，请固定所用的确切版本：在克隆中用 `git rev-parse HEAD` 记录提交，或链接该提交下的文件，例如 `https://github.com/reacher-z/Awesome-CUA/blob/<commit>/data/catalog.jsonl`。

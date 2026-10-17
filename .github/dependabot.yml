@@ -1,0 +1,16 @@
+version: 2
+updates:
+  # "/" covers .github/workflows; "/automation" adds publish.yml. With directories, one grouped PR bumps both.
+  - package-ecosystem: github-actions
+    directories: ["/", "/automation"]
+    schedule:
+      interval: weekly
+    groups:
+      github-actions:
+        patterns: ["*"]
+    labels: ["area:ci"]
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: weekly
+    labels: ["area:ci"]
