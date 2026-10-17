@@ -6,6 +6,7 @@ from pathlib import Path
 import re
 import shutil
 import sys
+import tempfile
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts'))
@@ -35,14 +36,34 @@ def compact_facts(row):
     return {'paper_arxiv':row['identifiers'].get('arxiv') or (papers[0]['target_id'][6:] if papers else None),'declared_licenses':licenses}
 
 
+def replaceable(destination):
+    # The build replaces its whole output directory, so it never takes over a checkout or a folder it did not create.
+    return not destination.exists() or destination.is_dir() and not destination.is_symlink() and (not any(destination.iterdir()) or (destination/'data/search-manifest.json').is_file() and not (destination/'.git').exists())
+
+
 def build_site(output=None):
     destination=Path(output) if output else ROOT/'dist'/'site'
+    if not replaceable(destination):raise ValueError(f'Refusing to replace {destination}: build into an empty directory or a previous site build.')
+    destination.parent.mkdir(parents=True,exist_ok=True)
+    # Build beside the output and swap it in whole: removed pages cannot survive, and a failed build keeps the previous site.
+    staging=Path(tempfile.mkdtemp(prefix=f'.{destination.name}-',dir=destination.parent))
+    try:
+        staging.chmod(0o755)
+        manifest,count=write_site(staging)
+        if destination.exists():shutil.rmtree(destination)
+        staging.rename(destination)
+    except BaseException:
+        shutil.rmtree(staging,ignore_errors=True);raise
+    print(f'Built {count:,} searchable resources and {sum(x["indexable"] for x in manifest)} indexable HTML pages → {destination}')
+    return destination
+
+
+def write_site(destination):
     rows=[json.loads(line) for line in (ROOT/'data/catalog.jsonl').read_text(encoding='utf-8').splitlines() if line.strip()]
     coverage=json.loads((ROOT/'data/coverage.json').read_text(encoding='utf-8'))
     errors=validate_records(rows)
     if errors:raise ValueError('\n'.join(errors[:10]))
     if len(rows)!=coverage['total_records']:raise ValueError('Catalog/coverage count mismatch; rebuild catalog first.')
-    destination.mkdir(parents=True,exist_ok=True)
     for path in (ROOT/'web').iterdir():
         if path.is_file():shutil.copy2(path,destination/path.name)
     version_script_imports(destination)
@@ -84,8 +105,7 @@ def build_site(output=None):
     (destination/'.nojekyll').write_text('',encoding='utf-8')
     manifest=build_search_pages(destination,rows,coverage,ROOT)
     reconcile_generated_pages(destination,manifest)
-    print(f'Built {len(rows):,} searchable resources and {sum(x["indexable"] for x in manifest)} indexable HTML pages → {destination}')
-    return destination
+    return manifest,len(rows)
 
 
 if __name__=='__main__':

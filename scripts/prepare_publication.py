@@ -29,8 +29,10 @@ def main():
     if old_path.exists():
         old=json.loads(old_path.read_text(encoding='utf-8'));new_paths={p['path'] for p in incoming['pages']}
         for item in old.get('pages',[]):
-            if item['path'] in new_paths or not item['path'].startswith(('/resources/','/categories/','/guides/','/topics/','/zh/topics/')):continue
-            folder=site/item['path'].lstrip('/')
+            if item['path'] in new_paths:continue
+            # Any page the new build dropped is removed, whatever its section, but never outside the checkout.
+            folder=(site/item['path'].lstrip('/')).resolve()
+            if not folder.is_relative_to(site):raise ValueError('Old manifest page outside the website checkout: '+item['path'])
             for filename in MANAGED_FILES:(folder/filename).unlink(missing_ok=True)
     for item in incoming['pages']:
         if item['path'].startswith('/resources/'):
