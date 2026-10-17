@@ -359,7 +359,7 @@
     "topics": [
       "evaluation"
     ],
-    "summary": "Windows desktop agent evaluation environment.",
+    "summary": "Windows 11 benchmark for multimodal desktop agents in a reproducible VM that runs locally or in parallel on Azure ML, with a harder mode where agents must set tasks up themselves.",
     "verify_terms": [
       "Windows Agent Arena",
       "WindowsAgentArena"
@@ -536,7 +536,7 @@
       "evaluation",
       "grounding"
     ],
-    "summary": "Desktop grounding evaluation associated with OSWorld.",
+    "summary": "Computer-use grounding benchmark with original and refined instructions, released with the Jedi synthetic data pipeline, a 4-million-example Jedi dataset and Jedi-3B and Jedi-7B models.",
     "verify_terms": [
       "OSWorld-G",
       "OSWorld-G"
@@ -998,7 +998,7 @@
       "evaluation",
       "web-navigation"
     ],
-    "summary": "Live website evaluation of web agents.",
+    "summary": "300 tasks on 136 live websites for evaluating web agents online, with outdated tasks replaced over time, human-reviewed submissions and the WebJudge automatic evaluator.",
     "verify_terms": [
       "Online Mind2Web",
       "Online-Mind2Web"
@@ -1310,7 +1310,7 @@
       "evaluation",
       "mobile-navigation"
     ],
-    "summary": "Training and evaluation environment for Android agents.",
+    "summary": "Reproducible Android benchmark of 138 tasks across nine apps on predefined virtual devices, run via AVD on Mac or Docker on Linux, released with the Android Instruct training set.",
     "verify_terms": [
       "AndroidLab",
       "Android-Lab"
@@ -1507,7 +1507,7 @@
       "evaluation",
       "mobile-navigation"
     ],
-    "summary": "Smartphone agent evaluation benchmark.",
+    "summary": "340 single-app and cross-app tasks over 66 Chinese and English Android apps, with plug-in support for 11 smartphone agents and automatic coarse-to-fine success detection.",
     "verify_terms": [
       "SPA-Bench",
       "SPA-Bench"
@@ -1608,7 +1608,7 @@
       "evaluation",
       "mobile-navigation"
     ],
-    "summary": "Evaluation toolkit and tasks for mobile agents.",
+    "summary": "Automated benchmark for mobile LLM agents whose default tasks use ten Simple Mobile Tools Android apps, installed as a Python library that detects task completion.",
     "verify_terms": [
       "MobileAgentBench",
       "mobile-agent-bench"
@@ -1628,7 +1628,7 @@
       "evaluation",
       "mobile-navigation"
     ],
-    "summary": "Benchmark of semantic world modeling for mobile GUI agents.",
+    "summary": "Benchmark of semantic world modeling for mobile agents, with question-answering tasks and GPT-judged generation tasks, plus training data built on AitW and AndroidControl screens.",
     "verify_terms": [
       "MobileWorldBench"
     ],
@@ -1654,7 +1654,7 @@
       "safety-security",
       "evaluation"
     ],
-    "summary": "Benchmark for safety behavior of mobile device agents.",
+    "summary": "Android emulator testbed that scores mobile device-control agents on both safety and helpfulness, using ADB and Appium for observations, actions and success checks.",
     "verify_terms": [
       "MobileSafetyBench",
       "mobilesafetybench"
@@ -2024,7 +2024,7 @@
       "evaluation",
       "robustness"
     ],
-    "summary": "GUI agent evaluation with varied initial states.",
+    "summary": "611 desktop GUI tasks that agents must complete from varied starting points, shipped with instructional videos and project files, plus the self-reflective WorldGUI-Agent baseline.",
     "verify_terms": [
       "WorldGUI",
       "WorldGUI"
@@ -2047,7 +2047,7 @@
       "evaluation",
       "science"
     ],
-    "summary": "Desktop tasks involving scientific software workflows.",
+    "summary": "Scientific-workflow tasks for multimodal agents in desktop software such as ChimeraX, KAlgebra, Celestia, Grass GIS and Lean 4, with apps modified to expose state for evaluation.",
     "verify_terms": [
       "ScienceBoard",
       "ScienceBoard"
@@ -2248,7 +2248,7 @@
       "evaluation",
       "long-horizon"
     ],
-    "summary": "Multihop multimodal internet navigation tasks.",
+    "summary": "Multimodal web tasks in a WebArena-based environment that chain from 1 to 10 hops across sites such as a shopping store and Wikipedia, testing long-chain reasoning.",
     "verify_terms": [
       "MMInA",
       "MMInA"
@@ -2271,7 +2271,7 @@
       "evaluation",
       "grounding"
     ],
-    "summary": "Multiplatform evaluation framework for GUI capabilities.",
+    "summary": "Four-level GUI-agent benchmark across six platforms, from content understanding and element grounding to task automation and collaboration, scored with an efficiency-quality area metric.",
     "verify_terms": [
       "MMBench-GUI",
       "MMBench-GUI"
@@ -2331,7 +2331,7 @@
       "evaluation",
       "robustness"
     ],
-    "summary": "Benchmark investigating hallucinations in GUI agents.",
+    "summary": "Measures hallucination in UI-element parsing by matching the boxes and descriptions a model lists for 1,000 English and 1,000 Chinese screenshots against human annotations.",
     "verify_terms": [
       "GUIHalluBench",
       "GUIHalluBench"
@@ -2563,7 +2563,7 @@
     "topics": [
       "evaluation"
     ],
-    "summary": "Benchmark of tasks in macOS desktop applications.",
+    "summary": "676 macOS tasks across 25 applications, each run in its own Docker container and scored by deterministic rule-based checks with multiple checkpoints.",
     "verify_terms": [
       "MacAgentBench",
       "MacAgentBench"
@@ -2642,7 +2642,7 @@
     "topics": [
       "evaluation"
     ],
-    "summary": "Evaluation environment for agents operating iOS interfaces.",
+    "summary": "Measures risky behavior of multimodal computer-use agents in an Ubuntu virtual machine, with risk scenarios such as phishing emails and released evaluation trajectories.",
     "verify_terms": [
       "RiOSWorld",
       "RiOSWorld"
@@ -2662,7 +2662,7 @@
       "evaluation",
       "workflow"
     ],
-    "summary": "Benchmark for agents interacting with SaaS applications.",
+    "summary": "106 browser-driven business workflows across 23 self-hosted SaaS apps in six domains, scored by per-task verifiers that read each app's database and give partial credit.",
     "verify_terms": [
       "SaaS-Bench",
       "SaaS-Bench"
@@ -2787,7 +2787,7 @@
     "topics": [
       "evaluation"
     ],
-    "summary": "Browser games used to evaluate interactive agents.",
+    "summary": "150 client-side web challenges in five capability domains, built to be easy for humans but hard for browsing agents, each revealing a password when solved.",
     "verify_terms": [
       "WebGames",
       "webgames"
@@ -2829,7 +2829,7 @@
       "grounding",
       "planning"
     ],
-    "summary": "Native GUI agent model family for perception and action.",
+    "summary": "Native GUI agent models; UI-TARS-1.5 adds reinforcement-learned reasoning before acting and an open 7B checkpoint, and UI-TARS-2 extends to games, code and tool use.",
     "verify_terms": [
       "UI-TARS",
       "UI-TARS"
@@ -2875,7 +2875,7 @@
       "grounding",
       "planning"
     ],
-    "summary": "GUI model family for interface grounding and navigation.",
+    "summary": "GUI agent model family; UI-Venus-2, at 9B and 27B, acts on mobile, web and desktop in one end-to-end agent, trained with keypoint-based multi-judge task verification.",
     "verify_terms": [
       "UI-Venus",
       "UI-Venus"
@@ -2965,7 +2965,7 @@
     "topics": [
       "grounding"
     ],
-    "summary": "Foundation action models and data for GUI interaction.",
+    "summary": "OS-Atlas GUI action models, including grounding bases fine-tuned from InternVL2-4B and Qwen2-VL-7B-Instruct that accept any image size and output 0-1000 relative coordinates.",
     "verify_terms": [
       "OS-Atlas",
       "OS-Atlas"
@@ -3099,7 +3099,7 @@
     "topics": [
       "grounding"
     ],
-    "summary": "GUI grounding model and associated evaluation resources.",
+    "summary": "Microsoft GUI grounding models from an empirical study of grounding training, from data collection to model training, released as Phi-Ground-4B-7C with evaluation code.",
     "verify_terms": [
       "Phi-Ground",
       "Phi-Ground"
@@ -3122,7 +3122,7 @@
       "planning",
       "web-navigation"
     ],
-    "summary": "Computer-use model for web interaction.",
+    "summary": "Microsoft browser-use agent models that act from screenshots by predicting click coordinates without accessibility trees; Fara1.5 comes in 4B, 9B and 27B, succeeding Fara-7B.",
     "verify_terms": [
       "Fara",
       "fara"
@@ -3146,7 +3146,7 @@
       "grounding",
       "mobile-navigation"
     ],
-    "summary": "GUI agent model with a focus on mobile interaction.",
+    "summary": "8B on-device smartphone agent built on MiniCPM-V that operates Chinese and English apps from screenshots, trained with reinforcement fine-tuning and a compact JSON action space.",
     "verify_terms": [
       "AgentCPM-GUI",
       "AgentCPM-GUI"
@@ -3168,7 +3168,7 @@
     "topics": [
       "grounding"
     ],
-    "summary": "GUI models for interface perception and action grounding.",
+    "summary": "POINTS-GUI-G-8B GUI grounding model, trained from a POINTS-1.5 base without native grounding through a data pipeline that unifies coordinates, filters noise and adds hard cases.",
     "verify_terms": [
       "POINTS-GUI",
       "POINTS-GUI"
@@ -3191,7 +3191,7 @@
       "reinforcement-learning",
       "grounding"
     ],
-    "summary": "Reinforcement-learning approach to GUI action modeling.",
+    "summary": "Rule-based reinforcement learning for GUI action prediction, releasing UI-R1-3B, trained from Qwen2.5-VL-3B, the efficiency-oriented UI-R1-E-3B, and training data.",
     "verify_terms": [
       "UI-R1",
       "UI-R1"
@@ -3214,7 +3214,7 @@
       "reinforcement-learning",
       "planning"
     ],
-    "summary": "Reasoning-oriented GUI agent model.",
+    "summary": "3B GUI agent trained in two stages: distilling spatial reasoning from teacher models, then reinforcement learning that rewards accurate sub-goals and trains error recovery.",
     "verify_terms": [
       "InfiGUI-R1",
       "InfiGUI-R1"
@@ -3236,7 +3236,7 @@
     "topics": [
       "grounding"
     ],
-    "summary": "GUI grounding model and training resources.",
+    "summary": "InfiGUI-G1 3B and 7B grounding models trained with Adaptive Exploration Policy Optimization, which samples several candidate answers per pass under an adaptive exploration reward.",
     "verify_terms": [
       "InfiGUI-G1",
       "InfiGUI-G1"
@@ -3258,7 +3258,7 @@
     "topics": [
       "grounding"
     ],
-    "summary": "GUI grounding model and associated training code.",
+    "summary": "GUI grounding models at 3B and 7B trained with Gaussian rewards for click proximity to element centers and region coverage, with variance scaled to element size.",
     "verify_terms": [
       "GUI-G2",
       "GUI-G2"
@@ -3278,7 +3278,7 @@
       "grounding",
       "reinforcement-learning"
     ],
-    "summary": "GUI grounding research using reinforcement learning.",
+    "summary": "GUI agent trained by RL with a continuous reward, a simple-thinking reward and cropping-based resampling on about 9k samples, plus a plug-in decomposed grounding-and-selection inference method.",
     "verify_terms": [
       "UI-AGILE",
       "UI-AGILE"
@@ -3300,7 +3300,7 @@
     "topics": [
       "grounding"
     ],
-    "summary": "Model and data resources for GUI grounding.",
+    "summary": "Mixture-of-experts GUI grounding model with 3.9B activated parameters that can use text or interleaved image history, with released training data and an AndroidWorld agent.",
     "verify_terms": [
       "Aria-UI",
       "Aria-UI"
@@ -3349,7 +3349,7 @@
     "topics": [
       "mobile-navigation"
     ],
-    "summary": "Mobile GUI agent model and execution resources.",
+    "summary": "Open mobile GUI agent stack pairing a 4B model that runs on consumer hardware with local multi-device infrastructure, an MCP server, and AndroidDaily benchmark tasks.",
     "verify_terms": [
       "GELab Zero",
       "gelab-zero"
@@ -3411,7 +3411,7 @@
       "cross-app",
       "data-generation"
     ],
-    "summary": "Cross-application mobile interaction trajectories.",
+    "summary": "Human-demonstrated Android episodes for cross-app navigation, spanning six task types, 212 apps and about 1,400 app combinations, for training and evaluating agents.",
     "verify_terms": [
       "GUI-Odyssey",
       "GUI-Odyssey"
@@ -3506,7 +3506,7 @@
     "topics": [
       "data-generation"
     ],
-    "summary": "GUI instruction data and model training resources.",
+    "summary": "Three datasets for turning general VLMs into GUI agents: GUIEnv for OCR and grounding, GUIAct with 67k single-step and 15k multi-step web and Android actions, and GUIChat dialogues.",
     "verify_terms": [
       "GUICourse",
       "GUICourse"
@@ -3528,7 +3528,7 @@
     "topics": [
       "data-generation"
     ],
-    "summary": "Android interaction data with interface annotations.",
+    "summary": "Code for AMEX Android GUI data that converts its three annotation levels into question-answer pairs and fine-tunes a LLaMA2-Accessory model, with a released checkpoint.",
     "verify_terms": [
       "AMEX",
       "AMEX-codebase"
@@ -3740,7 +3740,7 @@
     "topics": [
       "screen-understanding"
     ],
-    "summary": "Question-answering data over mobile interface screenshots.",
+    "summary": "About 86,000 human-written question-answer pairs over 35,000 Rico mobile screenshots, plus ScreenQA Short and ComplexQA variants, for benchmarking screen content understanding.",
     "verify_terms": [
       "ScreenQA",
       "screen_qa"
@@ -3825,7 +3825,7 @@
       "screen-understanding",
       "data-generation"
     ],
-    "summary": "Multilingual UI understanding and interaction data.",
+    "summary": "7.3 million training samples built from webpage UIs and structured with enhanced accessibility trees, for text-rich visual understanding, released with UIX-Qwen2 models.",
     "verify_terms": [
       "MultiUI",
       "multiui"
@@ -3898,7 +3898,7 @@
     "topics": [
       "data-generation"
     ],
-    "summary": "GUI trajectory synthesis using environment interaction.",
+    "summary": "Interaction-driven pipeline that synthesizes mobile and web GUI agent trajectories without human supervision or predefined tasks, via reverse task synthesis and a trajectory reward model.",
     "verify_terms": [
       "OS-Genesis",
       "OS-Genesis"
@@ -3967,7 +3967,7 @@
       "data-generation",
       "video"
     ],
-    "summary": "Agent trajectory generation using web tutorial resources.",
+    "summary": "Synthesizes browser-agent trajectories by replaying web tutorials as guidance, releasing the trajectory data with multimodal grounding and reasoning and an AgentTrek-32B agent.",
     "verify_terms": [
       "AgentTrek",
       "AgentTrek"
@@ -3990,7 +3990,7 @@
       "video",
       "screen-understanding"
     ],
-    "summary": "GUI video data for understanding dynamic interfaces.",
+    "summary": "GUI video benchmark and training data covering six scenarios, from Android and iOS to websites and XR, with eight question types for image and video LLMs and the GUI-Vid model.",
     "verify_terms": [
       "GUI-World",
       "GUI-World"
@@ -4233,7 +4233,7 @@
     "topics": [
       "data-generation"
     ],
-    "summary": "Mobile interface interaction data.",
+    "summary": "Over 20,000 human Android episodes across 500+ apps with user context and long-term usage patterns, plus tracks for proactive intent prediction and personalized execution.",
     "verify_terms": [
       "FingerTip-20K",
       "FingerTip-20K"
@@ -4252,7 +4252,7 @@
     "topics": [
       "data-generation"
     ],
-    "summary": "Instruction-oriented GUI data and research resources.",
+    "summary": "Treats grounding instructions as multiple reasoning perspectives, releasing a data pipeline, training code and UI-Ins-7B and 32B models trained by SFT on synthesized instructions, then RL.",
     "verify_terms": [
       "UI-Ins",
       "UI-Ins"
@@ -5512,7 +5512,7 @@
     "topics": [
       "data-generation"
     ],
-    "summary": "Computer-use demonstrations released with OpenCUA.",
+    "summary": "22.6K human-annotated desktop computer-use tasks on Windows, macOS and Ubuntu, released with OpenCUA for training and evaluating vision-language-action models.",
     "verify_terms": [
       "AgentNet"
     ],
@@ -5588,7 +5588,7 @@
       "grounding",
       "data-generation"
     ],
-    "summary": "GUI grounding data released by the OS-Atlas project.",
+    "summary": "GUI grounding pre-training data for OS-Atlas in desktop (Linux, macOS, Windows), mobile and web domains, with element boxes stored as relative left, top, right and bottom ratios.",
     "verify_terms": [
       "OS-Atlas"
     ],
@@ -5745,7 +5745,7 @@
     "topics": [
       "screen-understanding"
     ],
-    "summary": "Mobile screenshot and interface hierarchy dataset.",
+    "summary": "Over 600,000 Android screenshot and view-hierarchy pairs from more than 20,000 Google Play apps, collected with an optimized DroidBot, with complete per-app traces.",
     "verify_terms": [
       "MobileViews"
     ],
@@ -5835,7 +5835,7 @@
     "topics": [
       "screen-understanding"
     ],
-    "summary": "Mobile interface data for multimodal UI research.",
+    "summary": "Pre-training corpus for Xiaomi's MobileVLM, distributed as per-app graph archives for mobile apps such as Baidu Map, QQ Music, Ctrip and Vipshop.",
     "verify_terms": [
       "Mobile3M"
     ],
@@ -5940,7 +5940,7 @@
     "topics": [
       "data-generation"
     ],
-    "summary": "Mobile GUI data released by the OpenBMB team.",
+    "summary": "Chinese Android GUI benchmark released with AgentCPM-GUI, with a grounding track for widgets and OCR text and an agent track for multi-step tasks in Chinese apps.",
     "verify_terms": [
       "CAGUI"
     ],
@@ -5979,7 +5979,7 @@
     "topics": [
       "data-generation"
     ],
-    "summary": "Mobile GUI interaction data from the CMGUI project.",
+    "summary": "18k trajectories with 98k steps from more than 50 Chinese mobile apps in domains such as e-commerce and social media, for building GUI agents on Chinese apps.",
     "verify_terms": [
       "CMGUI"
     ],
@@ -5998,7 +5998,7 @@
       "grounding",
       "data-generation"
     ],
-    "summary": "Training data released with UGround V1.",
+    "summary": "Gated web grounding training data for UGround in Web-Hybrid and Web-Direct subsets, with a bounding-box version whose coordinates are normalized to 0-999.",
     "verify_terms": [
       "UGround"
     ],
@@ -6059,7 +6059,7 @@
     "topics": [
       "data-generation"
     ],
-    "summary": "Desktop interaction data released with ShowUI.",
+    "summary": "7,496 desktop grounding examples built from OmniAct screenshots, with annotations rewritten by GPT-4o to describe element appearance, spatial relations and function.",
     "verify_terms": [
       "ShowUI"
     ],
@@ -6122,7 +6122,7 @@
     "topics": [
       "data-generation"
     ],
-    "summary": "Cross-platform computer-use data released with ScaleCUA.",
+    "summary": "Cross-platform training data released with ScaleCUA, with grounding and navigation annotations for Ubuntu, Windows, macOS, Android, iPhone and web screenshots.",
     "verify_terms": [
       "ScaleCUA"
     ],
@@ -6203,7 +6203,7 @@
     "topics": [
       "grounding"
     ],
-    "summary": "GUI interaction dataset focused on drag operations.",
+    "summary": "Drag-grounding training and evaluation data pairing each screenshot instruction with start and end boxes, across text highlighting, spreadsheet cells, slide resizing and sliders.",
     "verify_terms": [
       "DragOn"
     ],
@@ -6264,7 +6264,7 @@
       "grounding",
       "evaluation"
     ],
-    "summary": "Screenshot-based GUI element grounding benchmark.",
+    "summary": "GUI grounding test set of 1,272 screenshot instructions from iOS, Android, macOS, Windows and web interfaces, each labeled with the target element's bounding box.",
     "verify_terms": [
       "ScreenSpot"
     ],
@@ -6347,7 +6347,7 @@
       "grounding",
       "evaluation"
     ],
-    "summary": "Revised ScreenSpot grounding evaluation data from OS-Atlas.",
+    "summary": "Second version of the ScreenSpot grounding test set, published by OS-Copilot as separate desktop, mobile and web annotation files with a shared screenshot archive.",
     "verify_terms": [
       "ScreenSpot"
     ],
@@ -7479,7 +7479,7 @@
       "evaluation",
       "reinforcement-learning"
     ],
-    "summary": "Browser interaction task environment derived from MiniWoB.",
+    "summary": "Over 100 web-interaction environments extending OpenAI's MiniWoB, controlled from Python through a Gymnasium API that drives the browser with Selenium.",
     "verify_terms": [
       "MiniWoB"
     ],
@@ -8437,7 +8437,7 @@
       "reinforcement-learning",
       "planning"
     ],
-    "summary": "Released model checkpoint associated with EvoCUA.",
+    "summary": "Larger EvoCUA computer-use agent checkpoint (20260105 release) with about 33B BF16 parameters in the Qwen3-VL architecture, tagged for OSWorld and for English and Chinese.",
     "verify_terms": [
       "meituan/EvoCUA-32B-20260105"
     ],
@@ -8460,7 +8460,7 @@
       "reinforcement-learning",
       "planning"
     ],
-    "summary": "Released model checkpoint associated with EvoCUA.",
+    "summary": "EvoCUA computer-use agent checkpoint (20260105 release) with about 8.8B BF16 parameters in the Qwen3-VL architecture, tagged for OSWorld and for English and Chinese.",
     "verify_terms": [
       "meituan/EvoCUA-8B-20260105"
     ],
@@ -8549,7 +8549,7 @@
     "topics": [
       "grounding"
     ],
-    "summary": "Released model checkpoint associated with OS-Atlas.",
+    "summary": "OS-Atlas base checkpoint with about 4.1B parameters, fine-tuned from InternVL2-4B and loaded in Transformers through custom InternVL chat model code.",
     "verify_terms": [
       "OS-Copilot/OS-Atlas-Base-4B"
     ],
@@ -8571,7 +8571,7 @@
     "topics": [
       "grounding"
     ],
-    "summary": "Released model checkpoint associated with OS-Atlas.",
+    "summary": "OS-Atlas base checkpoint fine-tuned from Qwen2-VL-7B-Instruct, using the standard Qwen2-VL architecture in Transformers with about 8.3B BF16 parameters.",
     "verify_terms": [
       "OS-Copilot/OS-Atlas-Base-7B"
     ],
@@ -8764,7 +8764,7 @@
     "topics": [
       "mobile-navigation"
     ],
-    "summary": "Released model checkpoint associated with Open-AutoGLM.",
+    "summary": "AutoGLM phone-agent checkpoint for Open-AutoGLM, fine-tuned from GLM-4.1V-9B-Base with about 10.3B BF16 parameters and tagged for Chinese.",
     "verify_terms": [
       "zai-org/AutoGLM-Phone-9B"
     ],
@@ -8787,7 +8787,7 @@
     "topics": [
       "mobile-navigation"
     ],
-    "summary": "Released model checkpoint associated with Open-AutoGLM.",
+    "summary": "Multilingual variant of the AutoGLM phone-agent checkpoint for Open-AutoGLM, likewise fine-tuned from GLM-4.1V-9B-Base with about 10.3B BF16 parameters.",
     "verify_terms": [
       "zai-org/AutoGLM-Phone-9B-Multilingual"
     ],

@@ -27,7 +27,7 @@ All entries in this section: android.
 
 | Resource | Paper | Scale | License | Description | Evidence |
 | --- | --- | --- | --- | --- | --- |
-| [GUI-Odyssey](https://github.com/OpenGVLab/GUI-Odyssey) | [2406.08451](https://arxiv.org/abs/2406.08451) (2024) | [8,334 episodes](https://huggingface.co/datasets/hflqf88888/GUIOdyssey/raw/main/README.md) | — | Cross-application mobile interaction trajectories. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/OpenGVLab/GUI-Odyssey/HEAD/README.md) |
+| [GUI-Odyssey](https://github.com/OpenGVLab/GUI-Odyssey) | [2406.08451](https://arxiv.org/abs/2406.08451) (2024) | [8,334 episodes](https://huggingface.co/datasets/hflqf88888/GUIOdyssey/raw/main/README.md) | — | Human-demonstrated Android episodes for cross-app navigation, spanning six task types, 212 apps and about 1,400 app combinations, for training and evaluating agents. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/OpenGVLab/GUI-Odyssey/HEAD/README.md) |
 | [GUIOdyssey — current data release](https://huggingface.co/datasets/hflqf88888/GUIOdyssey) | [2406.08451](https://arxiv.org/abs/2406.08451) (2024) | [8,334 episodes](https://huggingface.co/datasets/hflqf88888/GUIOdyssey/raw/main/README.md) | data cc-by-4.0 | Cross-app Android interaction episodes with fine-grained step instructions, screen descriptions, action context, and target boxes. | [✓ 2026‑10‑16](https://huggingface.co/datasets/hflqf88888/GUIOdyssey/raw/main/README.md) |
 
 ## Agents
