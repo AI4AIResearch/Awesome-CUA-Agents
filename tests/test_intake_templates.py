@@ -9,7 +9,7 @@ FORMS = ROOT / ".github/ISSUE_TEMPLATE"
 class IntakeTemplateTests(unittest.TestCase):
     def test_issue_forms_set_title_and_existing_label(self):
         # Labels must already exist in the repository; GitHub silently drops unknown ones.
-        known = {"area:data", "bug"}
+        known = {"area:data", "bug", "enhancement"}
         for path in sorted(set(FORMS.glob("*.yml")) - {FORMS / "config.yml"}):
             text = path.read_text()
             self.assertRegex(text, r'(?m)^title: "\[\w+\] "$', path.name)
@@ -28,7 +28,9 @@ class IntakeTemplateTests(unittest.TestCase):
     def test_chooser_has_no_blank_issues_and_https_contact_links(self):
         text = (FORMS / "config.yml").read_text()
         self.assertIn("blank_issues_enabled: false", text)
-        self.assertTrue((FORMS / "bug.yml").exists())
+        # Discussions are off, so with blank issues disabled every request needs a form.
+        for form in ("bug.yml", "improvement.yml", "resource.yml"):
+            self.assertTrue((FORMS / form).exists(), form)
         urls = re.findall(r"url: (\S+)", text)
         self.assertTrue(urls)
         self.assertTrue(all(u.startswith("https://") for u in urls))
