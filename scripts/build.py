@@ -173,6 +173,21 @@ def timestamp(value):
     return True
 
 
+def title_author_collisions(rows):
+    """Paper/survey groups with the same title letters and author list that no preferred_arxiv decision separates."""
+    groups = collections.defaultdict(list)
+    for r in rows:
+        if not malformed_fields(r) and r.get("kind") in {"paper", "survey"} and isinstance(r.get("name"), str):
+            groups["".join(c for c in r["name"].casefold() if c.isalnum()), tuple(" ".join(a.casefold().split()) for a in r.get("authors", []))].append(r)
+    collisions = []
+    for group in groups.values():
+        ids = {r.get("id") for r in group}
+        undecided = [r for r in group if "arxiv:" + str(r.get("identifiers", {}).get("preferred_arxiv")) not in ids - {r.get("id")}]
+        if len(undecided) > 1:
+            collisions.append(undecided)
+    return collisions
+
+
 def validate_records(rows):
     errors, seen = [], set()
     required = set(FIELD_TYPES)
@@ -286,6 +301,9 @@ def validate_records(rows):
                 except ValueError:
                     error(f"invalid {key}")
     errors.extend(duplicate_publication_errors(rows))
+    for group in title_author_collisions(rows):
+        curated = [r.get("id") for r in group if r.get("review_status") == "curated"]
+        errors.extend(f"{rid}: title and authors match curated {curated[0]}; record identifiers.preferred_arxiv on the duplicate" for rid in curated[1:])
     return errors
 
 
@@ -907,6 +925,8 @@ def validate(args):
     if errors:
         raise ValueError("\n".join(errors[:40]))
     print(f"Validated {len(rows)} records: JSON Schema, identifiers, dates, source receipts, scoped licenses, and reviewed relation targets.")
+    for group in title_author_collisions(rows):
+        print("Undecided duplicate: " + ", ".join(str(r.get("id")) for r in group) + " share a title and author list; record identifiers.preferred_arxiv on the duplicate.")
 
 
 def search(args):
