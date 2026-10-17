@@ -1,9 +1,11 @@
 # Search and SQL
 
-Run commands from the repository root. Search is literal, case-insensitive, AND across words. It covers names, original summaries, aliases, authors, and curated topics. Default output is limited to 20 matches; use `--limit 0` for all matches.
+Run commands from the repository root. Search is literal, case-insensitive, AND across words. It covers names, original summaries, aliases, authors, curated topics, record ids such as `arxiv:2404.07972` or `github:xlang-ai/osworld`, URLs, and arXiv numbers. A pasted arXiv, GitHub, or web URL also finds its record after version and path folding. Text output prints each record's id. Default output is limited to 20 matches; use `--limit 0` for all matches.
 
 ```bash
 python3 scripts/catalog.py search "GUI grounding" --limit 10
+python3 scripts/catalog.py search 2404.07972
+python3 scripts/catalog.py search https://github.com/xlang-ai/OSWorld/tree/main
 python3 scripts/catalog.py search --kind dataset --environment android
 python3 scripts/catalog.py search --kind benchmark --topic safety-security
 python3 scripts/catalog.py search --kind product --status curated --json

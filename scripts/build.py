@@ -449,6 +449,7 @@ def validate(args):
 def search(args):
     # Literal AND search is intentionally safe and works without a generated database.
     terms = args.query.casefold().split()
+    target = canonical(args.query)  # a pasted URL folds to its record id (arXiv versions, GitHub paths)
     result = []
     for row in read_jsonl(DATA / "catalog.jsonl"):
         if args.kind and row["kind"] != args.kind:
@@ -459,8 +460,8 @@ def search(args):
             continue
         if args.topic and args.topic not in row["topics"]:
             continue
-        haystack = " ".join([row["name"], row["summary"] or "", *row["aliases"], *row["authors"], *row["topics"]]).casefold()
-        if all(term in haystack for term in terms):
+        haystack = " ".join([row["id"], row["url"], row["name"], row["summary"] or "", *row["aliases"], *row["authors"], *row["topics"], *row["identifiers"].values()]).casefold()
+        if all(term in haystack for term in terms) or (target and target[0] == row["id"]):
             result.append(row)
     result.sort(key=lambda r: (r["review_status"] != "curated", r["name"].casefold()))
     limited = result[:args.limit] if args.limit else result
@@ -469,4 +470,4 @@ def search(args):
     else:
         print(f"{len(result)} matches; showing {len(limited)}")
         for r in limited:
-            print(f"{r['name']} [{r['kind']} · {r['review_status']}]\n  {r['url']}")
+            print(f"{r['name']} [{r['kind']} · {r['review_status']}] {r['id']}\n  {r['url']}")

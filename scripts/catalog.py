@@ -520,6 +520,13 @@ def enrich(args):
     print(f"Enrichment receipts: {len(previous)}")
 
 
+def nonnegative(value):
+    number = int(value)
+    if number < 0:
+        raise argparse.ArgumentTypeError(f"must be 0 or greater: {value}")
+    return number
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -534,13 +541,13 @@ def main():
     command.set_defaults(function=build)
     command = sub.add_parser("validate", help="validate catalog against JSON Schema and quality invariants")
     command.set_defaults(function=validate)
-    command = sub.add_parser("search", help="search names, descriptions, aliases, authors and curated topics")
+    command = sub.add_parser("search", help="search names, descriptions, aliases, authors, curated topics, ids and URLs")
     command.add_argument("query", nargs="?", default="")
     command.add_argument("--kind", choices=sorted(KINDS))
     command.add_argument("--status", choices=sorted(STATUSES))
     command.add_argument("--environment", choices=sorted(ENVIRONMENTS))
     command.add_argument("--topic")
-    command.add_argument("--limit", type=int, default=20, help="0 returns every match")
+    command.add_argument("--limit", type=nonnegative, default=20, help="0 returns every match")
     command.add_argument("--json", action="store_true")
     command.set_defaults(function=search)
     args = parser.parse_args()
