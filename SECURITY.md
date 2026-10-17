@@ -17,7 +17,7 @@ Only the current `main` branch and the live website are supported.
 
 Report privately through GitHub's private vulnerability reporting: open the repository's **Security** tab and choose **Report a vulnerability**, or go to https://github.com/reacher-z/Awesome-CUA/security/advisories/new. Do not open a public issue, pull request, or discussion about a vulnerability.
 
-If that form is unavailable, open an issue titled "Security contact request" that contains no details, and a maintainer will arrange a private channel.
+If that form is unavailable, open a [bug report](https://github.com/reacher-z/Awesome-CUA/issues/new?template=bug.yml) titled "Security contact request" and write only "Details withheld" in it. A maintainer will arrange a private channel.
 
 ## What to include
 

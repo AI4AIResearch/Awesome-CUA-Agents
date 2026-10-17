@@ -24,6 +24,13 @@ class SecurityPolicyTests(unittest.TestCase):
         for path in paths:
             self.assertTrue((ROOT / path).exists(), path)
 
+    def test_fallback_names_an_existing_issue_form(self):
+        # Blank issues are disabled, so the details-free fallback has to go through a form.
+        forms = re.findall(r"/issues/new\?template=([\w.-]+)\)", self.policy)
+        self.assertIn("bug.yml", forms)
+        for form in forms:
+            self.assertTrue((ROOT / ".github/ISSUE_TEMPLATE" / form).exists(), form)
+
     def test_contributing_points_reporters_to_the_policy(self):
         self.assertIn("[SECURITY.md](SECURITY.md)", (ROOT / "CONTRIBUTING.md").read_text())
 
