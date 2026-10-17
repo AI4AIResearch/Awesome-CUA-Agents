@@ -69,6 +69,7 @@ jobs:
           for target in [Path('data/build-info.json'),Path('.pipeline/source/dist/site/data/build-info.json')]:
               target.write_text(json.dumps(info,indent=2)+'\n')
           PY
+          # shellcheck disable=SC2016 # The backticks are Markdown code spans, not command substitution.
           printf 'Source catalog commit: `%s`\n' "$CUA_SOURCE_SHA" >> "$GITHUB_STEP_SUMMARY"
       - name: Commit the public website snapshot
         run: |
@@ -78,7 +79,12 @@ jobs:
           git diff --cached --check
           if ! git diff --cached --quiet; then
             git commit -m 'Refresh website from the verified source catalog'
-            git push origin HEAD:main
+            # main can move after checkout; replay the snapshot onto it before retrying.
+            for attempt in 1 2 3; do
+              if git push origin HEAD:main; then break; fi
+              if [ "$attempt" = 3 ]; then echo '::error::The website snapshot was not pushed to main after 3 attempts'; exit 1; fi
+              git pull --rebase origin main || { echo '::error::The website snapshot could not be rebased onto a newer main; re-run publication'; git rebase --abort; exit 1; }
+            done
           fi
       - name: Configure Pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
@@ -139,6 +145,10 @@ jobs:
             git diff --cached --check
             if ! git diff --cached --quiet; then
               git commit -m 'Record search notification outcome for the published catalog'
-              git push origin HEAD:main
+              for attempt in 1 2 3; do
+                if git push origin HEAD:main; then break; fi
+                if [ "$attempt" = 3 ]; then echo '::error::The search notification receipts were not pushed to main after 3 attempts'; exit 1; fi
+                git pull --rebase origin main || { echo '::error::The search notification receipts could not be rebased onto a newer main; re-run publication'; git rebase --abort; exit 1; }
+              done
             fi
           fi
