@@ -97,12 +97,6 @@ def source_records(with_scope=False):
         details = copy.deepcopy(base.get('details', {}))
         details.update(copy.deepcopy(editorial.get("details", {})))
         details.update(extra.get("details", {}))
-        if editorial["kind"] == "dataset":
-            for key, default in {"sample_count": None, "sample_unit": None, "modalities": [], "download_url": None, "languages": []}.items():
-                details.setdefault(key, default)
-        if editorial["kind"] == "benchmark":
-            for key, default in {"task_count": None, "metrics": [], "evaluation_type": None, "leaderboard_url": None}.items():
-                details.setdefault(key, default)
         relations = copy.deepcopy(editorial.get('reviewed_relations', []))
         for aid in editorial.get("paper_ids", []):
             target = "arxiv:" + aid

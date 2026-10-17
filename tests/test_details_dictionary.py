@@ -37,10 +37,8 @@ class DetailsDictionaryTests(unittest.TestCase):
         stale = [key for key in self.rows if key not in used and f'"{key}"' not in source and f"'{key}'" not in source]
         self.assertEqual(stale, [])
 
-    def test_origins_match_build_placeholders_and_enrich(self):
-        placeholders = {key for block in re.findall(r"for key, default in \{(.*?)\}\.items\(\)", self.source["build.py"]) for key in re.findall(r'"(\w+)": ', block)}
-        self.assertGreaterEqual(placeholders, {"sample_count", "sample_unit", "task_count", "metrics", "evaluation_type", "leaderboard_url"})
-        self.assertEqual({key for key, row in self.rows.items() if "placeholder" in row[2].lower()}, placeholders)
+    def test_origins_match_build_and_enrich(self):
+        self.assertEqual({key for key, row in self.rows.items() if "placeholder" in row[2].lower()}, set())
         hub = re.search(r'result\["details"\] = \{(.*?)\}\n', self.source["catalog.py"], re.S).group(1)
         hub_keys = set(re.findall(r'"(\w+)": ', hub))
         self.assertIn("hub_id", hub_keys)
@@ -49,11 +47,12 @@ class DetailsDictionaryTests(unittest.TestCase):
         self.assertEqual(self.rows["dataverse"][2], "Dataverse API")
         self.assertEqual(self.rows["license_review"][2], "License review")
 
-    def test_placeholders_defer_to_profile_counts(self):
+    def test_legacy_flat_fields_defer_to_profile_counts(self):
         paragraph = next(p for p in self.section.split("\n\n") if p.startswith("The flat "))
         for key in ("sample_count", "task_count"):
             self.assertIn(f"`{key}`", paragraph)
-        self.assertIn("placeholders", paragraph)
+        self.assertIn("legacy editorial fields", paragraph)
+        self.assertIn("no null or empty placeholders", paragraph)
         self.assertIn("authoritative quantities are the `counts` in `dataset_profile` and `benchmark_protocol`", paragraph)
 
     def test_structured_details_link_their_detailed_docs(self):
