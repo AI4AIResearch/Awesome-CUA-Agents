@@ -1,12 +1,12 @@
 # Coverage and quality ledger
 
-Evidence snapshot through **2026-10-17T07:57:59Z**. Generated from committed source receipts.
+Evidence snapshot through **2026-10-17T09:27:51+00:00**. Generated from committed source receipts.
 
-- 2,545 resource records: 996 curated; 1,549 bibliographic metadata only.
+- 2,556 resource records: 1,093 curated; 1,463 bibliographic metadata only.
 - 2,164 arXiv records, including curated surveys. This count overlaps the status counts above.
 - 2,264 retained arXiv metadata records; 100 explicit scope exclusions are outside the active catalog.
-- 3,907 discovery identifiers; 1,402 remain unresolved after accounting for scope exclusions.
-- 15 editorial proposals await verification or review.
+- 3,907 discovery identifiers; 1,394 remain unresolved after accounting for scope exclusions.
+- 12 editorial proposals await verification or review.
 
 These are distinct resource identifiers, not distinct research projects. Papers, repositories, datasets, products, and publisher entities have different grains.
 
@@ -16,16 +16,16 @@ Counts of source-reviewed resources. A resource tagged with several environments
 
 | Kind | web | desktop | windows | macos | linux | android | ios | harmonyos | cross-platform | unspecified |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| [agent](agents.md) | 7 | 14 | 3 | 1 | · | 11 | 1 | · | 1 | · |
-| [benchmark](benchmarks.md) | 31 | 15 | 4 | 3 | 3 | 13 | 2 | · | 12 | 3 |
+| [agent](agents.md) | 8 | 14 | 3 | 1 | · | 12 | 1 | · | 1 | · |
+| [benchmark](benchmarks.md) | 32 | 16 | 4 | 3 | 4 | 14 | 2 | · | 12 | 3 |
 | [company](companies.md) | · | · | · | · | · | · | · | · | · | 16 |
-| [dataset](datasets.md) | 19 | 14 | 3 | 2 | 6 | 28 | · | · | 14 | 7 |
-| [framework](frameworks.md) | 24 | 14 | 1 | 1 | 2 | 11 | 1 | 1 | 5 | 2 |
+| [dataset](datasets.md) | 19 | 14 | 3 | 2 | 6 | 29 | · | · | 14 | 7 |
+| [framework](frameworks.md) | 26 | 16 | 1 | 1 | 3 | 13 | 1 | 1 | 5 | 2 |
 | [infrastructure](infrastructures.md) | 4 | 6 | 1 | 2 | 4 | 4 | 1 | · | · | · |
-| [model](models.md) | 25 | 18 | 3 | 3 | 3 | 23 | 4 | · | 46 | 2 |
-| [paper](topics.md) | 217 | 119 | 22 | 7 | 11 | 107 | 5 | · | 89 | 145 |
+| [model](models.md) | 25 | 19 | 4 | 4 | 4 | 23 | 4 | · | 46 | 2 |
+| [paper](topics.md) | 250 | 130 | 23 | 8 | 11 | 120 | 5 | · | 92 | 181 |
 | [product](products.md) | 17 | 5 | · | · | · | · | · | · | · | · |
-| [survey](surveys.md) | · | · | · | · | · | 1 | 1 | · | 10 | · |
+| [survey](surveys.md) | · | · | · | · | · | 1 | 1 | · | 10 | 1 |
 | [tool](tools.md) | 10 | 1 | 1 | · | · | 4 | 2 | · | 1 | 2 |
 
 ## Source snapshot coverage
@@ -34,27 +34,27 @@ The denominator is the normalized identifiers extracted from each fetched docume
 
 | Source | Discovered | Indexed | Curated | Excluded | Unresolved | Fetch |
 | --- | ---: | ---: | ---: | ---: | ---: | --- |
-| [ShowLab Awesome GUI Agent](https://github.com/showlab/Awesome-GUI-Agent) | 338 | 199 | 177 | 0 | 139 | OK · 2026-10-17 |
-| [ZJU REAL Awesome GUI Agents](https://github.com/ZJU-REAL/Awesome-GUI-Agents) | 218 | 157 | 149 | 0 | 61 | OK · 2026-10-17 |
-| [OS Agents Survey](https://github.com/OS-Agent-Survey/OS-Agent-Survey) | 224 | 198 | 147 | 0 | 26 | OK · 2026-10-17 |
-| [Awesome Computer Use Agents — wjhou](https://github.com/wjhou/awesome-computer-use-agents) | 132 | 93 | 76 | 0 | 39 | OK · 2026-10-17 |
+| [ShowLab Awesome GUI Agent](https://github.com/showlab/Awesome-GUI-Agent) | 338 | 200 | 185 | 0 | 138 | OK · 2026-10-17 |
+| [ZJU REAL Awesome GUI Agents](https://github.com/ZJU-REAL/Awesome-GUI-Agents) | 218 | 157 | 151 | 0 | 61 | OK · 2026-10-17 |
+| [OS Agents Survey](https://github.com/OS-Agent-Survey/OS-Agent-Survey) | 224 | 198 | 169 | 0 | 26 | OK · 2026-10-17 |
+| [Awesome Computer Use Agents — wjhou](https://github.com/wjhou/awesome-computer-use-agents) | 132 | 94 | 79 | 0 | 38 | OK · 2026-10-17 |
 | [Steel Awesome Web Agents](https://github.com/steel-dev/awesome-web-agents) | 113 | 22 | 22 | 0 | 91 | OK · 2026-10-17 |
 | [Steel Web Agents Archive](https://github.com/steel-dev/awesome-web-agents/blob/main/ARCHIVE.md) | 7 | 1 | 1 | 0 | 6 | OK · 2026-10-17 |
-| [Computer Browser Phone Use Agent Datasets](https://github.com/Khang-9966/Computer-Browser-Phone-Use-Agent-Datasets) | 170 | 110 | 90 | 1 | 59 | OK · 2026-10-17 |
-| [Awesome Multimodal GUI Agents](https://github.com/DeLunnLi/Awesome-Multimodal-GUI-Agents) | 588 | 477 | 318 | 0 | 111 | OK · 2026-10-17 |
-| [Awesome Computer Use — TianyuanYang](https://github.com/TianyuanYang/awesome-computer-use) | 94 | 67 | 43 | 0 | 27 | OK · 2026-10-17 |
+| [Computer Browser Phone Use Agent Datasets](https://github.com/Khang-9966/Computer-Browser-Phone-Use-Agent-Datasets) | 170 | 111 | 92 | 1 | 58 | OK · 2026-10-17 |
+| [Awesome Multimodal GUI Agents](https://github.com/DeLunnLi/Awesome-Multimodal-GUI-Agents) | 588 | 479 | 336 | 0 | 109 | OK · 2026-10-17 |
+| [Awesome Computer Use — TianyuanYang](https://github.com/TianyuanYang/awesome-computer-use) | 94 | 67 | 48 | 0 | 27 | OK · 2026-10-17 |
 | [Computer Use Agents Overview](https://github.com/cdxeve/awesome-computer-use-agents) | 78 | 48 | 31 | 0 | 30 | OK · 2026-10-17 |
 | [Awesome GUI Agents — Supernal](https://github.com/supernalintelligence/Awesome-Gui-Agents) | 63 | 11 | 8 | 0 | 52 | OK · 2026-10-17 |
-| [Yearly GUI Agents](https://github.com/qy0720/awesome-yearly-gui-agents) | 193 | 137 | 129 | 0 | 56 | OK · 2026-10-17 |
-| [OSU-NLP-Group/GUI-Agents-Paper-List / README.md](https://github.com/OSU-NLP-Group/GUI-Agents-Paper-List) | 544 | 486 | 188 | 0 | 58 | OK · 2026-10-17 |
-| [opendilab/awesome-ui-agents / README.md](https://github.com/opendilab/awesome-ui-agents) | 144 | 88 | 74 | 0 | 56 | OK · 2026-10-17 |
-| [jin-s13/awesome-gui-agent-hub / AWESOME.md](https://github.com/jin-s13/awesome-gui-agent-hub) | 210 | 207 | 89 | 0 | 3 | OK · 2026-10-17 |
+| [Yearly GUI Agents](https://github.com/qy0720/awesome-yearly-gui-agents) | 193 | 137 | 131 | 0 | 56 | OK · 2026-10-17 |
+| [OSU-NLP-Group/GUI-Agents-Paper-List / README.md](https://github.com/OSU-NLP-Group/GUI-Agents-Paper-List) | 544 | 486 | 209 | 0 | 58 | OK · 2026-10-17 |
+| [opendilab/awesome-ui-agents / README.md](https://github.com/opendilab/awesome-ui-agents) | 144 | 89 | 76 | 0 | 55 | OK · 2026-10-17 |
+| [jin-s13/awesome-gui-agent-hub / AWESOME.md](https://github.com/jin-s13/awesome-gui-agent-hub) | 210 | 207 | 90 | 0 | 3 | OK · 2026-10-17 |
 | [ZJU-REAL/Awesome-GUI-Agents / ICLR2026/Paperlist.md](https://github.com/ZJU-REAL/Awesome-GUI-Agents) | 9 | 0 | 0 | 0 | 9 | OK · 2026-10-17 |
-| [dqtz5vpvj9-create/awesome-mobile-gui-agents / README.md](https://github.com/dqtz5vpvj9-create/awesome-mobile-gui-agents) | 40 | 24 | 22 | 0 | 16 | OK · 2026-10-17 |
-| [PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents](https://github.com/PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents) | 247 | 184 | 161 | 0 | 63 | OK · 2026-10-17 |
-| [aialt/awesome-mobile-agents](https://github.com/aialt/awesome-mobile-agents) | 91 | 76 | 59 | 0 | 15 | OK · 2026-10-17 |
+| [dqtz5vpvj9-create/awesome-mobile-gui-agents / README.md](https://github.com/dqtz5vpvj9-create/awesome-mobile-gui-agents) | 40 | 24 | 23 | 0 | 16 | OK · 2026-10-17 |
+| [PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents](https://github.com/PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents) | 247 | 186 | 168 | 0 | 61 | OK · 2026-10-17 |
+| [aialt/awesome-mobile-agents](https://github.com/aialt/awesome-mobile-agents) | 91 | 76 | 61 | 0 | 15 | OK · 2026-10-17 |
 | [albzni/Awesome-LLM-based-Web-Agent-and-Tools](https://github.com/albzni/Awesome-LLM-based-Web-Agent-and-Tools) | 10 | 4 | 4 | 0 | 6 | OK · 2026-10-17 |
-| [ranpox/awesome-computer-use](https://github.com/ranpox/awesome-computer-use) | 96 | 57 | 48 | 0 | 39 | OK · 2026-10-17 |
+| [ranpox/awesome-computer-use](https://github.com/ranpox/awesome-computer-use) | 96 | 57 | 49 | 0 | 39 | OK · 2026-10-17 |
 | [Fara — first-party releases](https://github.com/microsoft/fara) | 18 | 5 | 5 | 0 | 13 | OK · 2026-10-17 |
 | [UI-Venus — first-party releases](https://github.com/inclusionAI/UI-Venus) | 10 | 4 | 4 | 0 | 6 | OK · 2026-10-17 |
 | [OpenGVLab ScaleCUA — first-party releases](https://github.com/OpenGVLab/ScaleCUA) | 15 | 9 | 9 | 0 | 6 | OK · 2026-10-17 |
@@ -66,7 +66,7 @@ The denominator is the normalized identifiers extracted from each fetched docume
 | [GroundGUI — first-party releases](https://github.com/PrentisAI/GroundGUI) | 11 | 6 | 6 | 0 | 5 | OK · 2026-10-17 |
 | [Seg2Click — first-party releases](https://github.com/jcwang0602/Seg2Click) | 11 | 8 | 8 | 0 | 3 | OK · 2026-10-17 |
 | [SwitchMem — first-party releases](https://github.com/dmis-lab/SwitchMem) | 1 | 0 | 0 | 0 | 1 | OK · 2026-10-17 |
-| [OpenMobile-2 — first-party releases](https://github.com/OpenMobile2/OpenMobile2-Code) | 14 | 5 | 5 | 0 | 9 | OK · 2026-10-17 |
+| [OpenMobile-2 — first-party releases](https://github.com/OpenMobile2/OpenMobile2-Code) | 14 | 6 | 6 | 0 | 8 | OK · 2026-10-17 |
 | [MobileGym++ — first-party releases](https://github.com/OpenMobile2/MobileGym-plusplus) | 9 | 2 | 1 | 0 | 7 | OK · 2026-10-17 |
 | [CarryOn — first-party releases](https://github.com/Ethannju/carryon) | 2 | 1 | 1 | 0 | 1 | OK · 2026-10-17 |
 | [GraceBench — first-party releases](https://iaie-physicalai.github.io/GraceBench) | 3 | 1 | 1 | 0 | 2 | OK · 2026-10-17 |
@@ -76,7 +76,7 @@ The denominator is the normalized identifiers extracted from each fetched docume
 | [MultiUI / UIX — first-party release index](https://github.com/neulab/multiui) | 8 | 1 | 1 | 0 | 7 | OK · 2026-10-17 |
 | [UI-Genie — first-party model and data releases](https://github.com/Euphoria16/UI-Genie) | 12 | 5 | 5 | 0 | 7 | OK · 2026-10-17 |
 | [ScienceBoard — first-party environments and trajectories](https://github.com/OS-Copilot/ScienceBoard) | 16 | 4 | 4 | 0 | 12 | OK · 2026-10-17 |
-| [MAI-UI / Qwen-UI-Agent — first-party project index](https://github.com/Tongyi-MAI/MAI-UI) | 17 | 3 | 2 | 0 | 14 | OK · 2026-10-17 |
+| [MAI-UI / Qwen-UI-Agent — first-party project index](https://github.com/Tongyi-MAI/MAI-UI) | 17 | 3 | 3 | 0 | 14 | OK · 2026-10-17 |
 | [H Company — official Hub model index](https://huggingface.co/Hcompany) | 39 | 4 | 4 | 0 | 35 | OK · 2026-10-17 |
 
 ## Paper-discovery query coverage
@@ -132,9 +132,9 @@ The recorded title query returned 1,199 unique records out of 1,246 reported mat
 
 | Scope | Recorded declarations |
 | --- | ---: |
-| code | 142 |
-| data | 42 |
-| weights | 50 |
+| code | 148 |
+| data | 44 |
+| weights | 51 |
 | document | 0 |
 
 A code license never fills a data or weights field. Hub declarations are publisher metadata, not independently audited legal conclusions. Missing values remain null.
@@ -143,14 +143,11 @@ A code license never fills a data or weights field. Hub declarations are publish
 
 | Resource | Reason |
 | --- | --- |
-| [AutoDroid V2](https://github.com/MobileLLM/AutoDroid-V2) | Repository landing page is reachable, but accessible primary description is insufficient to validate the claimed framework. |
 | [AutoGLM](https://github.com/THUDM/AutoGLM) | primary evidence unresolved: HTTP Error 404: Not Found |
-| [AdvWeb](https://github.com/AI-secure/AdvWeb) | primary evidence unresolved: HTTP Error 404: Not Found |
 | [Comet](https://www.perplexity.ai/comet) | primary evidence unresolved: HTTP Error 403: Forbidden |
-| [OpenCUA 72B Preview](https://huggingface.co/xlangai/OpenCUA-72B-preview) | primary evidence unresolved: content mismatch |
-| [MM-Navigator](https://github.com/zzxslp/MM-Navigator) | current source snapshot needs editorial review |
-| [InfiGUIAgent](https://github.com/InfiXAI/InfiGUIAgent) | current source snapshot needs editorial review |
-| [ChatUITest / GTArena project hub](https://github.com/ZJU-ACES-ISE/ChatUITest) | current source snapshot needs editorial review |
+| [MM-Navigator](https://github.com/zzxslp/MM-Navigator) | The fresh README still says code and the evaluation benchmark will be out soon. The public tree contains call_gpt4.py and eval.py, but no benchmark release or usage/dependency documentation sufficient to validate a usable agent artifact. Preserve the paper separately. |
+| [InfiGUIAgent](https://github.com/InfiXAI/InfiGUIAgent) | The fresh README still explains that third-party training-data restrictions delay the full model release. The repository tree contains only README/images, and the linked Reallm-Labs collection API returns 404; no code or checkpoint release is established. |
+| [ChatUITest / GTArena project hub](https://github.com/ZJU-ACES-ISE/ChatUITest) | The fresh README remains under construction and says the dataset is being organized/uploaded. The tree has only README.md, and the linked GTArena-UI-Defects API and raw card return 401. No access request was made. UIDefectMocker is already cataloged separately. |
 | [CarryOn implementation release](https://github.com/Ethannju/carryon) | Primary README reviewed; implementation release is still pending. The paper is cataloged separately. |
 | [GraceBench task and evaluation release](https://iaie-physicalai.github.io/GraceBench) | Primary project page reviewed; task definitions, data, and evaluation-code release remain pending. The paper is cataloged separately. |
 | [WinSpot](https://github.com/zackhuiiiii/WinSpot) | Primary README and repository tree reviewed; the benchmark data release is still pending. |

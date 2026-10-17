@@ -2,9 +2,9 @@
 
 [Home](../../README.md) · [All topics](../topics.md) · [Full arXiv bibliography](../papers.md)
 
-67 source-reviewed resources tagged `workflow`. Curated metadata, not a performance ranking; unknown facts are shown as —.
+71 source-reviewed resources tagged `workflow`. Curated metadata, not a performance ranking; unknown facts are shown as —.
 
-**Contents:** [Benchmarks (5)](#benchmarks) · [Datasets (2)](#datasets) · [Agents (5)](#agents) · [Frameworks (6)](#frameworks) · [Products (7)](#products) · [Papers (42)](#papers)
+**Contents:** [Benchmarks (6)](#benchmarks) · [Datasets (2)](#datasets) · [Agents (5)](#agents) · [Frameworks (6)](#frameworks) · [Products (7)](#products) · [Papers (45)](#papers)
 
 ## Benchmarks
 
@@ -14,6 +14,7 @@
 | [SaaS-Bench](https://github.com/UniPat-AI/SaaS-Bench) | web | — | code Apache-2.0 | Benchmark for agents interacting with SaaS applications. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/UniPat-AI/SaaS-Bench/HEAD/README.md) |
 | [Spider2-V](https://github.com/xlang-ai/Spider2-V) | web, desktop | — | code Apache-2.0 | Visual agent evaluation on data-science and engineering workflows. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/xlang-ai/Spider2-V/HEAD/README.md) |
 | [TheAgentCompany](https://github.com/TheAgentCompany/TheAgentCompany) | web, desktop | [2412.14161](https://arxiv.org/abs/2412.14161) (2024) | code MIT | Self-contained workplace environment for evaluating agents on professional tasks involving websites, files, code, and simulated coworkers. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/TheAgentCompany/TheAgentCompany/HEAD/README.md) |
+| [WONDERBREAD](https://github.com/HazyResearch/wonderbread) | web | [2406.13264](https://arxiv.org/abs/2406.13264) (2024) | data cc-by-4.0 | An offline benchmark of workflow documentation, quality assessment and knowledge transfer using human web-navigation demonstrations, action traces and written procedures. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/HazyResearch/wonderbread/HEAD/README.md) |
 | [WorkArena](https://github.com/ServiceNow/WorkArena) | web | [2403.07718](https://arxiv.org/abs/2403.07718) (2024), [2407.05291](https://arxiv.org/abs/2407.05291) (2024) | code Apache-2.0 | Browser-based enterprise workflow tasks built around ServiceNow. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/ServiceNow/WorkArena/HEAD/README.md) |
 
 ## Datasets
@@ -97,8 +98,11 @@
 | 2024‑07‑22 | [IDA: Breaking Barriers in No-code UI Automation Through Large Language Models and Human-Centric Design](https://arxiv.org/abs/2407.15673) | web | IDA helps business users create web UI automation through guided demonstrations, a semantic programming model, and a teaching-oriented interface. A prototype user study examines automation creation with enterprise applications by users without programming backgrounds. |
 | 2024‑07‑15 | [Spider2-V: How Far Are Multimodal Agents From Automating Data Science and Engineering Workflows?](https://arxiv.org/abs/2407.10956) | desktop, web | Benchmarks multimodal agents on data-science and engineering workflows involving enterprise applications, code, and GUI operations in real computer environments. |
 | 2024‑07‑07 | [WorkArena++: Towards Compositional Planning and Reasoning-based Common Knowledge Work Tasks](https://arxiv.org/abs/2407.05291) | web | Defines compositional enterprise workflows to evaluate planning and reasoning, with generation of ground-truth interaction traces. |
+| 2024‑06‑19 | [WONDERBREAD: A Benchmark for Evaluating Multimodal Foundation Models on Business Process Management Tasks](https://arxiv.org/abs/2406.13264) | web | Introduces WONDERBREAD, a benchmark pairing human WebArena workflow demonstrations with screen recordings, action logs, and written procedures. Six evaluation tasks cover documentation, knowledge transfer, and process improvement beyond end-to-end execution. |
 | 2024‑04‑03 | [Prompt2Task: Automating UI Tasks on Smartphones from Textual Prompts](https://arxiv.org/abs/2404.02475) | unspecified | Prompt2Task converts textual goals or procedures into smartphone UI automation using agents for intent interpretation, external-information handling, and execution. User feedback and accumulated task knowledge support subsequent task generation and operation. |
 | 2024‑03‑12 | [WorkArena: How Capable Are Web Agents at Solving Common Knowledge Work Tasks?](https://arxiv.org/abs/2403.07718) | web | Introduces enterprise web tasks on ServiceNow and BrowserGym interfaces for evaluating browser-based agents. |
+| 2024‑03‑06 | [PPTC-R benchmark: Towards Evaluating the Robustness of Large Language Models for PowerPoint Task Completion](https://arxiv.org/abs/2403.03788) | unspecified | Benchmarks robustness of API-based PowerPoint completion under sentence-level, semantic, and multilingual instruction perturbations and changes to the available API set. |
 | 2024‑01‑04 | [MobileAgent: enhancing mobile control via human-machine interaction and SOP integration](https://arxiv.org/abs/2401.04124) | android | Combines operating-procedure context with user interaction to guide mobile task automation and handle personalized or sensitive requests. |
+| 2023‑10‑23 | [InstructExcel: A Benchmark for Natural Language Instruction in Excel](https://arxiv.org/abs/2310.14495) | unspecified | Introduces InstructExcel, a benchmark for generating Excel OfficeScripts from natural-language requests, built using scripts recorded from user actions and a collection of existing spreadsheets. |
 | 2023‑10‑05 | [SteP: Stacked LLM Policies for Web Actions](https://arxiv.org/abs/2310.03720) | web | SteP dynamically composes specialized web-action policies through a stack that records the active chain of policy calls. It studies this control structure across WebArena, MiniWoB++, and CRM workflows. |
 | 2018‑02‑24 | [Reinforcement Learning on Web Interfaces Using Workflow-Guided Exploration](https://arxiv.org/abs/1802.08802) | web | Uses workflows extracted from demonstrations to constrain reinforcement-learning exploration for interactive web tasks. |

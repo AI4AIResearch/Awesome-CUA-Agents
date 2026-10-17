@@ -6,7 +6,7 @@ Curated metadata, not a performance ranking. Each entry links its first-party ev
 
 *Paper* lists reviewed `introduced_by`/`documented_by` arXiv relations with the arXiv submission year. *License* lists publisher declarations by scope (code, data, weights, document). *Evidence* links the reviewed first-party snapshot and its retrieval date.
 
-**73 resources:** [Web (12)](#web) · [Desktop (12)](#desktop) · [Mobile (22)](#mobile) · [Cross-platform (20)](#cross-platform) · [Unspecified (7)](#unspecified)
+**74 resources:** [Web (12)](#web) · [Desktop (12)](#desktop) · [Mobile (23)](#mobile) · [Cross-platform (20)](#cross-platform) · [Unspecified (7)](#unspecified)
 
 Resources tagged with environments from more than one family are listed under *Cross-platform*; their exact environments stay in the table.
 
@@ -60,6 +60,7 @@ All entries in this section: android.
 | [Android in the Wild](https://github.com/google-research/google-research/tree/master/android_in_the_wild) | [2307.10088](https://arxiv.org/abs/2307.10088) (2023) | code Apache-2.0 | Human demonstrations of Android tasks with screenshots and touch actions. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/google-research/google-research/master/android_in_the_wild/README.md) |
 | [AndroidControl](https://github.com/google-research/google-research/tree/master/android_control) | [2406.03679](https://arxiv.org/abs/2406.03679) (2024) | code Apache-2.0 | Android demonstrations with high-level goals, step instructions, screenshots, and accessibility trees. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/google-research/google-research/master/android_control/README.md) |
 | [Aria-UI Context-aware Data](https://huggingface.co/datasets/Aria-UI/Aria-UI_Context-aware_Data) | — | data apache-2.0 | Episode-based mobile GUI grounding data released with Aria-UI for incorporating interaction history into target localization. | [✓ 2026‑10‑16](https://huggingface.co/api/datasets/Aria-UI/Aria-UI_Context-aware_Data) |
+| [AutoDroid V2 training data](https://huggingface.co/datasets/BlitherBoom/AutoDroid-V2-Dataset) | — | data mit | Conversation-formatted supervision released for fine-tuning AutoDroid V2, with the project documenting a ShareGPT-style JSON configuration. | [✓ 2026‑10‑17](https://huggingface.co/api/datasets/BlitherBoom/AutoDroid-V2-Dataset) |
 | [CAGUI](https://huggingface.co/datasets/openbmb/CAGUI) | [2506.01391](https://arxiv.org/abs/2506.01391) (2025) | data cc-by-nc-4.0 | Mobile GUI data released by the OpenBMB team. | [✓ 2026‑10‑16](https://huggingface.co/api/datasets/openbmb/CAGUI) |
 | [CMGUI](https://huggingface.co/datasets/alibabagroup/CMGUI) | — | data cc-by-4.0 | Mobile GUI interaction data from the CMGUI project. | [✓ 2026‑10‑16](https://huggingface.co/api/datasets/alibabagroup/CMGUI) |
 | [DroidCall data](https://huggingface.co/datasets/mllmTeam/DroidCall) | [2412.00402](https://arxiv.org/abs/2412.00402) (2024) | — | Instruction-to-function-call examples for learning Android intent invocation, with training, testing and API-annotation files for mobile task execution. | [✓ 2026‑10‑17](https://huggingface.co/datasets/mllmTeam/DroidCall/raw/main/README.md) |

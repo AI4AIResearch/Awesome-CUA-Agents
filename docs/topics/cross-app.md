@@ -2,9 +2,9 @@
 
 [Home](../../README.md) · [All topics](../topics.md) · [Full arXiv bibliography](../papers.md)
 
-36 source-reviewed resources tagged `cross-app`. Curated metadata, not a performance ranking; unknown facts are shown as —.
+38 source-reviewed resources tagged `cross-app`. Curated metadata, not a performance ranking; unknown facts are shown as —.
 
-**Contents:** [Benchmarks (8)](#benchmarks) · [Datasets (2)](#datasets) · [Agents (2)](#agents) · [Papers (24)](#papers)
+**Contents:** [Benchmarks (9)](#benchmarks) · [Datasets (2)](#datasets) · [Agents (2)](#agents) · [Frameworks (1)](#frameworks) · [Papers (24)](#papers)
 
 ## Benchmarks
 
@@ -15,6 +15,7 @@
 | [iOSWorld](https://github.com/ljang0/iOSWorld) | ios | — | code Apache-2.0 | Native iPhone-simulator benchmark with shared user data, application workflows, agent runners, and rubric-based scoring. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/ljang0/iOSWorld/HEAD/README.md) |
 | [MobileGUI-VBench](https://huggingface.co/datasets/vivo-ai/MobileGUI-VBench) | unspecified | [2609.12394](https://arxiv.org/abs/2609.12394) (2026) | — | Mobile-app task definitions covering everyday scenarios, with annotated preconditions and clarification requirements for evaluating agent behavior. | [✓ 2026‑10‑17](https://huggingface.co/datasets/vivo-ai/MobileGUI-VBench/raw/main/README.md) |
 | [MobileGym++ / MobileGym++ Bench](https://github.com/OpenMobile2/MobileGym-plusplus) | web | [2610.14157](https://arxiv.org/abs/2610.14157) (2026) | code Apache-2.0 | Browser-rendered mobile simulation with resettable app state and a shared task suite for GUI-only and GUI-plus-tool agents. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/OpenMobile2/MobileGym-plusplus/HEAD/README.md) |
+| [OS-Map](https://github.com/OS-Copilot/OS-Map) | desktop, linux | [2507.19132](https://arxiv.org/abs/2507.19132) (2025) | code MIT | An OSWorld-derived desktop benchmark with an Ubuntu virtual-machine environment and expanded task configurations for measuring breadth and depth of computer interaction. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/OS-Copilot/OS-Map/HEAD/README.md) |
 | [OSWorld](https://github.com/xlang-ai/OSWorld) | desktop, linux, windows, macos | [2404.07972](https://arxiv.org/abs/2404.07972) (2024) | code Apache-2.0 | Execution-based evaluation of agents performing tasks in real desktop environments. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/xlang-ai/OSWorld/HEAD/README.md) |
 | [TheAgentCompany](https://github.com/TheAgentCompany/TheAgentCompany) | web, desktop | [2412.14161](https://arxiv.org/abs/2412.14161) (2024) | code MIT | Self-contained workplace environment for evaluating agents on professional tasks involving websites, files, code, and simulated coworkers. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/TheAgentCompany/TheAgentCompany/HEAD/README.md) |
 | [WindowsWorld](https://github.com/HITsz-TMG/WindowsWorld) | windows | — | code Apache-2.0 | Cross-application Windows benchmark with intermediate task evaluation. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/HITsz-TMG/WindowsWorld/HEAD/README.md) |
@@ -34,6 +35,14 @@ All entries in this section: android.
 | --- | --- | --- | --- | --- | --- |
 | [PC-Agent](https://github.com/GAIR-NLP/PC-Agent) | desktop | [2412.17589](https://arxiv.org/abs/2412.17589) (2024) | code MIT | Agent framework for desktop workflows. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/GAIR-NLP/PC-Agent/HEAD/README.md) |
 | [UFO](https://github.com/microsoft/UFO) | windows, desktop | — | — | Windows agent framework for application and desktop automation. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/microsoft/UFO/HEAD/README.md) |
+
+## Frameworks
+
+All entries in this section: desktop, linux.
+
+| Resource | Paper | License | Description | Evidence |
+| --- | --- | --- | --- | --- |
+| [GUI-ReWalk](https://github.com/bytedance/GUI-ReWalk) | [2509.15738](https://arxiv.org/abs/2509.15738) (2025) | code Apache-2.0 | A desktop trajectory-generation framework that moves from stochastic GUI exploration to inferred goals and multi-stage task completion, with retrospective reasoning annotations. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/bytedance/GUI-ReWalk/HEAD/README.md) |
 
 ## Papers
 

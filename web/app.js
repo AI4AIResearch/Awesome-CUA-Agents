@@ -15,6 +15,7 @@ Object.assign(TOPICS, {
   'action-prediction':['Action prediction','动作预测'],
   'imitation-learning':['Imitation learning','模仿学习'],
   'reward-models':['Reward models','奖励模型'],
+  'interaction-history':['Interaction history','交互历史'],
   'self-reflection':['Self-reflection','自我反思'],
   'state-tracking':['State tracking','状态追踪'],
   'training-free':['Training-free methods','无需训练的方法'],
@@ -25,8 +26,8 @@ Object.assign(TEXT.zh, {agentEyebrow:'给人阅读，也给 AGENTS 使用',agent
 const CLONE_COMMAND = 'git clone https://github.com/reacher-z/Awesome-CUA.git';
 Object.assign(TEXT.en,{citePaper:'Cite this paper',copyBibtex:'Copy BibTeX',citationCopied:'BibTeX copied',citationFailed:'Could not copy the citation. Use the download link.',citationNote:'Exports preserve the recorded authors, submission date, and paper version.',paperBibtex:'Paper citations · BibTeX',paperBibtexCopy:'Reviewed papers and surveys, with recorded versions and original authors.',paperCSL:'Paper citations · CSL JSON',paperCSLCopy:'Structured citations for reference managers and research tools.'});
 Object.assign(TEXT.zh,{citePaper:'引用这篇论文',copyBibtex:'复制 BibTeX',citationCopied:'BibTeX 已复制',citationFailed:'暂时无法复制引用，请使用下载链接。',citationNote:'引用保留目录记录的原作者、首次发表日期和论文版本。',paperBibtex:'论文引用 · BibTeX',paperBibtexCopy:'已审阅论文与综述，保留记录的版本及原作者。',paperCSL:'论文引用 · CSL JSON',paperCSLCopy:'可供文献管理工具和研究工作流使用的结构化引用。'});
-Object.assign(TEXT.en,{navData:'Data / Agents',year:'Year',allYears:'All years',related:'related',primaryLink:'Primary source',recordLink:'Details',reviewedCount:'reviewed',pendingCount:'metadata only',directoryTitle:'Resource directory'});
-Object.assign(TEXT.zh,{navData:'数据 / Agents',year:'年份',allYears:'全部年份',related:'项关联',primaryLink:'一手来源',recordLink:'详情',reviewedCount:'已审阅',pendingCount:'仅元数据',directoryTitle:'资源目录'});
+Object.assign(TEXT.en,{paperLibrary:'Research library',navData:'Data / Agents',year:'Year',allYears:'All years',related:'related',primaryLink:'Primary source',recordLink:'Details',reviewedCount:'reviewed',pendingCount:'metadata only',directoryTitle:'Resource directory'});
+Object.assign(TEXT.zh,{paperLibrary:'论文库',navData:'数据 / Agents',year:'年份',allYears:'全部年份',related:'项关联',primaryLink:'一手来源',recordLink:'详情',reviewedCount:'已审阅',pendingCount:'仅元数据',directoryTitle:'资源目录'});
 const $ = selector => document.querySelector(selector);
 const $$ = selector => [...document.querySelectorAll(selector)];
 let lang = new URLSearchParams(location.search).get('lang') === 'zh' ? 'zh' : 'en';
@@ -45,6 +46,7 @@ function translate() {
   $$('[data-placeholder]').forEach(el=>el.placeholder=t(el.dataset.placeholder));
   $('#language').textContent=lang==='zh'?'EN':'中文';
   $$('[data-agent-guide]').forEach(link=>link.href=lang==='zh'?'/zh/agents/':'/agents/');
+  $$('[data-paper-library]').forEach(link=>link.href=lang==='zh'?'/zh/papers/':'/papers/');
   if(report) $('#snapshot-date').textContent=dates(report.as_of_utc);
   fillSelects();
 }

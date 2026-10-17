@@ -76,6 +76,20 @@ class SearchPagesTests(unittest.TestCase):
         self.assertIn('/papers/',p.links);self.assertIn('/catalog/',p.links);self.assertIn('/data/',p.links)
         self.assertIn(f'id="stat-resources">{len(self.rows):,}</span>',text)
         self.assertIn('Computer-use agent research and resources',text)
+    def test_bilingual_libraries_preserve_the_complete_reviewed_paper_set(self):
+        expected={row['id'] for row in self.rows if eligible(row) and row['kind'] in {'paper','survey'}}
+        for path in ['papers/index.html','zh/papers/index.html']:
+            markup=(self.dest/path).read_text()
+            ids=[html.unescape(value) for value in re.findall(r'data-resource-id="([^"]+)"',markup)]
+            self.assertEqual(set(ids),expected,path)
+            self.assertEqual(len(ids),len(expected),path)
+            schema=json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>',markup,re.S)[1])
+            collection=next(item for item in schema['@graph'] if item['@type']=='ItemList')
+            self.assertEqual(collection['numberOfItems'],len(expected))
+            self.assertEqual([item['url'] for item in collection['itemListElement']],
+                             [SITE+resource_path({'id':rid}) for rid in ids])
+            self.assertIn('href="/downloads/citations.bib"',markup)
+            self.assertIn('href="/downloads/citations.csl.json"',markup)
     def test_script_versions_match_output_bytes_and_final_page_manifest(self):
         pages={item['path']:item for item in self.manifest['pages']}
         for path,script in [('/', 'app.js'),('/compare/benchmarks/','compare.js'),('/compare/datasets/','compare.js')]:

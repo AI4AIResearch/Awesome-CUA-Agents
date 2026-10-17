@@ -6,7 +6,7 @@ Curated metadata, not a performance ranking. Each entry links its first-party ev
 
 *Date* is the arXiv first-submission date; newest first. Each title links the reviewed arXiv record; API receipts are in `data/catalog.jsonl`.
 
-**11 resources:** [Mobile (1)](#mobile) · [Cross-platform (10)](#cross-platform)
+**12 resources:** [Mobile (1)](#mobile) · [Cross-platform (10)](#cross-platform) · [Unspecified (1)](#unspecified)
 
 Resources tagged with environments from more than one family are listed under *Cross-platform*; their exact environments stay in the table.
 
@@ -36,6 +36,16 @@ All entries in this section: cross-platform.
 | 2024‑12‑18 | [GUI Agents: A Survey](https://arxiv.org/abs/2412.13501) | Survey of research directions in GUI or computer-use agents. |
 | 2024‑11‑27 | [Large Language Model-Brained GUI Agents: A Survey](https://arxiv.org/abs/2411.18279) | Survey of research directions in GUI or computer-use agents. |
 | 2024‑11‑07 | [GUI Agents with Foundation Models: A Comprehensive Survey](https://arxiv.org/abs/2411.04890) | Survey of research directions in GUI or computer-use agents. |
+
+[↑ Back to top](#survey-catalog)
+
+## Unspecified
+
+All entries in this section: unspecified.
+
+| Date | Resource | Description |
+| --- | --- | --- |
+| 2024‑11‑04 | [Foundations and Recent Trends in Multimodal Mobile Agents: A Survey](https://arxiv.org/abs/2411.02006) | Surveys multimodal mobile agents, organizing prompt-based and training-based approaches alongside evaluation benchmarks, supporting technologies, and open challenges in mobile task execution. |
 
 [↑ Back to top](#survey-catalog)
 

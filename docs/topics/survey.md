@@ -2,9 +2,9 @@
 
 [Home](../../README.md) · [All topics](../topics.md) · [Full arXiv bibliography](../papers.md)
 
-12 source-reviewed resources tagged `survey`. Curated metadata, not a performance ranking; unknown facts are shown as —.
+13 source-reviewed resources tagged `survey`. Curated metadata, not a performance ranking; unknown facts are shown as —.
 
-**Contents:** [Surveys (11)](#surveys) · [Papers (1)](#papers)
+**Contents:** [Surveys (12)](#surveys) · [Papers (1)](#papers)
 
 ## Surveys
 
@@ -21,6 +21,7 @@
 | 2024‑12‑18 | [GUI Agents: A Survey](https://arxiv.org/abs/2412.13501) | cross-platform | Survey of research directions in GUI or computer-use agents. |
 | 2024‑11‑27 | [Large Language Model-Brained GUI Agents: A Survey](https://arxiv.org/abs/2411.18279) | cross-platform | Survey of research directions in GUI or computer-use agents. |
 | 2024‑11‑07 | [GUI Agents with Foundation Models: A Comprehensive Survey](https://arxiv.org/abs/2411.04890) | cross-platform | Survey of research directions in GUI or computer-use agents. |
+| 2024‑11‑04 | [Foundations and Recent Trends in Multimodal Mobile Agents: A Survey](https://arxiv.org/abs/2411.02006) | unspecified | Surveys multimodal mobile agents, organizing prompt-based and training-based approaches alongside evaluation benchmarks, supporting technologies, and open challenges in mobile task execution. |
 
 ## Papers
 

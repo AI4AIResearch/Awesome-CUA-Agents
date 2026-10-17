@@ -1,31 +1,19 @@
 {
-  "as_of_utc": "2026-10-17T07:57:59Z",
-  "total_records": 2545,
-  "curated_records": 996,
+  "as_of_utc": "2026-10-17T09:27:51+00:00",
+  "total_records": 2556,
+  "curated_records": 1093,
   "bibliographic_records": 2164,
   "arxiv_archive_records": 2264,
   "excluded_records": 100,
   "exclusion_revalidation_pending": 0,
-  "metadata_only_records": 1549,
+  "metadata_only_records": 1463,
   "discovery_identifiers": 3907,
-  "unindexed_candidates": 1402,
+  "unindexed_candidates": 1394,
   "pending_editorial": [
-    {
-      "id": "github:mobilellm/autodroid-v2",
-      "name": "AutoDroid V2",
-      "url": "https://github.com/MobileLLM/AutoDroid-V2",
-      "reason": "Repository landing page is reachable, but accessible primary description is insufficient to validate the claimed framework."
-    },
     {
       "id": "github:thudm/autoglm",
       "name": "AutoGLM",
       "url": "https://github.com/THUDM/AutoGLM",
-      "reason": "primary evidence unresolved: HTTP Error 404: Not Found"
-    },
-    {
-      "id": "github:ai-secure/advweb",
-      "name": "AdvWeb",
-      "url": "https://github.com/AI-secure/AdvWeb",
       "reason": "primary evidence unresolved: HTTP Error 404: Not Found"
     },
     {
@@ -35,28 +23,22 @@
       "reason": "primary evidence unresolved: HTTP Error 403: Forbidden"
     },
     {
-      "id": "url:8c792416d297293422cf",
-      "name": "OpenCUA 72B Preview",
-      "url": "https://huggingface.co/xlangai/OpenCUA-72B-preview",
-      "reason": "primary evidence unresolved: content mismatch"
-    },
-    {
       "id": "github:zzxslp/mm-navigator",
       "name": "MM-Navigator",
       "url": "https://github.com/zzxslp/MM-Navigator",
-      "reason": "current source snapshot needs editorial review"
+      "reason": "The fresh README still says code and the evaluation benchmark will be out soon. The public tree contains call_gpt4.py and eval.py, but no benchmark release or usage/dependency documentation sufficient to validate a usable agent artifact. Preserve the paper separately."
     },
     {
       "id": "github:infixai/infiguiagent",
       "name": "InfiGUIAgent",
       "url": "https://github.com/InfiXAI/InfiGUIAgent",
-      "reason": "current source snapshot needs editorial review"
+      "reason": "The fresh README still explains that third-party training-data restrictions delay the full model release. The repository tree contains only README/images, and the linked Reallm-Labs collection API returns 404; no code or checkpoint release is established."
     },
     {
       "id": "github:zju-aces-ise/chatuitest",
       "name": "ChatUITest / GTArena project hub",
       "url": "https://github.com/ZJU-ACES-ISE/ChatUITest",
-      "reason": "current source snapshot needs editorial review"
+      "reason": "The fresh README remains under construction and says the dataset is being organized/uploaded. The tree has only README.md, and the linked GTArena-UI-Defects API and raw card return 401. No access request was made. UIDefectMocker is already cataloged separately."
     },
     {
       "id": "github:ethannju/carryon",
@@ -102,56 +84,56 @@
     }
   ],
   "by_kind": {
-    "agent": 31,
-    "benchmark": 70,
+    "agent": 33,
+    "benchmark": 73,
     "company": 16,
-    "dataset": 73,
-    "framework": 50,
+    "dataset": 74,
+    "framework": 54,
     "infrastructure": 14,
-    "model": 91,
-    "paper": 2153,
+    "model": 92,
+    "paper": 2152,
     "product": 19,
-    "survey": 11,
+    "survey": 12,
     "tool": 17
   },
   "curated_by_environment": {
-    "android": 202,
-    "cross-platform": 178,
-    "desktop": 206,
+    "android": 220,
+    "cross-platform": 181,
+    "desktop": 221,
     "harmonyos": 1,
     "ios": 17,
-    "linux": 29,
-    "macos": 19,
-    "unspecified": 177,
-    "web": 354,
-    "windows": 38
+    "linux": 32,
+    "macos": 21,
+    "unspecified": 214,
+    "web": 391,
+    "windows": 40
   },
   "curated_by_kind_and_environment": {
     "agent": {
-      "android": 11,
+      "android": 12,
       "cross-platform": 1,
       "desktop": 14,
       "ios": 1,
       "macos": 1,
-      "web": 7,
+      "web": 8,
       "windows": 3
     },
     "benchmark": {
-      "android": 13,
+      "android": 14,
       "cross-platform": 12,
-      "desktop": 15,
+      "desktop": 16,
       "ios": 2,
-      "linux": 3,
+      "linux": 4,
       "macos": 3,
       "unspecified": 3,
-      "web": 31,
+      "web": 32,
       "windows": 4
     },
     "company": {
       "unspecified": 16
     },
     "dataset": {
-      "android": 28,
+      "android": 29,
       "cross-platform": 14,
       "desktop": 14,
       "linux": 6,
@@ -161,15 +143,15 @@
       "windows": 3
     },
     "framework": {
-      "android": 11,
+      "android": 13,
       "cross-platform": 5,
-      "desktop": 14,
+      "desktop": 16,
       "harmonyos": 1,
       "ios": 1,
-      "linux": 2,
+      "linux": 3,
       "macos": 1,
       "unspecified": 2,
-      "web": 24,
+      "web": 26,
       "windows": 1
     },
     "infrastructure": {
@@ -184,24 +166,24 @@
     "model": {
       "android": 23,
       "cross-platform": 46,
-      "desktop": 18,
+      "desktop": 19,
       "ios": 4,
-      "linux": 3,
-      "macos": 3,
+      "linux": 4,
+      "macos": 4,
       "unspecified": 2,
       "web": 25,
-      "windows": 3
+      "windows": 4
     },
     "paper": {
-      "android": 107,
-      "cross-platform": 89,
-      "desktop": 119,
+      "android": 120,
+      "cross-platform": 92,
+      "desktop": 130,
       "ios": 5,
       "linux": 11,
-      "macos": 7,
-      "unspecified": 145,
-      "web": 217,
-      "windows": 22
+      "macos": 8,
+      "unspecified": 181,
+      "web": 250,
+      "windows": 23
     },
     "product": {
       "desktop": 5,
@@ -210,7 +192,8 @@
     "survey": {
       "android": 1,
       "cross-platform": 10,
-      "ios": 1
+      "ios": 1,
+      "unspecified": 1
     },
     "tool": {
       "android": 4,
@@ -223,9 +206,9 @@
     }
   },
   "license_declarations_by_scope": {
-    "code": 142,
-    "data": 42,
-    "weights": 50,
+    "code": 148,
+    "data": 44,
+    "weights": 51,
     "document": 0
   },
   "sources": [
@@ -250,10 +233,10 @@
         "state": "success"
       },
       "discovered": 338,
-      "indexed": 199,
-      "curated": 177,
+      "indexed": 200,
+      "curated": 185,
       "excluded": 0,
-      "unindexed": 139
+      "unindexed": 138
     },
     {
       "id": "zju-gui",
@@ -277,7 +260,7 @@
       },
       "discovered": 218,
       "indexed": 157,
-      "curated": 149,
+      "curated": 151,
       "excluded": 0,
       "unindexed": 61
     },
@@ -303,7 +286,7 @@
       },
       "discovered": 224,
       "indexed": 198,
-      "curated": 147,
+      "curated": 169,
       "excluded": 0,
       "unindexed": 26
     },
@@ -328,10 +311,10 @@
         "state": "success"
       },
       "discovered": 132,
-      "indexed": 93,
-      "curated": 76,
+      "indexed": 94,
+      "curated": 79,
       "excluded": 0,
-      "unindexed": 39
+      "unindexed": 38
     },
     {
       "id": "steel-web",
@@ -406,10 +389,10 @@
         "state": "success"
       },
       "discovered": 170,
-      "indexed": 110,
-      "curated": 90,
+      "indexed": 111,
+      "curated": 92,
       "excluded": 1,
-      "unindexed": 59
+      "unindexed": 58
     },
     {
       "id": "delunn-multimodal",
@@ -432,10 +415,10 @@
         "state": "success"
       },
       "discovered": 588,
-      "indexed": 477,
-      "curated": 318,
+      "indexed": 479,
+      "curated": 336,
       "excluded": 0,
-      "unindexed": 111
+      "unindexed": 109
     },
     {
       "id": "tianyuan-cua",
@@ -459,7 +442,7 @@
       },
       "discovered": 94,
       "indexed": 67,
-      "curated": 43,
+      "curated": 48,
       "excluded": 0,
       "unindexed": 27
     },
@@ -537,7 +520,7 @@
       },
       "discovered": 193,
       "indexed": 137,
-      "curated": 129,
+      "curated": 131,
       "excluded": 0,
       "unindexed": 56
     },
@@ -563,7 +546,7 @@
       },
       "discovered": 544,
       "indexed": 486,
-      "curated": 188,
+      "curated": 209,
       "excluded": 0,
       "unindexed": 58
     },
@@ -588,10 +571,10 @@
         "state": "success"
       },
       "discovered": 144,
-      "indexed": 88,
-      "curated": 74,
+      "indexed": 89,
+      "curated": 76,
       "excluded": 0,
-      "unindexed": 56
+      "unindexed": 55
     },
     {
       "id": "jin-gui-hub",
@@ -615,7 +598,7 @@
       },
       "discovered": 210,
       "indexed": 207,
-      "curated": 89,
+      "curated": 90,
       "excluded": 0,
       "unindexed": 3
     },
@@ -667,7 +650,7 @@
       },
       "discovered": 40,
       "indexed": 24,
-      "curated": 22,
+      "curated": 23,
       "excluded": 0,
       "unindexed": 16
     },
@@ -692,10 +675,10 @@
         "state": "success"
       },
       "discovered": 247,
-      "indexed": 184,
-      "curated": 161,
+      "indexed": 186,
+      "curated": 168,
       "excluded": 0,
-      "unindexed": 63
+      "unindexed": 61
     },
     {
       "id": "mobile-agents",
@@ -719,7 +702,7 @@
       },
       "discovered": 91,
       "indexed": 76,
-      "curated": 59,
+      "curated": 61,
       "excluded": 0,
       "unindexed": 15
     },
@@ -771,7 +754,7 @@
       },
       "discovered": 96,
       "indexed": 57,
-      "curated": 48,
+      "curated": 49,
       "excluded": 0,
       "unindexed": 39
     },
@@ -1082,10 +1065,10 @@
         "state": "success"
       },
       "discovered": 14,
-      "indexed": 5,
-      "curated": 5,
+      "indexed": 6,
+      "curated": 6,
       "excluded": 0,
-      "unindexed": 9
+      "unindexed": 8
     },
     {
       "id": "release-mobilegympp",
@@ -1343,7 +1326,7 @@
       },
       "discovered": 17,
       "indexed": 3,
-      "curated": 2,
+      "curated": 3,
       "excluded": 0,
       "unindexed": 14
     },

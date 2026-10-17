@@ -6,7 +6,7 @@ Curated metadata, not a performance ranking. Each entry links its first-party ev
 
 *Paper* lists reviewed `introduced_by`/`documented_by` arXiv relations with the arXiv submission year. *License* lists publisher declarations by scope (code, data, weights, document). *Evidence* links the reviewed first-party snapshot and its retrieval date.
 
-**91 resources:** [Web (12)](#web) · [Desktop (6)](#desktop) · [Mobile (14)](#mobile) · [Cross-platform (57)](#cross-platform) · [Unspecified (2)](#unspecified)
+**92 resources:** [Web (12)](#web) · [Desktop (7)](#desktop) · [Mobile (14)](#mobile) · [Cross-platform (57)](#cross-platform) · [Unspecified (2)](#unspecified)
 
 Resources tagged with environments from more than one family are listed under *Cross-platform*; their exact environments stay in the table.
 
@@ -40,6 +40,7 @@ All entries in this section: web.
 | [EvoCUA 8B 20260105](https://huggingface.co/meituan/EvoCUA-8B-20260105) | desktop | — | weights apache-2.0 | Released model checkpoint associated with EvoCUA. | [✓ 2026‑10‑16](https://huggingface.co/api/models/meituan/EvoCUA-8B-20260105) |
 | [OpenCUA](https://github.com/xlang-ai/OpenCUA) | desktop | [2508.09123](https://arxiv.org/abs/2508.09123) (2025) | code MIT | Open computer-use research stack including models and training resources. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/xlang-ai/OpenCUA/HEAD/README.md) |
 | [OpenCUA 32B](https://huggingface.co/xlangai/OpenCUA-32B) | desktop, linux, windows, macos | [2508.09123](https://arxiv.org/abs/2508.09123) (2025) | weights mit | A Qwen2.5-VL-based computer-use checkpoint that combines screenshot history with planning and grounded executable actions. | [✓ 2026‑10‑17](https://huggingface.co/xlangai/OpenCUA-32B/raw/main/README.md) |
+| [OpenCUA 72B](https://huggingface.co/xlangai/OpenCUA-72B) | desktop, linux, windows, macos | [2508.09123](https://arxiv.org/abs/2508.09123) (2025) | weights mit | A Qwen2.5-VL-based computer-use checkpoint that combines screenshot history and reflective reasoning to predict executable desktop actions. | [✓ 2026‑10‑17](https://huggingface.co/xlangai/OpenCUA-72B/raw/main/README.md) |
 | [ShowUI-π](https://github.com/showlab/showui-pi) | desktop | [2512.24965](https://arxiv.org/abs/2512.24965) (2025) | — | Vision-language-action model and training code for GUI dragging, with links to checkpoints and continuous-action evaluation data. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/showlab/showui-pi/HEAD/README.md) |
 
 [↑ Back to top](#model-catalog)
