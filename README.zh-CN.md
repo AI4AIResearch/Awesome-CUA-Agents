@@ -18,9 +18,9 @@ git clone https://github.com/reacher-z/Awesome-CUA.git
 
 <!-- STATS:START -->
 
-**2,045 resource records** · **996 curated** · **1,664 arXiv records** · **44 discovery documents**
+**2,545 resource records** · **996 curated** · **2,164 arXiv records** · **44 discovery documents**
 
-Evidence through `2026-10-17T05:29:15Z`. 1,049 records have bibliographic verification only; 1,901 discovered identifiers remain unresolved. 100 scope exclusions retain their original metadata in the archive. Counts overlap as explained below.
+Evidence through `2026-10-17T07:57:59Z`. 1,549 records have bibliographic verification only; 1,402 discovered identifiers remain unresolved. 100 scope exclusions retain their original metadata in the archive. Counts overlap as explained below.
 
 <!-- STATS:END -->
 

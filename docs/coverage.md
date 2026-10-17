@@ -1,11 +1,11 @@
 # Coverage and quality ledger
 
-Evidence snapshot through **2026-10-17T05:29:15Z**. Generated from committed source receipts.
+Evidence snapshot through **2026-10-17T07:57:59Z**. Generated from committed source receipts.
 
-- 2,045 resource records: 996 curated; 1,049 bibliographic metadata only.
-- 1,664 arXiv records, including curated surveys. This count overlaps the status counts above.
-- 1,764 retained arXiv metadata records; 100 explicit scope exclusions are outside the active catalog.
-- 3,906 discovery identifiers; 1,901 remain unresolved after accounting for scope exclusions.
+- 2,545 resource records: 996 curated; 1,549 bibliographic metadata only.
+- 2,164 arXiv records, including curated surveys. This count overlaps the status counts above.
+- 2,264 retained arXiv metadata records; 100 explicit scope exclusions are outside the active catalog.
+- 3,907 discovery identifiers; 1,402 remain unresolved after accounting for scope exclusions.
 - 15 editorial proposals await verification or review.
 
 These are distinct resource identifiers, not distinct research projects. Papers, repositories, datasets, products, and publisher entities have different grains.
@@ -52,18 +52,18 @@ The denominator is the normalized identifiers extracted from each fetched docume
 | [MobileGym++ — first-party releases](https://github.com/OpenMobile2/MobileGym-plusplus) | 9 | 2 | 1 | 0 | 7 | OK · 2026-10-17 |
 | [CarryOn — first-party releases](https://github.com/Ethannju/carryon) | 2 | 1 | 1 | 0 | 1 | OK · 2026-10-17 |
 | [GraceBench — first-party releases](https://iaie-physicalai.github.io/GraceBench) | 3 | 1 | 1 | 0 | 2 | OK · 2026-10-17 |
-| [MobileAgent / GUI-Owl / UI-S1 — first-party release index](https://github.com/X-PLUG/MobileAgent) | 33 | 12 | 11 | 0 | 21 | OK · 2026-10-16 |
-| [GUICourse — first-party release checklist](https://github.com/yiye3/GUICourse) | 7 | 4 | 4 | 0 | 3 | OK · 2026-10-16 |
-| [OS-Genesis — first-party training assets](https://github.com/OS-Copilot/OS-Genesis) | 29 | 2 | 2 | 0 | 27 | OK · 2026-10-16 |
-| [MultiUI / UIX — first-party release index](https://github.com/neulab/multiui) | 8 | 1 | 1 | 0 | 7 | OK · 2026-10-16 |
+| [MobileAgent / GUI-Owl / UI-S1 — first-party release index](https://github.com/X-PLUG/MobileAgent) | 33 | 12 | 11 | 0 | 21 | OK · 2026-10-17 |
+| [GUICourse — first-party release checklist](https://github.com/yiye3/GUICourse) | 7 | 4 | 4 | 0 | 3 | OK · 2026-10-17 |
+| [OS-Genesis — first-party training assets](https://github.com/OS-Copilot/OS-Genesis) | 29 | 2 | 2 | 0 | 27 | OK · 2026-10-17 |
+| [MultiUI / UIX — first-party release index](https://github.com/neulab/multiui) | 8 | 1 | 1 | 0 | 7 | OK · 2026-10-17 |
 | [UI-Genie — first-party model and data releases](https://github.com/Euphoria16/UI-Genie) | 12 | 5 | 5 | 0 | 7 | OK · 2026-10-17 |
-| [ScienceBoard — first-party environments and trajectories](https://github.com/OS-Copilot/ScienceBoard) | 16 | 4 | 4 | 0 | 12 | OK · 2026-10-16 |
+| [ScienceBoard — first-party environments and trajectories](https://github.com/OS-Copilot/ScienceBoard) | 16 | 4 | 4 | 0 | 12 | OK · 2026-10-17 |
 | [MAI-UI / Qwen-UI-Agent — first-party project index](https://github.com/Tongyi-MAI/MAI-UI) | 17 | 3 | 2 | 0 | 14 | OK · 2026-10-17 |
 | [H Company — official Hub model index](https://huggingface.co/Hcompany) | 39 | 4 | 4 | 0 | 35 | OK · 2026-10-17 |
 
 ## Paper-discovery query coverage
 
-Latest pass: 2026-10-17T04:05:38Z; **32/32** query windows succeeded. 1,491 distinct identifiers; 918 new to the candidate queue.
+Latest pass: 2026-10-17T07:57:26Z; **32/32** query windows succeeded. 1,491 distinct identifiers; 1 new to the candidate queue.
 
 These are ranked search windows, not a field-wide denominator. New identifiers still require primary metadata verification and relevance review.
 
