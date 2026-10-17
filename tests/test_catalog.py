@@ -100,7 +100,7 @@ class SourceTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory, mock.patch.object(catalog, "CACHE", Path(directory)):
             url = "https://example.org/source"
             key = hashlib.sha256(url.encode()).hexdigest()
-            catalog.write_json(Path(directory) / f"{key}.json", {"ok": True, "url": url, "sha256": "a" * 64})
+            catalog.write_json(Path(directory) / f"{key}.json", {"ok": True, "url": url, "sha256": hashlib.sha256(b"old good snapshot").hexdigest()})
             (Path(directory) / f"{key}.body").write_bytes(b"old good snapshot")
             error = urllib.error.HTTPError(url, 429, "rate limited", {}, None)
             with mock.patch("urllib.request.urlopen", side_effect=error), mock.patch("time.sleep"):
@@ -408,8 +408,8 @@ class TopicHubTests(unittest.TestCase):
         self.assertNotIn("Unreviewed", hub)
         self.assertIn("[Benchmarks (1)](#benchmarks) · [Papers (2)](#papers)", hub)
         index = files["docs/topics.md"]
-        self.assertLess(index.index("[Grounding]"), index.index("[Safety and security]"))
-        self.assertIn("| [Grounding](topics/grounding.md) | 3 | 1 | · | · | · | 2 | [Newer paper]", index)
+        self.assertLess(index.index("[GUI grounding]"), index.index("[Safety & security]"))
+        self.assertIn("| [GUI grounding](topics/grounding.md) | 3 | 1 | · | · | · | 2 | [Newer paper]", index)
 
     def test_bibliography_year_index_marks_reviews_and_undated_records(self):
         rows = [self.row("arxiv:2401.00001", "Reviewed", "paper", ["grounding"], "2024-01-01"),

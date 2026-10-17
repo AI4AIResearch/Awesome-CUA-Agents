@@ -217,11 +217,15 @@ class ResourcePayloadTests(unittest.TestCase):
         # An older/interrupted build may have written its new manifest before
         # deleting the old payloads. A subsequent build must reconcile them.
         self.seed_managed(self.build, self.removed)
-        unmanaged = self.folder(self.build, self.removed) / 'publisher-note.txt'
+        self.seed_managed(self.site, self.removed)
+        unmanaged = self.folder(self.site, self.removed) / 'publisher-note.txt'
         unmanaged.write_text('Preserve unmanaged material.\n')
         self.build_site()
+        # The build output is replaced whole; the publication checkout keeps material it did not generate.
+        self.assertFalse(self.folder(self.build, self.removed).exists())
+        self.publish()
         for name in MANAGED:
-            self.assertFalse((self.folder(self.build, self.removed) / name).exists(), name)
+            self.assertFalse((self.folder(self.site, self.removed) / name).exists(), name)
         self.assertTrue(unmanaged.exists())
 
     def test_publication_does_not_restore_removed_files_from_orphaned_build_output(self):
@@ -260,12 +264,12 @@ class ResourcePayloadTests(unittest.TestCase):
 
     def test_topic_subsets_and_bilingual_pages_remove_stale_members_after_review_changes(self):
         self.reviewed['topics']=['grounding']
-        self.metadata['topics']=['grounding','unreviewed-only']
+        self.metadata['topics']=['grounding','video']
         self.write_inputs(self.rows)
         self.build_site();self.publish()
         self.assertTrue((self.site/'topics/grounding/index.html').exists())
         self.assertTrue((self.site/'zh/topics/grounding/index.md').exists())
-        self.assertFalse((self.site/'topics/unreviewed-only/index.html').exists())
+        self.assertFalse((self.site/'topics/video/index.html').exists())
         exported=[json.loads(line) for line in (self.site/'downloads/topics/grounding/records.jsonl').read_text().splitlines()]
         self.assertEqual(exported,[self.reviewed])
         self.reviewed['topics']=[]

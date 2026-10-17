@@ -27,7 +27,7 @@
       "url": {
         "type": "string",
         "format": "uri",
-        "pattern": "^https://arxiv.org/abs/\\d{4}\\.\\d{4,5}$"
+        "pattern": "^https://arxiv\\.org/abs/\\d{4}\\.\\d{4,5}$"
       },
       "decision": {
         "const": "out_of_scope"
@@ -37,7 +37,8 @@
       },
       "reason": {
         "type": "string",
-        "minLength": 1
+        "minLength": 1,
+        "pattern": "\\S"
       },
       "reviewed_at": {
         "type": "string",

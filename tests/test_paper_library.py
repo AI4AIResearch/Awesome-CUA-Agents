@@ -5,7 +5,8 @@ import unittest
 from urllib.parse import parse_qs, urlsplit
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from paper_library import paper_library
+from catalog import TOPICS
+from paper_library import PAGE_SIZE, library_pages, library_path, paper_library
 from search_pages import page, resource_path, SITE
 
 
@@ -106,6 +107,46 @@ class PaperLibraryTests(unittest.TestCase):
             self.assertIn(f'<link rel="canonical" href="{SITE}{path}">', markup)
             if lang == 'zh-CN':
                 self.assertIn('<a href="/zh/papers/">论文</a>', markup)
+
+    def test_paginated_headers_keep_global_totals_and_year_links_reach_the_first_matching_page(self):
+        rows = [record(f'new-{index:03}', '2025-03-04') for index in range(PAGE_SIZE + 1)]
+        rows += [record('old-paper', '2024-03-04'), record('old-survey', '2024-01-01', kind='survey')]
+        self.assertEqual(library_pages(rows), 2)
+        for language in ('en', 'zh'):
+            for number in (1, 2):
+                markup, schema = paper_library(rows, resource_path, language=language, number=number)
+                parsed = LibraryParser(markup)
+                self.assertIn('<strong>' + str(PAGE_SIZE + 3) + '</strong>', markup)
+                self.assertIn(library_path(number, 'zh' if language == 'en' else 'en'), parsed.links)
+                newest_link = '#papers-2025' if number == 1 else library_path(1, language) + '#papers-2025'
+                oldest_link = '#papers-2024' if number == 2 else library_path(2, language) + '#papers-2024'
+                self.assertIn(newest_link, parsed.links)
+                self.assertIn(oldest_link, parsed.links)
+                self.assertIn('>2025<span>' + str(PAGE_SIZE + 1) + '</span></a>', markup)
+                self.assertIn('>2024<span>2</span></a>', markup)
+                self.assertEqual(schema['numberOfItems'], PAGE_SIZE if number == 1 else 3)
+                self.assertEqual('papers-2024' in parsed.ids, number == 2)
+                for link in parsed.links:
+                    if link.startswith('#'):
+                        self.assertIn(link[1:], parsed.ids)
+
+    def test_partial_publication_dates_and_shared_topic_labels_are_preserved(self):
+        rows = [record('url:year-only', None, details={'publication': {'date_parts': [2017]}}),
+                record('url:month-only', None, details={'publication': {'date_parts': [2017, 7]}}),
+                record('undated', None)]
+        for row in rows:
+            row['topics'] = ['interaction-history', 'reinforcement-learning']
+        for language in ('en', 'zh'):
+            markup, _ = paper_library(rows, resource_path, language=language)
+            parsed = LibraryParser(markup)
+            self.assertEqual(parsed.records, ['url:month-only', 'url:year-only', 'undated'])
+            self.assertIn('<span>2017-07</span>', markup)
+            self.assertIn('<span>2017</span>', markup)
+            self.assertNotIn('<time', markup)
+            self.assertNotIn('2017-01-01', markup)
+            self.assertNotIn('2017-07-01', markup)
+            for topic in rows[0]['topics']:
+                self.assertIn(TOPICS[topic][language], markup)
 
 
 if __name__ == '__main__':

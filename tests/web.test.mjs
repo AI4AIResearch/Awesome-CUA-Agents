@@ -81,6 +81,45 @@ test('numbered pagination keeps first, last and neighbouring pages one click awa
     shown.forEach((n,i)=>{if(n===null)assert.ok(shown[i+1]-shown[i-1]>2,`${page}/${pages} hides at least two pages behind a gap`);});
   }
 });
+test('opening a record adds one history entry, so Back closes the dialog and keeps the filters',async()=>{
+  const coverage=JSON.parse(readFileSync(new URL('../data/coverage.json',import.meta.url),'utf8'));
+  const base={kind:'dataset',url:'https://example.org/',aliases:[],environments:['web'],topics:[],authors:[],summary:'Fixture.',review_status:'curated',published_at:null,scope:'core',paper_version:null,paper_source_url:null,paper_date:null,related_count:1,incoming_relations:[]};
+  const records=[{...base,id:'url:first',name:'First fixture',page_url:'/resources/first/'},{...base,id:'url:second',name:'Second fixture',page_url:'/resources/second/'}];
+  const keys=['document','window','location','history','localStorage','fetch'],saved=keys.map(key=>[key,Object.getOwnPropertyDescriptor(globalThis,key)]);
+  const settle=()=>new Promise(resolve=>setImmediate(resolve));
+  const boot=async(search,name)=>{
+    const clicks=[],popstate=[],location={search,pathname:'/',hash:''},entries=[{state:null,search}];let index=0;
+    const go=delta=>{index+=delta;location.search=entries[index].search;popstate.forEach(listener=>listener());};
+    const write=(state,url)=>{entries[index]={state,search:url.replace(/^[^?]*/,'')};location.search=entries[index].search;};
+    const history={get state(){return entries[index].state;},get length(){return entries.length;},pushState(state,_,url){entries.splice(++index);entries.push({});write(state,url);},replaceState(state,_,url){write(state,url);},back(){go(-1);},forward(){go(1);}};
+    const elements=new Map(),element=selector=>{if(!elements.has(selector))elements.set(selector,{dataset:{},listeners:{},classList:{toggle(){}},open:false,addEventListener(type,fn){(this.listeners[type]??=[]).push(fn);},setAttribute(){},focus(){},showModal(){this.open=true;},close(){if(!this.open)return;this.open=false;(this.listeners.close||[]).forEach(fn=>fn());}});return elements.get(selector);};
+    const globals={document:{documentElement:{},body:{classList:{toggle(){}}},addEventListener(type,fn){if(type==='click')clicks.push(fn);},querySelector:element,querySelectorAll:()=>[]},window:{addEventListener(type,fn){if(type==='popstate')popstate.push(fn);}},location,history,localStorage:{getItem:()=>null,setItem(){}},fetch:async url=>({ok:true,json:async()=>url.endsWith('record.json')?{...records.find(r=>url===r.page_url+'record.json'),licenses:{},details:{},identifiers:{},relations:[],notes:'',evidence:[],last_verified_at:'2026-10-01'}:{coverage,records:structuredClone(records)}})};
+    for(const [key,value] of Object.entries(globals))Object.defineProperty(globalThis,key,{value,configurable:true,writable:true});
+    await import(`../web/app.js?${name}`);await settle();
+    const open=async id=>{for(const listener of clicks)listener({target:{closest:selector=>selector==='[data-record]'?{tagName:'A',dataset:{record:id}}:null},button:0,preventDefault(){}});await settle();};
+    return {dialog:element('#detail-dialog'),entries,history,location,open,where:()=>`${index}/${entries.length} ${location.search}`};
+  };
+  try {
+    const list=await boot('?q=fixture&kind=dataset','history-list');
+    assert.equal(list.where(),'0/1 ?q=fixture&kind=dataset');
+    await list.open('url:first');
+    assert.equal(list.dialog.open,true);assert.equal(list.where(),'1/2 ?q=fixture&kind=dataset&record=url%3Afirst');
+    await list.open('url:second');
+    assert.equal(list.where(),'1/2 ?q=fixture&kind=dataset&record=url%3Asecond');
+    list.history.back();await settle();
+    assert.equal(list.dialog.open,false);assert.equal(list.where(),'0/2 ?q=fixture&kind=dataset');
+    list.history.forward();await settle();
+    assert.equal(list.dialog.open,true);assert.equal(list.where(),'1/2 ?q=fixture&kind=dataset&record=url%3Asecond');
+    list.dialog.close();await settle();
+    assert.equal(list.where(),'0/2 ?q=fixture&kind=dataset');
+    const deep=await boot('?record=url%3Afirst','history-deep-link');
+    assert.equal(deep.dialog.open,true);assert.equal(deep.where(),'0/1 ?record=url%3Afirst');
+    deep.dialog.close();await settle();
+    assert.equal(deep.where(),'0/1 ');
+  } finally {
+    for(const [key,descriptor] of saved)if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];
+  }
+});
 test('untrusted names and source URLs cannot inject active HTML',()=>{
   assert.equal(escapeHTML('<img src=x onerror="alert(1)">'),'&lt;img src=x onerror=&quot;alert(1)&quot;&gt;');
   assert.equal(safeURL('javascript:alert(1)'),'#');
@@ -136,6 +175,34 @@ test('failed, mismatched, or scope-excluded detail payloads are not cached as ac
   for(const bad of [{ok:false,status:503},{ok:true,json:async()=>({id:'arxiv:other',review_status:'curated'})},{ok:true,json:async()=>({id:record.id,status:'excluded'})}]){
     let calls=0;const load=createRecordLoader(async()=>++calls===1?bad:{ok:true,json:async()=>({id:record.id,review_status:'curated'})});
     await assert.rejects(load(record));assert.equal((await load(record)).id,record.id);assert.equal(calls,2);
+  }
+});
+test('related records opened inside the dialog start at the top with focus on the new title',async()=>{
+  const coverage=JSON.parse(readFileSync(new URL('../data/coverage.json',import.meta.url),'utf8'));
+  const base={kind:'dataset',url:'https://example.org/',aliases:[],environments:['web'],topics:[],authors:[],summary:'Fixture.',review_status:'curated',published_at:null,scope:'core',paper_version:null,paper_source_url:null,paper_date:null,related_count:1,incoming_relations:[]};
+  const records=[{...base,id:'url:first',name:'First fixture',page_url:'/resources/first/'},{...base,id:'url:second',name:'Second fixture',page_url:'/resources/second/'}];
+  const full=r=>({...r,licenses:{},details:{},identifiers:{},relations:[{type:'related_to',target_id:r.id==='url:first'?'url:second':'url:first'}],notes:'',evidence:[],last_verified_at:'2026-10-01'});
+  const keys=['document','window','location','history','localStorage','fetch'],saved=keys.map(key=>[key,Object.getOwnPropertyDescriptor(globalThis,key)]);
+  const clicks=[],doc={documentElement:{},body:{classList:{toggle(){}}},addEventListener(type,fn){if(type==='click')clicks.push(fn);},querySelectorAll:()=>[]};
+  const elements=new Map(),element=selector=>{if(!elements.has(selector))elements.set(selector,{dataset:{},classList:{toggle(){}},open:false,addEventListener(){},setAttribute(){},focus(){doc.activeElement=this;},showModal(){this.open=true;},close(){this.open=false;}});return elements.get(selector);};
+  doc.querySelector=element;
+  const globals={document:doc,window:{addEventListener(){}},location:{search:'',pathname:'/',hash:''},history:{state:null,pushState(){},replaceState(){}},localStorage:{getItem:()=>null,setItem(){}},fetch:async url=>({ok:true,json:async()=>url.endsWith('record.json')?full(records.find(r=>url===r.page_url+'record.json')):{coverage,records:structuredClone(records)}})};
+  const settle=()=>new Promise(resolve=>setImmediate(resolve));
+  const open=async(id,tagName)=>{for(const listener of clicks)listener({target:{closest:selector=>selector==='[data-record]'?{tagName,dataset:{record:id}}:null},button:0,preventDefault(){}});await settle();};
+  try {
+    for(const [key,value] of Object.entries(globals))Object.defineProperty(globalThis,key,{value,configurable:true,writable:true});
+    await import('../web/app.js?related-focus');await settle();
+    const dialog=element('#detail-dialog'),content=()=>element('#detail-content').innerHTML;
+    dialog.scrollTop=120;
+    await open('url:first','A');
+    assert.equal(dialog.open,true);assert.equal(dialog.scrollTop,120);assert.equal(doc.activeElement,undefined);
+    assert.match(content(),/^<h2 id="detail-title" tabindex="-1">First fixture<\/h2>[\s\S]*data-record="url:second">Second fixture<\/button>/);
+    dialog.scrollTop=591;
+    await open('url:second','BUTTON');
+    assert.equal(dialog.scrollTop,0);assert.equal(doc.activeElement,element('#detail-title'));
+    assert.match(content(),/^<h2 id="detail-title" tabindex="-1">Second fixture<\/h2>/);
+  } finally {
+    for(const [key,descriptor] of saved)if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];
   }
 });
 test('sorting keeps the previous order without a collator or query normalization per comparison',()=>{
@@ -256,7 +323,7 @@ test('pagination is a nav of numbered page buttons with the current page marked 
   const records=Array.from({length:PAGE_SIZE*7+1},(_,i)=>({id:`url:page-${i}`,name:`Fixture ${String(i).padStart(3,'0')}`,kind:'tool',url:'https://example.org/',page_url:`/resources/page-${i}/`,aliases:[],environments:['web'],topics:[],authors:[],summary:'Fixture.',review_status:'curated',published_at:null,scope:'core',paper_version:null,paper_source_url:null,paper_date:null,related_count:0,incoming_relations:[]}));
   const keys=['document','window','location','history','localStorage','fetch'],saved=keys.map(key=>[key,Object.getOwnPropertyDescriptor(globalThis,key)]);
   const boot=async(search,name)=>{
-    const elements=new Map(),element=selector=>{if(!elements.has(selector))elements.set(selector,{dataset:{},listeners:{},classList:{toggle(){}},addEventListener(type,fn){(this.listeners[type]??=[]).push(fn);},setAttribute(){},scrollIntoView(){},showModal(){},close(){}});return elements.get(selector);};
+    const elements=new Map(),element=selector=>{if(!elements.has(selector))elements.set(selector,{dataset:{},listeners:{},classList:{toggle(){}},addEventListener(type,fn){(this.listeners[type]??=[]).push(fn);},setAttribute(){},scrollIntoView(){},focus(){},showModal(){},close(){}});return elements.get(selector);};
     const globals={document:{documentElement:{},body:{classList:{toggle(){}}},addEventListener(){},querySelector:element,querySelectorAll:()=>[]},window:{addEventListener(){}},location:{search,pathname:'/',hash:''},history:{replaceState(){}},localStorage:{getItem:()=>null,setItem(){}},fetch:async()=>({ok:true,json:async()=>({coverage,records:structuredClone(records)})})};
     for(const [key,value] of Object.entries(globals))Object.defineProperty(globalThis,key,{value,configurable:true,writable:true});
     await import(`../web/app.js?${name}`);await new Promise(resolve=>setImmediate(resolve));
@@ -272,6 +339,42 @@ test('pagination is a nav of numbered page buttons with the current page marked 
     assert.match(html(),/data-page="8" aria-label="Page 8" aria-current="page">8<\/button><\/span><button type="button" data-page="9" disabled>/);
     const zh=await boot('?page=2&lang=zh','pager-zh');
     assert.match(zh.innerHTML,/data-page="2" aria-label="第 2 页" aria-current="page">2<\/button>/);
+  } finally {
+    for(const [key,descriptor] of saved)if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];
+  }
+});
+test('keyboard focus lands on a control and paging is announced after categories, pages and resets re-render',async()=>{
+  const coverage=JSON.parse(readFileSync(new URL('../data/coverage.json',import.meta.url),'utf8'));
+  const records=Array.from({length:PAGE_SIZE*2+1},(_,i)=>({id:`url:focus-${i}`,name:`Fixture ${i}`,kind:i%2?'tool':'dataset',url:'https://example.org/',page_url:`/resources/focus-${i}/`,aliases:[],environments:['web'],topics:[],authors:[],summary:'Fixture.',review_status:'curated',published_at:null,scope:'core',paper_version:null,paper_source_url:null,paper_date:null,related_count:0,incoming_relations:[]}));
+  const keys=['document','window','location','history','localStorage','fetch'],saved=keys.map(key=>[key,Object.getOwnPropertyDescriptor(globalThis,key)]);
+  const boot=async(search,name)=>{
+    const doc={documentElement:{},body:{classList:{toggle(){}}},addEventListener(){},querySelectorAll:()=>[]};
+    const elements=new Map(),element=selector=>{if(!elements.has(selector))elements.set(selector,{dataset:{},listeners:{},classList:{toggle(){}},addEventListener(type,fn){(this.listeners[type]??=[]).push(fn);},setAttribute(){},scrollIntoView(){},focus(){doc.activeElement=this;},showModal(){},close(){}});return elements.get(selector);};
+    doc.querySelector=element;
+    const globals={document:doc,window:{addEventListener(){}},location:{search,pathname:'/',hash:''},history:{replaceState(){}},localStorage:{getItem:()=>null,setItem(){}},fetch:async()=>({ok:true,json:async()=>({coverage,records:structuredClone(records)})})};
+    for(const [key,value] of Object.entries(globals))Object.defineProperty(globalThis,key,{value,configurable:true,writable:true});
+    await import(`../web/app.js?${name}`);await new Promise(resolve=>setImmediate(resolve));
+    return {doc,element,status:()=>element('#results-count').innerHTML};
+  };
+  try {
+    const {doc,element,status}=await boot('?kind=tool','focus-en');
+    for(const kind of ['dataset','']){
+      doc.activeElement={dataset:{kind},closest:()=>doc.activeElement};
+      element('#categories').listeners.click[0]({target:doc.activeElement});
+      assert.equal(doc.activeElement,element(`#categories [data-kind="${kind}"]`),`category ${kind}`);
+    }
+    assert.match(status(),/<span class="sr-only"> · Page 1 of 3<\/span>$/);
+    element('#pagination').listeners.click[0]({target:{closest:()=>({disabled:false,dataset:{page:'2'}})}});
+    assert.equal(doc.activeElement,element('#results-count'));
+    assert.match(status(),/<span class="sr-only"> · Page 2 of 3<\/span>$/);
+    for(const id of ['#clear-filters','#empty-reset']){
+      element('#search').listeners.input[0]({target:{value:'Fixture 7'}});
+      assert.doesNotMatch(status(),/sr-only/);
+      doc.activeElement=element(id);element(id).listeners.click[0]();
+      assert.equal(doc.activeElement,element('#results-count'),id);
+      assert.match(status(),/Page 1 of 3/);
+    }
+    assert.match((await boot('?page=2&lang=zh','focus-zh')).status(),/<span class="sr-only"> · 第 2 页，共 3 页<\/span>$/);
   } finally {
     for(const [key,descriptor] of saved)if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];
   }
@@ -308,6 +411,44 @@ test('data and coverage buttons respond while the catalog loads and after it fai
     assert.equal(failed.dialog.open,true);assert.match(failed.content(),/could not be loaded[\s\S]*href="\/coverage\/"/);
     assert.match(failed.open('footer-method'),/could not be loaded/);
     assert.match(failed.open('sidebar-download'),/\.\/downloads\/catalog\.sqlite/);
+  } finally {
+    console.error=consoleError;
+    for(const [key,descriptor] of saved)if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];
+  }
+});
+test('load failures and toasts are announced through live regions that exist before their text changes',async t=>{
+  const html=readFileSync(new URL('../web/index.html',import.meta.url),'utf8');
+  assert.match(html,/<div id="toast" class="toast" role="status" aria-live="polite"><\/div>/);
+  for(const id of ['detail','info'])assert.match(html,new RegExp(`<dialog id="${id}-dialog"[^>]*>.*<div class="toast" role="status" aria-live="polite"></div></dialog>`),id);
+  assert.match(css,/(?:^|[}\n])\.toast:empty\{padding:0;box-shadow:none\}/);
+  const coverage=JSON.parse(readFileSync(new URL('../data/coverage.json',import.meta.url),'utf8'));
+  const records=[{id:'url:toast',name:'Toast fixture',kind:'tool',url:'https://example.org/',page_url:'/resources/toast/',aliases:[],environments:['web'],topics:[],authors:[],summary:'Fixture.',review_status:'curated',published_at:null,scope:'core',paper_version:null,paper_source_url:null,paper_date:null,related_count:0,incoming_relations:[]}];
+  const keys=['document','window','location','history','localStorage','fetch'],saved=keys.map(key=>[key,Object.getOwnPropertyDescriptor(globalThis,key)]),consoleError=console.error;
+  const boot=async(name,ok)=>{
+    const make=extra=>({dataset:{},listeners:{},textContent:'',classList:{toggle(){}},open:false,addEventListener(type,fn){(this.listeners[type]??=[]).push(fn);},setAttribute(){},showModal(){this.open=true;},close(){this.open=false;},...extra});
+    const toasts=[make(),make(),make()],clicks=[],elements=new Map([['#toast',toasts[0]],['#detail-dialog',make({querySelector:()=>toasts[1]})],['#info-dialog',make({querySelector:()=>toasts[2]})]]);
+    const element=selector=>{if(!elements.has(selector))elements.set(selector,make());return elements.get(selector);};
+    const lists={dialog:[element('#detail-dialog'),element('#info-dialog')],'.toast':toasts};
+    const globals={document:{documentElement:{},body:{classList:{toggle(){}}},addEventListener(type,fn){if(type==='click')clicks.push(fn);},querySelector:element,querySelectorAll:selector=>lists[selector]||[]},window:{addEventListener(){}},location:{search:'',pathname:'/',hash:''},history:{replaceState(){}},localStorage:{getItem:()=>null,setItem(){}},fetch:async()=>ok?{ok:true,json:async()=>({coverage,records:structuredClone(records)})}:{ok:false,status:503}};
+    for(const [key,value] of Object.entries(globals))Object.defineProperty(globalThis,key,{value,configurable:true,writable:true});
+    await import(`../web/app.js?${name}`);await new Promise(resolve=>setImmediate(resolve));
+    return {element,toasts,clicks};
+  };
+  try {
+    console.error=()=>{};
+    const failed=await boot('announce-failure',false);
+    assert.equal(failed.element('#load-error').hidden,false);
+    assert.equal(failed.element('#results-count').innerHTML,'<span class="sr-only">The catalog could not be loaded.</span>');
+    t.mock.timers.enable({apis:['setTimeout']});
+    const {element,toasts,clicks}=await boot('announce-toast',true),texts=()=>toasts.map(x=>x.textContent);
+    const dialog=element('#detail-dialog');dialog.showModal();
+    await Promise.all(dialog.listeners.click.map(listener=>listener({target:{closest:selector=>selector==='[data-copy-link]'?{}:null}})));
+    assert.deepEqual(texts(),['','Copy the URL from your address bar.','']);
+    dialog.close();
+    await Promise.all(clicks.map(listener=>listener({target:{closest:selector=>selector==='[data-copy-clone]'?{}:null}})));
+    assert.deepEqual(texts(),['Select the command above to copy it.','','']);
+    t.mock.timers.tick(2600);
+    assert.deepEqual(texts(),['','','']);
   } finally {
     console.error=consoleError;
     for(const [key,descriptor] of saved)if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];
@@ -359,6 +500,33 @@ test('Chinese mode localizes the title, accessible names, skip link, static dire
     assert.equal(zh.element('#language').textContent,'EN');assert.equal(zh.element('#language').lang,'en');
     assert.match(en.element('#pagination').innerHTML,/aria-label="Page 1" aria-current="page">1<\/button>/);
     assert.match(zh.element('#pagination').innerHTML,/aria-label="第 1 页" aria-current="page">1<\/button>/);
+  } finally {
+    for(const [key,descriptor] of saved)if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];
+  }
+});
+test('topic labels come from data/topics.json through the index payload',async()=>{
+  const vocabulary=JSON.parse(readFileSync(new URL('../data/topics.json',import.meta.url),'utf8'));
+  assert.deepEqual([...new Set(rows.flatMap(r=>r.topics))].filter(key=>!Object.hasOwn(vocabulary,key)),[]);
+  assert.deepEqual(Object.keys(TOPIC_ALIASES).filter(key=>!Object.hasOwn(vocabulary,key)),[]);
+  assert.doesNotMatch(readFileSync(new URL('../web/app.js',import.meta.url),'utf8'),/'(?:grounding|ui-design|world-models)':\[/);
+  const coverage=JSON.parse(readFileSync(new URL('../data/coverage.json',import.meta.url),'utf8'));
+  const topics=Object.fromEntries(Object.entries(vocabulary).map(([key,entry])=>[key,[entry.en,entry.zh]]));
+  const record={id:'url:design',name:'Design study',kind:'paper',url:'https://example.org/',page_url:'/resources/design/',aliases:[],environments:['web'],topics:['ui-design','grounding'],authors:[],scope:'core',review_status:'curated',summary:'Fixture summary.',published_at:null,paper_version:null,paper_source_url:null,paper_date:null,related_count:0,incoming_relations:[],paper_arxiv:null,declared_licenses:{}};
+  const keys=['document','window','location','history','localStorage','fetch'],saved=keys.map(key=>[key,Object.getOwnPropertyDescriptor(globalThis,key)]);
+  const render=async(search,name)=>{
+    const elements=new Map(),element=selector=>{if(!elements.has(selector))elements.set(selector,{dataset:{},classList:{toggle(){}},addEventListener(){},setAttribute(){},showModal(){},close(){}});return elements.get(selector);};
+    const globals={document:{documentElement:{},body:{classList:{toggle(){}}},addEventListener(){},querySelector:element,querySelectorAll:()=>[]},window:{addEventListener(){}},location:{search,pathname:'/',hash:''},history:{replaceState(){}},localStorage:{getItem:()=>null,setItem(){}},fetch:async()=>({ok:true,json:async()=>({coverage,topics,records:[structuredClone(record)]})})};
+    for(const [key,value] of Object.entries(globals))Object.defineProperty(globalThis,key,{value,configurable:true,writable:true});
+    await import(`../web/app.js?${name}`);await new Promise(resolve=>setImmediate(resolve));
+    return {options:element('#topic').innerHTML,results:element('#results').innerHTML};
+  };
+  try {
+    const en=await render('','topics-en'),zh=await render('?lang=zh','topics-zh');
+    for(const [view,language] of [[en,0],[zh,1]]){
+      assert.match(view.options,new RegExp(`<option value="ui-design">${topics['ui-design'][language]}</option>`));
+      assert.match(view.options,new RegExp(`<option value="grounding">${topics.grounding[language]}</option>`));
+      assert.ok(view.results.includes(topics['ui-design'][language]));
+    }
   } finally {
     for(const [key,descriptor] of saved)if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];
   }

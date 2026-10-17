@@ -24,13 +24,17 @@ def main():
     if not (site/'.git').exists() or (not args.skip_profile and not (profile/'.git').exists()):
         raise SystemExit('Clone AwesomeCUA/awesomecua.github.io and AwesomeCUA/.github into the documented .cache checkout paths first.')
     build=ROOT/'dist/site'
-    incoming=json.loads((build/'data/search-manifest.json').read_text())
+    incoming=json.loads((build/'data/search-manifest.json').read_text(encoding='utf-8'))
     old_path=site/'data/search-manifest.json'
     if old_path.exists():
-        old=json.loads(old_path.read_text());new_paths={p['path'] for p in incoming['pages']}
-        for item in old.get('pages',[]):
-            if item['path'] in new_paths or not item['path'].startswith(('/resources/','/categories/','/guides/','/topics/','/zh/topics/')):continue
-            folder=site/item['path'].lstrip('/')
+        old=json.loads(old_path.read_text(encoding='utf-8'));new_paths={p['path'] for p in incoming['pages']}
+        stale=[(site/item['path'].lstrip('/')).resolve() for item in old.get('pages',[]) if item['path'] not in new_paths]
+        # Any page the new build dropped is removed, whatever its section, but never outside the checkout or in .git or another dot folder.
+        # Every path is checked before the first deletion.
+        for folder in stale:
+            if not folder.is_relative_to(site) or any(part.startswith('.') for part in folder.relative_to(site).parts):
+                raise ValueError('Old manifest page outside the generated website pages: '+str(folder))
+        for folder in stale:
             for filename in MANAGED_FILES:(folder/filename).unlink(missing_ok=True)
     for item in incoming['pages']:
         if item['path'].startswith('/resources/'):
@@ -41,12 +45,12 @@ def main():
     shutil.copytree(build,site,dirs_exist_ok=True)
     reconcile_generated_pages(site,incoming['pages'])
     if (build/'downloads/topics.json').exists():
-        topics=json.loads((build/'downloads/topics.json').read_text())
+        topics=json.loads((build/'downloads/topics.json').read_text(encoding='utf-8'))
         reconcile_topic_exports(site,{item['id'] for item in topics['topics']})
-    ignore=site/'.gitignore';ignore_text=ignore.read_text() if ignore.exists() else ''
+    ignore=site/'.gitignore';ignore_text=ignore.read_text(encoding='utf-8') if ignore.exists() else ''
     for pattern in ['.pipeline/','.cache/','__pycache__/','.DS_Store']:
         if pattern not in ignore_text.splitlines():ignore_text=ignore_text.rstrip()+'\n'+pattern+'\n'
-    ignore.write_text(ignore_text.lstrip('\n'))
+    ignore.write_text(ignore_text.lstrip('\n'),encoding='utf-8')
     if args.install_workflow:
         (site/'.github/workflows').mkdir(parents=True,exist_ok=True)
         shutil.copy2(ROOT/'automation/publish.yml',site/'.github/workflows/publish.yml')
@@ -55,8 +59,8 @@ def main():
     (site/'schemas').mkdir(exist_ok=True)
     for name in ['resource.schema.json','scope-decision.schema.json','publication-observation.schema.json']:
         shutil.copy2(ROOT/'schemas'/name,site/'schemas'/name)
-    report=json.loads((ROOT/'data/coverage.json').read_text())
-    rows=[json.loads(l) for l in (ROOT/'data/catalog.jsonl').read_text().splitlines()]
+    report=json.loads((ROOT/'data/coverage.json').read_text(encoding='utf-8'))
+    rows=[json.loads(l) for l in (ROOT/'data/catalog.jsonl').read_text(encoding='utf-8').splitlines()]
     readme=['# Awesome Computer-Use Agents · AwesomeCUA','', '**A source-backed catalog of computer-use, GUI, browser, and mobile agents.**','', f'[Website]({SITE}/) · [Research papers]({SITE}/papers/) · [中文指南]({SITE}/zh/) · [GitHub organization](https://github.com/AwesomeCUA)','',f'**{report["total_records"]:,} resource records** · **{report["curated_records"]:,} curated** · **{report["bibliographic_records"]:,} paper and survey records** · **{len(report["sources"])} discovery documents**','',f'Evidence snapshot: {report["as_of_utc"]}. Bibliography counts overlap review-state counts. Resources are not independent projects.','', '## What is a computer-use agent?','', 'A computer-use agent observes software interfaces, chooses and executes actions, and checks progress toward a user goal. It may operate a browser, desktop application, or phone, sometimes combining graphical interaction with code and tools. See [the primary-source introduction]('+SITE+'/guides/what-are-computer-use-agents/) and [reviewed research]('+SITE+'/papers/).','', '## Explore the ecosystem','', '| Category | Records | Browse |','| --- | ---: | --- |']
     readme[6:6]=['## For people, RAG systems, and agents','','```sh',CLONE_COMMAND,'```','',f'[Agent instructions]({SITE}/AGENTS.md) · [Agent and RAG guide]({SITE}/agents/) · [中文使用指南]({SITE}/zh/agents/) · [Complete JSONL]({SITE}/downloads/catalog.jsonl)','']
     for kind,name in KINDS.items():readme.append(f'| {name} | {report["by_kind"].get(kind,0):,} | [Open directory]({SITE}/categories/{kind}/) |')
@@ -65,17 +69,17 @@ def main():
     for r in selected[:10]:readme.append(f'- [{r["name"]}]({SITE}{resource_path(r)}) — {r["summary"]} [Original paper]({r["url"]}).')
     readme+=['',f'[All reviewed papers and surveys]({SITE}/papers/). Annotations do not independently reproduce experimental findings.','', '## Papers connected to code and data','',f'[Browse reviewed paper–asset relationships]({SITE}/connections/) · [Download relationships JSON]({SITE}/downloads/relationships.json)','','## Choose a benchmark or training dataset','', f'- [GUI-agent benchmark guide]({SITE}/guides/gui-agent-benchmarks/): distinguish grounding, web tasks, mobile interaction, and desktop execution.', f'- [Training-data guide]({SITE}/guides/gui-agent-training-data/): compare supervision types, platform, splits, count units, and licenses.',f'- [Editorial policy]({SITE}/about/) and [coverage ledger]({SITE}/coverage/): understand what was verified and what is still missing.','', '## Download and reuse the data','',f'- [Full resource catalog — JSONL]({SITE}/downloads/catalog.jsonl)',f'- [Queryable database — SQLite]({SITE}/downloads/catalog.sqlite)',f'- [Data documentation]({SITE}/data/) · [JSON Schema](schemas/resource.schema.json)',f'- [Coverage JSON]({SITE}/downloads/coverage.json) · [Source registry]({SITE}/downloads/sources.json)',f'- [Scope decisions]({SITE}/downloads/exclusions.json) · [Raw arXiv archive, including excluded candidates]({SITE}/downloads/arxiv-archive.jsonl)',f'- [Machine-readable navigation]({SITE}/llms.txt) · [Curated Markdown]({SITE}/llms-full.txt) · [Research feed]({SITE}/feed.xml)','', 'The downloads contain metadata and original catalog annotations, not upstream training data, model weights, or paper PDFs. Code, data, weights, and document licenses remain separate.','', '## Website and contributions','', 'This repository hosts the published static website and metadata snapshot. Complete resource pages and guides work without JavaScript; interactive search adds filtering, pagination, and detail dialogs. No API keys, account, paid backend, or external analytics are required.','', '```bash','python3 -m http.server 4173 --bind 127.0.0.1','```','', 'GitHub Pages deploys the validated static artifact through the publication workflow. The `main` branch keeps an inspectable snapshot. Original code and annotations use [MIT](LICENSE); linked assets retain their own terms.', '',f'[Suggest a resource or correction]({REPO}/issues/new?template=resource.yml). Supply a primary source and explain uncertain facts. Global completeness is a goal, not a verified claim.','']
     readme+=['## Automatic updates','',f'[Source catalog and scan code](https://github.com/reacher-z/Awesome-CUA) · [Scan status]({SITE}/updates/)','', 'Discovery runs at 08:17 and 20:17 America/Los_Angeles. This website rebuilds at 08:47 and 20:47 from validated source data. GitHub scheduling can be delayed; the status page records actual completion times.','', 'New discoveries are bibliographic metadata or candidates until a separate editorial review. The publishing workflow uses repository-scoped GitHub tokens and does not require a stored personal access token.','']
-    (site/'README.md').write_text(clean_text('\n'.join(readme)))
+    (site/'README.md').write_text(clean_text('\n'.join(readme)),encoding='utf-8')
     if args.skip_profile:
         print(f'Prepared {incoming["indexable_pages"]} indexable pages and the public README; profile left to its own checkout.')
         return
     profile_path=profile/'profile/README.md';profile_path.parent.mkdir(exist_ok=True)
-    profile_path.write_text(f'''# AwesomeCUA\n\n### The computer-use agent ecosystem, with sources.\n\nResearch papers, GUI models, training datasets, evaluation benchmarks, frameworks, tools, and products — searchable and traceable in one catalog.\n\n**[Explore the website →]({SITE}/)** · **[Research papers →]({SITE}/papers/)** · **[中文指南 →]({SITE}/zh/)**\n\n| Research & training | Engineering & industry |\n| --- | --- |\n| [Papers]({SITE}/papers/) · [Surveys]({SITE}/categories/survey/) | [Agents]({SITE}/categories/agent/) · [Frameworks]({SITE}/categories/framework/) |\n| [Models]({SITE}/categories/model/) · [Datasets]({SITE}/categories/dataset/) | [Tools]({SITE}/categories/tool/) · [Infrastructure]({SITE}/categories/infrastructure/) |\n| [Benchmarks]({SITE}/categories/benchmark/) | [Products]({SITE}/categories/product/) · [Publishers]({SITE}/categories/company/) |\n\n**{report['total_records']:,} resource records** · **{report['curated_records']:,} reviewed** · **11 categories**\n\n[Download data]({SITE}/data/) · [Practical guides]({SITE}/guides/) · [Coverage]({SITE}/coverage/) · [Contribute]({REPO}/issues/new?template=resource.yml)\n\n每条资源保留一手来源与审阅状态。支持论文检索、分类筛选、来源追溯与结构化数据下载。\n\nCurated means AI-assisted editorial review; metadata verification does not establish research quality or reproducibility. Counts refer to resources, not distinct projects. Comprehensive global coverage is a goal, not a verified claim.\n\n<sub>Source snapshots: <a href="{SITE}/coverage/">coverage ledger</a>. Original annotations and code: MIT. Linked assets retain their own terms.</sub>\n''')
-    profile_text=profile_path.read_text()
+    profile_path.write_text(f'''# AwesomeCUA\n\n### The computer-use agent ecosystem, with sources.\n\nResearch papers, GUI models, training datasets, evaluation benchmarks, frameworks, tools, and products — searchable and traceable in one catalog.\n\n**[Explore the website →]({SITE}/)** · **[Research papers →]({SITE}/papers/)** · **[中文指南 →]({SITE}/zh/)**\n\n| Research & training | Engineering & industry |\n| --- | --- |\n| [Papers]({SITE}/papers/) · [Surveys]({SITE}/categories/survey/) | [Agents]({SITE}/categories/agent/) · [Frameworks]({SITE}/categories/framework/) |\n| [Models]({SITE}/categories/model/) · [Datasets]({SITE}/categories/dataset/) | [Tools]({SITE}/categories/tool/) · [Infrastructure]({SITE}/categories/infrastructure/) |\n| [Benchmarks]({SITE}/categories/benchmark/) | [Products]({SITE}/categories/product/) · [Publishers]({SITE}/categories/company/) |\n\n**{report['total_records']:,} resource records** · **{report['curated_records']:,} reviewed** · **11 categories**\n\n[Download data]({SITE}/data/) · [Practical guides]({SITE}/guides/) · [Coverage]({SITE}/coverage/) · [Contribute]({REPO}/issues/new?template=resource.yml)\n\n每条资源保留一手来源与审阅状态。支持论文检索、分类筛选、来源追溯与结构化数据下载。\n\nCurated means AI-assisted editorial review; metadata verification does not establish research quality or reproducibility. Counts refer to resources, not distinct projects. Comprehensive global coverage is a goal, not a verified claim.\n\n<sub>Source snapshots: <a href="{SITE}/coverage/">coverage ledger</a>. Original annotations and code: MIT. Linked assets retain their own terms.</sub>\n''',encoding='utf-8')
+    profile_text=profile_path.read_text(encoding='utf-8')
     profile_text=profile_text.replace('\n| Research & training',f'\nFor people, RAG systems, and agents — clone the complete catalog:\n\n```sh\n{CLONE_COMMAND}\n```\n\n[Agent instructions]({SITE}/AGENTS.md) · [Agent & RAG guide]({SITE}/agents/) · [中文使用指南]({SITE}/zh/agents/)\n\n| Research & training')
     profile_text=profile_text.replace(f"**{report['total_records']:,} resource records** · **{report['curated_records']:,} reviewed** · **11 categories**",f'![Live catalog counts]({SITE}/badges/catalog.svg)')
     profile_text+=f'\n[Twice-daily scan status]({SITE}/updates/) · [Source and contribution workflow](https://github.com/reacher-z/Awesome-CUA)\n'
-    profile_path.write_text(profile_text)
+    profile_path.write_text(profile_text,encoding='utf-8')
     print(f'Prepared {incoming["indexable_pages"]} indexable pages and updated public README/profile. Review diffs before committing.')
 
 

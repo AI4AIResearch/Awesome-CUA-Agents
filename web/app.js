@@ -10,23 +10,14 @@ const TEXT = {
 };
 const KINDS = {paper:['Papers','论文','▤'],survey:['Surveys','综述','≋'],model:['Models','模型','◈'],dataset:['Datasets','数据集','▦'],benchmark:['Benchmarks','评测基准','◎'],agent:['Agents','智能体','↗'],framework:['Frameworks','框架','◇'],infrastructure:['Infrastructure','基础设施','▧'],tool:['Tools','工具','⚒'],product:['Products','产品','□'],company:['Publishers','发布方','⌂']};
 const PLATFORMS = {web:['Web','浏览器'],desktop:['Desktop','桌面'],windows:['Windows','Windows'],macos:['macOS','macOS'],linux:['Linux','Linux'],mobile:['Mobile','移动设备'],android:['Android','Android'],ios:['iOS','iOS'],harmonyos:['HarmonyOS','鸿蒙'],'cross-platform':['Cross-platform','跨平台'],unspecified:['Unassigned','待标注']};
-const TOPICS = {'world-models':['World models','世界模型'],'grounding':['GUI grounding','GUI 定位'],'reinforcement-learning':['Reinforcement learning','强化学习'],'safety-security':['Safety & security','安全与防护'],'planning':['Planning','规划'],'data-generation':['Data generation','数据生成'],'screen-understanding':['Screen understanding','界面理解'],'evaluation':['Evaluation','评测'],'mobile-navigation':['Mobile navigation','手机操作'],'web-navigation':['Web navigation','网页导航'],'workflow':['Workflows','工作流'],'memory':['Memory','记忆'],'long-horizon':['Long-horizon tasks','长任务'],'robustness':['Robustness','鲁棒性'],'sandbox':['Sandboxes','沙箱'],'tool-integration':['Tool integration','工具集成'],'automation':['Automation','自动化'],'cross-app':['Cross-app','跨应用'],'efficiency':['Efficiency','效率'],'video':['Video','视频'],'recording':['Recording','录制'],'human-in-the-loop':['Human in the loop','人机协作'],'observability':['Observability','可观测性'],'science':['Scientific workflows','科学工作流'],'history':['Historical','历史'],'survey':['Survey','综述'],'industry':['Industry','产业']};
-Object.assign(TOPICS, {
-  'action-prediction':['Action prediction','动作预测'],
-  'imitation-learning':['Imitation learning','模仿学习'],
-  'reward-models':['Reward models','奖励模型'],
-  'interaction-history':['Interaction history','交互历史'],
-  'self-reflection':['Self-reflection','自我反思'],
-  'state-tracking':['State tracking','状态追踪'],
-  'training-free':['Training-free methods','无需训练的方法'],
-  'ui-design':['UI design','界面设计']
-});
+// Topic labels come from data/topics.json through data/index.json.
+let TOPICS = {};
 Object.assign(TEXT.en, {agentEyebrow:'DATA FOR PEOPLE & AGENTS',agentTitle:'Clone the catalog. Put it to work.',agentCopy:'Search locally, connect a RAG pipeline, or let your agent explore—with sources and review states intact.',agentGuide:'Agent & RAG guide',copyCommand:'Copy command',commandCopied:'Clone command copied',commandCopyFailed:'Select the command above to copy it.',ragReviewed:'RAG documents · reviewed',ragReviewedCopy:'One retrieval document per reviewed resource, with citations and provenance.',ragAll:'RAG documents · all records',ragAllCopy:'Every active record, including metadata-only entries with their review state.'});
 Object.assign(TEXT.zh, {agentEyebrow:'给人阅读，也给 AGENTS 使用',agentTitle:'克隆完整目录，接入你的工作。',agentCopy:'本地检索、构建 RAG，或让 Agent 继续探索。来源、引用和审阅状态随数据一起保留。',agentGuide:'Agents 与 RAG 使用指南',copyCommand:'复制克隆命令',commandCopied:'克隆命令已复制',commandCopyFailed:'请选择上方命令并复制。',ragReviewed:'RAG 文档 · 已审阅',ragReviewedCopy:'每项已审阅资源对应一份检索文档，保留引用和来源。',ragAll:'RAG 文档 · 全部记录',ragAllCopy:'包含全部当前记录，并明确保留待审阅论文的状态。'});
 Object.assign(TEXT.en,{topicDirectory:'Browse topics'});
 Object.assign(TEXT.zh,{topicDirectory:'浏览主题'});
-Object.assign(TEXT.en,{pageNumber:'Page %s'});
-Object.assign(TEXT.zh,{pageNumber:'第 %s 页'});
+Object.assign(TEXT.en,{pageNumber:'Page %s',pageStatus:'Page %s of %s'});
+Object.assign(TEXT.zh,{pageNumber:'第 %s 页',pageStatus:'第 %s 页，共 %s 页'});
 const CLONE_COMMAND = 'git clone https://github.com/reacher-z/Awesome-CUA.git';
 Object.assign(TEXT.en,{publicationBib:'Publication editions · BibTeX',publicationBibCopy:'Reviewed publication editions with their own title, authors, venue and date.',publicationCSL:'Publication editions · CSL JSON',publicationCSLCopy:'Source-backed publication metadata with its original date precision.'});
 Object.assign(TEXT.zh,{publicationBib:'出版版引用 · BibTeX',publicationBibCopy:'已审阅出版版，保留该版本的题名、作者、会议／期刊和日期。',publicationCSL:'出版版引用 · CSL JSON',publicationCSLCopy:'有来源可查的出版元数据，保留原日期精度。'});
@@ -48,8 +39,9 @@ const num = n => Number(n).toLocaleString(lang === 'zh' ? 'zh-CN' : 'en-US');
 let state = parseState(location.search), records = [], report, activeRecord='', loading=true, toastTimer, pendingInfo='';
 const getDetails=createRecordLoader(url=>fetch(url));
 const dates = value => value ? formatDate(value,lang) : t('unknown');
-function updateURL() {const query=serializeState(state,lang,activeRecord); history.replaceState(null,'',location.pathname+(query?'?'+query:'')+location.hash);}
-function toast(message) {clearTimeout(toastTimer);$('#toast').textContent=message;$('#toast').hidden=false;toastTimer=setTimeout(()=>$('#toast').hidden=true,2600);}
+function updateURL(push=false) {const query=serializeState(state,lang,activeRecord),url=location.pathname+(query?'?'+query:'')+location.hash;if(push)history.pushState({record:true},'',url);else history.replaceState(history.state,'',url);}
+// Live regions must exist before their text changes, and an open modal dialog makes the rest of the page inert, so write to the open dialog's own region.
+function toast(message) {clearTimeout(toastTimer);const box=$$('dialog').find(dialog=>dialog.open)?.querySelector('.toast')||$('#toast');$$('.toast').forEach(other=>other.textContent='');box.textContent=message;toastTimer=setTimeout(()=>box.textContent='',2600);}
 function translate() {
   document.documentElement.lang=lang==='zh'?'zh-CN':'en';
   document.title=t('pageTitle');
@@ -79,10 +71,13 @@ function change(patch,scroll=false) {
   if(scroll) $('#catalog').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
 }
 function renderCategories() {
+  const focused=document.activeElement?.closest?.('.category-button')?.dataset.kind;
   const eligible=records.filter(r=>matches(r,state,true));
   const counts=Object.fromEntries(KIND_ORDER.map(k=>[k,0]));eligible.forEach(r=>counts[r.kind]++);
   const item=(kind,name,icon,count)=>`<button type="button" class="category-button" data-kind="${kind}" aria-pressed="${state.kind===kind}"><span class="category-icon" aria-hidden="true">${icon}</span><span>${e(name)}</span><span class="category-count">${num(count)}</span></button>`;
   $('#categories').innerHTML=item('',t('allResources'),'⊞',eligible.length)+KIND_ORDER.map(k=>item(k,label(KINDS,k),KINDS[k][2],counts[k])).join('');
+  // Rebuilding the list destroys the focused button; refocus its replacement so keyboard users keep their place.
+  if(focused!==undefined)$(`#categories [data-kind="${focused}"]`).focus();
 }
 function card(r) {
   const monogram=initials(r.name) || KINDS[r.kind]?.[2] || '';
@@ -106,7 +101,7 @@ function render() {
   $('#results').classList.toggle('list-view',state.view==='list');
   $('#view-grid').setAttribute('aria-pressed',String(state.view==='grid'));$('#view-list').setAttribute('aria-pressed',String(state.view==='list'));
   const reviewed=result.filter(r=>r.review_status==='curated').length;
-  $('#results-count').innerHTML=`<strong>${num(result.length)}</strong> ${e(t('showing'))} <span class="result-breakdown">· ${num(reviewed)} ${e(t('reviewedCount'))}${result.length>reviewed?` · ${num(result.length-reviewed)} ${e(t('pendingCount'))}`:''}</span>`;
+  $('#results-count').innerHTML=`<strong>${num(result.length)}</strong> ${e(t('showing'))} <span class="result-breakdown">· ${num(reviewed)} ${e(t('reviewedCount'))}${result.length>reviewed?` · ${num(result.length-reviewed)} ${e(t('pendingCount'))}`:''}</span>${pages>1?`<span class="sr-only"> · ${e(t('pageStatus').replace('%s',state.page).replace('%s',pages))}</span>`:''}`;
   $('#results').setAttribute('aria-busy','false');$('#empty').hidden=result.length!==0;
   $('#clear-filters').hidden=![state.q,state.kind,state.platform,state.review,state.topic,state.year].some(Boolean);
   $('#pagination').hidden=result.length===0;
@@ -125,7 +120,7 @@ async function load() {
   loading=true;$('#load-error').hidden=true;$('#results').setAttribute('aria-busy','true');$('#results-count').textContent=t('loading');$('#results').innerHTML=Array.from({length:6},()=>'<div class="skeleton-card" aria-hidden="true"></div>').join('');
   try {
     const response=await fetch('./data/index.json');if(!response.ok)throw new Error('HTTP '+response.status);
-    const data=await response.json();report=data.coverage;records=data.records;
+    const data=await response.json();report=data.coverage;records=data.records;TOPICS=data.topics || {};
     records.forEach(r=>r.search_text=searchText([r.id,r.url,r.name,r.summary,r.publication_search_text,...r.aliases,...r.authors,...r.environments.flatMap(x=>PLATFORMS[x] || [x]),...r.topics.flatMap(x=>[...(TOPICS[x] || [x]),...(TOPIC_ALIASES[x] || [])]),...(KINDS[r.kind] || [])]));
     if(!Object.hasOwn(PLATFORMS,state.platform))state.platform='';
     if(!records.some(r=>r.topics.includes(state.topic)))state.topic='';
@@ -133,7 +128,7 @@ async function load() {
     loading=false;translate();render();updateURL();
     if(pendingInfo&&$('#info-dialog').open)info(pendingInfo);
     const rid=new URLSearchParams(location.search).get('record');if(rid)await showRecord(rid,false);
-  } catch(error) {loading=false;$('#results').innerHTML='';$('#results').setAttribute('aria-busy','false');$('#load-error').hidden=false;$('#results-count').textContent='';console.error('Catalog loading failed:',error);if(pendingInfo&&$('#info-dialog').open)info(pendingInfo);}
+  } catch(error) {loading=false;$('#results').innerHTML='';$('#results').setAttribute('aria-busy','false');$('#load-error').hidden=false;$('#results-count').innerHTML=`<span class="sr-only">${e(t('errorTitle'))}</span>`;console.error('Catalog loading failed:',error);if(pendingInfo&&$('#info-dialog').open)info(pendingInfo);}
 }
 const external=(url,text)=>`<a href="${e(safeURL(url))}" target="_blank" rel="noopener noreferrer">${e(text)} ↗</a>`;
 function resourceFacts(details) {
@@ -141,14 +136,16 @@ function resourceFacts(details) {
 }
 async function showRecord(id,setURL=true) {
   const found=records.find(r=>r.id===id);if(!found){activeRecord='';if($('#detail-dialog').open)$('#detail-dialog').close();toast(t('noRecord'));return;}
-  activeRecord=id;if(setURL)updateURL();
+  // Opening the dialog adds one history entry so Back closes it; records opened inside the dialog replace that entry.
+  activeRecord=id;if(setURL)updateURL(!$('#detail-dialog').open);
   $('#detail-overline').textContent=label(KINDS,found.kind);
-  $('#detail-content').innerHTML=`<h2 id="detail-title">${e(found.name)}</h2><p>${e(t('loading'))}</p>`;
-  if(!$('#detail-dialog').open)$('#detail-dialog').showModal();
+  $('#detail-content').innerHTML=`<h2 id="detail-title" tabindex="-1">${e(found.name)}</h2><p>${e(t('loading'))}</p>`;
+  // A record opened from inside the dialog replaces the activated link, so start it at the top and move focus to its title once rendered.
+  const inside=$('#detail-dialog').open;if(inside)$('#detail-dialog').scrollTop=0;else $('#detail-dialog').showModal();
   try {
     const r=await getDetails(found);if(activeRecord!==id)return;
     const scope={core:'scopeCore',adjacent:'scopeAdjacent',relevance_pending:'scopePending'}[r.scope];
-    let content=`<h2 id="detail-title">${e(r.name)}</h2><p class="detail-description">${e(r.summary || t('noTaxonomy'))}</p><div class="detail-badges"><span>${e(t(r.review_status==='curated'?'curated':'metadata'))}</span><span>${e(t(scope))}</span>${r.environments.filter(x=>x!=='unspecified').map(x=>`<span>${e(label(PLATFORMS,x))}</span>`).join('')}</div><div class="detail-actions"><a class="button primary" href="${e(safeURL(r.url))}" target="_blank" rel="noopener noreferrer">${e(t('openSource'))} ↗</a><button class="button secondary" type="button" data-copy-link>${e(t('copyLink'))} ⧉</button><a class="resource-page-link" href="${e(found.page_url)}">${lang==='zh'?'打开完整资源页':'Open full resource page'} ↗</a></div><div class="detail-dates"><div>${e(t('verified'))}<strong>${e(dates(r.last_verified_at))}</strong></div>${r.published_at?`<div>${e(t('published'))}<strong>${e(dates(r.published_at))}</strong></div>`:''}</div>`;
+    let content=`<h2 id="detail-title" tabindex="-1">${e(r.name)}</h2><p class="detail-description">${e(r.summary || t('noTaxonomy'))}</p><div class="detail-badges"><span>${e(t(r.review_status==='curated'?'curated':'metadata'))}</span><span>${e(t(scope))}</span>${r.environments.filter(x=>x!=='unspecified').map(x=>`<span>${e(label(PLATFORMS,x))}</span>`).join('')}</div><div class="detail-actions"><a class="button primary" href="${e(safeURL(r.url))}" target="_blank" rel="noopener noreferrer">${e(t('openSource'))} ↗</a><button class="button secondary" type="button" data-copy-link>${e(t('copyLink'))} ⧉</button><a class="resource-page-link" href="${e(found.page_url)}">${lang==='zh'?'打开完整资源页':'Open full resource page'} ↗</a></div><div class="detail-dates"><div>${e(t('verified'))}<strong>${e(dates(r.last_verified_at))}</strong></div>${r.published_at?`<div>${e(t('published'))}<strong>${e(dates(r.published_at))}</strong></div>`:''}</div>`;
     if(r.topics.length)content+=`<section class="detail-section"><h3>${e(t('topics'))}</h3><p>${r.topics.map(x=>e(label(TOPICS,x))).join(' · ')}</p></section>`;
     if(r.authors.length)content+=`<section class="detail-section"><h3>${e(t('authors'))}</h3><p>${r.authors.map(e).join(', ')}</p></section>`;
     if(r.kind!=='paper'&&r.kind!=='survey')content+=`<section class="detail-section"><h3>${e(t('licenses'))}</h3><div class="license-grid">${['code','data','weights','document'].map(slot=>{const l=r.licenses[slot];return `<div class="license-item"><span>${e(t(slot))}</span>${l?external(l.url,Array.isArray(l.declared)?l.declared.join(', '):l.declared):e(t('unknown'))}</div>`;}).join('')}</div><p>${e(t('licenseCaution'))}</p></section>`;
@@ -172,7 +169,8 @@ async function showRecord(id,setURL=true) {
     if(connected.length)content+=`<section class="detail-section"><h3>${lang==='zh'?'关联资产':'Connected assets'}</h3><ul>${connected.map(({source,relation})=>`<li><a class="subtle-link" href="${e(records.find(x=>x.id===source.id)?.page_url || '#')}" data-record="${e(source.id)}">${e(source.name)}</a> · ${e(label(KINDS,source.kind))} · ${external(relation.evidence_url,lang==='zh'?'关联证据':'Evidence')}</li>`).join('')}</ul></section>`;
     content+=`<section class="detail-section"><h3>${e(t('evidence'))}</h3>${r.evidence.map(ev=>`<div class="evidence-item">${external(ev.url,new URL(ev.url).hostname)}<p>${e(t('referenceDate'))}: ${e(dates(ev.retrieved_at))} · ${e(ev.method.replaceAll('_',' '))}</p><details><summary>SHA-256</summary><p class="detail-meta">${e(ev.sha256)}</p></details></div>`).join('')}</section><section class="detail-section"><h3>${e(t('recordID'))}</h3><div class="detail-meta">${e(r.id)}</div></section>`;
     $('#detail-content').innerHTML=content;
-  }catch(error){if(activeRecord!==id)return;$('#detail-content').innerHTML=`<h2 id="detail-title">${e(found.name)}</h2><p>${e(t('errorDetail'))}</p><button type="button" class="button secondary" data-record="${e(id)}">${e(t('retry'))}</button>`;}
+  }catch(error){if(activeRecord!==id)return;$('#detail-content').innerHTML=`<h2 id="detail-title" tabindex="-1">${e(found.name)}</h2><p>${e(t('errorDetail'))}</p><button type="button" class="button secondary" data-record="${e(id)}">${e(t('retry'))}</button>`;}
+  if(inside)$('#detail-title').focus();
 }
 function info(type) {
   let content='';
@@ -199,7 +197,8 @@ document.addEventListener('click',async event=>{
 });
 $('#search').addEventListener('input',event=>change({q:event.target.value}));
 for(const [id,key] of [['platform','platform'],['review','review'],['topic','topic'],['year','year'],['sort','sort']])$('#'+id).addEventListener('change',event=>change({[key]:event.target.value}));
-const reset=()=>change({q:'',kind:'',platform:'',review:'',topic:'',year:'',sort:'featured'});
+// Both reset buttons hide themselves, so focus moves to the result summary, which announces the restored count.
+const reset=()=>{change({q:'',kind:'',platform:'',review:'',topic:'',year:'',sort:'featured'});$('#results-count').focus();};
 $('#clear-filters').addEventListener('click',reset);$('#empty-reset').addEventListener('click',reset);
 $('#view-grid').addEventListener('click',()=>change({view:'grid',page:state.page}));$('#view-list').addEventListener('click',()=>change({view:'list',page:state.page}));
 $('#categories').addEventListener('click',event=>{const button=event.target.closest('[data-kind]');if(button)change({kind:button.dataset.kind,view:['paper','survey'].includes(button.dataset.kind)?'list':state.view});});
@@ -207,16 +206,22 @@ $$('[data-environment]').forEach(button=>button.addEventListener('click',()=>cha
 $$('[data-search]').forEach(button=>button.addEventListener('click',()=>change({q:button.dataset.search,topic:''})));
 $$('[data-topic]').forEach(button=>button.addEventListener('click',()=>change({topic:button.dataset.topic,q:''})));
 document.addEventListener('click',event=>{const button=event.target.closest('[data-record]');if(!button)return;if(button.tagName==='A'&&(event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||event.button!==0))return;event.preventDefault();showRecord(button.dataset.record);});
-$('#pagination').addEventListener('click',event=>{const button=event.target.closest('[data-page]');if(button&&!button.disabled){change({page:Number(button.dataset.page)});$('.results-toolbar').scrollIntoView({block:'start',behavior:'instant'});}});
+$('#pagination').addEventListener('click',event=>{const button=event.target.closest('[data-page]');if(button&&!button.disabled){change({page:Number(button.dataset.page)});$('.results-toolbar').scrollIntoView({block:'start',behavior:'instant'});$('#results-count').focus();}});
 $('#language').addEventListener('click',()=>{lang=lang==='en'?'zh':'en';try{localStorage.setItem('cua-language',lang);}catch{}translate();render();updateURL();if(activeRecord)showRecord(activeRecord,false);});
 for(const id of ['hero-download','sidebar-download'])$('#'+id).addEventListener('click',()=>info('download'));
 for(const id of ['coverage-button','footer-method'])$('#'+id).addEventListener('click',()=>info('coverage'));
 $$('.dialog-close').forEach(button=>button.addEventListener('click',()=>button.closest('dialog').close()));
 $$('dialog').forEach(dialog=>dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}}));
-$('#detail-dialog').addEventListener('close',()=>{activeRecord='';updateURL();});
+// Back has already removed ?record= when it closes the dialog. Closing it in the page steps back over the entry it opened; a deep link just drops the parameter.
+$('#detail-dialog').addEventListener('close',()=>{activeRecord='';if(!new URLSearchParams(location.search).has('record'))return;if(history.state?.record)history.back();else updateURL();});
 $('#detail-dialog').addEventListener('click',async event=>{if(event.target.closest('[data-copy-link]')){try{await navigator.clipboard.writeText(new URL(records.find(r=>r.id===activeRecord)?.page_url || location.href,location.origin).href);toast(t('copied'));}catch{toast(t('copyFailed'));}}});
 document.addEventListener('keydown',event=>{if(event.key==='/'&&!['INPUT','SELECT','TEXTAREA'].includes(document.activeElement?.tagName)&&!$$('dialog').some(d=>d.open)){event.preventDefault();$('#search').focus();$('#catalog').scrollIntoView({block:'start'});}});
-window.addEventListener('popstate',()=>{state=parseState(location.search);const p=new URLSearchParams(location.search);lang=p.get('lang')==='zh'?'zh':'en';translate();render();const id=p.get('record');if(id)showRecord(id,false);else if($('#detail-dialog').open)$('#detail-dialog').close();});
+window.addEventListener('popstate',()=>{
+  const p=new URLSearchParams(location.search),next=parseState(location.search),nextLang=p.get('lang')==='zh'?'zh':'en';
+  // Re-render only when the filters changed, so closing the dialog can return focus to the card that opened it.
+  if(serializeState(next,nextLang)!==serializeState(state,lang)){state=next;lang=nextLang;translate();render();}
+  const id=p.get('record');if(id)showRecord(id,false);else if($('#detail-dialog').open)$('#detail-dialog').close();
+});
 $('#retry').addEventListener('click',load);
 translate();
 // Preserve a deep-linked record before normalizing the filter URL during initial loading.

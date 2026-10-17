@@ -111,3 +111,6 @@ html:has(.topic-directory,.paper-library,.data-hub){scroll-behavior:auto}
 .reading-shell a.paper-asset:hover{border-color:currentColor;text-decoration:underline}.paper-asset-kind{font-size:9px;font-weight:700;white-space:nowrap}.paper-asset-name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.paper-asset>span:last-child{flex-shrink:0}
 .reading-shell .paper-asset-more{font-size:11px;white-space:nowrap;padding:4px}
 @media(max-width:760px){.reading-shell a.paper-asset{max-width:100%;font-size:12px;min-height:29px}.paper-asset-kind{font-size:10px}.reading-shell .paper-asset-more{font-size:12px}.reading-shell .library-connected-count{font-size:12px}}
+.reading-shell .library-pager{margin-top:26px}.reading-shell .library-pager a{display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding:0 13px;border:1px solid var(--line);border-radius:6px;background:#fff;font-size:12px;text-decoration:none}
+.library-pager .page-numbers{flex-wrap:wrap;justify-content:center}.reading-shell .library-pager .page-numbers a{min-width:32px;padding:0 8px;font-variant-numeric:tabular-nums}.reading-shell .library-pager a[aria-current=page]{color:#fff;background:var(--blue);border-color:var(--blue);font-weight:650}
+.reading-shell .library-range{font-size:11px;color:#657084;text-align:center;margin:10px 0 0}

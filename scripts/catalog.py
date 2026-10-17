@@ -9,6 +9,7 @@ import datetime as dt
 import email.utils
 import hashlib
 import html
+import http.client
 import json
 import os
 from pathlib import Path
@@ -27,10 +28,17 @@ ROOT = Path(__file__).resolve().parents[1]
 CACHE = ROOT / ".cache" / "http"
 DATA = ROOT / "data"
 UA = "Awesome-CUA/0.1 (+https://github.com/reacher-z/Awesome-CUA)"
-ARXIV_RE = re.compile(r"(?:arxiv\.org/(?:abs|pdf|html)/|huggingface\.co/papers/)(\d{4}\.\d{4,5})(?:v\d+)?", re.I)
+# Matched at the start of the URL path only, so a paper link in a query or fragment is not the URL's identity.
+# The ID must end at a non-word character: extra digits or a malformed version never truncate into another ID.
+ARXIV_RE = re.compile(r"/(?:abs|pdf|html)/(\d{4}\.\d{4,5})(?:v\d+)?(?!\w)", re.I | re.A)
+HF_PAPER_RE = re.compile(r"/papers/(\d{4}\.\d{4,5})(?:v\d+)?(?!\w)", re.I | re.A)
+# A link may contain balanced "(...)", as in Mercury_(planet); the ")" closing a Markdown link is not part of it.
+LINK_RE = re.compile(r"https?://(?:[^\s<>\[\]()\"']|\([^\s<>\[\]()\"']*\)|\()+")
 KINDS = {"paper", "survey", "model", "dataset", "benchmark", "agent", "framework", "infrastructure", "product", "company", "tool", "learning"}
 ENVIRONMENTS = {"web", "desktop", "android", "ios", "harmonyos", "windows", "macos", "linux", "cross-platform", "unspecified"}
 STATUSES = {"curated", "metadata_verified"}
+# The one topic vocabulary: key -> English and Chinese labels and a one-line definition.
+TOPICS = json.loads((DATA / "topics.json").read_text(encoding="utf-8"))
 SHRINK_FLOOR = 0.5  # A successful source response below this share of its retained candidates is held for review.
 # MIN_RETRY_DELAY matches the 3.1 s spacing kept between arXiv requests (at most one per 3 s).
 RETRY_STATUSES, MAX_ATTEMPTS, MAX_RETRY_AFTER, MIN_RETRY_DELAY = {429, 500, 502, 503, 504}, 3, 60, 3.1
@@ -41,21 +49,43 @@ def now():
 
 
 def read_json(path, default=None):
-    return json.loads(path.read_text()) if path.exists() else default
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else default
 
 
 def read_jsonl(path):
-    return [json.loads(line) for line in path.read_text().splitlines() if line.strip()] if path.exists() else []
+    rows = []
+    for number, line in enumerate(path.read_text(encoding="utf-8").splitlines() if path.exists() else [], 1):
+        if line.strip():
+            try:
+                rows.append(json.loads(line))
+            except json.JSONDecodeError as error:
+                raise ValueError(f"{path}:{number}: {error.msg} (column {error.colno})") from error
+    return rows
 
 
 def write_json(path, value):
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n")
+    atomic_write(path, (json.dumps(value, ensure_ascii=False, indent=2) + "\n").encode())
 
 
 def write_jsonl(path, rows):
+    atomic_write(path, "".join(json.dumps(r, ensure_ascii=False, sort_keys=True) + "\n" for r in sorted(rows, key=lambda r: r["id"])).encode())
+
+
+def atomic_write(path, data):
+    """Replace path through a flushed same-directory temporary, so a kill or full disk leaves the old file whole."""
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text("".join(json.dumps(r, ensure_ascii=False, sort_keys=True) + "\n" for r in sorted(rows, key=lambda r: r["id"])))
+    temporary = path.with_name(f".{path.name}.{os.urandom(6).hex()}.tmp")
+    try:
+        # Mode 0o666 lets the umask decide a new file's permissions, as Path.write_bytes would. Windows needs O_BINARY to keep LF bytes.
+        with open(os.open(temporary, os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, "O_BINARY", 0), 0o666), "wb") as stream:
+            stream.write(data)
+            stream.flush()
+            os.fsync(stream.fileno())
+        if path.exists():  # os.fchmod only reached Windows in Python 3.13.
+            os.chmod(temporary, path.stat().st_mode & 0o7777)
+        os.replace(temporary, path)
+    finally:
+        temporary.unlink(missing_ok=True)
 
 
 def retry_delay(error, attempt):
@@ -82,9 +112,14 @@ def fetch(url, refresh=False):
     CACHE.mkdir(parents=True, exist_ok=True)
     key = hashlib.sha256(url.encode()).hexdigest()
     info_path, body_path = CACHE / f"{key}.json", CACHE / f"{key}.body"
-    old = read_json(info_path, {})
-    if not refresh and old.get("ok") and body_path.exists():
-        return old, body_path.read_bytes()
+    try:
+        old = {} if refresh else read_json(info_path, {})
+    except ValueError:  # Torn metadata is a cache miss; a successful fetch rewrites it.
+        old = {}
+    body = body_path.read_bytes() if old.get("ok") and body_path.exists() else None
+    # The body is replaced before its metadata, so a run killed in between leaves a digest mismatch: refetch.
+    if body is not None and hashlib.sha256(body).hexdigest() == old.get("sha256"):
+        return old, body
     for attempt in range(1, MAX_ATTEMPTS + 1):
         info = {"url": url, "retrieved_at": now(), "ok": False, "request_attempts": attempt}
         try:
@@ -96,10 +131,10 @@ def fetch(url, refresh=False):
                 info.update(ok=True, status=response.status, final_url=response.url,
                             content_type=response.headers.get("Content-Type", ""),
                             sha256=hashlib.sha256(body).hexdigest(), bytes=len(body))
-            body_path.write_bytes(body)
+            atomic_write(body_path, body)
             write_json(info_path, info)
             return info, body
-        except (urllib.error.URLError, TimeoutError, ValueError, OSError) as error:
+        except (urllib.error.URLError, http.client.HTTPException, TimeoutError, ValueError, OSError) as error:
             info.update(error=str(error), status=getattr(error, "code", None))
             headers = getattr(error, "headers", None)
             if headers and headers.get('Retry-After'):
@@ -116,30 +151,38 @@ def fetch(url, refresh=False):
 def canonical(url, *, allow_doi=False):
     """Resource identity: arXiv version folding, GitHub repo folding, URL cleanup."""
     if not isinstance(url,str):return None
-    candidate=html.unescape(url).strip().replace('http://','https://',1)
+    candidate=html.unescape(url).strip()
     try:
         doi_parts=urllib.parse.urlsplit(candidate)
         if (doi_parts.hostname or '').lower() in {'doi.org','www.doi.org','dx.doi.org'}:
-            if not allow_doi or doi_parts.scheme!='https' or doi_parts.username is not None or doi_parts.password is not None:
+            if doi_parts.scheme not in {'http','https'} or doi_parts.username is not None or doi_parts.password is not None:
                 return None
             if any(not key.startswith('utm_') for key,_ in urllib.parse.parse_qsl(doi_parts.query)):
                 return None
             doi=urllib.parse.unquote(doi_parts.path.lstrip('/'),errors='strict')
-            if not re.fullmatch(r'10\.\d{4,9}/[^\s\\]+',doi,re.I):return None
+            # arXiv's DataCite DOI names the preprint itself, so it folds into the arXiv record even where bare DOIs are ignored.
+            arxiv_doi=re.match(r'10\.48550/arxiv\.(\d{4}\.\d{4,5})(?:v\d+)?(?!\w)',doi,re.I|re.A)
+            if arxiv_doi:return f'arxiv:{arxiv_doi[1]}',f'https://arxiv.org/abs/{arxiv_doi[1]}','arxiv'
+            if not allow_doi or not re.fullmatch(r'10\.\d{4,9}/[^\s\\]+',doi,re.I):return None
             clean='https://doi.org/'+urllib.parse.quote(doi.casefold(),safe='/():;._-')
             return 'url:'+hashlib.sha256(clean.encode()).hexdigest()[:20],clean,'url'
     except (ValueError,UnicodeError):
         return None
-    url = html.unescape(url).strip().rstrip(".,;:)").replace("http://", "https://", 1)
+    url = html.unescape(url).strip()
+    # Trailing prose punctuation is not part of a link; a ")" is only when it closes nothing in the URL.
+    while url[-1:] in {".", ",", ";", ":"} or url[-1:] == ")" and url.count(")") > url.count("("):
+        url = url[:-1]
     try:
         parts = urllib.parse.urlsplit(url)
     except ValueError:
         return None
-    if parts.scheme != "https" or not parts.netloc:
+    if parts.scheme not in {"http", "https"} or not parts.netloc:
         return None
     host = parts.hostname.lower() if parts.hostname else ""
-    if host in {"arxiv.org", "www.arxiv.org", "export.arxiv.org", "huggingface.co"}:
-        match = ARXIV_RE.search(url)
+    hub = host in {"huggingface.co", "www.huggingface.co", "hf.co"}
+    # arXiv mirrors and services (web3., browse., export., ar5iv.labs.) all serve the same IDs.
+    if hub or host in {"arxiv.org", "ar5iv.org"} or host.endswith(".arxiv.org"):
+        match = (HF_PAPER_RE if hub else ARXIV_RE).match(parts.path)
         if match:
             aid = match.group(1)
             return f"arxiv:{aid}", f"https://arxiv.org/abs/{aid}", "arxiv"
@@ -202,7 +245,7 @@ def source_links(source, body):
     for line_no, line in enumerate(body.decode('utf-8', errors='replace').splitlines(), 1):
         if line.startswith('#'):
             heading = re.sub(r'[#*_]', '', line).strip()[:140]
-        result.extend((line_no, heading, url) for url in re.findall(r"https?://[^\s<>\]\[\)\"']+", line))
+        result.extend((line_no, heading, url) for url in LINK_RE.findall(line))
     return result
 
 
@@ -636,7 +679,7 @@ def enrich(args):
         if provider == "arxiv":
             # A batched API response is not a paper's reference list.
             return result
-        for link in re.findall(r"https?://[^\s<>\]\[\)\"']+", raw):
+        for link in LINK_RE.findall(raw):
             parsed = canonical(link)
             if not parsed:
                 continue
@@ -703,4 +746,6 @@ def main(argv=None):
 
 
 if __name__ == "__main__":
+    # Catalog text is UTF-8; print it as such even where the locale encoding cannot represent it.
+    sys.stdout.reconfigure(encoding="utf-8")
     raise SystemExit(main())

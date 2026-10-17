@@ -8,7 +8,8 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
-from paper_library import connected_assets, paper_library
+from paper_library import PAGE_SIZE, connected_assets, library_pages, paper_library
+from publication_metadata import record_date_text
 from search_pages import incoming_relations, resource_body, resource_path
 
 
@@ -83,8 +84,8 @@ class PaperAssetTests(unittest.TestCase):
         self.paper = record('arxiv:2501.00001', 'paper', name='Fixture GUI paper')
         self.survey = record('arxiv:2501.00002', 'survey', name='Fixture GUI survey', scope='adjacent')
 
-    def render(self, rows, language='en'):
-        markup, schema = paper_library(rows, resource_path, language=language)
+    def render(self, rows, language='en', number=1):
+        markup, schema = paper_library(rows, resource_path, language=language, number=number)
         return markup, schema, LibraryParser(markup)
 
     def test_only_introduction_and_documentation_count_as_asset_connections(self):
@@ -199,7 +200,7 @@ class PaperAssetTests(unittest.TestCase):
                     self.assertEqual(anchor['attrs']['title'], label + ': Asset title')
 
     def test_rendered_asset_groups_have_distinct_stylesheet_color_tokens(self):
-        css = (ROOT / 'web/pages.css').read_text()
+        css = (ROOT / 'web/pages.css').read_text(encoding='utf-8')
         inks = set()
         for group in ('code', 'data', 'model', 'benchmark', 'product'):
             rule = re.search(r'\.paper-asset-' + group + r'\{([^}]+)\}', css)
@@ -235,7 +236,7 @@ class PaperAssetTests(unittest.TestCase):
         self.assertIn('&amp;', markup)
         self.assertIn('&quot;', markup)
 
-    def test_itemlist_stays_all_reviewed_papers_with_or_without_asset_links(self):
+    def test_itemlist_contains_only_visible_reviewed_papers_with_or_without_asset_links(self):
         metadata = record('arxiv:2501.00003', 'paper', status='metadata_verified', scope='relevance_pending')
         unreviewed_scope = record('arxiv:2501.00004', 'paper', scope='relevance_pending')
         linked = asset('Only a data link', 'dataset')
@@ -254,8 +255,38 @@ class PaperAssetTests(unittest.TestCase):
             self.assertEqual(parsed.entries[self.survey['id']]['assets'], [])
         self.assertEqual(rows, original)
 
+    def test_later_page_assets_use_the_full_catalog_with_global_counts_and_overflow(self):
+        newer = [record('arxiv:2502.' + f'{index:05}', 'paper') for index in range(PAGE_SIZE)]
+        older = {**self.paper, 'published_at': '2024-01-01'}
+        older_assets = [asset(name, kind, older['id']) for name, kind in
+                        [('Code', 'framework'), ('Data', 'dataset'), ('Model', 'model'), ('Bench', 'benchmark')]]
+        newer_asset = asset('Newer agent', 'agent', newer[-1]['id'])
+        rows = [*newer, older, newer_asset, *older_assets]
+        for language in ('en', 'zh'):
+            first_markup, first_schema, first = self.render(rows, language)
+            last_markup, last_schema, last = self.render(rows, language, number=2)
+            self.assertNotIn(older['id'], first.entries)
+            self.assertEqual(len(first.entries), PAGE_SIZE)
+            self.assertEqual(first_schema['numberOfItems'], PAGE_SIZE)
+            self.assertEqual(list(last.entries), [older['id']])
+            self.assertEqual(last_schema['numberOfItems'], 1)
+            self.assertEqual(last_schema['itemListElement'][0]['position'], PAGE_SIZE + 1)
+            self.assertEqual(len(first.entries[newer[-1]['id']]['assets']), 1)
+            self.assertEqual([item['attrs']['data-asset-id'] for item in last.entries[older['id']]['assets']],
+                             [row['id'] for row in older_assets[:3]])
+            self.assertEqual(last.entries[older['id']]['more'][0]['attrs']['href'],
+                             resource_path(older) + '#connected-assets')
+            for markup in (first_markup, last_markup):
+                self.assertIn('<strong>' + str(PAGE_SIZE + 1) + '</strong>', markup)
+                self.assertIn('class="library-connected-count" href="/connections/">2 ', markup)
+        # An off-page connection must still meet the same evidence contract.
+        changed = copy.deepcopy(rows)
+        changed[-1]['evidence'][0]['supports'] = ['aliases']
+        with self.assertRaisesRegex(ValueError, 'relationship-scoped evidence'):
+            self.render(changed, number=1)
+
     def test_current_catalog_membership_and_rendered_links_match_reviewed_source_edges(self):
-        rows = [json.loads(line) for line in (ROOT / 'data/catalog.jsonl').read_text().splitlines()]
+        rows = [json.loads(line) for line in (ROOT / 'data/catalog.jsonl').read_text(encoding='utf-8').splitlines()]
         papers = {row['id'] for row in rows if row['kind'] in ('paper', 'survey')
                   and row['review_status'] == 'curated' and row['scope'] in ('core', 'adjacent')}
         asset_kinds = {'agent', 'framework', 'tool', 'infrastructure', 'dataset', 'model', 'benchmark', 'product'}
@@ -273,20 +304,37 @@ class PaperAssetTests(unittest.TestCase):
         actual = {(rid, asset['id']) for rid, values in linked.items() for asset in values}
         self.assertEqual(actual, expected)
         self.assertTrue(expected)
+        expected_order = [row['id'] for row in sorted((row for row in rows if row['id'] in papers),
+                          key=lambda row: (record_date_text(row), row['id']), reverse=True)]
         for language in ('en', 'zh'):
-            _, schema, parsed = self.render(rows, language)
-            self.assertEqual(set(parsed.entries), papers)
-            self.assertEqual(schema['numberOfItems'], len(papers))
-            self.assertEqual(len(schema['itemListElement']), len(papers))
-            self.assertEqual({item['url'] for item in schema['itemListElement']},
-                             {'https://awesomecua.github.io' + resource_path({'id': rid}) for rid in papers})
-            for rid, entry in parsed.entries.items():
-                expected_assets = linked.get(rid, [])
-                self.assertEqual([item['attrs']['data-asset-id'] for item in entry['assets']],
-                                 [row['id'] for row in expected_assets[:3]])
-                self.assertEqual(len(entry['more']), int(len(expected_assets) > 3))
-                if entry['more']:
-                    self.assertEqual(entry['more'][0]['attrs']['href'], resource_path({'id': rid}) + '#connected-assets')
+            seen = []
+            for number in range(1, library_pages(rows) + 1):
+                markup, schema, parsed = self.render(rows, language, number)
+                visible = list(parsed.entries)
+                article_ids = [attrs['data-resource-id'] for tag, attrs in parsed.tags
+                               if tag == 'article' and 'data-resource-id' in attrs]
+                self.assertEqual(article_ids, visible)  # No duplicates hidden by the parser's ID map.
+                self.assertEqual(visible, expected_order[len(seen):len(seen) + PAGE_SIZE])
+                self.assertLessEqual(len(visible), PAGE_SIZE)
+                self.assertEqual(schema['numberOfItems'], len(visible))
+                self.assertEqual(len(schema['itemListElement']), len(visible))
+                self.assertEqual([item['position'] for item in schema['itemListElement']],
+                                 list(range(len(seen) + 1, len(seen) + len(visible) + 1)))
+                self.assertEqual([item['url'] for item in schema['itemListElement']],
+                                 ['https://awesomecua.github.io' + resource_path({'id': rid}) for rid in visible])
+                self.assertIn('<strong>' + f'{len(papers):,}' + '</strong>', markup)
+                self.assertIn('class="library-connected-count" href="/connections/">' + str(len(linked)) + ' ', markup)
+                for rid, entry in parsed.entries.items():
+                    expected_assets = linked.get(rid, [])
+                    self.assertEqual([item['attrs']['data-asset-id'] for item in entry['assets']],
+                                     [row['id'] for row in expected_assets[:3]])
+                    self.assertEqual(len(entry['more']), int(len(expected_assets) > 3))
+                    if entry['more']:
+                        self.assertEqual(entry['more'][0]['attrs']['href'], resource_path({'id': rid}) + '#connected-assets')
+                seen.extend(visible)
+            self.assertEqual(seen, expected_order)
+            self.assertEqual(len(seen), len(set(seen)))
+            self.assertEqual(set(seen), papers)
 
 
 if __name__ == '__main__':

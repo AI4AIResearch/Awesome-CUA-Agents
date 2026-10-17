@@ -79,7 +79,7 @@ def build_exports(records, destination, catalog_bytes):
         'text_policy':'Catalog metadata and original annotations; no paper full text, copied full abstracts, weights, or training examples.',
         'review_policy':'Use review_status=curated for reviewed retrieval. metadata_verified records require a relevance review.',
         'exports':exports}
-    (destination/'rag-manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
+    (destination/'rag-manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     return manifest
 
 
@@ -90,7 +90,7 @@ def main():
     parser.add_argument('--include-metadata',action='store_true',help='Include all active records, preserving their unreviewed status.')
     args=parser.parse_args()
     if args.output and args.output.resolve()==args.input.resolve():parser.error('Output must not overwrite the source catalog')
-    records=[json.loads(line) for line in args.input.read_text().splitlines() if line.strip()]
+    records=[json.loads(line) for line in args.input.read_text(encoding='utf-8').splitlines() if line.strip()]
     body=encode_documents(records,args.include_metadata)
     if args.output:
         args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_bytes(body)

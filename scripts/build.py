@@ -11,7 +11,7 @@ import re
 import sqlite3
 import urllib.parse
 
-from catalog import ROOT, DATA, KINDS, ENVIRONMENTS, STATUSES, canonical, editorial_identity, publication_identity, read_json, read_jsonl, write_json, write_jsonl
+from catalog import ROOT, DATA, KINDS, ENVIRONMENTS, STATUSES, TOPICS, atomic_write, canonical, editorial_identity, publication_identity, read_json, read_jsonl, write_json, write_jsonl
 from specifications import PREFIXES, PROFILE_KEYS, validate_profiles
 from scope_review import resolve_exclusions, scope_report
 from arxiv_metadata import validate_snapshot
@@ -169,12 +169,21 @@ def validate_records(rows):
             error("missing fields " + ", ".join(sorted(missing)))
         if r.get("kind") not in KINDS:
             error("invalid kind")
-        if not r.get("name") or not canonical(r.get("url", ""), allow_doi=r.get("kind") in {"paper","survey"}):
+        parsed = canonical(r.get("url", ""), allow_doi=r.get("kind") in {"paper","survey"})
+        if not r.get("name") or not parsed:
             error("missing name or invalid URL")
+        # Editors assign component: and organization: identities; every other id is its URL's canonical identity.
+        if parsed and rid.split(":", 1)[0] in {"arxiv", "github", "url"} and parsed[0] != rid:
+            error(f"url resolves to {parsed[0]}, not to its id")
+        # preferred_arxiv may name another paper; arxiv must be this record's own identifier.
+        if rid.startswith("arxiv:") and r.get("identifiers", {}).get("arxiv") != rid[6:]:
+            error("identifiers.arxiv does not match the arXiv id")
         if r.get("review_status") not in STATUSES:
             error("invalid review status")
         if not r.get("environments") or set(r["environments"]) - ENVIRONMENTS:
             error("invalid environments")
+        if unknown := set(r.get("topics", [])) - TOPICS.keys():
+            error("unknown topics " + ", ".join(sorted(unknown)))
         if r.get("scope") not in {"core", "adjacent", "relevance_pending"}:
             error("invalid scope")
         if r.get("review_status") == "curated" and (not r.get("summary") or r.get("scope") == "relevance_pending"):
@@ -386,14 +395,19 @@ def section_table(members, columns, by_id):
     return lines + ["| " + " | ".join(columns) + " |", "|" + " --- |" * len(columns), *(table_row(r, columns, by_id) for r in members)]
 
 
-TOPIC_LABELS = {"safety-security": "Safety and security", "cross-app": "Cross-app workflows", "human-in-the-loop": "Human-in-the-loop",
-    "long-horizon": "Long-horizon tasks", "ui-design": "UI design", "training-free": "Training-free methods", "self-reflection": "Self-reflection"}
+TOPIC_LABELS = {topic: entry["en"] for topic, entry in TOPICS.items()}
 TOPIC_KINDS = [("benchmark", "Benchmarks"), ("dataset", "Datasets"), ("model", "Models"), ("agent", "Agents"), ("framework", "Frameworks"),
     ("tool", "Tools"), ("infrastructure", "Infrastructure"), ("product", "Products"), ("company", "Publishers"), ("survey", "Surveys"), ("paper", "Papers")]
 
 
 def topic_label(topic):
     return TOPIC_LABELS.get(topic, topic.replace("-", " ").capitalize())
+
+
+def topic_vocabulary():
+    """The data dictionary's topic table, generated from data/topics.json."""
+    return "\n" + "\n".join(["| Topic | English label | Chinese label | Meaning |", "| --- | --- | --- | --- |",
+        *(f"| `{topic}` | {md(entry['en'])} | {md(entry['zh'])} | {md(entry['definition'])} |" for topic, entry in TOPICS.items())]) + "\n"
 
 
 def topic_pages(rows):
@@ -762,19 +776,21 @@ def build(args):
         if path.exists():
             blocks = {"STATS": stats_block(report, lang), "BADGES": shared_badges, "EXPLORE": explore(rows, report, lang),
                 "HIGHLIGHTS": highlights(rows, edges, lang=lang), "RECENT": recently_reviewed(rows, reviewed_at, lang=lang)}
-            content = path.read_text()
+            content = path.read_text(encoding="utf-8")
             for name, body in blocks.items():
                 # A function replacement keeps backslashes in generated Markdown literal.
                 content = re.sub(rf"(?<=<!-- {name}:START -->).*?(?=<!-- {name}:END -->)", lambda _: body, content, flags=re.S)
             files[filename] = content
+    dictionary = ROOT / "docs/data-dictionary.md"
+    if dictionary.exists():
+        files["docs/data-dictionary.md"] = re.sub(r"(?<=<!-- TOPICS:START -->).*?(?=<!-- TOPICS:END -->)", lambda _: topic_vocabulary(), dictionary.read_text(encoding="utf-8"), flags=re.S)
     changed = []
     for relative, content in files.items():
         path = ROOT / relative
-        if not path.exists() or path.read_text() != content:
+        if not path.exists() or path.read_text(encoding="utf-8") != content:
             changed.append(relative)
             if not args.check:
-                path.parent.mkdir(parents=True, exist_ok=True)
-                path.write_text(content)
+                atomic_write(path, content.encode())
     if args.check:
         if changed:
             raise ValueError("Generated files are stale: " + ", ".join(changed))
@@ -797,6 +813,9 @@ def validate(args):
     if missing := {"date-time", "uri"} - set(formats.checkers):
         raise ValueError("JSON Schema format checkers unavailable: " + ", ".join(sorted(missing)) + ". Install requirements-dev.txt (jsonschema[format-nongpl]).")
     errors = validate_records(rows) + validate_sources(read_json(DATA / "sources.json", []))
+    for entry in read_json(DATA / "editorial.json", []):
+        if unknown := [str(topic) for topic in entry.get("topics", []) if not isinstance(topic, str) or topic not in TOPICS]:
+            errors.append(f"Editorial {entry.get('id') or entry.get('url')}: unknown topics {', '.join(unknown)}")
     resource_contract=read_json(ROOT/'schemas/resource.schema.json')
     validator = jsonschema.Draft202012Validator(resource_contract, format_checker=formats)
     for row in rows:
@@ -832,7 +851,11 @@ def validate(args):
     if not scope_errors:
         retained = {row['id']:row for row in read_jsonl(DATA/'papers.jsonl')}
         retained.update({row['id']:row for row in rows})
-        outcomes = resolve_exclusions(retained, decisions, {row['id'] for row in read_jsonl(DATA/'metadata-updates.jsonl')})
+        try:
+            outcomes = resolve_exclusions(retained, decisions, {row['id'] for row in read_jsonl(DATA/'metadata-updates.jsonl')})
+        except ValueError as error:
+            outcomes = []
+            errors.append('Scope decisions: '+str(error))
         published = {row['id'] for row in rows}
         for outcome in outcomes:
             if outcome['status']=='excluded' and outcome['id'] in published:

@@ -98,14 +98,14 @@ def lookup(resource_id, records, decisions=(), *, related=False, aliases=None):
 def read_lookup(resource_id, *, related=False, data_dir=None):
     """Read only the active materialization and applied exclusion ledger, never raw archives."""
     directory = Path(data_dir) if data_dir is not None else DATA
-    records = [json.loads(line) for line in (directory / 'catalog.jsonl').read_text().splitlines() if line.strip()]
-    ledger = json.loads((directory / 'exclusion-status.json').read_text())
+    records = [json.loads(line) for line in (directory / 'catalog.jsonl').read_text(encoding='utf-8').splitlines() if line.strip()]
+    ledger = json.loads((directory / 'exclusion-status.json').read_text(encoding='utf-8'))
     if not isinstance(ledger, dict) or ledger.get('schema_version') != 1 or not isinstance(ledger.get('decisions'), list):
         raise ValueError('Missing or unsupported applied exclusion ledger')
     if any(not isinstance(d, dict) or not isinstance(d.get('id'), str) for d in ledger['decisions']):
         raise ValueError('Scope decisions require a string ID')
     alias_path = directory / 'repository-aliases.json'
-    declarations = json.loads(alias_path.read_text()) if alias_path.exists() else []
+    declarations = json.loads(alias_path.read_text(encoding='utf-8')) if alias_path.exists() else []
     return lookup(resource_id, records, ledger['decisions'], related=related,
                   aliases=repository_aliases(declarations, records))
 

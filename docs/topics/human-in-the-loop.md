@@ -1,4 +1,4 @@
-# Human-in-the-loop
+# Human in the loop
 
 [Home](../../README.md) · [All topics](../topics.md) · [Full arXiv bibliography](../papers.md)
 

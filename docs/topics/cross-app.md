@@ -1,4 +1,4 @@
-# Cross-app workflows
+# Cross-app
 
 [Home](../../README.md) · [All topics](../topics.md) · [Full arXiv bibliography](../papers.md)
 
