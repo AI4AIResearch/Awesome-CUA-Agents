@@ -570,6 +570,22 @@ def string_list(value):
     return [value] if isinstance(value, str) else [v for v in value if isinstance(v, str)] if isinstance(value, list) else []
 
 
+LICENSE_FILES = ("LICENSE", "LICENSE.md", "LICENSE.txt", "LICENSE.rst", "LICENCE", "COPYING")
+# A GNU title must open the verbatim FSF text, not a project notice; that text does not say whether
+# later versions apply, so these identifiers name the text, not -only or -or-later.
+FSF_TEXT = r"\s+Copyright \(C\) [\d, ]+Free Software Foundation, Inc\."
+LICENSE_HEADERS = (
+    ("GPL-2.0", r"GNU GENERAL PUBLIC LICENSE\s+Version 2, June 1991" + FSF_TEXT),
+    ("GPL-3.0", r"GNU GENERAL PUBLIC LICENSE\s+Version 3, 29 June 2007" + FSF_TEXT),
+    ("AGPL-3.0", r"GNU AFFERO GENERAL PUBLIC LICENSE\s+Version 3, 19 November 2007" + FSF_TEXT),
+    ("LGPL-2.1", r"GNU LESSER GENERAL PUBLIC LICENSE\s+Version 2\.1, February 1999" + FSF_TEXT),
+    ("LGPL-3.0", r"GNU LESSER GENERAL PUBLIC LICENSE\s+Version 3, 29 June 2007" + FSF_TEXT),
+    ("MPL-2.0", r"Mozilla Public License,? Version 2\.0\s+(?:=+\s+)?1\. Definitions\b"),
+    ("ISC", r"(?:The )?ISC License(?: \(ISC\))?\s+(?:Copyright\b[^\n]*\s+)+Permission to use, copy, modify, and(?:/or)? distribute this software for any\s+purpose with or without fee is hereby granted"),
+    ("Unlicense", r"This is free and unencumbered software released into the public domain\.\s+Anyone is free to copy, modify, publish, use, compile, sell, or\s+distribute this software"),
+)
+
+
 def detect_code_license(text):
     """Identify a standard code license from the opening header of a LICENSE file."""
     head = text[:1000]
@@ -588,6 +604,13 @@ def detect_code_license(text):
         return "BSD-3-Clause"
     if "BSD 2-Clause" in text[:100]:
         return "BSD-2-Clause"
+    # Other standard texts must open the file: their title, then a fixed line of the standard body.
+    for spdx, header in LICENSE_HEADERS:
+        if re.match(r"\s*" + header, text, re.I):
+            return spdx
+    cc = re.match(r"\s*Attribution(-NonCommercial)?(-ShareAlike|-NoDerivatives)? 4\.0 International\s+=+\s+Creative Commons Corporation\b", text)
+    if cc:
+        return "CC-BY" + ("-NC" if cc[1] else "") + {"-ShareAlike": "-SA", "-NoDerivatives": "-ND"}.get(cc[2], "") + "-4.0"
     return None
 
 
@@ -680,7 +703,7 @@ def enrich(args):
                     **{k: ev[k] for k in ("url", "sha256", "retrieved_at")}})
         if provider == "github":
             repo = url.split("github.com/", 1)[1]
-            for filename in ("LICENSE", "LICENSE.md", "LICENSE.txt"):
+            for filename in LICENSE_FILES:
                 license_url = f"https://raw.githubusercontent.com/{repo}/HEAD/{filename}"
                 info, body = fetch(license_url, args.refresh)
                 if not info["ok"]:
@@ -697,7 +720,7 @@ def enrich(args):
                 declared = detect_code_license(license_text)
                 # Ambiguous/custom/composite declarations stay unknown rather than being guessed.
                 if declared:
-                    result["licenses"]["code"] = {"declared": declared, "url": license_url, "retrieved_at": info["retrieved_at"], "basis": "repository LICENSE header; not a weights/data license"}
+                    result["licenses"]["code"] = {"declared": declared, "url": license_url, "retrieved_at": info["retrieved_at"], "basis": "repository LICENSE header; " + ("GNU text does not say -only or -or-later; " if "GPL" in declared else "") + "not a weights/data license"}
                     result["evidence"].append({"role": "primary", "method": "license_header", "supports": ["licenses.code"], **{k: info[k] for k in ("url", "sha256", "retrieved_at")}})
                 break
         seen = set()

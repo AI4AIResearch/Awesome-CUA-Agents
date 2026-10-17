@@ -46,6 +46,8 @@ Some dataset cards contain only licensing metadata. For these entries, Hub metad
 
 License declarations are scoped to code, data, weights, or documents. Repository LICENSE headers never establish permissions for weights or embedded third-party data. No blanket permissive license is inferred from public availability.
 
+For a GitHub repository, `enrich` reads the first of `LICENSE`, `LICENSE.md`, `LICENSE.txt`, `LICENSE.rst`, `LICENCE` and `COPYING` that exists, and records a code license only when that file opens with a standard text: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC, Unlicense, MPL-2.0, a CC BY 4.0 legal code (including its NC, SA and ND variants), or the verbatim FSF text of GPL-2.0, GPL-3.0, AGPL-3.0, LGPL-2.1 or LGPL-3.0. Composite, custom and altered texts, and project notices that only name a license, stay unknown. A GNU license text does not say whether later versions apply; a project states that in its own notices. GNU declarations therefore use the identifier of the text (for example `AGPL-3.0`, as GitHub reports it), and their basis records that -only or -or-later is unstated.
+
 Provider-specific API parsing checks the actual host and URL path. Harvard Dataverse records retain the dataset-version license declaration, first publication date, version release time, and file count separately. A package-file count is not a trajectory or sample count; the API does not imply a Hugging Face download path or access policy.
 
 `mentions` edges record references found in a primary README/card. They do not establish training, evaluation, derivation, partnership, or endorsement. Stronger relations are explicit editorial assertions with evidence.
