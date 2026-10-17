@@ -811,7 +811,11 @@ def validate(args):
     if not scope_errors:
         retained = {row['id']:row for row in read_jsonl(DATA/'papers.jsonl')}
         retained.update({row['id']:row for row in rows})
-        outcomes = resolve_exclusions(retained, decisions, {row['id'] for row in read_jsonl(DATA/'metadata-updates.jsonl')})
+        try:
+            outcomes = resolve_exclusions(retained, decisions, {row['id'] for row in read_jsonl(DATA/'metadata-updates.jsonl')})
+        except ValueError as error:
+            outcomes = []
+            errors.append('Scope decisions: '+str(error))
         published = {row['id'] for row in rows}
         for outcome in outcomes:
             if outcome['status']=='excluded' and outcome['id'] in published:
