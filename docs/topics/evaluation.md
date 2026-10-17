@@ -2,9 +2,9 @@
 
 [Home](../../README.md) · [All topics](../topics.md) · [Full arXiv bibliography](../papers.md)
 
-588 source-reviewed resources tagged `evaluation`. Curated metadata, not a performance ranking; unknown facts are shown as —.
+589 source-reviewed resources tagged `evaluation`. Curated metadata, not a performance ranking; unknown facts are shown as —.
 
-**Contents:** [Benchmarks (77)](#benchmarks) · [Datasets (9)](#datasets) · [Models (1)](#models) · [Frameworks (15)](#frameworks) · [Tools (4)](#tools) · [Infrastructure (2)](#infrastructure) · [Surveys (1)](#surveys) · [Papers (479)](#papers)
+**Contents:** [Benchmarks (78)](#benchmarks) · [Datasets (9)](#datasets) · [Models (1)](#models) · [Frameworks (15)](#frameworks) · [Tools (4)](#tools) · [Infrastructure (2)](#infrastructure) · [Surveys (1)](#surveys) · [Papers (479)](#papers)
 
 ## Benchmarks
 
@@ -31,6 +31,7 @@
 | [MacAgentBench](https://github.com/JetAstra/MacAgentBench) | desktop, macos | — | [676 tasks](https://raw.githubusercontent.com/JetAstra/MacAgentBench/HEAD/README.md) · [25 applications](https://raw.githubusercontent.com/JetAstra/MacAgentBench/HEAD/README.md) | code MIT | 676 macOS tasks across 25 applications, each run in its own Docker container and scored by deterministic rule-based checks with multiple checkpoints. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/JetAstra/MacAgentBench/HEAD/README.md) |
 | [MCPWorld](https://github.com/SAAgent/MCPWorld) | cross-platform | — | — | code MIT | Evaluation environment combining computer interaction with tool access. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/SAAgent/MCPWorld/HEAD/README.md) |
 | [Mind2Web](https://github.com/OSU-NLP-Group/Mind2Web) | web | [2306.06070](https://arxiv.org/abs/2306.06070) (2023) | [1,009 task instances](https://raw.githubusercontent.com/OSU-NLP-Group/Mind2Web/HEAD/README.md) | code MIT | Human demonstrations and tasks for generalist web navigation research. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/OSU-NLP-Group/Mind2Web/HEAD/README.md) |
+| [Mind2Web 2](https://github.com/OSU-NLP-Group/Mind2Web-2) | web | — | — | code MIT | Long-horizon agentic web search benchmark whose Agent-as-a-Judge framework scores time-varying, citation-backed answers, with evaluation scripts for its dev and test sets. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/OSU-NLP-Group/Mind2Web-2/HEAD/README.md) |
 | [MiniWoB++](https://github.com/Farama-Foundation/miniwob-plusplus) | web | [1802.08802](https://arxiv.org/abs/1802.08802) (2018) | [> 100 web environments](https://raw.githubusercontent.com/Farama-Foundation/miniwob-plusplus/HEAD/README.md) | code MIT | Over 100 web-interaction environments extending OpenAI's MiniWoB, controlled from Python through a Gymnasium API that drives the browser with Selenium. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/Farama-Foundation/miniwob-plusplus/HEAD/README.md) |
 | [MMBench-GUI](https://github.com/open-compass/MMBench-GUI) | cross-platform | [2507.19478](https://arxiv.org/abs/2507.19478) (2025) | [> 8,000 tasks](https://raw.githubusercontent.com/open-compass/MMBench-GUI/HEAD/README.md) | — | Four-level GUI-agent benchmark across six platforms, from content understanding and element grounding to task automation and collaboration, scored with an efficiency-quality area metric. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/open-compass/MMBench-GUI/HEAD/README.md) |
 | [MMInA](https://github.com/shulin16/MMInA) | web | [2404.09992](https://arxiv.org/abs/2404.09992) (2024) | — | — | Multimodal web tasks in a WebArena-based environment that chain from 1 to 10 hops across sites such as a shopping store and Wikipedia, testing long-chain reasoning. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/shulin16/MMInA/HEAD/README.md) |

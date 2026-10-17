@@ -1,12 +1,12 @@
 # Coverage and quality ledger
 
-Evidence snapshot through **2026-10-17T16:10:54Z**. Generated from committed source receipts.
+Evidence snapshot through **2026-10-17T17:18:56Z**. Generated from committed source receipts.
 
-- 3,003 resource records: 1,429 curated; 1,574 bibliographic metadata only.
+- 3,006 resource records: 1,432 curated; 1,574 bibliographic metadata only.
 - 2,578 paper and survey records, including 2,565 arXiv identities and 13 publisher-only identities. This count overlaps the status counts above.
 - 2,683 retained arXiv metadata records; 118 explicit scope exclusions are outside the active catalog.
-- 3,907 discovery identifiers; 945 remain unresolved after accounting for scope exclusions.
-- 12 editorial proposals await verification or review.
+- 3,907 discovery identifiers; 944 remain unresolved after accounting for scope exclusions.
+- 13 editorial proposals await verification or review.
 
 These are distinct resource identifiers, not distinct research projects. Papers, repositories, datasets, products, and publisher entities have different grains.
 
@@ -17,14 +17,14 @@ Counts of source-reviewed resources. A resource tagged with several environments
 | Kind | web | desktop | windows | macos | linux | android | ios | harmonyos | cross-platform | unspecified |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | [agent](agents.md) | 10 | 14 | 3 | 1 | · | 15 | 1 | · | 1 | · |
-| [benchmark](benchmarks.md) | 35 | 19 | 4 | 3 | 5 | 17 | 1 | · | 13 | 3 |
+| [benchmark](benchmarks.md) | 36 | 19 | 4 | 3 | 5 | 17 | 1 | · | 13 | 3 |
 | [company](companies.md) | · | · | · | · | · | · | · | · | · | 16 |
 | [dataset](datasets.md) | 21 | 16 | 3 | 2 | 6 | 33 | 1 | · | 14 | 8 |
 | [framework](frameworks.md) | 34 | 18 | 1 | 1 | 3 | 17 | 1 | 1 | 7 | 2 |
 | [infrastructure](infrastructures.md) | 5 | 9 | 1 | 2 | 4 | 3 | 1 | · | · | · |
-| [model](models.md) | 26 | 21 | 4 | 4 | 4 | 23 | 4 | · | 46 | 2 |
+| [model](models.md) | 27 | 21 | 4 | 4 | 4 | 24 | 4 | · | 46 | 2 |
 | [paper](topics.md) | 374 | 193 | 32 | 14 | 16 | 160 | 6 | 1 | 94 | 291 |
-| [product](products.md) | 17 | 5 | · | · | · | · | · | · | · | · |
+| [product](products.md) | 18 | 5 | · | · | · | · | · | · | · | · |
 | [survey](surveys.md) | · | · | · | · | · | 1 | 1 | · | 10 | 2 |
 | [tool](tools.md) | 11 | 3 | 3 | 2 | 2 | 5 | 2 | · | 1 | 2 |
 
@@ -37,7 +37,7 @@ The denominator is the normalized identifiers extracted from each fetched docume
 | [ShowLab Awesome GUI Agent](https://github.com/showlab/Awesome-GUI-Agent) | 338 | 219 | 207 | 0 | 119 | OK · 2026-10-17 |
 | [ZJU REAL Awesome GUI Agents](https://github.com/ZJU-REAL/Awesome-GUI-Agents) | 218 | 165 | 162 | 0 | 53 | OK · 2026-10-17 |
 | [OS Agents Survey](https://github.com/OS-Agent-Survey/OS-Agent-Survey) | 224 | 198 | 177 | 0 | 26 | OK · 2026-10-17 |
-| [Awesome Computer Use Agents — wjhou](https://github.com/wjhou/awesome-computer-use-agents) | 132 | 94 | 84 | 0 | 38 | OK · 2026-10-17 |
+| [Awesome Computer Use Agents — wjhou](https://github.com/wjhou/awesome-computer-use-agents) | 132 | 95 | 85 | 0 | 37 | OK · 2026-10-17 |
 | [Steel Awesome Web Agents](https://github.com/steel-dev/awesome-web-agents) | 113 | 24 | 24 | 0 | 89 | OK · 2026-10-17 |
 | [Steel Web Agents Archive](https://github.com/steel-dev/awesome-web-agents/blob/main/ARCHIVE.md) | 7 | 1 | 1 | 0 | 6 | OK · 2026-10-17 |
 | [Computer Browser Phone Use Agent Datasets](https://github.com/Khang-9966/Computer-Browser-Phone-Use-Agent-Datasets) | 170 | 114 | 106 | 1 | 55 | OK · 2026-10-17 |
@@ -132,7 +132,7 @@ The recorded title query returned 1,199 unique records out of 1,246 reported mat
 
 | Scope | Recorded declarations |
 | --- | ---: |
-| code | 164 |
+| code | 166 |
 | data | 56 |
 | weights | 53 |
 | document | 0 |
@@ -155,6 +155,7 @@ A code license never fills a data or weights field. Hub declarations are publish
 | [Aguvis-7B-720P checkpoint](https://huggingface.co/xlangai/Aguvis-7B-720P) | Weight files are listed, but the official README still marks the release in progress and the inspected Hub metadata lacks weight terms; review remains pending. |
 | [UGround V1 bounding-box data](https://huggingface.co/datasets/osunlp/UGround-V1-Data-Box) | Public API identifies the dataset and Parquet manifest, but access is gated=auto and the raw card returns 401. No access request or agreement acceptance was made. Defer curation of a directly usable release until access scope and the full card can be reviewed. |
 | [LiteCUA implementation](https://github.com/agiresearch/LiteCUA) | primary evidence unresolved: HTTP Error 404: Not Found |
+| [Project Mariner](https://labs.google.com/mariner/) | The Project Mariner page on labs.google.com is a client-rendered sign-in shell whose HTML carries only the title, and the former deepmind.google Project Mariner pages now redirect to the DeepMind homepage. Approval needs a readable first-party product page. |
 
 ## Scope exclusions
 

@@ -54673,5 +54673,87 @@
       "notes"
     ],
     "notes": "The annotation was reviewed against the complete retained official abstract. Experimental findings and artifact availability have not been independently reproduced."
+  },
+  {
+    "name": "Mind2Web 2",
+    "kind": "benchmark",
+    "url": "https://github.com/OSU-NLP-Group/Mind2Web-2",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "evaluation",
+      "web-navigation",
+      "long-horizon"
+    ],
+    "summary": "Long-horizon agentic web search benchmark whose Agent-as-a-Judge framework scores time-varying, citation-backed answers, with evaluation scripts for its dev and test sets.",
+    "verify_terms": [
+      "Mind2Web 2"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "5cc72b992cfc11094dcf341c284d5baadc6c66a302fdfd474b27913fe1c91f6f",
+    "reviewed_at": "2026-10-17T17:18:50Z"
+  },
+  {
+    "name": "Magma",
+    "kind": "model",
+    "url": "https://github.com/microsoft/Magma",
+    "environments": [
+      "web",
+      "android"
+    ],
+    "topics": [
+      "grounding",
+      "planning"
+    ],
+    "summary": "Microsoft foundation model for multimodal agents, pretrained with Set-of-Mark and Trace-of-Mark objectives on UI, robotics and video data and fine-tunable for web and mobile UI navigation.",
+    "verify_terms": [
+      "Magma: A Foundation Model for Multimodal AI Agents"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "8aaf8feff6e1d5a533c01afd8afc0cfc0700f0c1c73ba47949b56c11fb8ab5be",
+    "reviewed_at": "2026-10-17T17:18:50Z"
+  },
+  {
+    "name": "Amazon Nova Act",
+    "kind": "product",
+    "url": "https://aws.amazon.com/nova/act/",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "automation",
+      "web-navigation"
+    ],
+    "summary": "AWS service for building and deploying agents that automate browser-based UI workflows from natural language and Python, powered by a custom Nova 2 Lite model.",
+    "verify_terms": [
+      "Nova Act"
+    ],
+    "aliases": [
+      "Nova Act"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4e4e60092351a85d0b99186a745d6295b170958be59092a786eda369923bd691",
+    "reviewed_at": "2026-10-17T17:18:50Z"
+  },
+  {
+    "name": "Project Mariner",
+    "kind": "product",
+    "url": "https://labs.google.com/mariner/",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "web-navigation"
+    ],
+    "summary": "Google research prototype built with Gemini that reads the browser screen and completes web tasks through an experimental Chrome extension.",
+    "verify_terms": [
+      "Project Mariner"
+    ],
+    "publisher_id": "organization:google",
+    "editorial_reviewed": false,
+    "reviewed_sha256": "3a6ae2099fbd805a6bb7b09d6650044361297abdd74c76919dbdbf4ade63728a",
+    "reviewed_at": "2026-10-17T17:18:50Z",
+    "review_note": "The Project Mariner page on labs.google.com is a client-rendered sign-in shell whose HTML carries only the title, and the former deepmind.google Project Mariner pages now redirect to the DeepMind homepage. Approval needs a readable first-party product page."
   }
 ]
