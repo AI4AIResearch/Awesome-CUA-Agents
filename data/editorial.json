@@ -2652,7 +2652,8 @@
     "kind": "benchmark",
     "url": "https://github.com/yjyddq/RiOSWorld",
     "environments": [
-      "ios"
+      "desktop",
+      "linux"
     ],
     "topics": [
       "evaluation"

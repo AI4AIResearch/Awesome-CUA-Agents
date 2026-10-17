@@ -2,9 +2,9 @@
 
 [Home](../../README.md) · [All platforms](../environments.md) · [Research by topic](../topics.md)
 
-19 source-reviewed resources tagged `ios`. Curated metadata, not a performance ranking; unknown facts are shown as —.
+18 source-reviewed resources tagged `ios`. Curated metadata, not a performance ranking; unknown facts are shown as —.
 
-**Contents:** [Benchmarks (2)](#benchmarks) · [Datasets (1)](#datasets) · [Models (4)](#models) · [Agents (1)](#agents) · [Frameworks (1)](#frameworks) · [Tools (2)](#tools) · [Infrastructure (1)](#infrastructure) · [Surveys (1)](#surveys) · [Papers (6)](#papers)
+**Contents:** [Benchmarks (1)](#benchmarks) · [Datasets (1)](#datasets) · [Models (4)](#models) · [Agents (1)](#agents) · [Frameworks (1)](#frameworks) · [Tools (2)](#tools) · [Infrastructure (1)](#infrastructure) · [Surveys (1)](#surveys) · [Papers (6)](#papers)
 
 ## Benchmarks
 
@@ -13,7 +13,6 @@ All entries in this section: ios.
 | Resource | Paper | Scale | License | Description | Evidence |
 | --- | --- | --- | --- | --- | --- |
 | [iOSWorld](https://github.com/ljang0/iOSWorld) | — | [133 tasks](https://raw.githubusercontent.com/ljang0/iOSWorld/HEAD/README.md) · [26 applications](https://raw.githubusercontent.com/ljang0/iOSWorld/HEAD/README.md) | code Apache-2.0 | Native iPhone-simulator benchmark with shared user data, application workflows, agent runners, and rubric-based scoring. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/ljang0/iOSWorld/HEAD/README.md) |
-| [RiOSWorld](https://github.com/yjyddq/RiOSWorld) | [2506.00618](https://arxiv.org/abs/2506.00618) (2025) | — | — | Measures risky behavior of multimodal computer-use agents in an Ubuntu virtual machine, with risk scenarios such as phishing emails and released evaluation trajectories. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/yjyddq/RiOSWorld/HEAD/README.md) |
 
 ## Datasets
 

@@ -17,7 +17,7 @@ Counts of source-reviewed resources. A resource tagged with several environments
 | Kind | web | desktop | windows | macos | linux | android | ios | harmonyos | cross-platform | unspecified |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | [agent](agents.md) | 10 | 14 | 3 | 1 | · | 15 | 1 | · | 1 | · |
-| [benchmark](benchmarks.md) | 35 | 18 | 4 | 3 | 4 | 17 | 2 | · | 13 | 3 |
+| [benchmark](benchmarks.md) | 35 | 19 | 4 | 3 | 5 | 17 | 1 | · | 13 | 3 |
 | [company](companies.md) | · | · | · | · | · | · | · | · | · | 16 |
 | [dataset](datasets.md) | 21 | 16 | 3 | 2 | 6 | 33 | 1 | · | 14 | 8 |
 | [framework](frameworks.md) | 34 | 18 | 1 | 1 | 3 | 17 | 1 | 1 | 7 | 2 |
