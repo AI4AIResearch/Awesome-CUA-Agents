@@ -16,17 +16,17 @@ Counts of source-reviewed resources. A resource tagged with several environments
 
 | Kind | web | desktop | windows | macos | linux | android | ios | harmonyos | cross-platform | unspecified |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| [agent](agents.md) | 6 | 14 | 3 | 1 | · | 11 | 1 | · | 1 | · |
-| [benchmark](benchmarks.md) | 29 | 14 | 4 | 3 | 3 | 12 | 2 | · | 11 | 3 |
+| [agent](agents.md) | 7 | 14 | 3 | 1 | · | 11 | 1 | · | 1 | · |
+| [benchmark](benchmarks.md) | 31 | 15 | 4 | 3 | 3 | 13 | 2 | · | 12 | 3 |
 | [company](companies.md) | · | · | · | · | · | · | · | · | · | 16 |
-| [dataset](datasets.md) | 16 | 12 | 3 | 2 | 5 | 23 | · | · | 14 | 5 |
-| [framework](frameworks.md) | 24 | 14 | 1 | 1 | 2 | 8 | · | 1 | 5 | 2 |
-| [infrastructure](infrastructures.md) | 3 | 5 | · | 1 | 2 | 4 | 1 | · | · | · |
-| [model](models.md) | 20 | 14 | 3 | 3 | 3 | 17 | 4 | · | 44 | 1 |
-| [paper](topics.md) | 172 | 108 | 17 | 5 | 7 | 94 | 5 | · | 87 | 101 |
+| [dataset](datasets.md) | 19 | 14 | 3 | 2 | 6 | 28 | · | · | 14 | 7 |
+| [framework](frameworks.md) | 24 | 14 | 1 | 1 | 2 | 11 | 1 | 1 | 5 | 2 |
+| [infrastructure](infrastructures.md) | 4 | 6 | 1 | 2 | 4 | 4 | 1 | · | · | · |
+| [model](models.md) | 25 | 18 | 3 | 3 | 3 | 23 | 4 | · | 46 | 2 |
+| [paper](topics.md) | 217 | 119 | 22 | 7 | 11 | 107 | 5 | · | 89 | 145 |
 | [product](products.md) | 17 | 5 | · | · | · | · | · | · | · | · |
 | [survey](surveys.md) | · | · | · | · | · | 1 | 1 | · | 10 | · |
-| [tool](tools.md) | 7 | · | · | · | · | 2 | 1 | · | 1 | 2 |
+| [tool](tools.md) | 10 | 1 | 1 | · | · | 4 | 2 | · | 1 | 2 |
 
 ## Source snapshot coverage
 
