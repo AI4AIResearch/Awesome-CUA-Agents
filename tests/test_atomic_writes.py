@@ -83,6 +83,19 @@ class AtomicDataWriteTests(unittest.TestCase):
         self.assertEqual(catalog.read_json(self.directory / "new" / "report.json"), {"ok": True})
         self.assertEqual(sorted(p.name for p in self.directory.iterdir()), ["new", "papers.jsonl"])
 
+    def test_windows_writes_open_binary_and_keep_the_mode_without_fchmod(self):
+        # On Windows os.open defaults to text mode (LF becomes CRLF), and os.fchmod is missing before Python 3.13.
+        self.path.chmod(0o640)
+        real_open, flags = os.open, []
+        def recording_open(path, flag, mode=0o777):
+            flags.append(flag)
+            return real_open(path, flag & ~0x8000, mode)
+        with mock.patch.object(os, "O_BINARY", 0x8000, create=True), mock.patch("os.open", recording_open), \
+                mock.patch.object(os, "fchmod", side_effect=AssertionError("os.fchmod is unavailable on Windows before 3.13")):
+            catalog.write_jsonl(self.path, self.rows[:1])
+        self.assertTrue(flags and all(flag & 0x8000 for flag in flags))
+        self.assertEqual((self.path.stat().st_mode & 0o777, len(catalog.read_jsonl(self.path))), (0o640, 1))
+
 
 class FetchCacheConsistencyTests(unittest.TestCase):
     def setUp(self):

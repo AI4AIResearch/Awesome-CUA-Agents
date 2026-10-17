@@ -69,13 +69,13 @@ def atomic_write(path, data):
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_name(f".{path.name}.{os.urandom(6).hex()}.tmp")
     try:
-        # Mode 0o666 lets the umask decide a new file's permissions, as Path.write_bytes would.
-        with open(os.open(temporary, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o666), "wb") as stream:
-            if path.exists():
-                os.fchmod(stream.fileno(), path.stat().st_mode & 0o7777)
+        # Mode 0o666 lets the umask decide a new file's permissions, as Path.write_bytes would. Windows needs O_BINARY to keep LF bytes.
+        with open(os.open(temporary, os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, "O_BINARY", 0), 0o666), "wb") as stream:
             stream.write(data)
             stream.flush()
             os.fsync(stream.fileno())
+        if path.exists():  # os.fchmod only reached Windows in Python 3.13.
+            os.chmod(temporary, path.stat().st_mode & 0o7777)
         os.replace(temporary, path)
     finally:
         temporary.unlink(missing_ok=True)
