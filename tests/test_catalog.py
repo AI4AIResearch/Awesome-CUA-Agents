@@ -314,5 +314,29 @@ class QualityTests(unittest.TestCase):
             build.build(types.SimpleNamespace(check=True))
 
 
+class CategoryPageTests(unittest.TestCase):
+    def test_paper_column_uses_reviewed_relations_only(self):
+        source = paper()
+        asset = {"relations": [{"type": "documented_by", "target_id": source["id"]}, {"type": "documented_by", "target_id": source["id"]},
+            {"type": "uses", "target_id": "arxiv:2501.00001"}, {"type": "published_by", "target_id": "company:x"}]}
+        self.assertEqual(build.paper_cell(asset, {source["id"]: source}), "[2404.07972](https://arxiv.org/abs/2404.07972) (2024)")
+        self.assertEqual(build.paper_cell({"relations": [{"type": "introduced_by", "target_id": "arxiv:2501.00001"}]}, {}), "[2501.00001](https://arxiv.org/abs/2501.00001)")
+        self.assertEqual(build.paper_cell({"relations": []}, {}), "—")
+
+    def test_license_column_keeps_scopes_and_unknowns(self):
+        licenses = {"code": {"declared": "MIT", "url": "https://x.test/LICENSE"}, "data": {"declared": ["cc-by-4.0", "odc-by"], "url": "https://x.test"}, "weights": None, "document": None}
+        self.assertEqual(build.license_cell({"licenses": licenses}), "code MIT · data cc-by-4.0/odc-by")
+        self.assertEqual(build.license_cell({"licenses": {"code": None, "data": None, "weights": None, "document": None}}), "—")
+
+    def test_kind_specific_columns(self):
+        row = {"name": "A|B", "url": "https://example.com/a", "environments": ["web"], "summary": "Short.", "published_at": "2025-01-02",
+            "relations": [{"type": "published_by", "target_id": "company:x"}], "licenses": {"code": None, "data": None, "weights": None, "document": None},
+            "evidence": [{"method": "editorial_primary_review", "url": "https://example.com/a", "retrieved_at": "2026-10-16T00:00:00Z"}]}
+        by_id = {"company:x": {"name": "Example", "url": "https://example.com"}}
+        self.assertEqual(build.table_row(row, build.KIND_COLUMNS["product"][0], by_id),
+            "| [A\\|B](https://example.com/a) | [Example](https://example.com) | web | Short. | [✓ 2026-10-16](https://example.com/a) |")
+        self.assertEqual(build.table_row(row, build.KIND_COLUMNS["survey"][0], by_id).split(" | ")[0], "| 2025-01-02")
+
+
 if __name__ == "__main__":
     unittest.main()

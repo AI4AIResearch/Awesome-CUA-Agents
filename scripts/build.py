@@ -214,19 +214,69 @@ def md(value):
     return str(value).replace("|", "\\|").replace("\n", " ").replace("[", "\\[").replace("]", "\\]")
 
 
+def paper_cell(r, by_id):
+    """Reviewed paper relations only; a mention in a README is not a paper link."""
+    targets = list(dict.fromkeys(rel["target_id"] for rel in r["relations"] if rel["type"] in {"introduced_by", "documented_by"} and rel["target_id"].startswith("arxiv:")))
+    cells = []
+    for target in targets:
+        paper = by_id.get(target)
+        year = f" ({paper['published_at'][:4]})" if paper and paper.get("published_at") else ""
+        cells.append(f"[{target.split(':', 1)[1]}](https://arxiv.org/abs/{target.split(':', 1)[1]}){year}")
+    return ", ".join(cells) or "—"
+
+
+def license_cell(r):
+    """Declared licenses per scope; unknown scopes are omitted, never inferred."""
+    parts = []
+    for scope in ("code", "data", "weights", "document"):
+        declared = (r["licenses"].get(scope) or {}).get("declared")
+        if declared:
+            parts.append(f"{scope} {md('/'.join(declared) if isinstance(declared, list) else declared)}")
+    return " · ".join(parts) or "—"
+
+
+def publisher_cell(r, by_id):
+    publishers = [by_id[rel["target_id"]] for rel in r["relations"] if rel["type"] == "published_by" and rel["target_id"] in by_id]
+    return ", ".join(f"[{md(p['name'])}]({p['url']})" for p in publishers) or "—"
+
+
+EVIDENCE_NOTE = "*Evidence* links the reviewed first-party snapshot and its retrieval date."
+# Columns per generated category page; facts that cannot apply to a kind are not shown as empty columns.
+KIND_COLUMNS = {
+    None: (("Resource", "Environments", "Paper", "License", "Description", "Evidence"),
+        "*Paper* lists reviewed `introduced_by`/`documented_by` arXiv relations with the arXiv submission year. *License* lists publisher declarations by scope (code, data, weights, document). " + EVIDENCE_NOTE),
+    "paper": (("Date", "Resource", "Environments", "Description", "Evidence"), "*Date* is the arXiv first-submission date; newest first. " + EVIDENCE_NOTE),
+    "survey": (("Date", "Resource", "Environments", "Description", "Evidence"), "*Date* is the arXiv first-submission date; newest first. " + EVIDENCE_NOTE),
+    "product": (("Resource", "Publisher", "Environments", "Description", "Evidence"), "*Publisher* is a reviewed `published_by` relation. " + EVIDENCE_NOTE),
+    "company": (("Resource", "Environments", "Description", "Evidence"), EVIDENCE_NOTE),
+}
+
+
+def table_row(r, columns, by_id):
+    primary = next(e for e in r["evidence"] if e["method"] == "editorial_primary_review")
+    cells = {"Resource": f"[{md(r['name'])}]({r['url']})", "Environments": ", ".join(r["environments"]),
+        "Paper": paper_cell(r, by_id), "License": license_cell(r), "Publisher": publisher_cell(r, by_id),
+        "Date": r.get("published_at") or "—", "Description": md(r["summary"]),
+        "Evidence": f"[✓ {primary['retrieved_at'][:10]}]({primary['url']})"}
+    return "| " + " | ".join(cells[column] for column in columns) + " |"
+
+
 def documents(rows, report):
     files = {}
+    by_id = {r["id"]: r for r in rows}
     grouped = collections.defaultdict(list)
     for r in rows:
         if r["review_status"] == "curated":
             grouped[r["kind"]].append(r)
     for kind, group in sorted(grouped.items()):
+        columns, legend = KIND_COLUMNS.get(kind, KIND_COLUMNS[None])
         lines = [f"# {kind.title()} catalog", "", "[Home](../README.md) · [Methodology](methodology.md) · [Machine-readable catalog](../data/catalog.jsonl)", "",
-            "Curated metadata, not a performance ranking. Each entry links its first-party evidence. Empty facts remain unknown.", "",
-            "| Resource | Environments | Description | Evidence |", "| --- | --- | --- | --- |"]
-        for r in sorted(group, key=lambda r: r["name"].casefold()):
-            primary = next(e for e in r["evidence"] if e["method"] == "editorial_primary_review")
-            lines.append(f"| [{md(r['name'])}]({r['url']}) | {', '.join(r['environments'])} | {md(r['summary'])} | [Source]({primary['url']}) · {primary['retrieved_at'][:10]} |")
+            "Curated metadata, not a performance ranking. Each entry links its first-party evidence. Unknown facts are shown as —.", "", legend, "",
+            "| " + " | ".join(columns) + " |", "|" + " --- |" * len(columns)]
+        ordered = sorted(group, key=lambda r: r["name"].casefold())
+        if "Date" in columns:
+            ordered.sort(key=lambda r: r.get("published_at") or "", reverse=True)
+        lines += [table_row(r, columns, by_id) for r in ordered]
         lines += ["", "Detailed notes and separate code/data/weights license declarations are in `data/catalog.jsonl`.", ""]
         filename = "companies" if kind == "company" else kind + "s"
         files[f"docs/{filename}.md"] = "\n".join(lines)
