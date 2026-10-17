@@ -2,6 +2,8 @@
 
 Contributions should improve coverage or trustworthiness. A small correction with primary evidence is valuable.
 
+Report security vulnerabilities privately, as described in [SECURITY.md](SECURITY.md), never in a public issue.
+
 1. Search `data/catalog.jsonl` and `data/candidates.jsonl` for existing IDs, aliases, and mirrors. [Editorial input](docs/editorial-input.md#resource-id) shows how a URL maps to its ID.
 2. Add an editorial proposal to `data/editorial.json` with `name`, `kind`, the primary `url`, `environments`, `topics`, a concise original `summary`, `verify_terms`, and `editorial_reviewed: false`. [Editorial input](docs/editorial-input.md) documents every key, its default, and its effect on the published record.
 3. Run `python3 scripts/catalog.py verify` and inspect the actual primary source. HTTP status or keyword presence is not enough. Check scope, current naming, and the exact asset being described.
