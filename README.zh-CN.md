@@ -42,6 +42,8 @@ git clone https://github.com/reacher-z/Awesome-CUA.git
 | [数据集](docs/datasets.md) · **76** | [基础设施](docs/infrastructures.md) · **15** |
 | [基准](docs/benchmarks.md) · **78** | [工具](docs/tools.md) · **19** |
 | [模型与权重版本](docs/models.md) · **92** | [产品](docs/products.md) · **19** · [发布方与品牌](docs/companies.md) · **16** |
+
+**按平台：** [Web](docs/environments/web.md) **439** · [Desktop](docs/environments/desktop.md) **244** · [Windows](docs/environments/windows.md) **46** · [macOS](docs/environments/macos.md) **23** · [Linux](docs/environments/linux.md) **37** · [Android](docs/environments/android.md) **242** · [iOS](docs/environments/ios.md) **17** · [HarmonyOS](docs/environments/harmonyos.md) **1** · [Cross-platform](docs/environments/cross-platform.md) **182**
 <!-- EXPLORE:END -->
 
 覆盖 Web、桌面、Android、iOS、Windows、macOS、Linux 和跨平台工作。主题包括 grounding、屏幕理解、规划、记忆、长流程任务、强化学习、数据生成、安全、鲁棒性和评测。环境分面可以重叠；不会根据模型的基准成绩推定框架支持。

@@ -40,6 +40,8 @@ Evidence through `2026-10-17T11:44:12Z`. 1,369 records have bibliographic verifi
 | [Datasets](docs/datasets.md) · **76** | [Infrastructure](docs/infrastructures.md) · **15** |
 | [Benchmarks](docs/benchmarks.md) · **78** | [Tools](docs/tools.md) · **19** |
 | [Models and checkpoint releases](docs/models.md) · **92** | [Products](docs/products.md) · **19** · [Publishers and brands](docs/companies.md) · **16** |
+
+**By platform:** [Web](docs/environments/web.md) **439** · [Desktop](docs/environments/desktop.md) **244** · [Windows](docs/environments/windows.md) **46** · [macOS](docs/environments/macos.md) **23** · [Linux](docs/environments/linux.md) **37** · [Android](docs/environments/android.md) **242** · [iOS](docs/environments/ios.md) **17** · [HarmonyOS](docs/environments/harmonyos.md) **1** · [Cross-platform](docs/environments/cross-platform.md) **182**
 <!-- EXPLORE:END -->
 
 Coverage spans web, desktop, Android, iOS, Windows, macOS, Linux, and cross-platform work. Topics include grounding, screen understanding, planning, memory, long-horizon workflows, reinforcement learning, data generation, safety, robustness, and evaluation. Environment facets overlap; framework support is not assumed from a model's benchmark results.
