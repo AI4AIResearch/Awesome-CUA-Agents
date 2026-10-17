@@ -237,3 +237,11 @@ test('result cards drop to one column on phones instead of squeezing two',()=>{
   const single=blocks.filter(([,body])=>/(?:^|\})\.resource-grid\{grid-template-columns:1fr\}/.test(body)).map(([width])=>width);
   assert.ok(Math.max(...single)>=560,`single-column cards start at ${Math.max(...single)}px`);
 });
+
+test('header switches to the compact two-row layout before the full nav overflows', () => {
+  const css = readFileSync(new URL('../web/styles.css', import.meta.url), 'utf8');
+  const block = css.match(/@media\(max-width:900px\)\{(.*?)\}\}/s);
+  assert.ok(block, 'expected a 900px header breakpoint');
+  assert.match(block[1], /\.site-header nav\{order:1;flex-basis:100%;[^}]*overflow-x:auto/);
+  assert.match(block[1], /\.header-inner\{[^}]*flex-wrap:wrap/);
+});
