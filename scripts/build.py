@@ -292,13 +292,13 @@ def paper_cell(r, by_id):
     return ", ".join(cells) or "—"
 
 
-def license_cell(r):
+def license_cell(r, lang="en"):
     """Declared licenses per scope; unknown scopes are omitted, never inferred."""
     parts = []
     for scope in ("code", "data", "weights", "document"):
         declared = (r["licenses"].get(scope) or {}).get("declared")
         if declared:
-            parts.append(f"{scope} {md('/'.join(declared) if isinstance(declared, list) else declared)}")
+            parts.append(f"{README_TEXT[lang]['scopes'][scope]} {md('/'.join(declared) if isinstance(declared, list) else declared)}")
     return " · ".join(parts) or "—"
 
 
@@ -523,34 +523,70 @@ def badges(rows, report):
         f"[![Website]({shield('website', 'awesomecua.github.io', '6366f1')})](https://awesomecua.github.io/)"]) + "\n")
 
 
-# README category layout: rows of (left, right) cells; each cell lists (label, generated page, kind). Counts are curated resources.
+# README category layout: rows of (left, right) cells; each cell lists (label key, generated page, kind). Counts are curated resources.
 EXPLORE = [
-    ([("Research by topic", "docs/topics.md", "paper"), ("Full bibliography", "docs/papers.md", "bibliography")], [("Agents", "docs/agents.md", "agent")]),
-    ([("Surveys", "docs/surveys.md", "survey")], [("Frameworks", "docs/frameworks.md", "framework")]),
-    ([("Datasets", "docs/datasets.md", "dataset")], [("Infrastructure", "docs/infrastructures.md", "infrastructure")]),
-    ([("Benchmarks", "docs/benchmarks.md", "benchmark")], [("Tools", "docs/tools.md", "tool")]),
-    ([("Models and checkpoint releases", "docs/models.md", "model")], [("Products", "docs/products.md", "product"), ("Publishers and brands", "docs/companies.md", "company")]),
+    ([("topics", "docs/topics.md", "paper"), ("bibliography", "docs/papers.md", "bibliography")], [("agent", "docs/agents.md", "agent")]),
+    ([("survey", "docs/surveys.md", "survey")], [("framework", "docs/frameworks.md", "framework")]),
+    ([("dataset", "docs/datasets.md", "dataset")], [("infrastructure", "docs/infrastructures.md", "infrastructure")]),
+    ([("benchmark", "docs/benchmarks.md", "benchmark")], [("tool", "docs/tools.md", "tool")]),
+    ([("model", "docs/models.md", "model")], [("product", "docs/products.md", "product"), ("company", "docs/companies.md", "company")]),
 ]
+# Generated README wording per language; resource names and reviewed summaries are never translated.
+README_TEXT = {
+    "en": {"explore_header": "| Research and training | Engineering and industry |",
+        "labels": {"topics": "Research by topic", "bibliography": "Full bibliography", "survey": "Surveys", "dataset": "Datasets", "benchmark": "Benchmarks",
+            "model": "Models and checkpoint releases", "agent": "Agents", "framework": "Frameworks", "infrastructure": "Infrastructure", "tool": "Tools",
+            "product": "Products", "company": "Publishers and brands"},
+        "reviewed_papers": "**{n:,}** reviewed papers", "bibliographic_records": "{n:,} paper and survey records",
+        "kinds": {"benchmark": "Benchmarks", "model": "Models", "dataset": "Datasets", "framework": "Frameworks", "agent": "Agents"},
+        "all": "all {n} →", "highlight_header": "| Resource | Mentions | Environments | Paper | License | Description |",
+        "recent_header": "| Reviewed | Resource | Kind | Environments | Description |", "kind_names": {},
+        "scopes": {"code": "code", "data": "data", "weights": "weights", "document": "document"},
+        "stats": ("**{total:,} resource records** · **{curated:,} curated** · **{arxiv:,} paper and survey records** · **{sources} discovery documents**\n\n"
+            "Evidence through `{as_of}`. {metadata:,} records have bibliographic verification only; {unindexed:,} discovered identifiers remain unresolved. "
+            "{excluded:,} scope exclusions retain their original metadata in the archive. Counts overlap as explained below.")},
+    "zh": {"explore_header": "| 研究与训练 | 工程与产业 |",
+        "labels": {"topics": "按主题浏览研究", "bibliography": "完整论文目录", "survey": "综述", "dataset": "数据集", "benchmark": "基准",
+            "model": "模型与权重版本", "agent": "智能体", "framework": "框架", "infrastructure": "基础设施", "tool": "工具",
+            "product": "产品", "company": "发布方与品牌"},
+        "reviewed_papers": "**{n:,}** 篇已审阅论文", "bibliographic_records": "{n:,} 条论文与综述记录",
+        "kinds": {"benchmark": "基准", "model": "模型", "dataset": "数据集", "framework": "框架", "agent": "智能体"},
+        "all": "全部 {n} 项 →", "highlight_header": "| 资源 | 被提及 | 环境 | 论文 | 许可 | 简介（英文） |",
+        "recent_header": "| 审阅日期 | 资源 | 类型 | 环境 | 简介（英文） |",
+        "kind_names": {"benchmark": "基准", "dataset": "数据集", "model": "模型", "agent": "智能体", "framework": "框架", "tool": "工具",
+            "infrastructure": "基础设施", "product": "产品", "company": "发布方"},
+        "scopes": {"code": "代码", "data": "数据", "weights": "权重", "document": "文档"},
+        "stats": ("**{total:,} 条资源记录** · **{curated:,} 条已审阅** · **{arxiv:,} 条论文与综述记录** · **{sources} 个发现来源文档**\n\n"
+            "证据截至 `{as_of}`。{metadata:,} 条记录仅完成书目核实；{unindexed:,} 个已发现的标识符尚待处理。"
+            "{excluded:,} 条范围排除记录在归档中保留原始元数据。各项计数存在重叠，详见下文。")},
+}
 
 
-def explore(rows, report):
+def stats_block(report, lang="en"):
+    return "\n\n" + README_TEXT[lang]["stats"].format(total=report["total_records"], curated=report["curated_records"], arxiv=report["bibliographic_records"],
+        sources=len(report["sources"]), as_of=report["as_of_utc"], metadata=report["metadata_only_records"], unindexed=report["unindexed_candidates"],
+        excluded=report["excluded_records"]) + "\n\n"
+
+
+def explore(rows, report, lang="en"):
+    text = README_TEXT[lang]
     curated = collections.Counter(r["kind"] for r in rows if r["review_status"] == "curated")
-    def link(label, path, kind):
+    def link(key, path, kind):
+        label = text["labels"][key]
         if kind == "paper":
-            return f"[{label}]({path}) · **{curated[kind]:,}** reviewed papers"
+            return f"[{label}]({path}) · " + text["reviewed_papers"].format(n=curated[kind])
         if kind == "bibliography":
-            return f"[{label}]({path}) · {report['bibliographic_records']:,} paper and survey records"
+            return f"[{label}]({path}) · " + text["bibliographic_records"].format(n=report["bibliographic_records"])
         return f"[{label}]({path}) · **{curated[kind]:,}**"
-    lines = ["| Research and training | Engineering and industry |", "| --- | --- |"]
+    lines = [text["explore_header"], "| --- | --- |"]
     lines += [f"| {' · '.join(link(*item) for item in left)} | {' · '.join(link(*item) for item in right)} |" for left, right in EXPLORE]
     return "\n" + "\n".join(lines) + "\n"
 
 
-HIGHLIGHT_KINDS = [("benchmark", "Benchmarks", "docs/benchmarks.md"), ("model", "Models", "docs/models.md"), ("dataset", "Datasets", "docs/datasets.md"),
-    ("framework", "Frameworks", "docs/frameworks.md"), ("agent", "Agents", "docs/agents.md")]
+HIGHLIGHT_KINDS = [("benchmark", "docs/benchmarks.md"), ("model", "docs/models.md"), ("dataset", "docs/datasets.md"), ("framework", "docs/frameworks.md"), ("agent", "docs/agents.md")]
 
 
-def highlights(rows, edges, limit=6):
+def highlights(rows, edges, limit=6, lang="en"):
     """Rank curated resources by distinct cataloged resources whose reviewed source mentions them; not a quality ranking."""
     by_id = {r["id"]: r for r in rows}
     cited_by = collections.defaultdict(set)
@@ -558,23 +594,25 @@ def highlights(rows, edges, limit=6):
         if edge["target_in_catalog"] and edge["source_id"] != edge["target_id"]:
             cited_by[edge["target_id"]].add(edge["source_id"])
     lines = [""]
-    for kind, label, path in HIGHLIGHT_KINDS:
+    text = README_TEXT[lang]
+    for kind, path in HIGHLIGHT_KINDS:
         curated = [r for r in rows if r["kind"] == kind and r["review_status"] == "curated"]
         ranked = sorted((r for r in curated if cited_by[r["id"]]), key=lambda r: (-len(cited_by[r["id"]]), r["name"].casefold()))[:limit]
         if not ranked:
             continue
-        lines += [f"**{label}** · [all {len(curated)} →]({path})", "", "| Resource | Mentions | Environments | Paper | License | Description |", "| --- | ---: | --- | --- | --- | --- |"]
-        lines += [f"| [{md(r['name'])}]({r['url']}) | {len(cited_by[r['id']])} | {', '.join(r['environments'])} | {paper_cell(r, by_id)} | {license_cell(r)} | {md(r['summary'])} |" for r in ranked]
+        lines += [f"**{text['kinds'][kind]}** · [{text['all'].format(n=len(curated))}]({path})", "", text["highlight_header"], "| --- | ---: | --- | --- | --- | --- |"]
+        lines += [f"| [{md(r['name'])}]({r['url']}) | {len(cited_by[r['id']])} | {', '.join(r['environments'])} | {paper_cell(r, by_id)} | {license_cell(r, lang)} | {md(r['summary'])} |" for r in ranked]
         lines.append("")
     return "\n".join(lines) + "\n"
 
 
-def recently_reviewed(rows, reviewed_at, limit=12):
+def recently_reviewed(rows, reviewed_at, limit=12, lang="en"):
     """Newest editorial approvals of non-paper resources; papers are listed by date in the topic hubs."""
     recent = sorted((r for r in rows if r["review_status"] == "curated" and r["kind"] not in {"paper", "survey"} and reviewed_at.get(r["id"])),
         key=lambda r: (reviewed_at[r["id"]], r["name"].casefold()), reverse=True)[:limit]
-    lines = ["", "| Reviewed | Resource | Kind | Environments | Description |", "| --- | --- | --- | --- | --- |"]
-    lines += [f"| {nowrap(reviewed_at[r['id']][:10])} | [{md(r['name'])}]({r['url']}) | {r['kind']} | {', '.join(r['environments'])} | {md(r['summary'])} |" for r in recent]
+    text = README_TEXT[lang]
+    lines = ["", text["recent_header"], "| --- | --- | --- | --- | --- |"]
+    lines += [f"| {nowrap(reviewed_at[r['id']][:10])} | [{md(r['name'])}]({r['url']}) | {text['kind_names'].get(r['kind'], r['kind'])} | {', '.join(r['environments'])} | {md(r['summary'])} |" for r in recent]
     return "\n".join(lines) + "\n" if recent else "\n"
 
 
@@ -619,11 +657,6 @@ def build(args):
         raise ValueError("\n".join(errors[:30]))
     report = coverage(rows, pending, scope_decisions)
     files = documents(rows, report)
-    stats = (f"\n\n**{report['total_records']:,} resource records** · **{report['curated_records']:,} curated** · "
-        f"**{report['bibliographic_records']:,} paper and survey records** · **{len(report['sources'])} discovery documents**\n\n"
-        f"Evidence through `{report['as_of_utc']}`. {report['metadata_only_records']:,} records have bibliographic verification only; "
-        f"{report['unindexed_candidates']:,} discovered identifiers remain unresolved. "
-        f"{report['excluded_records']:,} scope exclusions retain their original metadata in the archive. Counts overlap as explained below.\n\n")
     files["data/catalog.jsonl"] = "".join(json.dumps(r, ensure_ascii=False, sort_keys=True) + "\n" for r in rows)
     files["data/coverage.json"] = json.dumps(report, ensure_ascii=False, indent=2) + "\n"
     files['data/exclusion-status.json'] = json.dumps(scope_report(scope_decisions),ensure_ascii=False,indent=2)+'\n'
@@ -646,10 +679,12 @@ def build(args):
             edges.append({"id": hashlib.sha256((r["id"] + "\0" + ref["target_id"]).encode()).hexdigest()[:24], "source_id": r["id"], **ref, "target_in_catalog": ref["target_id"] in ids})
     files["data/references.jsonl"] = "".join(json.dumps(e, ensure_ascii=False, sort_keys=True) + "\n" for e in sorted(edges, key=lambda e: e["id"]))
     reviewed_at = {(e.get("id") or editorial_identity(e)[0]): e.get("reviewed_at") for e in read_json(DATA / "editorial.json", []) if e.get("editorial_reviewed")}
-    blocks = {"STATS": stats, "BADGES": badges(rows, report), "EXPLORE": explore(rows, report), "HIGHLIGHTS": highlights(rows, edges), "RECENT": recently_reviewed(rows, reviewed_at)}
-    for filename in ("README.md", "README.zh-CN.md"):
+    shared_badges = badges(rows, report)
+    for filename, lang in (("README.md", "en"), ("README.zh-CN.md", "zh")):
         path = ROOT / filename
         if path.exists():
+            blocks = {"STATS": stats_block(report, lang), "BADGES": shared_badges, "EXPLORE": explore(rows, report, lang),
+                "HIGHLIGHTS": highlights(rows, edges, lang=lang), "RECENT": recently_reviewed(rows, reviewed_at, lang=lang)}
             content = path.read_text()
             for name, body in blocks.items():
                 # A function replacement keeps backslashes in generated Markdown literal.
