@@ -1,6 +1,18 @@
 name: Resource or correction
 description: Suggest a source-backed resource, report a missing asset, or correct a record.
+title: "[resource] "
+labels: ["area:data"]
 body:
+  - type: dropdown
+    id: intent
+    attributes:
+      label: Request type
+      options:
+        - New resource
+        - Missing asset
+        - Correction
+    validations:
+      required: true
   - type: input
     id: resource
     attributes:
@@ -21,3 +33,10 @@ body:
       description: Explain scope, evidence, and any uncertain fields. Distinguish code, data, and weights licenses.
     validations:
       required: true
+  - type: checkboxes
+    id: searched
+    attributes:
+      label: Existing records
+      options:
+        - label: I searched [catalog.jsonl](https://awesomecua.github.io/downloads/catalog.jsonl) and [candidates.jsonl](https://github.com/reacher-z/Awesome-CUA/blob/main/data/candidates.jsonl) for this resource, its aliases, and mirrors.
+          required: true
