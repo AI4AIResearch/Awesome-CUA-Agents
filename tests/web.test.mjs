@@ -80,3 +80,10 @@ test('paper curated-first order puts reviewed recent work before older reviewed 
   assert.ok(reviewed.length>0);assert.ok(reviewed.slice(1).every((r,i)=>(reviewed[i].published_at||'')>=(r.published_at||'')));
   assert.ok(result.slice(reviewed.length).every(r=>r.review_status!=='curated'));
 });
+test('primary navigation stays reachable on narrow screens',()=>{
+  const styles=readFileSync(new URL('../web/styles.css',import.meta.url),'utf8');
+  const narrow=[...styles.matchAll(/@media\(max-width:(\d+)px\)\{/g)].filter(m=>Number(m[1])<=760).map(m=>{let depth=1,i=m.index+m[0].length;const start=i;while(depth)depth+=({'{':1,'}':-1}[styles[i++]]||0);return styles.slice(start,i-1);}).join('');
+  const nav=[...narrow.matchAll(/(?:^|\})\.site-header nav\{([^}]*)\}/g)].map(m=>m[1]).join(';');
+  assert.doesNotMatch(nav,/display:none/);
+  assert.match(nav,/overflow-x:auto/);
+});
