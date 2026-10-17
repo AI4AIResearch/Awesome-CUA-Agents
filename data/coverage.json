@@ -19,79 +19,92 @@
       "id": "github:thudm/autoglm",
       "name": "AutoGLM",
       "url": "https://github.com/THUDM/AutoGLM",
-      "reason": "primary evidence unresolved: HTTP Error 404: Not Found"
+      "reason": "primary evidence unresolved: HTTP Error 404: Not Found; github.com/THUDM/AutoGLM and the GitHub API for THUDM/AutoGLM return 404 with no redirect, so no rename can be recorded; zai-org/AutoGLM is also 404. The AutoGLM paper (arxiv:2411.00820) and Open-AutoGLM (github:zai-org/open-autoglm, a separate repository with GitHub ID 1112189620) are already curated. Keep this path unapproved unless THUDM publishes it.",
+      "cause": "unresolved_evidence"
     },
     {
       "id": "url:df3dc96d9e27b824f6ea",
       "name": "Comet",
       "url": "https://www.perplexity.ai/comet",
-      "reason": "primary evidence unresolved: HTTP Error 403: Forbidden"
+      "reason": "primary evidence unresolved: HTTP Error 403: Forbidden; www.perplexity.ai answers HTTP 403 to the catalog's identified client for /comet and for its blog and help-center paths, and comet.perplexity.ai and perplexity.ai/comet redirect to /comet. No first-party page could be read, so the summary is unchecked; approval needs a first-party source the catalog client can fetch.",
+      "cause": "unresolved_evidence"
     },
     {
       "id": "github:zzxslp/mm-navigator",
       "name": "MM-Navigator",
       "url": "https://github.com/zzxslp/MM-Navigator",
-      "reason": "The fresh README still says code and the evaluation benchmark will be out soon. The public tree contains call_gpt4.py and eval.py, but no benchmark release or usage/dependency documentation sufficient to validate a usable agent artifact. Preserve the paper separately."
+      "reason": "The fresh README still says code and the evaluation benchmark will be out soon. The public tree contains call_gpt4.py and eval.py, but no benchmark release or usage/dependency documentation sufficient to validate a usable agent artifact. Preserve the paper separately.",
+      "cause": "reviewer_hold"
     },
     {
       "id": "github:infixai/infiguiagent",
       "name": "InfiGUIAgent",
       "url": "https://github.com/InfiXAI/InfiGUIAgent",
-      "reason": "The fresh README still explains that third-party training-data restrictions delay the full model release. The repository tree contains only README/images, and the linked Reallm-Labs collection API returns 404; no code or checkpoint release is established."
+      "reason": "The fresh README still explains that third-party training-data restrictions delay the full model release. The repository tree contains only README/images, and the linked Reallm-Labs collection API returns 404; no code or checkpoint release is established.",
+      "cause": "reviewer_hold"
     },
     {
       "id": "github:zju-aces-ise/chatuitest",
       "name": "ChatUITest / GTArena project hub",
       "url": "https://github.com/ZJU-ACES-ISE/ChatUITest",
-      "reason": "The fresh README remains under construction and says the dataset is being organized/uploaded. The tree has only README.md, and the linked GTArena-UI-Defects API and raw card return 401. No access request was made. UIDefectMocker is already cataloged separately."
+      "reason": "The fresh README remains under construction and says the dataset is being organized/uploaded. The tree has only README.md, and the linked GTArena-UI-Defects API and raw card return 401. No access request was made. UIDefectMocker is already cataloged separately.",
+      "cause": "reviewer_hold"
     },
     {
       "id": "github:ethannju/carryon",
       "name": "CarryOn implementation release",
       "url": "https://github.com/Ethannju/carryon",
-      "reason": "Primary README reviewed; implementation release is still pending. The paper is cataloged separately."
+      "reason": "Primary README reviewed; implementation release is still pending. The paper is cataloged separately.",
+      "cause": "reviewer_hold"
     },
     {
       "id": "url:f8c615b8b193ffc4773b",
       "name": "GraceBench task and evaluation release",
       "url": "https://iaie-physicalai.github.io/GraceBench",
-      "reason": "Primary project page reviewed; task definitions, data, and evaluation-code release remain pending. The paper is cataloged separately."
+      "reason": "Primary project page reviewed; task definitions, data, and evaluation-code release remain pending. The paper is cataloged separately.",
+      "cause": "reviewer_hold"
     },
     {
       "id": "github:zackhuiiiii/winspot",
       "name": "WinSpot",
       "url": "https://github.com/zackhuiiiii/WinSpot",
-      "reason": "Primary README and repository tree reviewed; the benchmark data release is still pending."
+      "reason": "Primary README and repository tree reviewed; the benchmark data release is still pending.",
+      "cause": "reviewer_hold"
     },
     {
       "id": "url:72301bf2dec104205c8d",
       "name": "PAE data",
       "url": "https://huggingface.co/datasets/yifeizhou/pae-data",
-      "reason": "Hub metadata and the project README disagree on dataset-license scope; review remains pending without requesting gated access."
+      "reason": "Hub metadata and the project README disagree on dataset-license scope; review remains pending without requesting gated access.",
+      "cause": "reviewer_hold"
     },
     {
       "id": "url:ac62da857db91f68376b",
       "name": "Aguvis-7B-720P checkpoint",
       "url": "https://huggingface.co/xlangai/Aguvis-7B-720P",
-      "reason": "Weight files are listed, but the official README still marks the release in progress and the inspected Hub metadata lacks weight terms; review remains pending."
+      "reason": "Weight files are listed, but the official README still marks the release in progress and the inspected Hub metadata lacks weight terms; review remains pending.",
+      "cause": "reviewer_hold"
     },
     {
       "id": "url:9e89e3332db1770388bc",
       "name": "UGround V1 bounding-box data",
       "url": "https://huggingface.co/datasets/osunlp/UGround-V1-Data-Box",
-      "reason": "Public API identifies the dataset and Parquet manifest, but access is gated=auto and the raw card returns 401. No access request or agreement acceptance was made. Defer curation of a directly usable release until access scope and the full card can be reviewed."
+      "reason": "Public API identifies the dataset and Parquet manifest, but access is gated=auto and the raw card returns 401. No access request or agreement acceptance was made. Defer curation of a directly usable release until access scope and the full card can be reviewed.",
+      "cause": "reviewer_hold"
     },
     {
       "id": "github:agiresearch/litecua",
       "name": "LiteCUA implementation",
       "url": "https://github.com/agiresearch/LiteCUA",
-      "reason": "primary evidence unresolved: HTTP Error 404: Not Found"
+      "reason": "primary evidence unresolved: HTTP Error 404: Not Found; agiresearch/LiteCUA still returns 404 from the GitHub API and its README endpoint, with no redirect, although the AIOS README still links it as the LiteCUA codebase. The Cerebrum README says LiteCUA has been integrated into Cerebrum, the AIOS agent SDK (agiresearch/Cerebrum), which needs its own proposal and review. The paper (arxiv:2505.18829) is curated separately; do not infer a release at this path.",
+      "cause": "unresolved_evidence"
     },
     {
       "id": "url:12d789d450207bd6d5da",
       "name": "Project Mariner",
       "url": "https://labs.google.com/mariner/",
-      "reason": "The Project Mariner page on labs.google.com is a client-rendered sign-in shell whose HTML carries only the title, and the former deepmind.google Project Mariner pages now redirect to the DeepMind homepage. Approval needs a readable first-party product page."
+      "reason": "The Project Mariner page on labs.google.com is a client-rendered sign-in shell whose HTML carries only the title, and the former deepmind.google Project Mariner pages now redirect to the DeepMind homepage. Approval needs a readable first-party product page.",
+      "cause": "reviewer_hold"
     }
   ],
   "uncurated_linked_papers": [],

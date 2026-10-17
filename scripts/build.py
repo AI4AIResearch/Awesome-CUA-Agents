@@ -81,12 +81,13 @@ def source_records(with_scope=False):
             raise ValueError('Paper editorial entry requires its retained canonical bibliography identity: '+rid)
         ev = evidence.get(rid)
         if not editorial.get("editorial_reviewed") or not ev or not ev.get("content_matched") or editorial.get("reviewed_sha256") != ev.get("sha256"):
-            reason = editorial.get("review_note", "editorial review pending")
+            reason, cause = editorial.get("review_note", "editorial review pending"), "reviewer_hold"
             if not ev or not ev.get("content_matched"):
-                reason = "primary evidence unresolved: " + (ev or {}).get("error", "content mismatch")
+                # A failed fetch has no snapshot for the note to go stale against, so the reviewer's decision stays visible.
+                reason, cause = "primary evidence unresolved: " + (ev or {}).get("error", "content mismatch") + ("; " + editorial["review_note"] if editorial.get("review_note") else ""), "unresolved_evidence"
             elif editorial.get("reviewed_sha256") != ev.get("sha256"):
-                reason = "current source snapshot needs editorial review"
-            pending.append({"id": rid, "name": editorial["name"], "url": editorial["url"], "reason": reason})
+                reason, cause = "current source snapshot needs editorial review", "unreviewed_snapshot"
+            pending.append({"id": rid, "name": editorial["name"], "url": editorial["url"], "reason": reason, "cause": cause})
             continue
         base = records.get(rid, {})
         extra = enrichment.get(rid, {})
@@ -126,7 +127,7 @@ def source_records(with_scope=False):
     changes = {row['id'] for row in read_jsonl(DATA/'metadata-updates.jsonl')}
     decisions = resolve_exclusions(records, read_json(DATA/'exclusions.json', []), changes)
     excluded = {row['id'] for row in decisions if row['status']=='excluded'}
-    pending += [{'id':row['id'],'name':records[row['id']]['name'],'url':row['url'],'reason':row['status_reason']} for row in decisions if row['status']=='revalidation_pending']
+    pending += [{'id':row['id'],'name':records[row['id']]['name'],'url':row['url'],'reason':row['status_reason'],'cause':'scope_revalidation'} for row in decisions if row['status']=='revalidation_pending']
     rows = sorted((row for rid,row in records.items() if rid not in excluded), key=lambda r:r['id'])
     rows = attach_repository_aliases(rows, read_json(DATA/'repository-aliases.json', []))
     return (rows,pending,decisions) if with_scope else (rows,pending)
@@ -620,6 +621,12 @@ def matrix_lines(matrix):
     return lines
 
 
+def pending_breakdown(pending):
+    n = collections.Counter(p.get("cause") for p in pending)
+    return (f"{len(pending)} proposals: {n['unresolved_evidence']} with unresolved primary evidence, {n['unreviewed_snapshot']} whose current source snapshot awaits review, "
+        f"{n['reviewer_hold']} held by a reviewer after reading the current source, and {n['scope_revalidation']} awaiting another scope review.")
+
+
 def documents(rows, report):
     files = {}
     by_id = {r["id"]: r for r in rows}
@@ -701,7 +708,7 @@ def documents(rows, report):
         "## License evidence", "", "| Scope | Recorded declarations |", "| --- | ---: |"]
     lines += [f"| {slot} | {n} |" for slot, n in report["license_declarations_by_scope"].items()]
     lines += ["", "A code license never fills a data or weights field. Hub declarations are publisher metadata, not independently audited legal conclusions. Missing values remain null.", "",
-        "## Pending editorial proposals", "", "| Resource | Reason |", "| --- | --- |"]
+        "## Pending editorial proposals", "", pending_breakdown(report["pending_editorial"]), "", "| Resource | Reason |", "| --- | --- |"]
     for p in report["pending_editorial"]:
         lines.append(f"| [{md(p['name'])}]({p['url']}) | {md(p['reason'])} |")
     linked = report.get("uncurated_linked_papers", [])
