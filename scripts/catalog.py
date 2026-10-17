@@ -45,7 +45,14 @@ def read_json(path, default=None):
 
 
 def read_jsonl(path):
-    return [json.loads(line) for line in path.read_text().splitlines() if line.strip()] if path.exists() else []
+    rows = []
+    for number, line in enumerate(path.read_text().splitlines() if path.exists() else [], 1):
+        if line.strip():
+            try:
+                rows.append(json.loads(line))
+            except json.JSONDecodeError as error:
+                raise ValueError(f"{path}:{number}: {error.msg} (column {error.colno})") from error
+    return rows
 
 
 def write_json(path, value):
