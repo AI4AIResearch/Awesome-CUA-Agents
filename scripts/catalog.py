@@ -27,7 +27,12 @@ ROOT = Path(__file__).resolve().parents[1]
 CACHE = ROOT / ".cache" / "http"
 DATA = ROOT / "data"
 UA = "Awesome-CUA/0.1 (+https://github.com/reacher-z/Awesome-CUA)"
-ARXIV_RE = re.compile(r"(?:arxiv\.org/(?:abs|pdf|html)/|huggingface\.co/papers/)(\d{4}\.\d{4,5})(?:v\d+)?", re.I)
+# Matched at the start of the URL path only, so a paper link in a query or fragment is not the URL's identity.
+# The ID must end at a non-word character: extra digits or a malformed version never truncate into another ID.
+ARXIV_RE = re.compile(r"/(?:abs|pdf|html)/(\d{4}\.\d{4,5})(?:v\d+)?(?!\w)", re.I)
+HF_PAPER_RE = re.compile(r"/papers/(\d{4}\.\d{4,5})(?:v\d+)?(?!\w)", re.I)
+# A link may contain balanced "(...)", as in Mercury_(planet); the ")" closing a Markdown link is not part of it.
+LINK_RE = re.compile(r"https?://(?:[^\s<>\[\]()\"']|\([^\s<>\[\]()\"']*\)|\()+")
 KINDS = {"paper", "survey", "model", "dataset", "benchmark", "agent", "framework", "infrastructure", "product", "company", "tool", "learning"}
 ENVIRONMENTS = {"web", "desktop", "android", "ios", "harmonyos", "windows", "macos", "linux", "cross-platform", "unspecified"}
 STATUSES = {"curated", "metadata_verified"}
@@ -116,11 +121,11 @@ def fetch(url, refresh=False):
 def canonical(url, *, allow_doi=False):
     """Resource identity: arXiv version folding, GitHub repo folding, URL cleanup."""
     if not isinstance(url,str):return None
-    candidate=html.unescape(url).strip().replace('http://','https://',1)
+    candidate=html.unescape(url).strip()
     try:
         doi_parts=urllib.parse.urlsplit(candidate)
         if (doi_parts.hostname or '').lower() in {'doi.org','www.doi.org','dx.doi.org'}:
-            if not allow_doi or doi_parts.scheme!='https' or doi_parts.username is not None or doi_parts.password is not None:
+            if not allow_doi or doi_parts.scheme not in {'http','https'} or doi_parts.username is not None or doi_parts.password is not None:
                 return None
             if any(not key.startswith('utm_') for key,_ in urllib.parse.parse_qsl(doi_parts.query)):
                 return None
@@ -130,16 +135,19 @@ def canonical(url, *, allow_doi=False):
             return 'url:'+hashlib.sha256(clean.encode()).hexdigest()[:20],clean,'url'
     except (ValueError,UnicodeError):
         return None
-    url = html.unescape(url).strip().rstrip(".,;:)").replace("http://", "https://", 1)
+    url = html.unescape(url).strip()
+    # Trailing prose punctuation is not part of a link; a ")" is only when it closes nothing in the URL.
+    while url[-1:] in {".", ",", ";", ":"} or url[-1:] == ")" and url.count(")") > url.count("("):
+        url = url[:-1]
     try:
         parts = urllib.parse.urlsplit(url)
     except ValueError:
         return None
-    if parts.scheme != "https" or not parts.netloc:
+    if parts.scheme not in {"http", "https"} or not parts.netloc:
         return None
     host = parts.hostname.lower() if parts.hostname else ""
     if host in {"arxiv.org", "www.arxiv.org", "export.arxiv.org", "huggingface.co"}:
-        match = ARXIV_RE.search(url)
+        match = (HF_PAPER_RE if host == "huggingface.co" else ARXIV_RE).match(parts.path)
         if match:
             aid = match.group(1)
             return f"arxiv:{aid}", f"https://arxiv.org/abs/{aid}", "arxiv"
@@ -202,7 +210,7 @@ def source_links(source, body):
     for line_no, line in enumerate(body.decode('utf-8', errors='replace').splitlines(), 1):
         if line.startswith('#'):
             heading = re.sub(r'[#*_]', '', line).strip()[:140]
-        result.extend((line_no, heading, url) for url in re.findall(r"https?://[^\s<>\]\[\)\"']+", line))
+        result.extend((line_no, heading, url) for url in LINK_RE.findall(line))
     return result
 
 
@@ -636,7 +644,7 @@ def enrich(args):
         if provider == "arxiv":
             # A batched API response is not a paper's reference list.
             return result
-        for link in re.findall(r"https?://[^\s<>\]\[\)\"']+", raw):
+        for link in LINK_RE.findall(raw):
             parsed = canonical(link)
             if not parsed:
                 continue
