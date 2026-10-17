@@ -65,6 +65,22 @@ test('unrecognized sort/type and invalid pages fall back safely',()=>{
   assert.equal(parseState('?page=Infinity').page,1);
   assert.ok(PAGE_SIZE>0);
 });
+test('numbered pagination keeps first, last and neighbouring pages one click away',async()=>{
+  const {pageWindow}=await import('../web/catalog-core.js');
+  assert.deepEqual(pageWindow(1,1),[1]);
+  assert.deepEqual(pageWindow(1,3),[1,2,3]);
+  assert.deepEqual(pageWindow(1,107),[1,2,null,107]);
+  assert.deepEqual(pageWindow(4,107),[1,2,3,4,5,null,107]);
+  assert.deepEqual(pageWindow(53,107),[1,null,52,53,54,null,107]);
+  assert.deepEqual(pageWindow(105,107),[1,null,104,105,106,107]);
+  assert.deepEqual(pageWindow(107,107),[1,null,106,107]);
+  for(let pages=1;pages<=12;pages++)for(let page=1;page<=pages;page++){
+    const shown=pageWindow(page,pages),numbers=shown.filter(n=>n!==null);
+    for(const n of [1,page-1,page,page+1,pages].filter(n=>n>=1&&n<=pages))assert.ok(numbers.includes(n),`${page}/${pages} shows ${n}`);
+    assert.deepEqual(numbers,[...numbers].sort((a,b)=>a-b));
+    shown.forEach((n,i)=>{if(n===null)assert.ok(shown[i+1]-shown[i-1]>2,`${page}/${pages} hides at least two pages behind a gap`);});
+  }
+});
 test('untrusted names and source URLs cannot inject active HTML',()=>{
   assert.equal(escapeHTML('<img src=x onerror="alert(1)">'),'&lt;img src=x onerror=&quot;alert(1)&quot;&gt;');
   assert.equal(safeURL('javascript:alert(1)'),'#');
@@ -189,6 +205,36 @@ test('small secondary text meets WCAG AA contrast on its surface',()=>{
   const pairs=[['.brand-label',white],['.hero-caption',bg],['.map-label',map],['.map-coordinates',map],['.map-foot',map],['.map-node small',white],['.section-eyebrow',declaration('.about-section','background')],['.sidebar-label',bg],['.category-count',bg],['.select-wrap>span',white],['.search-box input::placeholder',white],['.popular-topics',bg],['.popular-topics>button',declaration('.popular-topics>button','background')],['.card-tags span',white],['.card-bottom',white],['.card-bottom.is-curated',white],['.catalog-footnote',bg],['footer',bg],['.license-item span',white],['.coverage-table th',white],['.fact-list dt',white]];
   for(const kind of ['','.resource-card[data-kind=model] ','.resource-card[data-kind=dataset] ','.resource-card[data-kind=benchmark] ','.resource-card[data-kind=agent] '])pairs.push([kind+'.resource-monogram',declaration(kind+'.resource-monogram','background')]);
   for(const [selector,surface] of pairs)assert.ok(contrast(declaration(selector,'color'),surface)>=4.5,`${selector} is ${contrast(declaration(selector,'color'),surface).toFixed(2)}:1`);
+});
+test('pagination is a nav of numbered page buttons with the current page marked in both languages',async()=>{
+  const current='.pagination .page-numbers button[aria-current=page]';
+  assert.ok(contrast(declaration(current,'color'),declaration(current,'background'))>=4.5);
+  const size=css.match(/\}\.pagination \.page-numbers button\{([^}]*)\}/)[1];
+  for(const prop of ['min-width','min-height'])assert.ok(Number(size.match(new RegExp(`(?:^|;)${prop}:(\\d+)px`))?.[1])>=24,prop);
+  assert.match(readFileSync(new URL('../web/index.html',import.meta.url),'utf8'),/<nav id="pagination" class="pagination" aria-label="[^"]+">/);
+  const coverage=JSON.parse(readFileSync(new URL('../data/coverage.json',import.meta.url),'utf8'));
+  const records=Array.from({length:PAGE_SIZE*7+1},(_,i)=>({id:`url:page-${i}`,name:`Fixture ${String(i).padStart(3,'0')}`,kind:'tool',url:'https://example.org/',page_url:`/resources/page-${i}/`,aliases:[],environments:['web'],topics:[],authors:[],summary:'Fixture.',review_status:'curated',published_at:null,scope:'core',paper_version:null,paper_source_url:null,paper_date:null,related_count:0,incoming_relations:[]}));
+  const keys=['document','window','location','history','localStorage','fetch'],saved=keys.map(key=>[key,Object.getOwnPropertyDescriptor(globalThis,key)]);
+  const boot=async(search,name)=>{
+    const elements=new Map(),element=selector=>{if(!elements.has(selector))elements.set(selector,{dataset:{},listeners:{},classList:{toggle(){}},addEventListener(type,fn){(this.listeners[type]??=[]).push(fn);},setAttribute(){},scrollIntoView(){},showModal(){},close(){}});return elements.get(selector);};
+    const globals={document:{documentElement:{},body:{classList:{toggle(){}}},addEventListener(){},querySelector:element,querySelectorAll:()=>[]},window:{addEventListener(){}},location:{search,pathname:'/',hash:''},history:{replaceState(){}},localStorage:{getItem:()=>null,setItem(){}},fetch:async()=>({ok:true,json:async()=>({coverage,records:structuredClone(records)})})};
+    for(const [key,value] of Object.entries(globals))Object.defineProperty(globalThis,key,{value,configurable:true,writable:true});
+    await import(`../web/app.js?${name}`);await new Promise(resolve=>setImmediate(resolve));
+    return element('#pagination');
+  };
+  try {
+    const nav=await boot('?page=4','pager-en'),html=()=>nav.innerHTML;
+    assert.deepEqual([...html().matchAll(/<button type="button" data-page="(\d+)"/g)].map(m=>Number(m[1])),[3,1,2,3,4,5,8,5]);
+    assert.match(html(),/data-page="4" aria-label="Page 4" aria-current="page">4<\/button>/);
+    assert.equal(html().match(/aria-current/g).length,1);
+    assert.match(html(),/<span class="page-gap" aria-hidden="true">…<\/span><button type="button" data-page="8"/);
+    nav.listeners.click[0]({target:{closest:()=>({disabled:false,dataset:{page:'8'}})}});
+    assert.match(html(),/data-page="8" aria-label="Page 8" aria-current="page">8<\/button><\/span><button type="button" data-page="9" disabled>/);
+    const zh=await boot('?page=2&lang=zh','pager-zh');
+    assert.match(zh.innerHTML,/data-page="2" aria-label="第 2 页" aria-current="page">2<\/button>/);
+  } finally {
+    for(const [key,descriptor] of saved)if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];
+  }
 });
 test('primary navigation stays reachable on narrow screens',()=>{
   const styles=readFileSync(new URL('../web/styles.css',import.meta.url),'utf8');
