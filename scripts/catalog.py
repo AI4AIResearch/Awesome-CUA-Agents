@@ -361,9 +361,17 @@ def search_arxiv(args):
         "pages": pages, "warning": "A title query is a discovery population, not the whole field. Search results are metadata-verified, not editorially curated."})
 
 
+def require_editorial_identities(rows):
+    """Stop before any network work if an editorial URL has no resource identity."""
+    invalid = [f"INVALID {row.get('name', '')}: {row['url']} has no canonical identity" for row in rows if not canonical(row["url"])]
+    if invalid:
+        raise SystemExit("\n".join(invalid))
+
+
 def verify_editorial(args):
     """Retrieve first-party evidence for editorial entries; never promote on HTTP status alone."""
     rows = read_json(DATA / "editorial.json", [])
+    require_editorial_identities(rows)
     previous = {r["id"]: r for r in read_jsonl(DATA / "primary-evidence.jsonl")}
 
     def one(row):
@@ -417,6 +425,7 @@ def cached_body(url):
 def enrich(args):
     """Extract declared licenses and outbound references without inferring semantic relationships."""
     rows = read_json(DATA / "editorial.json", [])
+    require_editorial_identities(rows)
     evidence = {r["id"]: r for r in read_jsonl(DATA / "primary-evidence.jsonl")}
     previous = {r["id"]: r for r in read_jsonl(DATA / "enrichment.jsonl")}
 
