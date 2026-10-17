@@ -10,6 +10,8 @@ python3 scripts/scan.py
 
 One scan refreshes the discovery documents and Hugging Face paper searches, queries recent arXiv titles, verifies missing paper identities, rebuilds the catalog, and validates it. New rows remain metadata-only or candidates. A changed existing paper title/author/date is recorded in `data/metadata-updates.jsonl` for review instead of overwriting the reviewed snapshot. Partial source failures are recorded explicitly; a failed build or validation prevents publication.
 
+The discovery registry includes first-party release pages as well as research collections. Refreshing a release page can discover newly linked code, data, or checkpoints, but does not approve those assets or rewrite their reviewed specifications. Announced releases such as CarryOn and GraceBench remain in the editorial queue until the recorded release gap is resolved and reviewed.
+
 ```bash
 # Re-fetch the declared discovery documents and update provenance.
 python3 scripts/catalog.py discover --refresh

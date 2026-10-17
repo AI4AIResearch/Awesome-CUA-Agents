@@ -8,9 +8,9 @@
 
 <!-- STATS:START -->
 
-**1,993 resource records** · **569 curated** · **1,724 arXiv records** · **29 discovery documents**
+**2,010 resource records** · **606 curated** · **1,724 arXiv records** · **36 discovery documents**
 
-Evidence through `2026-10-16T13:29:25Z`. 1,424 records have bibliographic verification only; 801 discovered identifiers remain unresolved. 40 scope exclusions retain their original metadata in the archive. Counts overlap as explained below.
+Evidence through `2026-10-17T01:52:51Z`. 1,404 records have bibliographic verification only; 822 discovered identifiers remain unresolved. 40 scope exclusions retain their original metadata in the archive. Counts overlap as explained below.
 
 <!-- STATS:END -->
 

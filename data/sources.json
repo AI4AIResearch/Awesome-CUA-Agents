@@ -340,5 +340,89 @@
       "datasets",
       "release-monitoring"
     ]
+  },
+  {
+    "id": "release-groundgui",
+    "name": "GroundGUI — first-party releases",
+    "url": "https://raw.githubusercontent.com/PrentisAI/GroundGUI/HEAD/README.md",
+    "homepage": "https://github.com/PrentisAI/GroundGUI",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "models",
+      "datasets",
+      "release-monitoring"
+    ]
+  },
+  {
+    "id": "release-seg2click",
+    "name": "Seg2Click — first-party releases",
+    "url": "https://raw.githubusercontent.com/jcwang0602/Seg2Click/HEAD/README.md",
+    "homepage": "https://github.com/jcwang0602/Seg2Click",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "models",
+      "release-monitoring"
+    ]
+  },
+  {
+    "id": "release-switchmem",
+    "name": "SwitchMem — first-party releases",
+    "url": "https://raw.githubusercontent.com/dmis-lab/SwitchMem/HEAD/README.md",
+    "homepage": "https://github.com/dmis-lab/SwitchMem",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "release-monitoring"
+    ]
+  },
+  {
+    "id": "release-openmobile2",
+    "name": "OpenMobile-2 — first-party releases",
+    "url": "https://raw.githubusercontent.com/OpenMobile2/OpenMobile2-Code/HEAD/README.md",
+    "homepage": "https://github.com/OpenMobile2/OpenMobile2-Code",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "models",
+      "datasets",
+      "release-monitoring"
+    ]
+  },
+  {
+    "id": "release-mobilegympp",
+    "name": "MobileGym++ — first-party releases",
+    "url": "https://raw.githubusercontent.com/OpenMobile2/MobileGym-plusplus/HEAD/README.md",
+    "homepage": "https://github.com/OpenMobile2/MobileGym-plusplus",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "benchmarks",
+      "release-monitoring"
+    ]
+  },
+  {
+    "id": "release-carryon",
+    "name": "CarryOn — first-party releases",
+    "url": "https://raw.githubusercontent.com/Ethannju/carryon/HEAD/README.md",
+    "homepage": "https://github.com/Ethannju/carryon",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "release-monitoring"
+    ]
+  },
+  {
+    "id": "release-gracebench",
+    "name": "GraceBench — first-party releases",
+    "url": "https://iaie-physicalai.github.io/GraceBench",
+    "homepage": "https://iaie-physicalai.github.io/GraceBench",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "benchmarks",
+      "release-monitoring"
+    ]
   }
 ]

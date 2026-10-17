@@ -1,14 +1,14 @@
 {
-  "as_of_utc": "2026-10-16T13:29:25Z",
-  "total_records": 1993,
-  "curated_records": 569,
+  "as_of_utc": "2026-10-17T01:52:51Z",
+  "total_records": 2010,
+  "curated_records": 606,
   "bibliographic_records": 1724,
   "arxiv_archive_records": 1764,
   "excluded_records": 40,
   "exclusion_revalidation_pending": 0,
-  "metadata_only_records": 1424,
-  "discovery_identifiers": 2763,
-  "unindexed_candidates": 801,
+  "metadata_only_records": 1404,
+  "discovery_identifiers": 2797,
+  "unindexed_candidates": 822,
   "pending_editorial": [
     {
       "id": "github:mobilellm/autodroid-v2",
@@ -57,37 +57,49 @@
       "name": "ChatUITest / GTArena project hub",
       "url": "https://github.com/ZJU-ACES-ISE/ChatUITest",
       "reason": "current source snapshot needs editorial review"
+    },
+    {
+      "id": "github:ethannju/carryon",
+      "name": "CarryOn implementation release",
+      "url": "https://github.com/Ethannju/carryon",
+      "reason": "Primary README reviewed; implementation release is still pending. The paper is cataloged separately."
+    },
+    {
+      "id": "url:f8c615b8b193ffc4773b",
+      "name": "GraceBench task and evaluation release",
+      "url": "https://iaie-physicalai.github.io/GraceBench",
+      "reason": "Primary project page reviewed; task definitions, data, and evaluation-code release remain pending. The paper is cataloged separately."
     }
   ],
   "by_kind": {
     "agent": 30,
-    "benchmark": 60,
+    "benchmark": 61,
     "company": 16,
-    "dataset": 43,
-    "framework": 31,
+    "dataset": 47,
+    "framework": 35,
     "infrastructure": 12,
-    "model": 48,
+    "model": 56,
     "paper": 1713,
     "product": 19,
     "survey": 11,
     "tool": 10
   },
   "curated_by_environment": {
-    "android": 117,
-    "cross-platform": 138,
-    "desktop": 130,
+    "android": 129,
+    "cross-platform": 147,
+    "desktop": 138,
     "harmonyos": 1,
     "ios": 13,
-    "linux": 11,
+    "linux": 13,
     "macos": 9,
-    "unspecified": 59,
-    "web": 172,
+    "unspecified": 66,
+    "web": 191,
     "windows": 20
   },
   "license_declarations_by_scope": {
-    "code": 122,
-    "data": 27,
-    "weights": 14,
+    "code": 126,
+    "data": 30,
+    "weights": 22,
     "document": 0
   },
   "sources": [
@@ -98,7 +110,7 @@
       "snapshot": {
         "id": "showlab-gui",
         "url": "https://raw.githubusercontent.com/showlab/Awesome-GUI-Agent/main/README.md",
-        "retrieved_at": "2026-10-17T01:45:01Z",
+        "retrieved_at": "2026-10-17T01:54:50Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/showlab/Awesome-GUI-Agent/main/README.md",
@@ -120,7 +132,7 @@
       "snapshot": {
         "id": "zju-gui",
         "url": "https://raw.githubusercontent.com/ZJU-REAL/Awesome-GUI-Agents/main/README.md",
-        "retrieved_at": "2026-10-17T01:45:01Z",
+        "retrieved_at": "2026-10-17T01:54:50Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/ZJU-REAL/Awesome-GUI-Agents/main/README.md",
@@ -142,7 +154,7 @@
       "snapshot": {
         "id": "os-agent-survey",
         "url": "https://raw.githubusercontent.com/OS-Agent-Survey/OS-Agent-Survey/main/README.md",
-        "retrieved_at": "2026-10-17T01:45:01Z",
+        "retrieved_at": "2026-10-17T01:54:51Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/OS-Agent-Survey/OS-Agent-Survey/main/README.md",
@@ -164,7 +176,7 @@
       "snapshot": {
         "id": "wjhou-cua",
         "url": "https://raw.githubusercontent.com/wjhou/awesome-computer-use-agents/main/README.md",
-        "retrieved_at": "2026-10-17T01:45:01Z",
+        "retrieved_at": "2026-10-17T01:54:51Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/wjhou/awesome-computer-use-agents/main/README.md",
@@ -186,7 +198,7 @@
       "snapshot": {
         "id": "steel-web",
         "url": "https://raw.githubusercontent.com/steel-dev/awesome-web-agents/main/README.md",
-        "retrieved_at": "2026-10-17T01:45:01Z",
+        "retrieved_at": "2026-10-17T01:54:51Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/steel-dev/awesome-web-agents/main/README.md",
@@ -208,7 +220,7 @@
       "snapshot": {
         "id": "steel-web-archive",
         "url": "https://raw.githubusercontent.com/steel-dev/awesome-web-agents/main/ARCHIVE.md",
-        "retrieved_at": "2026-10-17T01:45:01Z",
+        "retrieved_at": "2026-10-17T01:54:51Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/steel-dev/awesome-web-agents/main/ARCHIVE.md",
@@ -230,7 +242,7 @@
       "snapshot": {
         "id": "gui-datasets",
         "url": "https://raw.githubusercontent.com/Khang-9966/Computer-Browser-Phone-Use-Agent-Datasets/main/README.md",
-        "retrieved_at": "2026-10-17T01:45:01Z",
+        "retrieved_at": "2026-10-17T01:54:51Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/Khang-9966/Computer-Browser-Phone-Use-Agent-Datasets/main/README.md",
@@ -252,7 +264,7 @@
       "snapshot": {
         "id": "delunn-multimodal",
         "url": "https://raw.githubusercontent.com/DeLunnLi/Awesome-Multimodal-GUI-Agents/main/README.md",
-        "retrieved_at": "2026-10-17T01:45:01Z",
+        "retrieved_at": "2026-10-17T01:54:52Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/DeLunnLi/Awesome-Multimodal-GUI-Agents/main/README.md",
@@ -274,7 +286,7 @@
       "snapshot": {
         "id": "tianyuan-cua",
         "url": "https://raw.githubusercontent.com/TianyuanYang/awesome-computer-use/main/README.md",
-        "retrieved_at": "2026-10-17T01:45:02Z",
+        "retrieved_at": "2026-10-17T01:54:52Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/TianyuanYang/awesome-computer-use/main/README.md",
@@ -296,7 +308,7 @@
       "snapshot": {
         "id": "cdxeve-cua",
         "url": "https://raw.githubusercontent.com/cdxeve/awesome-computer-use-agents/main/README.md",
-        "retrieved_at": "2026-10-17T01:45:02Z",
+        "retrieved_at": "2026-10-17T01:54:52Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/cdxeve/awesome-computer-use-agents/main/README.md",
@@ -318,7 +330,7 @@
       "snapshot": {
         "id": "supernal-gui",
         "url": "https://raw.githubusercontent.com/supernalintelligence/Awesome-Gui-Agents/main/README.md",
-        "retrieved_at": "2026-10-17T01:45:02Z",
+        "retrieved_at": "2026-10-17T01:54:52Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/supernalintelligence/Awesome-Gui-Agents/main/README.md",
@@ -340,7 +352,7 @@
       "snapshot": {
         "id": "yearly-gui",
         "url": "https://raw.githubusercontent.com/qy0720/awesome-yearly-gui-agents/main/README.md",
-        "retrieved_at": "2026-10-17T01:45:02Z",
+        "retrieved_at": "2026-10-17T01:54:53Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/qy0720/awesome-yearly-gui-agents/main/README.md",
@@ -362,7 +374,7 @@
       "snapshot": {
         "id": "osu-gui",
         "url": "https://raw.githubusercontent.com/OSU-NLP-Group/GUI-Agents-Paper-List/main/README.md",
-        "retrieved_at": "2026-10-17T01:45:02Z",
+        "retrieved_at": "2026-10-17T01:54:53Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/OSU-NLP-Group/GUI-Agents-Paper-List/main/README.md",
@@ -373,7 +385,7 @@
       },
       "discovered": 544,
       "indexed": 486,
-      "curated": 41,
+      "curated": 53,
       "excluded": 0,
       "unindexed": 58
     },
@@ -384,7 +396,7 @@
       "snapshot": {
         "id": "opendilab-ui",
         "url": "https://raw.githubusercontent.com/opendilab/awesome-ui-agents/main/README.md",
-        "retrieved_at": "2026-10-17T01:45:03Z",
+        "retrieved_at": "2026-10-17T01:54:53Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/opendilab/awesome-ui-agents/main/README.md",
@@ -406,7 +418,7 @@
       "snapshot": {
         "id": "jin-gui-hub",
         "url": "https://raw.githubusercontent.com/jin-s13/awesome-gui-agent-hub/main/AWESOME.md",
-        "retrieved_at": "2026-10-17T01:45:03Z",
+        "retrieved_at": "2026-10-17T01:54:53Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/jin-s13/awesome-gui-agent-hub/main/AWESOME.md",
@@ -417,7 +429,7 @@
       },
       "discovered": 206,
       "indexed": 203,
-      "curated": 26,
+      "curated": 30,
       "excluded": 0,
       "unindexed": 3
     },
@@ -428,7 +440,7 @@
       "snapshot": {
         "id": "zju-iclr26",
         "url": "https://raw.githubusercontent.com/ZJU-REAL/Awesome-GUI-Agents/main/ICLR2026/Paperlist.md",
-        "retrieved_at": "2026-10-17T01:45:03Z",
+        "retrieved_at": "2026-10-17T01:54:53Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/ZJU-REAL/Awesome-GUI-Agents/main/ICLR2026/Paperlist.md",
@@ -450,7 +462,7 @@
       "snapshot": {
         "id": "mobile-gui",
         "url": "https://raw.githubusercontent.com/dqtz5vpvj9-create/awesome-mobile-gui-agents/main/README.md",
-        "retrieved_at": "2026-10-17T01:45:03Z",
+        "retrieved_at": "2026-10-17T01:54:54Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/dqtz5vpvj9-create/awesome-mobile-gui-agents/main/README.md",
@@ -472,7 +484,7 @@
       "snapshot": {
         "id": "phone-gui",
         "url": "https://raw.githubusercontent.com/PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents/master/README.md",
-        "retrieved_at": "2026-10-17T01:45:03Z",
+        "retrieved_at": "2026-10-17T01:54:54Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents/master/README.md",
@@ -494,7 +506,7 @@
       "snapshot": {
         "id": "mobile-agents",
         "url": "https://raw.githubusercontent.com/aialt/awesome-mobile-agents/main/README.md",
-        "retrieved_at": "2026-10-17T01:45:03Z",
+        "retrieved_at": "2026-10-17T01:54:54Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/aialt/awesome-mobile-agents/main/README.md",
@@ -516,7 +528,7 @@
       "snapshot": {
         "id": "web-research",
         "url": "https://raw.githubusercontent.com/albzni/Awesome-LLM-based-Web-Agent-and-Tools/main/README.md",
-        "retrieved_at": "2026-10-17T01:45:03Z",
+        "retrieved_at": "2026-10-17T01:54:54Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/albzni/Awesome-LLM-based-Web-Agent-and-Tools/main/README.md",
@@ -538,7 +550,7 @@
       "snapshot": {
         "id": "ranpox-cua",
         "url": "https://raw.githubusercontent.com/ranpox/awesome-computer-use/main/README.md",
-        "retrieved_at": "2026-10-17T01:45:04Z",
+        "retrieved_at": "2026-10-17T01:54:55Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/ranpox/awesome-computer-use/main/README.md",
@@ -560,7 +572,7 @@
       "snapshot": {
         "id": "release-fara",
         "url": "https://raw.githubusercontent.com/microsoft/fara/HEAD/README.md",
-        "retrieved_at": "2026-10-17T01:45:04Z",
+        "retrieved_at": "2026-10-17T01:54:55Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/microsoft/fara/HEAD/README.md",
@@ -582,7 +594,7 @@
       "snapshot": {
         "id": "release-ui-venus",
         "url": "https://raw.githubusercontent.com/inclusionAI/UI-Venus/HEAD/README.md",
-        "retrieved_at": "2026-10-17T01:45:04Z",
+        "retrieved_at": "2026-10-17T01:54:55Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/inclusionAI/UI-Venus/HEAD/README.md",
@@ -604,7 +616,7 @@
       "snapshot": {
         "id": "release-opengvlab-scalecua",
         "url": "https://raw.githubusercontent.com/OpenGVLab/ScaleCUA/HEAD/README.md",
-        "retrieved_at": "2026-10-17T01:45:04Z",
+        "retrieved_at": "2026-10-17T01:54:55Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/OpenGVLab/ScaleCUA/HEAD/README.md",
@@ -626,7 +638,7 @@
       "snapshot": {
         "id": "release-thudm-scalecua",
         "url": "https://raw.githubusercontent.com/THUDM/SCALE-CUA/HEAD/README.md",
-        "retrieved_at": "2026-10-17T01:45:04Z",
+        "retrieved_at": "2026-10-17T01:54:55Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/THUDM/SCALE-CUA/HEAD/README.md",
@@ -648,7 +660,7 @@
       "snapshot": {
         "id": "release-showui-pi",
         "url": "https://raw.githubusercontent.com/showlab/showui-pi/HEAD/README.md",
-        "retrieved_at": "2026-10-17T01:45:04Z",
+        "retrieved_at": "2026-10-17T01:54:56Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/showlab/showui-pi/HEAD/README.md",
@@ -670,7 +682,7 @@
       "snapshot": {
         "id": "release-opencua",
         "url": "https://raw.githubusercontent.com/xlang-ai/OpenCUA/HEAD/README.md",
-        "retrieved_at": "2026-10-17T01:45:04Z",
+        "retrieved_at": "2026-10-17T01:54:56Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/xlang-ai/OpenCUA/HEAD/README.md",
@@ -692,7 +704,7 @@
       "snapshot": {
         "id": "release-webdreamer",
         "url": "https://raw.githubusercontent.com/OSU-NLP-Group/WebDreamer/HEAD/README.md",
-        "retrieved_at": "2026-10-17T01:45:05Z",
+        "retrieved_at": "2026-10-17T01:54:56Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/OSU-NLP-Group/WebDreamer/HEAD/README.md",
@@ -714,7 +726,7 @@
       "snapshot": {
         "id": "release-nnetnav",
         "url": "https://raw.githubusercontent.com/MurtyShikhar/NNetnav/HEAD/README.md",
-        "retrieved_at": "2026-10-17T01:45:05Z",
+        "retrieved_at": "2026-10-17T01:54:56Z",
         "ok": true,
         "status": 200,
         "final_url": "https://raw.githubusercontent.com/MurtyShikhar/NNetnav/HEAD/README.md",
@@ -728,6 +740,160 @@
       "curated": 2,
       "excluded": 0,
       "unindexed": 4
+    },
+    {
+      "id": "release-groundgui",
+      "name": "GroundGUI — first-party releases",
+      "url": "https://github.com/PrentisAI/GroundGUI",
+      "snapshot": {
+        "id": "release-groundgui",
+        "url": "https://raw.githubusercontent.com/PrentisAI/GroundGUI/HEAD/README.md",
+        "retrieved_at": "2026-10-17T01:54:56Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/PrentisAI/GroundGUI/HEAD/README.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "a495bb4c86cf54cd5e2276433cfecb401fd133287406b1a7e04c3eaaac6305ac",
+        "bytes": 14195,
+        "unique_resources": 11
+      },
+      "discovered": 11,
+      "indexed": 6,
+      "curated": 6,
+      "excluded": 0,
+      "unindexed": 5
+    },
+    {
+      "id": "release-seg2click",
+      "name": "Seg2Click — first-party releases",
+      "url": "https://github.com/jcwang0602/Seg2Click",
+      "snapshot": {
+        "id": "release-seg2click",
+        "url": "https://raw.githubusercontent.com/jcwang0602/Seg2Click/HEAD/README.md",
+        "retrieved_at": "2026-10-17T01:54:56Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/jcwang0602/Seg2Click/HEAD/README.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "2316acbef1207925b10b4770e14bdf69f6f4b6b3bc0ddb12e6be107d6f1425da",
+        "bytes": 12270,
+        "unique_resources": 11
+      },
+      "discovered": 11,
+      "indexed": 7,
+      "curated": 7,
+      "excluded": 0,
+      "unindexed": 4
+    },
+    {
+      "id": "release-switchmem",
+      "name": "SwitchMem — first-party releases",
+      "url": "https://github.com/dmis-lab/SwitchMem",
+      "snapshot": {
+        "id": "release-switchmem",
+        "url": "https://raw.githubusercontent.com/dmis-lab/SwitchMem/HEAD/README.md",
+        "retrieved_at": "2026-10-17T01:54:57Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/dmis-lab/SwitchMem/HEAD/README.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "3fb5aabfb07df620955f0b74347f9d5926a1cd3d506b1098eccba9477627269f",
+        "bytes": 9196,
+        "unique_resources": 1
+      },
+      "discovered": 1,
+      "indexed": 0,
+      "curated": 0,
+      "excluded": 0,
+      "unindexed": 1
+    },
+    {
+      "id": "release-openmobile2",
+      "name": "OpenMobile-2 — first-party releases",
+      "url": "https://github.com/OpenMobile2/OpenMobile2-Code",
+      "snapshot": {
+        "id": "release-openmobile2",
+        "url": "https://raw.githubusercontent.com/OpenMobile2/OpenMobile2-Code/HEAD/README.md",
+        "retrieved_at": "2026-10-17T01:54:57Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/OpenMobile2/OpenMobile2-Code/HEAD/README.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "485279038266d9454df75e27a80a0a0d71c24e90700126d2dcfa0da921b1273d",
+        "bytes": 14485,
+        "unique_resources": 14
+      },
+      "discovered": 14,
+      "indexed": 5,
+      "curated": 5,
+      "excluded": 0,
+      "unindexed": 9
+    },
+    {
+      "id": "release-mobilegympp",
+      "name": "MobileGym++ — first-party releases",
+      "url": "https://github.com/OpenMobile2/MobileGym-plusplus",
+      "snapshot": {
+        "id": "release-mobilegympp",
+        "url": "https://raw.githubusercontent.com/OpenMobile2/MobileGym-plusplus/HEAD/README.md",
+        "retrieved_at": "2026-10-17T01:54:57Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/OpenMobile2/MobileGym-plusplus/HEAD/README.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "d9f850ec196e715650e679cb81515adaa64ddc5a60a882bfe97b0f6a098ddc83",
+        "bytes": 14565,
+        "unique_resources": 9
+      },
+      "discovered": 9,
+      "indexed": 2,
+      "curated": 1,
+      "excluded": 0,
+      "unindexed": 7
+    },
+    {
+      "id": "release-carryon",
+      "name": "CarryOn — first-party releases",
+      "url": "https://github.com/Ethannju/carryon",
+      "snapshot": {
+        "id": "release-carryon",
+        "url": "https://raw.githubusercontent.com/Ethannju/carryon/HEAD/README.md",
+        "retrieved_at": "2026-10-17T01:54:57Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/Ethannju/carryon/HEAD/README.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "9f792691505bafd59a0513bd46f5a51a5a0a1dd9b4e4fdb72f25c44145793f03",
+        "bytes": 2030,
+        "unique_resources": 2
+      },
+      "discovered": 2,
+      "indexed": 1,
+      "curated": 1,
+      "excluded": 0,
+      "unindexed": 1
+    },
+    {
+      "id": "release-gracebench",
+      "name": "GraceBench — first-party releases",
+      "url": "https://iaie-physicalai.github.io/GraceBench",
+      "snapshot": {
+        "id": "release-gracebench",
+        "url": "https://iaie-physicalai.github.io/GraceBench",
+        "retrieved_at": "2026-10-17T01:54:57Z",
+        "ok": true,
+        "status": 200,
+        "final_url": "https://iaie-physicalai.github.io/GraceBench/",
+        "content_type": "text/html; charset=utf-8",
+        "sha256": "652e8369ef11334d76c0eb67afeaa5c9f7841fd31ca02243b0dfb1493316849a",
+        "bytes": 12407,
+        "unique_resources": 3
+      },
+      "discovered": 3,
+      "indexed": 1,
+      "curated": 1,
+      "excluded": 0,
+      "unindexed": 2
     }
   ],
   "primary_search": {

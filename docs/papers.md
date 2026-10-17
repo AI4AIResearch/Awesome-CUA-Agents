@@ -12,33 +12,33 @@ Explicit scope exclusions are listed in the [scope-decision ledger](../data/excl
 | 2026-10-15 | [OpenGCUA: Toward a Fully Open Stack for Generalist Computer Use](https://arxiv.org/abs/2610.22200) | curated |
 | 2026-10-15 | [OS-Helix: Unifying GUI Interaction and Code Execution in Native Computer-Using Agents](https://arxiv.org/abs/2610.22234) | curated |
 | 2026-10-15 | [LEASH: Uncertainty-Aware Weak-to-Strong Escalation and Oversight for Computer-Use Agents](https://arxiv.org/abs/2610.22280) | curated |
-| 2026-10-14 | [Why Generate a Click? Plug-in Decision Heads for Web Agents](https://arxiv.org/abs/2610.20107) | metadata_verified |
-| 2026-10-14 | [Teaching Agents in their Own Style: Blackbox Teacher Distillation for Web Agents](https://arxiv.org/abs/2610.19834) | metadata_verified |
-| 2026-10-14 | [Task-State Governance: A Virtual Machine for Verifiable and Recoverable GUI Agent Execution](https://arxiv.org/abs/2610.20100) | metadata_verified |
-| 2026-10-14 | [STP-GUI: Spatially-Aware Token Pruning for Efficient Web-GUI Agents](https://arxiv.org/abs/2610.20390) | metadata_verified |
-| 2026-10-14 | [Player-1: Learning to Play from Synthetic Experience](https://arxiv.org/abs/2610.20584) | metadata_verified |
+| 2026-10-14 | [Why Generate a Click? Plug-in Decision Heads for Web Agents](https://arxiv.org/abs/2610.20107) | curated |
+| 2026-10-14 | [Teaching Agents in their Own Style: Blackbox Teacher Distillation for Web Agents](https://arxiv.org/abs/2610.19834) | curated |
+| 2026-10-14 | [Task-State Governance: A Virtual Machine for Verifiable and Recoverable GUI Agent Execution](https://arxiv.org/abs/2610.20100) | curated |
+| 2026-10-14 | [STP-GUI: Spatially-Aware Token Pruning for Efficient Web-GUI Agents](https://arxiv.org/abs/2610.20390) | curated |
+| 2026-10-14 | [Player-1: Learning to Play from Synthetic Experience](https://arxiv.org/abs/2610.20584) | curated |
 | 2026-10-14 | [MAI-Gym: An Open All-in-One Platform for GUI Agent Evaluation and RL Training across Mobile and Computer Environments](https://arxiv.org/abs/2610.20939) | curated |
-| 2026-10-14 | [How GUI Agents Fail: GraceBench for Execution Stability Diagnosis](https://arxiv.org/abs/2610.19900) | metadata_verified |
-| 2026-10-13 | [Towards Safe Autonomy for Computer Use](https://arxiv.org/abs/2610.18508) | metadata_verified |
+| 2026-10-14 | [How GUI Agents Fail: GraceBench for Execution Stability Diagnosis](https://arxiv.org/abs/2610.19900) | curated |
+| 2026-10-13 | [Towards Safe Autonomy for Computer Use](https://arxiv.org/abs/2610.18508) | curated |
 | 2026-10-13 | [Tev: Scaling Long-Horizon Agentic Environments with Dense Progress Rewards](https://arxiv.org/abs/2610.18868) | metadata_verified |
-| 2026-10-13 | [Pack Light, CarryOn: Building Object-Oriented Context for Long-Horizon Agents](https://arxiv.org/abs/2610.18784) | metadata_verified |
-| 2026-10-13 | [MHVF: Training-Free GUI Grounding via Verification-Guided Multi-Hypothesis Search](https://arxiv.org/abs/2610.17792) | metadata_verified |
-| 2026-10-13 | [Learning How to Remember: Memory Modality Selection for GUI Agents](https://arxiv.org/abs/2610.17928) | metadata_verified |
-| 2026-10-13 | [Interaction-as-a-Judge](https://arxiv.org/abs/2610.17895) | metadata_verified |
-| 2026-10-13 | [GroundGUI: GUI Grounding by High-Quality Data and Distillation-to-Reinforcement Learning](https://arxiv.org/abs/2610.19100) | metadata_verified |
-| 2026-10-13 | [CLASHarness: Benchmarking Multi-Agent Conflict in Computer Use via a Controllable and Verifiable Generation Pipeline](https://arxiv.org/abs/2610.19128) | metadata_verified |
-| 2026-10-13 | [Adaptive-Group Process Rewards for GUI Agents](https://arxiv.org/abs/2610.17710) | metadata_verified |
-| 2026-10-12 | [Seg2Click: Learning Pixel-Level Action Masks for GUI Visual Grounding](https://arxiv.org/abs/2610.16234) | metadata_verified |
-| 2026-10-12 | [PrivacyGuard: Source-Linked Sanitization and Locally Resolvable PII References for Cloud GUI Agents](https://arxiv.org/abs/2610.16778) | metadata_verified |
-| 2026-10-12 | [Learn from Move: the Next Step for GUI Agents](https://arxiv.org/abs/2610.16720) | metadata_verified |
-| 2026-10-12 | [HyWe: Unifying Search and Operation for Real-World Hybrid Web Tasks](https://arxiv.org/abs/2610.16319) | metadata_verified |
-| 2026-10-12 | [BrowseSafe++: Benchmarking Prompt Injection Detection Across Web Contexts, Languages, and Browser Views](https://arxiv.org/abs/2610.17457) | metadata_verified |
+| 2026-10-13 | [Pack Light, CarryOn: Building Object-Oriented Context for Long-Horizon Agents](https://arxiv.org/abs/2610.18784) | curated |
+| 2026-10-13 | [MHVF: Training-Free GUI Grounding via Verification-Guided Multi-Hypothesis Search](https://arxiv.org/abs/2610.17792) | curated |
+| 2026-10-13 | [Learning How to Remember: Memory Modality Selection for GUI Agents](https://arxiv.org/abs/2610.17928) | curated |
+| 2026-10-13 | [Interaction-as-a-Judge](https://arxiv.org/abs/2610.17895) | curated |
+| 2026-10-13 | [GroundGUI: GUI Grounding by High-Quality Data and Distillation-to-Reinforcement Learning](https://arxiv.org/abs/2610.19100) | curated |
+| 2026-10-13 | [CLASHarness: Benchmarking Multi-Agent Conflict in Computer Use via a Controllable and Verifiable Generation Pipeline](https://arxiv.org/abs/2610.19128) | curated |
+| 2026-10-13 | [Adaptive-Group Process Rewards for GUI Agents](https://arxiv.org/abs/2610.17710) | curated |
+| 2026-10-12 | [Seg2Click: Learning Pixel-Level Action Masks for GUI Visual Grounding](https://arxiv.org/abs/2610.16234) | curated |
+| 2026-10-12 | [PrivacyGuard: Source-Linked Sanitization and Locally Resolvable PII References for Cloud GUI Agents](https://arxiv.org/abs/2610.16778) | curated |
+| 2026-10-12 | [Learn from Move: the Next Step for GUI Agents](https://arxiv.org/abs/2610.16720) | curated |
+| 2026-10-12 | [HyWe: Unifying Search and Operation for Real-World Hybrid Web Tasks](https://arxiv.org/abs/2610.16319) | curated |
+| 2026-10-12 | [BrowseSafe++: Benchmarking Prompt Injection Detection Across Web Contexts, Languages, and Browser Views](https://arxiv.org/abs/2610.17457) | curated |
 | 2026-10-11 | [A Decade in a Day: Synthesizing Agent-Native Interfaces from Human-Oriented Software Evolution](https://arxiv.org/abs/2610.15765) | metadata_verified |
 | 2026-10-10 | [The Agent Clicks Approve: Injected Page Text Makes Browser Agents Authorize Access the Task Never Named](https://arxiv.org/abs/2610.15138) | metadata_verified |
 | 2026-10-09 | [Work2Skill: Capturing Human GUI Experience for Reusable Agent Skill Induction](https://arxiv.org/abs/2610.12984) | curated |
 | 2026-10-09 | [When Charts Deceive Web Agents: A Paired Benchmark for Misleading Visualization-Grounded Tasks](https://arxiv.org/abs/2610.12823) | metadata_verified |
 | 2026-10-09 | [Web$hell: A Unified Interface for Agentic Web Access](https://arxiv.org/abs/2610.13416) | metadata_verified |
-| 2026-10-09 | [OpenMobile-2: Building Versatile Mobile Agents with Scalable Environments and App-Native Tools](https://arxiv.org/abs/2610.14157) | metadata_verified |
+| 2026-10-09 | [OpenMobile-2: Building Versatile Mobile Agents with Scalable Environments and App-Native Tools](https://arxiv.org/abs/2610.14157) | curated |
 | 2026-10-09 | [Latent World Action Model for GUI Agents](https://arxiv.org/abs/2610.14228) | metadata_verified |
 | 2026-10-09 | [ConClick: Element-Wise Contrastive Learning Improves GUI Grounding](https://arxiv.org/abs/2610.13268) | metadata_verified |
 | 2026-10-09 | [CaptchaAgent: Verifiable Visual Reasoning for CAPTCHA Solving](https://arxiv.org/abs/2610.12866) | metadata_verified |
