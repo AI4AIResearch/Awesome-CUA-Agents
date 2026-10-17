@@ -160,5 +160,32 @@
         "sha256": "de82c4101e81a6980789904be59c3733ab13f2c1f0e769e5fcb1ab35f847cb3e"
       }
     ]
+  },
+  {
+    "alias_id": "github:bytedance/agent-r",
+    "target_id": "github:bytedance-seed/agent-r",
+    "repository_id": 917096321,
+    "basis": "official_github_repository_id",
+    "reviewed_at": "2026-10-17T18:06:30Z",
+    "observations": [
+      {
+        "url": "https://api.github.com/repos/bytedance/Agent-R",
+        "resolved_url": "https://api.github.com/repositories/917096321",
+        "repository_id": 917096321,
+        "full_name": "ByteDance-Seed/Agent-R",
+        "html_url": "https://github.com/ByteDance-Seed/Agent-R",
+        "retrieved_at": "2026-10-17T18:05:46Z",
+        "sha256": "3fff7137bc4f39a3a757f3b820892fb330449044ef2721e9f9d7719d23ff2b98"
+      },
+      {
+        "url": "https://api.github.com/repos/ByteDance-Seed/Agent-R",
+        "resolved_url": "https://api.github.com/repos/ByteDance-Seed/Agent-R",
+        "repository_id": 917096321,
+        "full_name": "ByteDance-Seed/Agent-R",
+        "html_url": "https://github.com/ByteDance-Seed/Agent-R",
+        "retrieved_at": "2026-10-17T18:05:46Z",
+        "sha256": "3fff7137bc4f39a3a757f3b820892fb330449044ef2721e9f9d7719d23ff2b98"
+      }
+    ]
   }
 ]

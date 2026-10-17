@@ -1,5 +1,5 @@
 {
-  "as_of_utc": "2026-10-17T17:18:56Z",
+  "as_of_utc": "2026-10-17T18:05:46Z",
   "total_records": 3006,
   "curated_records": 1435,
   "bibliographic_records": 2578,
@@ -11,7 +11,9 @@
   "exclusion_revalidation_pending": 0,
   "metadata_only_records": 1571,
   "discovery_identifiers": 3907,
-  "unindexed_candidates": 944,
+  "unindexed_candidates": 849,
+  "non_resource_candidates": 83,
+  "alias_candidates": 11,
   "pending_editorial": [
     {
       "id": "github:thudm/autoglm",
@@ -251,7 +253,8 @@
       "resolved_aliases": 6,
       "curated": 208,
       "excluded": 0,
-      "unindexed": 119
+      "set_aside": 3,
+      "unindexed": 116
     },
     {
       "id": "zju-gui",
@@ -279,7 +282,8 @@
       "resolved_aliases": 0,
       "curated": 162,
       "excluded": 0,
-      "unindexed": 53
+      "set_aside": 4,
+      "unindexed": 49
     },
     {
       "id": "os-agent-survey",
@@ -307,7 +311,8 @@
       "resolved_aliases": 0,
       "curated": 178,
       "excluded": 0,
-      "unindexed": 26
+      "set_aside": 1,
+      "unindexed": 25
     },
     {
       "id": "wjhou-cua",
@@ -335,7 +340,8 @@
       "resolved_aliases": 0,
       "curated": 85,
       "excluded": 0,
-      "unindexed": 37
+      "set_aside": 1,
+      "unindexed": 36
     },
     {
       "id": "steel-web",
@@ -363,7 +369,8 @@
       "resolved_aliases": 1,
       "curated": 24,
       "excluded": 0,
-      "unindexed": 89
+      "set_aside": 4,
+      "unindexed": 85
     },
     {
       "id": "steel-web-archive",
@@ -391,6 +398,7 @@
       "resolved_aliases": 0,
       "curated": 1,
       "excluded": 0,
+      "set_aside": 0,
       "unindexed": 6
     },
     {
@@ -419,6 +427,7 @@
       "resolved_aliases": 2,
       "curated": 106,
       "excluded": 1,
+      "set_aside": 0,
       "unindexed": 55
     },
     {
@@ -447,6 +456,7 @@
       "resolved_aliases": 4,
       "curated": 432,
       "excluded": 0,
+      "set_aside": 0,
       "unindexed": 92
     },
     {
@@ -475,7 +485,8 @@
       "resolved_aliases": 0,
       "curated": 62,
       "excluded": 0,
-      "unindexed": 25
+      "set_aside": 1,
+      "unindexed": 24
     },
     {
       "id": "cdxeve-cua",
@@ -503,7 +514,8 @@
       "resolved_aliases": 0,
       "curated": 32,
       "excluded": 0,
-      "unindexed": 30
+      "set_aside": 2,
+      "unindexed": 28
     },
     {
       "id": "supernal-gui",
@@ -531,7 +543,8 @@
       "resolved_aliases": 0,
       "curated": 8,
       "excluded": 0,
-      "unindexed": 52
+      "set_aside": 2,
+      "unindexed": 50
     },
     {
       "id": "yearly-gui",
@@ -559,7 +572,8 @@
       "resolved_aliases": 3,
       "curated": 143,
       "excluded": 0,
-      "unindexed": 47
+      "set_aside": 1,
+      "unindexed": 46
     },
     {
       "id": "osu-gui",
@@ -587,7 +601,8 @@
       "resolved_aliases": 0,
       "curated": 353,
       "excluded": 0,
-      "unindexed": 58
+      "set_aside": 45,
+      "unindexed": 13
     },
     {
       "id": "opendilab-ui",
@@ -615,7 +630,8 @@
       "resolved_aliases": 1,
       "curated": 83,
       "excluded": 0,
-      "unindexed": 52
+      "set_aside": 2,
+      "unindexed": 50
     },
     {
       "id": "jin-gui-hub",
@@ -643,7 +659,8 @@
       "resolved_aliases": 0,
       "curated": 116,
       "excluded": 0,
-      "unindexed": 3
+      "set_aside": 1,
+      "unindexed": 2
     },
     {
       "id": "zju-iclr26",
@@ -671,6 +688,7 @@
       "resolved_aliases": 0,
       "curated": 0,
       "excluded": 0,
+      "set_aside": 0,
       "unindexed": 9
     },
     {
@@ -699,6 +717,7 @@
       "resolved_aliases": 1,
       "curated": 25,
       "excluded": 0,
+      "set_aside": 0,
       "unindexed": 14
     },
     {
@@ -722,12 +741,13 @@
         "state": "success"
       },
       "discovered": 247,
-      "indexed": 194,
-      "indexed_resources": 194,
-      "resolved_aliases": 2,
-      "curated": 181,
+      "indexed": 195,
+      "indexed_resources": 195,
+      "resolved_aliases": 3,
+      "curated": 182,
       "excluded": 0,
-      "unindexed": 53
+      "set_aside": 2,
+      "unindexed": 50
     },
     {
       "id": "mobile-agents",
@@ -755,7 +775,8 @@
       "resolved_aliases": 0,
       "curated": 66,
       "excluded": 0,
-      "unindexed": 14
+      "set_aside": 2,
+      "unindexed": 12
     },
     {
       "id": "web-research",
@@ -783,6 +804,7 @@
       "resolved_aliases": 0,
       "curated": 4,
       "excluded": 0,
+      "set_aside": 0,
       "unindexed": 6
     },
     {
@@ -811,6 +833,7 @@
       "resolved_aliases": 0,
       "curated": 55,
       "excluded": 0,
+      "set_aside": 0,
       "unindexed": 37
     },
     {
@@ -839,7 +862,8 @@
       "resolved_aliases": 0,
       "curated": 5,
       "excluded": 0,
-      "unindexed": 13
+      "set_aside": 2,
+      "unindexed": 11
     },
     {
       "id": "release-ui-venus",
@@ -867,7 +891,8 @@
       "resolved_aliases": 0,
       "curated": 4,
       "excluded": 0,
-      "unindexed": 6
+      "set_aside": 3,
+      "unindexed": 3
     },
     {
       "id": "release-opengvlab-scalecua",
@@ -895,7 +920,8 @@
       "resolved_aliases": 0,
       "curated": 9,
       "excluded": 0,
-      "unindexed": 6
+      "set_aside": 1,
+      "unindexed": 5
     },
     {
       "id": "release-thudm-scalecua",
@@ -923,7 +949,8 @@
       "resolved_aliases": 0,
       "curated": 1,
       "excluded": 0,
-      "unindexed": 27
+      "set_aside": 1,
+      "unindexed": 26
     },
     {
       "id": "release-showui-pi",
@@ -951,7 +978,8 @@
       "resolved_aliases": 0,
       "curated": 4,
       "excluded": 0,
-      "unindexed": 7
+      "set_aside": 3,
+      "unindexed": 4
     },
     {
       "id": "release-opencua",
@@ -979,7 +1007,8 @@
       "resolved_aliases": 0,
       "curated": 5,
       "excluded": 0,
-      "unindexed": 13
+      "set_aside": 3,
+      "unindexed": 10
     },
     {
       "id": "release-webdreamer",
@@ -1007,7 +1036,8 @@
       "resolved_aliases": 0,
       "curated": 3,
       "excluded": 0,
-      "unindexed": 2
+      "set_aside": 1,
+      "unindexed": 1
     },
     {
       "id": "release-nnetnav",
@@ -1035,7 +1065,8 @@
       "resolved_aliases": 0,
       "curated": 2,
       "excluded": 0,
-      "unindexed": 4
+      "set_aside": 2,
+      "unindexed": 2
     },
     {
       "id": "release-groundgui",
@@ -1063,6 +1094,7 @@
       "resolved_aliases": 0,
       "curated": 6,
       "excluded": 0,
+      "set_aside": 0,
       "unindexed": 5
     },
     {
@@ -1091,7 +1123,8 @@
       "resolved_aliases": 0,
       "curated": 8,
       "excluded": 0,
-      "unindexed": 3
+      "set_aside": 1,
+      "unindexed": 2
     },
     {
       "id": "release-switchmem",
@@ -1119,7 +1152,8 @@
       "resolved_aliases": 0,
       "curated": 0,
       "excluded": 0,
-      "unindexed": 1
+      "set_aside": 1,
+      "unindexed": 0
     },
     {
       "id": "release-openmobile2",
@@ -1147,7 +1181,8 @@
       "resolved_aliases": 0,
       "curated": 7,
       "excluded": 0,
-      "unindexed": 7
+      "set_aside": 2,
+      "unindexed": 5
     },
     {
       "id": "release-mobilegympp",
@@ -1175,7 +1210,8 @@
       "resolved_aliases": 0,
       "curated": 2,
       "excluded": 0,
-      "unindexed": 7
+      "set_aside": 2,
+      "unindexed": 5
     },
     {
       "id": "release-carryon",
@@ -1203,6 +1239,7 @@
       "resolved_aliases": 0,
       "curated": 1,
       "excluded": 0,
+      "set_aside": 0,
       "unindexed": 1
     },
     {
@@ -1231,6 +1268,7 @@
       "resolved_aliases": 0,
       "curated": 1,
       "excluded": 0,
+      "set_aside": 0,
       "unindexed": 2
     },
     {
@@ -1259,7 +1297,8 @@
       "resolved_aliases": 0,
       "curated": 12,
       "excluded": 0,
-      "unindexed": 21
+      "set_aside": 4,
+      "unindexed": 17
     },
     {
       "id": "release-guicourse",
@@ -1287,7 +1326,8 @@
       "resolved_aliases": 0,
       "curated": 4,
       "excluded": 0,
-      "unindexed": 3
+      "set_aside": 1,
+      "unindexed": 2
     },
     {
       "id": "release-os-genesis",
@@ -1315,7 +1355,8 @@
       "resolved_aliases": 0,
       "curated": 2,
       "excluded": 0,
-      "unindexed": 27
+      "set_aside": 3,
+      "unindexed": 24
     },
     {
       "id": "release-multiui",
@@ -1343,6 +1384,7 @@
       "resolved_aliases": 0,
       "curated": 1,
       "excluded": 0,
+      "set_aside": 0,
       "unindexed": 7
     },
     {
@@ -1371,6 +1413,7 @@
       "resolved_aliases": 0,
       "curated": 5,
       "excluded": 0,
+      "set_aside": 0,
       "unindexed": 7
     },
     {
@@ -1399,7 +1442,8 @@
       "resolved_aliases": 0,
       "curated": 4,
       "excluded": 0,
-      "unindexed": 12
+      "set_aside": 3,
+      "unindexed": 9
     },
     {
       "id": "release-mai-ui",
@@ -1427,6 +1471,7 @@
       "resolved_aliases": 0,
       "curated": 3,
       "excluded": 0,
+      "set_aside": 0,
       "unindexed": 14
     },
     {
@@ -1455,6 +1500,7 @@
       "resolved_aliases": 0,
       "curated": 4,
       "excluded": 0,
+      "set_aside": 0,
       "unindexed": 35
     }
   ],

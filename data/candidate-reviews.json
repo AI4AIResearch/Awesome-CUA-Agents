@@ -1,0 +1,254 @@
+[
+  {
+    "url_prefix": "https://api.star-history.com",
+    "decision": "not_a_resource",
+    "reason": "Star History chart image embedded as a repository star-count badge."
+  },
+  {
+    "url_prefix": "https://star-history.com",
+    "decision": "not_a_resource",
+    "reason": "Star History chart page that a repository star-count badge links to."
+  },
+  {
+    "url_prefix": "https://www.star-history.com",
+    "decision": "not_a_resource",
+    "reason": "Star History chart page that a repository star-count badge links to."
+  },
+  {
+    "url_prefix": "https://visitor-badge.lithub.cc",
+    "decision": "not_a_resource",
+    "reason": "Visitor-count badge image in a list header."
+  },
+  {
+    "url_prefix": "https://trendshift.io/api/badge",
+    "decision": "not_a_resource",
+    "reason": "Trendshift ranking badge image for a GitHub repository."
+  },
+  {
+    "url_prefix": "https://trendshift.io/repositories",
+    "decision": "not_a_resource",
+    "reason": "Trendshift ranking page that a repository badge links to."
+  },
+  {
+    "url_prefix": "https://contrib.rocks/image",
+    "decision": "not_a_resource",
+    "reason": "Contributor-avatar image generated for a repository README."
+  },
+  {
+    "url_prefix": "https://opensource.org/licenses",
+    "decision": "not_a_resource",
+    "reason": "Open-source license text linked from a license section."
+  },
+  {
+    "url_prefix": "https://creativecommons.org/licenses",
+    "decision": "not_a_resource",
+    "reason": "Creative Commons license text linked from a license section."
+  },
+  {
+    "url_prefix": "https://osu-nlp-group.github.io/GUI-Agents-Paper-List",
+    "decision": "not_a_resource",
+    "reason": "Website of the OSU GUI-Agents-Paper-List discovery source and its author, keyword and environment filter pages; the list's entries are discovered from its README."
+  },
+  {
+    "url_prefix": "https://jin-s13.github.io/awesome-gui-agent-hub",
+    "decision": "not_a_resource",
+    "reason": "Web view of the awesome-gui-agent-hub discovery source itself."
+  },
+  {
+    "id": "url:bc04677877723978aa55",
+    "url": "https://127.0.0.1",
+    "decision": "not_a_resource",
+    "reason": "Loopback address of a locally started service in setup instructions."
+  },
+  {
+    "id": "url:db6204c8e3ea8c702b14",
+    "url": "https://127.0.0.1/v1",
+    "decision": "not_a_resource",
+    "reason": "Loopback API endpoint of a locally served model in setup instructions."
+  },
+  {
+    "id": "url:dbaf2412f9ca650fb4e6",
+    "url": "https://127.0.0.1//127.0.0.1:6801",
+    "decision": "not_a_resource",
+    "reason": "Malformed loopback address of a local evaluation service in setup instructions."
+  },
+  {
+    "id": "url:d9617135d6fdd0a2cde7",
+    "url": "https://api.openai.com/v1",
+    "decision": "not_a_resource",
+    "reason": "OpenAI API base URL in a configuration example."
+  },
+  {
+    "id": "url:ac9155fdf06567ceee29",
+    "url": "https://host/v1",
+    "decision": "not_a_resource",
+    "reason": "Placeholder host name in a model-serving example."
+  },
+  {
+    "id": "url:ef86f2d9f3a947d4ae00",
+    "url": "https://your-endpoint.inference.ml.azure.com",
+    "decision": "not_a_resource",
+    "reason": "Placeholder Azure inference endpoint in a configuration example."
+  },
+  {
+    "id": "url:100680ad546ce6a577f4",
+    "url": "https://example.com",
+    "decision": "not_a_resource",
+    "reason": "Reserved example domain used as the target of a sample command."
+  },
+  {
+    "id": "url:2ff0624ba5049cffd1dc",
+    "url": "https://9557c5365a6f44dc84.gradio.live",
+    "decision": "not_a_resource",
+    "reason": "Temporary Gradio share link in a commented-out demo badge; such links expire."
+  },
+  {
+    "id": "url:05f7413ff7a07a145369",
+    "url": "https://download.pytorch.org/whl",
+    "decision": "not_a_resource",
+    "reason": "PyTorch wheel index used in installation instructions."
+  },
+  {
+    "id": "url:e93fab6deae2e8764bfc",
+    "url": "https://www.google.com/search?q=LICENSE",
+    "decision": "not_a_resource",
+    "reason": "Web search for the word LICENSE, linked from a license section."
+  },
+  {
+    "id": "url:81cca962b2f06d971d01",
+    "url": "https://scholar.google.com/citations?user=h1-3lSoAAAAJ&hl=en",
+    "decision": "not_a_resource",
+    "reason": "Google Scholar profile of an author."
+  },
+  {
+    "id": "url:bb70b7818b760baf0a97",
+    "url": "https://bsky.app/profile/supernalasi.bsky.social",
+    "decision": "not_a_resource",
+    "reason": "Bluesky profile of a list maintainer."
+  },
+  {
+    "id": "url:d405ef4454d099fe5757",
+    "url": "https://discord.com/invite/rXS2XbgfaD",
+    "decision": "not_a_resource",
+    "reason": "Discord community invitation for a project."
+  },
+  {
+    "id": "url:92be6f40951a0267a686",
+    "url": "https://awesome.re",
+    "decision": "not_a_resource",
+    "reason": "Target of the Awesome badge in a list header."
+  },
+  {
+    "id": "url:dc8621e65a7c436e0e5e",
+    "url": "https://www.google.com/flights",
+    "decision": "not_a_resource",
+    "reason": "Website used as a task target when collecting demonstrations, not a resource about computer-use agents."
+  },
+  {
+    "id": "url:09f0bcc910663e4fceab",
+    "url": "https://www.amazon.com",
+    "decision": "not_a_resource",
+    "reason": "Start URL in example code, a task website rather than a resource about computer-use agents."
+  },
+  {
+    "id": "url:ebcdad9e6d6ac2266c5a",
+    "url": "https://www.nlp.stanford.edu",
+    "decision": "not_a_resource",
+    "reason": "Example task website in usage instructions."
+  },
+  {
+    "id": "url:e86693b77fbdf3f5b058",
+    "url": "https://apple.com",
+    "decision": "not_a_resource",
+    "reason": "Placeholder entry in the awesome-web-agents list, which labels it \"Apple as a placeholder\"."
+  },
+  {
+    "id": "url:516c22c5dba9c1ba70ca",
+    "url": "https://chatgpt.com",
+    "decision": "not_a_resource",
+    "reason": "ChatGPT home page listed among general chat-based coding assistants, not a computer-use resource on its own."
+  },
+  {
+    "id": "url:51f11a6608ad5fcb0144",
+    "url": "https://chatgpt.com/g/g-qqs9km6wi-awesome-paper-agent",
+    "decision": "not_a_resource",
+    "reason": "Custom ChatGPT assistant for questions about the awesome list itself."
+  },
+  {
+    "id": "url:10063d415bf68389a41b",
+    "url": "https://huggingface.co/datasets/microsoft/CUAVerifierBench/blob/main/README.md",
+    "decision": "alias",
+    "target_id": "url:d5140d438466c1e1348a",
+    "reason": "README file inside the indexed CUAVerifierBench Hub dataset repository."
+  },
+  {
+    "id": "url:d07857dffca377a06d87",
+    "url": "https://huggingface.co/datasets/xlangai/AgentNet/blob/main/meta_data_merged.jsonl",
+    "decision": "alias",
+    "target_id": "url:964d70c40bfc5ca8e1ee",
+    "reason": "Data file inside the indexed AgentNet Hub dataset repository."
+  },
+  {
+    "id": "url:8773c6a63158b2f25f28",
+    "url": "https://huggingface.co/datasets/OS-Copilot/OS-Genesis-mobile-data/blob/main/os_genesis_ac_training_data.jsonl",
+    "decision": "alias",
+    "target_id": "url:d3ec5122a2b52fd5ae4b",
+    "reason": "Training-data file inside the indexed OS-Genesis mobile data Hub repository."
+  },
+  {
+    "id": "url:94a01256daa4cebea2c5",
+    "url": "https://huggingface.co/datasets/OS-Copilot/OS-Genesis-mobile-data/blob/main/os_genesis_aw_training_data.jsonl",
+    "decision": "alias",
+    "target_id": "url:d3ec5122a2b52fd5ae4b",
+    "reason": "Training-data file inside the indexed OS-Genesis mobile data Hub repository."
+  },
+  {
+    "id": "url:aba2451e3ab598ef5e7d",
+    "url": "https://huggingface.co/OS-Copilot/ScienceBoard-Env/blob/main/VM.zip",
+    "decision": "alias",
+    "target_id": "url:75917f2c2b2802aafd3e",
+    "reason": "VM archive inside the indexed ScienceBoard-Env Hub repository."
+  },
+  {
+    "id": "url:efbe195acdd91edf1d11",
+    "url": "https://huggingface.co/datasets/OS-Copilot/ScienceBoard-Traj/tree/main",
+    "decision": "alias",
+    "target_id": "url:4784f63cd7117f64a2a3",
+    "reason": "File-tree view of the indexed ScienceBoard-Traj Hub dataset repository."
+  },
+  {
+    "id": "url:5f93a5192b1aa2f9b7cd",
+    "url": "https://www.browser-use.com",
+    "decision": "alias",
+    "target_id": "url:ef244017b1460269fc68",
+    "reason": "www. address of https://browser-use.com, the primary URL of the indexed record; organization:browser-use shares that page."
+  },
+  {
+    "id": "url:b3ffe248cc4292a5e7f0",
+    "url": "https://browserbase.com",
+    "decision": "alias",
+    "target_id": "url:978d1dcd70fde8661b9e",
+    "reason": "Address without www. of https://www.browserbase.com, the primary URL of the indexed record; organization:browserbase shares that page."
+  },
+  {
+    "id": "url:5455417a4c0f8a93fccc",
+    "url": "https://web3.arxiv.org/abs/2408.07199v1",
+    "decision": "alias",
+    "target_id": "arxiv:2408.07199",
+    "reason": "arXiv mirror host for the same preprint; current link rules fold it into the arXiv identity at the next discovery run."
+  },
+  {
+    "id": "url:fef338e4e06ee532de24",
+    "url": "https://web3.arxiv.org/abs/2103.16057",
+    "decision": "alias",
+    "target_id": "arxiv:2103.16057",
+    "reason": "arXiv mirror host for the same preprint; current link rules fold it into the arXiv identity at the next discovery run."
+  },
+  {
+    "id": "url:c2ceb7bdb48360bdbc86",
+    "url": "https://ui.adsabs.harvard.edu/abs/2024arXiv240613264W/abstract",
+    "decision": "alias",
+    "target_id": "arxiv:2406.13264",
+    "reason": "NASA ADS abstract page for the arXiv preprint 2406.13264 (WONDERBREAD)."
+  }
+]

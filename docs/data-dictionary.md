@@ -200,6 +200,7 @@ Edit authored files by hand and review them in a pull request. Do not hand-edit 
 | `exclusions.json` | Authored | Scope decisions; see [scope review](scope-review.md) |
 | `publications.jsonl` | Authored | Reviewed publication observations |
 | `repository-aliases.json` | Authored | Paired official GitHub identity observations for reviewed former repository names |
+| `candidate-reviews.json` | Authored | Discovered links reviewed as non-resources or as other addresses of active records; see [methodology](methodology.md#identity-and-deduplication) |
 | `sources.json` | Authored | Discovery-source registry read by `catalog.py discover` |
 | `paper-discovery-queries.json` | Authored | Hugging Face search registry read by `discover_papers.py` |
 | `scan-config.json` | Authored | Scan schedule and limits read by `scan.py` and the website status page |
