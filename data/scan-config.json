@@ -9,6 +9,7 @@
   "harvest_limit": 500,
   "history_limit": 180,
   "max_consecutive_partial": 4,
+  "max_scan_age_hours": 14,
   "source_repository": "reacher-z/Awesome-CUA",
   "website_repository": "AwesomeCUA/awesomecua.github.io",
   "policy": "Automated scans discover candidates and verify bibliographic metadata. Editorial approval, topic annotations, and license claims require separate source review."
