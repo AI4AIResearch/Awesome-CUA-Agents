@@ -1,11 +1,11 @@
 # Coverage and quality ledger
 
-Evidence snapshot through **2026-10-17T18:05:46Z**. Generated from committed source receipts.
+Evidence snapshot through **2026-10-17T19:15:20Z**. Generated from committed source receipts.
 
 - 3,006 resource records: 1,435 curated; 1,571 bibliographic metadata only.
 - 2,578 paper and survey records, including 2,565 arXiv identities and 13 publisher-only identities. This count overlaps the status counts above.
 - 2,683 retained arXiv metadata records; 118 explicit scope exclusions are outside the active catalog.
-- 3,907 discovery identifiers; 849 remain unresolved after accounting for scope exclusions and for 83 reviewed non-resource links and 11 other addresses of indexed resources, which stay in the review queue with their reasons.
+- 3,907 discovery identifiers; 846 remain unresolved after accounting for scope exclusions and for 83 reviewed non-resource links and 11 other addresses of indexed resources, which stay in the review queue with their reasons.
 - 13 editorial proposals await verification or review.
 
 These are distinct resource identifiers, not distinct research projects. Papers, repositories, datasets, products, and publisher entities have different grains.
@@ -60,14 +60,14 @@ The denominator is the normalized identifiers extracted from each fetched docume
 | [OpenGVLab ScaleCUA — first-party releases](https://github.com/OpenGVLab/ScaleCUA) | 15 | 9 | 9 | 0 | 1 | 5 | OK · 2026-10-17 |
 | [THUDM SCALE-CUA — first-party releases](https://github.com/THUDM/SCALE-CUA) | 28 | 1 | 1 | 0 | 1 | 26 | OK · 2026-10-17 |
 | [ShowUI-π — first-party releases](https://github.com/showlab/showui-pi) | 11 | 4 | 4 | 0 | 3 | 4 | OK · 2026-10-17 |
-| [OpenCUA — first-party releases](https://github.com/xlang-ai/OpenCUA) | 18 | 5 | 5 | 0 | 3 | 10 | OK · 2026-10-17 |
+| [OpenCUA — first-party releases](https://github.com/xlang-ai/OpenCUA) | 18 | 6 | 6 | 0 | 3 | 9 | OK · 2026-10-17 |
 | [WebDreamer — first-party releases](https://github.com/OSU-NLP-Group/WebDreamer) | 5 | 3 | 3 | 0 | 1 | 1 | OK · 2026-10-17 |
 | [NNetNav — first-party releases](https://github.com/MurtyShikhar/NNetnav) | 6 | 2 | 2 | 0 | 2 | 2 | OK · 2026-10-17 |
 | [GroundGUI — first-party releases](https://github.com/PrentisAI/GroundGUI) | 11 | 6 | 6 | 0 | 0 | 5 | OK · 2026-10-17 |
 | [Seg2Click — first-party releases](https://github.com/jcwang0602/Seg2Click) | 11 | 8 | 8 | 0 | 1 | 2 | OK · 2026-10-17 |
 | [SwitchMem — first-party releases](https://github.com/dmis-lab/SwitchMem) | 1 | 0 | 0 | 0 | 1 | 0 | OK · 2026-10-17 |
 | [OpenMobile-2 — first-party releases](https://github.com/OpenMobile2/OpenMobile2-Code) | 14 | 7 | 7 | 0 | 2 | 5 | OK · 2026-10-17 |
-| [MobileGym++ — first-party releases](https://github.com/OpenMobile2/MobileGym-plusplus) | 9 | 2 | 2 | 0 | 2 | 5 | OK · 2026-10-17 |
+| [MobileGym++ — first-party releases](https://github.com/OpenMobile2/MobileGym-plusplus) | 9 | 4 | 4 | 0 | 2 | 3 | OK · 2026-10-17 |
 | [CarryOn — first-party releases](https://github.com/Ethannju/carryon) | 2 | 1 | 1 | 0 | 0 | 1 | OK · 2026-10-17 |
 | [GraceBench — first-party releases](https://iaie-physicalai.github.io/GraceBench) | 3 | 1 | 1 | 0 | 0 | 2 | OK · 2026-10-17 |
 | [MobileAgent / GUI-Owl / UI-S1 — first-party release index](https://github.com/X-PLUG/MobileAgent) | 33 | 12 | 12 | 0 | 4 | 17 | OK · 2026-10-17 |

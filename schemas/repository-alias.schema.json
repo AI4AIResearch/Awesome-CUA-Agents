@@ -1,24 +1,36 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://awesomecua.github.io/schemas/repository-alias.schema.json",
-  "title": "AwesomeCUA source-reviewed GitHub repository aliases",
-  "description": "Former and canonical names observed to identify the same numeric GitHub repository. These observations do not create resources or approve release completeness, licensing or relevance.",
+  "title": "AwesomeCUA source-reviewed repository aliases",
+  "description": "Other names observed to identify the same numeric GitHub repository, or the same Hugging Face model or dataset object. These observations do not create resources or approve release completeness, licensing or relevance.",
   "type": "array",
   "items": {
     "type": "object",
     "additionalProperties": false,
     "required": ["alias_id", "target_id", "repository_id", "basis", "reviewed_at", "observations"],
     "properties": {
-      "alias_id": {"$ref": "#/$defs/githubId"},
-      "target_id": {"$ref": "#/$defs/githubId"},
-      "repository_id": {"type": "integer", "minimum": 1},
-      "basis": {"const": "official_github_repository_id"},
+      "alias_id": {"type": "string"},
+      "target_id": {"type": "string"},
+      "repository_id": {"type": ["integer", "string"]},
+      "basis": {"enum": ["official_github_repository_id", "official_huggingface_repository_id"]},
       "reviewed_at": {"type": "string", "format": "date-time"},
-      "observations": {
-        "type": "array",
-        "minItems": 2,
-        "maxItems": 2,
-        "items": {"$ref": "#/$defs/observation"}
+      "observations": {"type": "array", "minItems": 2, "maxItems": 2}
+    },
+    "if": {"properties": {"basis": {"const": "official_huggingface_repository_id"}}},
+    "then": {
+      "properties": {
+        "alias_id": {"$ref": "#/$defs/hubId"},
+        "target_id": {"$ref": "#/$defs/hubId"},
+        "repository_id": {"$ref": "#/$defs/hubObjectId"},
+        "observations": {"items": {"$ref": "#/$defs/hubObservation"}}
+      }
+    },
+    "else": {
+      "properties": {
+        "alias_id": {"$ref": "#/$defs/githubId"},
+        "target_id": {"$ref": "#/$defs/githubId"},
+        "repository_id": {"type": "integer", "minimum": 1},
+        "observations": {"items": {"$ref": "#/$defs/observation"}}
       }
     }
   },
@@ -34,6 +46,22 @@
         "repository_id": {"type": "integer", "minimum": 1},
         "full_name": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9-]*/[A-Za-z0-9_.-]+$"},
         "html_url": {"type": "string", "format": "uri", "pattern": "^https://github\\.com/[A-Za-z0-9][A-Za-z0-9-]*/[A-Za-z0-9_.-]+$"},
+        "retrieved_at": {"type": "string", "format": "date-time"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "hubId": {"type": "string", "pattern": "^url:[0-9a-f]{20}$"},
+    "hubObjectId": {"type": "string", "pattern": "^[0-9a-f]{24}$"},
+    "hubObservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["url", "resolved_url", "repository_id", "full_name", "html_url", "retrieved_at", "sha256"],
+      "properties": {
+        "url": {"type": "string", "format": "uri", "pattern": "^https://huggingface\\.co/api/(models|datasets)/[A-Za-z0-9][A-Za-z0-9_.-]*/[A-Za-z0-9_.-]+$"},
+        "resolved_url": {"type": "string", "format": "uri", "pattern": "^https://huggingface\\.co/api/(models|datasets)/[A-Za-z0-9][A-Za-z0-9_.-]*/[A-Za-z0-9_.-]+$"},
+        "repository_id": {"$ref": "#/$defs/hubObjectId"},
+        "full_name": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*/[A-Za-z0-9_.-]+$"},
+        "html_url": {"type": "string", "format": "uri", "pattern": "^https://huggingface\\.co/(datasets/)?[A-Za-z0-9][A-Za-z0-9_.-]*/[A-Za-z0-9_.-]+$"},
         "retrieved_at": {"type": "string", "format": "date-time"},
         "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
       }

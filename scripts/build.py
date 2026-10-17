@@ -15,7 +15,7 @@ from catalog import ROOT, DATA, KINDS, ENVIRONMENTS, STATUSES, TOPICS, atomic_wr
 from specifications import PREFIXES, PROFILE_KEYS, validate_profiles
 from scope_review import resolve_exclusions, scope_report
 from arxiv_metadata import validate_snapshot
-from repository_identity import repository_aliases, attach_repository_aliases
+from repository_identity import repository_aliases, attach_repository_aliases, unrecorded_hub_renames
 from lookup import REVIEWED_RELATION_TYPES
 from publication_metadata import (alias_owner_errors, attach_publications, duplicate_publication_errors, publication_aliases,
     publication_links, publication_search_text, record_date_text, record_year, validate_publication)
@@ -979,6 +979,8 @@ def validate(args):
     print(f"Validated {len(rows)} records: JSON Schema, identifiers, dates, source receipts, scoped licenses, and reviewed relation targets.")
     for group in title_author_collisions(rows):
         print("Undecided duplicate: " + ", ".join(str(r.get("id")) for r in group) + " share a title and author list; record identifiers.preferred_arxiv on the duplicate.")
+    for rid, path, current in unrecorded_hub_renames(rows, repository_aliases(repository_declarations, rows)):
+        print(f"Unrecorded Hub rename: {rid} links {path}, but the Hub API names it {current}; record the rename in data/repository-aliases.json.")
 
 
 def search(args):
