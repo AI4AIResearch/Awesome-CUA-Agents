@@ -14,7 +14,7 @@ from agent_pages import agent_guide_body
 from export_citations import citation_bibtex, citation_csl
 from paper_library import library_pages, library_path, library_years, paper_library
 from publication_metadata import publication, format_date_parts, record_date_text, record_year
-from topic_pages import write_topic_exports, topic_index_body, topic_body, topic_markdown, topic_name, topic_path
+from topic_pages import write_topic_exports, topic_index_body, topic_body, topic_counts, topic_markdown, topic_name, topic_page_count, topic_path
 from data_hub import build_download_manifest, data_hub_body
 
 SITE = "https://awesomecua.github.io"
@@ -347,14 +347,17 @@ def build_search_pages(destination, rows, coverage, root):
         summary='Explore source-reviewed computer-use papers, models, datasets, benchmarks and tools by topic.' if language=='en' else '按研究主题浏览已审阅的 Computer-Use 论文、模型、数据、基准与工具，并下载完整主题记录。'
         emit(path,page(title,summary,path,body,schema,lang='zh-CN' if language=='zh' else 'en',alternatives={'en':'/topics/','zh-CN':'/zh/topics/','x-default':'/topics/'}))
         for topic,members in topic_groups.items():
-            path=topic_path(topic,language)
-            body,schema=topic_body(topic,members,resource_path,language=language,site_url=SITE)
+            first=topic_path(topic,language)
             title=topic_name(topic,language)+(' — computer-use research and resources' if language=='en' else '：Computer-Use 研究与资源')
             summary=(f'{len(members)} reviewed resources for {topic_name(topic)}, with original sources, full records and citations.' if language=='en' else f'{len(members)} 条已审阅的{topic_name(topic,language)}资源，包含原始来源、完整记录与论文引用。')
-            alternatives={'en':topic_path(topic),'zh-CN':topic_path(topic,'zh'),'x-default':topic_path(topic)}
-            trail=[("AwesomeCUA","/zh/" if language=='zh' else "/"),("主题" if language=='zh' else "Topics",topic_path(language=language)),(topic_name(topic,language),path)]
-            emit(path,page(title,summary,path,body,schema,lang='zh-CN' if language=='zh' else 'en',alternatives=alternatives,crumbs=trail))
-            (destination/path.lstrip('/')/'index.md').write_text(clean_text(topic_markdown(topic,members,resource_path,language=language,site_url=SITE)),encoding='utf-8')
+            for number in range(1,topic_page_count(topic_counts(members))+1):
+                path=topic_path(topic,language,number)
+                body,schema=topic_body(topic,members,resource_path,language=language,site_url=SITE,number=number)
+                numbered=(f'{title}, page {number}' if language=='en' else f'{title}（第 {number} 页）') if number>1 else title
+                alternatives={'en':topic_path(topic,'en',number),'zh-CN':topic_path(topic,'zh',number),'x-default':topic_path(topic,'en',number)}
+                trail=[("AwesomeCUA","/zh/" if language=='zh' else "/"),("主题" if language=='zh' else "Topics",topic_path(language=language)),(topic_name(topic,language),first)]+([(f'Page {number}' if language=='en' else f'第 {number} 页',path)] if number>1 else [])
+                emit(path,page(numbered,summary,path,body,schema,lang='zh-CN' if language=='zh' else 'en',alternatives=alternatives,crumbs=trail))
+            (destination/first.lstrip('/')/'index.md').write_text(clean_text(topic_markdown(topic,members,resource_path,language=language,site_url=SITE)),encoding='utf-8')
     linked_papers=[r for r in papers if any(e['type'] in {'documented_by','introduced_by'} for e in incoming.get(r['id'],[]))]
     body='<div class="eyebrow">FOLLOW THE RESEARCH TO THE ASSETS</div><h1>Computer-use papers, code, and datasets</h1><p class="answer-lead">Find the implementations, benchmarks, and datasets connected to reviewed research papers. Every relationship below has a primary-source evidence link.</p><p>Connections describe publication documentation or introduction. They do not automatically mean that a model was trained on a dataset or evaluated on a benchmark.</p><div class="reading-list">'
     for paper in linked_papers:
@@ -451,7 +454,7 @@ def build_search_pages(destination, rows, coverage, root):
     llms.extend(['', '## Agent and RAG access', '', '```sh', 'git clone https://github.com/reacher-z/Awesome-CUA.git', '```', '', f'- [Agent instructions]({SITE}/AGENTS.md)', f'- [Human and agent guide]({SITE}/agents/)', f'- [中文指南]({SITE}/zh/agents/)', f'- [Reviewed retrieval documents]({SITE}/downloads/rag-documents.jsonl)', f'- [All retrieval documents]({SITE}/downloads/rag-all-records.jsonl)', f'- [Export manifest]({SITE}/downloads/rag-manifest.json)'])
     llms.extend(['', '## Individual records and citations', '', 'Each active resource page serves its complete record at `record.json`. Scope-excluded resources return a JSON object with `status: excluded`, not an active record.', '', f'- [Reviewed paper BibTeX]({SITE}/downloads/citations.bib)', f'- [Reviewed paper CSL JSON]({SITE}/downloads/citations.csl.json)', f'- [Citation manifest]({SITE}/downloads/citations-manifest.json)'])
     llms.extend(['', '## Publication editions', '', 'Default arXiv citations retain the recorded preprint. Publication editions use their own title/authors/date and do not create extra catalog papers. Date components keep their recorded precision.', '', f'- [Reviewed publication BibTeX]({SITE}/downloads/publication-citations.bib)', f'- [Reviewed publication CSL JSON]({SITE}/downloads/publication-citations.csl.json)', f'- [Publication observations]({SITE}/downloads/publications.jsonl)', f'- [Publication observation schema]({SITE}/schemas/publication-observation.schema.json)', '', 'Resources with publication metadata also serve `publication-citation.bib` and `publication-citation.csl.json` next to their retained-source citation files.'])
-    llms.extend(['', '## Topic collections', '', f'- [Topic directory]({SITE}/topics/)', f'- [中文主题目录]({SITE}/zh/topics/)', f'- [Topic manifest]({SITE}/downloads/topics.json): exact reviewed resource IDs, counts, subset URLs and SHA-256 fingerprints. Topic memberships overlap; counts must not be summed.', '', 'Each topic page has index.md. Each /downloads/topics/<topic>/ directory serves records.jsonl, citations.bib and citations.csl.json. Pass records.jsonl to export_rag.py --input to build a topic-specific retrieval corpus.'])
+    llms.extend(['', '## Topic collections', '', f'- [Topic directory]({SITE}/topics/)', f'- [中文主题目录]({SITE}/zh/topics/)', f'- [Topic manifest]({SITE}/downloads/topics.json): exact reviewed resource IDs, counts, subset URLs and SHA-256 fingerprints. Topic memberships overlap; counts must not be summed.', '', 'The first page of each topic has an index.md listing all of its resources. Each /downloads/topics/<topic>/ directory serves records.jsonl, citations.bib and citations.csl.json. Pass records.jsonl to export_rag.py --input to build a topic-specific retrieval corpus.'])
     llms.extend(['', '## Repository identity', '', f'- [Verified former repository names]({SITE}/downloads/repository-aliases.json): paired official API observations with the same numeric GitHub repository ID. Use the canonical returned ID for retrieval upserts; aliases add no resources. Record fields and RAG documents retain former names and their alias-scoped evidence.', f'- [Repository identity schema]({SITE}/schemas/repository-alias.schema.json)'])
     llms.extend(['', '## Download inventory', '', f'- [Bilingual data hub]({SITE}/data/)', f'- [中文数据中心]({SITE}/zh/data/)', f'- [Download manifest]({SITE}/downloads/manifest.json): file paths, exact byte sizes, SHA-256 fingerprints, counts and units. Compare catalog_sha256 with the RAG, citation and topic manifests before combining artifacts.', f'- [Download manifest schema]({SITE}/schemas/download-manifest.schema.json)'])
     (destination/'llms.txt').write_text(clean_text('\n'.join(llms)+'\n'),encoding='utf-8')

@@ -110,17 +110,20 @@ class SearchPagesTests(unittest.TestCase):
                 self.assertEqual(hashlib.sha256(content).hexdigest(),export['sha256'])
                 if export['url'].endswith('records.jsonl'):
                     self.assertEqual({r['id']:r for r in map(json.loads,content.splitlines())},expected)
-            for language,path in item['pages'].items():
-                markup=(self.dest/path.lstrip('/')/'index.html').read_text()
-                ids=[html.unescape(value) for value in re.findall(r'data-resource-id="([^"]+)"',markup)]
-                self.assertEqual(set(ids),set(expected),path)
-                self.assertEqual(len(ids),len(expected),path)
-                graph=json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>',markup,re.S)[1])['@graph']
-                listing=next(entity for entity in graph if entity['@type']=='ItemList')
-                self.assertEqual([entry['url'] for entry in listing['itemListElement']],
-                                 [SITE+resource_path(expected[rid]) for rid in ids])
-                self.assertEqual(listing['numberOfItems'],len(expected))
-                self.assertTrue((self.dest/path.lstrip('/')/'index.md').exists())
+            for language,first in item['pages'].items():
+                ids=[]
+                for path in [p['path'] for p in self.manifest['pages'] if re.fullmatch(re.escape(first)+r'(?:page/\d+/)?',p['path'])]:
+                    markup=(self.dest/path.lstrip('/')/'index.html').read_text()
+                    page_ids=[html.unescape(value) for value in re.findall(r'data-resource-id="([^"]+)"',markup)]
+                    graph=json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>',markup,re.S)[1])['@graph']
+                    listing=next(entity for entity in graph if entity['@type']=='ItemList')
+                    self.assertEqual([entry['url'] for entry in listing['itemListElement']],
+                                     [SITE+resource_path(expected[rid]) for rid in page_ids],path)
+                    self.assertEqual(listing['numberOfItems'],len(page_ids),path)
+                    ids+=page_ids
+                self.assertEqual(set(ids),set(expected),first)
+                self.assertEqual(len(ids),len(expected),first)
+                self.assertTrue((self.dest/first.lstrip('/')/'index.md').exists())
     def test_script_versions_match_output_bytes_and_final_page_manifest(self):
         pages={item['path']:item for item in self.manifest['pages']}
         for path,script in [('/', 'app.js'),('/compare/benchmarks/','compare.js'),('/compare/datasets/','compare.js'),

@@ -9,7 +9,7 @@ import re
 from urllib.parse import urlencode
 
 from export_citations import encode_citations
-from paper_library import PLATFORMS, TOPICS
+from paper_library import PAGE_SIZE, PLATFORMS, TOPICS
 from publication_metadata import record_date_text
 
 
@@ -37,10 +37,10 @@ def topic_name(topic, language='en'):
     return TOPICS.get(topic, (topic.replace('-', ' ').capitalize(),) * 2)[language == 'zh']
 
 
-def topic_path(topic=None, language='en'):
+def topic_path(topic=None, language='en', number=1):
     if topic is not None and not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', topic):
         raise ValueError('Unsafe topic identifier: ' + str(topic))
-    return ('/zh' if language == 'zh' else '') + '/topics/' + (topic + '/' if topic else '')
+    return ('/zh' if language == 'zh' else '') + '/topics/' + (topic + '/' + (f'page/{number}/' if number > 1 else '') if topic else '')
 
 
 def reviewed_topics(rows):
@@ -58,6 +58,22 @@ def reviewed_topics(rows):
 def topic_counts(rows):
     by_kind = Counter(row['kind'] for row in rows)
     return {'total': len(rows), **{slug: sum(by_kind[kind] for kind in kinds) for slug, _, kinds in GROUPS}}
+
+
+def topic_page_count(counts):
+    return max(1, -(-sum(counts[slug] for slug, _, _ in GROUPS) // PAGE_SIZE))
+
+
+def topic_sections(topic, counts, language='en'):
+    """Map each resource group to the topic page and anchor where its first entry appears.
+
+    Pages list groups in GROUPS order, so manifest counts alone locate each group without the member rows."""
+    links, start = {}, 0
+    for slug, _, _ in GROUPS:
+        if counts[slug]:
+            links[slug] = topic_path(topic, language, start // PAGE_SIZE + 1) + '#' + slug
+            start += counts[slug]
+    return links
 
 
 def write_topic_exports(destination, rows, catalog_bytes):
@@ -130,12 +146,13 @@ def topic_index_body(manifest, *, language='en', site_url='https://awesomecua.gi
     body += ['<th scope="col">', tr('Total', '合计'), '</th></tr></thead><tbody>']
     for entry in entries:
         path = topic_path(entry['id'], language)
+        sections = topic_sections(entry['id'], entry['counts'], language)
         body += ['<tr data-topic="', entry['id'], '"><th scope="row"><a href="', path, '">', esc(entry['name'][language]), ' <span aria-hidden="true">↗</span></a></th>']
         for slug, labels, _ in GROUPS:
             count = entry['counts'][slug]
             body += ['<td class="topic-col-', slug, '">']
             if count:
-                body += ['<a class="topic-number" href="', path, '#', slug, '" aria-label="', esc(entry['name'][language] + ' · ' + labels[zh] + ': ' + str(count)), '">', f'{count:,}', '</a>']
+                body += ['<a class="topic-number" href="', sections[slug], '" aria-label="', esc(entry['name'][language] + ' · ' + labels[zh] + ': ' + str(count)), '">', f'{count:,}', '</a>']
             else:
                 body += ['<span class="topic-zero" aria-label="', tr('No reviewed entries', '暂无已审阅条目'), '">—</span>']
             body += ['</td>']
@@ -157,15 +174,22 @@ def ordered_groups(rows):
             yield slug, labels, selected
 
 
-def topic_body(topic, rows, resource_path, *, language='en', site_url='https://awesomecua.github.io'):
+def topic_body(topic, rows, resource_path, *, language='en', site_url='https://awesomecua.github.io', number=1):
+    """Return one topic page's HTML and an ItemList describing exactly its visible resources."""
     zh = language == 'zh'
     def tr(en, cn): return cn if zh else en
     name = topic_name(topic, language)
     counts = topic_counts(rows)
+    pages = topic_page_count(counts)
+    if not 1 <= number <= pages:
+        raise ValueError(f'Topic page {number} is outside 1..{pages}')
+    here = topic_path(topic, language, number)
+    sections = topic_sections(topic, counts, language)
+    start = (number - 1) * PAGE_SIZE
     query = '/?' + esc(urlencode({'topic': topic, 'review': 'curated', 'lang': language})) + '#catalog'
     export = '/downloads/topics/' + topic + '/'
     body = ['<section class="topic-directory topic-detail"><div class="topic-back"><a href="', topic_path(language=language), '">← ',
-            tr('All topics', '全部主题'), '</a><a href="', topic_path(topic, 'en' if zh else 'zh'), '">', 'English' if zh else '中文', '</a></div>',
+            tr('All topics', '全部主题'), '</a><a href="', topic_path(topic, 'en' if zh else 'zh', number), '">', 'English' if zh else '中文', '</a></div>',
             '<h1>', esc(name), '</h1><p class="topic-intro">', tr('Source-reviewed research and assets tagged with ', '已审阅并标注「') + esc(name) + tr('.', '」的研究与资产。'), '</p>',
             '<div class="topic-overview"><span><strong>', f'{counts["total"]:,}', '</strong> ', tr('reviewed resources', '条已审阅资源'), '</span><a href="', query, '">',
             tr('Search this topic', '检索此主题'), ' ↗</a><a href="', export, 'records.jsonl" download>JSONL ↓</a>']
@@ -174,15 +198,20 @@ def topic_body(topic, rows, resource_path, *, language='en', site_url='https://a
     body += ['</div><nav class="topic-sections" aria-label="', tr('Resource types in this topic', '当前主题的资源类型'), '">']
     for slug, labels, _ in GROUPS:
         if counts[slug]:
-            body += ['<a class="topic-col-', slug, '" href="#', slug, '">', labels[zh], '<strong>', str(counts[slug]), '</strong></a>']
+            link = sections[slug]
+            body += ['<a class="topic-col-', slug, '" href="', link[len(here):] if link.startswith(here + '#') else link, '">', labels[zh], '<strong>', str(counts[slug]), '</strong></a>']
     body += ['</nav><p class="topic-method">', tr('Membership follows reviewed tags; it does not establish a dependency between neighboring records. Dates preserve source precision. Annotations retain their original language.',
              '条目依据已审阅标签归类，同一主题不表示资源之间存在依赖关系。日期保留来源精度，注释保留原语言。'), '</p>']
-    ordered = []
+    visible, offset = [], 0
     for slug, labels, selected in ordered_groups(rows):
+        shown = selected[max(0, start - offset):max(0, start + PAGE_SIZE - offset)]
+        offset += len(selected)
+        if not shown:
+            continue
         body += ['<section class="topic-resource-group" aria-labelledby="', slug, '"><div class="paper-year-heading"><h2 id="', slug, '">', labels[zh],
                  '</h2><span>', str(len(selected)), '</span><a href="#content">', tr('Back to top', '回到顶部'), ' ↑</a></div>']
-        for row in selected:
-            ordered.append(row)
+        for row in shown:
+            visible.append(row)
             date = record_date_text(row)
             path = resource_path(row)
             primary = row.get('details', {}).get('arxiv_snapshot', {}).get('versioned_url') or row['url']
@@ -207,11 +236,17 @@ def topic_body(topic, rows, resource_path, *, language='en', site_url='https://a
                 body += ['<a href="', path, 'citation.bib" download>BibTeX ↓</a>']
             body += ['<a href="', path, '">', tr('Details', '详情'), ' →</a></div></article>']
         body += ['</section>']
+    if pages > 1:
+        body += ['<nav class="pagination library-pager" aria-label="', tr('Topic pages', '主题分页'), '">',
+                 '<a href="' + topic_path(topic, language, number - 1) + '" rel="prev">' + tr('← Previous', '← 上一页') + '</a>' if number > 1 else '<span></span>', '<span class="page-numbers">']
+        body += ['<a href="' + topic_path(topic, language, n) + '" aria-label="' + tr('Page ', '第 ') + str(n) + tr('', ' 页') + '"' + (' aria-current="page"' if n == number else '') + '>' + str(n) + '</a>' for n in range(1, pages + 1)]
+        body += ['</span>', '<a href="' + topic_path(topic, language, number + 1) + '" rel="next">' + tr('Next →', '下一页 →') + '</a>' if number < pages else '<span></span>',
+                 '</nav><p class="library-range">', tr(f'Showing {start + 1:,}–{start + len(visible):,} of {offset:,} resources.', f'第 {start + 1:,}–{start + len(visible):,} 条，共 {offset:,} 条资源。'), '</p>']
     body += ['<p class="topic-method">', tr('Get full records and evidence through the ', '通过'), '<a href="/downloads/topics.json">', tr('topic export manifest', '主题导出清单'),
              '</a>', tr('. Source records can be passed to the standard RAG and citation exporters after cloning the catalog.', '获取完整记录和证据。克隆目录后，可将主题记录直接交给标准 RAG 与引用导出工具。'), '</p></section>']
-    schema = {'@type': 'ItemList', 'name': name, 'numberOfItems': len(ordered),
-              'itemListElement': [{'@type': 'ListItem', 'position': i + 1, 'name': row['name'], 'url': site_url + resource_path(row)}
-                                  for i, row in enumerate(ordered)]}
+    schema = {'@type': 'ItemList', 'name': name, 'numberOfItems': len(visible),
+              'itemListElement': [{'@type': 'ListItem', 'position': start + i + 1, 'name': row['name'], 'url': site_url + resource_path(row)}
+                                  for i, row in enumerate(visible)]}
     return ''.join(body), schema
 
 
