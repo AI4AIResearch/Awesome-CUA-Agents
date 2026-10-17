@@ -199,6 +199,8 @@ def coverage(rows, pending, scope_decisions):
         "discovery_identifiers": len(candidates), "unindexed_candidates": len({r["id"] for r in candidates} - ids - excluded),
         "pending_editorial": pending, "by_kind": dict(sorted(collections.Counter(r["kind"] for r in rows).items())),
         "curated_by_environment": dict(sorted(collections.Counter(e for r in rows if r["review_status"] == "curated" for e in r["environments"]).items())),
+        "curated_by_kind_and_environment": {kind: dict(sorted(collections.Counter(e for r in rows if r["review_status"] == "curated" and r["kind"] == kind for e in set(r["environments"])).items()))
+            for kind in sorted({r["kind"] for r in rows if r["review_status"] == "curated"})},
         "license_declarations_by_scope": {slot: sum(r["licenses"][slot] is not None for r in rows) for slot in ("code", "data", "weights", "document")},
         "sources": source_rows, "primary_search": read_json(DATA / "arxiv-search.json", {}),
         "paper_discovery": read_json(DATA / 'paper-discovery-status.json', {}),
@@ -320,6 +322,16 @@ def topic_pages(rows):
     return files
 
 
+MATRIX_ENVIRONMENTS = ["web", "desktop", "windows", "macos", "linux", "android", "ios", "harmonyos", "cross-platform", "unspecified"]
+
+
+def matrix_lines(matrix):
+    lines = ["| Kind | " + " | ".join(MATRIX_ENVIRONMENTS) + " |", "| --- |" + " ---: |" * len(MATRIX_ENVIRONMENTS)]
+    for kind, counts in matrix.items():
+        lines.append(f"| [{kind}]({'companies' if kind == 'company' else 'topics' if kind == 'paper' else kind + 's'}.md) | " + " | ".join(str(counts[e]) if counts.get(e) else "·" for e in MATRIX_ENVIRONMENTS) + " |")
+    return lines
+
+
 def documents(rows, report):
     files = {}
     by_id = {r["id"]: r for r in rows}
@@ -380,6 +392,8 @@ def documents(rows, report):
         f"- {report['discovery_identifiers']:,} discovery identifiers; {report['unindexed_candidates']:,} remain unresolved after accounting for scope exclusions.",
         f"- {len(report['pending_editorial'])} editorial proposals await verification or review.", "",
         "These are distinct resource identifiers, not distinct research projects. Papers, repositories, datasets, products, and publisher entities have different grains.", "",
+        "## Curated coverage by kind and environment", "", "Counts of source-reviewed resources. A resource tagged with several environments counts in each column; `·` marks an empty cell, which is where contributions are most needed.", "",
+        *matrix_lines(report["curated_by_kind_and_environment"]), "",
         "## Source snapshot coverage", "", "The denominator is the normalized identifiers extracted from each fetched document, including incidental links. Sources overlap. These figures do not measure global completeness or editorial recall.", "",
         "| Source | Discovered | Indexed | Curated | Excluded | Unresolved | Fetch |", "| --- | ---: | ---: | ---: | ---: | ---: | --- |"]
     for s in report["sources"]:

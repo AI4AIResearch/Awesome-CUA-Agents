@@ -126,6 +126,98 @@
     "web": 354,
     "windows": 38
   },
+  "curated_by_kind_and_environment": {
+    "agent": {
+      "android": 11,
+      "cross-platform": 1,
+      "desktop": 14,
+      "ios": 1,
+      "macos": 1,
+      "web": 6,
+      "windows": 3
+    },
+    "benchmark": {
+      "android": 12,
+      "cross-platform": 11,
+      "desktop": 14,
+      "ios": 2,
+      "linux": 3,
+      "macos": 3,
+      "unspecified": 3,
+      "web": 29,
+      "windows": 4
+    },
+    "company": {
+      "unspecified": 16
+    },
+    "dataset": {
+      "android": 23,
+      "cross-platform": 14,
+      "desktop": 12,
+      "linux": 5,
+      "macos": 2,
+      "unspecified": 5,
+      "web": 16,
+      "windows": 3
+    },
+    "framework": {
+      "android": 8,
+      "cross-platform": 5,
+      "desktop": 14,
+      "harmonyos": 1,
+      "linux": 2,
+      "macos": 1,
+      "unspecified": 2,
+      "web": 24,
+      "windows": 1
+    },
+    "infrastructure": {
+      "android": 4,
+      "desktop": 5,
+      "ios": 1,
+      "linux": 2,
+      "macos": 1,
+      "web": 3
+    },
+    "model": {
+      "android": 17,
+      "cross-platform": 44,
+      "desktop": 14,
+      "ios": 4,
+      "linux": 3,
+      "macos": 3,
+      "unspecified": 1,
+      "web": 20,
+      "windows": 3
+    },
+    "paper": {
+      "android": 94,
+      "cross-platform": 87,
+      "desktop": 108,
+      "ios": 5,
+      "linux": 7,
+      "macos": 5,
+      "unspecified": 101,
+      "web": 172,
+      "windows": 17
+    },
+    "product": {
+      "desktop": 5,
+      "web": 17
+    },
+    "survey": {
+      "android": 1,
+      "cross-platform": 10,
+      "ios": 1
+    },
+    "tool": {
+      "android": 2,
+      "cross-platform": 1,
+      "ios": 1,
+      "unspecified": 2,
+      "web": 7
+    }
+  },
   "license_declarations_by_scope": {
     "code": 142,
     "data": 42,

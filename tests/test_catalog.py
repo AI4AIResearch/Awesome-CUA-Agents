@@ -337,6 +337,11 @@ class CategoryPageTests(unittest.TestCase):
         self.assertEqual(family("cross-platform"), "cross-platform")
         self.assertEqual(family("unspecified"), "unspecified")
 
+    def test_coverage_matrix_marks_gaps(self):
+        lines = build.matrix_lines({"benchmark": {"web": 2, "ios": 1}, "company": {"unspecified": 3}})
+        self.assertEqual(lines[2], "| [benchmark](benchmarks.md) | 2 | · | · | · | · | · | 1 | · | · | · |")
+        self.assertTrue(lines[3].startswith("| [company](companies.md) | · |"))
+
     def test_kind_specific_columns(self):
         row = {"name": "A|B", "url": "https://example.com/a", "environments": ["web"], "summary": "Short.", "published_at": "2025-01-02",
             "relations": [{"type": "published_by", "target_id": "company:x"}], "licenses": {"code": None, "data": None, "weights": None, "document": None},
