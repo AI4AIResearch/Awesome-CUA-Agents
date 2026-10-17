@@ -103,7 +103,7 @@ class SourceTests(unittest.TestCase):
             catalog.write_json(Path(directory) / f"{key}.json", {"ok": True, "url": url, "sha256": "a" * 64})
             (Path(directory) / f"{key}.body").write_bytes(b"old good snapshot")
             error = urllib.error.HTTPError(url, 429, "rate limited", {}, None)
-            with mock.patch("urllib.request.urlopen", side_effect=error):
+            with mock.patch("urllib.request.urlopen", side_effect=error), mock.patch("time.sleep"):
                 info, body = catalog.fetch(url, refresh=True)
             self.assertFalse(info["ok"])
             self.assertEqual(body, b"")

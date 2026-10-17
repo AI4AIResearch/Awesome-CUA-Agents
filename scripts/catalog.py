@@ -6,11 +6,13 @@ import argparse
 from collections import Counter
 import concurrent.futures
 import datetime as dt
+import email.utils
 import hashlib
 import html
 import json
 import os
 from pathlib import Path
+import random
 import re
 import sys
 import time
@@ -30,6 +32,7 @@ KINDS = {"paper", "survey", "model", "dataset", "benchmark", "agent", "framework
 ENVIRONMENTS = {"web", "desktop", "android", "ios", "harmonyos", "windows", "macos", "linux", "cross-platform", "unspecified"}
 STATUSES = {"curated", "metadata_verified"}
 SHRINK_FLOOR = 0.5  # A successful source response below this share of its retained candidates is held for review.
+RETRY_STATUSES, MAX_ATTEMPTS, MAX_RETRY_AFTER = {429, 500, 502, 503, 504}, 3, 60
 
 
 def now():
@@ -54,6 +57,25 @@ def write_jsonl(path, rows):
     path.write_text("".join(json.dumps(r, ensure_ascii=False, sort_keys=True) + "\n" for r in sorted(rows, key=lambda r: r["id"])))
 
 
+def retry_delay(error, attempt):
+    """Seconds to wait before retrying a transient failure; None means stop now."""
+    if isinstance(error, urllib.error.HTTPError) and error.code not in RETRY_STATUSES:
+        return None
+    if not isinstance(error, (urllib.error.URLError, TimeoutError, ConnectionError)):
+        return None
+    header = str((getattr(error, "headers", None) or {}).get("Retry-After") or "").strip()
+    if header.isdigit():
+        delay = int(header)
+    else:
+        try:
+            when = email.utils.parsedate_to_datetime(header)
+            delay = max(0, (when if when.tzinfo else when.replace(tzinfo=dt.timezone.utc)).timestamp() - time.time())
+        except (TypeError, ValueError):
+            return 2 ** (attempt - 1) + random.uniform(0, 0.25)
+    # A longer pause than one run should spend is left to the caller's rate-limit handling.
+    return delay if delay <= MAX_RETRY_AFTER else None
+
+
 def fetch(url, refresh=False):
     """Cache successful GETs; persist failures as evidence, never as successful content."""
     CACHE.mkdir(parents=True, exist_ok=True)
@@ -62,27 +84,32 @@ def fetch(url, refresh=False):
     old = read_json(info_path, {})
     if not refresh and old.get("ok") and body_path.exists():
         return old, body_path.read_bytes()
-    info = {"url": url, "retrieved_at": now(), "ok": False}
-    try:
-        request = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/json, application/atom+xml, text/html, text/plain, */*"})
-        with urllib.request.urlopen(request, timeout=30) as response:
-            body = response.read(10_000_001)
-            if len(body) > 10_000_000:
-                raise ValueError("response exceeds 10 MB metadata budget")
-            info.update(ok=True, status=response.status, final_url=response.url,
-                        content_type=response.headers.get("Content-Type", ""),
-                        sha256=hashlib.sha256(body).hexdigest(), bytes=len(body))
-        body_path.write_bytes(body)
-        write_json(info_path, info)
-        return info, body
-    except (urllib.error.URLError, TimeoutError, ValueError, OSError) as error:
-        info.update(error=str(error), status=getattr(error, "code", None))
-        headers = getattr(error, "headers", None)
-        if headers and headers.get('Retry-After'):
-            info['retry_after'] = headers.get('Retry-After')
-        # Keep the previous successful cache intact when a refresh fails.
-        write_json(CACHE / f"{key}.error.json", info)
-        return info, b""
+    for attempt in range(1, MAX_ATTEMPTS + 1):
+        info = {"url": url, "retrieved_at": now(), "ok": False, "request_attempts": attempt}
+        try:
+            request = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/json, application/atom+xml, text/html, text/plain, */*"})
+            with urllib.request.urlopen(request, timeout=30) as response:
+                body = response.read(10_000_001)
+                if len(body) > 10_000_000:
+                    raise ValueError("response exceeds 10 MB metadata budget")
+                info.update(ok=True, status=response.status, final_url=response.url,
+                            content_type=response.headers.get("Content-Type", ""),
+                            sha256=hashlib.sha256(body).hexdigest(), bytes=len(body))
+            body_path.write_bytes(body)
+            write_json(info_path, info)
+            return info, body
+        except (urllib.error.URLError, TimeoutError, ValueError, OSError) as error:
+            info.update(error=str(error), status=getattr(error, "code", None))
+            headers = getattr(error, "headers", None)
+            if headers and headers.get('Retry-After'):
+                info['retry_after'] = headers.get('Retry-After')
+            delay = retry_delay(error, attempt) if attempt < MAX_ATTEMPTS else None
+            if delay is None:
+                break
+            time.sleep(delay)
+    # Keep the previous successful cache intact when a refresh fails.
+    write_json(CACHE / f"{key}.error.json", info)
+    return info, b""
 
 
 def canonical(url):
