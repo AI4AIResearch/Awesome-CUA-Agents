@@ -6,7 +6,7 @@ Curated metadata, not a performance ranking. Each entry links its first-party ev
 
 *Paper* lists reviewed `introduced_by`/`documented_by` relations with the record's year. *License* lists publisher declarations by scope (code, data, weights, document). *Evidence* links the reviewed first-party snapshot and its retrieval date.
 
-**15 resources:** [Web (2)](#web) · [Desktop (6)](#desktop) · [Mobile (4)](#mobile) · [Cross-platform (3)](#cross-platform)
+**14 resources:** [Web (2)](#web) · [Desktop (6)](#desktop) · [Mobile (3)](#mobile) · [Cross-platform (3)](#cross-platform)
 
 Resources tagged with environments from more than one family are listed under *Cross-platform*; their exact environments stay in the table.
 
@@ -38,7 +38,6 @@ All entries in this section: web.
 
 | Resource | Environments | Paper | License | Description | Evidence |
 | --- | --- | --- | --- | --- | --- |
-| [AndroidEnv](https://github.com/deepmind/android_env) | android | — | code Apache-2.0 | Environment toolkit for interacting with Android devices in agent research. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/deepmind/android_env/HEAD/README.md) |
 | [AndroidEnv](https://github.com/google-deepmind/android_env) | android | [2105.13231](https://arxiv.org/abs/2105.13231) (2021) | code Apache-2.0 | Android device-control platform with screenshots, accessibility telemetry, input actions, and an optional reinforcement-learning task interface. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/google-deepmind/android_env/HEAD/README.md) |
 | [Appium](https://github.com/appium/appium) | android, ios | — | code Apache-2.0 | Cross-platform UI automation infrastructure. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/appium/appium/HEAD/README.md) |
 | [Mobile Env](https://github.com/X-LANCE/Mobile-Env) | android | — | code Apache-2.0 | Environment toolkit for mobile interaction agents. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/X-LANCE/Mobile-Env/HEAD/README.md) |

@@ -5300,26 +5300,6 @@
     "reviewed_at": "2026-10-16T06:36:04Z"
   },
   {
-    "name": "AndroidEnv",
-    "kind": "infrastructure",
-    "url": "https://github.com/deepmind/android_env",
-    "environments": [
-      "android"
-    ],
-    "topics": [
-      "evaluation",
-      "reinforcement-learning"
-    ],
-    "summary": "Environment toolkit for interacting with Android devices in agent research.",
-    "verify_terms": [
-      "AndroidEnv",
-      "android_env"
-    ],
-    "editorial_reviewed": true,
-    "reviewed_sha256": "b8dd2ea004647008265f4fb5c5a122569992311b6758f413080984266e53c25a",
-    "reviewed_at": "2026-10-16T06:36:04Z"
-  },
-  {
     "name": "Mobile Env",
     "kind": "infrastructure",
     "url": "https://github.com/X-LANCE/Mobile-Env",
@@ -13850,6 +13830,10 @@
       "automation"
     ],
     "summary": "Android device-control platform with screenshots, accessibility telemetry, input actions, and an optional reinforcement-learning task interface.",
+    "aliases": [
+      "https://github.com/deepmind/android_env"
+    ],
+    "notes": "Formerly published as deepmind/android_env. That address now redirects to this repository, and both paths serve the same reviewed README, so the project is counted once.",
     "verify_terms": [
       "AndroidEnv"
     ],

@@ -2,9 +2,9 @@
 
 [Home](../../README.md) · [All topics](../topics.md) · [Full arXiv bibliography](../papers.md)
 
-589 source-reviewed resources tagged `evaluation`. Curated metadata, not a performance ranking; unknown facts are shown as —.
+588 source-reviewed resources tagged `evaluation`. Curated metadata, not a performance ranking; unknown facts are shown as —.
 
-**Contents:** [Benchmarks (77)](#benchmarks) · [Datasets (9)](#datasets) · [Models (1)](#models) · [Frameworks (15)](#frameworks) · [Tools (4)](#tools) · [Infrastructure (3)](#infrastructure) · [Surveys (1)](#surveys) · [Papers (479)](#papers)
+**Contents:** [Benchmarks (77)](#benchmarks) · [Datasets (9)](#datasets) · [Models (1)](#models) · [Frameworks (15)](#frameworks) · [Tools (4)](#tools) · [Infrastructure (2)](#infrastructure) · [Surveys (1)](#surveys) · [Papers (479)](#papers)
 
 ## Benchmarks
 
@@ -143,7 +143,6 @@ All entries in this section: web.
 
 | Resource | Environments | Paper | License | Description | Evidence |
 | --- | --- | --- | --- | --- | --- |
-| [AndroidEnv](https://github.com/deepmind/android_env) | android | — | code Apache-2.0 | Environment toolkit for interacting with Android devices in agent research. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/deepmind/android_env/HEAD/README.md) |
 | [Mobile Env](https://github.com/X-LANCE/Mobile-Env) | android | — | code Apache-2.0 | Environment toolkit for mobile interaction agents. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/X-LANCE/Mobile-Env/HEAD/README.md) |
 | [ScienceBoard VMware environment](https://huggingface.co/OS-Copilot/ScienceBoard-Env) | linux, desktop | [2505.19897](https://arxiv.org/abs/2505.19897) (2025) | — | A prebuilt Ubuntu virtual-machine archive containing the software environment used for ScienceBoard scientific computer-use tasks. | [✓ 2026‑10‑17](https://huggingface.co/OS-Copilot/ScienceBoard-Env/raw/main/README.md) |
 

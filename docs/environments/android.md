@@ -2,9 +2,9 @@
 
 [Home](../../README.md) · [All platforms](../environments.md) · [Research by topic](../topics.md)
 
-275 source-reviewed resources tagged `android`. Curated metadata, not a performance ranking; unknown facts are shown as —.
+274 source-reviewed resources tagged `android`. Curated metadata, not a performance ranking; unknown facts are shown as —.
 
-**Contents:** [Benchmarks (17)](#benchmarks) · [Datasets (33)](#datasets) · [Models (23)](#models) · [Agents (15)](#agents) · [Frameworks (17)](#frameworks) · [Tools (5)](#tools) · [Infrastructure (4)](#infrastructure) · [Surveys (1)](#surveys) · [Papers (160)](#papers)
+**Contents:** [Benchmarks (17)](#benchmarks) · [Datasets (33)](#datasets) · [Models (23)](#models) · [Agents (15)](#agents) · [Frameworks (17)](#frameworks) · [Tools (5)](#tools) · [Infrastructure (3)](#infrastructure) · [Surveys (1)](#surveys) · [Papers (160)](#papers)
 
 ## Benchmarks
 
@@ -150,7 +150,6 @@
 
 | Resource | Environments | Paper | License | Description | Evidence |
 | --- | --- | --- | --- | --- | --- |
-| [AndroidEnv](https://github.com/deepmind/android_env) | android | — | code Apache-2.0 | Environment toolkit for interacting with Android devices in agent research. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/deepmind/android_env/HEAD/README.md) |
 | [AndroidEnv](https://github.com/google-deepmind/android_env) | android | [2105.13231](https://arxiv.org/abs/2105.13231) (2021) | code Apache-2.0 | Android device-control platform with screenshots, accessibility telemetry, input actions, and an optional reinforcement-learning task interface. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/google-deepmind/android_env/HEAD/README.md) |
 | [Appium](https://github.com/appium/appium) | android, ios | — | code Apache-2.0 | Cross-platform UI automation infrastructure. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/appium/appium/HEAD/README.md) |
 | [Mobile Env](https://github.com/X-LANCE/Mobile-Env) | android | — | code Apache-2.0 | Environment toolkit for mobile interaction agents. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/X-LANCE/Mobile-Env/HEAD/README.md) |

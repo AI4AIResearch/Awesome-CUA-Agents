@@ -1,7 +1,7 @@
 {
   "as_of_utc": "2026-10-17T14:35:24Z",
-  "total_records": 3004,
-  "curated_records": 1430,
+  "total_records": 3003,
+  "curated_records": 1429,
   "bibliographic_records": 2578,
   "arxiv_active_records": 2565,
   "non_arxiv_bibliographic_records": 13,
@@ -92,7 +92,7 @@
     "company": 16,
     "dataset": 80,
     "framework": 66,
-    "infrastructure": 15,
+    "infrastructure": 14,
     "model": 93,
     "paper": 2565,
     "product": 19,
@@ -100,7 +100,7 @@
     "tool": 20
   },
   "curated_by_environment": {
-    "android": 275,
+    "android": 274,
     "cross-platform": 186,
     "desktop": 297,
     "harmonyos": 2,
@@ -159,7 +159,7 @@
       "windows": 1
     },
     "infrastructure": {
-      "android": 4,
+      "android": 3,
       "desktop": 9,
       "ios": 1,
       "linux": 4,
@@ -213,7 +213,7 @@
     }
   },
   "license_declarations_by_scope": {
-    "code": 165,
+    "code": 164,
     "data": 53,
     "weights": 52,
     "document": 0
@@ -242,7 +242,7 @@
       "discovered": 338,
       "indexed": 219,
       "indexed_resources": 218,
-      "resolved_aliases": 5,
+      "resolved_aliases": 6,
       "curated": 207,
       "excluded": 0,
       "unindexed": 119
@@ -410,7 +410,7 @@
       "discovered": 170,
       "indexed": 114,
       "indexed_resources": 114,
-      "resolved_aliases": 1,
+      "resolved_aliases": 2,
       "curated": 106,
       "excluded": 1,
       "unindexed": 55
@@ -438,7 +438,7 @@
       "discovered": 588,
       "indexed": 496,
       "indexed_resources": 496,
-      "resolved_aliases": 3,
+      "resolved_aliases": 4,
       "curated": 430,
       "excluded": 0,
       "unindexed": 92
@@ -550,7 +550,7 @@
       "discovered": 193,
       "indexed": 146,
       "indexed_resources": 146,
-      "resolved_aliases": 2,
+      "resolved_aliases": 3,
       "curated": 142,
       "excluded": 0,
       "unindexed": 47

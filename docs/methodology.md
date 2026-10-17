@@ -85,7 +85,7 @@ The completed offline migration backfilled 1,764 retained paper records from the
 
 The coverage ledger measures how many normalized identifiers from each successfully fetched source snapshot have a catalog record. A source may include incidental or out-of-scope links. Multiple sources overlap; their counts cannot be summed into a unique field size. Failed refreshes are shown as failures; previous successful local cache data are not presented as a fresh successful fetch.
 
-Per-source coverage counts matching discovery identifiers. Several reviewed publisher/PDF aliases may point to one canonical resource; `indexed_resources` records that distinct-resource count. Overall bibliography totals count active paper/survey identities and separately expose arXiv, publisher-only, and publication-metadata coverage.
+Per-source coverage counts matching discovery identifiers. Several reviewed publisher/PDF aliases, or a renamed repository's former address kept in `aliases`, may point to one canonical resource; `indexed_resources` records that distinct-resource count. Overall bibliography totals count active paper/survey identities and separately expose arXiv, publisher-only, and publication-metadata coverage.
 
 The arXiv title-query population is also bounded. It misses papers with different terminology and work on other publication platforms. Neither list-union coverage nor title-query recall proves global completeness. Regional/language-specific products, closed data, unpublished systems, and detailed benchmark protocols remain active curation gaps.
 

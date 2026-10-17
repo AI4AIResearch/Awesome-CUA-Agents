@@ -2,7 +2,7 @@
 
 Evidence snapshot through **2026-10-17T14:35:24Z**. Generated from committed source receipts.
 
-- 3,004 resource records: 1,430 curated; 1,574 bibliographic metadata only.
+- 3,003 resource records: 1,429 curated; 1,574 bibliographic metadata only.
 - 2,578 paper and survey records, including 2,565 arXiv identities and 13 publisher-only identities. This count overlaps the status counts above.
 - 2,683 retained arXiv metadata records; 118 explicit scope exclusions are outside the active catalog.
 - 3,907 discovery identifiers; 945 remain unresolved after accounting for scope exclusions.
@@ -21,7 +21,7 @@ Counts of source-reviewed resources. A resource tagged with several environments
 | [company](companies.md) | · | · | · | · | · | · | · | · | · | 16 |
 | [dataset](datasets.md) | 21 | 16 | 3 | 2 | 6 | 33 | 1 | · | 14 | 8 |
 | [framework](frameworks.md) | 34 | 18 | 1 | 1 | 3 | 17 | 1 | 1 | 7 | 2 |
-| [infrastructure](infrastructures.md) | 5 | 9 | 1 | 2 | 4 | 4 | 1 | · | · | · |
+| [infrastructure](infrastructures.md) | 5 | 9 | 1 | 2 | 4 | 3 | 1 | · | · | · |
 | [model](models.md) | 26 | 21 | 4 | 4 | 4 | 23 | 4 | · | 46 | 2 |
 | [paper](topics.md) | 374 | 193 | 32 | 14 | 16 | 160 | 6 | 1 | 94 | 291 |
 | [product](products.md) | 17 | 5 | · | · | · | · | · | · | · | · |
@@ -132,7 +132,7 @@ The recorded title query returned 1,199 unique records out of 1,246 reported mat
 
 | Scope | Recorded declarations |
 | --- | ---: |
-| code | 165 |
+| code | 164 |
 | data | 53 |
 | weights | 52 |
 | document | 0 |
