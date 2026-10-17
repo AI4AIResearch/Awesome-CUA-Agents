@@ -88,7 +88,7 @@ class EnrichReceiptTests(unittest.TestCase):
                 self.assertEqual(enriched[rid]["references"], recorded["references"])
         requested = []
         enriched, _ = self.run_enrich([(row, primary, sha(README))], {primary: README}, failing(404))
-        self.assertEqual(requested, ["LICENSE", "LICENSE.md", "LICENSE.txt"])
+        self.assertEqual(requested, ["LICENSE", "LICENSE.md", "LICENSE.txt", "LICENSE.rst", "LICENCE", "COPYING"])
         self.assertNotIn("code", enriched[rid]["licenses"])
         self.assertEqual([e for e in enriched[rid]["evidence"] if e["method"] == "license_header"], [])
 
