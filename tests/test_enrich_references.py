@@ -85,7 +85,7 @@ class EnrichGitHubTests(unittest.TestCase):
         self.assertEqual(self.requests, [RAW + "LICENSE", RAW + "LICENSE.md"])
         self.assertEqual((result["licenses"]["code"]["declared"], result["licenses"]["code"]["url"]), ("MIT", RAW + "LICENSE.md"))
         result = self.enrich([(row, PRIMARY)], {PRIMARY: README}, {})[RID]
-        self.assertEqual(self.requests, [RAW + "LICENSE", RAW + "LICENSE.md", RAW + "LICENSE.txt"])
+        self.assertEqual(self.requests, [RAW + name for name in catalog.LICENSE_FILES])
         self.assertEqual((result["licenses"], result["evidence"]), ({}, []))
 
     def test_references_keep_arxiv_github_and_hub_targets_from_the_readme_once(self):
