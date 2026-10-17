@@ -5,6 +5,11 @@ on:
     - cron: '17 8,20 * * *'
       timezone: America/Los_Angeles
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Run the scan and every check without committing
+        type: boolean
+        default: false
 
 permissions: {}
 
@@ -40,8 +45,13 @@ jobs:
           python -m unittest discover -s tests -v
           node --test tests/web.test.mjs
           python scripts/build_site.py
+      - name: Report a skipped commit
+        if: github.ref != 'refs/heads/main' || inputs.dry_run
+        run: echo "::notice::Scan ran on $GITHUB_REF; commit skipped"
       - name: Commit verified scan output
         id: commit
+        # The push targets main, so a run on any other ref would fast-forward main to that unreviewed branch.
+        if: github.ref == 'refs/heads/main' && !inputs.dry_run
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'

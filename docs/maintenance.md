@@ -2,7 +2,7 @@
 
 Ordinary builds are offline and deterministic. Public-source discovery is scheduled twice a day and can also be run manually. No paid API, model inference, login, or private data is required for discovery.
 
-The source workflow runs at **08:17 and 20:17 America/Los_Angeles**. Website publication runs at **08:47 and 20:47** in the same timezone. GitHub can delay or drop scheduled jobs under load; [the status page](https://awesomecua.github.io/updates/) records actual completed runs and links to their logs. Both workflows can be dispatched manually for recovery.
+The source workflow runs at **08:17 and 20:17 America/Los_Angeles**. Website publication runs at **08:47 and 20:47** in the same timezone. GitHub can delay or drop scheduled jobs under load; [the status page](https://awesomecua.github.io/updates/) records actual completed runs and links to their logs. Both workflows can be dispatched manually for recovery. A scan dispatched from any branch other than `main`, or with `dry_run` set, runs every check and uploads its evidence but commits nothing.
 
 ```bash
 python3 scripts/scan.py
