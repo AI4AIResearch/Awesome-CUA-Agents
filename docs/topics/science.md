@@ -10,17 +10,17 @@
 
 All entries in this section: desktop.
 
-| Resource | Paper | License | Description | Evidence |
-| --- | --- | --- | --- | --- |
-| [ScienceBoard](https://github.com/OS-Copilot/ScienceBoard) | — | code MIT | Desktop tasks involving scientific software workflows. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/OS-Copilot/ScienceBoard/HEAD/README.md) |
+| Resource | Paper | Scale | License | Description | Evidence |
+| --- | --- | --- | --- | --- | --- |
+| [ScienceBoard](https://github.com/OS-Copilot/ScienceBoard) | — | — | code MIT | Desktop tasks involving scientific software workflows. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/OS-Copilot/ScienceBoard/HEAD/README.md) |
 
 ## Datasets
 
 All entries in this section: desktop, linux.
 
-| Resource | Paper | License | Description | Evidence |
-| --- | --- | --- | --- | --- |
-| [ScienceBoard evaluation trajectories](https://huggingface.co/datasets/OS-Copilot/ScienceBoard-Traj) | [2505.19897](https://arxiv.org/abs/2505.19897) (2025) | — | Archives of ScienceBoard agent evaluation runs, separated by agent configuration and screenshot, accessibility-tree or set-of-marks observation mode. | [✓ 2026‑10‑17](https://huggingface.co/api/datasets/OS-Copilot/ScienceBoard-Traj) |
+| Resource | Paper | Scale | License | Description | Evidence |
+| --- | --- | --- | --- | --- | --- |
+| [ScienceBoard evaluation trajectories](https://huggingface.co/datasets/OS-Copilot/ScienceBoard-Traj) | [2505.19897](https://arxiv.org/abs/2505.19897) (2025) | — | — | Archives of ScienceBoard agent evaluation runs, separated by agent configuration and screenshot, accessibility-tree or set-of-marks observation mode. | [✓ 2026‑10‑17](https://huggingface.co/api/datasets/OS-Copilot/ScienceBoard-Traj) |
 
 ## Infrastructure
 

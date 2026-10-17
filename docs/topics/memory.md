@@ -10,17 +10,17 @@
 
 All entries in this section: ios.
 
-| Resource | Paper | License | Description | Evidence |
-| --- | --- | --- | --- | --- |
-| [iOSWorld](https://github.com/ljang0/iOSWorld) | — | code Apache-2.0 | Native iPhone-simulator benchmark with shared user data, application workflows, agent runners, and rubric-based scoring. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/ljang0/iOSWorld/HEAD/README.md) |
+| Resource | Paper | Scale | License | Description | Evidence |
+| --- | --- | --- | --- | --- | --- |
+| [iOSWorld](https://github.com/ljang0/iOSWorld) | — | [133 tasks](https://raw.githubusercontent.com/ljang0/iOSWorld/HEAD/README.md) · [26 applications](https://raw.githubusercontent.com/ljang0/iOSWorld/HEAD/README.md) | code Apache-2.0 | Native iPhone-simulator benchmark with shared user data, application workflows, agent runners, and rubric-based scoring. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/ljang0/iOSWorld/HEAD/README.md) |
 
 ## Datasets
 
 All entries in this section: android.
 
-| Resource | Paper | License | Description | Evidence |
-| --- | --- | --- | --- | --- |
-| [Aria-UI Context-aware Data](https://huggingface.co/datasets/Aria-UI/Aria-UI_Context-aware_Data) | — | data apache-2.0 | Episode-based mobile GUI grounding data released with Aria-UI for incorporating interaction history into target localization. | [✓ 2026‑10‑16](https://huggingface.co/api/datasets/Aria-UI/Aria-UI_Context-aware_Data) |
+| Resource | Paper | Scale | License | Description | Evidence |
+| --- | --- | --- | --- | --- | --- |
+| [Aria-UI Context-aware Data](https://huggingface.co/datasets/Aria-UI/Aria-UI_Context-aware_Data) | — | [≈ 992,000 instruction-output pairs](https://raw.githubusercontent.com/AriaUI/Aria-UI/HEAD/README.md) | data apache-2.0 | Episode-based mobile GUI grounding data released with Aria-UI for incorporating interaction history into target localization. | [✓ 2026‑10‑16](https://huggingface.co/api/datasets/Aria-UI/Aria-UI_Context-aware_Data) |
 
 ## Agents
 

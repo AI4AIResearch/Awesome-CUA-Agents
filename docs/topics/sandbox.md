@@ -8,10 +8,10 @@
 
 ## Benchmarks
 
-| Resource | Environments | Paper | License | Description | Evidence |
-| --- | --- | --- | --- | --- | --- |
-| [AppSim-Bench](https://github.com/Acrab-Agentic-Labs/AppSim) | android | [2609.07712](https://arxiv.org/abs/2609.07712) (2026) | — | Simulated mobile applications and evaluation tooling for reproducible GUI-agent tasks with controlled application state. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/Acrab-Agentic-Labs/AppSim/HEAD/README.md) |
-| [MobileGym](https://github.com/Purewhiter/mobilegym) | web | [2605.26114](https://arxiv.org/abs/2605.26114) (2026) | code Apache-2.0 · data CC-BY-NC-4.0 | A browser-hosted mobile-app simulator with programmable state, parameterized tasks and deterministic state-checking judges for parallel GUI-agent evaluation and online reinforcement learning. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/Purewhiter/mobilegym/HEAD/README.md) |
+| Resource | Environments | Paper | Scale | License | Description | Evidence |
+| --- | --- | --- | --- | --- | --- | --- |
+| [AppSim-Bench](https://github.com/Acrab-Agentic-Labs/AppSim) | android | [2609.07712](https://arxiv.org/abs/2609.07712) (2026) | [557 tasks](https://arxiv.org/abs/2609.07712) · [17 applications](https://raw.githubusercontent.com/Acrab-Agentic-Labs/AppSim/HEAD/README.md) | — | Simulated mobile applications and evaluation tooling for reproducible GUI-agent tasks with controlled application state. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/Acrab-Agentic-Labs/AppSim/HEAD/README.md) |
+| [MobileGym](https://github.com/Purewhiter/mobilegym) | web | [2605.26114](https://arxiv.org/abs/2605.26114) (2026) | [416 task templates](https://raw.githubusercontent.com/Purewhiter/mobilegym/HEAD/README.md) · [28 simulated apps](https://raw.githubusercontent.com/Purewhiter/mobilegym/HEAD/README.md) · [160 task identifiers](https://raw.githubusercontent.com/Purewhiter/mobilegym/HEAD/bench_env/splits/train.txt) | code Apache-2.0 · data CC-BY-NC-4.0 | A browser-hosted mobile-app simulator with programmable state, parameterized tasks and deterministic state-checking judges for parallel GUI-agent evaluation and online reinforcement learning. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/Purewhiter/mobilegym/HEAD/README.md) |
 
 ## Frameworks
 

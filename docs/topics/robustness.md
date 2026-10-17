@@ -8,23 +8,23 @@
 
 ## Benchmarks
 
-| Resource | Environments | Paper | License | Description | Evidence |
-| --- | --- | --- | --- | --- | --- |
-| [Adversarial Web Agents](https://github.com/ChenWu98/agent-attack) | web | — | — | Evaluation resources for adversarial attacks on multimodal web agents. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/ChenWu98/agent-attack/HEAD/README.md) |
-| [B-MoCA](https://github.com/jylee425/b-moca) | android | — | code Apache-2.0 | Mobile control benchmark with varied interface configurations. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/jylee425/b-moca/HEAD/readme.md) |
-| [GUI-Robust](https://github.com/chessbean1/GUI-Robust) | cross-platform | [2506.14477](https://arxiv.org/abs/2506.14477) (2025) | — | Evaluation scripts and linked data for comparing GUI action predictions and task execution under ordinary and anomalous interface conditions. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/chessbean1/GUI-Robust/HEAD/README.md) |
-| [GUIHalluBench](https://github.com/ant-research/GUIHalluBench) | cross-platform | — | — | Benchmark investigating hallucinations in GUI agents. | [✓ 2026‑10‑16](https://github.com/ant-research/GUIHalluBench) |
-| [Mobile-Bench-v2 released data](https://huggingface.co/datasets/xwk123/MobileBench-v2) | android | [2505.11891](https://arxiv.org/abs/2505.11891) (2025) | — | Offline mobile-agent task data spanning common tasks and released noisy, contaminated and ambiguous-instruction subsets. | [✓ 2026‑10‑17](https://huggingface.co/datasets/xwk123/MobileBench-v2/raw/main/README.md) |
-| [ScreenSpot-v2 instruction variants](https://huggingface.co/datasets/likaixin/ScreenSpot-v2-variants) | cross-platform | — | — | Instruction variants over ScreenSpot-v2 screenshots that distinguish original commands, explicit actions, target descriptions and impossible operations. | [✓ 2026‑10‑17](https://huggingface.co/datasets/likaixin/ScreenSpot-v2-variants/raw/main/README.md) |
-| [WorldGUI](https://github.com/showlab/WorldGUI) | desktop | [2502.08047](https://arxiv.org/abs/2502.08047) (2025) | — | GUI agent evaluation with varied initial states. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/showlab/WorldGUI/HEAD/README.md) |
+| Resource | Environments | Paper | Scale | License | Description | Evidence |
+| --- | --- | --- | --- | --- | --- | --- |
+| [Adversarial Web Agents](https://github.com/ChenWu98/agent-attack) | web | — | — | — | Evaluation resources for adversarial attacks on multimodal web agents. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/ChenWu98/agent-attack/HEAD/README.md) |
+| [B-MoCA](https://github.com/jylee425/b-moca) | android | — | — | code Apache-2.0 | Mobile control benchmark with varied interface configurations. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/jylee425/b-moca/HEAD/readme.md) |
+| [GUI-Robust](https://github.com/chessbean1/GUI-Robust) | cross-platform | [2506.14477](https://arxiv.org/abs/2506.14477) (2025) | — | — | Evaluation scripts and linked data for comparing GUI action predictions and task execution under ordinary and anomalous interface conditions. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/chessbean1/GUI-Robust/HEAD/README.md) |
+| [GUIHalluBench](https://github.com/ant-research/GUIHalluBench) | cross-platform | — | — | — | Benchmark investigating hallucinations in GUI agents. | [✓ 2026‑10‑16](https://github.com/ant-research/GUIHalluBench) |
+| [Mobile-Bench-v2 released data](https://huggingface.co/datasets/xwk123/MobileBench-v2) | android | [2505.11891](https://arxiv.org/abs/2505.11891) (2025) | — | — | Offline mobile-agent task data spanning common tasks and released noisy, contaminated and ambiguous-instruction subsets. | [✓ 2026‑10‑17](https://huggingface.co/datasets/xwk123/MobileBench-v2/raw/main/README.md) |
+| [ScreenSpot-v2 instruction variants](https://huggingface.co/datasets/likaixin/ScreenSpot-v2-variants) | cross-platform | — | [4 instruction types](https://huggingface.co/datasets/likaixin/ScreenSpot-v2-variants/raw/main/README.md) | — | Instruction variants over ScreenSpot-v2 screenshots that distinguish original commands, explicit actions, target descriptions and impossible operations. | [✓ 2026‑10‑17](https://huggingface.co/datasets/likaixin/ScreenSpot-v2-variants/raw/main/README.md) |
+| [WorldGUI](https://github.com/showlab/WorldGUI) | desktop | [2502.08047](https://arxiv.org/abs/2502.08047) (2025) | — | — | GUI agent evaluation with varied initial states. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/showlab/WorldGUI/HEAD/README.md) |
 
 ## Datasets
 
 All entries in this section: cross-platform.
 
-| Resource | Paper | License | Description | Evidence |
-| --- | --- | --- | --- | --- |
-| [RoTS](https://github.com/AlibabaResearch/RoTS) | — | — | Announced GUI trajectory synthesis resources for recovery from policy-induced errors; the inspected repository marks code and data releases as in preparation. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/AlibabaResearch/RoTS/HEAD/README.md) |
+| Resource | Paper | Scale | License | Description | Evidence |
+| --- | --- | --- | --- | --- | --- |
+| [RoTS](https://github.com/AlibabaResearch/RoTS) | — | [≈ 800,000 training samples](https://raw.githubusercontent.com/AlibabaResearch/RoTS/HEAD/README.md) | — | Announced GUI trajectory synthesis resources for recovery from policy-induced errors; the inspected repository marks code and data releases as in preparation. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/AlibabaResearch/RoTS/HEAD/README.md) |
 
 ## Frameworks
 

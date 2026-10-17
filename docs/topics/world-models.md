@@ -10,9 +10,9 @@
 
 All entries in this section: web.
 
-| Resource | Paper | License | Description | Evidence |
-| --- | --- | --- | --- | --- |
-| [Dreamer V1 Data](https://huggingface.co/datasets/osunlp/Dreamer-V1-Data) | [2411.06559](https://arxiv.org/abs/2411.06559) (2024) | data cc-by-nc-sa-4.0 | Web-world-model training data with prompts, images, action descriptions, and responses, released with the WebDreamer project. | [✓ 2026‑10‑16](https://huggingface.co/datasets/osunlp/Dreamer-V1-Data/raw/main/README.md) |
+| Resource | Paper | Scale | License | Description | Evidence |
+| --- | --- | --- | --- | --- | --- |
+| [Dreamer V1 Data](https://huggingface.co/datasets/osunlp/Dreamer-V1-Data) | [2411.06559](https://arxiv.org/abs/2411.06559) (2024) | — | data cc-by-nc-sa-4.0 | Web-world-model training data with prompts, images, action descriptions, and responses, released with the WebDreamer project. | [✓ 2026‑10‑16](https://huggingface.co/datasets/osunlp/Dreamer-V1-Data/raw/main/README.md) |
 
 ## Models
 

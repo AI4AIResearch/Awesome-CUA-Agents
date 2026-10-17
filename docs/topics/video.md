@@ -8,20 +8,20 @@
 
 ## Benchmarks
 
-| Resource | Environments | Paper | License | Description | Evidence |
-| --- | --- | --- | --- | --- | --- |
-| [VideoGUI](https://github.com/showlab/videogui) | desktop | [2406.10227](https://arxiv.org/abs/2406.10227) (2024) | — | Benchmark for desktop GUI tasks derived from instructional videos. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/showlab/videogui/HEAD/README.md) |
-| [WONDERBREAD](https://github.com/HazyResearch/wonderbread) | web | [2406.13264](https://arxiv.org/abs/2406.13264) (2024) | data cc-by-4.0 | An offline benchmark of workflow documentation, quality assessment and knowledge transfer using human web-navigation demonstrations, action traces and written procedures. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/HazyResearch/wonderbread/HEAD/README.md) |
+| Resource | Environments | Paper | Scale | License | Description | Evidence |
+| --- | --- | --- | --- | --- | --- | --- |
+| [VideoGUI](https://github.com/showlab/videogui) | desktop | [2406.10227](https://arxiv.org/abs/2406.10227) (2024) | — | — | Benchmark for desktop GUI tasks derived from instructional videos. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/showlab/videogui/HEAD/README.md) |
+| [WONDERBREAD](https://github.com/HazyResearch/wonderbread) | web | [2406.13264](https://arxiv.org/abs/2406.13264) (2024) | [6 task types](https://raw.githubusercontent.com/HazyResearch/wonderbread/HEAD/README.md) · [2,928 human demonstrations](https://zenodo.org/api/records/14094162) · [598 web navigation workflows](https://zenodo.org/api/records/14094162) | data cc-by-4.0 | An offline benchmark of workflow documentation, quality assessment and knowledge transfer using human web-navigation demonstrations, action traces and written procedures. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/HazyResearch/wonderbread/HEAD/README.md) |
 
 ## Datasets
 
-| Resource | Environments | Paper | License | Description | Evidence |
-| --- | --- | --- | --- | --- | --- |
-| [AgentTrek](https://github.com/xlang-ai/AgentTrek) | web | [2412.09605](https://arxiv.org/abs/2412.09605) (2024) | — | Agent trajectory generation using web tutorial resources. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/xlang-ai/AgentTrek/HEAD/README.md) |
-| [GUI-Action Narrator](https://github.com/showlab/GUI-Action-Narrator) | cross-platform | — | — | Action narration resources for GUI interaction trajectories. | [✓ 2026‑10‑16](https://github.com/showlab/GUI-Action-Narrator) |
-| [GUI-World](https://github.com/Dongping-Chen/GUI-World) | cross-platform | [2406.10819](https://arxiv.org/abs/2406.10819) (2024) | — | GUI video data for understanding dynamic interfaces. | [✓ 2026‑10‑16](https://github.com/Dongping-Chen/GUI-World) |
-| [VideoCAD data](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/WX8PCK) | unspecified | [2505.24838](https://arxiv.org/abs/2505.24838) (2025) | data CC0 1.0 | CAD screen recordings paired with action logs and target model images for studying precise interface control and long-horizon visual imitation. | [✓ 2026‑10‑17](https://dataverse.harvard.edu/api/datasets/:persistentId/?persistentId=doi:10.7910/DVN/WX8PCK) |
-| [WorkDemo-350](https://huggingface.co/datasets/yuqi777/WorkDemo-350) | desktop | [2610.12984](https://arxiv.org/abs/2610.12984) (2026) | data cc-by-4.0 | Desktop demonstrations with task descriptions, videos, input logs, and action-linked screenshot evidence for studying reusable agent skills. | [✓ 2026‑10‑16](https://huggingface.co/datasets/yuqi777/WorkDemo-350/raw/main/README.md) |
+| Resource | Environments | Paper | Scale | License | Description | Evidence |
+| --- | --- | --- | --- | --- | --- | --- |
+| [AgentTrek](https://github.com/xlang-ai/AgentTrek) | web | [2412.09605](https://arxiv.org/abs/2412.09605) (2024) | — | — | Agent trajectory generation using web tutorial resources. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/xlang-ai/AgentTrek/HEAD/README.md) |
+| [GUI-Action Narrator](https://github.com/showlab/GUI-Action-Narrator) | cross-platform | — | [4,189 video-captioning samples](https://arxiv.org/abs/2406.13719) | — | Action narration resources for GUI interaction trajectories. | [✓ 2026‑10‑16](https://github.com/showlab/GUI-Action-Narrator) |
+| [GUI-World](https://github.com/Dongping-Chen/GUI-World) | cross-platform | [2406.10819](https://arxiv.org/abs/2406.10819) (2024) | [6 GUI scenario categories](https://raw.githubusercontent.com/Dongping-Chen/GUI-World/master/Readme.md) · [8 question types](https://raw.githubusercontent.com/Dongping-Chen/GUI-World/master/Readme.md) | — | GUI video data for understanding dynamic interfaces. | [✓ 2026‑10‑16](https://github.com/Dongping-Chen/GUI-World) |
+| [VideoCAD data](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/WX8PCK) | unspecified | [2505.24838](https://arxiv.org/abs/2505.24838) (2025) | [> 41,000 video recordings](https://dataverse.harvard.edu/api/datasets/:persistentId/?persistentId=doi:10.7910/DVN/WX8PCK) | data CC0 1.0 | CAD screen recordings paired with action logs and target model images for studying precise interface control and long-horizon visual imitation. | [✓ 2026‑10‑17](https://dataverse.harvard.edu/api/datasets/:persistentId/?persistentId=doi:10.7910/DVN/WX8PCK) |
+| [WorkDemo-350](https://huggingface.co/datasets/yuqi777/WorkDemo-350) | desktop | [2610.12984](https://arxiv.org/abs/2610.12984) (2026) | [350 demonstrations](https://huggingface.co/datasets/yuqi777/WorkDemo-350/raw/main/README.md) · [8,388 evidence images](https://huggingface.co/datasets/yuqi777/WorkDemo-350/raw/main/README.md) · [11,951 action records](https://huggingface.co/datasets/yuqi777/WorkDemo-350/raw/main/README.md) | data cc-by-4.0 | Desktop demonstrations with task descriptions, videos, input logs, and action-linked screenshot evidence for studying reusable agent skills. | [✓ 2026‑10‑16](https://huggingface.co/datasets/yuqi777/WorkDemo-350/raw/main/README.md) |
 
 ## Papers
 
