@@ -4862,7 +4862,9 @@
       "AutoGLM",
       "AutoGLM"
     ],
-    "editorial_reviewed": false
+    "editorial_reviewed": false,
+    "review_note": "github.com/THUDM/AutoGLM and the GitHub API for THUDM/AutoGLM return 404 with no redirect, so no rename can be recorded; zai-org/AutoGLM is also 404. The AutoGLM paper (arxiv:2411.00820) and Open-AutoGLM (github:zai-org/open-autoglm, a separate repository with GitHub ID 1112189620) are already curated. Keep this path unapproved unless THUDM publishes it.",
+    "reviewed_at": "2026-10-17T18:52:00Z"
   },
   {
     "name": "AutoWebGLM",
@@ -7873,6 +7875,8 @@
       "Comet"
     ],
     "editorial_reviewed": false,
+    "review_note": "www.perplexity.ai answers HTTP 403 to the catalog's identified client for /comet and for its blog and help-center paths, and comet.perplexity.ai and perplexity.ai/comet redirect to /comet. No first-party page could be read, so the summary is unchecked; approval needs a first-party source the catalog client can fetch.",
+    "reviewed_at": "2026-10-17T18:52:00Z",
     "details": {
       "access": "publisher-managed",
       "pricing_url": null,
@@ -28452,9 +28456,9 @@
       "LiteCUA"
     ],
     "notes": "The paper is retained, but this candidate repository path returned 404 from both official GitHub metadata and its README endpoint. A public implementation and canonical repository identity cannot be verified at this path; do not infer that the announced system is released here.",
-    "review_note": "The paper is retained, but this candidate repository path returned 404 from both official GitHub metadata and its README endpoint. A public implementation and canonical repository identity cannot be verified at this path; do not infer that the announced system is released here.",
+    "review_note": "agiresearch/LiteCUA still returns 404 from the GitHub API and its README endpoint, with no redirect, although the AIOS README still links it as the LiteCUA codebase. The Cerebrum README says LiteCUA has been integrated into Cerebrum, the AIOS agent SDK (agiresearch/Cerebrum), which needs its own proposal and review. The paper (arxiv:2505.18829) is curated separately; do not infer a release at this path.",
     "editorial_reviewed": false,
-    "reviewed_at": "2026-10-17T03:43:23Z",
+    "reviewed_at": "2026-10-17T18:52:00Z",
     "evidence_urls": [
       "https://api.github.com/repos/agiresearch/LiteCUA",
       "https://raw.githubusercontent.com/agiresearch/LiteCUA/HEAD/README.md"

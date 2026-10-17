@@ -141,10 +141,12 @@ A code license never fills a data or weights field. Hub declarations are publish
 
 ## Pending editorial proposals
 
+13 proposals: 3 with unresolved primary evidence, 0 whose current source snapshot awaits review, 10 held by a reviewer after reading the current source, and 0 awaiting another scope review.
+
 | Resource | Reason |
 | --- | --- |
-| [AutoGLM](https://github.com/THUDM/AutoGLM) | primary evidence unresolved: HTTP Error 404: Not Found |
-| [Comet](https://www.perplexity.ai/comet) | primary evidence unresolved: HTTP Error 403: Forbidden |
+| [AutoGLM](https://github.com/THUDM/AutoGLM) | primary evidence unresolved: HTTP Error 404: Not Found; github.com/THUDM/AutoGLM and the GitHub API for THUDM/AutoGLM return 404 with no redirect, so no rename can be recorded; zai-org/AutoGLM is also 404. The AutoGLM paper (arxiv:2411.00820) and Open-AutoGLM (github:zai-org/open-autoglm, a separate repository with GitHub ID 1112189620) are already curated. Keep this path unapproved unless THUDM publishes it. |
+| [Comet](https://www.perplexity.ai/comet) | primary evidence unresolved: HTTP Error 403: Forbidden; www.perplexity.ai answers HTTP 403 to the catalog's identified client for /comet and for its blog and help-center paths, and comet.perplexity.ai and perplexity.ai/comet redirect to /comet. No first-party page could be read, so the summary is unchecked; approval needs a first-party source the catalog client can fetch. |
 | [MM-Navigator](https://github.com/zzxslp/MM-Navigator) | The fresh README still says code and the evaluation benchmark will be out soon. The public tree contains call_gpt4.py and eval.py, but no benchmark release or usage/dependency documentation sufficient to validate a usable agent artifact. Preserve the paper separately. |
 | [InfiGUIAgent](https://github.com/InfiXAI/InfiGUIAgent) | The fresh README still explains that third-party training-data restrictions delay the full model release. The repository tree contains only README/images, and the linked Reallm-Labs collection API returns 404; no code or checkpoint release is established. |
 | [ChatUITest / GTArena project hub](https://github.com/ZJU-ACES-ISE/ChatUITest) | The fresh README remains under construction and says the dataset is being organized/uploaded. The tree has only README.md, and the linked GTArena-UI-Defects API and raw card return 401. No access request was made. UIDefectMocker is already cataloged separately. |
@@ -154,7 +156,7 @@ A code license never fills a data or weights field. Hub declarations are publish
 | [PAE data](https://huggingface.co/datasets/yifeizhou/pae-data) | Hub metadata and the project README disagree on dataset-license scope; review remains pending without requesting gated access. |
 | [Aguvis-7B-720P checkpoint](https://huggingface.co/xlangai/Aguvis-7B-720P) | Weight files are listed, but the official README still marks the release in progress and the inspected Hub metadata lacks weight terms; review remains pending. |
 | [UGround V1 bounding-box data](https://huggingface.co/datasets/osunlp/UGround-V1-Data-Box) | Public API identifies the dataset and Parquet manifest, but access is gated=auto and the raw card returns 401. No access request or agreement acceptance was made. Defer curation of a directly usable release until access scope and the full card can be reviewed. |
-| [LiteCUA implementation](https://github.com/agiresearch/LiteCUA) | primary evidence unresolved: HTTP Error 404: Not Found |
+| [LiteCUA implementation](https://github.com/agiresearch/LiteCUA) | primary evidence unresolved: HTTP Error 404: Not Found; agiresearch/LiteCUA still returns 404 from the GitHub API and its README endpoint, with no redirect, although the AIOS README still links it as the LiteCUA codebase. The Cerebrum README says LiteCUA has been integrated into Cerebrum, the AIOS agent SDK (agiresearch/Cerebrum), which needs its own proposal and review. The paper (arxiv:2505.18829) is curated separately; do not infer a release at this path. |
 | [Project Mariner](https://labs.google.com/mariner/) | The Project Mariner page on labs.google.com is a client-rendered sign-in shell whose HTML carries only the title, and the former deepmind.google Project Mariner pages now redirect to the DeepMind homepage. Approval needs a readable first-party product page. |
 
 ## Scope exclusions

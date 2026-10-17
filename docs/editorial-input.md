@@ -10,7 +10,7 @@ An entry is published as `curated` only when all of the following hold:
 - `data/primary-evidence.jsonl` has a receipt for the entry's ID with `content_matched: true`
 - `reviewed_sha256` equals that receipt's `sha256`
 
-Otherwise the entry stays in `data/review-queue.jsonl` and the coverage ledger. If the evidence is unresolved, the reason is "primary evidence unresolved"; if the digest differs, it is "current source snapshot needs editorial review"; in all other cases it is the entry's `review_note`. An arXiv paper whose entry is pending remains a `metadata_verified` bibliography record.
+Otherwise the entry stays in `data/review-queue.jsonl` and the coverage ledger. If the evidence is unresolved, the reason is "primary evidence unresolved" with the fetch error, followed by the entry's `review_note` when it has one; if the digest differs, it is "current source snapshot needs editorial review"; in all other cases it is the entry's `review_note`. Each pending row in `data/coverage.json` and `data/review-queue.jsonl` also carries its `cause`: `unresolved_evidence`, `unreviewed_snapshot`, `reviewer_hold`, or `scope_revalidation`, and `docs/coverage.md` counts the proposals by cause. An arXiv paper whose entry is pending remains a `metadata_verified` bibliography record.
 
 ## Resource ID
 
@@ -42,7 +42,7 @@ In the Required column, `always` means that `build` or `verify` fails without th
 | `editorial_reviewed` | for approval | boolean | `false` | `source_records` | `false` keeps a proposal in the review queue |
 | `reviewed_sha256` | for approval | 64 hex digits | — | `source_records` | Must equal the current primary receipt's `sha256` |
 | `reviewed_at` | no | ISO 8601 UTC time of the review | — | `build` (README) | Informational. It does not gate approval and is not compared with the receipt. It orders the README's Recently reviewed table, which omits papers, surveys, and entries without it |
-| `review_note` | no | string | `"editorial review pending"` | `source_records` | Review-queue reason for an unapproved entry whose evidence matches |
+| `review_note` | no | string | `"editorial review pending"` | `source_records` | Review-queue reason for an unapproved entry whose evidence matches; appended to the fetch error when the evidence is unresolved |
 | `verify_terms` | no | array of strings | `[name]` | `verify_editorial` | A source matches when at least one term occurs, ignoring case and whitespace runs. Bot-challenge pages never match |
 | `evidence_urls` | no | array of HTTPS URLs | GitHub: raw `README.md`, `README.MD`, `readme.md` at `HEAD`, then the repository page. Hugging Face dataset: `/api/datasets/<id>`. Other Hugging Face page except a collection: `/api/models/<id>`. Otherwise `url` | `verify_editorial` | Tried in order. The first matching response becomes the primary receipt, and its retrieval time becomes `last_verified_at` |
 | `id` | no | `arxiv:`, `github:`, `url:`, `component:` or `organization:` ID | `editorial_identity(entry)[0]` | `verify_editorial`, `enrich`, `source_records` | Record `id`. Use `component:<owner>/<path>` for one asset inside a monorepo and `organization:<slug>` for a publisher |
