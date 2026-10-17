@@ -83,6 +83,13 @@ def resource_body(record, lookup, incoming=None):
     body=f'<div class="eyebrow">{esc(KINDS[r["kind"]])}</div><h1>{esc(r["name"])}</h1><p class="answer-lead">{esc(description(r))}</p><p class="review-notice">{esc(status)}. This is a catalog annotation, not an independent reproduction or endorsement.</p><div class="page-actions"><a class="button primary" href="{esc(r["url"])}">Original source ↗</a><a class="button secondary" href="{resource_path(r)}index.md">Read as Markdown</a></div>'
     facts=[("Resource type",KINDS[r["kind"]]),("Environment",", ".join(r["environments"])),("Topics",", ".join(r["topics"]) or "Not assigned"),("Publication date",r["published_at"] or "Not recorded"),("Evidence retrieved",r["last_verified_at"]),("Resource ID",r["id"])]
     body+='<h2>What is this resource?</h2><dl class="page-facts">'+''.join(f'<div><dt>{esc(k)}</dt><dd>{esc(v)}</dd></div>' for k,v in facts)+'</dl>'
+    snapshot=r['details'].get('arxiv_snapshot')
+    if snapshot:
+        version=(f'<a href="{esc(snapshot["versioned_url"])}">arXiv v{esc(snapshot["version"])}</a>' if snapshot.get('versioned_url') else 'Version not recorded')
+        body+='<h2>Recorded paper version</h2><p>'+version+'</p>'
+        if snapshot.get('updated_at'):body+='<p>Version updated: '+esc(snapshot['updated_at'])+'.</p>'
+        body+='<p>This identifies the retained arXiv metadata snapshot; newly observed changes require separate review.</p>'
+        if snapshot.get('abstract_sha256'):body+='<details><summary>Abstract fingerprint</summary><code>'+esc(snapshot['abstract_sha256'])+'</code></details>'
     if r["authors"]:body+='<h2>Authors</h2><p>'+esc(', '.join(r["authors"]))+'</p>'
     if r["kind"] not in {"paper","survey"}:
         body+='<h2>What licenses are recorded?</h2><p>Code, training data, weights, and documents can have different terms. A blank declaration means unknown, not unrestricted use.</p><dl class="page-facts">'
@@ -91,7 +98,7 @@ def resource_body(record, lookup, incoming=None):
             body+=f'<div><dt>{esc(slot.title())}</dt><dd>{value}</dd></div>'
         body+='</dl>'
     body+=resource_profile_html(r)
-    details=[(k,v) for k,v in r["details"].items() if k not in PROFILE_KEYS.values() and v is not None and v!=[] and v!=""]
+    details=[(k,v) for k,v in r["details"].items() if k not in {*PROFILE_KEYS.values(),'arxiv_snapshot'} and v is not None and v!=[] and v!=""]
     if details:
         body+='<h2>Recorded specifications</h2><dl class="page-facts">'+''.join(f'<div><dt>{esc(k.replace("_"," "))}</dt><dd>{esc(json.dumps(v,ensure_ascii=False) if isinstance(v,(dict,list,bool)) else v)}</dd></div>' for k,v in details)+'</dl>'
     if r["notes"]:body+='<h2>Scope and limitations</h2><p>'+esc(r["notes"])+'</p>'
@@ -115,6 +122,15 @@ def resource_body(record, lookup, incoming=None):
 def resource_markdown(r):
     lines=[f'# {r["name"]}', '', description(r), '', f'- Catalog URL: {SITE}{resource_path(r)}', f'- Original source: {r["url"]}', f'- Kind: {r["kind"]}', f'- Review: {r["review_status"]}', f'- Scope: {r["scope"]}', f'- Environments: {", ".join(r["environments"])}', f'- Topics: {", ".join(r["topics"])}', f'- Evidence checked: {r["last_verified_at"]}', f'- ID: {r["id"]}', '', '## Limitations', '', r["notes"] or 'Inclusion does not establish reproducibility or endorsement.']
     if r["authors"]:lines+=['','## Authors','',', '.join(r["authors"])]
+    snapshot=r['details'].get('arxiv_snapshot')
+    if snapshot:
+        lines+=['','## Recorded arXiv snapshot','',
+                '- Version: '+(str(snapshot['version']) if snapshot.get('version') else 'not recorded'),
+                '- Version source: '+(snapshot.get('versioned_url') or 'not recorded'),
+                '- First submission: '+(snapshot.get('submitted_at') or 'not recorded'),
+                '- Version updated: '+(snapshot.get('updated_at') or 'not recorded'),
+                '- Abstract SHA-256: '+(snapshot.get('abstract_sha256') or 'not recorded'),
+                '- Abstract hash normalization: '+snapshot['abstract_hash_method']]
     profile=r['details'].get(PROFILE_KEYS.get(r['kind']))
     if profile:
         lines+=['','## Structured profile','']

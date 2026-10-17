@@ -14,6 +14,7 @@ import urllib.parse
 from catalog import ROOT, DATA, KINDS, ENVIRONMENTS, STATUSES, canonical, read_json, read_jsonl, write_json, write_jsonl
 from specifications import validate_profiles
 from scope_review import resolve_exclusions, scope_report
+from arxiv_metadata import validate_snapshot
 
 
 def source_records(with_scope=False):
@@ -22,7 +23,8 @@ def source_records(with_scope=False):
     enrichment = {r["id"]: r for r in read_jsonl(DATA / "enrichment.jsonl")}
     pending = []
     for row in records.values():
-        row.update(scope="relevance_pending", details={})
+        snapshot = row.get('details', {}).get('arxiv_snapshot')
+        row.update(scope="relevance_pending", details={'arxiv_snapshot': snapshot} if snapshot else {})
     for editorial in read_json(DATA / "editorial.json", []):
         parsed = canonical(editorial["url"])
         if not parsed:
@@ -43,7 +45,8 @@ def source_records(with_scope=False):
             extra = {}
         licenses = {"code": None, "data": None, "weights": None, "document": None}
         licenses.update(extra.get("licenses", {}))
-        details = copy.deepcopy(editorial.get("details", {}))
+        details = copy.deepcopy(base.get('details', {}))
+        details.update(copy.deepcopy(editorial.get("details", {})))
         details.update(extra.get("details", {}))
         if editorial["kind"] == "dataset":
             for key, default in {"sample_count": None, "sample_unit": None, "modalities": [], "download_url": None, "languages": []}.items():
@@ -109,6 +112,8 @@ def validate_records(rows):
         if r.get("review_status") == "curated" and (not r.get("summary") or r.get("scope") == "relevance_pending"):
             error("curated entry lacks an editorial summary/scope")
         for issue in validate_profiles(r):
+            error(issue)
+        for issue in validate_snapshot(r):
             error(issue)
         preferred = r.get("identifiers", {}).get("preferred_arxiv")
         if preferred and preferred != r.get("identifiers", {}).get("arxiv"):

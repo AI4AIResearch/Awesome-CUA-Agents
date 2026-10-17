@@ -50,11 +50,34 @@ Provider-specific API parsing checks the actual host and URL path. Harvard Datav
 
 When a paper documents an implementation that is not cited back by the repository, an editorial `reviewed_relations` entry may cite the paper's retained evidence receipt. Its evidence URL must exist in the resource's evidence list. This does not imply that current code reproduces the paper's results.
 
+## Paper versions and revision proposals
+
+`details.arxiv_snapshot` records facts extracted from the individual Atom entry associated with the retained API receipt. The contract is `arxivSnapshot` in `schemas/resource.schema.json`.
+
+| Field | Meaning |
+| --- | --- |
+| `version`, `versioned_url` | Version observed in the Atom entry ID and its version-specific publication link. |
+| `submitted_at`, `updated_at` | Exact first-submission and retrieved-version timestamps, normalized to UTC. |
+| `abstract_sha256` | SHA-256 of the abstract after collapsing whitespace and encoding as UTF-8. |
+| `abstract_hash_method` | `sha256-utf8-whitespace-collapsed-v1`, the explicit comparison method. |
+
+The API distinguishes the first submission from the retrieved version through its entry-level `published` and `updated` fields. These are separate from the feed's update time and our retrieval timestamp. [arXiv API manual](https://info.arxiv.org/help/api/user-manual.html)
+
+The response digest identifies the fetched API body, which may contain many papers. The abstract digest identifies one paper's normalized abstract. A change elsewhere in a batched response does not by itself establish a paper revision. Full abstracts remain in the ignored response cache and are not copied into catalog records.
+
+Harvesting, the full title search, and the scheduled recent search share the same non-overwriting merge rule. A known ID keeps its retained metadata while new versions, exact timestamp changes, abstract changes, or bibliographic changes enter `data/metadata-updates.jsonl`. This detects changes within the same calendar day. Missing or incomplete baselines and unsupported hash methods carry an explicit revalidation reason; they are not silently replaced by the latest observation. A proposal preserves its observed snapshot and source receipt for review. Curated content continues to describe the retained reviewed snapshot, and a pending proposal reopens an existing scope exclusion.
+
+The completed offline migration backfilled 1,764 retained paper records from their original cached Atom receipts. It added snapshot fields and the corresponding evidence support labels while preserving existing bibliographic facts, identities, review decisions, and receipt URLs, hashes, and retrieval times. It did not fetch new versions or reapprove content.
+
 ## Coverage denominator
 
 The coverage ledger measures how many normalized identifiers from each successfully fetched source snapshot have a catalog record. A source may include incidental or out-of-scope links. Multiple sources overlap; their counts cannot be summed into a unique field size. Failed refreshes are shown as failures; previous successful local cache data are not presented as a fresh successful fetch.
 
 The arXiv title-query population is also bounded. It misses papers with different terminology and work on other publication platforms. Neither list-union coverage nor title-query recall proves global completeness. Regional/language-specific products, closed data, unpublished systems, and detailed benchmark protocols remain active curation gaps.
+
+The scheduled recent query covers a 14-day first-submission window ending at the current UTC midnight. A complete, successful result, including a valid zero-result feed, is reused within that UTC day with its original retrieval timestamps. Failed or partial searches are retried by a later scan. This is a local UTC cache policy following the API's recommendation to cache an identical query within its daily publication cycle; the API defines date-query bounds in GMT. [arXiv API manual](https://info.arxiv.org/help/api/user-manual.html)
+
+Both daily workflow runs still attempt to refresh all 36 discovery documents and the Hugging Face paper searches. Recent-query reuse only skips that arXiv request. The 14-day discovery window does not provide revision monitoring for every historical paper in the archive.
 
 ## Performance comparisons
 

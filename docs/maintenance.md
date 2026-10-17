@@ -8,7 +8,13 @@ The source workflow runs at **08:17 and 20:17 America/Los_Angeles**. Website pub
 python3 scripts/scan.py
 ```
 
-One scan refreshes the discovery documents and Hugging Face paper searches, queries recent arXiv titles, verifies missing paper identities, rebuilds the catalog, and validates it. New rows remain metadata-only or candidates. A changed existing paper title/author/date is recorded in `data/metadata-updates.jsonl` for review instead of overwriting the reviewed snapshot. Partial source failures are recorded explicitly; a failed build or validation prevents publication.
+One scan attempts to refresh all 36 discovery documents and the Hugging Face paper searches, obtains a recent arXiv query result, verifies missing paper identities, rebuilds the catalog, and validates it. New rows remain metadata-only or candidates. Existing-paper changes are proposed for review instead of overwriting retained metadata. Partial source failures are recorded explicitly; a failed build or validation prevents publication.
+
+The scheduled arXiv query uses a 14-day first-submission window ending at the current UTC midnight, with a configured limit of 500 results. Its query, time bounds, reported population, pagination receipts, and completeness are recorded in `data/recent-paper-search.json`. It discovers recent submissions; it does not refresh revisions of every historical paper. Targeted maintenance through the other ingestion commands is separate from this coverage claim.
+
+A complete successful recent query can be reused by later scans in the same UTC day. Reuse requires the same query and bounds, matching unique and reported counts, no warnings, and successful page receipts with valid hashes and retrieval times in that UTC day. A genuine zero-result Atom feed is eligible. Failed requests, malformed feeds, changing pagination totals, partial results, and capped incomplete searches are not eligible and can be retried on a later scan. The scan phase reports `cache_used` and the original `source_retrieved_at` when reused.
+
+UTC-day reuse is the repository's cache policy, following the API's recommendation to cache identical queries within a daily publication cycle. The official date-query syntax uses GMT. [arXiv API manual](https://info.arxiv.org/help/api/user-manual.html) Both scheduled workflow runs continue, and discovery documents and Hugging Face searches still refresh on each run even when the recent arXiv query is reused.
 
 The discovery registry includes first-party release pages as well as research collections. Refreshing a release page can discover newly linked code, data, or checkpoints, but does not approve those assets or rewrite their reviewed specifications. Announced releases such as CarryOn and GraceBench remain in the editorial queue until the recorded release gap is resolved and reviewed.
 
@@ -19,7 +25,7 @@ python3 scripts/catalog.py discover --refresh
 # Fetch missing arXiv identities. Requests are batched and spaced.
 python3 scripts/catalog.py harvest
 
-# Run the recorded title-query strategy, paginated to the reported total.
+# Run the recorded title query; inspect its manifest for pagination completeness.
 python3 scripts/catalog.py search-arxiv
 
 # Refresh first-party evidence for editorial proposals.
@@ -34,6 +40,22 @@ python3 scripts/catalog.py build --check
 ```
 
 `--limit` bounds a harvest or search. Search manifests explicitly report incomplete pagination. Successful responses are cached; failed requests are recorded separately and never overwrite the last successful response. A failed refresh remains a failure in the latest run manifest. Re-running without `--refresh` can reuse an older successful cache response, retaining its original retrieval timestamp.
+
+`harvest`, `search-arxiv`, and the scheduled recent search all use the same revision-proposal path for known IDs, including manual `--refresh` calls. Comparisons cover title, authors, publication/update dates, Atom version, exact submission/update timestamps, and the normalized abstract digest. A changed date-only field is not required: a new version or abstract can be detected within the same day. The retained archive row and its original receipt stay in place until a source-backed decision reconciles the proposal.
+
+Inspect `data/metadata-updates.jsonl` before accepting new metadata. `metadata_change_pending` identifies a confirmed field difference; `metadata_revalidation_pending` identifies an observation whose missing, incomplete, or unsupported baseline prevents a confident comparison. A proposal may also carry an uncertainty reason alongside confirmed differences. Review its `changes`, `observed_snapshot`, source evidence, and first/last observation times. Accepting revised bibliographic facts does not itself approve an old editorial summary for the new paper version. Reconcile editorial and scope decisions against the evidence actually reviewed.
+
+The snapshot schema and field meanings are documented in [methodology](methodology.md#paper-versions-and-revision-proposals). For older rows, recover a baseline from the original response cache with the offline backfill tool:
+
+```bash
+# Validate the complete archive and report a plan without changing files.
+python3 scripts/backfill_arxiv_snapshots.py
+
+# Apply only after the original-receipt validation succeeds.
+python3 scripts/backfill_arxiv_snapshots.py --write
+```
+
+The completed migration recovered snapshots for 1,764 retained records. The tool makes no network requests. It checks every original `arxiv_api` receipt's SHA-256, requires one matching entry per paper, checks retained title/authors/dates, and requires multiple receipts to agree. Missing or conflicting evidence blocks the whole write. Existing snapshots must match the original evidence; they are never replaced with a new baseline. A write adds the snapshot and its evidence-support label, preserves record order and existing facts, and atomically replaces the file only if the input has not changed during validation. Repeating the tool on an already completed archive is a no-op.
 
 Every editorial entry binds to a `reviewed_sha256`. If an upstream page changes, rerun the editorial review, fix names/taxonomy/notes as needed, and copy the new digest and retrieval time only after inspection. A changed or unresolved entry remains in the review queue until this is done. HTTP success and keyword matching do not grant editorial approval.
 

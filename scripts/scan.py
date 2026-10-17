@@ -8,6 +8,7 @@ import datetime as dt
 import json
 import os
 from pathlib import Path
+import re
 import subprocess
 import sys
 import time
@@ -15,6 +16,7 @@ import urllib.parse
 import xml.etree.ElementTree as ET
 
 from catalog import ROOT, DATA, arxiv_entry, fetch, now, read_json, read_jsonl, write_json, write_jsonl
+from arxiv_metadata import consider_paper, parse_search_feed, timestamp
 
 
 def counts():
@@ -38,53 +40,62 @@ def stage(name,command,timeout=600):
         return {'name':name,'started_at':started,'finished_at':now(),'ok':False,'error':f'Stage exceeded {timeout} seconds; last verified records retained.'}
 
 
-def consider_paper(row,records,proposals,observed_at):
-    """New metadata is publishable; changed existing identity is queued for review."""
-    rid=row['id']
-    if rid not in records:
-        records[rid]=row
-        return True
-    fields=['name','authors','published_at','updated_at']
-    changes={field:{'current':records[rid].get(field),'observed':row.get(field)} for field in fields if records[rid].get(field)!=row.get(field)}
-    if changes:
-        previous=proposals.get(rid,{})
-        proposals[rid]={'id':rid,'url':row['url'],'review_status':'metadata_change_pending',
-            'first_observed_at':previous.get('first_observed_at',observed_at),'last_observed_at':observed_at,
-            'changes':changes,'evidence':row['evidence']}
-    return False
+def reusable_recent_snapshot(report, query, since, cutoff, day):
+    """Reuse only a complete, successful snapshot for this UTC publication cycle."""
+    if not isinstance(report,dict) or report.get('schema_version')!=2 or report.get('scan_day_utc')!=day:
+        return False
+    if (report.get('query'),report.get('since_utc'),report.get('cutoff_utc'))!=(query,since,cutoff):
+        return False
+    total=report.get('reported_total')
+    pages=report.get('pages')
+    def valid_page(page):
+        if not isinstance(page,dict) or page.get('ok') is not True:return False
+        try:retrieved=timestamp(page.get('retrieved_at'))
+        except (ValueError,TypeError,AttributeError):return False
+        return bool(retrieved and retrieved[:10]==day and isinstance(page.get('sha256'),str)
+                    and re.fullmatch('[0-9a-f]{64}',page['sha256']))
+    return (report.get('complete') is True and not report.get('warnings') and type(total) is int and total>=0
+        and type(report.get('unique_returned')) is int and report['unique_returned']==total and isinstance(pages,list) and bool(pages)
+        and all(valid_page(page) for page in pages))
 
 
 def recent_papers(config):
     current=dt.datetime.now(dt.timezone.utc)
-    begin=current-dt.timedelta(days=config['recent_lookback_days'])
-    cutoff=current.strftime('%Y%m%d%H%M');since=begin.strftime('%Y%m%d%H%M')
+    cycle=current.replace(hour=0,minute=0,second=0,microsecond=0)
+    begin=cycle-dt.timedelta(days=config['recent_lookback_days'])
+    cutoff=cycle.strftime('%Y%m%d%H%M');since=begin.strftime('%Y%m%d%H%M');day=cycle.date().isoformat()
     terms='ti:"computer use" OR ti:"computer-use" OR ti:"GUI agent" OR ti:"GUI agents" OR ti:"GUI grounding" OR ti:"web agent" OR ti:"browser agent"'
     query=f'({terms}) AND submittedDate:[{since} TO {cutoff}]'
+    previous=read_json(DATA/'recent-paper-search.json',{})
+    if reusable_recent_snapshot(previous,query,since,cutoff,day):
+        return {'name':'recent_arxiv','ok':True,'complete':True,'new_count':0,'warnings':[],
+                'cache_used':True,'source_retrieved_at':max(page['retrieved_at'] for page in previous['pages'])}
     records={r['id']:r for r in read_jsonl(DATA/'papers.jsonl')}
     candidates={r['id']:r for r in read_jsonl(DATA/'candidates.jsonl')}
     proposals={r['id']:r for r in read_jsonl(DATA/'metadata-updates.jsonl')}
     start=0;total=None;seen=set();new_ids=[];pages=[];warnings=[]
     ceiling=config['recent_max_results']
     while start<ceiling and (total is None or start<total):
-        url='https://export.arxiv.org/api/query?'+urllib.parse.urlencode({'search_query':query,'start':start,'max_results':min(200,ceiling-start),'sortBy':'submittedDate','sortOrder':'descending'})
+        batch_size=min(200,ceiling-start)
+        url='https://export.arxiv.org/api/query?'+urllib.parse.urlencode({'search_query':query,'start':start,'max_results':batch_size,'sortBy':'submittedDate','sortOrder':'descending'})
         info,body=fetch(url,refresh=True)
         if not info['ok']:
             pages.append(info);warnings.append(info.get('error','arXiv fetch failed'));break
         try:
-            root=ET.fromstring(body)
-            total=int(root.findtext('{http://a9.com/-/spec/opensearch/1.1/}totalResults','0'))
-            entries=root.findall('{http://www.w3.org/2005/Atom}entry')
-            if any('/api/errors' in entry.findtext('{http://www.w3.org/2005/Atom}id','') for entry in entries):
-                raise ValueError('arXiv returned an API error entry instead of search results')
+            entries,total=parse_search_feed(body,total,batch_size)
         except (ET.ParseError,ValueError) as error:
             pages.append({**info,'ok':False,'error':str(error)});warnings.append(str(error));break
         pages.append({**info,'start':start,'returned':len(entries)})
         for entry in entries:
-            row=arxiv_entry(entry,{k:info[k] for k in ('url','retrieved_at','sha256')})
-            if not row:continue
-            if not row.get('published_at') or row['published_at']>current.date().isoformat():
-                warnings.append('Ignored a missing/future publication date: '+row['id']);continue
-            if row['published_at']<begin.date().isoformat():
+            try:
+                row=arxiv_entry(entry,{k:info[k] for k in ('url','retrieved_at','sha256')})
+                if not row:raise ValueError('unrecognized article identity')
+                submitted=row['details']['arxiv_snapshot']['submitted_at']
+                if not submitted:raise ValueError('missing submission timestamp')
+                submitted=dt.datetime.fromisoformat(submitted.replace('Z','+00:00'))
+            except (ValueError,TypeError,KeyError) as error:
+                warnings.append('Ignored an invalid arXiv entry: '+str(error));continue
+            if not begin<=submitted<=cycle:
                 warnings.append('Ignored an out-of-window search result: '+row['id']);continue
             seen.add(row['id'])
             if consider_paper(row,records,proposals,info['retrieved_at']):new_ids.append(row['id'])
@@ -94,12 +105,14 @@ def recent_papers(config):
         start+=len(entries)
         if not entries:break
         if start<min(total,ceiling):time.sleep(3.1)
-    complete=total is not None and len(seen)==total and bool(pages) and all(p.get('ok') for p in pages)
+    complete=total is not None and len(seen)==total and bool(pages) and all(p.get('ok') for p in pages) and not warnings
     if total is not None and not complete:warnings.append(f'Recent search delivered {len(seen)} unique in-window records out of {total} reported; completeness is not claimed.')
     write_jsonl(DATA/'papers.jsonl',records.values());write_jsonl(DATA/'candidates.jsonl',candidates.values());write_jsonl(DATA/'metadata-updates.jsonl',proposals.values())
-    report={'query':query,'since_utc':since,'cutoff_utc':cutoff,'reported_total':total,'unique_returned':len(seen),'complete':complete,'pages':pages,'new_ids':new_ids,'warnings':warnings}
+    report={'schema_version':2,'scan_day_utc':day,'query':query,'since_utc':since,'cutoff_utc':cutoff,
+        'polling_policy':'Complete arXiv snapshots are reused within one UTC publication day; failed or incomplete searches are retried by a later scheduled scan.',
+        'reported_total':total,'unique_returned':len(seen),'complete':complete,'pages':pages,'new_ids':new_ids,'warnings':warnings}
     write_json(DATA/'recent-paper-search.json',report)
-    return {'name':'recent_arxiv','ok':any(p.get('ok') for p in pages),'complete':complete,'new_count':len(new_ids),'warnings':warnings}
+    return {'name':'recent_arxiv','ok':any(p.get('ok') for p in pages),'complete':complete,'new_count':len(new_ids),'warnings':warnings,'cache_used':False}
 
 
 def summarize_phases(phases,source_runs,hf_runs,harvest_failures):

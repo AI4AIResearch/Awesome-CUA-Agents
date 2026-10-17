@@ -1,14 +1,14 @@
 {
-  "as_of_utc": "2026-10-17T02:12:09Z",
-  "total_records": 2008,
-  "curated_records": 714,
+  "as_of_utc": "2026-10-17T02:49:45Z",
+  "total_records": 2036,
+  "curated_records": 842,
   "bibliographic_records": 1694,
   "arxiv_archive_records": 1764,
   "excluded_records": 70,
   "exclusion_revalidation_pending": 0,
-  "metadata_only_records": 1294,
+  "metadata_only_records": 1194,
   "discovery_identifiers": 2797,
-  "unindexed_candidates": 817,
+  "unindexed_candidates": 812,
   "pending_editorial": [
     {
       "id": "github:mobilellm/autodroid-v2",
@@ -87,37 +87,49 @@
       "name": "Aguvis-7B-720P checkpoint",
       "url": "https://huggingface.co/xlangai/Aguvis-7B-720P",
       "reason": "Weight files are listed, but the official README still marks the release in progress and the inspected Hub metadata lacks weight terms; review remains pending."
+    },
+    {
+      "id": "url:9e89e3332db1770388bc",
+      "name": "UGround V1 bounding-box data",
+      "url": "https://huggingface.co/datasets/osunlp/UGround-V1-Data-Box",
+      "reason": "Public API identifies the dataset and Parquet manifest, but access is gated=auto and the raw card returns 401. No access request or agreement acceptance was made. Defer curation of a directly usable release until access scope and the full card can be reviewed."
+    },
+    {
+      "id": "github:agiresearch/litecua",
+      "name": "LiteCUA implementation",
+      "url": "https://github.com/agiresearch/LiteCUA",
+      "reason": "primary evidence unresolved: HTTP Error 404: Not Found"
     }
   ],
   "by_kind": {
     "agent": 30,
-    "benchmark": 61,
+    "benchmark": 65,
     "company": 16,
-    "dataset": 55,
-    "framework": 44,
+    "dataset": 62,
+    "framework": 47,
     "infrastructure": 12,
-    "model": 66,
+    "model": 79,
     "paper": 1683,
     "product": 19,
     "survey": 11,
-    "tool": 11
+    "tool": 12
   },
   "curated_by_environment": {
-    "android": 149,
-    "cross-platform": 155,
-    "desktop": 157,
+    "android": 172,
+    "cross-platform": 173,
+    "desktop": 186,
     "harmonyos": 1,
-    "ios": 14,
-    "linux": 14,
-    "macos": 11,
-    "unspecified": 93,
-    "web": 242,
-    "windows": 23
+    "ios": 15,
+    "linux": 22,
+    "macos": 16,
+    "unspecified": 130,
+    "web": 294,
+    "windows": 31
   },
   "license_declarations_by_scope": {
-    "code": 130,
-    "data": 35,
-    "weights": 29,
+    "code": 133,
+    "data": 37,
+    "weights": 38,
     "document": 0
   },
   "sources": [
@@ -139,7 +151,7 @@
       },
       "discovered": 338,
       "indexed": 199,
-      "curated": 159,
+      "curated": 160,
       "excluded": 0,
       "unindexed": 139
     },
@@ -160,10 +172,10 @@
         "unique_resources": 218
       },
       "discovered": 218,
-      "indexed": 156,
-      "curated": 135,
+      "indexed": 157,
+      "curated": 142,
       "excluded": 0,
-      "unindexed": 62
+      "unindexed": 61
     },
     {
       "id": "os-agent-survey",
@@ -205,7 +217,7 @@
       },
       "discovered": 132,
       "indexed": 93,
-      "curated": 68,
+      "curated": 72,
       "excluded": 0,
       "unindexed": 39
     },
@@ -271,7 +283,7 @@
       },
       "discovered": 170,
       "indexed": 110,
-      "curated": 77,
+      "curated": 79,
       "excluded": 0,
       "unindexed": 60
     },
@@ -293,7 +305,7 @@
       },
       "discovered": 588,
       "indexed": 476,
-      "curated": 262,
+      "curated": 277,
       "excluded": 0,
       "unindexed": 112
     },
@@ -315,7 +327,7 @@
       },
       "discovered": 94,
       "indexed": 67,
-      "curated": 39,
+      "curated": 42,
       "excluded": 0,
       "unindexed": 27
     },
@@ -337,7 +349,7 @@
       },
       "discovered": 78,
       "indexed": 48,
-      "curated": 29,
+      "curated": 30,
       "excluded": 0,
       "unindexed": 30
     },
@@ -403,7 +415,7 @@
       },
       "discovered": 544,
       "indexed": 486,
-      "curated": 93,
+      "curated": 144,
       "excluded": 0,
       "unindexed": 58
     },
@@ -425,7 +437,7 @@
       },
       "discovered": 144,
       "indexed": 88,
-      "curated": 63,
+      "curated": 66,
       "excluded": 0,
       "unindexed": 56
     },
@@ -447,7 +459,7 @@
       },
       "discovered": 206,
       "indexed": 203,
-      "curated": 48,
+      "curated": 70,
       "excluded": 0,
       "unindexed": 3
     },
@@ -491,7 +503,7 @@
       },
       "discovered": 40,
       "indexed": 23,
-      "curated": 20,
+      "curated": 21,
       "excluded": 0,
       "unindexed": 17
     },
@@ -579,7 +591,7 @@
       },
       "discovered": 96,
       "indexed": 57,
-      "curated": 42,
+      "curated": 43,
       "excluded": 0,
       "unindexed": 39
     },
@@ -600,10 +612,10 @@
         "unique_resources": 18
       },
       "discovered": 18,
-      "indexed": 3,
-      "curated": 3,
+      "indexed": 5,
+      "curated": 5,
       "excluded": 0,
-      "unindexed": 15
+      "unindexed": 13
     },
     {
       "id": "release-ui-venus",
@@ -688,10 +700,10 @@
         "unique_resources": 11
       },
       "discovered": 11,
-      "indexed": 3,
-      "curated": 3,
+      "indexed": 4,
+      "curated": 4,
       "excluded": 0,
-      "unindexed": 8
+      "unindexed": 7
     },
     {
       "id": "release-opencua",
@@ -798,10 +810,10 @@
         "unique_resources": 11
       },
       "discovered": 11,
-      "indexed": 7,
-      "curated": 7,
+      "indexed": 8,
+      "curated": 8,
       "excluded": 0,
-      "unindexed": 4
+      "unindexed": 3
     },
     {
       "id": "release-switchmem",

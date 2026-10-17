@@ -17,5 +17,6 @@ Curated metadata, not a performance ranking. Each entry links its first-party ev
 | [TAG attention-driven GUI grounding](https://github.com/HeimingX/TAG) | web | Grounding and evaluation code that aggregates a pretrained vision-language model’s attention maps to localize requested interface elements without fine-tuning. | [Source](https://raw.githubusercontent.com/HeimingX/TAG/HEAD/README.md) · 2026-10-17 |
 | [Tarsier](https://github.com/reworkd/tarsier) | web | Visual and text representation tools for browser agents. | [Source](https://raw.githubusercontent.com/reworkd/tarsier/HEAD/README.md) · 2026-10-16 |
 | [UI Defect Mocker](https://github.com/ZJU-ACES-ISE/UIDefectMocker) | android | Synthesizes visual UI defects from mobile screenshots and Android layout metadata to support GUI-testing experiments. | [Source](https://raw.githubusercontent.com/ZJU-ACES-ISE/UIDefectMocker/HEAD/README.md) · 2026-10-16 |
+| [Web-Shepherd inference and evaluation](https://github.com/kyle8581/Web-Shepherd) | web | Process-reward inference and benchmark-evaluation utilities that use task checklists to assess individual web-agent decisions. | [Source](https://raw.githubusercontent.com/kyle8581/Web-Shepherd/HEAD/README.md) · 2026-10-17 |
 
 Detailed notes and separate code/data/weights license declarations are in `data/catalog.jsonl`.

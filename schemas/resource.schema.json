@@ -434,6 +434,9 @@
         },
         "dataset_profile": {
           "$ref": "#/$defs/datasetProfile"
+        },
+        "arxiv_snapshot": {
+          "$ref": "#/$defs/arxivSnapshot"
         }
       }
     }
@@ -623,6 +626,59 @@
             "type": "string",
             "minLength": 1
           }
+        }
+      },
+      "additionalProperties": false
+    },
+    "arxivSnapshot": {
+      "type": "object",
+      "required": [
+        "version",
+        "versioned_url",
+        "submitted_at",
+        "updated_at",
+        "abstract_sha256",
+        "abstract_hash_method"
+      ],
+      "properties": {
+        "version": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "versioned_url": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri",
+          "pattern": "^https://arxiv\\.org/abs/\\d{4}\\.\\d{4,5}v[1-9][0-9]*$"
+        },
+        "submitted_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "abstract_sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "abstract_hash_method": {
+          "const": "sha256-utf8-whitespace-collapsed-v1"
         }
       },
       "additionalProperties": false

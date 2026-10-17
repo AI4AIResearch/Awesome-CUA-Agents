@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import re
 import shutil
+import sqlite3
 import sys
 import tempfile
 import unittest
@@ -119,6 +120,40 @@ class SearchPagesTests(unittest.TestCase):
         robots=urllib.robotparser.RobotFileParser();robots.parse((self.dest/'robots.txt').read_text().splitlines())
         for bot in ['Googlebot','bingbot','OAI-SearchBot','PerplexityBot','Claude-SearchBot']:
             self.assertTrue(robots.can_fetch(bot,SITE+'/papers/'))
+    def test_full_exports_and_pages_preserve_paper_snapshots(self):
+        expected={row['id']:row for row in self.rows}
+        exports=[json.loads((self.dest/'data/records.json').read_text()),
+                 [json.loads(line) for line in (self.dest/'downloads/catalog.jsonl').read_text().splitlines()]]
+        with sqlite3.connect((self.dest/'downloads/catalog.sqlite').as_uri()+'?mode=ro',uri=True) as database:
+            exports.append([json.loads(row[0]) for row in database.execute('SELECT record_json FROM resources')])
+        for rows in exports:
+            self.assertEqual(len(rows),len(expected))
+            self.assertEqual({row['id']:row for row in rows},expected)
+        index=json.loads((self.dest/'data/index.json').read_text())['records']
+        self.assertEqual(len(index),len(expected))
+        self.assertEqual({r['id']:r['review_status'] for r in index},
+                         {rid:r['review_status'] for rid,r in expected.items()})
+        archive=[json.loads(line) for line in (self.dest/'downloads/arxiv-archive.jsonl').read_text().splitlines()]
+        self.assertEqual(archive,[json.loads(line) for line in (ROOT/'data/papers.jsonl').read_text().splitlines()])
+        archived={row['id']:row for row in archive}
+        for item in self.manifest['pages']:
+            body=(self.dest/item['path'].lstrip('/')/'index.html').read_bytes()
+            self.assertEqual(item['sha256'],hashlib.sha256(body).hexdigest(),item['path'])
+        for rid,row in expected.items():
+            if not rid.startswith('arxiv:'):continue
+            snapshot=row['details'].get('arxiv_snapshot')
+            self.assertEqual(snapshot,archived[rid]['details'].get('arxiv_snapshot'),rid)
+            if snapshot is None:continue
+            target=self.dest/resource_path(row).lstrip('/')
+            markup=(target/'index.html').read_text();markdown=(target/'index.md').read_text()
+            for field in ['versioned_url','updated_at','abstract_sha256']:
+                if snapshot.get(field) is not None:
+                    self.assertIn(html.escape(str(snapshot[field]),quote=True),markup,(rid,field))
+            for field in ['versioned_url','submitted_at','updated_at','abstract_sha256','abstract_hash_method']:
+                if snapshot.get(field) is not None:self.assertIn(str(snapshot[field]),markdown,(rid,field))
+            self.assertIn('- Version: '+(str(snapshot['version']) if snapshot.get('version') else 'not recorded'),markdown,rid)
+        curated_snapshots=sum(row['review_status']=='curated' and bool(row['details'].get('arxiv_snapshot')) for row in self.rows)
+        self.assertEqual((self.dest/'llms-full.txt').read_text().count('## Recorded arXiv snapshot'),curated_snapshots)
     def test_resource_schema_uses_original_authorship_not_catalog_authorship(self):
         for r in self.rows:
             schema=resource_schema(r)

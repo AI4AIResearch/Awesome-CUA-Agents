@@ -18,6 +18,8 @@ import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 
+from arxiv_metadata import entry_snapshot, consider_paper, parse_search_feed
+
 ROOT = Path(__file__).resolve().parents[1]
 CACHE = ROOT / ".cache" / "http"
 DATA = ROOT / "data"
@@ -172,9 +174,10 @@ def arxiv_entry(entry, evidence):
         "published_at": get("published")[:10] or None, "updated_at": get("updated")[:10] or None,
         "authors": [" ".join((a.findtext("a:name", default="", namespaces=ns)).split()) for a in entry.findall("a:author", ns)],
         "identifiers": {"arxiv": rid.split(":", 1)[1]},
+        "details": {"arxiv_snapshot": entry_snapshot(entry, rid.split(":", 1)[1])},
         "links": [{"rel": "paper", "url": url}], "relations": [],
         "licenses": {"code": None, "data": None, "weights": None, "document": None},
-        "evidence": [{"role": "primary", "method": "arxiv_api", "supports": ["name", "authors", "published_at", "updated_at", "identifiers.arxiv"], **evidence}],
+        "evidence": [{"role": "primary", "method": "arxiv_api", "supports": ["name", "authors", "published_at", "updated_at", "identifiers.arxiv", "details.arxiv_snapshot"], **evidence}],
         "last_verified_at": evidence["retrieved_at"],
         "notes": "Bibliographic metadata checked against arXiv. Relevance and taxonomy await editorial review; presence is not an endorsement."}
 
@@ -182,6 +185,7 @@ def arxiv_entry(entry, evidence):
 def harvest(args):
     candidates = read_jsonl(DATA / "candidates.jsonl")
     records = {r["id"]: r for r in read_jsonl(DATA / "papers.jsonl")}
+    proposals = {r['id']: r for r in read_jsonl(DATA / 'metadata-updates.jsonl')}
     ids = sorted({r["id"].split(":", 1)[1] for r in candidates if r["provider"] == "arxiv" and (args.refresh or r["id"] not in records)})
     if args.limit:
         ids = ids[:args.limit]
@@ -194,17 +198,20 @@ def harvest(args):
         if info["ok"]:
             try:
                 root = ET.fromstring(body)
+                if root.tag != '{http://www.w3.org/2005/Atom}feed':
+                    raise ValueError('arXiv response is not an Atom feed')
                 for entry in root.findall("{http://www.w3.org/2005/Atom}entry"):
                     row = arxiv_entry(entry, {k: info[k] for k in ("url", "retrieved_at", "sha256")})
                     if row and row["id"].split(":", 1)[1] in batch:
-                        records[row["id"]] = row
+                        consider_paper(row, records, proposals, info['retrieved_at'])
                         got.add(row["id"].split(":", 1)[1])
-            except ET.ParseError as error:
+            except (ET.ParseError, ValueError) as error:
                 info["error"] = str(error)
         for aid in sorted(set(batch) - got):
             failures.append({"id": f"arxiv:{aid}", "checked_at": info["retrieved_at"], "error": info.get("error", "identifier absent from API response")})
         print(f"arXiv {start + 1}-{start + len(batch)}/{len(ids)}: {len(got)} metadata records", flush=True)
         write_jsonl(DATA / "papers.jsonl", records.values())
+        write_jsonl(DATA / "metadata-updates.jsonl", proposals.values())
         if start + 50 < len(ids):
             time.sleep(3.1)
     write_jsonl(DATA / "harvest-failures.jsonl", failures)
@@ -217,36 +224,37 @@ def search_arxiv(args):
     cutoff = dt.datetime.now(dt.timezone.utc).strftime("%Y%m%d%H%M")
     query = f'({query}) AND submittedDate:[200001010000 TO {cutoff}]'
     records = {r["id"]: r for r in read_jsonl(DATA / "papers.jsonl")}
+    proposals = {r['id']: r for r in read_jsonl(DATA / 'metadata-updates.jsonl')}
     candidates = {r["id"]: r for r in read_jsonl(DATA / "candidates.jsonl")}
     pages, seen = [], set()
     start, total = 0, None
     ceiling = args.limit or 5000
     while start < ceiling and (total is None or start < total):
-        url = "https://export.arxiv.org/api/query?" + urllib.parse.urlencode({"search_query": query, "start": start, "max_results": min(100, ceiling - start), "sortBy": "submittedDate", "sortOrder": "descending"})
+        batch_size = min(100, ceiling-start)
+        url = "https://export.arxiv.org/api/query?" + urllib.parse.urlencode({"search_query": query, "start": start, "max_results": batch_size, "sortBy": "submittedDate", "sortOrder": "descending"})
         info, body = fetch(url, args.refresh)
         if not info["ok"]:
             pages.append(info)
             break
         try:
-            root = ET.fromstring(body)
-        except ET.ParseError as error:
+            entries,total = parse_search_feed(body,total,batch_size)
+        except (ET.ParseError,ValueError) as error:
             pages.append({**info, "ok": False, "error": str(error)})
             break
-        total = int(root.findtext("{http://a9.com/-/spec/opensearch/1.1/}totalResults", "0"))
-        entries = root.findall("{http://www.w3.org/2005/Atom}entry")
         pages.append({**info, "start": start, "returned": len(entries)})
         for entry in entries:
             row = arxiv_entry(entry, {k: info[k] for k in ("url", "retrieved_at", "sha256")})
             if not row:
                 continue
             rid = row["id"]
-            records[rid] = row
+            consider_paper(row,records,proposals,info['retrieved_at'])
             seen.add(rid)
             candidate = candidates.setdefault(rid, {"id": rid, "url": row["url"], "provider": "arxiv", "first_discovered_at": info["retrieved_at"], "discovered_in": []})
             candidate["discovered_in"] = [o for o in candidate["discovered_in"] if o["source_id"] != "arxiv-title-search"]
             candidate["discovered_in"].append({"source_id": "arxiv-title-search", "line": None, "section": "Title query; relevance not reviewed", "snapshot_sha256": info["sha256"]})
         print(f"arXiv search {start + len(entries)}/{total}", flush=True)
         write_jsonl(DATA / "papers.jsonl", records.values())
+        write_jsonl(DATA / "metadata-updates.jsonl", proposals.values())
         write_jsonl(DATA / "candidates.jsonl", candidates.values())
         if not entries:
             break
@@ -254,7 +262,7 @@ def search_arxiv(args):
         if start < min(total, ceiling):
             time.sleep(3.1)
     write_json(DATA / "arxiv-search.json", {"id": "arxiv-title-search", "query": query, "cutoff_utc": cutoff,
-        "reported_total": total, "unique_returned": len(seen), "complete": total is not None and len(seen) == total,
+        "reported_total": total, "unique_returned": len(seen), "complete": total is not None and len(seen) == total and bool(pages) and all(page.get('ok') for page in pages),
         "pages": pages, "warning": "A title query is a discovery population, not the whole field. Search results are metadata-verified, not editorially curated."})
 
 
