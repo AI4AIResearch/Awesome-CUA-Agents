@@ -54,6 +54,29 @@ class SummaryLintTests(unittest.TestCase):
             'github:a/long: 236 characters, over 220; no terminal period; superlative "revolutionary"',
             "Summary style: 1 of 2 curated summaries flagged. This report is advisory and never fails."])
 
+    def test_short_summaries_are_reported_for_non_paper_kinds(self):
+        short = "Web screenshot and interface data for UI research."
+        self.assertEqual(summary_issues(short, "dataset"), ["50 characters, under 60 for a dataset"])
+        for kind in ("paper", "survey", None):
+            with self.subTest(kind=kind):
+                self.assertEqual(summary_issues(short, kind), [])
+        self.assertEqual(summary_issues("x" * 59 + ".", "tool"), [])
+        self.assertEqual(summary_issues("x" * 58 + ".", "tool"), ["59 characters, under 60 for a tool"])
+
+    def test_lint_reports_short_non_paper_summaries_and_never_fails(self):
+        rows = [{"id": "url:short", "review_status": "curated", "kind": "product", "summary": "Hosted browser agent."},
+            {"id": "arxiv:2404.07972", "review_status": "curated", "kind": "paper", "summary": "Short paper summary."},
+            {"id": "github:a/clean", "review_status": "curated", "kind": "benchmark", "summary": CLEAN}]
+        with tempfile.TemporaryDirectory() as directory, mock.patch.object(summary_lint, "DATA", Path(directory)):
+            catalog.write_jsonl(Path(directory) / "catalog.jsonl", rows)
+            output = io.StringIO()
+            with contextlib.redirect_stdout(output):
+                code = catalog.main(["lint"])
+        self.assertEqual(code, 0)
+        self.assertEqual(output.getvalue().splitlines(), [
+            "url:short: 21 characters, under 60 for a product",
+            "Summary style: 1 of 3 curated summaries flagged. This report is advisory and never fails."])
+
 
 if __name__ == "__main__":
     unittest.main()
