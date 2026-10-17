@@ -53,7 +53,7 @@ class HubRelationTests(unittest.TestCase):
             with self.subTest(rid):
                 record = self.records[rid]
                 self.assertEqual(record["relations"], [])
-                self.assertIn("no", record["notes"])
+                self.assertRegex(record["notes"], r"\bso no (?:paper (?:or family )?)?relation is recorded\.$")
                 self.assertTrue(any("notes" in ev["supports"] for ev in record["evidence"]))
 
     def test_checkpoint_is_a_variant_of_its_code_repository(self):
