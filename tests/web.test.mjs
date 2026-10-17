@@ -251,7 +251,7 @@ test('pagination is a nav of numbered page buttons with the current page marked 
   assert.ok(contrast(declaration(current,'color'),declaration(current,'background'))>=4.5);
   const size=css.match(/\}\.pagination \.page-numbers button\{([^}]*)\}/)[1];
   for(const prop of ['min-width','min-height'])assert.ok(Number(size.match(new RegExp(`(?:^|;)${prop}:(\\d+)px`))?.[1])>=24,prop);
-  assert.match(readFileSync(new URL('../web/index.html',import.meta.url),'utf8'),/<nav id="pagination" class="pagination" aria-label="[^"]+">/);
+  assert.match(readFileSync(new URL('../web/index.html',import.meta.url),'utf8'),/<nav id="pagination" class="pagination" aria-label="[^"]+"[^>]*>/);
   const coverage=JSON.parse(readFileSync(new URL('../data/coverage.json',import.meta.url),'utf8'));
   const records=Array.from({length:PAGE_SIZE*7+1},(_,i)=>({id:`url:page-${i}`,name:`Fixture ${String(i).padStart(3,'0')}`,kind:'tool',url:'https://example.org/',page_url:`/resources/page-${i}/`,aliases:[],environments:['web'],topics:[],authors:[],summary:'Fixture.',review_status:'curated',published_at:null,scope:'core',paper_version:null,paper_source_url:null,paper_date:null,related_count:0,incoming_relations:[]}));
   const keys=['document','window','location','history','localStorage','fetch'],saved=keys.map(key=>[key,Object.getOwnPropertyDescriptor(globalThis,key)]);
@@ -357,8 +357,8 @@ test('Chinese mode localizes the title, accessible names, skip link, static dire
     for(const item of zh.labels)assert.match(item.attributes['aria-label'],han,item.dataset.i18nLabel);
     assert.ok(keys[0].includes('skipToCatalog')&&keys[0].includes('directoryHeading')&&keys[1].includes('mainNavigation'));
     assert.equal(zh.element('#language').textContent,'EN');assert.equal(zh.element('#language').lang,'en');
-    assert.match(en.element('#pagination').innerHTML,/<span>Page 1 of 2<\/span>/);
-    assert.match(zh.element('#pagination').innerHTML,/<span>第 1 \/ 2 页<\/span>/);
+    assert.match(en.element('#pagination').innerHTML,/aria-label="Page 1" aria-current="page">1<\/button>/);
+    assert.match(zh.element('#pagination').innerHTML,/aria-label="第 1 页" aria-current="page">1<\/button>/);
   } finally {
     for(const [key,descriptor] of saved)if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];
   }
