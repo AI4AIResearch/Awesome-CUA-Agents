@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AwesomeCUA explicit scope decisions",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "id",
+      "name",
+      "url",
+      "decision",
+      "basis",
+      "reason",
+      "reviewed_at",
+      "metadata_fingerprint",
+      "evidence"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^arxiv:\\d{4}\\.\\d{4,5}$"
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1
+      },
+      "url": {
+        "type": "string",
+        "format": "uri",
+        "pattern": "^https://arxiv.org/abs/\\d{4}\\.\\d{4,5}$"
+      },
+      "decision": {
+        "const": "out_of_scope"
+      },
+      "basis": {
+        "const": "primary_abstract_review"
+      },
+      "reason": {
+        "type": "string",
+        "minLength": 1
+      },
+      "reviewed_at": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "metadata_fingerprint": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      },
+      "evidence": {
+        "type": "object",
+        "required": [
+          "url",
+          "sha256",
+          "retrieved_at"
+        ],
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https://"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "retrieved_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "additionalProperties": false
+  }
+}

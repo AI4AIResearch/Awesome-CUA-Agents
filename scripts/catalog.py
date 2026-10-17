@@ -24,7 +24,7 @@ DATA = ROOT / "data"
 UA = "Awesome-CUA/0.1 (+https://github.com/reacher-z/Awesome-CUA)"
 ARXIV_RE = re.compile(r"(?:arxiv\.org/(?:abs|pdf|html)/|huggingface\.co/papers/)(\d{4}\.\d{4,5})(?:v\d+)?", re.I)
 KINDS = {"paper", "survey", "model", "dataset", "benchmark", "agent", "framework", "infrastructure", "product", "company", "tool", "learning"}
-ENVIRONMENTS = {"web", "desktop", "android", "ios", "windows", "macos", "linux", "cross-platform", "unspecified"}
+ENVIRONMENTS = {"web", "desktop", "android", "ios", "harmonyos", "windows", "macos", "linux", "cross-platform", "unspecified"}
 STATUSES = {"curated", "metadata_verified"}
 
 

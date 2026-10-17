@@ -15,5 +15,6 @@ Curated metadata, not a performance ranking. Each entry links its first-party ev
 | [Playwright MCP](https://github.com/microsoft/playwright-mcp) | web | MCP server exposing browser interaction tools for agents. | [Source](https://raw.githubusercontent.com/microsoft/playwright-mcp/HEAD/README.md) · 2026-10-16 |
 | [Set of Mark](https://github.com/microsoft/SoM) | unspecified | Visual-prompting toolbox that labels image regions for multimodal reference and grounding, including GUI applications. | [Source](https://raw.githubusercontent.com/microsoft/SoM/HEAD/README.md) · 2026-10-16 |
 | [Tarsier](https://github.com/reworkd/tarsier) | web | Visual and text representation tools for browser agents. | [Source](https://raw.githubusercontent.com/reworkd/tarsier/HEAD/README.md) · 2026-10-16 |
+| [UI Defect Mocker](https://github.com/ZJU-ACES-ISE/UIDefectMocker) | android | Synthesizes visual UI defects from mobile screenshots and Android layout metadata to support GUI-testing experiments. | [Source](https://raw.githubusercontent.com/ZJU-ACES-ISE/UIDefectMocker/HEAD/README.md) · 2026-10-16 |
 
 Detailed notes and separate code/data/weights license declarations are in `data/catalog.jsonl`.

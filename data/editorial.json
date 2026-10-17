@@ -14197,5 +14197,1247 @@
         "retrieved_at": "2026-10-16T11:38:05Z"
       }
     ]
+  },
+  {
+    "name": "Interactive Speculative Planning: Enhance Agent Efficiency through Co-design of System and User Interface",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2410.00079",
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "planning",
+      "efficiency",
+      "human-in-the-loop"
+    ],
+    "scope": "adjacent",
+    "summary": "Studies agent-system and interface co-design that incorporates user interruptions and intermediate feedback to reduce planning latency.",
+    "verify_terms": [
+      "Interactive Speculative "
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2401.05507%2C2406.07275%2C2409.16427%2C2410.00079%2C2503.07701%2C2503.22738%2C2505.15859%2C2505.17735%2C2505.23596%2C2507.05257%2C2507.06134%2C2507.21953%2C2507.23336%2C2508.06960%2C2508.08997%2C2509.02473%2C2509.23694%2C2510.09116%2C2510.14438%2C2511.18423%2C2512.12818%2C2512.13564%2C2601.10758%2C2601.12449%2C2601.21841%2C2603.01152%2C2603.19993%2C2603.20576%2C2604.04503%2C2604.17562%2C2604.23941%2C2605.16265%2C2606.06448%2C2606.06462%2C2606.29193%2C2607.01647%2C2607.13157&max_results=37"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "13d5969845070cd2877dc51ae5300c2d623e5daef00c8a1552ffa46af3f721a5",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "Multimodal Auto Validation For Self-Refinement in Web Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2410.00689",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "evaluation",
+      "robustness",
+      "web-navigation"
+    ],
+    "summary": "Studies text and visual validation for web agents and uses the resulting validator to detect failures and guide workflow self-refinement.",
+    "verify_terms": [
+      "Multimodal Auto Validati"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c87e97eb397da04806d53145cf9c13be739fc657bb54dca9318c8c4ed2a36249",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "StateAct: Enhancing LLM Base Agents via Self-prompting and State-tracking",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2410.02810",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "planning",
+      "memory"
+    ],
+    "scope": "adjacent",
+    "summary": "Maintains explicit task goals and evolving state descriptions to improve base-agent decisions across interactive tasks, including web shopping.",
+    "verify_terms": [
+      "StateAct: Enhancing LLM "
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2410.00467%2C2410.00689%2C2410.02810%2C2410.02907%2C2410.05243%2C2410.06703%2C2410.08164%2C2410.09006%2C2410.09024%2C2410.11843%2C2410.11871%2C2410.11872%2C2410.13232%2C2410.13757%2C2410.13824%2C2410.13825%2C2410.13886%2C2410.14803%2C2410.15164%2C2410.16464%2C2410.17236%2C2410.17401%2C2410.17520%2C2410.17883%2C2410.18603%2C2410.18963%2C2410.18967%2C2410.19054%2C2410.19100%2C2410.19461%2C2410.19609%2C2410.20745%2C2410.22552%2C2410.23218%2C2410.24024%2C2411.00820%2C2411.02337%2C2411.02391%2C2411.04468%2C2411.04890%2C2411.06559%2C2411.07618%2C2411.10323%2C2411.13451%2C2411.13591%2C2411.15004%2C2411.17465%2C2411.18279%2C2412.00402%2C2412.01268&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "b3e67984f59a1b05ccd946eb54e2d37b0bb78ab0ca796fbb6d544793dafea3e0",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "From Interaction to Impact: Towards Safer AI Agents Through Understanding and Evaluating Mobile UI Operation Impacts",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2410.09006",
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "safety-security",
+      "mobile-navigation",
+      "evaluation"
+    ],
+    "summary": "Develops a taxonomy of mobile-action consequences and annotated interaction data to evaluate whether models recognize impactful or risky UI operations.",
+    "verify_terms": [
+      "From Interaction to Impa"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2410.00467%2C2410.00689%2C2410.02810%2C2410.02907%2C2410.05243%2C2410.06703%2C2410.08164%2C2410.09006%2C2410.09024%2C2410.11843%2C2410.11871%2C2410.11872%2C2410.13232%2C2410.13757%2C2410.13824%2C2410.13825%2C2410.13886%2C2410.14803%2C2410.15164%2C2410.16464%2C2410.17236%2C2410.17401%2C2410.17520%2C2410.17883%2C2410.18603%2C2410.18963%2C2410.18967%2C2410.19054%2C2410.19100%2C2410.19461%2C2410.19609%2C2410.20745%2C2410.22552%2C2410.23218%2C2410.24024%2C2411.00820%2C2411.02337%2C2411.02391%2C2411.04468%2C2411.04890%2C2411.06559%2C2411.07618%2C2411.10323%2C2411.13451%2C2411.13591%2C2411.15004%2C2411.17465%2C2411.18279%2C2412.00402%2C2412.01268&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "b3e67984f59a1b05ccd946eb54e2d37b0bb78ab0ca796fbb6d544793dafea3e0",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "AdvAgent: Controllable Blackbox Red-teaming on Web Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2410.17401",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "safety-security",
+      "evaluation"
+    ],
+    "summary": "Introduces a black-box web-agent red-teaming framework that learns adversarial prompts from agent feedback to study security weaknesses.",
+    "verify_terms": [
+      "AdvAgent: Controllable B"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c87e97eb397da04806d53145cf9c13be739fc657bb54dca9318c8c4ed2a36249",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "Auto-Intent: Automated Intent Discovery and Self-Exploration for Large Language Model Web Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2410.22552",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "planning",
+      "web-navigation"
+    ],
+    "summary": "Discovers compact intents from demonstrations and uses intent predictions to guide a language-model web agent's decisions and exploration.",
+    "verify_terms": [
+      "Auto-Intent: Automated I"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c87e97eb397da04806d53145cf9c13be739fc657bb54dca9318c8c4ed2a36249",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "Evaluating Cultural and Social Awareness of LLM Web Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2410.23252",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "safety-security",
+      "evaluation"
+    ],
+    "summary": "Introduces CASA to assess web agents' responses to cultural and social norms in shopping and forum tasks, including misleading observations.",
+    "verify_terms": [
+      "Evaluating Cultural and "
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c87e97eb397da04806d53145cf9c13be739fc657bb54dca9318c8c4ed2a36249",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "AdaptAgent: Adapting Multimodal Web Agents with Few-Shot Learning from Human Demonstrations",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2411.13451",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "web-navigation",
+      "data-generation"
+    ],
+    "summary": "Adapts multimodal web agents to unfamiliar websites using a small number of human demonstrations through prompting or meta-learning.",
+    "verify_terms": [
+      "AdaptAgent: Adapting Mul"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c87e97eb397da04806d53145cf9c13be739fc657bb54dca9318c8c4ed2a36249",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "Improved GUI Grounding via Iterative Narrowing",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2411.13591",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding"
+    ],
+    "summary": "Uses iterative visual narrowing to improve localization of requested GUI elements with general or specially trained vision-language models.",
+    "verify_terms": [
+      "Improved GUI Grounding v"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c87e97eb397da04806d53145cf9c13be739fc657bb54dca9318c8c4ed2a36249",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "Ponder & Press: Advancing Visual GUI Agent towards General Computer Control",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2412.01268",
+    "environments": [
+      "cross-platform",
+      "web",
+      "desktop"
+    ],
+    "topics": [
+      "grounding",
+      "planning"
+    ],
+    "summary": "Separates interpretation of user instructions from precise GUI localization using general-purpose and specialized visual-language components.",
+    "verify_terms": [
+      "Ponder & Press: Advancin"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c87e97eb397da04806d53145cf9c13be739fc657bb54dca9318c8c4ed2a36249",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "Iris: Breaking GUI Complexity with Adaptive Focus and Self-Refining",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2412.10342",
+    "environments": [
+      "web",
+      "desktop"
+    ],
+    "topics": [
+      "grounding",
+      "screen-understanding",
+      "efficiency"
+    ],
+    "summary": "Combines information-sensitive image cropping with a learning loop between element description and grounding for complex interface understanding.",
+    "verify_terms": [
+      "Iris: Breaking GUI Compl"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2412.04454%2C2412.04626%2C2412.05467%2C2412.09362%2C2412.09605%2C2412.10342%2C2412.10742%2C2412.10840%2C2412.13103%2C2412.13194%2C2412.13501%2C2412.14161%2C2412.14470%2C2412.16256%2C2412.17589%2C2412.18116%2C2412.18426%2C2412.19723%2C2501.01149%2C2501.04575%2C2501.07572%2C2501.11733%2C2501.12326%2C2501.13896%2C2501.16150%2C2502.01600%2C2502.01977%2C2502.02982%2C2502.06395%2C2502.07949%2C2502.08047%2C2502.08226%2C2502.11357%2C2502.13053%2C2502.13923%2C2502.14282%2C2502.18906%2C2503.00401%2C2503.02268%2C2503.03196%2C2503.04730%2C2503.05143%2C2503.06470%2C2503.09263%2C2503.11069%2C2503.11170%2C2503.12687%2C2503.15661%2C2503.15937%2C2503.16465&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "e96b86015c763c780e0430a8d0867b96cae947f50e888b3441c85abcaa42de78",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "WEPO: Web Element Preference Optimization for LLM-based Web Navigation",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2412.10742",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "grounding",
+      "web-navigation"
+    ],
+    "summary": "Uses web-element preference optimization with sampled negative HTML elements to align high-level user intent with navigation actions.",
+    "verify_terms": [
+      "WEPO: Web Element Prefer"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2412.04454%2C2412.04626%2C2412.05467%2C2412.09362%2C2412.09605%2C2412.10342%2C2412.10742%2C2412.10840%2C2412.13103%2C2412.13194%2C2412.13501%2C2412.14161%2C2412.14470%2C2412.16256%2C2412.17589%2C2412.18116%2C2412.18426%2C2412.19723%2C2501.01149%2C2501.04575%2C2501.07572%2C2501.11733%2C2501.12326%2C2501.13896%2C2501.16150%2C2502.01600%2C2502.01977%2C2502.02982%2C2502.06395%2C2502.07949%2C2502.08047%2C2502.08226%2C2502.11357%2C2502.13053%2C2502.13923%2C2502.14282%2C2502.18906%2C2503.00401%2C2503.02268%2C2503.03196%2C2503.04730%2C2503.05143%2C2503.06470%2C2503.09263%2C2503.11069%2C2503.11170%2C2503.12687%2C2503.15661%2C2503.15937%2C2503.16465&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "e96b86015c763c780e0430a8d0867b96cae947f50e888b3441c85abcaa42de78",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "Attention-driven GUI Grounding: Leveraging Pretrained Multimodal Large Language Models without Fine-Tuning",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2412.10840",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding"
+    ],
+    "summary": "Locates GUI targets by identifying and aggregating attention maps in pretrained multimodal models without task-specific fine-tuning.",
+    "verify_terms": [
+      "Attention-driven GUI Gro"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c87e97eb397da04806d53145cf9c13be739fc657bb54dca9318c8c4ed2a36249",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "Proposer-Agent-Evaluator(PAE): Autonomous Skill Discovery For Foundation Model Internet Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2412.13194",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "data-generation",
+      "reinforcement-learning",
+      "web-navigation"
+    ],
+    "summary": "Combines autonomous task proposal, web interaction, and visual success evaluation to discover skills and improve browser-agent policies.",
+    "verify_terms": [
+      "Proposer-Agent-Evaluator"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2412.04454%2C2412.04626%2C2412.05467%2C2412.09362%2C2412.09605%2C2412.10342%2C2412.10742%2C2412.10840%2C2412.13103%2C2412.13194%2C2412.13501%2C2412.14161%2C2412.14470%2C2412.16256%2C2412.17589%2C2412.18116%2C2412.18426%2C2412.19723%2C2501.01149%2C2501.04575%2C2501.07572%2C2501.11733%2C2501.12326%2C2501.13896%2C2501.16150%2C2502.01600%2C2502.01977%2C2502.02982%2C2502.06395%2C2502.07949%2C2502.08047%2C2502.08226%2C2502.11357%2C2502.13053%2C2502.13923%2C2502.14282%2C2502.18906%2C2503.00401%2C2503.02268%2C2503.03196%2C2503.04730%2C2503.05143%2C2503.06470%2C2503.09263%2C2503.11069%2C2503.11170%2C2503.12687%2C2503.15661%2C2503.15937%2C2503.16465&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "e96b86015c763c780e0430a8d0867b96cae947f50e888b3441c85abcaa42de78",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "GUI Testing Arena: A Unified Benchmark for Advancing Autonomous GUI Testing Agent",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2412.18426",
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "evaluation",
+      "automation",
+      "mobile-navigation"
+    ],
+    "summary": "Evaluates GUI testing through test-intent generation, execution, and defect detection using real, modified, and synthetic mobile application data.",
+    "verify_terms": [
+      "GUI Testing Arena: A Uni"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2412.04454%2C2412.04626%2C2412.05467%2C2412.09362%2C2412.09605%2C2412.10342%2C2412.10742%2C2412.10840%2C2412.13103%2C2412.13194%2C2412.13501%2C2412.14161%2C2412.14470%2C2412.16256%2C2412.17589%2C2412.18116%2C2412.18426%2C2412.19723%2C2501.01149%2C2501.04575%2C2501.07572%2C2501.11733%2C2501.12326%2C2501.13896%2C2501.16150%2C2502.01600%2C2502.01977%2C2502.02982%2C2502.06395%2C2502.07949%2C2502.08047%2C2502.08226%2C2502.11357%2C2502.13053%2C2502.13923%2C2502.14282%2C2502.18906%2C2503.00401%2C2503.02268%2C2503.03196%2C2503.04730%2C2503.05143%2C2503.06470%2C2503.09263%2C2503.11069%2C2503.11170%2C2503.12687%2C2503.15661%2C2503.15937%2C2503.16465&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "e96b86015c763c780e0430a8d0867b96cae947f50e888b3441c85abcaa42de78",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "Agent-R: Training Language Model Agents to Reflect via Iterative Self-Training",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2501.11425",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "data-generation",
+      "planning",
+      "robustness"
+    ],
+    "scope": "adjacent",
+    "summary": "Builds self-critique training examples from searched recovery paths to improve agents' ability to detect and correct errors during interaction.",
+    "verify_terms": [
+      "Agent-R: Training Langua"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2303.17760%2C2310.03720%2C2312.11190%2C2403.02502%2C2406.12639%2C2409.18060%2C2410.00201%2C2501.01702%2C2501.11425%2C2502.02533%2C2502.02955%2C2502.12110%2C2502.15760%2C2502.17110%2C2502.19328%2C2503.02197%2C2503.02403%2C2503.02682%2C2503.06580%2C2503.07365%2C2503.09572%2C2503.14021%2C2503.24180%2C2504.02357%2C2504.11675%2C2504.13936&max_results=26"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "bab88dfed88ca440c231aa768530374a0f19498777a70921481a904fddd46bb8",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced. The full paper was also inspected to confirm WebShop evaluation; the broader agent-learning method is classified as adjacent.",
+    "additional_evidence": [
+      {
+        "role": "primary",
+        "method": "editorial_primary_review",
+        "supports": [
+          "environments",
+          "scope",
+          "notes"
+        ],
+        "url": "https://arxiv.org/html/2501.11425",
+        "sha256": "c35562ab132e13d69155842ec63a2f4189fe8703822e5620df2592a154d2d7ed",
+        "retrieved_at": "2026-10-16T13:06:43Z"
+      }
+    ],
+    "primary_supports": [
+      "name",
+      "kind",
+      "summary",
+      "topics"
+    ]
+  },
+  {
+    "name": "ReachAgent: Enhancing Mobile Agent via Page Reaching and Operation",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2502.02955",
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "mobile-navigation",
+      "planning",
+      "data-generation"
+    ],
+    "summary": "Splits mobile tasks into reaching the required page and operating on it, using subtask data and preferred GUI trajectories for training.",
+    "verify_terms": [
+      "ReachAgent: Enhancing Mo"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2303.17760%2C2310.03720%2C2312.11190%2C2403.02502%2C2406.12639%2C2409.18060%2C2410.00201%2C2501.01702%2C2501.11425%2C2502.02533%2C2502.02955%2C2502.12110%2C2502.15760%2C2502.17110%2C2502.19328%2C2503.02197%2C2503.02403%2C2503.02682%2C2503.06580%2C2503.07365%2C2503.09572%2C2503.14021%2C2503.24180%2C2504.02357%2C2504.11675%2C2504.13936&max_results=26"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "bab88dfed88ca440c231aa768530374a0f19498777a70921481a904fddd46bb8",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "Symbiotic Cooperation for Web Agents: Harnessing Complementary Strengths of Large and Small LLMs",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2502.07942",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "data-generation",
+      "web-navigation",
+      "efficiency"
+    ],
+    "summary": "Couples large- and small-model web-agent exploration with trajectory synthesis and distillation to improve both model types iteratively.",
+    "verify_terms": [
+      "Symbiotic Cooperation fo"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "Advancing Autonomous VLM Agents via Variational Subgoal-Conditioned Reinforcement Learning",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2502.07949",
+    "environments": [
+      "web",
+      "cross-platform"
+    ],
+    "topics": [
+      "reinforcement-learning",
+      "planning"
+    ],
+    "summary": "Uses variational subgoal-conditioned reinforcement learning to improve learning efficiency on sparse-reward mobile and web-control tasks.",
+    "verify_terms": [
+      "Advancing Autonomous VLM"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2412.04454%2C2412.04626%2C2412.05467%2C2412.09362%2C2412.09605%2C2412.10342%2C2412.10742%2C2412.10840%2C2412.13103%2C2412.13194%2C2412.13501%2C2412.14161%2C2412.14470%2C2412.16256%2C2412.17589%2C2412.18116%2C2412.18426%2C2412.19723%2C2501.01149%2C2501.04575%2C2501.07572%2C2501.11733%2C2501.12326%2C2501.13896%2C2501.16150%2C2502.01600%2C2502.01977%2C2502.02982%2C2502.06395%2C2502.07949%2C2502.08047%2C2502.08226%2C2502.11357%2C2502.13053%2C2502.13923%2C2502.14282%2C2502.18906%2C2503.00401%2C2503.02268%2C2503.03196%2C2503.04730%2C2503.05143%2C2503.06470%2C2503.09263%2C2503.11069%2C2503.11170%2C2503.12687%2C2503.15661%2C2503.15937%2C2503.16465&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "e96b86015c763c780e0430a8d0867b96cae947f50e888b3441c85abcaa42de78",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "Explorer: Scaling Exploration-driven Web Trajectory Synthesis for Multimodal Web Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2502.11357",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "data-generation",
+      "web-navigation"
+    ],
+    "summary": "Synthesizes multimodal web trajectories through exploration and refinement, then trains a browser agent to study the effect of scaling interaction data.",
+    "verify_terms": [
+      "Explorer: Scaling Explor"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "Towards Sustainable Web Agents: A Plea for Transparency and Dedicated Metrics for Energy Consumption",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2502.17903",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "evaluation",
+      "efficiency"
+    ],
+    "summary": "Examines energy and carbon-accounting limitations in web-agent evaluation and argues for transparent, dedicated sustainability measurements.",
+    "verify_terms": [
+      "Towards Sustainable Web "
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "Programming with Pixels: Can Computer-Use Agents do Software Engineering?",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2502.18525",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "evaluation",
+      "tool-integration",
+      "automation"
+    ],
+    "summary": "Introduces a visual IDE environment and benchmark for software-engineering tasks, comparing screenshot-based control with access to editing and shell tools.",
+    "verify_terms": [
+      "Programming with Pixels:"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "VEM: Environment-Free Exploration for Training GUI Agent with Value Environment Model",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2502.18906",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "reinforcement-learning",
+      "world-models"
+    ],
+    "summary": "Trains GUI agents with a frozen value model learned from offline interactions, guiding action exploration without predicting complete next observations.",
+    "verify_terms": [
+      "VEM: Environment-Free Ex"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "Smoothing Grounding and Reasoning for MLLM-Powered GUI Agents with Query-Oriented Pivot Tasks",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2503.00401",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "planning"
+    ],
+    "summary": "Uses inference of possible user queries from screenshots and target coordinates as a training bridge between GUI grounding and action reasoning.",
+    "verify_terms": [
+      "Smoothing Grounding and "
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "Towards Enterprise-Ready Computer Using Generalist Agent",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2503.01861",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "automation",
+      "evaluation",
+      "workflow"
+    ],
+    "summary": "Describes the CUGA enterprise-agent development process, emphasizing iterative evaluation, failure analysis, and refinement on software-task benchmarks.",
+    "verify_terms": [
+      "Towards Enterprise-Ready"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "ATLaS: Agent Tuning via Learning Critical Steps",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2503.02197",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "data-generation",
+      "planning",
+      "efficiency"
+    ],
+    "scope": "adjacent",
+    "summary": "Selects critical steps from expert interaction trajectories for targeted agent fine-tuning, studying efficiency and generalization across tasks.",
+    "verify_terms": [
+      "ATLaS: Agent Tuning via "
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2303.17760%2C2310.03720%2C2312.11190%2C2403.02502%2C2406.12639%2C2409.18060%2C2410.00201%2C2501.01702%2C2501.11425%2C2502.02533%2C2502.02955%2C2502.12110%2C2502.15760%2C2502.17110%2C2502.19328%2C2503.02197%2C2503.02403%2C2503.02682%2C2503.06580%2C2503.07365%2C2503.09572%2C2503.14021%2C2503.24180%2C2504.02357%2C2504.11675%2C2504.13936&max_results=26"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "bab88dfed88ca440c231aa768530374a0f19498777a70921481a904fddd46bb8",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced. The full paper was also inspected to confirm WebShop evaluation; the broader agent-learning method is classified as adjacent.",
+    "additional_evidence": [
+      {
+        "role": "primary",
+        "method": "editorial_primary_review",
+        "supports": [
+          "environments",
+          "scope",
+          "notes"
+        ],
+        "url": "https://arxiv.org/html/2503.02197",
+        "sha256": "9048f54fbe64ee62117e37e3c9ad5b157fc70e83304d9ccb782f8782e487dd4a",
+        "retrieved_at": "2026-10-16T13:06:43Z"
+      }
+    ],
+    "primary_supports": [
+      "name",
+      "kind",
+      "summary",
+      "topics"
+    ]
+  },
+  {
+    "name": "MPO: Boosting LLM Agents with Meta Plan Optimization",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2503.02682",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "planning",
+      "memory"
+    ],
+    "scope": "adjacent",
+    "summary": "Refines reusable high-level meta plans with execution feedback to guide language-agent planning across interactive environments.",
+    "verify_terms": [
+      "MPO: Boosting LLM Agents"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2303.17760%2C2310.03720%2C2312.11190%2C2403.02502%2C2406.12639%2C2409.18060%2C2410.00201%2C2501.01702%2C2501.11425%2C2502.02533%2C2502.02955%2C2502.12110%2C2502.15760%2C2502.17110%2C2502.19328%2C2503.02197%2C2503.02403%2C2503.02682%2C2503.06580%2C2503.07365%2C2503.09572%2C2503.14021%2C2503.24180%2C2504.02357%2C2504.11675%2C2504.13936&max_results=26"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "bab88dfed88ca440c231aa768530374a0f19498777a70921481a904fddd46bb8",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced. The full paper was also inspected to confirm WebShop evaluation; the broader agent-learning method is classified as adjacent.",
+    "additional_evidence": [
+      {
+        "role": "primary",
+        "method": "editorial_primary_review",
+        "supports": [
+          "environments",
+          "scope",
+          "notes"
+        ],
+        "url": "https://arxiv.org/html/2503.02682",
+        "sha256": "e634a3e576c94f1f7f5409d28a5c4c80c46141f1763c81337bb45f19793815f6",
+        "retrieved_at": "2026-10-16T13:06:43Z"
+      }
+    ],
+    "primary_supports": [
+      "name",
+      "kind",
+      "summary",
+      "topics"
+    ]
+  },
+  {
+    "name": "LiteWebAgent: The Open-Source Suite for VLM-Based Web-Agent Applications",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2503.02950",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "web-navigation",
+      "tool-integration",
+      "planning"
+    ],
+    "summary": "Introduces a modular visual web-agent stack with planning and memory components, exposed through a remote-browser application and Chrome extension.",
+    "verify_terms": [
+      "LiteWebAgent: The Open-S"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "SpiritSight Agent: Advanced GUI Agent with One Look",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2503.03196",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "screen-understanding",
+      "data-generation"
+    ],
+    "summary": "Introduces SpiritSight and GUI-Lasagne data, combining multilevel GUI annotations with visual block parsing for high-resolution interface navigation.",
+    "verify_terms": [
+      "SpiritSight Agent: Advan"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "CHOP: Mobile Operating Assistant with Constrained High-frequency Optimized Subtask Planning",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2503.03743",
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "mobile-navigation",
+      "planning"
+    ],
+    "summary": "Uses human-planned subtasks to constrain and refine the intermediate plans connecting user goals with executable mobile operations.",
+    "verify_terms": [
+      "CHOP: Mobile Operating A"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2310.08588%2C2402.09205%2C2406.05720%2C2407.21075%2C2410.07166%2C2503.03743%2C2508.04037%2C2508.10833%2C2508.11360%2C2508.13024%2C2508.13186%2C2508.14104%2C2509.01619%2C2509.01720%2C2509.02322%2C2509.04198%2C2509.07764%2C2509.21823%2C2509.22256%2C2509.23263%2C2509.23866%2C2509.25047%2C2509.26539%2C2510.00413%2C2510.00536%2C2510.01524%2C2510.02204%2C2510.02250%2C2510.02418%2C2510.03204%2C2510.03612%2C2510.04039%2C2510.04373%2C2510.04607%2C2510.06223%2C2510.06607%2C2510.09872%2C2510.10666%2C2510.11035%2C2510.11221%2C2510.11892%2C2510.13543%2C2510.15455%2C2510.15863%2C2510.16252%2C2510.18113%2C2510.18314%2C2510.19205%2C2510.22732%2C2511.06101&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "0b730323b2ce85c39aa7d534665901a480ff06540c73f1f80832fcc0735b8789",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "WinClick: GUI Grounding with Multimodal Large Language Models",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2503.04730",
+    "environments": [
+      "desktop",
+      "windows"
+    ],
+    "topics": [
+      "grounding",
+      "evaluation"
+    ],
+    "summary": "Introduces a screenshot-based Windows GUI agent and the WinSpot benchmark for evaluating localization of actionable interface regions.",
+    "verify_terms": [
+      "WinClick: GUI Grounding "
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c87e97eb397da04806d53145cf9c13be739fc657bb54dca9318c8c4ed2a36249",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "Think Twice, Click Once: Enhancing GUI Grounding via Fast and Slow Systems",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2503.06470",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "grounding",
+      "efficiency",
+      "planning"
+    ],
+    "summary": "Combines rapid target prediction with deliberate interface analysis, adaptively selecting the grounding process according to task complexity.",
+    "verify_terms": [
+      "Think Twice, Click Once:"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "COLA: A Scalable Multi-Agent Framework For Windows UI Task Automation",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2503.09263",
+    "environments": [
+      "desktop",
+      "windows"
+    ],
+    "topics": [
+      "planning",
+      "memory",
+      "human-in-the-loop"
+    ],
+    "summary": "Coordinates specialized Windows UI agents with dynamic task scheduling, shared memory, and human-triggered rollback for recovering from errors.",
+    "verify_terms": [
+      "COLA: A Scalable Multi-A"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2412.04454%2C2412.04626%2C2412.05467%2C2412.09362%2C2412.09605%2C2412.10342%2C2412.10742%2C2412.10840%2C2412.13103%2C2412.13194%2C2412.13501%2C2412.14161%2C2412.14470%2C2412.16256%2C2412.17589%2C2412.18116%2C2412.18426%2C2412.19723%2C2501.01149%2C2501.04575%2C2501.07572%2C2501.11733%2C2501.12326%2C2501.13896%2C2501.16150%2C2502.01600%2C2502.01977%2C2502.02982%2C2502.06395%2C2502.07949%2C2502.08047%2C2502.08226%2C2502.11357%2C2502.13053%2C2502.13923%2C2502.14282%2C2502.18906%2C2503.00401%2C2503.02268%2C2503.03196%2C2503.04730%2C2503.05143%2C2503.06470%2C2503.09263%2C2503.11069%2C2503.11170%2C2503.12687%2C2503.15661%2C2503.15937%2C2503.16465&max_results=50"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "e96b86015c763c780e0430a8d0867b96cae947f50e888b3441c85abcaa42de78",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "Plan-and-Act: Improving Planning of Agents for Long-Horizon Tasks",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2503.09572",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "planning",
+      "long-horizon",
+      "data-generation"
+    ],
+    "summary": "Separates planning from execution and creates synthetic plan annotations for training agents on extended web-navigation tasks.",
+    "verify_terms": [
+      "Plan-and-Act: Improving "
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2303.17760%2C2310.03720%2C2312.11190%2C2403.02502%2C2406.12639%2C2409.18060%2C2410.00201%2C2501.01702%2C2501.11425%2C2502.02533%2C2502.02955%2C2502.12110%2C2502.15760%2C2502.17110%2C2502.19328%2C2503.02197%2C2503.02403%2C2503.02682%2C2503.06580%2C2503.07365%2C2503.09572%2C2503.14021%2C2503.24180%2C2504.02357%2C2504.11675%2C2504.13936&max_results=26"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "bab88dfed88ca440c231aa768530374a0f19498777a70921481a904fddd46bb8",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "API Agents vs. GUI Agents: Divergence and Convergence",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2503.11069",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "tool-integration",
+      "survey",
+      "automation"
+    ],
+    "summary": "Compares API-driven and GUI-driven agents across architecture, development, and interaction considerations, discussing when hybrid approaches are useful.",
+    "verify_terms": [
+      "API Agents vs. GUI Agent"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "DeskVision: Large Scale Desktop Region Captioning for Advanced GUI Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2503.11170",
+    "environments": [
+      "desktop"
+    ],
+    "topics": [
+      "data-generation",
+      "grounding",
+      "screen-understanding"
+    ],
+    "summary": "Introduces AutoCaptioner, DeskVision, and GUIExplorer for generating desktop region descriptions and training interface-understanding models.",
+    "verify_terms": [
+      "DeskVision: Large Scale "
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "STEVE: A Step Verification Pipeline for Computer-use Agent Training",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2503.12532",
+    "environments": [
+      "desktop",
+      "windows"
+    ],
+    "topics": [
+      "data-generation",
+      "evaluation",
+      "reinforcement-learning"
+    ],
+    "summary": "Labels individual computer-use actions by comparing surrounding screenshots, then trains agents from both successful and unsuccessful steps.",
+    "verify_terms": [
+      "STEVE: A Step Verificati"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "MP-GUI: Modality Perception with MLLMs for GUI Understanding",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2503.14021",
+    "environments": [
+      "cross-platform"
+    ],
+    "topics": [
+      "screen-understanding",
+      "grounding",
+      "data-generation"
+    ],
+    "summary": "Uses specialized graphical, textual, and spatial perception components with a data-collection pipeline to improve GUI understanding.",
+    "verify_terms": [
+      "MP-GUI: Modality Percept"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?id_list=2303.17760%2C2310.03720%2C2312.11190%2C2403.02502%2C2406.12639%2C2409.18060%2C2410.00201%2C2501.01702%2C2501.11425%2C2502.02533%2C2502.02955%2C2502.12110%2C2502.15760%2C2502.17110%2C2502.19328%2C2503.02197%2C2503.02403%2C2503.02682%2C2503.06580%2C2503.07365%2C2503.09572%2C2503.14021%2C2503.24180%2C2504.02357%2C2504.11675%2C2504.13936&max_results=26"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "bab88dfed88ca440c231aa768530374a0f19498777a70921481a904fddd46bb8",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "Towards Computer-Using Personal Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2503.15515",
+    "environments": [
+      "web",
+      "cross-platform"
+    ],
+    "topics": [
+      "safety-security",
+      "memory",
+      "human-in-the-loop"
+    ],
+    "summary": "Proposes computer-using personal agents connected to user-controlled data repositories, discussing privacy, interoperability, and collaborative tasks.",
+    "verify_terms": [
+      "Towards Computer-Using P"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "c87e97eb397da04806d53145cf9c13be739fc657bb54dca9318c8c4ed2a36249",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "name": "OS-Kairos: Adaptive Interaction for MLLM-Powered GUI Agents",
+    "kind": "paper",
+    "url": "https://arxiv.org/abs/2503.16465",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "human-in-the-loop",
+      "safety-security",
+      "mobile-navigation"
+    ],
+    "summary": "Uses step-level confidence estimates to decide when a GUI agent should act autonomously or request human intervention in complex situations.",
+    "verify_terms": [
+      "OS-Kairos: Adaptive Inte"
+    ],
+    "evidence_urls": [
+      "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+    "reviewed_at": "2026-10-16T13:12:41Z",
+    "notes": "The annotation and scope were reviewed against the primary paper abstract. Experimental results and released artifacts have not been independently reproduced."
+  },
+  {
+    "url": "https://github.com/PathOnAIOrg/LiteWebAgent",
+    "name": "LiteWebAgent",
+    "kind": "framework",
+    "environments": [
+      "web"
+    ],
+    "topics": [
+      "web-navigation",
+      "planning",
+      "memory",
+      "tool-integration"
+    ],
+    "summary": "Modular web-agent framework with browser control, planning, workflow memory, and tree-search components, plus web and extension interfaces.",
+    "verify_terms": [
+      "LiteWebAgent"
+    ],
+    "documented_by": [
+      "2503.02950"
+    ],
+    "notes": "The repository is maintained by the PathOnAI.org research community; its README explicitly disclaims affiliation with a for-profit company.",
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/PathOnAI/LiteWebAgent/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "75f99d9388aee3e0b124ebdb5f33e08fbe8ec999ce1e9eba5cd71c21e60522e0",
+    "reviewed_at": "2026-10-16T13:29:17Z"
+  },
+  {
+    "url": "https://github.com/Alokia/COLA-demo",
+    "name": "COLA demo",
+    "kind": "agent",
+    "environments": [
+      "desktop",
+      "windows"
+    ],
+    "topics": [
+      "automation",
+      "planning",
+      "human-in-the-loop"
+    ],
+    "summary": "Research demonstration of collaborative Windows GUI automation with dynamic task scheduling and recovery mechanisms.",
+    "verify_terms": [
+      "COLA"
+    ],
+    "notes": "The publisher describes this as demonstration code and states that the full implementation is not released.",
+    "reviewed_relations": [
+      {
+        "type": "documented_by",
+        "target_id": "arxiv:2503.09263",
+        "evidence_url": "https://export.arxiv.org/api/query?id_list=2412.04454%2C2412.04626%2C2412.05467%2C2412.09362%2C2412.09605%2C2412.10342%2C2412.10742%2C2412.10840%2C2412.13103%2C2412.13194%2C2412.13501%2C2412.14161%2C2412.14470%2C2412.16256%2C2412.17589%2C2412.18116%2C2412.18426%2C2412.19723%2C2501.01149%2C2501.04575%2C2501.07572%2C2501.11733%2C2501.12326%2C2501.13896%2C2501.16150%2C2502.01600%2C2502.01977%2C2502.02982%2C2502.06395%2C2502.07949%2C2502.08047%2C2502.08226%2C2502.11357%2C2502.13053%2C2502.13923%2C2502.14282%2C2502.18906%2C2503.00401%2C2503.02268%2C2503.03196%2C2503.04730%2C2503.05143%2C2503.06470%2C2503.09263%2C2503.11069%2C2503.11170%2C2503.12687%2C2503.15661%2C2503.15937%2C2503.16465&max_results=50"
+      }
+    ],
+    "additional_evidence": [
+      {
+        "role": "primary",
+        "method": "editorial_primary_review",
+        "supports": [
+          "relations",
+          "environments"
+        ],
+        "url": "https://export.arxiv.org/api/query?id_list=2412.04454%2C2412.04626%2C2412.05467%2C2412.09362%2C2412.09605%2C2412.10342%2C2412.10742%2C2412.10840%2C2412.13103%2C2412.13194%2C2412.13501%2C2412.14161%2C2412.14470%2C2412.16256%2C2412.17589%2C2412.18116%2C2412.18426%2C2412.19723%2C2501.01149%2C2501.04575%2C2501.07572%2C2501.11733%2C2501.12326%2C2501.13896%2C2501.16150%2C2502.01600%2C2502.01977%2C2502.02982%2C2502.06395%2C2502.07949%2C2502.08047%2C2502.08226%2C2502.11357%2C2502.13053%2C2502.13923%2C2502.14282%2C2502.18906%2C2503.00401%2C2503.02268%2C2503.03196%2C2503.04730%2C2503.05143%2C2503.06470%2C2503.09263%2C2503.11069%2C2503.11170%2C2503.12687%2C2503.15661%2C2503.15937%2C2503.16465&max_results=50",
+        "sha256": "e96b86015c763c780e0430a8d0867b96cae947f50e888b3441c85abcaa42de78",
+        "retrieved_at": "2026-10-16T06:31:38Z"
+      }
+    ],
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/Alokia/COLA-demo/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "281793fe6b875bd1a63591502345ac9523b1127acd9f41d5c2c88933a357e4f2",
+    "reviewed_at": "2026-10-16T13:29:17Z"
+  },
+  {
+    "url": "https://github.com/FanbinLu/STEVE-R1",
+    "name": "STEVE / STEVE-R1 research code",
+    "aliases": [
+      "STEVE",
+      "STEVE-R1"
+    ],
+    "kind": "framework",
+    "environments": [
+      "desktop",
+      "windows",
+      "linux"
+    ],
+    "topics": [
+      "data-generation",
+      "automation",
+      "evaluation"
+    ],
+    "summary": "Research code and linked models for step-verified computer-use training; the current repository describes STEVE-R1 and its trajectory releases.",
+    "verify_terms": [
+      "STEVE-R1"
+    ],
+    "notes": "The repository has moved to STEVE-R1. Its README reports an SFT release, with RL tuning in progress, and describes evaluations using multiple attempts per task. These results are not independently reproduced here.",
+    "reviewed_relations": [
+      {
+        "type": "documented_by",
+        "target_id": "arxiv:2503.12532",
+        "evidence_url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending"
+      }
+    ],
+    "additional_evidence": [
+      {
+        "role": "primary",
+        "method": "editorial_primary_review",
+        "supports": [
+          "relations",
+          "environments"
+        ],
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+        "retrieved_at": "2026-10-16T06:36:54Z"
+      }
+    ],
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/FanbinLu/STEVE/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "52aa383fdf5d91951f5d9a73f4ebed4454a82b35edae296918116e9f0895dd83",
+    "reviewed_at": "2026-10-16T13:29:17Z"
+  },
+  {
+    "url": "https://github.com/Yuqi-Zhou/CHOP",
+    "name": "CHOP",
+    "kind": "framework",
+    "environments": [
+      "android",
+      "harmonyos"
+    ],
+    "topics": [
+      "mobile-navigation",
+      "planning",
+      "workflow"
+    ],
+    "summary": "Mobile automation framework that uses reusable basis subtasks to constrain and refine planning between user goals and executable actions.",
+    "verify_terms": [
+      "CHOP"
+    ],
+    "documented_by": [
+      "2503.03743"
+    ],
+    "details": {
+      "platform_constraints": {
+        "harmonyos": "The README limits device debugging support to HarmonyOS 4 or earlier."
+      }
+    },
+    "notes": "The README says the complete CHOP-ZH dataset remains unreleased. Android and HarmonyOS compatibility is publisher-documented and has not been runtime-tested here.",
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/Yuqi-Zhou/CHOP/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "02e231c68ffc37c829789eabc508a220f3d99a33ee8bf676e53c999a0ff54021",
+    "reviewed_at": "2026-10-16T13:29:17Z"
+  },
+  {
+    "url": "https://github.com/Wuzheng02/OS-Kairos",
+    "name": "OS-Kairos",
+    "kind": "agent",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "human-in-the-loop",
+      "safety-security",
+      "mobile-navigation"
+    ],
+    "summary": "Android GUI-agent research implementation that uses confidence-guided interaction to choose between autonomous actions and human assistance.",
+    "verify_terms": [
+      "OS-Kairos"
+    ],
+    "documented_by": [
+      "2503.16465"
+    ],
+    "notes": "The documented evaluation modes distinguish model-simulated human feedback from actual human interaction; preserve that distinction when interpreting results.",
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/Wuzheng02/OS-Kairos/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "15d40c50df8493575a94aa2aa4913c654fea7b7f821d99b7bf443a64f1cc50d3",
+    "reviewed_at": "2026-10-16T13:29:17Z"
+  },
+  {
+    "url": "https://github.com/ZJU-ACES-ISE/UIDefectMocker",
+    "name": "UI Defect Mocker",
+    "kind": "tool",
+    "environments": [
+      "android"
+    ],
+    "topics": [
+      "data-generation",
+      "evaluation",
+      "screen-understanding"
+    ],
+    "summary": "Synthesizes visual UI defects from mobile screenshots and Android layout metadata to support GUI-testing experiments.",
+    "verify_terms": [
+      "UIDefectMocker"
+    ],
+    "notes": "This entry describes the released screenshot-defect tool, separately from the under-construction ChatUITest project hub.",
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/ZJU-ACES-ISE/UIDefectMocker/HEAD/README.md"
+    ],
+    "editorial_reviewed": true,
+    "reviewed_sha256": "fc3009b355e46549c5128c933bb333aa37b1db5ac8ea8f2d0f300848d8a62200",
+    "reviewed_at": "2026-10-16T13:29:17Z"
+  },
+  {
+    "url": "https://github.com/ZJU-ACES-ISE/ChatUITest",
+    "name": "ChatUITest / GTArena project hub",
+    "kind": "framework",
+    "environments": [
+      "unspecified"
+    ],
+    "topics": [
+      "evaluation",
+      "automation"
+    ],
+    "summary": "Project hub for GUI testing research.",
+    "verify_terms": [
+      "ChatUITest"
+    ],
+    "evidence_urls": [
+      "https://raw.githubusercontent.com/ZJU-ACES-ISE/ChatUITest/HEAD/README.md"
+    ],
+    "editorial_reviewed": false,
+    "review_note": "The primary README describes the project as under construction and the dataset as being organized/uploaded. The released UI Defect Mocker component is cataloged separately."
   }
 ]

@@ -1,0 +1,688 @@
+{
+  "schema_version": 1,
+  "excluded_records": 40,
+  "revalidation_pending": 0,
+  "policy": "Explicit primary-abstract scope review; not a judgment of research quality. Raw metadata remains in the archive. Changed or unresolved decisions do not suppress records.",
+  "decisions": [
+    {
+      "id": "arxiv:0804.0272",
+      "name": "Quantum computing using shortcuts through higher dimensions",
+      "url": "https://arxiv.org/abs/0804.0272",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract studies quantum-logic gates and higher-dimensional quantum circuits, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "082aeefd572d6f8329e59a5288e6570e0f19f6de6e842e683dca147524174e3c",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:0805.0029",
+      "name": "How to simulate a quantum computer using negative probabilities",
+      "url": "https://arxiv.org/abs/0805.0029",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract studies negative-probability simulation of quantum circuits, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "8a14f66eaa7b54dd66eaaa561152c92f9c35fd39ad42930a214acf75eb2c6499",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:0805.3239",
+      "name": "A robust system for Quantum Computation using Coherent Population Trap states of neutral atoms",
+      "url": "https://arxiv.org/abs/0805.3239",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract describes neutral-atom states for quantum gates and spin systems, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "afb838565c816844d8cff14873f15aff6b408c63824cb4042c0ff3d15d7e0805",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:0805.3592",
+      "name": "Deterministic optical quantum computer using photonic modules",
+      "url": "https://arxiv.org/abs/0805.3592",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract proposes optical hardware and cluster-state preparation for quantum computing, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "3eaea47b28fdde034857f415583b1f3a3ef3217f626fcd4d407842d1188887cf",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:0806.4548",
+      "name": "Efficient and robust adiabatic universal quantum computation using STIRAP on a qubit chain",
+      "url": "https://arxiv.org/abs/0806.4548",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract concerns adiabatic quantum computation on a qubit chain, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "3e2adfd18cc35a40b61d20bb558ffbd46288ae2e56010fe8e773026e50b3fec0",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:0808.1591",
+      "name": "A scalable, high-speed measurement-based quantum computer using trapped ions",
+      "url": "https://arxiv.org/abs/0808.1591",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract describes a trapped-ion quantum-computing architecture, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "f0f25812e2e1f1c53368ddbfbf53ed81da9600f101fef8e6b8057bd02e0e2104",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:0810.3710",
+      "name": "Insights into classical irreversible computation using quantum information concepts",
+      "url": "https://arxiv.org/abs/0810.3710",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract analyzes classical logic-operation complexity through quantum information concepts, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "9437a492a059703cb5a9153e496c97db3b4c9077328366b1494c22be6bc087fa",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:0904.3273",
+      "name": "A Thermodynamic Turing Machine: Artificial Molecular Computing Using Classical Reversible Logic Switching Networks",
+      "url": "https://arxiv.org/abs/0904.3273",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract concerns reversible transistor circuits for quantum-algorithm-style computation, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "3fe5e556373261b0d2d864adc636eedd952faed665b374112396c90b6005087c",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:0907.2239",
+      "name": "A generic new platform for topological quantum computation using semiconductor heterostructures",
+      "url": "https://arxiv.org/abs/0907.2239",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract proposes semiconductor structures for topological quantum computation, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "0ea386ca5b2ea275a82b6b210232e97e40bfc3b797bcda511b15c1da5ae6cce4",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:0910.1024",
+      "name": "Universal quantum computation using the discrete time quantum walk",
+      "url": "https://arxiv.org/abs/0910.1024",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract proves computational universality of discrete-time quantum walks, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "164aba44d972d1a030b9193b3db62fd454315c4738c80873715c069262e336a7",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1005.1666",
+      "name": "Universal Quantum Computation Using Continuous Dynamical Decoupling",
+      "url": "https://arxiv.org/abs/1005.1666",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract studies coherence preservation during quantum-gate operations, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "f54953ec3e1a41376c7fdcd617a8f3d19508f62e19c31d6f4adc5300cde94b97",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1009.3124",
+      "name": "Quantum function computation using sublogarithmic space (abstract & poster)",
+      "url": "https://arxiv.org/abs/1009.3124",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract compares quantum and probabilistic Turing-machine space complexity, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "7099a3fce513fa1ddbd6e6251d44eea210b37d69aff12b7a86ff26db61a00e62",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1103.5512",
+      "name": "Macroscopic quantum computation using Bose-Einstein condensates",
+      "url": "https://arxiv.org/abs/1103.5512",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract studies Bose-Einstein-condensate qubits and quantum gate operations, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "b6413cee5d6882461edeece99db8449ef720779381fb8e14730a0ce293e03125",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1106.1992",
+      "name": "Efficient quantum computing using coherent photon conversion",
+      "url": "https://arxiv.org/abs/1106.1992",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract describes coherent photon conversion for photonic quantum processing, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "f1393abef6c7ec490f7cf60dabadfc06491900825f65469ad41f3357267b04df",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1107.0003",
+      "name": "Valley-based noise-resistant quantum computation using Si quantum dots",
+      "url": "https://arxiv.org/abs/1107.0003",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract proposes silicon quantum-dot qubits resistant to noise, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "9eb2285d70ba930c407bc25b362919fb84d0ed2194e3ab78135c9f01282d1521",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1107.4171",
+      "name": "Next Generation High Speed Computing Using Photonic Based Technolog",
+      "url": "https://arxiv.org/abs/1107.4171",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract discusses photonic computing hardware as an alternative computing substrate, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "61511638d0ded6a9d7115d85baca131d42b9424201d171a15d1961eb19f7e384",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1111.2662",
+      "name": "Scalable one-way quantum computer using on-chip resonator qubits",
+      "url": "https://arxiv.org/abs/1111.2662",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract describes superconducting resonator networks for quantum computing, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "b498de587782513198012ca59157074238eb373dee736b994e00a075b1466f2a",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1112.0825",
+      "name": "Near-deterministic quantum teleportation and resource-efficient quantum computation using linear optics and hybrid qubits",
+      "url": "https://arxiv.org/abs/1112.0825",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract proposes optical quantum teleportation and hybrid-qubit gates, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "22e1747244fa5c02d48797b2a3ccd32db0baf93fc08a46ee65250365df96e262",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1207.0033",
+      "name": "Quantum-like model of behavioral response computation using neural oscillators",
+      "url": "https://arxiv.org/abs/1207.0033",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract models quantum-like behavioral effects with neural oscillators, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "ccb5c5215ad22dcff7b9c184a0f44aa2019d455cdffa7b20fcdd3b232eed3287",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1208.2252",
+      "name": "Towards All Optical, Universal Quantum Computation using Trapped Electron Spins and Cavity Polariton Resonance",
+      "url": "https://arxiv.org/abs/1208.2252",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract concerns trapped-electron spins and optical quantum gates, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "3c82d26ec8cac65307f08ab7704633ed460e6b880381c2c2850268bfec9cf922",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1210.6512",
+      "name": "An Introduction to Quantum Computing using Cavity QED concepts",
+      "url": "https://arxiv.org/abs/1210.6512",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract introduces cavity quantum electrodynamics for quantum computation, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "a0d6b7ff5498784d9a60f10615e00107e81e005ad1060dfde6ba15dd18d15e3f",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1405.0296",
+      "name": "Reservoir Computing Approach to Robust Computation using Unreliable Nanoscale Networks",
+      "url": "https://arxiv.org/abs/1405.0296",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract studies robust computation in noisy nanoscale reservoir substrates, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "7938b722b4f2faa77e3f67824808585517cdc062782d5669a3f6a31db1ebed59",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1406.7631",
+      "name": "Dynamical topological quantum computation using spin pulse control in the Heisenberg model",
+      "url": "https://arxiv.org/abs/1406.7631",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract studies Hamiltonian engineering and spin-pulse control for quantum computation, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "906c7b290d4d07a731f6941565af5013821f06bc1b3d004176687451ec8981c4",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1407.1485",
+      "name": "Error suppression in Hamiltonian based quantum computation using energy penalties",
+      "url": "https://arxiv.org/abs/1407.1485",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract derives quantum-error-suppression bounds using energy penalties, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "64c32b00ddd7739cd1e5d4b676babc35591c2723509e017522dc8bcb668872c2",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1408.1460",
+      "name": "Verification of Linear Optical Quantum Computing using Quantum Process Calculus",
+      "url": "https://arxiv.org/abs/1408.1460",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract applies process calculus to verification of optical quantum gates, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "4c72a98ff331cda83538d15f894635af9cbcd1b7470e569dca73225280d4ad23",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1410.0162",
+      "name": "Reservoir Computing using Cellular Automata",
+      "url": "https://arxiv.org/abs/1410.0162",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract develops cellular-automaton reservoir computation, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "9477b7ba61d45b7612ff865b890d2be9ae36a6c91b065d365e20ea8698a01ef8",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1512.00796",
+      "name": "Designing a Million-Qubit Quantum Computer Using Resource Performance Simulator",
+      "url": "https://arxiv.org/abs/1512.00796",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract simulates fault-tolerant quantum hardware resources and algorithm execution, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "0da40fa3101f14419c02ad091af3168fd18c3370a81f179c884030eac5ab0d6d",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1606.03795",
+      "name": "Error suppression for Hamiltonian-based quantum computation using subsystem codes",
+      "url": "https://arxiv.org/abs/1606.03795",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract studies quantum-error suppression with subsystem codes, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "d3a190909353ef637bebd219f9daaffe8687b8a3e9d06b0237f62285db467797",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1607.04959",
+      "name": "Quantum computation using arrays of N polar molecules in pendular states",
+      "url": "https://arxiv.org/abs/1607.04959",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract studies polar-molecule qubits and quantum-computation models, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "b98aef079e03047994188aacd38f68912719dda3110e80e8e57f5abf85122e97",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1609.06628",
+      "name": "Programming quantum computers using 3-D puzzles, coffee cups, and doughnuts",
+      "url": "https://arxiv.org/abs/1609.06628",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract discusses three-dimensional concepts for programming quantum computers, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "626125404d533e6ac9a0297dd43e0afe1432773a0bc621317779e6d63203f071",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1612.08606",
+      "name": "Parallel photonic reservoir computing using frequency multiplexing of neurons",
+      "url": "https://arxiv.org/abs/1612.08606",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract evaluates frequency-multiplexed photonic reservoir hardware, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "8bd2462546020da52db6af25f442d5cf424237555629afa19d5141842357f522",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1612.09292",
+      "name": "Stochastic single flux quantum neuromorphic computing using magnetically tunable Josephson junctions",
+      "url": "https://arxiv.org/abs/1612.09292",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract describes superconducting neuromorphic circuits and tunable junctions, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "8287fd6b8a2a13443a25dac127fb0b2f94c3d484e669578e2e10560db6931e67",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1701.02970",
+      "name": "Compressed quantum computation using the IBM Quantum Experience",
+      "url": "https://arxiv.org/abs/1701.02970",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract simulates an Ising chain on a cloud quantum computer, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "7bac44cec8a37cb71b80974843c67b38bb9399433254dea383b1c86cfcfd9e50",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1702.03812",
+      "name": "Reservoir Computing Using Non-Uniform Binary Cellular Automata",
+      "url": "https://arxiv.org/abs/1702.03812",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract studies cellular-automaton reservoir rules for sequence classification, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "5c6f07d197a645f754a4ed91fa42e39bf38748a46cbb916448dcf40fcbfba32e",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1703.02806",
+      "name": "Deep Reservoir Computing Using Cellular Automata",
+      "url": "https://arxiv.org/abs/1703.02806",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract studies layered cellular-automaton reservoirs on a memory task, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "d78bbb331f79cda345be33ca69be2c684bf9dd23f25bd08cd70677499c24b257",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1704.03431",
+      "name": "Qudit-Basis Universal Quantum Computation using $χ^{(2)}$ Interactions",
+      "url": "https://arxiv.org/abs/1704.03431",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract establishes universality of optical quantum gates in qudit bases, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "5a189ecceeefe05164c429ee77b68bb56263a8a795217e78571fc5223bfa46c0",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1706.08061",
+      "name": "High-fidelity adiabatic quantum computation using the intrinsic Hamiltonian of a spin system: Application to the experimental factorization of 291311",
+      "url": "https://arxiv.org/abs/1706.08061",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract demonstrates adiabatic quantum computation and integer factorization in spin systems, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "d88c352ce603b5c7edc1cf5c56b2b12e6aec7e5b98673036cac3c71e8c9c1131",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1708.06144",
+      "name": "Classical multiparty computation using quantum resources",
+      "url": "https://arxiv.org/abs/1708.06144",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract uses quantum resources for distributed classical function computation, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "0d254d73110b5fa369ebd928a436412c083be0445af31480c974e5055d1c38fb",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1709.10211",
+      "name": "Reservoir Computing using Stochastic p-Bits",
+      "url": "https://arxiv.org/abs/1709.10211",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract proposes physical hardware for reservoir neural networks, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "e9e9b9e58ac105b1390605be212cc198746911584947eadfd65cbdc9c49738f8",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1100&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "a3ebf2fcfa181413d078dc3408f17bfabfac87f9aee1c78994840197df701e9d",
+        "retrieved_at": "2026-10-16T06:37:09Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    },
+    {
+      "id": "arxiv:1711.00094",
+      "name": "Universal quantum computing using $(\\mathbb{Z}_d)^3$ symmetry-protected topologically ordered states",
+      "url": "https://arxiv.org/abs/1711.00094",
+      "decision": "out_of_scope",
+      "basis": "primary_abstract_review",
+      "reason": "The abstract studies quantum-computational universality of topological resource states, outside the computer-interface agent scope.",
+      "reviewed_at": "2026-10-16T12:55:27Z",
+      "metadata_fingerprint": "0812843439ea5b0107846d00cb38c4b263b6ce60e21caca5a046195168994cff",
+      "evidence": {
+        "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=1000&max_results=100&sortBy=submittedDate&sortOrder=descending",
+        "sha256": "bb3d2692c294743a8d06d5065cc84b27b229a981c2c650ff20a2ec038797a0e3",
+        "retrieved_at": "2026-10-16T06:37:05Z"
+      },
+      "status": "excluded",
+      "status_reason": "Reviewed snapshot matches retained metadata."
+    }
+  ]
+}

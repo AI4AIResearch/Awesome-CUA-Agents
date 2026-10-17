@@ -24,11 +24,13 @@ def build_site(output=None):
     (destination/'data').mkdir(exist_ok=True)
     (destination/'downloads').mkdir(exist_ok=True)
     keys=['id','name','kind','url','aliases','environments','topics','summary','review_status','published_at','authors','scope','last_verified_at']
-    index={'coverage':{k:coverage[k] for k in ['as_of_utc','total_records','curated_records','metadata_only_records','by_kind','unindexed_candidates','sources']},'records':[{**{k:row[k] for k in keys},'page_url':resource_path(row)} for row in rows]}
+    index={'coverage':{k:coverage[k] for k in ['as_of_utc','total_records','curated_records','metadata_only_records','by_kind','unindexed_candidates','sources','excluded_records','arxiv_archive_records']},'records':[{**{k:row[k] for k in keys},'page_url':resource_path(row)} for row in rows]}
     for filename,payload in [('index.json',index),('records.json',rows)]:
         (destination/'data'/filename).write_text(json.dumps(payload,ensure_ascii=False,separators=(',',':'))+'\n')
     for name in ['catalog.jsonl','coverage.json','sources.json']:
         shutil.copy2(ROOT/'data'/name,destination/'downloads'/name)
+    shutil.copy2(ROOT/'data/exclusion-status.json',destination/'downloads/exclusions.json')
+    shutil.copy2(ROOT/'data/papers.jsonl',destination/'downloads/arxiv-archive.jsonl')
     write_sqlite(rows,destination/'downloads'/'catalog.sqlite')
     shutil.copy2(ROOT/'LICENSE',destination/'LICENSE')
     (destination/'.nojekyll').write_text('')

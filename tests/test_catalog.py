@@ -153,6 +153,7 @@ class QualityTests(unittest.TestCase):
         errors = build.validate_records([row, copy.deepcopy(row)])
         self.assertTrue(any("duplicate" in e for e in errors))
         self.assertTrue(any("dangling" in e for e in errors))
+        self.assertTrue(any("retained primary evidence" in e for e in errors))
 
     def test_future_publication_and_unscoped_license_rejected(self):
         row = paper()

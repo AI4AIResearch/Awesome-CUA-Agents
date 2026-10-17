@@ -19,7 +19,9 @@ from catalog import ROOT, DATA, arxiv_entry, fetch, now, read_json, read_jsonl, 
 
 def counts():
     rows=read_jsonl(DATA/'catalog.jsonl')
-    return {'resources':len(rows),'bibliographic_records':len(read_jsonl(DATA/'papers.jsonl')),
+    report=read_json(DATA/'coverage.json',{})
+    return {'resources':len(rows),'bibliographic_records':sum(row['id'].startswith('arxiv:') for row in rows),
+        'arxiv_archive_records':len(read_jsonl(DATA/'papers.jsonl')),'excluded_records':report.get('excluded_records',0),
         'curated_papers':sum(r['kind'] in {'paper','survey'} and r['review_status']=='curated' for r in rows),
         'curated_resources':sum(r['kind'] not in {'paper','survey'} and r['review_status']=='curated' for r in rows),
         'candidates':len(read_jsonl(DATA/'candidates.jsonl'))}

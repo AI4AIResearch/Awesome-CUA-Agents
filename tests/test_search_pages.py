@@ -104,5 +104,25 @@ class SearchPagesTests(unittest.TestCase):
         self.assertEqual(len(blocks),1);json.loads(blocks[0])
         self.assertNotIn('<script>alert(1)</script>',text)
 
+    def test_scope_exclusions_keep_traceable_nonindexed_pages_and_archive(self):
+        report=json.loads((self.dest/'downloads/exclusions.json').read_text())
+        active={row['id'] for row in self.rows}
+        archive={json.loads(line)['id'] for line in (self.dest/'downloads/arxiv-archive.jsonl').read_text().splitlines()}
+        pages={item['path']:item for item in self.manifest['pages']}
+        excluded=[row for row in report['decisions'] if row['status']=='excluded']
+        self.assertEqual(len(excluded),report['excluded_records'])
+        for row in excluded:
+            self.assertNotIn(row['id'],active)
+            self.assertIn(row['id'],archive)
+            path=resource_path(row);item=pages[path]
+            self.assertFalse(item['indexable']);self.assertTrue(item['scope_excluded'])
+            content=(self.dest/path.lstrip('/')/'index.html').read_text()
+            parsed=PageParser(content)
+            self.assertIn('noindex',parsed.robots[0]);self.assertIn(row['url'],parsed.links)
+            self.assertIn(html.escape(row['reason'],quote=True),content)
+            self.assertIn('excluded from the active CUA catalog',(self.dest/path.lstrip('/')/'index.md').read_text())
+        self.assertEqual(self.manifest['excluded_pages'],len(excluded))
+        self.assertEqual(self.manifest['metadata_only_pages'],sum(row['review_status']=='metadata_verified' for row in self.rows))
+
 
 if __name__=='__main__':unittest.main()

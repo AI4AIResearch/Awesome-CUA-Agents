@@ -26,6 +26,14 @@ Supporting automation libraries and workflow recording tools may be marked `adja
 - Redirects, project renames, dataset mirrors, and model variants require continued editorial entity resolution. Source coverage is conservative and does not assume that similar names are equivalent.
 - When an author explicitly identifies an accidental duplicate submission, `identifiers.preferred_arxiv` records the preferred identifier with primary evidence. The duplicate stays accessible as bibliographic provenance and cannot be promoted as another curated paper. Similar titles alone do not establish this relationship.
 
+## Explicit scope review
+
+`data/exclusions.json` records individually reviewed, out-of-scope bibliographic snapshots. These are relevance decisions based on primary abstracts, not assessments of research quality. Keywords never create an exclusion automatically. Each decision binds to the reviewed metadata fingerprint and a primary evidence receipt; changed ingested metadata, missing evidence, or a queued upstream metadata change reopens the decision and leaves the record visible as pending review.
+
+The raw arXiv archive retains every ingested record. Applied exclusions are absent from the active catalog, search, and SQLite export, but their previous resource URLs remain accessible as `noindex` scope explanations. The generated `data/exclusion-status.json` separates applied decisions from revalidation requests. Discovery counts distinguish indexed, excluded, and unresolved identifiers.
+
+Curated inclusion cannot conflict with an exclusion, and scope changes cannot silently break retained relationships. Correct a decision through a source-backed edit to the ledger; version control preserves its history. The input contract is `schemas/scope-decision.schema.json`.
+
 ## Evidence and unknowns
 
 Every published record has a primary URL, retrieval timestamp, SHA-256 of the fetched response, and the fields supported by that evidence. Upstream raw responses stay in an ignored local cache; committed receipts retain attribution and fingerprints. A digest verifies identity when the response is available; it does **not** guarantee that a mutable upstream URL can recreate an old snapshot.
@@ -37,6 +45,8 @@ Some dataset cards contain only licensing metadata. For these entries, Hub metad
 License declarations are scoped to code, data, weights, or documents. Repository LICENSE headers never establish permissions for weights or embedded third-party data. No blanket permissive license is inferred from public availability.
 
 `mentions` edges record references found in a primary README/card. They do not establish training, evaluation, derivation, partnership, or endorsement. Stronger relations are explicit editorial assertions with evidence.
+
+When a paper documents an implementation that is not cited back by the repository, an editorial `reviewed_relations` entry may cite the paper's retained evidence receipt. Its evidence URL must exist in the resource's evidence list. This does not imply that current code reproduces the paper's results.
 
 ## Coverage denominator
 

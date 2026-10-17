@@ -40,6 +40,10 @@ test('deep links round-trip search, filters, layout, language, and a selected re
   assert.deepEqual(parseState(encoded),state);
   assert.equal(new URLSearchParams(encoded).get('record'),'github:bytedance/ui-tars');
   assert.equal(new URLSearchParams(encoded).get('lang'),'zh');
+  for(const platform of new Set(rows.flatMap(row=>row.environments))) {
+    const roundTrip=serializeState({...state,platform},'en','');
+    assert.equal(parseState(roundTrip).platform,platform);
+  }
 });
 test('unrecognized sort/type and invalid pages fall back safely',()=>{
   const state=parseState('?kind=bad&sort=bad&page=-10&review=unverified');

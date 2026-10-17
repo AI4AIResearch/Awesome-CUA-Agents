@@ -13,9 +13,10 @@ import urllib.parse
 
 from catalog import ROOT, DATA, KINDS, ENVIRONMENTS, STATUSES, canonical, read_json, read_jsonl, write_json, write_jsonl
 from specifications import validate_profiles
+from scope_review import resolve_exclusions, scope_report
 
 
-def source_records():
+def source_records(with_scope=False):
     records = {r["id"]: copy.deepcopy(r) for r in read_jsonl(DATA / "papers.jsonl")}
     evidence = {r["id"]: r for r in read_jsonl(DATA / "primary-evidence.jsonl")}
     enrichment = {r["id"]: r for r in read_jsonl(DATA / "enrichment.jsonl")}
@@ -50,7 +51,7 @@ def source_records():
         if editorial["kind"] == "benchmark":
             for key, default in {"task_count": None, "metrics": [], "evaluation_type": None, "leaderboard_url": None}.items():
                 details.setdefault(key, default)
-        relations = []
+        relations = copy.deepcopy(editorial.get('reviewed_relations', []))
         for aid in editorial.get("paper_ids", []):
             target = "arxiv:" + aid
             relations.append({"type": "introduced_by", "target_id": target, "evidence_url": ev["url"]})
@@ -74,7 +75,12 @@ def source_records():
             "relations": relations, "licenses": licenses, "evidence": base.get("evidence", []) + [primary] + editorial.get("additional_evidence", []) + extra.get("evidence", []),
             "last_verified_at": ev["retrieved_at"], "notes": editorial.get("notes", ""), "details": details}
         records[rid] = row
-    return sorted(records.values(), key=lambda r: r["id"]), pending
+    changes = {row['id'] for row in read_jsonl(DATA/'metadata-updates.jsonl')}
+    decisions = resolve_exclusions(records, read_json(DATA/'exclusions.json', []), changes)
+    excluded = {row['id'] for row in decisions if row['status']=='excluded'}
+    pending += [{'id':row['id'],'name':records[row['id']]['name'],'url':row['url'],'reason':row['status_reason']} for row in decisions if row['status']=='revalidation_pending']
+    rows = sorted((row for rid,row in records.items() if rid not in excluded), key=lambda r:r['id'])
+    return (rows,pending,decisions) if with_scope else (rows,pending)
 
 
 def validate_records(rows):
@@ -128,6 +134,8 @@ def validate_records(rows):
         for relation in r.get("relations", []):
             if relation.get("target_id") not in ids:
                 error(f"dangling reviewed relation {relation.get('target_id')}")
+            if relation.get('evidence_url') not in {e.get('url') for e in r.get('evidence',[])}:
+                error('reviewed relation lacks a retained primary evidence receipt')
         for key in ("published_at", "updated_at"):
             value = r.get(key)
             if value is not None:
@@ -140,24 +148,28 @@ def validate_records(rows):
     return errors
 
 
-def coverage(rows, pending):
+def coverage(rows, pending, scope_decisions):
     ids = {r["id"] for r in rows}
     by_id = {r["id"]: r for r in rows}
     candidates = read_jsonl(DATA / "candidates.jsonl")
     runs = {r["id"]: r for r in read_json(DATA / "discovery-runs.json", [])}
     sources = read_json(DATA / "sources.json", [])
+    excluded = {row['id'] for row in scope_decisions if row['status']=='excluded'}
     source_rows = []
     for source in sources:
         population = {r["id"] for r in candidates if any(o["source_id"] == source["id"] for o in r["discovered_in"])}
         present = population & ids
         source_rows.append({"id": source["id"], "name": source["name"], "url": source["homepage"],
             "snapshot": runs.get(source["id"]), "discovered": len(population), "indexed": len(present),
-            "curated": sum(by_id[i]["review_status"] == "curated" for i in present), "unindexed": len(population - ids)})
+            "curated": sum(by_id[i]["review_status"] == "curated" for i in present), "excluded":len(population & excluded), "unindexed": len(population - ids - excluded)})
     latest = max((e["retrieved_at"] for r in rows for e in r["evidence"]), default="")
     return {"as_of_utc": latest, "total_records": len(rows), "curated_records": sum(r["review_status"] == "curated" for r in rows),
         "bibliographic_records": sum(r["id"].startswith("arxiv:") for r in rows),
+        "arxiv_archive_records":len(read_jsonl(DATA/'papers.jsonl')),
+        "excluded_records":len(excluded),
+        "exclusion_revalidation_pending":sum(row['status']=='revalidation_pending' for row in scope_decisions),
         "metadata_only_records": sum(r["review_status"] == "metadata_verified" for r in rows),
-        "discovery_identifiers": len(candidates), "unindexed_candidates": len({r["id"] for r in candidates} - ids),
+        "discovery_identifiers": len(candidates), "unindexed_candidates": len({r["id"] for r in candidates} - ids - excluded),
         "pending_editorial": pending, "by_kind": dict(sorted(collections.Counter(r["kind"] for r in rows).items())),
         "curated_by_environment": dict(sorted(collections.Counter(e for r in rows if r["review_status"] == "curated" for e in r["environments"]).items())),
         "license_declarations_by_scope": {slot: sum(r["licenses"][slot] is not None for r in rows) for slot in ("code", "data", "weights", "document")},
@@ -190,7 +202,8 @@ def documents(rows, report):
         filename = "companies" if kind == "company" else kind + "s"
         files[f"docs/{filename}.md"] = "\n".join(lines)
     paper_lines = ["# Research bibliography", "", "[Home](../README.md) · [Curated surveys](surveys.md) · [Query examples](query-guide.md)", "",
-        "Official arXiv bibliographic metadata. Most entries have **not** undergone a relevance or methodological review. Discovery includes historical references and adjacent work; this is not a count of confirmed CUA papers.", ""]
+        "Official arXiv bibliographic metadata. Most entries have **not** undergone a relevance or methodological review. Discovery includes historical references and adjacent work; this is not a count of confirmed CUA papers.",
+        "Explicit scope exclusions are listed in the [scope-decision ledger](../data/exclusion-status.json); original records remain in the [metadata archive](../data/papers.jsonl).", ""]
     years = collections.defaultdict(list)
     for r in rows:
         if r["id"].startswith("arxiv:"):
@@ -204,14 +217,15 @@ def documents(rows, report):
     lines = ["# Coverage and quality ledger", "", f"Evidence snapshot through **{report['as_of_utc']}**. Generated from committed source receipts.", "",
         f"- {report['total_records']:,} resource records: {report['curated_records']:,} curated; {report['metadata_only_records']:,} bibliographic metadata only.",
         f"- {report['bibliographic_records']:,} arXiv records, including curated surveys. This count overlaps the status counts above.",
-        f"- {report['discovery_identifiers']:,} discovery identifiers; {report['unindexed_candidates']:,} have no published catalog record.",
+        f"- {report['arxiv_archive_records']:,} retained arXiv metadata records; {report['excluded_records']:,} explicit scope exclusions are outside the active catalog.",
+        f"- {report['discovery_identifiers']:,} discovery identifiers; {report['unindexed_candidates']:,} remain unresolved after accounting for scope exclusions.",
         f"- {len(report['pending_editorial'])} editorial proposals await verification or review.", "",
         "These are distinct resource identifiers, not distinct research projects. Papers, repositories, datasets, products, and publisher entities have different grains.", "",
         "## Source snapshot coverage", "", "The denominator is the normalized identifiers extracted from each fetched document, including incidental links. Sources overlap. These figures do not measure global completeness or editorial recall.", "",
-        "| Source | Discovered | Indexed | Curated | Unindexed | Fetch |", "| --- | ---: | ---: | ---: | ---: | --- |"]
+        "| Source | Discovered | Indexed | Curated | Excluded | Unresolved | Fetch |", "| --- | ---: | ---: | ---: | ---: | ---: | --- |"]
     for s in report["sources"]:
         status = s["snapshot"] or {}
-        lines.append(f"| [{md(s['name'])}]({s['url']}) | {s['discovered']} | {s['indexed']} | {s['curated']} | {s['unindexed']} | {'OK' if status.get('ok') else 'FAILED'} · {status.get('retrieved_at', '')[:10]} |")
+        lines.append(f"| [{md(s['name'])}]({s['url']}) | {s['discovered']} | {s['indexed']} | {s['curated']} | {s['excluded']} | {s['unindexed']} | {'OK' if status.get('ok') else 'FAILED'} · {status.get('retrieved_at', '')[:10]} |")
     search = report["primary_search"]
     lines += ["", "## Primary arXiv discovery", "", f"The recorded title query returned {search.get('unique_returned', 0):,} unique records out of {search.get('reported_total', 0):,} reported matches. Pagination complete: **{search.get('complete', False)}**. This query population overlaps the lists and is not the whole field.", "", "```text", search.get("query", ""), "```", "",
         "## License evidence", "", "| Scope | Recorded declarations |", "| --- | ---: |"]
@@ -220,7 +234,7 @@ def documents(rows, report):
         "## Pending editorial proposals", "", "| Resource | Reason |", "| --- | --- |"]
     for p in report["pending_editorial"]:
         lines.append(f"| [{md(p['name'])}]({p['url']}) | {md(p['reason'])} |")
-    lines += ["", "## Known gaps", "",
+    lines += ["", "## Scope exclusions", "", f"{report['excluded_records']} records have an applied scope decision; {report['exclusion_revalidation_pending']} require another review after a change. See the [decision ledger](../data/exclusion-status.json) for each rationale and source fingerprint. These decisions concern catalog relevance, not research quality. Original bibliographic metadata is retained, and previous resource URLs explain the decision rather than silently disappearing.", "", "## Known gaps", "",
         "- Most bibliography records still require relevance review and detailed taxonomy.",
         "- Closed/private datasets, unpublished systems, regional products, and work absent from arXiv/lists are not exhaustively represented.",
         "- Asset sizes, model weights licenses, runtime requirements, and benchmark protocols need additional field-level curation.",
@@ -262,16 +276,17 @@ def write_sqlite(rows, path):
 
 
 def build(args):
-    rows, pending = source_records()
+    rows, pending, scope_decisions = source_records(with_scope=True)
     errors = validate_records(rows)
     if errors:
         raise ValueError("\n".join(errors[:30]))
-    report = coverage(rows, pending)
+    report = coverage(rows, pending, scope_decisions)
     files = documents(rows, report)
     stats = (f"\n\n**{report['total_records']:,} resource records** · **{report['curated_records']:,} curated** · "
         f"**{report['bibliographic_records']:,} arXiv records** · **{len(report['sources'])} discovery documents**\n\n"
         f"Evidence through `{report['as_of_utc']}`. {report['metadata_only_records']:,} records have bibliographic verification only; "
-        f"{report['unindexed_candidates']:,} discovered identifiers remain unindexed. Counts overlap as explained below.\n\n")
+        f"{report['unindexed_candidates']:,} discovered identifiers remain unresolved. "
+        f"{report['excluded_records']:,} scope exclusions retain their original metadata in the archive. Counts overlap as explained below.\n\n")
     for filename in ("README.md", "README.zh-CN.md"):
         path = ROOT / filename
         if path.exists():
@@ -279,9 +294,11 @@ def build(args):
             files[filename] = re.sub(r"(?<=<!-- STATS:START -->).*?(?=<!-- STATS:END -->)", stats, content, flags=re.S)
     files["data/catalog.jsonl"] = "".join(json.dumps(r, ensure_ascii=False, sort_keys=True) + "\n" for r in rows)
     files["data/coverage.json"] = json.dumps(report, ensure_ascii=False, indent=2) + "\n"
+    files['data/exclusion-status.json'] = json.dumps(scope_report(scope_decisions),ensure_ascii=False,indent=2)+'\n'
     ids = {r["id"] for r in rows}
+    excluded = {row['id'] for row in scope_decisions if row['status']=='excluded'}
     candidates = read_jsonl(DATA / "candidates.jsonl")
-    queue = [{**r, "review_status": "candidate", "reason": "discovered identifier; primary evidence and relevance need review"} for r in candidates if r["id"] not in ids]
+    queue = [{**r, "review_status": "candidate", "reason": "discovered identifier; primary evidence and relevance need review"} for r in candidates if r["id"] not in ids and r['id'] not in excluded]
     editorial_pending = {r["id"]: r for r in pending}
     merged = {r["id"]: r for r in queue}
     for rid, item in editorial_pending.items():
@@ -323,6 +340,20 @@ def validate(args):
     validator = jsonschema.Draft202012Validator(read_json(ROOT / "schemas" / "resource.schema.json"), format_checker=jsonschema.FormatChecker())
     for row in rows:
         errors.extend(f"{row['id']}: {error.message}" for error in validator.iter_errors(row))
+    decisions = read_json(DATA/'exclusions.json', [])
+    scope_validator = jsonschema.Draft202012Validator(read_json(ROOT/'schemas/scope-decision.schema.json'), format_checker=jsonschema.FormatChecker())
+    scope_errors = ['Scope decisions: '+error.message for error in scope_validator.iter_errors(decisions)]
+    errors.extend(scope_errors)
+    if not scope_errors:
+        retained = {row['id']:row for row in read_jsonl(DATA/'papers.jsonl')}
+        retained.update({row['id']:row for row in rows})
+        outcomes = resolve_exclusions(retained, decisions, {row['id'] for row in read_jsonl(DATA/'metadata-updates.jsonl')})
+        published = {row['id'] for row in rows}
+        for outcome in outcomes:
+            if outcome['status']=='excluded' and outcome['id'] in published:
+                errors.append(outcome['id']+': scope-excluded record remains in the active catalog')
+            if outcome['status']=='revalidation_pending' and outcome['id'] not in published:
+                errors.append(outcome['id']+': stale scope decision must not suppress a record')
     if errors:
         raise ValueError("\n".join(errors[:40]))
     print(f"Validated {len(rows)} records: JSON Schema, identifiers, dates, source receipts, scoped licenses, and reviewed relation targets.")
