@@ -10,6 +10,7 @@ import email.utils
 import hashlib
 import html
 import http.client
+import ipaddress
 import json
 import os
 from pathlib import Path
@@ -33,7 +34,8 @@ UA = "Awesome-CUA/0.1 (+https://github.com/reacher-z/Awesome-CUA)"
 ARXIV_RE = re.compile(r"/(?:abs|pdf|html)/(\d{4}\.\d{4,5})(?:v\d+)?(?!\w)", re.I | re.A)
 HF_PAPER_RE = re.compile(r"/papers/(\d{4}\.\d{4,5})(?:v\d+)?(?!\w)", re.I | re.A)
 # A link may contain balanced "(...)", as in Mercury_(planet); the ")" closing a Markdown link is not part of it.
-LINK_RE = re.compile(r"https?://(?:[^\s<>\[\]()\"']|\([^\s<>\[\]()\"']*\)|\()+")
+# Backticks, braces and backslashes are never literal URL characters: they end Markdown code, LaTeX/template and escaped-string links.
+LINK_RE = re.compile(r"https?://(?:[^\s<>\[\]()\"'`{}\\]|\([^\s<>\[\]()\"'`{}\\]*\)|\()+")
 KINDS = {"paper", "survey", "model", "dataset", "benchmark", "agent", "framework", "infrastructure", "product", "company", "tool", "learning"}
 ENVIRONMENTS = {"web", "desktop", "android", "ios", "harmonyos", "windows", "macos", "linux", "cross-platform", "unspecified"}
 STATUSES = {"curated", "metadata_verified"}
@@ -170,8 +172,11 @@ def canonical(url, *, allow_doi=False):
         return None
     url = html.unescape(url).strip()
     # Trailing prose punctuation is not part of a link; a ")" is only when it closes nothing in the URL.
-    while url[-1:] in {".", ",", ";", ":"} or url[-1:] == ")" and url.count(")") > url.count("("):
-        url = url[:-1]
+    # Backticks, braces and backslashes, raw or percent-encoded, are Markdown, LaTeX or string-escape residue.
+    while tail := re.search(r"(?:[.,;:`{}\\)]|%(?:60|7B|7D|5C))\Z", url, re.I):
+        if tail[0] == ")" and url.count(")") <= url.count("("):
+            break
+        url = url[:tail.start()]
     try:
         parts = urllib.parse.urlsplit(url)
     except ValueError:
@@ -179,6 +184,13 @@ def canonical(url, *, allow_doi=False):
     if parts.scheme not in {"http", "https"} or not parts.netloc:
         return None
     host = parts.hostname.lower() if parts.hostname else ""
+    try:
+        address = ipaddress.ip_address(host)
+    except ValueError:
+        address = None
+    # Loopback, private-network and other non-public addresses are local services in instructions, not resources.
+    if host == "localhost" or host.endswith((".localhost", ".local")) or address is not None and not address.is_global:
+        return None
     hub = host in {"huggingface.co", "www.huggingface.co", "hf.co"}
     # arXiv mirrors and services (web3., browse., export., ar5iv.labs.) all serve the same IDs.
     if hub or host in {"arxiv.org", "ar5iv.org"} or host.endswith(".arxiv.org"):
@@ -274,9 +286,22 @@ def retain_discovery_evidence(rows, previous_runs):
                 occurrence.update({key: receipt[key] for key in ('receipt_id', 'evidence')})
 
 
+def reconcile_candidates(rows):
+    """Apply the current URL rules to stored candidates: a row whose URL they now clean merges into that URL's identity; one they reject is dropped."""
+    parsed = [(row, canonical(row["url"])) for row in rows]
+    result = {row["id"]: row for row, identity in parsed if identity and identity[1] == row["url"]}
+    for row, identity in parsed:
+        if identity and identity[1] != row["url"]:
+            rid, clean, provider = identity
+            target = result.setdefault(rid, {"id": rid, "url": clean, "provider": provider, "first_discovered_at": row["first_discovered_at"], "discovered_in": []})
+            target["first_discovered_at"] = min(target["first_discovered_at"], row["first_discovered_at"])
+            target["discovered_in"] += [o for o in row["discovered_in"] if o not in target["discovered_in"]]
+    return result
+
+
 def discover(args):
     sources = read_json(DATA / "sources.json", [])
-    existing = {r["id"]: r for r in read_jsonl(DATA / "candidates.jsonl")}
+    existing = reconcile_candidates(read_jsonl(DATA / "candidates.jsonl"))
     previous = {r["id"]: r for r in read_json(DATA / "discovery-runs.json", [])}
     retain_discovery_evidence(existing.values(), previous)
     # Count retained provenance rather than the last manifest, which a failed run resets to zero.

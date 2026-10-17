@@ -23,6 +23,7 @@ Supporting automation libraries and workflow recording tools may be marked `adja
 - Explicit `component:` IDs distinguish reviewed assets inside a monorepo.
 - `organization:` IDs distinguish publisher/brand entities from their offerings; these do not assert legal incorporation or ownership.
 - Other URLs lose fragments and common tracking parameters. Similar titles are not automatically merged.
+- Link extraction ends a URL at a backtick, brace or backslash, and trailing ones (raw or percent-encoded) are dropped: they come from Markdown code, LaTeX or template braces and escaped strings. `localhost`, `.local`, loopback, private-network and other non-public IP addresses are local services, not resources. `discover` applies the current rules to stored candidates, so a candidate whose URL now cleans differently merges into the cleaned identity and one now rejected is dropped.
 - Redirects, project renames, dataset mirrors, and model variants require continued editorial entity resolution. Source coverage is conservative and does not assume that similar names are equivalent.
 - When an author explicitly identifies an accidental duplicate submission, `identifiers.preferred_arxiv` records the preferred identifier with primary evidence. The duplicate stays accessible as bibliographic provenance and cannot be promoted as another curated paper. Similar titles alone do not establish this relationship.
 

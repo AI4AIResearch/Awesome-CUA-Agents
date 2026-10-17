@@ -23,7 +23,7 @@ python3 -c "import sys; sys.path.insert(0,'scripts'); from catalog import editor
 
 - arXiv abstract, PDF and HTML URLs, versioned URLs, and Hugging Face paper pages become `arxiv:<id>`.
 - GitHub repository URLs, including `tree/` and `blob/` links, become `github:<owner>/<repo>` in lowercase.
-- Every other URL, including Hugging Face models and datasets, becomes `url:` plus the first 20 hex digits of the SHA-256 of the cleaned URL (HTTPS, lowercase host, no fragment, trailing slash, or `utm_` parameters). Bibliographic records also use `data/publications.jsonl`. `canonical` rejects non-HTTPS URLs, images, badges, and social links.
+- Every other URL, including Hugging Face models and datasets, becomes `url:` plus the first 20 hex digits of the SHA-256 of the cleaned URL (HTTPS, lowercase host, no fragment, trailing slash, or `utm_` parameters). Bibliographic records also use `data/publications.jsonl`. `canonical` rejects non-HTTPS URLs, images, badges, social links, and `localhost`, `.local`, loopback and private-network hosts.
 
 An entry for an arXiv paper replaces the bibliographic record from `papers.jsonl`. The published record keeps that record's dates, authors, identifiers, `details.arxiv_snapshot` and `arxiv_api` evidence.
 
