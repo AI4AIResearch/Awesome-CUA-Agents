@@ -20,7 +20,7 @@ class SafeHrefTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.temp=tempfile.TemporaryDirectory();cls.source=Path(cls.temp.name)/'source';cls.source.mkdir()
-        shutil.copytree(ROOT/'web',cls.source/'web');shutil.copytree(ROOT/'data',cls.source/'data')
+        shutil.copytree(ROOT/'web',cls.source/'web');shutil.copytree(ROOT/'data',cls.source/'data');shutil.copytree(ROOT/'schemas',cls.source/'schemas')
         shutil.copy2(ROOT/'LICENSE',cls.source/'LICENSE');shutil.copy2(ROOT/'AGENTS.md',cls.source/'AGENTS.md')
     @classmethod
     def tearDownClass(cls):cls.temp.cleanup()

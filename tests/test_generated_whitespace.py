@@ -45,7 +45,7 @@ class GeneratedWhitespaceTests(unittest.TestCase):
         reason='Out of scope:  \nstudies circuit design.\t\n\n'
         with tempfile.TemporaryDirectory() as directory:
             source=Path(directory)/'source';source.mkdir()
-            shutil.copytree(ROOT/'web',source/'web');shutil.copytree(ROOT/'data',source/'data')
+            shutil.copytree(ROOT/'web',source/'web');shutil.copytree(ROOT/'data',source/'data');shutil.copytree(ROOT/'schemas',source/'schemas')
             shutil.copy2(ROOT/'LICENSE',source/'LICENSE');shutil.copy2(ROOT/'AGENTS.md',source/'AGENTS.md')
             status_path=source/'data/exclusion-status.json';status=json.loads(status_path.read_text())
             decision=next(d for d in status['decisions'] if d['status']=='excluded');decision.update(name=decision['name']+'  ',reason=reason)

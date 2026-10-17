@@ -3,6 +3,7 @@ from collections import Counter, defaultdict
 import html
 from urllib.parse import urlencode
 from publication_metadata import publication, record_date_text, record_year
+from specifications import safe_href
 
 
 PLATFORMS = {
@@ -114,7 +115,7 @@ def paper_library(rows, resource_path, *, language='en', site_url='https://aweso
             if row.get('summary'):
                 body.append('<p class="paper-annotation">' + esc(row['summary']) + '</p>')
             if pub and pub.get('venue'):
-                body.append('<p class="paper-publication"><a href="' + esc(pub['url']) + '">' + esc(pub['venue']) + ' ↗</a></p>')
+                body.append('<p class="paper-publication"><a href="' + safe_href(pub['url']) + '">' + esc(pub['venue']) + ' ↗</a></p>')
             body.append('<div class="paper-facets">')
             for platform in row['environments']:
                 if platform != 'unspecified':
@@ -123,7 +124,7 @@ def paper_library(rows, resource_path, *, language='en', site_url='https://aweso
                 body.append('<a href="' + search_link(kind=row['kind'],topic=topic) + '">' + esc(label(TOPICS, topic)) + '</a>')
             if row['scope'] == 'adjacent':
                 body.append('<span class="paper-adjacent">' + tr('Adjacent research', '相关研究') + '</span>')
-            body.append('</div></div><div class="paper-entry-links"><a href="' + esc(source) + '">' + tr('Paper', '原论文') + ' ↗</a><a href="' + path + 'citation.bib" download aria-label="' + esc(tr('BibTeX for ', 'BibTeX：') + row['name']) + '">BibTeX ↓</a><a href="' + path + '">' + tr('Details', '详情') + ' →</a></div></article>')
+            body.append('</div></div><div class="paper-entry-links"><a href="' + safe_href(source) + '">' + tr('Paper', '原论文') + ' ↗</a><a href="' + path + 'citation.bib" download aria-label="' + esc(tr('BibTeX for ', 'BibTeX：') + row['name']) + '">BibTeX ↓</a><a href="' + path + '">' + tr('Details', '详情') + ' →</a></div></article>')
         body.append('</section>')
     body.append('<p class="library-footer">' + tr('Explore the complete catalog, including bibliography entries awaiting relevance review.', '完整目录还包含相关性待审阅的论文元数据，并明确标注审阅状态。') + ' <a href="/?kind=paper&amp;lang=' + ('zh' if zh else 'en') + '#catalog">' + tr('All paper records', '全部论文记录') + ' ↗</a> · <a href="/?kind=survey&amp;lang=' + ('zh' if zh else 'en') + '#catalog">' + tr('All survey records', '全部综述记录') + ' ↗</a></p></section>')
     schema = {'@type': 'ItemList', 'name': title, 'numberOfItems': len(papers),
