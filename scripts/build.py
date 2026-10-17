@@ -269,9 +269,24 @@ def table_row(r, columns, by_id):
     primary = next(e for e in r["evidence"] if e["method"] == "editorial_primary_review")
     cells = {"Resource": f"[{md(r['name'])}]({r['url']})", "Environments": ", ".join(r["environments"]),
         "Paper": paper_cell(r, by_id), "License": license_cell(r), "Publisher": publisher_cell(r, by_id),
-        "Date": r.get("published_at") or "—", "Description": md(r["summary"]),
-        "Evidence": f"[✓ {primary['retrieved_at'][:10]}]({primary['url']})"}
+        "Date": nowrap(r.get("published_at") or "—"), "Description": md(r["summary"]),
+        "Evidence": f"[✓ {nowrap(primary['retrieved_at'][:10])}]({primary['url']})"}
     return "| " + " | ".join(cells[column] for column in columns) + " |"
+
+
+def nowrap(date):
+    # Non-breaking hyphens keep ISO dates on one line in narrow GitHub table columns.
+    return date.replace("-", "\u2011")
+
+
+def section_table(members, columns, by_id):
+    """Table lines for one section; a column whose value is identical on every row is stated once instead."""
+    shared = {tuple(r["environments"]) for r in members}
+    lines = []
+    if "Environments" in columns and len(shared) == 1:
+        columns = tuple(c for c in columns if c != "Environments")
+        lines = [f"All entries in this section: {', '.join(shared.pop())}.", ""]
+    return lines + ["| " + " | ".join(columns) + " |", "|" + " --- |" * len(columns), *(table_row(r, columns, by_id) for r in members)]
 
 
 TOPIC_LABELS = {"safety-security": "Safety and security", "cross-app": "Cross-app workflows", "human-in-the-loop": "Human-in-the-loop",
@@ -316,7 +331,7 @@ def topic_pages(rows):
             members.sort(key=lambda r: r["name"].casefold())
             if "Date" in columns:
                 members.sort(key=lambda r: r.get("published_at") or "", reverse=True)
-            lines += [f"## {label}", "", "| " + " | ".join(columns) + " |", "|" + " --- |" * len(columns), *(table_row(r, columns, by_id) for r in members), ""]
+            lines += [f"## {label}", "", *section_table(members, columns, by_id), ""]
         files[f"docs/topics/{topic}.md"] = "\n".join(lines)
     files["docs/topics.md"] = "\n".join(index + [""])
     return files
@@ -357,7 +372,7 @@ def documents(rows, report):
             ordered = sorted(sections[slug], key=lambda r: r["name"].casefold())
             if "Date" in columns:
                 ordered.sort(key=lambda r: r.get("published_at") or "", reverse=True)
-            lines += [f"## {label}", "", "| " + " | ".join(columns) + " |", "|" + " --- |" * len(columns), *(table_row(r, columns, by_id) for r in ordered),
+            lines += [f"## {label}", "", *section_table(ordered, columns, by_id),
                 "", f"[↑ Back to top](#{title.lower().replace(' ', '-')})", ""]
         lines += ["Detailed notes and separate code/data/weights license declarations are in `data/catalog.jsonl`.", ""]
         filename = "companies" if kind == "company" else kind + "s"
@@ -494,7 +509,7 @@ def recently_reviewed(rows, reviewed_at, limit=12):
     recent = sorted((r for r in rows if r["review_status"] == "curated" and r["kind"] not in {"paper", "survey"} and reviewed_at.get(r["id"])),
         key=lambda r: (reviewed_at[r["id"]], r["name"].casefold()), reverse=True)[:limit]
     lines = ["", "| Reviewed | Resource | Kind | Environments | Description |", "| --- | --- | --- | --- | --- |"]
-    lines += [f"| {reviewed_at[r['id']][:10].replace('-', '\u2011')} | [{md(r['name'])}]({r['url']}) | {r['kind']} | {', '.join(r['environments'])} | {md(r['summary'])} |" for r in recent]
+    lines += [f"| {nowrap(reviewed_at[r['id']][:10])} | [{md(r['name'])}]({r['url']}) | {r['kind']} | {', '.join(r['environments'])} | {md(r['summary'])} |" for r in recent]
     return "\n".join(lines) + "\n" if recent else "\n"
 
 

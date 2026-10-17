@@ -12,17 +12,19 @@ Resources tagged with environments from more than one family are listed under *C
 
 ## Web
 
-| Resource | Environments | Paper | License | Description | Evidence |
-| --- | --- | --- | --- | --- | --- |
-| [Agent Browser Shield](https://github.com/pixiebrix/agent-browser-shield) | web | — | — | Browser extension for filtering potentially unsafe agent input. | [✓ 2026-10-16](https://raw.githubusercontent.com/pixiebrix/agent-browser-shield/HEAD/README.md) |
-| [agent-browser](https://github.com/vercel-labs/agent-browser) | web | — | code Apache-2.0 | A browser-automation command-line interface that exposes browser state and interaction commands for AI agents. | [✓ 2026-10-17](https://raw.githubusercontent.com/vercel-labs/agent-browser/HEAD/README.md) |
-| [Browser Use WebUI](https://github.com/browser-use/web-ui) | web | — | code MIT | A Gradio interface for configuring and running Browser Use agents, including persistent browser sessions and interaction recordings. | [✓ 2026-10-17](https://raw.githubusercontent.com/browser-use/web-ui/HEAD/README.md) |
-| [BrowserTrace](https://github.com/aaronlab/browsertrace) | web | — | code MIT | Local trace viewer for browser-agent runs. | [✓ 2026-10-16](https://raw.githubusercontent.com/aaronlab/browsertrace/HEAD/README.md) |
-| [Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp) | web | — | code Apache-2.0 | MCP tools for browser control and inspection through Chrome DevTools. | [✓ 2026-10-16](https://raw.githubusercontent.com/ChromeDevTools/chrome-devtools-mcp/HEAD/README.md) |
-| [Playwright MCP](https://github.com/microsoft/playwright-mcp) | web | — | code Apache-2.0 | MCP server exposing browser interaction tools for agents. | [✓ 2026-10-16](https://raw.githubusercontent.com/microsoft/playwright-mcp/HEAD/README.md) |
-| [TAG attention-driven GUI grounding](https://github.com/HeimingX/TAG) | web | [2412.10840](https://arxiv.org/abs/2412.10840) (2024) | — | Grounding and evaluation code that aggregates a pretrained vision-language model’s attention maps to localize requested interface elements without fine-tuning. | [✓ 2026-10-17](https://raw.githubusercontent.com/HeimingX/TAG/HEAD/README.md) |
-| [Tarsier](https://github.com/reworkd/tarsier) | web | — | code MIT | Visual and text representation tools for browser agents. | [✓ 2026-10-16](https://raw.githubusercontent.com/reworkd/tarsier/HEAD/README.md) |
-| [Web-Shepherd inference and evaluation](https://github.com/kyle8581/Web-Shepherd) | web | — | — | Process-reward inference and benchmark-evaluation utilities that use task checklists to assess individual web-agent decisions. | [✓ 2026-10-17](https://raw.githubusercontent.com/kyle8581/Web-Shepherd/HEAD/README.md) |
+All entries in this section: web.
+
+| Resource | Paper | License | Description | Evidence |
+| --- | --- | --- | --- | --- |
+| [Agent Browser Shield](https://github.com/pixiebrix/agent-browser-shield) | — | — | Browser extension for filtering potentially unsafe agent input. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/pixiebrix/agent-browser-shield/HEAD/README.md) |
+| [agent-browser](https://github.com/vercel-labs/agent-browser) | — | code Apache-2.0 | A browser-automation command-line interface that exposes browser state and interaction commands for AI agents. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/vercel-labs/agent-browser/HEAD/README.md) |
+| [Browser Use WebUI](https://github.com/browser-use/web-ui) | — | code MIT | A Gradio interface for configuring and running Browser Use agents, including persistent browser sessions and interaction recordings. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/browser-use/web-ui/HEAD/README.md) |
+| [BrowserTrace](https://github.com/aaronlab/browsertrace) | — | code MIT | Local trace viewer for browser-agent runs. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/aaronlab/browsertrace/HEAD/README.md) |
+| [Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp) | — | code Apache-2.0 | MCP tools for browser control and inspection through Chrome DevTools. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/ChromeDevTools/chrome-devtools-mcp/HEAD/README.md) |
+| [Playwright MCP](https://github.com/microsoft/playwright-mcp) | — | code Apache-2.0 | MCP server exposing browser interaction tools for agents. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/microsoft/playwright-mcp/HEAD/README.md) |
+| [TAG attention-driven GUI grounding](https://github.com/HeimingX/TAG) | [2412.10840](https://arxiv.org/abs/2412.10840) (2024) | — | Grounding and evaluation code that aggregates a pretrained vision-language model’s attention maps to localize requested interface elements without fine-tuning. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/HeimingX/TAG/HEAD/README.md) |
+| [Tarsier](https://github.com/reworkd/tarsier) | — | code MIT | Visual and text representation tools for browser agents. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/reworkd/tarsier/HEAD/README.md) |
+| [Web-Shepherd inference and evaluation](https://github.com/kyle8581/Web-Shepherd) | — | — | Process-reward inference and benchmark-evaluation utilities that use task checklists to assess individual web-agent decisions. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/kyle8581/Web-Shepherd/HEAD/README.md) |
 
 [↑ Back to top](#tool-catalog)
 
@@ -30,10 +32,10 @@ Resources tagged with environments from more than one family are listed under *C
 
 | Resource | Environments | Paper | License | Description | Evidence |
 | --- | --- | --- | --- | --- | --- |
-| [Mobile Harness](https://github.com/droidrun/mobile-harness) | android, ios | — | code MIT | Portable agent instructions and integration tooling for local or cloud phone control through mobilerun-core. | [✓ 2026-10-16](https://raw.githubusercontent.com/droidrun/mobile-harness/HEAD/README.md) |
-| [Mobile Next MCP](https://github.com/mobile-next/mobile-mcp) | android, ios | — | code Apache-2.0 | An MCP server exposing mobile accessibility snapshots, screenshots and device interactions across real devices, simulators and emulators. | [✓ 2026-10-17](https://raw.githubusercontent.com/mobile-next/mobile-mcp/HEAD/README.md) |
-| [Mobilerun Portal (formerly Droidrun Portal)](https://github.com/droidrun/mobilerun-portal) | android | — | code AGPL-3.0-or-later | An Android accessibility service that exposes UI-element inspection, device-control interfaces and screen feedback to mobile automation agents. | [✓ 2026-10-17](https://raw.githubusercontent.com/droidrun/mobilerun-portal/HEAD/README.md) |
-| [UI Defect Mocker](https://github.com/ZJU-ACES-ISE/UIDefectMocker) | android | — | code MIT | Synthesizes visual UI defects from mobile screenshots and Android layout metadata to support GUI-testing experiments. | [✓ 2026-10-16](https://raw.githubusercontent.com/ZJU-ACES-ISE/UIDefectMocker/HEAD/README.md) |
+| [Mobile Harness](https://github.com/droidrun/mobile-harness) | android, ios | — | code MIT | Portable agent instructions and integration tooling for local or cloud phone control through mobilerun-core. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/droidrun/mobile-harness/HEAD/README.md) |
+| [Mobile Next MCP](https://github.com/mobile-next/mobile-mcp) | android, ios | — | code Apache-2.0 | An MCP server exposing mobile accessibility snapshots, screenshots and device interactions across real devices, simulators and emulators. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/mobile-next/mobile-mcp/HEAD/README.md) |
+| [Mobilerun Portal (formerly Droidrun Portal)](https://github.com/droidrun/mobilerun-portal) | android | — | code AGPL-3.0-or-later | An Android accessibility service that exposes UI-element inspection, device-control interfaces and screen feedback to mobile automation agents. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/droidrun/mobilerun-portal/HEAD/README.md) |
+| [UI Defect Mocker](https://github.com/ZJU-ACES-ISE/UIDefectMocker) | android | — | code MIT | Synthesizes visual UI defects from mobile screenshots and Android layout metadata to support GUI-testing experiments. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/ZJU-ACES-ISE/UIDefectMocker/HEAD/README.md) |
 
 [↑ Back to top](#tool-catalog)
 
@@ -41,17 +43,19 @@ Resources tagged with environments from more than one family are listed under *C
 
 | Resource | Environments | Paper | License | Description | Evidence |
 | --- | --- | --- | --- | --- | --- |
-| [OmniParser](https://github.com/microsoft/OmniParser) | cross-platform | [2408.00203](https://arxiv.org/abs/2408.00203) (2024) | — | Screen parsing tools for visually grounded agents. | [✓ 2026-10-16](https://raw.githubusercontent.com/microsoft/OmniParser/HEAD/README.md) |
-| [Windows-MCP](https://github.com/CursorTouch/Windows-MCP) | windows, desktop, web | — | code MIT | A Windows MCP bridge exposing application, window, keyboard and mouse operations plus native UI-state inspection for agents. | [✓ 2026-10-17](https://raw.githubusercontent.com/CursorTouch/Windows-MCP/HEAD/README.md) |
+| [OmniParser](https://github.com/microsoft/OmniParser) | cross-platform | [2408.00203](https://arxiv.org/abs/2408.00203) (2024) | — | Screen parsing tools for visually grounded agents. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/microsoft/OmniParser/HEAD/README.md) |
+| [Windows-MCP](https://github.com/CursorTouch/Windows-MCP) | windows, desktop, web | — | code MIT | A Windows MCP bridge exposing application, window, keyboard and mouse operations plus native UI-state inspection for agents. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/CursorTouch/Windows-MCP/HEAD/README.md) |
 
 [↑ Back to top](#tool-catalog)
 
 ## Unspecified
 
-| Resource | Environments | Paper | License | Description | Evidence |
-| --- | --- | --- | --- | --- | --- |
-| [AUITestAgent](https://github.com/bz-lab/AUITestAgent) | unspecified | [2407.09018](https://arxiv.org/abs/2407.09018) (2024) | — | Generates mobile GUI interactions from natural-language test requirements and checks application behavior against those requirements. | [✓ 2026-10-16](https://raw.githubusercontent.com/bz-lab/AUITestAgent/HEAD/README.md) |
-| [Set of Mark](https://github.com/microsoft/SoM) | unspecified | [2310.11441](https://arxiv.org/abs/2310.11441) (2023) | code MIT | Visual-prompting toolbox that labels image regions for multimodal reference and grounding, including GUI applications. | [✓ 2026-10-16](https://raw.githubusercontent.com/microsoft/SoM/HEAD/README.md) |
+All entries in this section: unspecified.
+
+| Resource | Paper | License | Description | Evidence |
+| --- | --- | --- | --- | --- |
+| [AUITestAgent](https://github.com/bz-lab/AUITestAgent) | [2407.09018](https://arxiv.org/abs/2407.09018) (2024) | — | Generates mobile GUI interactions from natural-language test requirements and checks application behavior against those requirements. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/bz-lab/AUITestAgent/HEAD/README.md) |
+| [Set of Mark](https://github.com/microsoft/SoM) | [2310.11441](https://arxiv.org/abs/2310.11441) (2023) | code MIT | Visual-prompting toolbox that labels image regions for multimodal reference and grounding, including GUI applications. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/microsoft/SoM/HEAD/README.md) |
 
 [↑ Back to top](#tool-catalog)
 

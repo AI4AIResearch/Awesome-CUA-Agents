@@ -348,8 +348,8 @@ class CategoryPageTests(unittest.TestCase):
             "evidence": [{"method": "editorial_primary_review", "url": "https://example.com/a", "retrieved_at": "2026-10-16T00:00:00Z"}]}
         by_id = {"company:x": {"name": "Example", "url": "https://example.com"}}
         self.assertEqual(build.table_row(row, build.KIND_COLUMNS["product"][0], by_id),
-            "| [A\\|B](https://example.com/a) | [Example](https://example.com) | web | Short. | [✓ 2026-10-16](https://example.com/a) |")
-        self.assertEqual(build.table_row(row, build.KIND_COLUMNS["survey"][0], by_id).split(" | ")[0], "| 2025-01-02")
+            "| [A\\|B](https://example.com/a) | [Example](https://example.com) | web | Short. | [✓ 2026\u201110\u201116](https://example.com/a) |")
+        self.assertEqual(build.table_row(row, build.KIND_COLUMNS["survey"][0], by_id).split(" | ")[0], "| 2025\u201101\u201102")
 
 
 
