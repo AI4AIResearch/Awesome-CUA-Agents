@@ -6,7 +6,7 @@
 
 **面向 computer-use、GUI、浏览器和移动端智能体的可溯源数据目录。**
 
-[浏览](#浏览) · [使用数据](#使用数据) · [网站](https://awesomecua.github.io/) · [中文主页](https://awesomecua.github.io/zh/) · [GitHub 组织](https://github.com/AwesomeCUA) · [English](README.md) · [覆盖台账](docs/coverage.md) · [参与贡献](CONTRIBUTING.md)
+[浏览](#浏览) · [重点资源](#重点资源) · [最新审阅](#最新审阅) · [使用数据](#使用数据) · [网站](https://awesomecua.github.io/) · [中文主页](https://awesomecua.github.io/zh/) · [GitHub 组织](https://github.com/AwesomeCUA) · [English](README.md) · [覆盖台账](docs/coverage.md) · [参与贡献](CONTRIBUTING.md)
 
 **供人、RAG 系统和智能体使用——克隆完整目录：**
 
@@ -26,23 +26,108 @@ git clone https://github.com/reacher-z/Awesome-CUA.git
 
 <!-- STATS:START -->
 
-**3,022 resource records** · **1,322 curated** · **2,596 paper and survey records** · **44 discovery documents**
+**3,022 条资源记录** · **1,322 条已审阅** · **2,596 条论文与综述记录** · **44 个发现来源文档**
 
-Evidence through `2026-10-17T12:45:23Z`. 1,700 records have bibliographic verification only; 950 discovered identifiers remain unresolved. 100 scope exclusions retain their original metadata in the archive. Counts overlap as explained below.
+证据截至 `2026-10-17T12:45:23Z`。1,700 条记录仅完成书目核实；950 个已发现的标识符尚待处理。100 条范围排除记录在归档中保留原始元数据。各项计数存在重叠，详见下文。
 
 <!-- STATS:END -->
 
 ## 浏览
 
-- **研究与综述：** [按主题浏览研究](docs/topics.md)、[完整论文目录](docs/papers.md)、[综述](docs/surveys.md)。
-- **训练与评测：** [数据集](docs/datasets.md)、[基准](docs/benchmarks.md)、[模型与权重版本](docs/models.md)。
-- **工程与产业：** [智能体](docs/agents.md)、[框架](docs/frameworks.md)、[基础设施](docs/infrastructures.md)、[工具](docs/tools.md)、[产品](docs/products.md)、[发布方与品牌](docs/companies.md)。
+<!-- EXPLORE:START -->
+| 研究与训练 | 工程与产业 |
+| --- | --- |
+| [按主题浏览研究](docs/topics.md) · **883** 篇已审阅论文 · [完整论文目录](docs/papers.md) · 2,596 条论文与综述记录 | [智能体](docs/agents.md) · **38** |
+| [综述](docs/surveys.md) · **13** | [框架](docs/frameworks.md) · **66** |
+| [数据集](docs/datasets.md) · **80** | [基础设施](docs/infrastructures.md) · **15** |
+| [基准](docs/benchmarks.md) · **79** | [工具](docs/tools.md) · **20** |
+| [模型与权重版本](docs/models.md) · **93** | [产品](docs/products.md) · **19** · [发布方与品牌](docs/companies.md) · **16** |
+<!-- EXPLORE:END -->
 
 覆盖 Web、桌面、Android、iOS、Windows、macOS、Linux 和跨平台工作。主题包括 grounding、屏幕理解、规划、记忆、长流程任务、强化学习、数据生成、安全、鲁棒性和评测。环境分面可以重叠；不会根据模型的基准成绩推定框架支持。
 
-英文 README 的 [Highlights](README.md#highlights) 按类别列出被其他已收录资源提及最多的已审阅资源。该计数反映目录内部的关联程度，不代表质量、流行度或基准表现；每个类别页面都列出全部已审阅条目。
+## 重点资源
 
-英文 README 的 [Recently reviewed](README.md#recently-reviewed) 按时间倒序列出最新通过编辑审阅的模型、数据集、基准、系统和工具；新论文按日期列在[主题页面](docs/topics.md)中。
+按类别列出被其他已收录资源在其已审阅一手来源（README、模型卡或数据集卡）中提及最多的已审阅资源。该计数反映目录内部的关联程度，不代表质量、流行度或基准表现；每个类别页面都列出全部已审阅条目。资源名称和简介保留原文。
+
+<!-- HIGHLIGHTS:START -->
+**基准** · [全部 79 项 →](docs/benchmarks.md)
+
+| 资源 | 被提及 | 环境 | 论文 | 许可 | 简介（英文） |
+| --- | ---: | --- | --- | --- | --- |
+| [OSWorld](https://github.com/xlang-ai/OSWorld) | 20 | desktop, linux, windows, macos | [2404.07972](https://arxiv.org/abs/2404.07972) (2024) | 代码 Apache-2.0 | Execution-based evaluation of agents performing tasks in real desktop environments. |
+| [WebArena](https://github.com/web-arena-x/webarena) | 13 | web | [2307.13854](https://arxiv.org/abs/2307.13854) (2023) | 代码 Apache-2.0 | Self-hosted web environments and tasks for evaluating autonomous web agents. |
+| [ScreenSpot Pro](https://github.com/likaixin2000/ScreenSpot-Pro-GUI-Grounding) | 8 | desktop, windows, macos, linux | — | 代码 MIT | GUI grounding benchmark focused on professional high-resolution interfaces. |
+| [BrowserGym](https://github.com/ServiceNow/BrowserGym) | 7 | web | [2412.05467](https://arxiv.org/abs/2412.05467) (2024) | 代码 Apache-2.0 | Unified interfaces for browser-agent tasks and benchmark environments. |
+| [VisualWebArena](https://github.com/web-arena-x/visualwebarena) | 7 | web | [2401.13649](https://arxiv.org/abs/2401.13649) (2024) | — | Visually grounded web tasks extending the WebArena evaluation setting. |
+| [AndroidWorld](https://github.com/google-research/android_world) | 6 | android | [2405.14573](https://arxiv.org/abs/2405.14573) (2024) | 代码 Apache-2.0 | Android environment with programmatic task evaluation for mobile agents. |
+
+**模型** · [全部 93 项 →](docs/models.md)
+
+| 资源 | 被提及 | 环境 | 论文 | 许可 | 简介（英文） |
+| --- | ---: | --- | --- | --- | --- |
+| [SeeClick](https://github.com/njucckevin/SeeClick) | 7 | cross-platform | [2401.10935](https://arxiv.org/abs/2401.10935) (2024) | 代码 Apache-2.0 | GUI grounding model trained to locate visual interface elements. |
+| [Aguvis](https://github.com/xlang-ai/aguvis) | 5 | cross-platform | [2412.04454](https://arxiv.org/abs/2412.04454) (2024) | — | Vision-based GUI agent models with unified action representations. |
+| [UI-TARS](https://github.com/bytedance/UI-TARS) | 5 | cross-platform | [2501.12326](https://arxiv.org/abs/2501.12326) (2025) | 代码 Apache-2.0 | Native GUI agent model family for perception and action. |
+| [OpenCUA](https://github.com/xlang-ai/OpenCUA) | 3 | desktop | [2508.09123](https://arxiv.org/abs/2508.09123) (2025) | 代码 MIT | Open computer-use research stack including models and training resources. |
+| [OS-Atlas](https://github.com/OS-Copilot/OS-Atlas) | 3 | cross-platform | [2410.23218](https://arxiv.org/abs/2410.23218) (2024) | 代码 Apache-2.0 | Foundation action models and data for GUI interaction. |
+| [ShowUI](https://github.com/showlab/ShowUI) | 3 | cross-platform | [2411.17465](https://arxiv.org/abs/2411.17465) (2024) | 代码 Apache-2.0 | Vision-language-action model for GUI interaction. |
+
+**数据集** · [全部 80 项 →](docs/datasets.md)
+
+| 资源 | 被提及 | 环境 | 论文 | 许可 | 简介（英文） |
+| --- | ---: | --- | --- | --- | --- |
+| [ScreenSpot-Pro data](https://huggingface.co/datasets/likaixin/ScreenSpot-Pro) | 4 | desktop, windows, macos, linux | — | 数据 mit | High-resolution professional interface screenshots and target annotations for evaluating instruction-based GUI localization. |
+| [GUI-Odyssey](https://github.com/OpenGVLab/GUI-Odyssey) | 3 | android | [2406.08451](https://arxiv.org/abs/2406.08451) (2024) | — | Cross-application mobile interaction trajectories. |
+| [GUIAct](https://huggingface.co/datasets/yiye2023/GUIAct) | 3 | web, android | [2406.11317](https://arxiv.org/abs/2406.11317) (2024) | — | Web and Android GUI action-instruction data, with single-step, multi-step and smartphone partitions. |
+| [GUIChat](https://huggingface.co/datasets/yiye2023/GUIChat) | 3 | unspecified | [2406.11317](https://arxiv.org/abs/2406.11317) (2024) | — | Conversational GUI supervision with text-rich images and bounding boxes, organized as single-turn questions and multi-turn dialogues. |
+| [GUIEnv-local](https://huggingface.co/datasets/yiye2023/GUIEnv) | 3 | web | [2406.11317](https://arxiv.org/abs/2406.11317) (2024) | — | The released local-supervision portion of GUIEnv, pairing webpage regions and text for OCR and GUI grounding. |
+| [OpenMobile-Data-v2](https://huggingface.co/datasets/OpenMobile-2/OpenMobile-Data-v2) | 3 | android, web | [2610.14157](https://arxiv.org/abs/2610.14157) (2026) | — | Mobile-agent supervision from emulator and simulator trajectories, plus executable tasks with starting states and success checks for reinforcement learning. |
+
+**框架** · [全部 66 项 →](docs/frameworks.md)
+
+| 资源 | 被提及 | 环境 | 论文 | 许可 | 简介（英文） |
+| --- | ---: | --- | --- | --- | --- |
+| [Browser Use](https://github.com/browser-use/browser-use) | 7 | web | — | 代码 MIT | Framework for browser interaction by AI agents. |
+| [AgentLab](https://github.com/ServiceNow/AgentLab) | 5 | web | [2412.05467](https://arxiv.org/abs/2412.05467) (2024) | 代码 Apache-2.0 | Experiment framework for developing and evaluating browser agents. |
+| [Seg2Click](https://github.com/jcwang0602/Seg2Click) | 5 | cross-platform | [2610.16234](https://arxiv.org/abs/2610.16234) (2026) | 代码 MIT | Training and inference implementation that predicts an executable-region mask and derives a GUI click from that mask. |
+| [OpenMobile-2 code](https://github.com/OpenMobile2/OpenMobile2-Code) | 3 | android, web | [2610.14157](https://arxiv.org/abs/2610.14157) (2026) | 代码 Apache-2.0 | Evaluation adapters and training guidance for OpenMobile-2 across Android emulators and browser-rendered mobile simulation. |
+| [UI-Genie](https://github.com/Euphoria16/UI-Genie) | 3 | android | [2505.21496](https://arxiv.org/abs/2505.21496) (2025) | — | Training and evaluation code for a mobile-agent framework that iteratively generates trajectories using agent and reward-model feedback. |
+| [Computer Use OOTB](https://github.com/showlab/computer_use_ootb) | 2 | desktop | — | 代码 Apache-2.0 | Computer-use agent execution toolkit. |
+
+**智能体** · [全部 38 项 →](docs/agents.md)
+
+| 资源 | 被提及 | 环境 | 论文 | 许可 | 简介（英文） |
+| --- | ---: | --- | --- | --- | --- |
+| [Mobile-Agent](https://github.com/X-PLUG/MobileAgent) | 8 | android, cross-platform | [2401.16158](https://arxiv.org/abs/2401.16158) (2024), [2406.01014](https://arxiv.org/abs/2406.01014) (2024), [2508.15144](https://arxiv.org/abs/2508.15144) (2025), [2602.16855](https://arxiv.org/abs/2602.16855) (2026) | 代码 MIT | Mobile device agent family using visual interface interaction. |
+| [Agent S](https://github.com/simular-ai/Agent-S) | 2 | desktop | [2410.08164](https://arxiv.org/abs/2410.08164) (2024), [2504.00906](https://arxiv.org/abs/2504.00906) (2025) | 代码 Apache-2.0 | Agent framework for general computer interaction. |
+| [AppAgent](https://github.com/TencentQQGYLab/AppAgent) | 1 | android | [2312.13771](https://arxiv.org/abs/2312.13771) (2023) | 代码 MIT | Mobile app agent using exploration and reusable knowledge. |
+| [Auto-GUI / Auto-UI](https://github.com/cooelf/Auto-GUI) | 1 | android | [2309.11436](https://arxiv.org/abs/2309.11436) (2023) | 代码 Apache-2.0 | Screenshot-based mobile agent implementation with training and inference code for chain-of-action prediction. |
+| [MagenticLite / Magentic UI](https://github.com/microsoft/magentic-ui) | 1 | web | — | 代码 MIT | Microsoft agent application combining orchestration with browser interaction; successor to Magentic UI. |
+| [Open-AutoGLM](https://github.com/zai-org/Open-AutoGLM) | 1 | android, ios | — | 代码 Apache-2.0 | Phone agent model and framework with device interaction tooling. |
+
+<!-- HIGHLIGHTS:END -->
+
+## 最新审阅
+
+按时间倒序列出最新通过编辑审阅的模型、数据集、基准、系统和工具；新论文按日期列在[主题页面](docs/topics.md)中。
+
+<!-- RECENT:START -->
+| 审阅日期 | 资源 | 类型 | 环境 | 简介（英文） |
+| --- | --- | --- | --- | --- |
+| 2026‑10‑17 | [WebVLN research implementation](https://github.com/WebVLN/WebVLN) | 框架 | web | Training and evaluation code for question-guided website navigation that combines visual observations with web-specific HTML information. |
+| 2026‑10‑17 | [WebMarker](https://github.com/reidbarber/webmarker) | 工具 | web | A browser library that labels interactive elements and their boxes for visual prompting, preserving element mappings that automation code can use to execute selected actions. |
+| 2026‑10‑17 | [WebLlama](https://github.com/McGill-NLP/webllama) | 框架 | web | Training, evaluation and integration tooling for dialogue-guided web agents, including Llama fine-tuning workflows and BrowserGym examples built around WebLINX. |
+| 2026‑10‑17 | [UIBert AppSim and RefExp annotations](https://github.com/google-research-datasets/uibert) | 数据集 | android | Two Rico-derived UI component retrieval datasets: AppSim pairs semantically similar elements across screens, while RefExp links referring expressions to target elements. |
+| 2026‑10‑17 | [TongUI training and inference framework](https://github.com/TongUI-agent/TongUI-agent) | 框架 | cross-platform, desktop, web | Training configurations, preprocessing and inference examples for tutorial-trained GUI models, with a LLaMA-Factory fine-tuning workflow and screenshot-grounding interfaces. |
+| 2026‑10‑17 | [Synapse](https://github.com/ltzheng/Synapse) | 框架 | web | A computer-control research implementation that retrieves example trajectories from memory, abstracts task-relevant state and prompts an agent to navigate browser tasks. |
+| 2026‑10‑17 | [Self-MAP](https://github.com/magicgh/Self-MAP) | 框架 | web | A conversational web-agent implementation with candidate ranking and memory-assisted action planning, including optional memory simplification, refinement and self-reflection modules. |
+| 2026‑10‑17 | [OpenAgents Web Agent](https://github.com/xlang-ai/OpenAgents/tree/main/real_agents/web_agent) | 智能体 | web | The OpenAgents browser-control component, connecting a Chrome extension to a web agent and local chat platform for navigating sites and completing interface tasks. |
+| 2026‑10‑17 | [MT-Mind2Web](https://huggingface.co/datasets/magicgh/MT-Mind2Web) | 数据集 | web | Multi-turn web-navigation conversations constructed from Mind2Web interactions, with dialogue turns, HTML snapshots, element candidates and click/type/select action sequences. |
+| 2026‑10‑17 | [MONDAY annotations](https://huggingface.co/datasets/runamu/MONDAY) | 数据集 | android, ios | Video-derived mobile navigation annotations that pair scene boundaries and screen or element boxes with action labels for training and evaluating GUI agents. |
+| 2026‑10‑17 | [MobileGPT](https://github.com/fclab-skku/MobileGPT) | 智能体 | android | An Android client and Python-server agent that learns reusable app subtasks through exploration, selection, derivation and memory recall. |
+| 2026‑10‑17 | [MobBench task definitions](https://huggingface.co/datasets/OpenDFM/MobA-MobBench) | 基准 | android | A public set of real-device mobile task definitions used to evaluate MobA, with Chinese and English task material packaged in a versioned JSON release. |
+<!-- RECENT:END -->
 
 ## 使用数据
 

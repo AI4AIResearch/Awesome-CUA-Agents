@@ -1,4 +1,4 @@
-import { KIND_ORDER, PAGE_SIZE, createRecordLoader, bibliographicDate, normalize, matches, filtered, parseState, serializeState, escapeHTML as e, safeURL } from './catalog-core.js';
+import { KIND_ORDER, PAGE_SIZE, FACT_LABELS, TOPIC_ALIASES, createRecordLoader, bibliographicDate, matches, filtered, parseState, serializeState, searchText, escapeHTML as e, safeURL, formatDate, formatFact } from './catalog-core.js';
 
 const TEXT = {
   en: {
@@ -9,7 +9,7 @@ const TEXT = {
   }
 };
 const KINDS = {paper:['Papers','论文','▤'],survey:['Surveys','综述','≋'],model:['Models','模型','◈'],dataset:['Datasets','数据集','▦'],benchmark:['Benchmarks','评测基准','◎'],agent:['Agents','智能体','↗'],framework:['Frameworks','框架','◇'],infrastructure:['Infrastructure','基础设施','▧'],tool:['Tools','工具','⚒'],product:['Products','产品','□'],company:['Publishers','发布方','⌂']};
-const PLATFORMS = {'harmonyos':['HarmonyOS','鸿蒙'],web:['Web','浏览器'],desktop:['Desktop','桌面'],android:['Android','Android'],ios:['iOS','iOS'],windows:['Windows','Windows'],macos:['macOS','macOS'],linux:['Linux','Linux'],'cross-platform':['Cross-platform','跨平台'],unspecified:['Unassigned','待标注']};
+const PLATFORMS = {web:['Web','浏览器'],desktop:['Desktop','桌面'],windows:['Windows','Windows'],macos:['macOS','macOS'],linux:['Linux','Linux'],mobile:['Mobile','移动设备'],android:['Android','Android'],ios:['iOS','iOS'],harmonyos:['HarmonyOS','鸿蒙'],'cross-platform':['Cross-platform','跨平台'],unspecified:['Unassigned','待标注']};
 const TOPICS = {'world-models':['World models','世界模型'],'grounding':['GUI grounding','GUI 定位'],'reinforcement-learning':['Reinforcement learning','强化学习'],'safety-security':['Safety & security','安全与防护'],'planning':['Planning','规划'],'data-generation':['Data generation','数据生成'],'screen-understanding':['Screen understanding','界面理解'],'evaluation':['Evaluation','评测'],'mobile-navigation':['Mobile navigation','手机操作'],'web-navigation':['Web navigation','网页导航'],'workflow':['Workflows','工作流'],'memory':['Memory','记忆'],'long-horizon':['Long-horizon tasks','长任务'],'robustness':['Robustness','鲁棒性'],'sandbox':['Sandboxes','沙箱'],'tool-integration':['Tool integration','工具集成'],'automation':['Automation','自动化'],'cross-app':['Cross-app','跨应用'],'efficiency':['Efficiency','效率'],'video':['Video','视频'],'recording':['Recording','录制'],'human-in-the-loop':['Human in the loop','人机协作'],'observability':['Observability','可观测性'],'science':['Scientific workflows','科学工作流'],'history':['Historical','历史'],'survey':['Survey','综述'],'industry':['Industry','产业']};
 Object.assign(TOPICS, {
   'action-prediction':['Action prediction','动作预测'],
@@ -39,9 +39,9 @@ if (!new URLSearchParams(location.search).has('lang')) {try {if (localStorage.ge
 const t = key => TEXT[lang][key] || TEXT.en[key] || key;
 const label = (dict,key) => dict[key]?.[lang === 'zh' ? 1 : 0] || key;
 const num = n => Number(n).toLocaleString(lang === 'zh' ? 'zh-CN' : 'en-US');
-let state = parseState(location.search), records = [], report, activeRecord='', loading=true, toastTimer;
+let state = parseState(location.search), records = [], report, activeRecord='', loading=true, toastTimer, pendingInfo='';
 const getDetails=createRecordLoader(url=>fetch(url));
-const dates = value => value ? new Date(value.length === 10 ? value+'T00:00:00Z' : value).toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US',{year:'numeric',month:'short',day:'numeric',timeZone:'UTC'}) : t('unknown');
+const dates = value => value ? formatDate(value,lang) : t('unknown');
 function updateURL() {const query=serializeState(state,lang,activeRecord); history.replaceState(null,'',location.pathname+(query?'?'+query:'')+location.hash);}
 function toast(message) {clearTimeout(toastTimer);$('#toast').textContent=message;$('#toast').hidden=false;toastTimer=setTimeout(()=>$('#toast').hidden=true,2600);}
 function translate() {
@@ -118,19 +118,18 @@ async function load() {
   try {
     const response=await fetch('./data/index.json');if(!response.ok)throw new Error('HTTP '+response.status);
     const data=await response.json();report=data.coverage;records=data.records;
-    records.forEach(r=>r.search_text=normalize([r.name,r.summary,r.publication_search_text,...r.aliases,...r.authors,...r.environments.flatMap(x=>PLATFORMS[x] || [x]),...r.topics.flatMap(x=>TOPICS[x] || [x]),...(KINDS[r.kind] || [])].filter(Boolean).join(' ')));
+    records.forEach(r=>r.search_text=searchText([r.name,r.summary,r.publication_search_text,...r.aliases,...r.authors,...r.environments.flatMap(x=>PLATFORMS[x] || [x]),...r.topics.flatMap(x=>[...(TOPICS[x] || [x]),...(TOPIC_ALIASES[x] || [])]),...(KINDS[r.kind] || [])]));
     if(!Object.hasOwn(PLATFORMS,state.platform))state.platform='';
     if(!records.some(r=>r.topics.includes(state.topic)))state.topic='';
     $('#stat-resources').textContent=num(records.length);$('#stat-curated').textContent=num(report.curated_records);$('#stat-kinds').textContent=num(Object.keys(report.by_kind).length);$('#stat-sources').textContent=num(report.sources.length);
     loading=false;translate();render();updateURL();
+    if(pendingInfo&&$('#info-dialog').open)info(pendingInfo);
     const rid=new URLSearchParams(location.search).get('record');if(rid)await showRecord(rid,false);
-  } catch(error) {loading=false;$('#results').innerHTML='';$('#results').setAttribute('aria-busy','false');$('#load-error').hidden=false;$('#results-count').textContent='';console.error('Catalog loading failed:',error);}
+  } catch(error) {loading=false;$('#results').innerHTML='';$('#results').setAttribute('aria-busy','false');$('#load-error').hidden=false;$('#results-count').textContent='';console.error('Catalog loading failed:',error);if(pendingInfo&&$('#info-dialog').open)info(pendingInfo);}
 }
 const external=(url,text)=>`<a href="${e(safeURL(url))}" target="_blank" rel="noopener noreferrer">${e(text)} ↗</a>`;
 function resourceFacts(details) {
-  const labels={sample_count:['Sample count','样本数'],sample_unit:['Sample unit','样本单位'],screen_count:['Screen count','界面数量'],example_count:['Example count','示例数量'],modalities:['Modalities','数据模态'],languages:['Languages','语言'],gated:['Access gated','访问需申请'],disabled:['Disabled on Hub','Hub 已停用'],hub_id:['Hub identifier','Hub 标识'],download_url:['Download location','下载入口'],size_category_reported:['Publisher size category','发布方规模分类'],reported_scale:['Reported scale','发布方描述规模'],artifact_type:['Artifact type','资产类型'],task_count:['Task count','任务数量'],task_unit:['Task unit','任务单位'],metrics:['Metrics','评测指标'],evaluation_type:['Evaluation method','评测方式'],access:['Access','访问方式'],pricing_url:['Pricing','价格页面'],availability:['Availability','可用性'],leaderboard_url:['Leaderboard','排行榜']};
-  const value=v=>typeof v==='boolean'?(lang==='zh'?(v?'是':'否'):(v?'Yes':'No')):Array.isArray(v)?v.join(' · '):typeof v==='object'?Object.entries(v).map(([k,x])=>k==='value'?num(x):String(x)).join(' '):typeof v==='number'?num(v):String(v);
-  return '<dl class="fact-list">'+Object.entries(details).filter(([,v])=>v!==null&&v!==''&&(!Array.isArray(v)||v.length)).map(([key,v])=>'<div><dt>'+e(label(labels,key))+'</dt><dd>'+(key.endsWith('_url')&&typeof v==='string'?external(v,lang==='zh'?'打开链接':'Open link'):e(value(v)))+'</dd></div>').join('')+'</dl>';
+  return '<dl class="fact-list">'+Object.entries(details).map(([key,v])=>[key,v,formatFact(key,v,lang)]).filter(([,,text])=>text).map(([key,v,text])=>'<div><dt>'+e(label(FACT_LABELS,key))+'</dt><dd>'+(key.endsWith('_url')&&typeof v==='string'?external(v,lang==='zh'?'打开链接':'Open link'):e(text).replaceAll('\n','<br>'))+'</dd></div>').join('')+'</dl>';
 }
 async function showRecord(id,setURL=true) {
   const found=records.find(r=>r.id===id);if(!found){activeRecord='';if($('#detail-dialog').open)$('#detail-dialog').close();toast(t('noRecord'));return;}
@@ -148,7 +147,7 @@ async function showRecord(id,setURL=true) {
     const snapshot=r.details.arxiv_snapshot;
     const preferred=r.identifiers.preferred_arxiv?records.find(row=>row.id==='arxiv:'+r.identifiers.preferred_arxiv):null;
     if(preferred)content+=`<section class="detail-section"><h3>${lang==='zh'?'首选论文记录':'Preferred paper record'}</h3><p>${lang==='zh'?'原始来源明确指出另一个首选 arXiv 标识；这些书目记录不应算作独立成果。':'The original source identifies a preferred arXiv record; these bibliographic identities should not be counted as independent works.'}</p><a class="subtle-link" href="${e(preferred.page_url)}" data-record="${e(preferred.id)}">${e(preferred.name)} ↗</a></section>`;
-    if(snapshot)content+=`<section class="detail-section"><h3>${lang==='zh'?'已记录的论文版本':'Recorded paper version'}</h3><p>${snapshot.versioned_url?external(snapshot.versioned_url,`arXiv v${snapshot.version}`):e(t('unknown'))}</p>${snapshot.updated_at?`<p>${lang==='zh'?'版本更新时间':'Version updated'}: ${e(snapshot.updated_at)}</p>`:''}</section>`;
+    if(snapshot)content+=`<section class="detail-section"><h3>${lang==='zh'?'已记录的论文版本':'Recorded paper version'}</h3><p>${snapshot.versioned_url?external(snapshot.versioned_url,`arXiv v${snapshot.version}`):e(t('unknown'))}</p>${snapshot.updated_at?`<p>${lang==='zh'?'版本更新时间':'Version updated'}: ${e(dates(snapshot.updated_at))}</p>`:''}</section>`;
     if(['paper','survey'].includes(r.kind))content+=`<section class="detail-section citation-section"><h3>${e(t('citePaper'))}</h3><div class="citation-actions"><button type="button" class="button secondary" data-copy-citation="${e(found.page_url)}citation.bib">${e(t('copyBibtex'))}</button><a href="${e(found.page_url)}citation.bib" download>BibTeX ↓</a><a href="${e(found.page_url)}citation.csl.json" download>CSL JSON ↓</a></div><p>${e(t('citationNote'))}</p></section>`;
     const pub=r.details.publication;
     if(pub){
@@ -158,7 +157,7 @@ async function showRecord(id,setURL=true) {
     }
     if(r.details.license_review)content+=`<section class="detail-section"><h3>${lang==='zh'?'许可审阅说明':'License review notes'}</h3>${Object.entries(r.details.license_review).map(([slot,review])=>`<p><strong>${e(t(slot))}:</strong> ${e(review.reason)}</p><p>${review.evidence_urls.map((url,i)=>external(url,`${lang==='zh'?'来源':'Source'} ${i+1}`)).join(' · ')}</p>`).join('')}</section>`;
     const specifications=Object.fromEntries(Object.entries(r.details).filter(([key])=>!['arxiv_snapshot','publication','license_review'].includes(key)));
-    if(Object.values(specifications).some(v=>v!==null&&v!==''&&(!Array.isArray(v)||v.length)))content+=`<section class="detail-section"><h3>${e(t('details'))}</h3>${resourceFacts(specifications)}</section>`;
+    if(Object.entries(specifications).some(([key,v])=>formatFact(key,v,lang)))content+=`<section class="detail-section"><h3>${e(t('details'))}</h3>${resourceFacts(specifications)}</section>`;
     if(r.notes)content+=`<section class="detail-section"><h3>${e(t('notes'))}</h3><p>${e(r.notes)}</p></section>`;
     if(r.relations.length)content+=`<section class="detail-section"><h3>${e(t('relations'))}</h3><ul>${r.relations.map(rel=>{const target=records.find(row=>row.id===rel.target_id);return `<li>${e(rel.type.replaceAll('_',' '))} → <button class="subtle-link" type="button" data-record="${e(rel.target_id)}">${e(target?.name || rel.target_id)}</button></li>`;}).join('')}</ul></section>`;
     const connected=(found.incoming_relations||[]).map(relation=>({source:records.find(row=>row.id===relation.source_id),relation})).filter(item=>item.source);
@@ -168,17 +167,20 @@ async function showRecord(id,setURL=true) {
   }catch(error){if(activeRecord!==id)return;$('#detail-content').innerHTML=`<h2 id="detail-title">${e(found.name)}</h2><p>${e(t('errorDetail'))}</p><button type="button" class="button secondary" data-record="${e(id)}">${e(t('retry'))}</button>`;}
 }
 function info(type) {
-  if(!report)return;
   let content='';
+  // Downloads are static files; only the coverage view waits for index.json, and it re-renders once loading settles.
+  pendingInfo=type!=='download'&&!report?type:'';
   if(type==='download') {
     const options=[['catalog.jsonl','fullCatalog','fullCatalogCopy','JSONL'],['catalog.sqlite','sqlite','sqliteCopy','SQLite'],['rag-documents.jsonl','ragReviewed','ragReviewedCopy','JSONL'],['rag-all-records.jsonl','ragAll','ragAllCopy','JSONL'],['citations.bib','paperBibtex','paperBibtexCopy','BibTeX'],['citations.csl.json','paperCSL','paperCSLCopy','JSON'],['publication-citations.bib','publicationBib','publicationBibCopy','BibTeX'],['publication-citations.csl.json','publicationCSL','publicationCSLCopy','JSON'],['coverage.json','coverageFile','coverageFileCopy','JSON'],['sources.json','sourcesFile','sourcesFileCopy','JSON']];
     content=`<h2 id="info-title">${e(t('downloadTitle'))}</h2><p>${e(t('downloadCopy'))}</p><p><a class="button secondary" href="${lang==='zh'?'/zh/data/':'/data/'}">${e(t('dataHub'))} ↗</a> <a href="/downloads/manifest.json">${e(t('downloadInventory'))}</a></p><div class="download-options">${options.map(([file,title,copy])=>`<a class="download-option" href="./downloads/${file}" download><span><strong>${e(t(title))}</strong><small>${e(t(copy))}</small></span><span>↓</span></a>`).join('')}</div><p>${e(t('licenseNote'))}</p>`;
     content+=`<section class="agent-download"><h3>${e(t('agentTitle'))}</h3><div class="clone-command"><code>${CLONE_COMMAND}</code><button type="button" data-copy-clone>${e(t('copyCommand'))}</button></div><p><a href="${lang==='zh'?'/zh/agents/':'/agents/'}">${e(t('agentGuide'))} ↗</a> · <a href="/AGENTS.md">AGENTS.md</a> · <a href="/downloads/rag-manifest.json">RAG manifest</a></p></section>`;
+  }else if(!report) {
+    content=`<h2 id="info-title">${e(t('coverageDialogTitle'))}</h2><p role="status">${e(t(loading?'loading':'errorTitle'))}</p><p><a href="/coverage/">${e(t('viewCoverage'))} ↗</a></p>`;
   }else {
     content=`<h2 id="info-title">${e(t('coverageDialogTitle'))}</h2><p>${e(t('coverageDialogCopy'))}</p><div class="info-stat-grid"><div><strong>${num(report.curated_records)}</strong><span>${e(t('curatedResources'))}</span></div><div><strong>${num(report.metadata_only_records)}</strong><span>${e(t('metadata'))}</span></div><div><strong>${num(report.unindexed_candidates)}</strong><span>${e(t('unindexed'))}</span></div></div><p>${e(t('reviewExplanation'))}</p><table class="coverage-table"><thead><tr><th>${e(t('source'))}</th><th>${e(t('discovered'))}</th><th>${e(t('indexed'))}</th></tr></thead><tbody>${report.sources.map(s=>`<tr><td>${external(s.url,s.name)}</td><td>${num(s.discovered)}</td><td>${num(s.indexed)}</td></tr>`).join('')}</tbody></table><h3>${e(t('limitations'))}</h3><p>${e(t('boundaries'))}</p><a class="button secondary" href="./downloads/coverage.json" download>${e(t('coverageFile'))} ↓</a>`;
   }
-  if(type!=='download' && report.excluded_records)content+=`<h3>${e(t('excluded'))}: ${num(report.excluded_records)}</h3><p>${e(t('exclusionCopy'))}</p><p><a href="./downloads/exclusions.json">${e(t('exclusionFile'))}</a> · <a href="./downloads/arxiv-archive.jsonl">${e(t('archiveFile'))}</a></p>`;
-  $('#info-content').innerHTML=content;$('#info-dialog').showModal();
+  if(type!=='download' && report?.excluded_records)content+=`<h3>${e(t('excluded'))}: ${num(report.excluded_records)}</h3><p>${e(t('exclusionCopy'))}</p><p><a href="./downloads/exclusions.json">${e(t('exclusionFile'))}</a> · <a href="./downloads/arxiv-archive.jsonl">${e(t('archiveFile'))}</a></p>`;
+  $('#info-content').innerHTML=content;if(!$('#info-dialog').open)$('#info-dialog').showModal();
 }
 document.addEventListener('click',async event=>{if(!event.target.closest('[data-copy-clone]'))return;try{await navigator.clipboard.writeText(CLONE_COMMAND);toast(t('commandCopied'));}catch{toast(t('commandCopyFailed'));}});
 document.addEventListener('click',async event=>{
