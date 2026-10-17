@@ -285,3 +285,35 @@ test('header switches to the compact two-row layout before the full nav overflow
   assert.match(block[1], /\.site-header nav\{order:1;flex-basis:100%;[^}]*overflow-x:auto/);
   assert.match(block[1], /\.header-inner\{[^}]*flex-wrap:wrap/);
 });
+test('Chinese mode localizes the title, accessible names, skip link, static directory and pagination',async()=>{
+  const index=readFileSync(new URL('../web/index.html',import.meta.url),'utf8'),markup=index+readFileSync(new URL('../scripts/search_pages.py',import.meta.url),'utf8');
+  for(const [tag] of index.matchAll(/<[^>]*\saria-label="[^>]*>/g))assert.match(tag,/data-i18n-label="/,tag);
+  const language=index.match(/<button id="language"[^>]*>/)[0];assert.doesNotMatch(language,/aria-label/);assert.match(language,/lang="zh-CN"/);
+  const english={};for(const [tag,label,key,text] of markup.matchAll(/<[^<>]*\sdata-i18n(-label)?="([^"]+)"[^<>]*>([^<]*)/g))english[key]??=label?tag.match(/aria-label="([^"]*)"/)[1]:text.replaceAll('&amp;','&');
+  const keys=['data-i18n','data-i18n-label'].map(attr=>[...new Set([...markup.matchAll(new RegExp(`${attr}="([^"]+)"`,'g'))].map(m=>m[1]))]);
+  const coverage=JSON.parse(readFileSync(new URL('../data/coverage.json',import.meta.url),'utf8'));
+  const names=['document','window','location','history','localStorage','fetch'],saved=names.map(key=>[key,Object.getOwnPropertyDescriptor(globalThis,key)]);
+  const make=dataset=>({dataset,attributes:{},classList:{toggle(){}},addEventListener(){},setAttribute(name,value){this.attributes[name]=value;},showModal(){},close(){}});
+  const boot=async search=>{
+    const elements=new Map(),element=selector=>{if(!elements.has(selector))elements.set(selector,make({}));return elements.get(selector);};
+    const lists={'[data-i18n]':keys[0].map(i18n=>make({i18n})),'[data-i18n-label]':keys[1].map(i18nLabel=>make({i18nLabel}))};
+    const globals={document:{title:'',documentElement:{},body:{classList:{toggle(){}}},addEventListener(){},querySelector:element,querySelectorAll:selector=>lists[selector]||[]},window:{addEventListener(){}},location:{search,pathname:'/',hash:''},history:{replaceState(){}},localStorage:{getItem:()=>null,setItem(){}},fetch:async()=>({ok:true,json:async()=>({coverage,records:structuredClone(rows.slice(0,30))})})};
+    for(const [key,value] of Object.entries(globals))Object.defineProperty(globalThis,key,{value,configurable:true,writable:true});
+    await import(`../web/app.js?i18n-${search}`);await new Promise(resolve=>setImmediate(resolve));
+    return {title:globals.document.title,texts:lists['[data-i18n]'],labels:lists['[data-i18n-label]'],element};
+  };
+  try {
+    const en=await boot(''),zh=await boot('?lang=zh'),han=/[　-鿿＀-￯]/;
+    assert.equal(en.title,index.match(/<title>([^<]*)<\/title>/)[1]);assert.match(zh.title,han);
+    for(const item of en.texts)assert.equal(item.textContent,english[item.dataset.i18n],item.dataset.i18n);
+    for(const item of en.labels)assert.equal(item.attributes['aria-label'],english[item.dataset.i18nLabel],item.dataset.i18nLabel);
+    for(const item of zh.texts)assert.match(item.textContent,han,item.dataset.i18n);
+    for(const item of zh.labels)assert.match(item.attributes['aria-label'],han,item.dataset.i18nLabel);
+    assert.ok(keys[0].includes('skipToCatalog')&&keys[0].includes('directoryHeading')&&keys[1].includes('mainNavigation'));
+    assert.equal(zh.element('#language').textContent,'EN');assert.equal(zh.element('#language').lang,'en');
+    assert.match(en.element('#pagination').innerHTML,/<span>Page 1 of 2<\/span>/);
+    assert.match(zh.element('#pagination').innerHTML,/<span>第 1 \/ 2 页<\/span>/);
+  } finally {
+    for(const [key,descriptor] of saved)if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];
+  }
+});

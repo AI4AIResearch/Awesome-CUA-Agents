@@ -21,11 +21,11 @@
   <script type="module" src="./app.js"></script>
 </head>
 <body>
-  <a class="skip-link" href="#catalog">Skip to catalog</a>
+  <a class="skip-link" href="#catalog" data-i18n="skipToCatalog">Skip to catalog</a>
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="./" aria-label="AwesomeCUA home"><img src="./favicon.svg" width="32" height="32" alt=""><span>Awesome<span class="brand-cua">CUA</span></span><span class="brand-label">THE INDEX</span></a>
-      <nav aria-label="Main navigation">
+      <a class="brand" href="./" aria-label="AwesomeCUA home" data-i18n-label="homeLabel"><img src="./favicon.svg" width="32" height="32" alt=""><span>Awesome<span class="brand-cua">CUA</span></span><span class="brand-label" data-i18n="brandLabel">THE INDEX</span></a>
+      <nav aria-label="Main navigation" data-i18n-label="mainNavigation">
         <a href="#catalog" data-i18n="navExplore">Explore</a>
         <a href="/papers/" data-paper-library data-i18n="navPapers">Papers</a>
         <a href="/guides/" data-i18n="navGuides">Guides</a>
@@ -33,7 +33,7 @@
         <a href="#coverage" data-i18n="navCoverage">Coverage</a>
         <a href="#about" data-i18n="navAbout">About</a>
       </nav>
-      <div class="header-actions"><button id="language" class="language-button" type="button" aria-label="Switch language">中文</button><a class="github-link" href="https://github.com/AwesomeCUA" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path fill="currentColor" d="M12 .8A11.2 11.2 0 0 0 8.46 22.63c.56.1.77-.24.77-.54v-2.1c-3.12.67-3.78-1.33-3.78-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.68.08-.68 1.13.08 1.72 1.15 1.72 1.15 1 1.72 2.62 1.22 3.26.93.1-.73.4-1.22.71-1.5-2.49-.29-5.1-1.25-5.1-5.54 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.08 1.15a10.7 10.7 0 0 1 5.6 0c2.14-1.45 3.07-1.15 3.07-1.15.62 1.54.23 2.68.12 2.96.71.78 1.14 1.78 1.14 3 0 4.3-2.62 5.25-5.12 5.53.4.35.76 1.03.76 2.08v3.1c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z"/></svg><span>GitHub</span><span aria-hidden="true">↗</span></a></div>
+      <div class="header-actions"><button id="language" class="language-button" type="button" lang="zh-CN">中文</button><a class="github-link" href="https://github.com/AwesomeCUA" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path fill="currentColor" d="M12 .8A11.2 11.2 0 0 0 8.46 22.63c.56.1.77-.24.77-.54v-2.1c-3.12.67-3.78-1.33-3.78-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.68.08-.68 1.13.08 1.72 1.15 1.72 1.15 1 1.72 2.62 1.22 3.26.93.1-.73.4-1.22.71-1.5-2.49-.29-5.1-1.25-5.1-5.54 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.08 1.15a10.7 10.7 0 0 1 5.6 0c2.14-1.45 3.07-1.15 3.07-1.15.62 1.54.23 2.68.12 2.96.71.78 1.14 1.78 1.14 3 0 4.3-2.62 5.25-5.12 5.53.4.35.76 1.03.76 2.08v3.1c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z"/></svg><span>GitHub</span><span aria-hidden="true">↗</span></a></div>
     </div>
   </header>
   <main>
@@ -45,7 +45,7 @@
         <div class="hero-cta"><a class="button primary" href="#catalog"><span data-i18n="exploreButton">Explore the catalog</span><span aria-hidden="true">↗</span></a><button class="button text-button" id="hero-download" type="button"><span data-i18n="getData">Get the data</span><span aria-hidden="true">↓</span></button></div>
         <div class="hero-caption"><span class="status-dot"></span><span data-i18n="heroCaption">Built for researchers, builders, and the curious.</span></div>
       </div>
-      <div class="ecosystem-map" aria-label="Explore web, desktop, and mobile agents">
+      <div class="ecosystem-map" aria-label="Explore web, desktop, and mobile agents" data-i18n-label="mapLabelAria">
         <div class="map-label"><span class="status-dot"></span><span data-i18n="mapLabel">ONE FIELD. MANY SURFACES.</span><span class="map-coordinates">CUA / 01</span></div>
         <svg class="map-connectors" viewBox="0 0 420 290" aria-hidden="true"><path d="M210 139V67H87M210 139H339V76M210 139V235H301"/><circle cx="210" cy="139" r="78"/><circle cx="210" cy="139" r="109"/></svg>
         <div class="map-center"><svg viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><path d="M9 5v28l8-8 6 12 6-3-6-11h12L9 5Z" fill="currentColor"/></svg><span>CUA</span></div>
@@ -55,7 +55,7 @@
         <div class="map-foot"><span data-i18n="mapFoot">OBSERVE</span><i></i><span data-i18n="reason">REASON</span><i></i><span data-i18n="act">ACT</span></div>
       </div>
     </section>
-    <section class="stats-band shell" aria-label="Catalog statistics">
+    <section class="stats-band shell" aria-label="Catalog statistics" data-i18n-label="statsLabel">
       <div><span class="stat-value" id="stat-resources">—</span><span class="stat-label" data-i18n="resources">Resources indexed</span></div>
       <div><span class="stat-value" id="stat-curated">—</span><span class="stat-label" data-i18n="curatedResources">Editorially reviewed</span></div>
       <div><span class="stat-value" id="stat-kinds">—</span><span class="stat-label" data-i18n="categories">Resource categories</span></div>
@@ -69,7 +69,7 @@
     <section id="catalog" class="catalog-section shell" aria-labelledby="catalog-title">
       <div class="section-heading"><div><div class="eyebrow section-eyebrow" data-i18n="catalogEyebrow">THE ECOSYSTEM, ORGANIZED</div><h2 id="catalog-title" data-i18n="catalogTitle">Find your next building block.</h2></div><a class="subtle-link" href="https://github.com/AwesomeCUA/awesomecua.github.io/issues/new?template=resource.yml" target="_blank" rel="noopener noreferrer"><span data-i18n="suggest">Suggest a resource</span> ↗</a></div>
       <div class="catalog-layout">
-        <aside class="sidebar" aria-label="Resource categories">
+        <aside class="sidebar" aria-label="Resource categories" data-i18n-label="categories">
           <div class="sidebar-label" data-i18n="browseByType">BROWSE BY TYPE</div>
           <div id="categories" class="category-list"></div>
           <div class="sidebar-note"><span class="note-icon">↗</span><h3 data-i18n="useDataTitle">Made to build on.</h3><p data-i18n="useDataCopy">Take the catalog with you. Structured records, source evidence, and clear review states.</p><button class="subtle-link" id="sidebar-download" type="button"><span data-i18n="downloadData">Download the data</span> ↓</button></div>
@@ -84,11 +84,11 @@
             <button type="button" class="clear-button" id="clear-filters" data-i18n="clearFilters" hidden>Reset filters</button>
           </div>
           <div class="popular-topics"><span data-i18n="try">Try</span><button type="button" data-search="grounding" data-i18n="grounding">GUI grounding</button><button type="button" data-topic="reinforcement-learning" data-i18n="rl">Reinforcement learning</button><button type="button" data-topic="safety-security" data-i18n="safety">Safety & security</button><a data-topic-directory href="/topics/"><span data-i18n="topicDirectory">Browse topics</span> ↗</a><a class="paper-library-shortcut" data-paper-library href="/papers/"><span data-i18n="paperLibrary">Research library</span> ↗</a></div>
-          <div class="results-toolbar"><p id="results-count" role="status" aria-live="polite" data-i18n="loading">Loading the catalog…</p><label class="sort-wrap"><span class="sr-only" data-i18n="sortBy">Sort results</span><select id="sort"><option value="featured" data-i18n="curatedFirst">Curated first</option><option value="name" data-i18n="nameSort">Name A–Z</option><option value="newest" data-i18n="newest">Newest publication</option></select></label><div class="view-toggle" role="group" aria-label="Result layout"><button id="view-grid" type="button" aria-label="Grid view" aria-pressed="true"><svg viewBox="0 0 20 20" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="6" height="6" rx="1"/><rect x="12" y="2" width="6" height="6" rx="1"/><rect x="2" y="12" width="6" height="6" rx="1"/><rect x="12" y="12" width="6" height="6" rx="1"/></svg></button><button id="view-list" type="button" aria-label="List view" aria-pressed="false"><svg viewBox="0 0 20 20" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 4h12M6 10h12M6 16h12M2 4h1M2 10h1M2 16h1"/></svg></button></div></div>
+          <div class="results-toolbar"><p id="results-count" role="status" aria-live="polite" data-i18n="loading">Loading the catalog…</p><label class="sort-wrap"><span class="sr-only" data-i18n="sortBy">Sort results</span><select id="sort"><option value="featured" data-i18n="curatedFirst">Curated first</option><option value="name" data-i18n="nameSort">Name A–Z</option><option value="newest" data-i18n="newest">Newest publication</option></select></label><div class="view-toggle" role="group" aria-label="Result layout" data-i18n-label="layoutLabel"><button id="view-grid" type="button" aria-label="Grid view" data-i18n-label="gridView" aria-pressed="true"><svg viewBox="0 0 20 20" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="6" height="6" rx="1"/><rect x="12" y="2" width="6" height="6" rx="1"/><rect x="2" y="12" width="6" height="6" rx="1"/><rect x="12" y="12" width="6" height="6" rx="1"/></svg></button><button id="view-list" type="button" aria-label="List view" data-i18n-label="listView" aria-pressed="false"><svg viewBox="0 0 20 20" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 4h12M6 10h12M6 16h12M2 4h1M2 10h1M2 16h1"/></svg></button></div></div>
           <div id="load-error" class="empty-state" hidden><h3 data-i18n="errorTitle">The catalog could not be loaded.</h3><p data-i18n="errorCopy">Check your connection and try again.</p><button class="button primary" id="retry" type="button" data-i18n="retry">Try again</button></div>
-          <div id="results" class="resource-grid" aria-label="Catalog results" aria-busy="true"></div>
+          <div id="results" class="resource-grid" aria-label="Catalog results" data-i18n-label="resultsLabel" aria-busy="true"></div>
           <div id="empty" class="empty-state" hidden><div class="empty-symbol">⌕</div><h3 data-i18n="emptyTitle">No resources match these filters.</h3><p data-i18n="emptyCopy">Try a broader term or clear a filter. Many papers have not yet been assigned platform or topic tags.</p><button class="button secondary" id="empty-reset" type="button" data-i18n="clearFilters">Reset filters</button></div>
-          <nav id="pagination" class="pagination" aria-label="Results pagination"></nav>
+          <nav id="pagination" class="pagination" aria-label="Results pagination" data-i18n-label="paginationLabel"></nav>
           <p class="catalog-footnote" data-i18n="catalogFootnote">Curated means reviewed against a primary source. Bibliography means title, authors, and dates were verified; relevance and findings still need review.</p>
         </div>
       </div>
@@ -100,8 +100,8 @@
     <section id="about" class="about-section shell"><div><div class="eyebrow section-eyebrow" data-i18n="aboutEyebrow">AN OPEN FIELD DESERVES AN OPEN MAP</div><h2 data-i18n="aboutTitle">Help map what comes next.</h2><p data-i18n="aboutCopy">Found a paper, dataset, tool, or a detail we missed? Add your knowledge to the computer-use community.</p></div><a class="button primary" href="https://github.com/AwesomeCUA/awesomecua.github.io/issues/new?template=resource.yml" target="_blank" rel="noopener noreferrer"><span data-i18n="contribute">Contribute a resource</span><span aria-hidden="true">↗</span></a></section>
   </main>
   <footer class="shell"><a class="brand" href="./"><img src="./favicon.svg" width="27" height="27" alt=""><span>Awesome<span class="brand-cua">CUA</span></span></a><span data-i18n="footerCopy">A source-backed map of the computer-use ecosystem.</span><a href="https://github.com/AwesomeCUA" target="_blank" rel="noopener noreferrer">GitHub ↗</a><button id="footer-method" type="button" data-i18n="methodology">Methodology</button><span class="copyright">© 2026 AwesomeCUA</span></footer>
-  <dialog id="detail-dialog" class="detail-dialog" aria-labelledby="detail-title"><div class="dialog-top"><span id="detail-overline" class="eyebrow"></span><button class="icon-button dialog-close" type="button" aria-label="Close details">×</button></div><div id="detail-content"></div></dialog>
-  <dialog id="info-dialog" class="info-dialog" aria-labelledby="info-title"><div class="dialog-top"><span class="eyebrow">AWESOMECUA / DATA</span><button class="icon-button dialog-close" type="button" aria-label="Close dialog">×</button></div><div id="info-content"></div></dialog>
+  <dialog id="detail-dialog" class="detail-dialog" aria-labelledby="detail-title"><div class="dialog-top"><span id="detail-overline" class="eyebrow"></span><button class="icon-button dialog-close" type="button" aria-label="Close details" data-i18n-label="closeDetails">×</button></div><div id="detail-content"></div></dialog>
+  <dialog id="info-dialog" class="info-dialog" aria-labelledby="info-title"><div class="dialog-top"><span class="eyebrow" data-i18n="dataEyebrow">AWESOMECUA / DATA</span><button class="icon-button dialog-close" type="button" aria-label="Close dialog" data-i18n-label="closeDialog">×</button></div><div id="info-content"></div></dialog>
   <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
   <noscript><p class="noscript">Enable JavaScript to search the catalog, or <a href="./downloads/catalog.jsonl">download the complete JSONL data</a>.</p></noscript>
 </body>
