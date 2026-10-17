@@ -81,6 +81,45 @@ test('numbered pagination keeps first, last and neighbouring pages one click awa
     shown.forEach((n,i)=>{if(n===null)assert.ok(shown[i+1]-shown[i-1]>2,`${page}/${pages} hides at least two pages behind a gap`);});
   }
 });
+test('opening a record adds one history entry, so Back closes the dialog and keeps the filters',async()=>{
+  const coverage=JSON.parse(readFileSync(new URL('../data/coverage.json',import.meta.url),'utf8'));
+  const base={kind:'dataset',url:'https://example.org/',aliases:[],environments:['web'],topics:[],authors:[],summary:'Fixture.',review_status:'curated',published_at:null,scope:'core',paper_version:null,paper_source_url:null,paper_date:null,related_count:1,incoming_relations:[]};
+  const records=[{...base,id:'url:first',name:'First fixture',page_url:'/resources/first/'},{...base,id:'url:second',name:'Second fixture',page_url:'/resources/second/'}];
+  const keys=['document','window','location','history','localStorage','fetch'],saved=keys.map(key=>[key,Object.getOwnPropertyDescriptor(globalThis,key)]);
+  const settle=()=>new Promise(resolve=>setImmediate(resolve));
+  const boot=async(search,name)=>{
+    const clicks=[],popstate=[],location={search,pathname:'/',hash:''},entries=[{state:null,search}];let index=0;
+    const go=delta=>{index+=delta;location.search=entries[index].search;popstate.forEach(listener=>listener());};
+    const write=(state,url)=>{entries[index]={state,search:url.replace(/^[^?]*/,'')};location.search=entries[index].search;};
+    const history={get state(){return entries[index].state;},get length(){return entries.length;},pushState(state,_,url){entries.splice(++index);entries.push({});write(state,url);},replaceState(state,_,url){write(state,url);},back(){go(-1);},forward(){go(1);}};
+    const elements=new Map(),element=selector=>{if(!elements.has(selector))elements.set(selector,{dataset:{},listeners:{},classList:{toggle(){}},open:false,addEventListener(type,fn){(this.listeners[type]??=[]).push(fn);},setAttribute(){},focus(){},showModal(){this.open=true;},close(){if(!this.open)return;this.open=false;(this.listeners.close||[]).forEach(fn=>fn());}});return elements.get(selector);};
+    const globals={document:{documentElement:{},body:{classList:{toggle(){}}},addEventListener(type,fn){if(type==='click')clicks.push(fn);},querySelector:element,querySelectorAll:()=>[]},window:{addEventListener(type,fn){if(type==='popstate')popstate.push(fn);}},location,history,localStorage:{getItem:()=>null,setItem(){}},fetch:async url=>({ok:true,json:async()=>url.endsWith('record.json')?{...records.find(r=>url===r.page_url+'record.json'),licenses:{},details:{},identifiers:{},relations:[],notes:'',evidence:[],last_verified_at:'2026-10-01'}:{coverage,records:structuredClone(records)}})};
+    for(const [key,value] of Object.entries(globals))Object.defineProperty(globalThis,key,{value,configurable:true,writable:true});
+    await import(`../web/app.js?${name}`);await settle();
+    const open=async id=>{for(const listener of clicks)listener({target:{closest:selector=>selector==='[data-record]'?{tagName:'A',dataset:{record:id}}:null},button:0,preventDefault(){}});await settle();};
+    return {dialog:element('#detail-dialog'),entries,history,location,open,where:()=>`${index}/${entries.length} ${location.search}`};
+  };
+  try {
+    const list=await boot('?q=fixture&kind=dataset','history-list');
+    assert.equal(list.where(),'0/1 ?q=fixture&kind=dataset');
+    await list.open('url:first');
+    assert.equal(list.dialog.open,true);assert.equal(list.where(),'1/2 ?q=fixture&kind=dataset&record=url%3Afirst');
+    await list.open('url:second');
+    assert.equal(list.where(),'1/2 ?q=fixture&kind=dataset&record=url%3Asecond');
+    list.history.back();await settle();
+    assert.equal(list.dialog.open,false);assert.equal(list.where(),'0/2 ?q=fixture&kind=dataset');
+    list.history.forward();await settle();
+    assert.equal(list.dialog.open,true);assert.equal(list.where(),'1/2 ?q=fixture&kind=dataset&record=url%3Asecond');
+    list.dialog.close();await settle();
+    assert.equal(list.where(),'0/2 ?q=fixture&kind=dataset');
+    const deep=await boot('?record=url%3Afirst','history-deep-link');
+    assert.equal(deep.dialog.open,true);assert.equal(deep.where(),'0/1 ?record=url%3Afirst');
+    deep.dialog.close();await settle();
+    assert.equal(deep.where(),'0/1 ');
+  } finally {
+    for(const [key,descriptor] of saved)if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];
+  }
+});
 test('untrusted names and source URLs cannot inject active HTML',()=>{
   assert.equal(escapeHTML('<img src=x onerror="alert(1)">'),'&lt;img src=x onerror=&quot;alert(1)&quot;&gt;');
   assert.equal(safeURL('javascript:alert(1)'),'#');

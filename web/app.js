@@ -48,7 +48,7 @@ const num = n => Number(n).toLocaleString(lang === 'zh' ? 'zh-CN' : 'en-US');
 let state = parseState(location.search), records = [], report, activeRecord='', loading=true, toastTimer, pendingInfo='';
 const getDetails=createRecordLoader(url=>fetch(url));
 const dates = value => value ? formatDate(value,lang) : t('unknown');
-function updateURL() {const query=serializeState(state,lang,activeRecord); history.replaceState(null,'',location.pathname+(query?'?'+query:'')+location.hash);}
+function updateURL(push=false) {const query=serializeState(state,lang,activeRecord),url=location.pathname+(query?'?'+query:'')+location.hash;if(push)history.pushState({record:true},'',url);else history.replaceState(history.state,'',url);}
 function toast(message) {clearTimeout(toastTimer);$('#toast').textContent=message;$('#toast').hidden=false;toastTimer=setTimeout(()=>$('#toast').hidden=true,2600);}
 function translate() {
   document.documentElement.lang=lang==='zh'?'zh-CN':'en';
@@ -141,7 +141,8 @@ function resourceFacts(details) {
 }
 async function showRecord(id,setURL=true) {
   const found=records.find(r=>r.id===id);if(!found){activeRecord='';if($('#detail-dialog').open)$('#detail-dialog').close();toast(t('noRecord'));return;}
-  activeRecord=id;if(setURL)updateURL();
+  // Opening the dialog adds one history entry so Back closes it; records opened inside the dialog replace that entry.
+  activeRecord=id;if(setURL)updateURL(!$('#detail-dialog').open);
   $('#detail-overline').textContent=label(KINDS,found.kind);
   $('#detail-content').innerHTML=`<h2 id="detail-title">${e(found.name)}</h2><p>${e(t('loading'))}</p>`;
   if(!$('#detail-dialog').open)$('#detail-dialog').showModal();
@@ -213,10 +214,16 @@ for(const id of ['hero-download','sidebar-download'])$('#'+id).addEventListener(
 for(const id of ['coverage-button','footer-method'])$('#'+id).addEventListener('click',()=>info('coverage'));
 $$('.dialog-close').forEach(button=>button.addEventListener('click',()=>button.closest('dialog').close()));
 $$('dialog').forEach(dialog=>dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}}));
-$('#detail-dialog').addEventListener('close',()=>{activeRecord='';updateURL();});
+// Back has already removed ?record= when it closes the dialog. Closing it in the page steps back over the entry it opened; a deep link just drops the parameter.
+$('#detail-dialog').addEventListener('close',()=>{activeRecord='';if(!new URLSearchParams(location.search).has('record'))return;if(history.state?.record)history.back();else updateURL();});
 $('#detail-dialog').addEventListener('click',async event=>{if(event.target.closest('[data-copy-link]')){try{await navigator.clipboard.writeText(new URL(records.find(r=>r.id===activeRecord)?.page_url || location.href,location.origin).href);toast(t('copied'));}catch{toast(t('copyFailed'));}}});
 document.addEventListener('keydown',event=>{if(event.key==='/'&&!['INPUT','SELECT','TEXTAREA'].includes(document.activeElement?.tagName)&&!$$('dialog').some(d=>d.open)){event.preventDefault();$('#search').focus();$('#catalog').scrollIntoView({block:'start'});}});
-window.addEventListener('popstate',()=>{state=parseState(location.search);const p=new URLSearchParams(location.search);lang=p.get('lang')==='zh'?'zh':'en';translate();render();const id=p.get('record');if(id)showRecord(id,false);else if($('#detail-dialog').open)$('#detail-dialog').close();});
+window.addEventListener('popstate',()=>{
+  const p=new URLSearchParams(location.search),next=parseState(location.search),nextLang=p.get('lang')==='zh'?'zh':'en';
+  // Re-render only when the filters changed, so closing the dialog can return focus to the card that opened it.
+  if(serializeState(next,nextLang)!==serializeState(state,lang)){state=next;lang=nextLang;translate();render();}
+  const id=p.get('record');if(id)showRecord(id,false);else if($('#detail-dialog').open)$('#detail-dialog').close();
+});
 $('#retry').addEventListener('click',load);
 translate();
 // Preserve a deep-linked record before normalizing the filter URL during initial loading.
