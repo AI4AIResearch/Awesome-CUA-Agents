@@ -24,6 +24,7 @@ def main():
     if not (site/'.git').exists() or (not args.skip_profile and not (profile/'.git').exists()):
         raise SystemExit('Clone AwesomeCUA/awesomecua.github.io and AwesomeCUA/.github into the documented .cache checkout paths first.')
     build=ROOT/'dist/site'
+    if not (build/'data/search-manifest.json').is_file():raise SystemExit(f'No website build in {build}; run python3 scripts/build_site.py first.')
     incoming=json.loads((build/'data/search-manifest.json').read_text(encoding='utf-8'))
     old_path=site/'data/search-manifest.json'
     if old_path.exists():
