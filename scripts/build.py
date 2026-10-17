@@ -597,7 +597,7 @@ README_TEXT = {
             "product": "Products", "company": "Publishers and brands"},
         "by_platform": "By platform:", "reviewed_papers": "**{n:,}** reviewed papers", "arxiv_records": "{n:,} paper and survey records",
         "kinds": {"benchmark": "Benchmarks", "model": "Models", "dataset": "Datasets", "framework": "Frameworks", "agent": "Agents"},
-        "all": "all {n} →", "highlight_header": "| Resource | Mentions | Environments | Paper | License | Description |",
+        "all": "all {n} →", "surveys": "Start with the newest surveys", "survey_header": "| Date | Survey | Environments |", "highlight_header": "| Resource | Mentions | Environments | Paper | License | Description |",
         "recent_header": "| Reviewed | Resource | Kind | Environments | Description |", "kind_names": {},
         "scopes": {"code": "code", "data": "data", "weights": "weights", "document": "document"},
         "stats": ("**{total:,} resource records** · **{curated:,} curated** · **{arxiv:,} paper and survey records** · **{sources} discovery documents**\n\n"
@@ -609,7 +609,7 @@ README_TEXT = {
             "product": "产品", "company": "发布方与品牌"},
         "by_platform": "按平台：", "reviewed_papers": "**{n:,}** 篇已审阅论文", "arxiv_records": "{n:,} 条论文与综述记录",
         "kinds": {"benchmark": "基准", "model": "模型", "dataset": "数据集", "framework": "框架", "agent": "智能体"},
-        "all": "全部 {n} 项 →", "highlight_header": "| 资源 | 被提及 | 环境 | 论文 | 许可 | 简介（英文） |",
+        "all": "全部 {n} 项 →", "surveys": "从最新综述入门", "survey_header": "| 日期 | 综述 | 环境 |", "highlight_header": "| 资源 | 被提及 | 环境 | 论文 | 许可 | 简介（英文） |",
         "recent_header": "| 审阅日期 | 资源 | 类型 | 环境 | 简介（英文） |",
         "kind_names": {"benchmark": "基准", "dataset": "数据集", "model": "模型", "agent": "智能体", "framework": "框架", "tool": "工具",
             "infrastructure": "基础设施", "product": "产品", "company": "发布方"},
@@ -655,6 +655,12 @@ def highlights(rows, edges, limit=6, lang="en"):
             cited_by[edge["target_id"]].add(edge["source_id"])
     lines = [""]
     text = README_TEXT[lang]
+    # Surveys come first as the entry point and are ordered by date, not by mentions.
+    surveys = sorted((r for r in rows if r["kind"] == "survey" and r["review_status"] == "curated"), key=lambda r: (record_date_text(r), r["name"]), reverse=True)
+    if surveys:
+        lines += [f"**{text['surveys']}** · [{text['all'].format(n=len(surveys))}](docs/surveys.md)", "", text["survey_header"], "| --- | --- | --- |"]
+        lines += [f"| {nowrap(record_date_text(r) or '—')} | [{md(r['name'])}]({r['url']}) | {', '.join(r['environments'])} |" for r in surveys[:5]]
+        lines.append("")
     for kind, path in HIGHLIGHT_KINDS:
         curated = [r for r in rows if r["kind"] == kind and r["review_status"] == "curated"]
         ranked = sorted((r for r in curated if cited_by[r["id"]]), key=lambda r: (-len(cited_by[r["id"]]), r["name"].casefold()))[:limit]
