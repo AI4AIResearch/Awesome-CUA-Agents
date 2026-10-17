@@ -217,11 +217,15 @@ class ResourcePayloadTests(unittest.TestCase):
         # An older/interrupted build may have written its new manifest before
         # deleting the old payloads. A subsequent build must reconcile them.
         self.seed_managed(self.build, self.removed)
-        unmanaged = self.folder(self.build, self.removed) / 'publisher-note.txt'
+        self.seed_managed(self.site, self.removed)
+        unmanaged = self.folder(self.site, self.removed) / 'publisher-note.txt'
         unmanaged.write_text('Preserve unmanaged material.\n')
         self.build_site()
+        # The build output is replaced whole; the publication checkout keeps material it did not generate.
+        self.assertFalse(self.folder(self.build, self.removed).exists())
+        self.publish()
         for name in MANAGED:
-            self.assertFalse((self.folder(self.build, self.removed) / name).exists(), name)
+            self.assertFalse((self.folder(self.site, self.removed) / name).exists(), name)
         self.assertTrue(unmanaged.exists())
 
     def test_publication_does_not_restore_removed_files_from_orphaned_build_output(self):
