@@ -80,6 +80,13 @@ Every editorial entry binds to a `reviewed_sha256`. If an upstream page changes,
 
 After a successful website deployment, the publication workflow notifies IndexNow of changed pages and preserves accepted fingerprints and submission receipts in the website repository's `.indexnow/` directory. Unchanged pages are not resubmitted. HTTP 202 and failures do not advance fingerprints, so a later publication retries the pending changes. See [search discovery](search-discovery.md) for manual use and the distinction between submission and indexing.
 
+Python dependencies are locked with hashes. `requirements-dev.in` lists the direct requirements, and `requirements-dev.txt`, generated from it by pip-tools, pins every transitive dependency to an exact version with its SHA-256 hashes. Every workflow, including the scan and publication jobs that hold a write token, installs it with `pip install --require-hashes`, so a new or replaced upstream release changes nothing until a commit changes the lock file. Dependabot's weekly pip update recompiles the lock. After editing `requirements-dev.in`, regenerate the lock with Python 3.12, the CI version, and commit both files:
+
+```bash
+python3.12 -m venv .venv/pip-tools && .venv/pip-tools/bin/python -m pip install pip-tools
+.venv/pip-tools/bin/pip-compile --generate-hashes --strip-extras requirements-dev.in
+```
+
 For each expansion, prioritize sources or resource kinds with known gaps rather than a raw-count target. Track primary metadata coverage separately from editorial review, protocol completeness, license completeness, and executable reproduction. Keep removed/renamed resources explainable; do not silently substitute a different project with the same name.
 
 Review scope exclusions in `data/exclusion-status.json`. An upstream-change proposal prevents an old exclusion from continuing silently; reconcile the metadata proposal and renew or remove the scope decision after source review. `arxiv_archive_records` counts retained arXiv ingestion records, while `bibliographic_records` counts all active papers and surveys, including publisher-only identities. `arxiv_active_records` is the active arXiv subset. The exclusion ledger and archive are published separately from the active catalog.
