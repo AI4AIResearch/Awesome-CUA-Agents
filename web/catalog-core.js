@@ -10,6 +10,8 @@ export function createRecordLoader(fetcher) {
   };
 }
 export function normalize(value) { return String(value || '').normalize('NFKC').toLowerCase().replace(/[\p{P}\p{S}]+/gu,' ').replace(/\s+/g,' ').trim(); }
+// Skip LaTeX command names and tokens without letters or digits: \textsc{GUI-Spotlight} gives GS and "DSBC : Data" gives DD.
+export function initials(name) { return String(name || '').replace(/\\[a-zA-Z]+/g,'').split(/[\s-]+/).map(word => word.match(/[\p{L}\p{N}]/u)?.[0]).filter(Boolean).slice(0,2).join('').toUpperCase(); }
 export function bibliographicDate(record) {
   if(typeof record.paper_date==='string')return record.paper_date;
   const publication=record.details?.publication;

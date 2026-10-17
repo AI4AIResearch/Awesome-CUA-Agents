@@ -1,4 +1,4 @@
-import { KIND_ORDER, PAGE_SIZE, FACT_LABELS, TOPIC_ALIASES, createRecordLoader, bibliographicDate, matches, filtered, parseState, serializeState, searchText, escapeHTML as e, safeURL, formatDate, formatFact } from './catalog-core.js';
+import { KIND_ORDER, PAGE_SIZE, FACT_LABELS, TOPIC_ALIASES, createRecordLoader, bibliographicDate, initials, matches, filtered, parseState, serializeState, searchText, escapeHTML as e, safeURL, formatDate, formatFact } from './catalog-core.js';
 
 const TEXT = {
   en: {
@@ -76,13 +76,13 @@ function renderCategories() {
   $('#categories').innerHTML=item('',t('allResources'),'⊞',eligible.length)+KIND_ORDER.map(k=>item(k,label(KINDS,k),KINDS[k][2],counts[k])).join('');
 }
 function card(r) {
-  const initials = r.name.split(/[\s-]+/).slice(0,2).map(x=>x[0] || '').join('').toUpperCase();
+  const monogram=initials(r.name) || KINDS[r.kind]?.[2] || '';
   const curated=r.review_status==='curated';
   const summary=r.summary || (r.authors.slice(0,3).join(' · ')+(r.authors.length>3?' et al.':'')+(r.published_at?' · '+r.published_at.slice(0,4):''));
   const tags=r.environments.filter(x=>x!=='unspecified').slice(0,2).map(x=>label(PLATFORMS,x));
   if(!tags.length && bibliographicDate(r)) tags.push(bibliographicDate(r).slice(0,4),r.id.startsWith('arxiv:')?'arXiv':label(KINDS,r.kind));
   if(curated && r.topics.length && tags.length<3) tags.push(label(TOPICS,r.topics[0]));
-  return `<article class="resource-card" data-kind="${e(r.kind)}"><div class="card-top"><div class="resource-monogram" aria-hidden="true">${e(initials)}</div><span class="kind-chip">${e(label(KINDS,r.kind))}</span></div><h3 class="card-title"><a href="${e(r.page_url)}" data-record="${e(r.id)}">${e(r.name)}</a></h3><p class="resource-summary ${curated?'':'is-bibliography'}">${e(summary)}</p><div class="card-tags">${tags.map(x=>`<span>${e(x)}</span>`).join('')}</div><div class="card-bottom ${curated?'is-curated':''}"><span class="review-dot"></span><span>${e(t(curated?'curatedBadge':'metadataBadge'))}</span><a class="card-external" href="${e(safeURL(r.url))}" target="_blank" rel="noopener noreferrer" aria-label="${e(t('openSource'))}: ${e(r.name)}">↗</a></div></article>`;
+  return `<article class="resource-card" data-kind="${e(r.kind)}"><div class="card-top"><div class="resource-monogram" aria-hidden="true">${e(monogram)}</div><span class="kind-chip">${e(label(KINDS,r.kind))}</span></div><h3 class="card-title"><a href="${e(r.page_url)}" data-record="${e(r.id)}">${e(r.name)}</a></h3><p class="resource-summary ${curated?'':'is-bibliography'}">${e(summary)}</p><div class="card-tags">${tags.map(x=>`<span>${e(x)}</span>`).join('')}</div><div class="card-bottom ${curated?'is-curated':''}"><span class="review-dot"></span><span>${e(t(curated?'curatedBadge':'metadataBadge'))}</span><a class="card-external" href="${e(safeURL(r.url))}" target="_blank" rel="noopener noreferrer" aria-label="${e(t('openSource'))}: ${e(r.name)}">↗</a></div></article>`;
 }
 function render() {
   if(loading) return;
