@@ -2471,6 +2471,7 @@
     "kind": "benchmark",
     "url": "https://github.com/HITsz-TMG/WindowsWorld",
     "environments": [
+      "desktop",
       "windows"
     ],
     "topics": [
@@ -5931,6 +5932,7 @@
     "kind": "dataset",
     "url": "https://huggingface.co/datasets/vyokky/GUI-360",
     "environments": [
+      "desktop",
       "windows"
     ],
     "topics": [
@@ -7468,6 +7470,7 @@
     "kind": "infrastructure",
     "url": "https://github.com/trycua/lume",
     "environments": [
+      "desktop",
       "macos",
       "linux"
     ],
@@ -9523,6 +9526,7 @@
     "kind": "paper",
     "url": "https://arxiv.org/abs/2409.08264",
     "environments": [
+      "desktop",
       "windows"
     ],
     "topics": [
@@ -9850,6 +9854,7 @@
     "kind": "paper",
     "url": "https://arxiv.org/abs/2511.04307",
     "environments": [
+      "desktop",
       "windows"
     ],
     "topics": [
@@ -14704,6 +14709,7 @@
       "human-in-the-loop"
     ],
     "summary": "Training and evaluation pipeline for conversational mobile GUI agents, with action prediction, response generation, and dataset processing.",
+    "notes": "Its README describes mobile GUI agents without naming an operating system.",
     "verify_terms": [
       "META-GUI"
     ],
@@ -14729,6 +14735,7 @@
       "evaluation"
     ],
     "summary": "Generates mobile GUI interactions from natural-language test requirements and checks application behavior against those requirements.",
+    "notes": "Its README describes mobile apps without naming an operating system.",
     "verify_terms": [
       "AUITestAgent"
     ],
@@ -19589,7 +19596,7 @@
         ]
       }
     },
-    "notes": "These clients simulate named commercial applications and are not those commercial products. The code and simulator data have distinct license files. No benchmark run was performed.",
+    "notes": "These clients simulate named commercial applications and are not those commercial products. The code and simulator data have distinct license files. No benchmark run was performed. The README describes a phone that runs in the browser, and the Android-emulator playground is a separate OpenMobile2 release, so the platform facet is web rather than a mobile operating system.",
     "evidence_urls": [
       "https://raw.githubusercontent.com/OpenMobile2/MobileGym-plusplus/HEAD/README.md"
     ],
@@ -24007,6 +24014,7 @@
     "summary": "MMBench-GUI evaluates interface understanding, element grounding, task automation, and collaboration across six named desktop, mobile, and web platforms. It introduces the Efficiency-Quality Area metric for examining execution efficiency alongside task quality in online GUI automation.",
     "environments": [
       "web",
+      "desktop",
       "windows",
       "macos",
       "linux",
@@ -26742,6 +26750,7 @@
     "kind": "dataset",
     "url": "https://huggingface.co/datasets/ritzzai/GUI-R1",
     "environments": [
+      "desktop",
       "windows",
       "linux",
       "macos",
@@ -26905,6 +26914,7 @@
     "kind": "model",
     "url": "https://huggingface.co/zai-org/cogagent-9b-20241220",
     "environments": [
+      "desktop",
       "windows",
       "macos",
       "cross-platform"
@@ -27198,6 +27208,7 @@
     "kind": "model",
     "url": "https://huggingface.co/ritzzai/GUI-R1",
     "environments": [
+      "desktop",
       "windows",
       "linux",
       "macos",
@@ -31175,6 +31186,7 @@
     "url": "https://arxiv.org/abs/2603.10577",
     "summary": "CUAAudit examines vision-language models that judge computer-use task completion from an instruction and final environment state. Across macOS, Windows and Linux benchmarks, it measures accuracy, confidence calibration and disagreement between auditors.",
     "environments": [
+      "desktop",
       "macos",
       "windows",
       "linux"
@@ -31629,6 +31641,7 @@
     "url": "https://arxiv.org/abs/2608.10366",
     "summary": "DSAgentBench evaluates end-to-end data-science workflows spanning analysis, modeling and visualization inside a real desktop environment. Task evaluators check produced analytical and visual artifacts, while the released interface supports screenshot or accessibility observations and GUI actions.",
     "environments": [
+      "desktop",
       "linux"
     ],
     "topics": [
@@ -31745,6 +31758,7 @@
     "url": "https://arxiv.org/abs/2606.16748",
     "summary": "MyPCBench tests personal-assistant tasks on a Linux desktop with simulated web applications and data for a single fictional persona. A shared computer-and-shell interface enables evaluation of cross-application workflows that depend on personal context and account-like state.",
     "environments": [
+      "desktop",
       "linux",
       "web"
     ],
@@ -31985,6 +31999,7 @@
     "url": "https://arxiv.org/abs/2606.09426",
     "summary": "WeaveBench requires agents to combine GUI, command-line and code operations within long tasks on an Ubuntu desktop. A trajectory-aware judge checks deliverables and interaction evidence, including shortcut behavior that outcome-only grading can miss.",
     "environments": [
+      "desktop",
       "linux"
     ],
     "topics": [
@@ -32056,6 +32071,7 @@
     "url": "https://arxiv.org/abs/2606.13239",
     "summary": "ComAct proposes COM program synthesis as an alternative interface for manipulating professional software and introduces ComCADBench with GUI-based comparison agents. ComActor adds a staged training and correction approach, supported by a Windows-container training platform.",
     "environments": [
+      "desktop",
       "windows"
     ],
     "topics": [
@@ -32503,6 +32519,7 @@
     "url": "https://github.com/browseros-ai/BrowserOS",
     "environments": [
       "web",
+      "desktop",
       "windows",
       "macos",
       "linux"
@@ -38139,6 +38156,7 @@
   {
     "summary": "This study tests vision-language models as task-completion judges using screenshots and instructions from 42 built-in macOS applications. It evaluates judgment accuracy on human-labeled tasks and separately studies how judge feedback affects agent task success.",
     "environments": [
+      "desktop",
       "macos"
     ],
     "topics": [
@@ -42483,6 +42501,7 @@
     "summary": "OmegaUse combines exploratory and taxonomy-guided data synthesis with supervised fine-tuning followed by GRPO for GUI control. The report introduces OS-Nav for offline Android and Ubuntu evaluation alongside established grounding and action-prediction benchmarks.",
     "environments": [
       "android",
+      "desktop",
       "linux"
     ],
     "topics": [
@@ -42553,6 +42572,7 @@
     "url": "https://arxiv.org/abs/2601.21123",
     "summary": "CUA-Skill encodes Windows application knowledge in parameterized skills and execution/composition graphs. Its agent retrieves and instantiates these skills and uses memory for failure recovery, with end-to-end evaluation on WindowsAgentArena.",
     "environments": [
+      "desktop",
       "windows"
     ],
     "topics": [
@@ -45773,6 +45793,7 @@
     "url": "https://arxiv.org/abs/2603.10178",
     "summary": "Builds ExeVR-53k from execution-video, instruction and reward triplets, including negative instructions with step annotations. A reward model uses spatiotemporal token pruning to judge task completion from the instruction and execution keyframes.",
     "environments": [
+      "desktop",
       "linux",
       "macos",
       "windows",

@@ -232,6 +232,16 @@ def validate_records(rows):
         for key in ("aliases", "environments", "topics"):
             if len(set(r.get(key, []))) != len(r.get(key, [])):
                 error("duplicate " + key)
+        # Facet rules in docs/data-dictionary.md#environment-facets: OS facets refine desktop, and unspecified stands alone.
+        environments, topics = set(r.get("environments", [])), set(r.get("topics", []))
+        if "unspecified" in environments and len(environments) > 1:
+            error("unspecified environment combined with platform facets")
+        if environments & {"windows", "macos", "linux"} and "desktop" not in environments:
+            error("windows, macos or linux environment without desktop")
+        if "web-navigation" in topics and not environments & {"web", "cross-platform"}:
+            error("web-navigation topic without a web or cross-platform environment")
+        if "mobile-navigation" in topics and not environments & {"android", "ios", "harmonyos", "cross-platform", "web", "unspecified"}:
+            error("mobile-navigation topic with only desktop environments")
         if r.get("scope") not in {"core", "adjacent", "relevance_pending"}:
             error("invalid scope")
         if r.get("review_status") == "curated" and (not r.get("summary") or r.get("scope") == "relevance_pending"):

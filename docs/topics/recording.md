@@ -39,7 +39,7 @@ All entries in this section: web.
 
 ## Infrastructure
 
-All entries in this section: web, windows, macos, linux.
+All entries in this section: web, desktop, windows, macos, linux.
 
 | Resource | Paper | License | Description | Evidence |
 | --- | --- | --- | --- | --- |
