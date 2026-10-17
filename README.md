@@ -1,7 +1,7 @@
 # Awesome Computer-Use Agents
 
 <!-- BADGES:START -->
-[![Resources](https://img.shields.io/badge/resources-3%2C022-4f46e5)](data/catalog.jsonl) [![Curated](https://img.shields.io/badge/source--reviewed-1%2C322-0e8a16)](docs/coverage.md) [![Evidence](https://img.shields.io/badge/evidence%20through-2026--10--17-1d76db)](docs/coverage.md) [![Catalog quality](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml/badge.svg)](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml) [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![Website](https://img.shields.io/badge/website-awesomecua.github.io-6366f1)](https://awesomecua.github.io/)
+[![Resources](https://img.shields.io/badge/resources-3%2C021-4f46e5)](data/catalog.jsonl) [![Curated](https://img.shields.io/badge/source--reviewed-1%2C321-0e8a16)](docs/coverage.md) [![Evidence](https://img.shields.io/badge/evidence%20through-2026--10--17-1d76db)](docs/coverage.md) [![Catalog quality](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml/badge.svg)](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml) [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![Website](https://img.shields.io/badge/website-awesomecua.github.io-6366f1)](https://awesomecua.github.io/)
 <!-- BADGES:END -->
 
 **A source-backed data catalog for computer-use, GUI, browser, and mobile agents.**
@@ -24,7 +24,7 @@ The goal is comprehensive coverage of public research and industry resources, wi
 
 <!-- STATS:START -->
 
-**3,022 resource records** · **1,322 curated** · **2,596 paper and survey records** · **44 discovery documents**
+**3,021 resource records** · **1,321 curated** · **2,596 paper and survey records** · **44 discovery documents**
 
 Evidence through `2026-10-17T12:45:23Z`. 1,700 records have bibliographic verification only; 950 discovered identifiers remain unresolved. 100 scope exclusions retain their original metadata in the archive. Counts overlap as explained below.
 
@@ -37,11 +37,11 @@ Evidence through `2026-10-17T12:45:23Z`. 1,700 records have bibliographic verifi
 | --- | --- |
 | [Research by topic](docs/topics.md) · **883** reviewed papers · [Full bibliography](docs/papers.md) · 2,596 paper and survey records | [Agents](docs/agents.md) · **38** |
 | [Surveys](docs/surveys.md) · **13** | [Frameworks](docs/frameworks.md) · **66** |
-| [Datasets](docs/datasets.md) · **80** | [Infrastructure](docs/infrastructures.md) · **15** |
+| [Datasets](docs/datasets.md) · **80** | [Infrastructure](docs/infrastructures.md) · **14** |
 | [Benchmarks](docs/benchmarks.md) · **79** | [Tools](docs/tools.md) · **20** |
 | [Models and checkpoint releases](docs/models.md) · **93** | [Products](docs/products.md) · **19** · [Publishers and brands](docs/companies.md) · **16** |
 
-**By platform:** [Web](docs/environments/web.md) **483** · [Desktop](docs/environments/desktop.md) **256** · [Windows](docs/environments/windows.md) **47** · [macOS](docs/environments/macos.md) **25** · [Linux](docs/environments/linux.md) **38** · [Android](docs/environments/android.md) **262** · [iOS](docs/environments/ios.md) **19** · [HarmonyOS](docs/environments/harmonyos.md) **2** · [Cross-platform](docs/environments/cross-platform.md) **186**
+**By platform:** [Web](docs/environments/web.md) **483** · [Desktop](docs/environments/desktop.md) **256** · [Windows](docs/environments/windows.md) **47** · [macOS](docs/environments/macos.md) **25** · [Linux](docs/environments/linux.md) **38** · [Android](docs/environments/android.md) **261** · [iOS](docs/environments/ios.md) **19** · [HarmonyOS](docs/environments/harmonyos.md) **2** · [Cross-platform](docs/environments/cross-platform.md) **186**
 <!-- EXPLORE:END -->
 
 Coverage spans web, desktop, Android, iOS, Windows, macOS, Linux, and cross-platform work. Topics include grounding, screen understanding, planning, memory, long-horizon workflows, reinforcement learning, data generation, safety, robustness, and evaluation. Environment facets overlap; framework support is not assumed from a model's benchmark results.

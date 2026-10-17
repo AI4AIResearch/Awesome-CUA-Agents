@@ -2,17 +2,17 @@
 
 [Home](../README.md) · [Full arXiv bibliography](papers.md) · [Methodology](methodology.md)
 
-1,322 source-reviewed resources across 35 topics. Topic tags are catalog annotations from the editorial review, not author keywords; a resource appears under every topic it carries. Each hub lists benchmarks, data, models, systems, and papers together, newest papers first.
+1,321 source-reviewed resources across 35 topics. Topic tags are catalog annotations from the editorial review, not author keywords; a resource appears under every topic it carries. Each hub lists benchmarks, data, models, systems, and papers together, newest papers first.
 
 | Topic | All | Benchmarks | Datasets | Models | Systems | Papers | Newest reviewed paper |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| [Evaluation](topics/evaluation.md) | 531 | 77 | 9 | 1 | 22 | 422 | [Player-1: Learning to Play from Synthetic Experience](https://arxiv.org/abs/2610.20584) · 2026-10-14 |
+| [Evaluation](topics/evaluation.md) | 530 | 77 | 9 | 1 | 21 | 422 | [Player-1: Learning to Play from Synthetic Experience](https://arxiv.org/abs/2610.20584) · 2026-10-14 |
 | [GUI grounding](topics/grounding.md) | 319 | 9 | 31 | 65 | 19 | 195 | [Why Generate a Click? Plug-in Decision Heads for Web Agents](https://arxiv.org/abs/2610.20107) · 2026-10-14 |
 | [Data generation](topics/data-generation.md) | 288 | · | 51 | 2 | 20 | 215 | [Teaching Agents in their Own Style: Blackbox Teacher Distillation for Web Agents](https://arxiv.org/abs/2610.19834) · 2026-10-14 |
 | [Web navigation](topics/web-navigation.md) | 226 | 12 | 7 | 11 | 42 | 154 | [Why Generate a Click? Plug-in Decision Heads for Web Agents](https://arxiv.org/abs/2610.20107) · 2026-10-14 |
 | [Planning](topics/planning.md) | 223 | · | 4 | 26 | 27 | 166 | [OpenGCUA: Toward a Fully Open Stack for Generalist Computer Use](https://arxiv.org/abs/2610.22200) · 2026-10-15 |
 | [Mobile navigation](topics/mobile-navigation.md) | 221 | 14 | 12 | 14 | 25 | 156 | [How GUI Agents Fail: GraceBench for Execution Stability Diagnosis](https://arxiv.org/abs/2610.19900) · 2026-10-14 |
-| [Reinforcement learning](topics/reinforcement-learning.md) | 203 | 2 | 5 | 22 | 20 | 154 | [OS-Helix: Unifying GUI Interaction and Code Execution in Native Computer-Using Agents](https://arxiv.org/abs/2610.22234) · 2026-10-15 |
+| [Reinforcement learning](topics/reinforcement-learning.md) | 202 | 2 | 5 | 22 | 19 | 154 | [OS-Helix: Unifying GUI Interaction and Code Execution in Native Computer-Using Agents](https://arxiv.org/abs/2610.22234) · 2026-10-15 |
 | [Screen understanding](topics/screen-understanding.md) | 158 | 5 | 17 | 8 | 10 | 118 | [STP-GUI: Spatially-Aware Token Pruning for Efficient Web-GUI Agents](https://arxiv.org/abs/2610.20390) · 2026-10-14 |
 | [Memory](topics/memory.md) | 120 | 1 | 2 | · | 13 | 104 | [Pack Light, CarryOn: Building Object-Oriented Context for Long-Horizon Agents](https://arxiv.org/abs/2610.18784) · 2026-10-13 |
 | [Safety & security](topics/safety-security.md) | 120 | 7 | · | · | 5 | 108 | [Task-State Governance: A Virtual Machine for Verifiable and Recoverable GUI Agent Execution](https://arxiv.org/abs/2610.20100) · 2026-10-14 |

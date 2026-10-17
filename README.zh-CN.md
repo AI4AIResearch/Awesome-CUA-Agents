@@ -1,7 +1,7 @@
 # Awesome Computer-Use Agents
 
 <!-- BADGES:START -->
-[![Resources](https://img.shields.io/badge/resources-3%2C022-4f46e5)](data/catalog.jsonl) [![Curated](https://img.shields.io/badge/source--reviewed-1%2C322-0e8a16)](docs/coverage.md) [![Evidence](https://img.shields.io/badge/evidence%20through-2026--10--17-1d76db)](docs/coverage.md) [![Catalog quality](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml/badge.svg)](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml) [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![Website](https://img.shields.io/badge/website-awesomecua.github.io-6366f1)](https://awesomecua.github.io/)
+[![Resources](https://img.shields.io/badge/resources-3%2C021-4f46e5)](data/catalog.jsonl) [![Curated](https://img.shields.io/badge/source--reviewed-1%2C321-0e8a16)](docs/coverage.md) [![Evidence](https://img.shields.io/badge/evidence%20through-2026--10--17-1d76db)](docs/coverage.md) [![Catalog quality](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml/badge.svg)](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml) [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![Website](https://img.shields.io/badge/website-awesomecua.github.io-6366f1)](https://awesomecua.github.io/)
 <!-- BADGES:END -->
 
 **面向 computer-use、GUI、浏览器和移动端智能体的可溯源数据目录。**
@@ -26,7 +26,7 @@ git clone https://github.com/reacher-z/Awesome-CUA.git
 
 <!-- STATS:START -->
 
-**3,022 条资源记录** · **1,322 条已审阅** · **2,596 条论文与综述记录** · **44 个发现来源文档**
+**3,021 条资源记录** · **1,321 条已审阅** · **2,596 条论文与综述记录** · **44 个发现来源文档**
 
 证据截至 `2026-10-17T12:45:23Z`。1,700 条记录仅完成书目核实；950 个已发现的标识符尚待处理。100 条范围排除记录在归档中保留原始元数据。各项计数存在重叠，详见下文。
 
@@ -39,11 +39,11 @@ git clone https://github.com/reacher-z/Awesome-CUA.git
 | --- | --- |
 | [按主题浏览研究](docs/topics.md) · **883** 篇已审阅论文 · [完整论文目录](docs/papers.md) · 2,596 条论文与综述记录 | [智能体](docs/agents.md) · **38** |
 | [综述](docs/surveys.md) · **13** | [框架](docs/frameworks.md) · **66** |
-| [数据集](docs/datasets.md) · **80** | [基础设施](docs/infrastructures.md) · **15** |
+| [数据集](docs/datasets.md) · **80** | [基础设施](docs/infrastructures.md) · **14** |
 | [基准](docs/benchmarks.md) · **79** | [工具](docs/tools.md) · **20** |
 | [模型与权重版本](docs/models.md) · **93** | [产品](docs/products.md) · **19** · [发布方与品牌](docs/companies.md) · **16** |
 
-**按平台：** [Web](docs/environments/web.md) **483** · [Desktop](docs/environments/desktop.md) **256** · [Windows](docs/environments/windows.md) **47** · [macOS](docs/environments/macos.md) **25** · [Linux](docs/environments/linux.md) **38** · [Android](docs/environments/android.md) **262** · [iOS](docs/environments/ios.md) **19** · [HarmonyOS](docs/environments/harmonyos.md) **2** · [Cross-platform](docs/environments/cross-platform.md) **186**
+**按平台：** [Web](docs/environments/web.md) **483** · [Desktop](docs/environments/desktop.md) **256** · [Windows](docs/environments/windows.md) **47** · [macOS](docs/environments/macos.md) **25** · [Linux](docs/environments/linux.md) **38** · [Android](docs/environments/android.md) **261** · [iOS](docs/environments/ios.md) **19** · [HarmonyOS](docs/environments/harmonyos.md) **2** · [Cross-platform](docs/environments/cross-platform.md) **186**
 <!-- EXPLORE:END -->
 
 覆盖 Web、桌面、Android、iOS、Windows、macOS、Linux 和跨平台工作。主题包括 grounding、屏幕理解、规划、记忆、长流程任务、强化学习、数据生成、安全、鲁棒性和评测。环境分面可以重叠；不会根据模型的基准成绩推定框架支持。

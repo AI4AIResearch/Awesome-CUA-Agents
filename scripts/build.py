@@ -132,6 +132,11 @@ FIELD_TYPES = {"id": str, "name": str, "kind": str, "url": str, "aliases": list,
     "last_verified_at": str, "notes": str, "details": dict}
 
 
+def identity_aliases(rows):
+    """A reviewed alias URL, such as a renamed repository's former address, resolves that identity to the record listing it."""
+    return {former[0]: r["id"] for r in rows for alias in r.get("aliases", []) if (former := canonical(alias)) and former[0] != r["id"]}
+
+
 def malformed_fields(r):
     # The semantic checks assume these JSON types; the published schema reports each exact mismatch.
     strings = lambda values: all(isinstance(v, str) for v in values)
@@ -142,7 +147,7 @@ def malformed_fields(r):
 
 
 def validate_records(rows):
-    errors, seen = [], set()
+    errors, seen, alias_owners = [], set(), {}
     required = set(FIELD_TYPES)
     ids = {r.get("id") for r in rows if isinstance(r.get("id"), str)}
     for r in rows:
@@ -168,6 +173,12 @@ def validate_records(rows):
         # preferred_arxiv may name another paper; arxiv must be this record's own identifier.
         if rid.startswith("arxiv:") and r.get("identifiers", {}).get("arxiv") != rid[6:]:
             error("identifiers.arxiv does not match the arXiv id")
+        for alias in r.get("aliases", []):
+            if (former := canonical(alias)) and former[0] != rid:
+                if former[0] in ids:
+                    error(f"alias {alias} is the active record {former[0]}; keep one record")
+                elif alias_owners.setdefault(former[0], rid) != rid:
+                    error(f"alias {alias} already resolves to {alias_owners[former[0]]}")
         if r.get("review_status") not in STATUSES:
             error("invalid review status")
         if not r.get("environments") or set(r["environments"]) - ENVIRONMENTS:
@@ -253,7 +264,7 @@ def coverage(rows, pending, scope_decisions):
     sources = read_json(DATA / "sources.json", [])
     excluded = {row['id'] for row in scope_decisions if row['status']=='excluded'}
     source_rows = []
-    aliases = publication_aliases(read_jsonl(DATA/'publications.jsonl'), publication_identity)
+    aliases = publication_aliases(read_jsonl(DATA/'publications.jsonl'), publication_identity) | identity_aliases(rows)
     for source in sources:
         population = {r["id"] for r in candidates if any(o["source_id"] == source["id"] for o in r["discovered_in"])}
         resolved = {aliases.get(identity, identity) for identity in population}
@@ -546,7 +557,7 @@ def documents(rows, report):
         "These are distinct resource identifiers, not distinct research projects. Papers, repositories, datasets, products, and publisher entities have different grains.", "",
         "## Curated coverage by kind and environment", "", "Counts of source-reviewed resources. A resource tagged with several environments counts in each column; `·` marks an empty cell, which is where contributions are most needed.", "",
         *matrix_lines(report["curated_by_kind_and_environment"]), "",
-        "## Source snapshot coverage", "", "The denominator is the normalized identifiers extracted from each fetched document, including incidental links. Reviewed publisher/PDF aliases can resolve to one canonical resource; coverage counts matching identifiers, while indexed_resources records distinct resolved resources. Sources overlap. These figures do not measure global completeness or editorial recall.", "",
+        "## Source snapshot coverage", "", "The denominator is the normalized identifiers extracted from each fetched document, including incidental links. Reviewed publisher/PDF aliases and former repository addresses can resolve to one canonical resource; coverage counts matching identifiers, while indexed_resources records distinct resolved resources. Sources overlap. These figures do not measure global completeness or editorial recall.", "",
         "| Source | Discovered | Indexed | Curated | Excluded | Unresolved | Fetch |", "| --- | ---: | ---: | ---: | ---: | ---: | --- |"]
     for s in report["sources"]:
         status = s["snapshot"] or {}
@@ -743,7 +754,7 @@ def build(args):
     ids = {r["id"] for r in rows}
     excluded = {row['id'] for row in scope_decisions if row['status']=='excluded'}
     candidates = read_jsonl(DATA / "candidates.jsonl")
-    aliases=publication_aliases(read_jsonl(DATA/'publications.jsonl'),publication_identity)
+    aliases=publication_aliases(read_jsonl(DATA/'publications.jsonl'),publication_identity) | identity_aliases(rows)
     queue = [{**r, "review_status": "candidate", "reason": "discovered identifier; primary evidence and relevance need review"} for r in candidates if aliases.get(r['id'],r['id']) not in ids and aliases.get(r['id'],r['id']) not in excluded]
     editorial_pending = {r["id"]: r for r in pending}
     merged = {r["id"]: r for r in queue}
@@ -850,10 +861,11 @@ def search(args):
     # Literal AND search is intentionally safe and works without a generated database.
     terms = args.query.casefold().split()
     target = publication_identity(args.query)  # a pasted URL folds to its record id (arXiv versions, GitHub paths)
-    aliases = publication_aliases(read_jsonl(DATA/'publications.jsonl'),publication_identity)
+    rows = read_jsonl(DATA / "catalog.jsonl")
+    aliases = publication_aliases(read_jsonl(DATA/'publications.jsonl'),publication_identity) | identity_aliases(rows)
     target_id = aliases.get(target[0],target[0]) if target else None
     result = []
-    for row in read_jsonl(DATA / "catalog.jsonl"):
+    for row in rows:
         if args.kind and row["kind"] != args.kind:
             continue
         if args.status and row["review_status"] != args.status:

@@ -2,7 +2,7 @@
 
 Evidence snapshot through **2026-10-17T12:45:23Z**. Generated from committed source receipts.
 
-- 3,022 resource records: 1,322 curated; 1,700 bibliographic metadata only.
+- 3,021 resource records: 1,321 curated; 1,700 bibliographic metadata only.
 - 2,596 paper and survey records, including 2,583 arXiv identities and 13 publisher-only identities. This count overlaps the status counts above.
 - 2,683 retained arXiv metadata records; 100 explicit scope exclusions are outside the active catalog.
 - 3,907 discovery identifiers; 950 remain unresolved after accounting for scope exclusions.
@@ -21,7 +21,7 @@ Counts of source-reviewed resources. A resource tagged with several environments
 | [company](companies.md) | · | · | · | · | · | · | · | · | · | 16 |
 | [dataset](datasets.md) | 21 | 14 | 3 | 2 | 6 | 33 | 1 | · | 14 | 8 |
 | [framework](frameworks.md) | 34 | 18 | 1 | 1 | 3 | 17 | 1 | 1 | 7 | 2 |
-| [infrastructure](infrastructures.md) | 5 | 7 | 1 | 2 | 4 | 4 | 1 | · | · | · |
+| [infrastructure](infrastructures.md) | 5 | 7 | 1 | 2 | 4 | 3 | 1 | · | · | · |
 | [model](models.md) | 26 | 19 | 4 | 4 | 4 | 23 | 4 | · | 46 | 2 |
 | [paper](topics.md) | 324 | 159 | 28 | 10 | 15 | 147 | 6 | 1 | 94 | 258 |
 | [product](products.md) | 17 | 5 | · | · | · | · | · | · | · | · |
@@ -30,7 +30,7 @@ Counts of source-reviewed resources. A resource tagged with several environments
 
 ## Source snapshot coverage
 
-The denominator is the normalized identifiers extracted from each fetched document, including incidental links. Reviewed publisher/PDF aliases can resolve to one canonical resource; coverage counts matching identifiers, while indexed_resources records distinct resolved resources. Sources overlap. These figures do not measure global completeness or editorial recall.
+The denominator is the normalized identifiers extracted from each fetched document, including incidental links. Reviewed publisher/PDF aliases and former repository addresses can resolve to one canonical resource; coverage counts matching identifiers, while indexed_resources records distinct resolved resources. Sources overlap. These figures do not measure global completeness or editorial recall.
 
 | Source | Discovered | Indexed | Curated | Excluded | Unresolved | Fetch |
 | --- | ---: | ---: | ---: | ---: | ---: | --- |
@@ -132,7 +132,7 @@ The recorded title query returned 1,199 unique records out of 1,246 reported mat
 
 | Scope | Recorded declarations |
 | --- | ---: |
-| code | 165 |
+| code | 164 |
 | data | 53 |
 | weights | 52 |
 | document | 0 |
