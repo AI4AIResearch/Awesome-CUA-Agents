@@ -19,11 +19,15 @@ class JsonlLineErrorTests(unittest.TestCase):
         return path
 
     def test_malformed_line_names_file_line_and_column(self):
+        line = '{"id": "c", "name": "Trailing comma example",}'
+        # The decoder's wording and column for a trailing comma changed in Python 3.13.
+        with self.assertRaises(json.JSONDecodeError) as decoded:
+            json.loads(line)
         with tempfile.TemporaryDirectory() as directory:
-            path = self.write(directory, '{"id": "a"}\n\n{"id": "b"}\n{"id": "c", "name": "Trailing comma example",}\n')
+            path = self.write(directory, '{"id": "a"}\n\n{"id": "b"}\n' + line + '\n')
             with self.assertRaises(ValueError) as raised:
                 catalog.read_jsonl(path)
-        self.assertEqual(str(raised.exception), f"{path}:4: Illegal trailing comma before end of object (column 45)")
+        self.assertEqual(str(raised.exception), f"{path}:4: {decoded.exception.msg} (column {decoded.exception.colno})")
         self.assertIsInstance(raised.exception.__cause__, json.JSONDecodeError)
 
     def test_valid_blank_and_missing_files_still_load(self):
