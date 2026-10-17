@@ -88,6 +88,22 @@ class CleanBuildTests(unittest.TestCase):
             self.publish()
         self.assertTrue((outside / 'index.html').exists())
 
+    def test_publication_refuses_old_manifest_pages_in_git_or_dot_folders_before_deleting(self):
+        self.build_site()
+        self.publish()
+        manifest = json.loads((self.site / 'data/search-manifest.json').read_text())
+        for path in ('/.git/', '/resources/../.git/hooks/', '/.github/'):
+            with self.subTest(path=path):
+                planted = self.site / path.strip('/') / 'index.html'
+                self.plant(self.site, ('compare/retired/index.html', str(planted.relative_to(self.site))))
+                pages = manifest['pages'] + [{'path': '/compare/retired/', 'indexable': True, 'sha256': 'e' * 64},
+                                             {'path': path, 'indexable': True, 'sha256': 'f' * 64}]
+                self.write_json(self.site / 'data/search-manifest.json', {**manifest, 'pages': pages})
+                with self.assertRaises(ValueError):
+                    self.publish()
+                self.assertTrue(planted.resolve().exists())
+                self.assertTrue((self.site / 'compare/retired/index.html').exists())
+
 
 if __name__ == '__main__':
     unittest.main()

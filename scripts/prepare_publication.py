@@ -28,11 +28,13 @@ def main():
     old_path=site/'data/search-manifest.json'
     if old_path.exists():
         old=json.loads(old_path.read_text(encoding='utf-8'));new_paths={p['path'] for p in incoming['pages']}
-        for item in old.get('pages',[]):
-            if item['path'] in new_paths:continue
-            # Any page the new build dropped is removed, whatever its section, but never outside the checkout.
-            folder=(site/item['path'].lstrip('/')).resolve()
-            if not folder.is_relative_to(site):raise ValueError('Old manifest page outside the website checkout: '+item['path'])
+        stale=[(site/item['path'].lstrip('/')).resolve() for item in old.get('pages',[]) if item['path'] not in new_paths]
+        # Any page the new build dropped is removed, whatever its section, but never outside the checkout or in .git or another dot folder.
+        # Every path is checked before the first deletion.
+        for folder in stale:
+            if not folder.is_relative_to(site) or any(part.startswith('.') for part in folder.relative_to(site).parts):
+                raise ValueError('Old manifest page outside the generated website pages: '+str(folder))
+        for folder in stale:
             for filename in MANAGED_FILES:(folder/filename).unlink(missing_ok=True)
     for item in incoming['pages']:
         if item['path'].startswith('/resources/'):
