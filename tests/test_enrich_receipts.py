@@ -68,18 +68,27 @@ class EnrichReceiptTests(unittest.TestCase):
         row, rid = {"url": url, "kind": "framework", "name": "Repo"}, catalog.canonical(url)[0]
         license_url = "https://raw.githubusercontent.com/example/repo/HEAD/LICENSE"
         ok = lambda u, refresh=False: ({"url": u, "ok": True, "status": 200, "sha256": sha(MIT), "retrieved_at": "2026-10-16T00:00:00Z"}, MIT if u == license_url else b"")
-        failing = lambda status: lambda u, refresh=False: ({"url": u, "ok": False, "status": status, "error": "HTTP Error"}, b"")
+        def failing(status):
+            def fetch(u, refresh=False):
+                requested.append(u.rsplit("/", 1)[1])
+                return {"url": u, "ok": False, "status": status, "error": "HTTP Error"}, b""
+            return fetch
         enriched, _ = self.run_enrich([(row, primary, sha(README))], {primary: README}, ok)
         recorded = enriched[rid]
         self.assertEqual(recorded["licenses"]["code"]["declared"], "MIT")
         receipt = [e for e in recorded["evidence"] if e["method"] == "license_header"]
         for status in (503, 429, None):
             with self.subTest(status=status):
+                requested = []
                 enriched, _ = self.run_enrich([(row, primary, sha(README))], {primary: README}, failing(status))
+                # LICENSE takes precedence, so LICENSE.md and LICENSE.txt cannot stand in for it while it is unknown.
+                self.assertEqual(requested, ["LICENSE"])
                 self.assertEqual(enriched[rid]["licenses"]["code"], recorded["licenses"]["code"])
                 self.assertEqual([e for e in enriched[rid]["evidence"] if e["method"] == "license_header"], receipt)
                 self.assertEqual(enriched[rid]["references"], recorded["references"])
+        requested = []
         enriched, _ = self.run_enrich([(row, primary, sha(README))], {primary: README}, failing(404))
+        self.assertEqual(requested, ["LICENSE", "LICENSE.md", "LICENSE.txt"])
         self.assertNotIn("code", enriched[rid]["licenses"])
         self.assertEqual([e for e in enriched[rid]["evidence"] if e["method"] == "license_header"], [])
 
@@ -106,7 +115,10 @@ class EnrichReceiptTests(unittest.TestCase):
         cases = [
             ({"language": "en", "size_categories": "1K<n<10K"}, ["en"], ["1K<n<10K"]),
             ({"language": ["en", 3, "zh"], "size_categories": ["1K<n<10K"]}, ["en", "zh"], ["1K<n<10K"]),
-            ({"license": ["mit"]}, [], None),
+            ({"license": {"name": "mit"}}, [], None),
+            ({"license": 3}, [], None),
+            ({"license": " "}, [], None),
+            ({"license": []}, [], None),
         ]
         for card, languages, sizes in cases:
             with self.subTest(card=card):
@@ -117,6 +129,19 @@ class EnrichReceiptTests(unittest.TestCase):
                 self.assertEqual(details["size_category_reported"], sizes)
                 self.assertEqual(details["modalities"], ["image"])
                 self.assertNotIn("data", enriched[rid]["licenses"])
+
+    def test_hub_license_keeps_a_single_or_listed_declaration(self):
+        import jsonschema
+        schema = catalog.read_json(catalog.ROOT / "schemas/resource.schema.json")["properties"]["licenses"]["properties"]["weights"]
+        url, primary = "https://huggingface.co/example/model", "https://huggingface.co/api/models/example/model"
+        rid = catalog.canonical(url)[0]
+        for license_name, declared in [("apache-2.0", "apache-2.0"), (["mit", "apache-2.0"], ["mit", "apache-2.0"]), (["mit", 3], ["mit"])]:
+            with self.subTest(license=license_name):
+                body = json.dumps({"id": "example/model", "cardData": {"license": license_name}}).encode()
+                enriched, _ = self.run_enrich([({"url": url, "kind": "model", "name": "M"}, primary, sha(body))], {primary: body})
+                self.assertEqual(enriched[rid]["licenses"]["weights"]["declared"], declared)
+                jsonschema.Draft202012Validator(schema, format_checker=jsonschema.FormatChecker()).validate(enriched[rid]["licenses"]["weights"])
+                self.assertEqual(enriched[rid]["evidence"][0]["supports"], ["details", "licenses.weights"])
 
 
 if __name__ == "__main__":

@@ -487,8 +487,10 @@ def enrich(args):
                 card = payload.get("cardData") if isinstance(payload.get("cardData"), dict) else {}
                 slot = "data" if source.path.startswith("/api/datasets/") else "weights"
                 license_name = card.get("license")
-                if isinstance(license_name, str) and license_name.strip():
-                    result["licenses"][slot] = {"declared": license_name, "url": row["url"], "retrieved_at": ev["retrieved_at"], "basis": "publisher model/dataset card"}
+                # A card may declare one license or a list of them; keep the string, or the list's string entries.
+                declared = string_list(license_name) if isinstance(license_name, list) else license_name if isinstance(license_name, str) and license_name.strip() else None
+                if declared:
+                    result["licenses"][slot] = {"declared": declared, "url": row["url"], "retrieved_at": ev["retrieved_at"], "basis": "publisher model/dataset card"}
                 result["details"] = {"hub_id": payload.get("id"), "gated": payload.get("gated"), "disabled": payload.get("disabled"),
                     "languages": string_list(card.get("language")), "modalities": [t.split(":", 1)[1] for t in string_list(payload.get("tags")) if t.startswith("modality:")],
                     "size_category_reported": string_list(card.get("size_categories")) or None, "download_url": row["url"] + "/tree/main"}
@@ -532,7 +534,8 @@ def enrich(args):
                 if not info["ok"]:
                     if info.get("status") == 404:
                         continue
-                    # An unreachable candidate is unknown, not absent: keep the recorded code license and its receipt.
+                    # An unreachable candidate is unknown, not absent, and a later candidate must not outrank it:
+                    # keep the recorded code license and its receipt.
                     old = previous.get(rid, {})
                     if "code" in old.get("licenses", {}):
                         result["licenses"]["code"] = old["licenses"]["code"]
