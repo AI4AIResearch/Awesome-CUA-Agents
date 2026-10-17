@@ -47,8 +47,8 @@ All entries in this section: web.
 | Date | Resource | Environments | Description |
 | --- | --- | --- | --- |
 | 2026‑02‑12 | [Agent Skills for Large Language Models: Architecture, Acquisition, Security, and the Path Forward](https://arxiv.org/abs/2602.12430) | unspecified | This survey organizes agent skills by architecture, acquisition, deployment and security, including their role in computer-use systems and GUI grounding. It also proposes a permission and lifecycle governance framework for skill deployment. |
-| 2025‑05‑16 | [A Survey on the Safety and Security Threats of Computer-Using Agents: JARVIS or Ultron?](https://arxiv.org/abs/2505.10924) | cross-platform | Survey of research directions in GUI or computer-use agents. |
-| 2025‑03‑30 | [Towards Trustworthy GUI Agents: A Survey](https://arxiv.org/abs/2503.23434) | cross-platform | Survey of research directions in GUI or computer-use agents. |
+| 2025‑05‑16 | [A Survey on the Safety and Security Threats of Computer-Using Agents: JARVIS or Ultron?](https://arxiv.org/abs/2505.10924) | cross-platform | Systematizes safety and security threats to computer-using agents, with taxonomies of threats and defensive strategies. |
+| 2025‑03‑30 | [Towards Trustworthy GUI Agents: A Survey](https://arxiv.org/abs/2503.23434) | cross-platform | Frames GUI-agent trustworthiness as an execution gap and reviews failures, attacks, and defenses across perception, reasoning, and interaction. |
 
 ## Papers
 

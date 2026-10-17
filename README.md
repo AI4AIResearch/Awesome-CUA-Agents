@@ -48,9 +48,19 @@ Coverage spans web, desktop, Android, iOS, Windows, macOS, Linux, and cross-plat
 
 ## Highlights
 
-The most-mentioned curated resources per category: the count is how many other cataloged resources mention each one in their reviewed first-party source (README, model or dataset card). It reflects connectedness inside this catalog, not quality, popularity, or benchmark performance. Every category page lists all reviewed entries.
+The most-mentioned curated resources per category: the count is how many other cataloged resources mention each one in their reviewed first-party source (README, model or dataset card). It reflects connectedness inside this catalog, not quality, popularity, or benchmark performance. Every category page lists all reviewed entries. Surveys come first, newest first.
 
 <!-- HIGHLIGHTS:START -->
+**Start with the newest surveys** · [all 13 →](docs/surveys.md)
+
+| Date | Survey | Environments |
+| --- | --- | --- |
+| 2026‑09‑02 | [Efficient GUI Agents: A Systems Survey of Observation, Memory, Action, and Runtime Optimization](https://arxiv.org/abs/2609.02309) | cross-platform |
+| 2026‑02‑12 | [Agent Skills for Large Language Models: Architecture, Acquisition, Security, and the Path Forward](https://arxiv.org/abs/2602.12430) | unspecified |
+| 2025‑08‑06 | [OS Agents: A Survey on MLLM-based Agents for General Computing Devices Use](https://arxiv.org/abs/2508.04482) | cross-platform |
+| 2025‑05‑16 | [A Survey on the Safety and Security Threats of Computer-Using Agents: JARVIS or Ultron?](https://arxiv.org/abs/2505.10924) | cross-platform |
+| 2025‑04‑29 | [A Survey on GUI Agents with Foundation Models Enhanced by Reinforcement Learning](https://arxiv.org/abs/2504.20464) | cross-platform |
+
 **Benchmarks** · [all 79 →](docs/benchmarks.md)
 
 | Resource | Mentions | Environments | Paper | License | Description |

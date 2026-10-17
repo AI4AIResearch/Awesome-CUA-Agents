@@ -16,7 +16,7 @@ All entries in this section: android, ios.
 
 | Date | Resource | Description |
 | --- | --- | --- |
-| 2025‑04‑28 | [LLM-Powered GUI Agents in Phone Automation: Surveying Progress and Prospects](https://arxiv.org/abs/2504.19838) | Survey of research directions in GUI or computer-use agents. |
+| 2025‑04‑28 | [LLM-Powered GUI Agents in Phone Automation: Surveying Progress and Prospects](https://arxiv.org/abs/2504.19838) | Reviews LLM-driven phone GUI agents with a taxonomy of agent frameworks, prompt- and training-based modeling, datasets, and benchmarks. |
 
 [↑ Back to top](#survey-catalog)
 
@@ -26,16 +26,16 @@ All entries in this section: cross-platform.
 
 | Date | Resource | Description |
 | --- | --- | --- |
-| 2026‑09‑02 | [Efficient GUI Agents: A Systems Survey of Observation, Memory, Action, and Runtime Optimization](https://arxiv.org/abs/2609.02309) | Survey of research directions in GUI or computer-use agents. |
-| 2025‑08‑06 | [OS Agents: A Survey on MLLM-based Agents for General Computing Devices Use](https://arxiv.org/abs/2508.04482) | Survey of research directions in GUI or computer-use agents. |
-| 2025‑05‑16 | [A Survey on the Safety and Security Threats of Computer-Using Agents: JARVIS or Ultron?](https://arxiv.org/abs/2505.10924) | Survey of research directions in GUI or computer-use agents. |
-| 2025‑04‑29 | [A Survey on GUI Agents with Foundation Models Enhanced by Reinforcement Learning](https://arxiv.org/abs/2504.20464) | Survey of research directions in GUI or computer-use agents. |
-| 2025‑03‑30 | [Towards Trustworthy GUI Agents: A Survey](https://arxiv.org/abs/2503.23434) | Survey of research directions in GUI or computer-use agents. |
-| 2025‑03‑27 | [A Survey on (M)LLM-Based GUI Agents](https://arxiv.org/abs/2504.13865) | Survey of research directions in GUI or computer-use agents. |
-| 2025‑01‑27 | [A Comprehensive Survey of Agents for Computer Use: Foundations, Challenges, and Future Directions](https://arxiv.org/abs/2501.16150) | Survey of research directions in GUI or computer-use agents. |
-| 2024‑12‑18 | [GUI Agents: A Survey](https://arxiv.org/abs/2412.13501) | Survey of research directions in GUI or computer-use agents. |
-| 2024‑11‑27 | [Large Language Model-Brained GUI Agents: A Survey](https://arxiv.org/abs/2411.18279) | Survey of research directions in GUI or computer-use agents. |
-| 2024‑11‑07 | [GUI Agents with Foundation Models: A Comprehensive Survey](https://arxiv.org/abs/2411.04890) | Survey of research directions in GUI or computer-use agents. |
+| 2026‑09‑02 | [Efficient GUI Agents: A Systems Survey of Observation, Memory, Action, and Runtime Optimization](https://arxiv.org/abs/2609.02309) | Surveys GUI-agent efficiency beyond task success: observation, context and memory, action, and planner or runtime cost. |
+| 2025‑08‑06 | [OS Agents: A Survey on MLLM-based Agents for General Computing Devices Use](https://arxiv.org/abs/2508.04482) | Surveys agents that operate computers and phones through operating-system interfaces, covering components, capabilities, foundation models, frameworks, and benchmarks. |
+| 2025‑05‑16 | [A Survey on the Safety and Security Threats of Computer-Using Agents: JARVIS or Ultron?](https://arxiv.org/abs/2505.10924) | Systematizes safety and security threats to computer-using agents, with taxonomies of threats and defensive strategies. |
+| 2025‑04‑29 | [A Survey on GUI Agents with Foundation Models Enhanced by Reinforcement Learning](https://arxiv.org/abs/2504.20464) | Formalizes GUI tasks as Markov decision processes and traces agent training from prompting through supervised fine-tuning to reinforcement learning. |
+| 2025‑03‑30 | [Towards Trustworthy GUI Agents: A Survey](https://arxiv.org/abs/2503.23434) | Frames GUI-agent trustworthiness as an execution gap and reviews failures, attacks, and defenses across perception, reasoning, and interaction. |
+| 2025‑03‑27 | [A Survey on (M)LLM-Based GUI Agents](https://arxiv.org/abs/2504.13865) | Analyzes LLM-based GUI agents through four components (perception, exploration, planning, and interaction) and the methods used to evaluate them. |
+| 2025‑01‑27 | [A Comprehensive Survey of Agents for Computer Use: Foundations, Challenges, and Future Directions](https://arxiv.org/abs/2501.16150) | Reviews 87 computer-use agents and 33 datasets through a taxonomy of operating domain, observation and action modalities, and agent design. |
+| 2024‑12‑18 | [GUI Agents: A Survey](https://arxiv.org/abs/2412.13501) | Categorizes GUI-agent benchmarks, evaluation metrics, architectures, and training methods, and proposes a unified perception, reasoning, planning, and acting framework. |
+| 2024‑11‑27 | [Large Language Model-Brained GUI Agents: A Survey](https://arxiv.org/abs/2411.18279) | Survey of LLM-brained GUI agents that carry out natural-language instructions across web, mobile, and desktop interfaces, organizing research and industry progress. |
+| 2024‑11‑07 | [GUI Agents with Foundation Models: A Comprehensive Survey](https://arxiv.org/abs/2411.04890) | Survey of (M)LLM-based GUI agents organized around their datasets and benchmarks, a unified agent framework with a taxonomy, and commercial applications. |
 
 [↑ Back to top](#survey-catalog)
 
