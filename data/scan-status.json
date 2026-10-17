@@ -1,10 +1,10 @@
 {
-  "id": "scan:2026-10-17T01:45:00Z",
+  "id": "scan:2026-10-17T01:56:39Z",
   "schema_version": 1,
   "status": "success",
-  "started_at": "2026-10-17T01:45:00Z",
-  "finished_at": "2026-10-17T01:45:10Z",
-  "run_url": "https://github.com/reacher-z/Awesome-CUA/actions/runs/38992154361",
+  "started_at": "2026-10-17T01:56:39Z",
+  "finished_at": "2026-10-17T01:56:53Z",
+  "run_url": "https://github.com/reacher-z/Awesome-CUA/actions/runs/38992942354",
   "schedule": {
     "timezone": "America/Los_Angeles",
     "times_local": [
@@ -13,43 +13,43 @@
     ]
   },
   "before": {
-    "resources": 1993,
+    "resources": 2010,
     "bibliographic_records": 1724,
     "arxiv_archive_records": 1764,
     "excluded_records": 40,
-    "curated_papers": 300,
-    "curated_resources": 269,
-    "candidates": 2763
+    "curated_papers": 320,
+    "curated_resources": 286,
+    "candidates": 2797
   },
   "after": {
-    "resources": 1993,
+    "resources": 2010,
     "bibliographic_records": 1724,
     "arxiv_archive_records": 1764,
     "excluded_records": 40,
-    "curated_papers": 300,
-    "curated_resources": 269,
-    "candidates": 2763
+    "curated_papers": 320,
+    "curated_resources": 286,
+    "candidates": 2797
   },
   "new_papers": [],
   "new_candidate_count": 0,
   "pending_metadata_changes": 0,
   "source_fetches": {
-    "successful": 29,
-    "total": 29
+    "successful": 36,
+    "total": 36
   },
   "phases": [
     {
       "name": "discovery",
-      "started_at": "2026-10-17T01:45:00Z",
-      "finished_at": "2026-10-17T01:45:05Z",
+      "started_at": "2026-10-17T01:56:39Z",
+      "finished_at": "2026-10-17T01:56:42Z",
       "ok": true,
       "exit_code": 0,
       "error": null
     },
     {
       "name": "huggingface",
-      "started_at": "2026-10-17T01:45:05Z",
-      "finished_at": "2026-10-17T01:45:08Z",
+      "started_at": "2026-10-17T01:56:42Z",
+      "finished_at": "2026-10-17T01:56:50Z",
       "ok": true,
       "exit_code": 0,
       "error": null
@@ -63,24 +63,24 @@
     },
     {
       "name": "harvest",
-      "started_at": "2026-10-17T01:45:08Z",
-      "finished_at": "2026-10-17T01:45:08Z",
+      "started_at": "2026-10-17T01:56:51Z",
+      "finished_at": "2026-10-17T01:56:51Z",
       "ok": true,
       "exit_code": 0,
       "error": null
     },
     {
       "name": "build",
-      "started_at": "2026-10-17T01:45:08Z",
-      "finished_at": "2026-10-17T01:45:09Z",
+      "started_at": "2026-10-17T01:56:51Z",
+      "finished_at": "2026-10-17T01:56:51Z",
       "ok": true,
       "exit_code": 0,
       "error": null
     },
     {
       "name": "validate",
-      "started_at": "2026-10-17T01:45:09Z",
-      "finished_at": "2026-10-17T01:45:10Z",
+      "started_at": "2026-10-17T01:56:51Z",
+      "finished_at": "2026-10-17T01:56:53Z",
       "ok": true,
       "exit_code": 0,
       "error": null
