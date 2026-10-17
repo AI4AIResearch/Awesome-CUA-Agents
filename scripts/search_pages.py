@@ -21,6 +21,13 @@ def esc(value):
     return html.escape(str(value if value is not None else ""), quote=True)
 
 
+def clean_text(text):
+    # Publication runs `git diff --check`: no line may end in whitespace and no blank line may end the file.
+    lines=[line.rstrip(" \t\r") for line in text.split("\n")]
+    while len(lines)>1 and lines[-1]==lines[-2]=="":lines.pop()
+    return "\n".join(lines)
+
+
 def resource_path(record):
     # IDs, rather than mutable display names, keep permalinks stable through renames.
     slug = re.sub(r"[^a-z0-9]+", "-", record["id"].lower()).strip("-")
@@ -164,7 +171,7 @@ def build_search_pages(destination, rows, coverage, root):
         return f"{match['start']}{match['quote']}{match['path']}?v={version}{match['quote']}"
     def emit(path,content,index=True,excluded=False):
         # Hash the final bytes, after replacing only the scripts this page uses.
-        content=script_src.sub(version_script_src,content).encode('utf-8')
+        content=script_src.sub(version_script_src,clean_text(content)).encode('utf-8')
         target=destination/path.lstrip('/')/'index.html' if path.endswith('/') else destination/path.lstrip('/')
         target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(content)
         item={"path":path,"indexable":index,"sha256":hashlib.sha256(content).hexdigest()}
@@ -173,7 +180,7 @@ def build_search_pages(destination, rows, coverage, root):
     for r in rows:
         path=resource_path(r)
         emit(path,page(r["name"],description(r),path,resource_body(r,lookup,incoming),resource_schema(r),eligible(r)),eligible(r))
-        (destination/path.lstrip('/')/'index.md').write_text(resource_markdown(r))
+        (destination/path.lstrip('/')/'index.md').write_text(clean_text(resource_markdown(r)))
     scope_status=json.loads((root/'data/exclusion-status.json').read_text())
     for decision in scope_status['decisions']:
         if decision['status']!='excluded':continue
@@ -182,7 +189,7 @@ def build_search_pages(destination, rows, coverage, root):
         evidence=decision['evidence']
         body=f'<div class="eyebrow">SCOPE REVIEW</div><h1>{esc(decision["name"])}</h1><p class="answer-lead">This bibliographic record is outside the active AwesomeCUA catalog after a primary-abstract scope review.</p><p>{esc(decision["reason"])}</p><p>The decision concerns relevance to computer-use agents, not research quality. Original metadata remains available in the archive.</p><div class="page-actions"><a class="button primary" href="{esc(decision["url"])}">Original paper ↗</a><a class="button secondary" href="/coverage/">Catalog coverage</a></div><dl class="page-facts"><div><dt>Record ID</dt><dd>{esc(decision["id"])}</dd></div><div><dt>Scope reviewed</dt><dd>{esc(decision["reviewed_at"])}</dd></div><div><dt>Source retrieved</dt><dd>{esc(evidence["retrieved_at"])}</dd></div></dl><p><a href="{esc(evidence["url"])}">Primary abstract evidence</a> · <a href="/downloads/exclusions.json">Scope-decision ledger</a> · <a href="/downloads/arxiv-archive.jsonl">Raw metadata archive</a></p><details><summary>Source content fingerprint</summary><code>{esc(evidence["sha256"])}</code></details><p>Decisions can be revised through a <a href="'+REPO+'/issues/new?template=resource.yml">source-backed correction</a>.</p>'
         emit(path,page(decision['name'],'A source-backed catalog scope decision; original bibliographic metadata remains preserved.',path,body,index=False),index=False,excluded=True)
-        (destination/path.lstrip('/')/'index.md').write_text('\n'.join(['# '+decision['name'],'','Status: excluded from the active CUA catalog after scope review.','',decision['reason'],'','Original paper: '+decision['url'],'Evidence: '+evidence['url'],'Reviewed: '+decision['reviewed_at'],'','Scope decisions: '+SITE+'/downloads/exclusions.json','Raw metadata archive: '+SITE+'/downloads/arxiv-archive.jsonl'])+'\n')
+        (destination/path.lstrip('/')/'index.md').write_text(clean_text('\n'.join(['# '+decision['name'],'','Status: excluded from the active CUA catalog after scope review.','',decision['reason'],'','Original paper: '+decision['url'],'Evidence: '+evidence['url'],'Reviewed: '+decision['reviewed_at'],'','Scope decisions: '+SITE+'/downloads/exclusions.json','Raw metadata archive: '+SITE+'/downloads/arxiv-archive.jsonl'])+'\n'))
     category_links='<ul class="category-directory">'+''.join(f'<li><a href="/categories/{kind}/">{esc(name)}</a><span>{sum(r["kind"]==kind for r in rows):,} resources</span></li>' for kind,name in KINDS.items())+'</ul>'
     overview=f'<div class="eyebrow">COMPUTER-USE AGENT DIRECTORY</div><h1>Explore the computer-use agent ecosystem</h1><p class="answer-lead">AwesomeCUA connects research papers, GUI models, training datasets, benchmarks, engineering tools, products, and publishers with their original sources.</p><p>This snapshot has {len(rows):,} resource records, including {len(reviewed):,} reviewed entries. Counts are resources, not independent projects.</p><a class="button primary" href="/#catalog">Search and filter all resources</a><h2>Browse by resource type</h2>{category_links}<h2>Research and practical guides</h2><ul><li><a href="/papers/">Reviewed computer-use and GUI-agent research papers</a></li><li><a href="/guides/">Guides to agents, benchmarks, and training data</a></li><li><a href="/data/">Download the source-backed catalog</a></li><li><a href="/coverage/">Inspect coverage and unresolved gaps</a></li></ul>'
     emit('/catalog/',page('Computer-use agent resource directory','Browse source-backed computer-use agent papers, models, datasets, benchmarks, tools, products, and publishers.','/catalog/',overview,{"@type":"CollectionPage","name":"AwesomeCUA resource directory"}))
@@ -287,22 +294,22 @@ def build_search_pages(destination, rows, coverage, root):
         entry=ET.SubElement(feed,'entry')
         for key,value in [('title',r['name']),('id',SITE+resource_path(r)),('updated',r['last_verified_at']),('summary',description(r))]:ET.SubElement(entry,key).text=value
         ET.SubElement(entry,'link',href=SITE+resource_path(r));author=ET.SubElement(entry,'author');ET.SubElement(author,'name').text='AwesomeCUA'
-    (destination/'feed.xml').write_bytes(ET.tostring(feed,encoding='utf-8',xml_declaration=True))
+    (destination/'feed.xml').write_bytes(clean_text(ET.tostring(feed,encoding='utf-8',xml_declaration=True).decode()).encode())
     llms=['# AwesomeCUA','', '> A source-backed computer-use agent resource catalog. Distinguish curated entries from metadata-only bibliography records.','', 'Resource counts are not independent project counts. Primary-source retrieval does not establish reproducibility. Code, data, weights, and document licenses are separate.','', '## Start here','',f'- [Catalog]({SITE}/catalog/): resource categories',f'- [Research]({SITE}/papers/): reviewed papers and surveys',f'- [Guides]({SITE}/guides/): definitions and practical reading guides',f'- [Editorial policy]({SITE}/about/): review states and limits',f'- [Coverage]({SITE}/coverage/): source populations and known gaps',f'- [Data downloads]({SITE}/data/): structured catalog with provenance','', '## Machine-readable access','',f'- [Full catalog JSONL]({SITE}/downloads/catalog.jsonl)',f'- [Curated annotations in Markdown]({SITE}/llms-full.txt)',f'- [Research Atom feed]({SITE}/feed.xml)','', 'Resource HTML pages have a companion `index.md` at the same path. This file is an optional navigation aid, not an indexing requirement or a request to rank this site.']
     llms += ['', '## Compare source-reviewed specifications', '', f'- [Benchmark protocols]({SITE}/compare/benchmarks/)', f'- [Dataset profiles]({SITE}/compare/datasets/)', f'- [Benchmark profiles JSON]({SITE}/downloads/benchmarks-profiles.json)', f'- [Dataset profiles JSON]({SITE}/downloads/datasets-profiles.json)']
     llms.extend(['', '## Agent and RAG access', '', '```sh', 'git clone https://github.com/reacher-z/Awesome-CUA.git', '```', '', f'- [Agent instructions]({SITE}/AGENTS.md)', f'- [Human and agent guide]({SITE}/agents/)', f'- [中文指南]({SITE}/zh/agents/)', f'- [Reviewed retrieval documents]({SITE}/downloads/rag-documents.jsonl)', f'- [All retrieval documents]({SITE}/downloads/rag-all-records.jsonl)', f'- [Export manifest]({SITE}/downloads/rag-manifest.json)'])
-    (destination/'llms.txt').write_text('\n'.join(llms)+'\n')
-    (destination/'llms-full.txt').write_text('# AwesomeCUA curated resource annotations\n\n'+f'Evidence snapshot: {latest}. These records were reviewed with AI assistance; experiments are not independently reproduced.\n\n'+'\n---\n\n'.join(resource_markdown(r) for r in reviewed))
+    (destination/'llms.txt').write_text(clean_text('\n'.join(llms)+'\n'))
+    (destination/'llms-full.txt').write_text(clean_text('# AwesomeCUA curated resource annotations\n\n'+f'Evidence snapshot: {latest}. These records were reviewed with AI assistance; experiments are not independently reproduced.\n\n'+'\n---\n\n'.join(resource_markdown(r) for r in reviewed)))
     robots='User-agent: *\nAllow: /\n\n'+''.join(f'User-agent: {bot}\nAllow: /\n\n' for bot in ['Googlebot','bingbot','OAI-SearchBot','PerplexityBot','Claude-SearchBot'])+f'Sitemap: {SITE}/sitemap.xml\nSitemap: {SITE}/sitemap.txt\n'
-    (destination/'robots.txt').write_text(robots)
+    (destination/'robots.txt').write_text(clean_text(robots))
     sitemap=ET.Element('urlset',xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
     for item in sorted(manifest,key=lambda x:x['path']):
         if item['indexable']:
             node=ET.SubElement(sitemap,'url');ET.SubElement(node,'loc').text=SITE+item['path']
             # No synthetic build-time lastmod; upstream evidence time is not page modification time.
     ET.indent(sitemap,space='  ')
-    (destination/'sitemap.xml').write_bytes(ET.tostring(sitemap,encoding='utf-8',xml_declaration=True))
-    (destination/'sitemap.txt').write_text(''.join(SITE+item['path']+'\n' for item in sorted(manifest,key=lambda x:x['path']) if item['indexable']))
+    (destination/'sitemap.xml').write_bytes(clean_text(ET.tostring(sitemap,encoding='utf-8',xml_declaration=True).decode()).encode())
+    (destination/'sitemap.txt').write_text(clean_text(''.join(SITE+item['path']+'\n' for item in sorted(manifest,key=lambda x:x['path']) if item['indexable'])))
     (destination/'data/search-manifest.json').write_text(json.dumps({'site_url':SITE,'indexable_pages':sum(x['indexable'] for x in manifest),'metadata_only_pages':sum(not x['indexable'] and not x.get('scope_excluded') for x in manifest),'excluded_pages':sum(bool(x.get('scope_excluded')) for x in manifest),'pages':manifest},ensure_ascii=False,indent=2)+'\n')
     config=json.loads((root/'data/site-discovery.json').read_text())
     key=config['indexnow_key'];(destination/(key+'.txt')).write_text(key)
