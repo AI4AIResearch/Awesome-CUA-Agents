@@ -34,7 +34,7 @@ All entries in this section: android.
 
 | Resource | Environments | Paper | License | Description | Evidence |
 | --- | --- | --- | --- | --- | --- |
-| [PC-Agent](https://github.com/GAIR-NLP/PC-Agent) | desktop | [2412.17589](https://arxiv.org/abs/2412.17589) (2024) | code MIT | Agent framework for desktop workflows. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/GAIR-NLP/PC-Agent/HEAD/README.md) |
+| [PC-Agent](https://github.com/GAIR-NLP/PC-Agent) | desktop | [2412.17589](https://arxiv.org/abs/2412.17589) (2024) | code MIT | Human-cognition-transfer framework for PC agents: PC Tracker logs human computer use, cognition completion turns logs into cognitive trajectories, and a planner works with a grounding agent. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/GAIR-NLP/PC-Agent/HEAD/README.md) |
 | [UFO](https://github.com/microsoft/UFO) | windows, desktop | [2402.07939](https://arxiv.org/abs/2402.07939) (2024) | — | Windows agent framework for application and desktop automation. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/microsoft/UFO/HEAD/README.md) |
 
 ## Frameworks

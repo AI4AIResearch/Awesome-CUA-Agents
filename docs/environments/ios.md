@@ -62,7 +62,7 @@ All entries in this section: android, ios.
 
 | Resource | Paper | License | Description | Evidence |
 | --- | --- | --- | --- | --- |
-| [Appium](https://github.com/appium/appium) | — | code Apache-2.0 | Cross-platform UI automation infrastructure. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/appium/appium/HEAD/README.md) |
+| [Appium](https://github.com/appium/appium) | — | code Apache-2.0 | Open-source WebDriver-based automation server for mobile, desktop and IoT apps, extended by per-platform drivers for iOS, Android, macOS and Windows, plugins, and clients in Java, Python, Ruby and C#. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/appium/appium/HEAD/README.md) |
 
 ## Surveys
 

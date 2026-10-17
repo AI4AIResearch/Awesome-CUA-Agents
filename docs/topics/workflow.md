@@ -28,12 +28,12 @@
 
 | Resource | Environments | Paper | License | Description | Evidence |
 | --- | --- | --- | --- | --- | --- |
-| [Bytebot](https://github.com/bytebot-ai/bytebot) | desktop | — | code Apache-2.0 | Containerized desktop agent environment and application. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/bytebot-ai/bytebot/HEAD/README.md) |
+| [Bytebot](https://github.com/bytebot-ai/bytebot) | desktop | — | code Apache-2.0 | Open-source desktop agent that works inside its own Ubuntu Linux virtual desktop, with a web task interface, REST APIs for tasks and direct control, a takeover mode and password-manager logins. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/bytebot-ai/bytebot/HEAD/README.md) |
 | [MobileAgent (Alipay)](https://github.com/alipay/mobile-agent) | android | [2401.04124](https://arxiv.org/abs/2401.04124) (2024) | — | Mobile-control research implementation combining operating-procedure context with human interaction for personalized task execution. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/alipay/mobile-agent/HEAD/README.md) |
 | [MobileGPT](https://github.com/fclab-skku/MobileGPT) | android | [2312.03003](https://arxiv.org/abs/2312.03003) (2023) | code Apache-2.0 | An Android client and Python-server agent that learns reusable app subtasks through exploration, selection, derivation and memory recall. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/fclab-skku/MobileGPT/HEAD/README.md) |
 | [OpenAdapt](https://github.com/OpenAdaptAI/OpenAdapt) | desktop | — | code MIT | Tools for learning and automating workflows from desktop demonstrations. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/OpenAdaptAI/OpenAdapt/HEAD/README.md) |
 | [ShowUI-Aloha](https://github.com/showlab/ShowUI-Aloha) | desktop, windows, macos | [2601.07181](https://arxiv.org/abs/2601.07181) (2026) | code Apache-2.0 | Desktop agent that records demonstrations, derives semantic action traces, and uses them to plan and execute related workflows. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/showlab/ShowUI-Aloha/HEAD/README.md) |
-| [UI-TARS Desktop](https://github.com/bytedance/UI-TARS-desktop) | desktop, web | — | code Apache-2.0 | Desktop application for running GUI agents. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/bytedance/UI-TARS-desktop/HEAD/README.md) |
+| [UI-TARS Desktop](https://github.com/bytedance/UI-TARS-desktop) | desktop, web | — | code Apache-2.0 | Desktop app for a local GUI agent driven by UI-TARS and Seed-1.5-VL/1.6 models, offering local and remote operators for computers and browsers; the repository also ships the Agent TARS CLI and web UI. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/bytedance/UI-TARS-desktop/HEAD/README.md) |
 
 ## Frameworks
 
@@ -41,10 +41,10 @@
 | --- | --- | --- | --- | --- | --- |
 | [Agent Workflow Memory implementation](https://github.com/zorazrw/agent-workflow-memory) | web | [2409.07429](https://arxiv.org/abs/2409.07429) (2024) | code Apache-2.0 | Research code that extracts reusable browser-task routines from demonstrations or prior executions, stores them as workflow memory and reuses them during subsequent navigation. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/zorazrw/agent-workflow-memory/HEAD/README.md) |
 | [CHOP](https://github.com/Yuqi-Zhou/CHOP) | android, harmonyos | [2503.03743](https://arxiv.org/abs/2503.03743) (2025) | code MIT | Mobile automation framework that uses reusable basis subtasks to constrain and refine planning between user goals and executable actions. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/Yuqi-Zhou/CHOP/HEAD/README.md) |
-| [Computer Use OOTB](https://github.com/showlab/computer_use_ootb) | desktop | — | code Apache-2.0 | Computer-use agent execution toolkit. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/showlab/computer_use_ootb/HEAD/README.md) |
-| [Cua](https://github.com/trycua/cua) | desktop | — | code MIT | Infrastructure and libraries for computer-use agents. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/trycua/cua/HEAD/README.md) |
-| [Skyvern](https://github.com/Skyvern-AI/skyvern) | web | — | — | Visual browser workflow automation framework. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/Skyvern-AI/skyvern/HEAD/README.md) |
-| [Surfkit](https://github.com/agentsea/surfkit) | desktop | — | code MIT | Toolkit for building and deploying computer-use agents. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/agentsea/surfkit/HEAD/README.md) |
+| [Computer Use OOTB](https://github.com/showlab/computer_use_ootb) | desktop | — | code Apache-2.0 | Gradio desktop GUI agent for Windows and macOS that needs no Docker, using Claude 3.5 Computer Use over the API or ShowUI and UI-TARS run locally, with multi-display and phone remote control. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/showlab/computer_use_ootb/HEAD/README.md) |
+| [Cua](https://github.com/trycua/cua) | desktop | — | code MIT | Monorepo behind Cua Spaces, which gives agents full macOS or Linux desktops, plus Cua Driver for operating native apps, Lume for Apple Silicon VMs, Cua Bench and the CUA-S1 decision models. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/trycua/cua/HEAD/README.md) |
+| [Skyvern](https://github.com/Skyvern-AI/skyvern) | web | — | — | Browser workflow automation that relies on vision LLMs and a swarm of agents instead of fixed XPath selectors, offered as a Playwright-compatible SDK and a no-code workflow builder. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/Skyvern-AI/skyvern/HEAD/README.md) |
+| [Surfkit](https://github.com/agentsea/surfkit) | desktop | — | code MIT | Python toolkit and CLI for building, publishing and running multimodal agents that operate devices such as Ubuntu desktops, locally or on Kubernetes, with task trackers and an agent hub. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/agentsea/surfkit/HEAD/README.md) |
 | [Work2Skill](https://github.com/china-qijizhifeng/Work2Skill) | desktop, macos, linux | [2610.12984](https://arxiv.org/abs/2610.12984) (2026) | code MIT | Collects human GUI demonstrations and inspects multimodal evidence to derive reusable agent workflow skills. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/china-qijizhifeng/Work2Skill/HEAD/README.md) |
 | [Workflow-Guided Exploration research code](https://github.com/stanfordnlp/wge) | web | [1802.08802](https://arxiv.org/abs/1802.08802) (2018) | code Apache-2.0 | Research code that learns browser-control policies by constraining exploration with workflows induced from demonstrations, with a Selenium-based MiniWoB environment and experiment harness. | [✓ 2026‑10‑17](https://raw.githubusercontent.com/stanfordnlp/wge/HEAD/README.md) |
 
@@ -52,13 +52,13 @@
 
 | Resource | Publisher | Environments | Description | Evidence |
 | --- | --- | --- | --- | --- |
-| [AskUI](https://www.askui.com/) | [AskUI](https://www.askui.com/) | desktop, web | Visual computer interaction and automation platform. | [✓ 2026‑10‑16](https://www.askui.com/) |
+| [AskUI](https://www.askui.com/) | [AskUI](https://www.askui.com/) | desktop, web | Agentic test-automation platform running plain-language test cases from pixels rather than selectors on desktop apps, Citrix, in-car head units and mobile devices, deployable on-premise or air-gapped. | [✓ 2026‑10‑16](https://www.askui.com/) |
 | [BrowserAct](https://www.browseract.com/) | [BrowserAct](https://www.browseract.com/) | web | Managed web scraping platform with reusable browser interaction workflows. | [✓ 2026‑10‑16](https://www.browseract.com/) |
 | [ChatGPT Agent](https://openai.com/index/introducing-chatgpt-agent/) | [OpenAI](https://openai.com/index/computer-using-agent/) | web, desktop | Hosted agent combining browser interaction, tools, and computer-based tasks. | [✓ 2026‑10‑16](https://openai.com/index/introducing-chatgpt-agent/) |
-| [Manus](https://manus.im/) | [Manus](https://manus.im/) | web | General agent platform with browser-based task execution. | [✓ 2026‑10‑16](https://manus.im/) |
+| [Manus](https://manus.im/) | [Manus](https://manus.im/) | web | Agent product that carries out tasks rather than only answering, such as making slides, websites, games and videos, offered as a web app with desktop and mobile apps, an API and Slack integration. | [✓ 2026‑10‑16](https://manus.im/) |
 | [Scribe](https://scribehow.com/) | — | desktop, web | Workflow recording and documentation product adjacent to agent data collection. | [✓ 2026‑10‑16](https://scribehow.com/) |
-| [Simular](https://www.simular.ai/) | [Simular](https://www.simular.ai/) | desktop | Computer-use products and research from Simular. | [✓ 2026‑10‑16](https://www.simular.ai/) |
-| [Skyvern Cloud](https://www.skyvern.com/) | [Skyvern](https://www.skyvern.com/) | web | Hosted visual browser workflow automation service. | [✓ 2026‑10‑16](https://www.skyvern.com/) |
+| [Simular](https://www.simular.ai/) | [Simular](https://www.simular.ai/) | desktop | Site of Simular, which builds Sai, an assistant that runs screen tasks on the user's device and on cloud computers, along with the open-source Agent S framework and an autonomous computer API. | [✓ 2026‑10‑16](https://www.simular.ai/) |
+| [Skyvern Cloud](https://www.skyvern.com/) | [Skyvern](https://www.skyvern.com/) | web | Hosted Skyvern service for AI browser workflows such as invoice downloads and form filling, with built-in CAPTCHA and 2FA handling, proxy geotargeting, run explanations and JSON or CSV output. | [✓ 2026‑10‑16](https://www.skyvern.com/) |
 
 ## Papers
 

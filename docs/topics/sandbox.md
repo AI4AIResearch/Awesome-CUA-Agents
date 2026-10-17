@@ -26,20 +26,20 @@ All entries in this section: web, desktop.
 | Resource | Environments | Paper | License | Description | Evidence |
 | --- | --- | --- | --- | --- | --- |
 | [Agent Infra Sandbox](https://github.com/agent-infra/sandbox) | desktop, web | — | code Apache-2.0 | Sandbox environments supporting computer and browser interaction. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/agent-infra/sandbox/HEAD/README.md) |
-| [AgentDesk](https://github.com/agentsea/agentdesk) | desktop | — | code MIT | Virtual desktop provisioning and control tools for agents. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/agentsea/agentdesk/HEAD/README.md) |
+| [AgentDesk](https://github.com/agentsea/agentdesk) | desktop | — | code MIT | Desktop environments that AI agents control programmatically, run locally with Docker or remotely on Kubernetes, built on the agentd REST daemon and offering a coordinate-grid overlay for LMM input. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/agentsea/agentdesk/HEAD/README.md) |
 | [AndroidEnv](https://github.com/google-deepmind/android_env) | android | [2105.13231](https://arxiv.org/abs/2105.13231) (2021) | code Apache-2.0 | Android device-control platform with screenshots, accessibility telemetry, input actions, and an optional reinforcement-learning task interface. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/google-deepmind/android_env/HEAD/README.md) |
-| [E2B Desktop](https://github.com/e2b-dev/desktop) | desktop, linux | — | code Apache-2.0 | Desktop sandboxes for computer-use agents. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/e2b-dev/desktop/HEAD/README.md) |
+| [E2B Desktop](https://github.com/e2b-dev/desktop) | desktop, linux | — | code Apache-2.0 | Open-source, isolated Linux Xfce desktop sandboxes for computer-use agents, driven from Python or JavaScript SDKs with screen streaming, mouse, keyboard and window control, screenshots and shell. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/e2b-dev/desktop/HEAD/README.md) |
 | [Lume](https://github.com/trycua/lume) | desktop, macos, linux | — | code MIT | Virtual machine management for local computer-use environments. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/trycua/lume/HEAD/README.md) |
 | [ScienceBoard VMware environment](https://huggingface.co/OS-Copilot/ScienceBoard-Env) | linux, desktop | [2505.19897](https://arxiv.org/abs/2505.19897) (2025) | — | A prebuilt Ubuntu virtual-machine archive containing the software environment used for ScienceBoard scientific computer-use tasks. | [✓ 2026‑10‑17](https://huggingface.co/OS-Copilot/ScienceBoard-Env/raw/main/README.md) |
-| [Steel Browser](https://github.com/steel-dev/steel-browser) | web | — | code Apache-2.0 | Browser infrastructure for agent applications. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/steel-dev/steel-browser/HEAD/README.md) |
+| [Steel Browser](https://github.com/steel-dev/steel-browser) | web | — | code Apache-2.0 | Open-source browser API managing Chrome sessions for agents, reachable through Puppeteer, Playwright or Selenium over CDP, with persisted cookies, proxy rotation, stealth and a session debugging UI. | [✓ 2026‑10‑16](https://raw.githubusercontent.com/steel-dev/steel-browser/HEAD/README.md) |
 
 ## Products
 
 | Resource | Publisher | Environments | Description | Evidence |
 | --- | --- | --- | --- | --- |
-| [Browserbase Cloud](https://www.browserbase.com/) | [Browserbase](https://www.browserbase.com/) | web | Managed browser infrastructure for agent applications. | [✓ 2026‑10‑16](https://www.browserbase.com/) |
-| [Browserless](https://www.browserless.io/) | [Browserless](https://www.browserless.io/) | web | Hosted browser infrastructure for automation applications. | [✓ 2026‑10‑16](https://www.browserless.io/) |
-| [E2B](https://e2b.dev/) | [E2B](https://e2b.dev/) | desktop | Sandbox infrastructure for executing agent workloads. | [✓ 2026‑10‑16](https://e2b.dev/) |
+| [Browserbase Cloud](https://www.browserbase.com/) | [Browserbase](https://www.browserbase.com/) | web | Cloud browser platform for agents that pairs browser sessions with Search, Fetch and agent APIs, identity and observability tools, and the open-source Stagehand framework and Browse CLI. | [✓ 2026‑10‑16](https://www.browserbase.com/) |
+| [Browserless](https://www.browserless.io/) | [Browserless](https://www.browserless.io/) | web | Headless-browser service for automation and AI agents, reached via Puppeteer, Playwright, HTTP APIs or an MCP server, with stealth, CAPTCHA solving, reusable logged-in profiles and self-hosting. | [✓ 2026‑10‑16](https://www.browserless.io/) |
+| [E2B](https://e2b.dev/) | [E2B](https://e2b.dev/) | desktop | Agent cloud giving each agent session its own Firecracker microVM with shell, filesystem, browser and network, for coding, computer use, background jobs and RL rollouts, in E2B's or the user's cloud. | [✓ 2026‑10‑16](https://e2b.dev/) |
 | [Hyperbrowser](https://www.hyperbrowser.ai/) | [Hyperbrowser](https://www.hyperbrowser.ai/) | web | Browser infrastructure and automation services for AI agents. | [✓ 2026‑10‑16](https://www.hyperbrowser.ai/) |
 | [Steel Cloud](https://steel.dev/) | [Steel](https://steel.dev/) | web | Managed browser infrastructure associated with Steel Browser. | [✓ 2026‑10‑16](https://steel.dev/) |
 
