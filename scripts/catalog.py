@@ -272,21 +272,27 @@ def harvest(args):
         batch = ids[start:start + 50]
         url = "https://export.arxiv.org/api/query?" + urllib.parse.urlencode({"id_list": ",".join(batch), "max_results": len(batch)})
         info, body = fetch(url, args.refresh)
-        got = set()
+        got, invalid = set(), {}
         if info["ok"]:
             try:
                 root = ET.fromstring(body)
                 if root.tag != '{http://www.w3.org/2005/Atom}feed':
                     raise ValueError('arXiv response is not an Atom feed')
                 for entry in root.findall("{http://www.w3.org/2005/Atom}entry"):
-                    row = arxiv_entry(entry, {k: info[k] for k in ("url", "retrieved_at", "sha256")})
+                    try:
+                        row = arxiv_entry(entry, {k: info[k] for k in ("url", "retrieved_at", "sha256")})
+                    except ValueError as error:
+                        parsed = canonical(entry.findtext("{http://www.w3.org/2005/Atom}id", ""))
+                        if parsed and parsed[2] == "arxiv":
+                            invalid[parsed[0].split(":", 1)[1]] = f"invalid Atom entry: {error}"
+                        continue
                     if row and row["id"].split(":", 1)[1] in batch:
                         consider_paper(row, records, proposals, info['retrieved_at'])
                         got.add(row["id"].split(":", 1)[1])
             except (ET.ParseError, ValueError) as error:
                 info["error"] = str(error)
         for aid in sorted(set(batch) - got):
-            failures.append({"id": f"arxiv:{aid}", "checked_at": info["retrieved_at"], "error": info.get("error", "identifier absent from API response")})
+            failures.append({"id": f"arxiv:{aid}", "checked_at": info["retrieved_at"], "error": invalid.get(aid) or info.get("error", "identifier absent from API response")})
         print(f"arXiv {start + 1}-{start + len(batch)}/{len(ids)}: {len(got)} metadata records", flush=True)
         write_jsonl(DATA / "papers.jsonl", records.values())
         write_jsonl(DATA / "metadata-updates.jsonl", proposals.values())
@@ -325,9 +331,14 @@ def search_arxiv(args):
         except (ET.ParseError,ValueError) as error:
             pages.append({**info, "ok": False, "error": str(error)})
             break
-        pages.append({**info, "start": start, "returned": len(entries)})
+        page = {**info, "start": start, "returned": len(entries)}
+        pages.append(page)
         for entry in entries:
-            row = arxiv_entry(entry, {k: info[k] for k in ("url", "retrieved_at", "sha256")})
+            try:
+                row = arxiv_entry(entry, {k: info[k] for k in ("url", "retrieved_at", "sha256")})
+            except ValueError as error:
+                page.setdefault("entry_errors", []).append({"id": " ".join(entry.findtext("{http://www.w3.org/2005/Atom}id", "").split()), "error": str(error)})
+                continue
             if not row:
                 continue
             rid = row["id"]
@@ -346,7 +357,7 @@ def search_arxiv(args):
         if start < min(total, ceiling):
             time.sleep(3.1)
     write_json(DATA / "arxiv-search.json", {"id": "arxiv-title-search", "query": query, "cutoff_utc": cutoff,
-        "reported_total": total, "unique_returned": len(seen), "complete": total is not None and len(seen) == total and bool(pages) and all(page.get('ok') for page in pages),
+        "reported_total": total, "unique_returned": len(seen), "complete": total is not None and len(seen) == total and bool(pages) and all(page.get('ok') and not page.get('entry_errors') for page in pages),
         "pages": pages, "warning": "A title query is a discovery population, not the whole field. Search results are metadata-verified, not editorially curated."})
 
 
