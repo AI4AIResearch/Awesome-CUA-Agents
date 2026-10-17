@@ -1,4 +1,4 @@
-import { KIND_ORDER, PAGE_SIZE, FACT_LABELS, TOPIC_ALIASES, createRecordLoader, bibliographicDate, compactFacts, initials, matches, filtered, parseState, serializeState, searchText, escapeHTML as e, safeURL, formatDate, formatFact } from './catalog-core.js';
+import { KIND_ORDER, PAGE_SIZE, FACT_LABELS, TOPIC_ALIASES, createRecordLoader, bibliographicDate, compactFacts, initials, matches, filtered, pageWindow, parseState, serializeState, searchText, escapeHTML as e, safeURL, formatDate, formatFact } from './catalog-core.js';
 
 const TEXT = {
   en: {
@@ -25,6 +25,8 @@ Object.assign(TEXT.en, {agentEyebrow:'DATA FOR PEOPLE & AGENTS',agentTitle:'Clon
 Object.assign(TEXT.zh, {agentEyebrow:'给人阅读，也给 AGENTS 使用',agentTitle:'克隆完整目录，接入你的工作。',agentCopy:'本地检索、构建 RAG，或让 Agent 继续探索。来源、引用和审阅状态随数据一起保留。',agentGuide:'Agents 与 RAG 使用指南',copyCommand:'复制克隆命令',commandCopied:'克隆命令已复制',commandCopyFailed:'请选择上方命令并复制。',ragReviewed:'RAG 文档 · 已审阅',ragReviewedCopy:'每项已审阅资源对应一份检索文档，保留引用和来源。',ragAll:'RAG 文档 · 全部记录',ragAllCopy:'包含全部当前记录，并明确保留待审阅论文的状态。'});
 Object.assign(TEXT.en,{topicDirectory:'Browse topics'});
 Object.assign(TEXT.zh,{topicDirectory:'浏览主题'});
+Object.assign(TEXT.en,{pageNumber:'Page %s'});
+Object.assign(TEXT.zh,{pageNumber:'第 %s 页'});
 const CLONE_COMMAND = 'git clone https://github.com/reacher-z/Awesome-CUA.git';
 Object.assign(TEXT.en,{publicationBib:'Publication editions · BibTeX',publicationBibCopy:'Reviewed publication editions with their own title, authors, venue and date.',publicationCSL:'Publication editions · CSL JSON',publicationCSLCopy:'Source-backed publication metadata with its original date precision.'});
 Object.assign(TEXT.zh,{publicationBib:'出版版引用 · BibTeX',publicationBibCopy:'已审阅出版版，保留该版本的题名、作者、会议／期刊和日期。',publicationCSL:'出版版引用 · CSL JSON',publicationCSLCopy:'有来源可查的出版元数据，保留原日期精度。'});
@@ -107,7 +109,7 @@ function render() {
   $('#results').setAttribute('aria-busy','false');$('#empty').hidden=result.length!==0;
   $('#clear-filters').hidden=![state.q,state.kind,state.platform,state.review,state.topic,state.year].some(Boolean);
   $('#pagination').hidden=result.length===0;
-  $('#pagination').innerHTML=`<button type="button" data-page="${state.page-1}" ${state.page===1?'disabled':''}>${e(t('previous'))}</button><span>${e(t('pageOf').replace('{page}',state.page).replace('{pages}',pages))}</span><button type="button" data-page="${state.page+1}" ${state.page===pages?'disabled':''}>${e(t('next'))}</button>`;
+  $('#pagination').innerHTML=`<button type="button" data-page="${state.page-1}" ${state.page===1?'disabled':''}>${e(t('previous'))}</button><span class="page-numbers">${pageWindow(state.page,pages).map(n=>n===null?'<span class="page-gap" aria-hidden="true">…</span>':`<button type="button" data-page="${n}" aria-label="${e(t('pageNumber').replace('%s',n))}"${n===state.page?' aria-current="page"':''}>${n}</button>`).join('')}</span><button type="button" data-page="${state.page+1}" ${state.page===pages?'disabled':''}>${e(t('next'))}</button>`;
 }
 function denseRow(r) {
   const reviewed=r.review_status==='curated',isPaper=['paper','survey'].includes(r.kind);
