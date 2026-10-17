@@ -147,7 +147,7 @@ test('related records opened inside the dialog start at the top with focus on th
   const clicks=[],doc={documentElement:{},body:{classList:{toggle(){}}},addEventListener(type,fn){if(type==='click')clicks.push(fn);},querySelectorAll:()=>[]};
   const elements=new Map(),element=selector=>{if(!elements.has(selector))elements.set(selector,{dataset:{},classList:{toggle(){}},open:false,addEventListener(){},setAttribute(){},focus(){doc.activeElement=this;},showModal(){this.open=true;},close(){this.open=false;}});return elements.get(selector);};
   doc.querySelector=element;
-  const globals={document:doc,window:{addEventListener(){}},location:{search:'',pathname:'/',hash:''},history:{replaceState(){}},localStorage:{getItem:()=>null,setItem(){}},fetch:async url=>({ok:true,json:async()=>url.endsWith('record.json')?full(records.find(r=>url===r.page_url+'record.json')):{coverage,records:structuredClone(records)}})};
+  const globals={document:doc,window:{addEventListener(){}},location:{search:'',pathname:'/',hash:''},history:{state:null,pushState(){},replaceState(){}},localStorage:{getItem:()=>null,setItem(){}},fetch:async url=>({ok:true,json:async()=>url.endsWith('record.json')?full(records.find(r=>url===r.page_url+'record.json')):{coverage,records:structuredClone(records)}})};
   const settle=()=>new Promise(resolve=>setImmediate(resolve));
   const open=async(id,tagName)=>{for(const listener of clicks)listener({target:{closest:selector=>selector==='[data-record]'?{tagName,dataset:{record:id}}:null},button:0,preventDefault(){}});await settle();};
   try {
