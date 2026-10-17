@@ -42,12 +42,12 @@ def now():
 
 
 def read_json(path, default=None):
-    return json.loads(path.read_text()) if path.exists() else default
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else default
 
 
 def read_jsonl(path):
     rows = []
-    for number, line in enumerate(path.read_text().splitlines() if path.exists() else [], 1):
+    for number, line in enumerate(path.read_text(encoding="utf-8").splitlines() if path.exists() else [], 1):
         if line.strip():
             try:
                 rows.append(json.loads(line))
@@ -58,12 +58,12 @@ def read_jsonl(path):
 
 def write_json(path, value):
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n")
+    path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 def write_jsonl(path, rows):
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text("".join(json.dumps(r, ensure_ascii=False, sort_keys=True) + "\n" for r in sorted(rows, key=lambda r: r["id"])))
+    path.write_text("".join(json.dumps(r, ensure_ascii=False, sort_keys=True) + "\n" for r in sorted(rows, key=lambda r: r["id"])), encoding="utf-8")
 
 
 def retry_delay(error, attempt):
@@ -711,4 +711,6 @@ def main(argv=None):
 
 
 if __name__ == "__main__":
+    # Catalog text is UTF-8; print it as such even where the locale encoding cannot represent it.
+    sys.stdout.reconfigure(encoding="utf-8")
     raise SystemExit(main())

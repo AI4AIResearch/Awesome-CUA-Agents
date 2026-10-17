@@ -32,7 +32,7 @@ def counts():
 def stage(name,command,timeout=600):
     started=now()
     try:
-        result=subprocess.run([sys.executable,*command],cwd=ROOT,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=timeout)
+        result=subprocess.run([sys.executable,*command],cwd=ROOT,encoding='utf-8',errors='replace',stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=timeout)
         print(result.stdout[-6000:],flush=True)
         return {'name':name,'started_at':started,'finished_at':now(),'ok':result.returncode==0,'exit_code':result.returncode,
             'error':result.stdout[-1600:] if result.returncode else None}
@@ -181,7 +181,7 @@ def run_scan():
     print(summary)
     summary_file=os.getenv('GITHUB_STEP_SUMMARY')
     if summary_file:
-        with open(summary_file,'a') as f:
+        with open(summary_file,'a',encoding='utf-8') as f:
             f.write('## AwesomeCUA scan\n\n'+summary+'\n\n'+f'Scheduled at {", ".join(config["scan_times_local"])} {config["timezone"]}.\n\n')
             f.write('\n'.join('- '+p for p in problems)+'\n')
     return 1 if status=='failed' else 0

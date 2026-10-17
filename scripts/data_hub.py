@@ -56,7 +56,7 @@ def byte_size(value):
 
 
 def line_count(path, *, prefix=None):
-    with Path(path).open() as stream:
+    with Path(path).open(encoding='utf-8') as stream:
         if prefix is None:
             return sum(1 for line in stream if line.strip())
         return sum(1 for line in stream if line.startswith(prefix))
@@ -70,7 +70,7 @@ def build_download_manifest(destination, rows, catalog_bytes):
     if len(expected_records) != len(rows) or len(source_records) != len(rows) or {row['id']: row for row in source_records} != expected_records:
         raise ValueError('Source catalog bytes differ from the supplied records')
     artifacts = []
-    def read_json(path): return json.loads((destination / path.lstrip('/')).read_text())
+    def read_json(path): return json.loads((destination / path.lstrip('/')).read_text(encoding='utf-8'))
     def add(identity, path, group, title, description, file_format, media_type, count, unit, scope):
         target = destination / path.lstrip('/')
         if not target.is_file() or target.is_symlink():
@@ -196,7 +196,7 @@ def build_download_manifest(destination, rows, catalog_bytes):
                 'count_policy': 'Each count retains its own unit and scope. Artifact populations overlap and must not be added together.',
                 'fingerprint_policy': 'SHA-256 and byte size refer to the exact uncompressed file bytes. The manifest does not hash itself.',
                 'artifacts': artifacts}
-    (destination / 'downloads/manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
+    (destination / 'downloads/manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     return manifest
 
 

@@ -36,8 +36,8 @@ def compact_facts(row):
 
 def build_site(output=None):
     destination=Path(output) if output else ROOT/'dist'/'site'
-    rows=[json.loads(line) for line in (ROOT/'data/catalog.jsonl').read_text().splitlines() if line.strip()]
-    coverage=json.loads((ROOT/'data/coverage.json').read_text())
+    rows=[json.loads(line) for line in (ROOT/'data/catalog.jsonl').read_text(encoding='utf-8').splitlines() if line.strip()]
+    coverage=json.loads((ROOT/'data/coverage.json').read_text(encoding='utf-8'))
     errors=validate_records(rows)
     if errors:raise ValueError('\n'.join(errors[:10]))
     if len(rows)!=coverage['total_records']:raise ValueError('Catalog/coverage count mismatch; rebuild catalog first.')
@@ -66,7 +66,7 @@ def build_site(output=None):
         'publication_search_text':publication_search_text(row),
         'related_count':len(related[row['id']]),'incoming_relations':incoming[row['id']],**compact_facts(row)} for row in rows]}
     for filename,payload in [('index.json',index),('records.json',rows)]:
-        (destination/'data'/filename).write_text(json.dumps(payload,ensure_ascii=False,separators=(',',':'))+'\n')
+        (destination/'data'/filename).write_text(json.dumps(payload,ensure_ascii=False,separators=(',',':'))+'\n',encoding='utf-8')
     for name in ['catalog.jsonl','coverage.json','sources.json']:
         shutil.copy2(ROOT/'data'/name,destination/'downloads'/name)
     shutil.copy2(ROOT/'data/exclusion-status.json',destination/'downloads/exclusions.json')
@@ -79,11 +79,13 @@ def build_site(output=None):
     for name in ('paper-discovery-queries.json','paper-discovery-status.json','conference-discovery.json'):
         if (ROOT/'data'/name).exists():shutil.copy2(ROOT/'data'/name,destination/'downloads'/name)
     shutil.copy2(ROOT/'LICENSE',destination/'LICENSE')
-    (destination/'.nojekyll').write_text('')
+    (destination/'.nojekyll').write_text('',encoding='utf-8')
     manifest=build_search_pages(destination,rows,coverage,ROOT)
     reconcile_generated_pages(destination,manifest)
     print(f'Built {len(rows):,} searchable resources and {sum(x["indexable"] for x in manifest)} indexable HTML pages → {destination}')
     return destination
 
 
-if __name__=='__main__':build_site(sys.argv[1] if len(sys.argv)>1 else None)
+if __name__=='__main__':
+    sys.stdout.reconfigure(encoding='utf-8')
+    build_site(sys.argv[1] if len(sys.argv)>1 else None)
