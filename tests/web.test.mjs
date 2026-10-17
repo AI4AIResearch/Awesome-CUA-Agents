@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {normalize,matches,filtered,parseState,serializeState,escapeHTML,safeURL,PAGE_SIZE} from '../web/catalog-core.js';
+import {FEATURED} from '../web/catalog-core.js';
 
 const rows=readFileSync(new URL('../data/catalog.jsonl',import.meta.url),'utf8').trim().split('\n').map(JSON.parse);
 rows.forEach(r=>r.search_text=normalize([r.name,r.summary,...r.aliases,...r.authors,...r.topics,...r.environments].join(' ')));
@@ -100,4 +101,23 @@ test('failed, mismatched, or scope-excluded detail payloads are not cached as ac
     let calls=0;const load=createRecordLoader(async()=>++calls===1?bad:{ok:true,json:async()=>({id:record.id,review_status:'curated'})});
     await assert.rejects(load(record));assert.equal((await load(record)).id,record.id);assert.equal(calls,2);
   }
+});
+test('sorting keeps the previous order without a collator or query normalization per comparison',()=>{
+  const alpha=(a,b)=>a.name.localeCompare(b.name,'en',{sensitivity:'base'}),newer=(a,b)=>(b.published_at || '').localeCompare(a.published_at || '');
+  const legacy=state=>{
+    const result=rows.filter(r=>matches(r,state)),rank=r=>r.kind!=='company'&&FEATURED.includes(r.name)?FEATURED.indexOf(r.name):FEATURED.length,exact=r=>state.q&&normalize(r.name)===normalize(state.q)?-1:0;
+    if(state.sort==='name')return result.sort(alpha);
+    if(state.sort==='newest')return result.sort((a,b)=>newer(a,b)||alpha(a,b));
+    return result.sort((a,b)=>Number(a.review_status!=='curated')-Number(b.review_status!=='curated')||(['paper','survey'].includes(state.kind)?newer(a,b)||alpha(a,b):exact(a)-exact(b)||rank(a)-rank(b)||alpha(a,b)));
+  };
+  for(const sort of ['featured','name','newest'])for(const q of ['','g','browser use'])for(const kind of ['','paper']){
+    const state={...initial(),sort,q,kind};
+    assert.deepEqual(filtered(rows,state).map(r=>r.id),legacy(state).map(r=>r.id),JSON.stringify(state));
+  }
+  const {normalize:nativeNormalize,localeCompare}=String.prototype;let normalized=0,collated=0;
+  String.prototype.normalize=function(...args){normalized++;return nativeNormalize.apply(this,args);};
+  String.prototype.localeCompare=function(...args){collated++;return localeCompare.apply(this,args);};
+  try{for(const sort of ['featured','name','newest'])filtered(rows,{...initial(),sort,q:'g'});}finally{String.prototype.normalize=nativeNormalize;String.prototype.localeCompare=localeCompare;}
+  assert.equal(collated,0);
+  assert.ok(normalized<=5*rows.length,`${normalized} normalizations for ${rows.length} records`);
 });

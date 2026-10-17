@@ -18,19 +18,21 @@ export function matches(record, state, ignoreKind = false) {
   const terms = normalize(state.q).split(' ').filter(Boolean);
   return terms.every(term => record.search_text.includes(term));
 }
+const collator = new Intl.Collator('en',{sensitivity:'base'});
+const FEATURED_RANK = new Map(FEATURED.map((name,i) => [name,i]));
+const alpha = (a,b) => collator.compare(a.name,b.name);
+// published_at is an ISO date, so code-unit order is chronological and avoids a locale comparison per call.
+const newer = (a,b) => {const x=a.published_at || '', y=b.published_at || ''; return x<y ? 1 : x>y ? -1 : 0;};
 export function filtered(records, state) {
   const result = records.filter(r => matches(r,state));
-  const alpha = (a,b) => a.name.localeCompare(b.name,'en',{sensitivity:'base'});
   if (state.sort === 'name') result.sort(alpha);
-  else if (state.sort === 'newest') result.sort((a,b) => (b.published_at || '').localeCompare(a.published_at || '') || alpha(a,b));
-  else result.sort((a,b) => {
-    const review = Number(a.review_status !== 'curated') - Number(b.review_status !== 'curated');
-    if (review) return review;
-    if (['paper','survey'].includes(state.kind)) return (b.published_at || '').localeCompare(a.published_at || '') || alpha(a,b);
-    const rank = r => r.kind !== 'company' && FEATURED.includes(r.name) ? FEATURED.indexOf(r.name) : FEATURED.length;
-    const exact = r => state.q && normalize(r.name) === normalize(state.q) ? -1 : 0;
-    return exact(a)-exact(b) || rank(a)-rank(b) || alpha(a,b);
-  });
+  else if (state.sort === 'newest') result.sort((a,b) => newer(a,b) || alpha(a,b));
+  else {
+    const papers = ['paper','survey'].includes(state.kind), q = normalize(state.q);
+    const exact = new Set(state.q ? result.filter(r => normalize(r.name) === q) : []);
+    const rank = r => r.kind !== 'company' && FEATURED_RANK.has(r.name) ? FEATURED_RANK.get(r.name) : FEATURED.length;
+    result.sort((a,b) => Number(a.review_status !== 'curated') - Number(b.review_status !== 'curated') || (papers ? newer(a,b) || alpha(a,b) : exact.has(b)-exact.has(a) || rank(a)-rank(b) || alpha(a,b)));
+  }
   return result;
 }
 export function parseState(search) {
