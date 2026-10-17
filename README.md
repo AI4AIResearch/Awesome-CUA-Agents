@@ -6,7 +6,7 @@
 
 **A source-backed data catalog for computer-use, GUI, browser, and mobile agents.**
 
-[Highlights](#highlights) · [Explore](#explore) · [Use the data](#use-the-data) · [Website](https://awesomecua.github.io/) · [GitHub organization](https://github.com/AwesomeCUA) · [简体中文](README.zh-CN.md) · [Coverage ledger](docs/coverage.md) · [Contribute](CONTRIBUTING.md)
+[Highlights](#highlights) · [Recently reviewed](#recently-reviewed) · [Explore](#explore) · [Use the data](#use-the-data) · [Website](https://awesomecua.github.io/) · [GitHub organization](https://github.com/AwesomeCUA) · [简体中文](README.zh-CN.md) · [Coverage ledger](docs/coverage.md) · [Contribute](CONTRIBUTING.md)
 
 **For people, RAG systems, and agents — clone the complete catalog:**
 
@@ -103,6 +103,27 @@ The most-mentioned curated resources per category: the count is how many other c
 | [Open-AutoGLM](https://github.com/zai-org/Open-AutoGLM) | 1 | android, ios | — | code Apache-2.0 | Phone agent model and framework with device interaction tooling. |
 
 <!-- HIGHLIGHTS:END -->
+
+## Recently reviewed
+
+Newest editorial approvals of models, datasets, benchmarks, systems, and tools (newest first). New papers appear by date in the [topic hubs](docs/topics.md).
+
+<!-- RECENT:START -->
+| Reviewed | Resource | Kind | Environments | Description |
+| --- | --- | --- | --- | --- |
+| 2026-10-17 | [WebRewardBench](https://huggingface.co/datasets/LangAGI-Lab/WebRewardBench) | benchmark | web | An offline preference-evaluation set for web process reward models, pairing page and trajectory context with preferred and rejected candidate decisions. |
+| 2026-10-17 | [WebPRM Collection preference data](https://huggingface.co/datasets/LangAGI-Lab/WebPRMCollection_preference_pair) | dataset | web | Checklist-annotated web decision records with page observations, prior actions, one preferred continuation and rejected alternatives for process-reward learning. |
+| 2026-10-17 | [Go-Browse-WA processed data](https://huggingface.co/datasets/apurvaga/go-browse-wa) | dataset | web | Flattened web-interaction training records with accessibility-tree observations, assistant completions, trajectory rewards and step-link metadata. |
+| 2026-10-17 | [Go-Browse WebArena Qwen 7B](https://huggingface.co/apurvaga/go-browse-wa-qwen-7B) | model | web | A Qwen-2.5-7B-Instruct checkpoint fine-tuned on Go-Browse WebArena trajectories for website task execution. |
+| 2026-10-17 | [WebShepherd 3B](https://huggingface.co/LangAGI-Lab/WebShepherd_3B) | model | web | A public text-based process-reward checkpoint from the Web-Shepherd collection for scoring web-agent decisions against task checklists. |
+| 2026-10-17 | [Web-Shepherd inference and evaluation](https://github.com/kyle8581/Web-Shepherd) | tool | web | Process-reward inference and benchmark-evaluation utilities that use task checklists to assess individual web-agent decisions. |
+| 2026-10-17 | [SkillWeaver](https://github.com/OSU-NLP-Group/SkillWeaver) | framework | web | A web-agent framework that explores sites, synthesizes reusable interaction APIs and builds a skill library for later tasks. |
+| 2026-10-17 | [ShowUI-π checkpoint](https://huggingface.co/showlab/ShowUI-pi) | model | unspecified | A compact visual-action checkpoint that predicts continuous GUI drag trajectories from a screenshot and a natural-language instruction. |
+| 2026-10-17 | [ScaleCUA 7B](https://huggingface.co/OpenGVLab/ScaleCUA-7B) | model | web, desktop, android, linux | A Qwen2.5-VL-based computer-use checkpoint with direct grounding and agent action modes across desktop, mobile and web interfaces. |
+| 2026-10-17 | [RedTeamCUA](https://github.com/OSU-NLP-Group/RedTeamCUA) | framework | web, desktop | A controlled testing framework that combines desktop virtual machines and replicated websites to evaluate computer-use agents against indirect prompt injection. |
+| 2026-10-17 | [Holo1 7B](https://huggingface.co/Hcompany/Holo1-7B) | model | web | A Qwen2.5-VL-based action model released for the Surfer-H web-agent system, supporting policy, interface-localization and validation roles. |
+| 2026-10-17 | [Go-Browse](https://github.com/ApGa/Go-Browse) | framework | web | Structured website-exploration and data-processing code that revisits discovered pages, proposes tasks and collects trajectories for web-agent fine-tuning. |
+<!-- RECENT:END -->
 
 ## Use the data
 
