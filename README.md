@@ -1,7 +1,7 @@
 # Awesome Computer-Use Agents
 
 <!-- BADGES:START -->
-[![Resources](https://img.shields.io/badge/resources-2%2C036-4f46e5)](data/catalog.jsonl) [![Curated](https://img.shields.io/badge/source--reviewed-842-0e8a16)](docs/coverage.md) [![Evidence](https://img.shields.io/badge/evidence%20through-2026--10--17-1d76db)](docs/coverage.md) [![Catalog quality](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml/badge.svg)](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml) [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![Website](https://img.shields.io/badge/website-awesomecua.github.io-6366f1)](https://awesomecua.github.io/)
+[![Resources](https://img.shields.io/badge/resources-2%2C545-4f46e5)](data/catalog.jsonl) [![Curated](https://img.shields.io/badge/source--reviewed-996-0e8a16)](docs/coverage.md) [![Evidence](https://img.shields.io/badge/evidence%20through-2026--10--17-1d76db)](docs/coverage.md) [![Catalog quality](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml/badge.svg)](https://github.com/reacher-z/Awesome-CUA/actions/workflows/catalog.yml) [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![Website](https://img.shields.io/badge/website-awesomecua.github.io-6366f1)](https://awesomecua.github.io/)
 <!-- BADGES:END -->
 
 **A source-backed data catalog for computer-use, GUI, browser, and mobile agents.**
@@ -33,11 +33,11 @@ Evidence through `2026-10-17T07:57:59Z`. 1,549 records have bibliographic verifi
 <!-- EXPLORE:START -->
 | Research and training | Engineering and industry |
 | --- | --- |
-| [Research bibliography](docs/papers.md) · **489** reviewed of 1,694 | [Agents](docs/agents.md) · **30** |
-| [Surveys](docs/surveys.md) · **11** | [Frameworks](docs/frameworks.md) · **47** |
-| [Datasets](docs/datasets.md) · **62** | [Infrastructure](docs/infrastructures.md) · **12** |
-| [Benchmarks](docs/benchmarks.md) · **65** | [Tools](docs/tools.md) · **12** |
-| [Models and checkpoint releases](docs/models.md) · **79** | [Products](docs/products.md) · **19** · [Publishers and brands](docs/companies.md) · **16** |
+| [Research bibliography](docs/papers.md) · **604** reviewed of 2,164 | [Agents](docs/agents.md) · **31** |
+| [Surveys](docs/surveys.md) · **11** | [Frameworks](docs/frameworks.md) · **50** |
+| [Datasets](docs/datasets.md) · **73** | [Infrastructure](docs/infrastructures.md) · **14** |
+| [Benchmarks](docs/benchmarks.md) · **70** | [Tools](docs/tools.md) · **17** |
+| [Models and checkpoint releases](docs/models.md) · **91** | [Products](docs/products.md) · **19** · [Publishers and brands](docs/companies.md) · **16** |
 <!-- EXPLORE:END -->
 
 Coverage spans web, desktop, Android, iOS, Windows, macOS, Linux, and cross-platform work. Topics include grounding, screen understanding, planning, memory, long-horizon workflows, reinforcement learning, data generation, safety, robustness, and evaluation. Environment facets overlap; framework support is not assumed from a model's benchmark results.
@@ -47,18 +47,18 @@ Coverage spans web, desktop, Android, iOS, Windows, macOS, Linux, and cross-plat
 The most-mentioned curated resources per category: the count is how many other cataloged resources mention each one in their reviewed first-party source (README, model or dataset card). It reflects connectedness inside this catalog, not quality, popularity, or benchmark performance. Every category page lists all reviewed entries.
 
 <!-- HIGHLIGHTS:START -->
-**Benchmarks** · [all 65 →](docs/benchmarks.md)
+**Benchmarks** · [all 70 →](docs/benchmarks.md)
 
 | Resource | Mentioned by | Environments | Paper | License | Description |
 | --- | ---: | --- | --- | --- | --- |
-| [OSWorld](https://github.com/xlang-ai/OSWorld) | 19 | desktop, linux, windows, macos | [2404.07972](https://arxiv.org/abs/2404.07972) (2024) | code Apache-2.0 | Execution-based evaluation of agents performing tasks in real desktop environments. |
+| [OSWorld](https://github.com/xlang-ai/OSWorld) | 20 | desktop, linux, windows, macos | [2404.07972](https://arxiv.org/abs/2404.07972) (2024) | code Apache-2.0 | Execution-based evaluation of agents performing tasks in real desktop environments. |
 | [WebArena](https://github.com/web-arena-x/webarena) | 13 | web | [2307.13854](https://arxiv.org/abs/2307.13854) (2023) | code Apache-2.0 | Self-hosted web environments and tasks for evaluating autonomous web agents. |
+| [ScreenSpot Pro](https://github.com/likaixin2000/ScreenSpot-Pro-GUI-Grounding) | 8 | desktop, windows, macos, linux | — | code MIT | GUI grounding benchmark focused on professional high-resolution interfaces. |
+| [BrowserGym](https://github.com/ServiceNow/BrowserGym) | 7 | web | [2412.05467](https://arxiv.org/abs/2412.05467) (2024) | code Apache-2.0 | Unified interfaces for browser-agent tasks and benchmark environments. |
 | [VisualWebArena](https://github.com/web-arena-x/visualwebarena) | 7 | web | [2401.13649](https://arxiv.org/abs/2401.13649) (2024) | — | Visually grounded web tasks extending the WebArena evaluation setting. |
 | [AndroidWorld](https://github.com/google-research/android_world) | 6 | android | [2405.14573](https://arxiv.org/abs/2405.14573) (2024) | code Apache-2.0 | Android environment with programmatic task evaluation for mobile agents. |
-| [BrowserGym](https://github.com/ServiceNow/BrowserGym) | 6 | web | [2412.05467](https://arxiv.org/abs/2412.05467) (2024) | code Apache-2.0 | Unified interfaces for browser-agent tasks and benchmark environments. |
-| [ScreenSpot Pro](https://github.com/likaixin2000/ScreenSpot-Pro-GUI-Grounding) | 6 | desktop, windows, macos, linux | — | code MIT | GUI grounding benchmark focused on professional high-resolution interfaces. |
 
-**Models** · [all 79 →](docs/models.md)
+**Models** · [all 91 →](docs/models.md)
 
 | Resource | Mentioned by | Environments | Paper | License | Description |
 | --- | ---: | --- | --- | --- | --- |
@@ -69,33 +69,33 @@ The most-mentioned curated resources per category: the count is how many other c
 | [OS-Atlas](https://github.com/OS-Copilot/OS-Atlas) | 3 | cross-platform | [2410.23218](https://arxiv.org/abs/2410.23218) (2024) | code Apache-2.0 | Foundation action models and data for GUI interaction. |
 | [ShowUI](https://github.com/showlab/ShowUI) | 3 | cross-platform | [2411.17465](https://arxiv.org/abs/2411.17465) (2024) | code Apache-2.0 | Vision-language-action model for GUI interaction. |
 
-**Datasets** · [all 62 →](docs/datasets.md)
+**Datasets** · [all 73 →](docs/datasets.md)
 
 | Resource | Mentioned by | Environments | Paper | License | Description |
 | --- | ---: | --- | --- | --- | --- |
 | [ScreenSpot-Pro data](https://huggingface.co/datasets/likaixin/ScreenSpot-Pro) | 4 | desktop, windows, macos, linux | — | data mit | High-resolution professional interface screenshots and target annotations for evaluating instruction-based GUI localization. |
 | [GUI-Odyssey](https://github.com/OpenGVLab/GUI-Odyssey) | 3 | android | [2406.08451](https://arxiv.org/abs/2406.08451) (2024) | — | Cross-application mobile interaction trajectories. |
+| [GUIAct](https://huggingface.co/datasets/yiye2023/GUIAct) | 3 | web, android | [2406.11317](https://arxiv.org/abs/2406.11317) (2024) | — | Web and Android GUI action-instruction data, with single-step, multi-step and smartphone partitions. |
+| [GUIChat](https://huggingface.co/datasets/yiye2023/GUIChat) | 3 | unspecified | [2406.11317](https://arxiv.org/abs/2406.11317) (2024) | — | Conversational GUI supervision with text-rich images and bounding boxes, organized as single-turn questions and multi-turn dialogues. |
+| [GUIEnv-local](https://huggingface.co/datasets/yiye2023/GUIEnv) | 3 | web | [2406.11317](https://arxiv.org/abs/2406.11317) (2024) | — | The released local-supervision portion of GUIEnv, pairing webpage regions and text for OCR and GUI grounding. |
 | [OpenMobile-Data-v2](https://huggingface.co/datasets/OpenMobile-2/OpenMobile-Data-v2) | 3 | android, web | [2610.14157](https://arxiv.org/abs/2610.14157) (2026) | — | Mobile-agent supervision from emulator and simulator trajectories, plus executable tasks with starting states and success checks for reinforcement learning. |
-| [ScreenRef](https://huggingface.co/datasets/PrentisAI/ScreenRef) | 3 | desktop, web, android, linux | [2610.19100](https://arxiv.org/abs/2610.19100) (2026) | data other | GUI screenshots paired with localization instructions and targets, including absent-target examples; image access is gated under publisher terms. |
-| [CAGUI](https://huggingface.co/datasets/openbmb/CAGUI) | 2 | android | [2506.01391](https://arxiv.org/abs/2506.01391) (2025) | data cc-by-nc-4.0 | Mobile GUI data released by the OpenBMB team. |
-| [Dreamer V1 Data](https://huggingface.co/datasets/osunlp/Dreamer-V1-Data) | 2 | web | [2411.06559](https://arxiv.org/abs/2411.06559) (2024) | data cc-by-nc-sa-4.0 | Web-world-model training data with prompts, images, action descriptions, and responses, released with the WebDreamer project. |
 
-**Frameworks** · [all 47 →](docs/frameworks.md)
+**Frameworks** · [all 50 →](docs/frameworks.md)
 
 | Resource | Mentioned by | Environments | Paper | License | Description |
 | --- | ---: | --- | --- | --- | --- |
+| [Browser Use](https://github.com/browser-use/browser-use) | 7 | web | — | code MIT | Framework for browser interaction by AI agents. |
 | [AgentLab](https://github.com/ServiceNow/AgentLab) | 5 | web | [2412.05467](https://arxiv.org/abs/2412.05467) (2024) | code Apache-2.0 | Experiment framework for developing and evaluating browser agents. |
 | [Seg2Click](https://github.com/jcwang0602/Seg2Click) | 5 | cross-platform | [2610.16234](https://arxiv.org/abs/2610.16234) (2026) | code MIT | Training and inference implementation that predicts an executable-region mask and derives a GUI click from that mask. |
-| [Browser Use](https://github.com/browser-use/browser-use) | 4 | web | — | code MIT | Framework for browser interaction by AI agents. |
 | [OpenMobile-2 code](https://github.com/OpenMobile2/OpenMobile2-Code) | 3 | android, web | [2610.14157](https://arxiv.org/abs/2610.14157) (2026) | code Apache-2.0 | Evaluation adapters and training guidance for OpenMobile-2 across Android emulators and browser-rendered mobile simulation. |
+| [UI-Genie](https://github.com/Euphoria16/UI-Genie) | 3 | android | [2505.21496](https://arxiv.org/abs/2505.21496) (2025) | — | Training and evaluation code for a mobile-agent framework that iteratively generates trajectories using agent and reward-model feedback. |
 | [Computer Use OOTB](https://github.com/showlab/computer_use_ootb) | 2 | desktop | — | code Apache-2.0 | Computer-use agent execution toolkit. |
-| [DigiRL](https://github.com/DigiRL-agent/digirl) | 2 | android | [2406.11896](https://arxiv.org/abs/2406.11896) (2024) | code Apache-2.0 | Reinforcement learning for autonomous mobile device control. |
 
-**Agents** · [all 30 →](docs/agents.md)
+**Agents** · [all 31 →](docs/agents.md)
 
 | Resource | Mentioned by | Environments | Paper | License | Description |
 | --- | ---: | --- | --- | --- | --- |
-| [Mobile-Agent](https://github.com/X-PLUG/MobileAgent) | 5 | android, cross-platform | [2401.16158](https://arxiv.org/abs/2401.16158) (2024), [2406.01014](https://arxiv.org/abs/2406.01014) (2024), [2508.15144](https://arxiv.org/abs/2508.15144) (2025), [2602.16855](https://arxiv.org/abs/2602.16855) (2026) | code MIT | Mobile device agent family using visual interface interaction. |
+| [Mobile-Agent](https://github.com/X-PLUG/MobileAgent) | 8 | android, cross-platform | [2401.16158](https://arxiv.org/abs/2401.16158) (2024), [2406.01014](https://arxiv.org/abs/2406.01014) (2024), [2508.15144](https://arxiv.org/abs/2508.15144) (2025), [2602.16855](https://arxiv.org/abs/2602.16855) (2026) | code MIT | Mobile device agent family using visual interface interaction. |
 | [Agent S](https://github.com/simular-ai/Agent-S) | 2 | desktop | [2410.08164](https://arxiv.org/abs/2410.08164) (2024), [2504.00906](https://arxiv.org/abs/2504.00906) (2025) | code Apache-2.0 | Agent framework for general computer interaction. |
 | [AppAgent](https://github.com/TencentQQGYLab/AppAgent) | 1 | android | [2312.13771](https://arxiv.org/abs/2312.13771) (2023) | code MIT | Mobile app agent using exploration and reusable knowledge. |
 | [Auto-GUI / Auto-UI](https://github.com/cooelf/Auto-GUI) | 1 | android | [2309.11436](https://arxiv.org/abs/2309.11436) (2023) | code Apache-2.0 | Screenshot-based mobile agent implementation with training and inference code for chain-of-action prediction. |
