@@ -245,8 +245,9 @@ EVIDENCE_NOTE = "*Evidence* links the reviewed first-party snapshot and its retr
 KIND_COLUMNS = {
     None: (("Resource", "Environments", "Paper", "License", "Description", "Evidence"),
         "*Paper* lists reviewed `introduced_by`/`documented_by` arXiv relations with the arXiv submission year. *License* lists publisher declarations by scope (code, data, weights, document). " + EVIDENCE_NOTE),
-    "paper": (("Date", "Resource", "Environments", "Description", "Evidence"), "*Date* is the arXiv first-submission date; newest first. " + EVIDENCE_NOTE),
-    "survey": (("Date", "Resource", "Environments", "Description", "Evidence"), "*Date* is the arXiv first-submission date; newest first. " + EVIDENCE_NOTE),
+    # The arXiv abstract link is the reviewed source; its API receipt stays in data/catalog.jsonl.
+    "paper": (("Date", "Resource", "Environments", "Description"), "*Date* is the arXiv first-submission date; newest first. Each title links the reviewed arXiv record; API receipts are in `data/catalog.jsonl`."),
+    "survey": (("Date", "Resource", "Environments", "Description"), "*Date* is the arXiv first-submission date; newest first. Each title links the reviewed arXiv record; API receipts are in `data/catalog.jsonl`."),
     "product": (("Resource", "Publisher", "Environments", "Description", "Evidence"), "*Publisher* is a reviewed `published_by` relation. " + EVIDENCE_NOTE),
     "company": (("Resource", "Environments", "Description", "Evidence"), EVIDENCE_NOTE),
 }
@@ -261,6 +262,54 @@ def table_row(r, columns, by_id):
     return "| " + " | ".join(cells[column] for column in columns) + " |"
 
 
+TOPIC_LABELS = {"safety-security": "Safety and security", "cross-app": "Cross-app workflows", "human-in-the-loop": "Human-in-the-loop",
+    "long-horizon": "Long-horizon tasks", "ui-design": "UI design", "training-free": "Training-free methods", "self-reflection": "Self-reflection"}
+TOPIC_KINDS = [("benchmark", "Benchmarks"), ("dataset", "Datasets"), ("model", "Models"), ("agent", "Agents"), ("framework", "Frameworks"),
+    ("tool", "Tools"), ("infrastructure", "Infrastructure"), ("product", "Products"), ("company", "Publishers"), ("survey", "Surveys"), ("paper", "Papers")]
+
+
+def topic_label(topic):
+    return TOPIC_LABELS.get(topic, topic.replace("-", " ").capitalize())
+
+
+def topic_pages(rows):
+    """One generated hub per curated topic, listing every reviewed resource kind tagged with it."""
+    by_id = {r["id"]: r for r in rows}
+    tagged = collections.defaultdict(list)
+    for r in rows:
+        if r["review_status"] == "curated":
+            for topic in sorted(set(r["topics"])):
+                tagged[topic].append(r)
+    order = sorted(tagged, key=lambda t: (-len(tagged[t]), t))
+    files = {}
+    index = ["# Reviewed research by topic", "", "[Home](../README.md) · [Full arXiv bibliography](papers.md) · [Methodology](methodology.md)", "",
+        f"{sum(r['review_status'] == 'curated' for r in rows):,} source-reviewed resources across {len(order)} topics. Topic tags are catalog annotations from the editorial review, not author keywords; a resource appears under every topic it carries. Each hub lists benchmarks, data, models, systems, and papers together, newest papers first.", "",
+        "| Topic | All | Benchmarks | Datasets | Models | Systems | Papers | Newest reviewed paper |", "| --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |"]
+    for topic in order:
+        group = tagged[topic]
+        kinds = collections.Counter(r["kind"] for r in group)
+        papers = sorted((r for r in group if r["kind"] in {"paper", "survey"}), key=lambda r: (r.get("published_at") or "", r["name"]), reverse=True)
+        systems = sum(kinds[k] for k in ("agent", "framework", "tool", "infrastructure", "product", "company"))
+        newest = f"[{md(papers[0]['name'])}]({papers[0]['url']}) · {papers[0]['published_at'] or '—'}" if papers else "—"
+        cell = lambda n: f"{n:,}" if n else "·"
+        index.append(f"| [{topic_label(topic)}](topics/{topic}.md) | {len(group):,} | {cell(kinds['benchmark'])} | {cell(kinds['dataset'])} | {cell(kinds['model'])} | {cell(systems)} | {cell(len(papers))} | {newest} |")
+        lines = [f"# {topic_label(topic)}", "", f"[Home](../../README.md) · [All topics](../topics.md) · [Full arXiv bibliography](../papers.md)", "",
+            f"{len(group):,} source-reviewed resources tagged `{topic}`. Curated metadata, not a performance ranking; unknown facts are shown as —.", "",
+            "**Contents:** " + " · ".join(f"[{label} ({kinds[kind]})](#{label.lower()})" for kind, label in TOPIC_KINDS if kinds[kind]), ""]
+        for kind, label in TOPIC_KINDS:
+            members = [r for r in group if r["kind"] == kind]
+            if not members:
+                continue
+            columns = KIND_COLUMNS.get(kind, KIND_COLUMNS[None])[0]
+            members.sort(key=lambda r: r["name"].casefold())
+            if "Date" in columns:
+                members.sort(key=lambda r: r.get("published_at") or "", reverse=True)
+            lines += [f"## {label}", "", "| " + " | ".join(columns) + " |", "|" + " --- |" * len(columns), *(table_row(r, columns, by_id) for r in members), ""]
+        files[f"docs/topics/{topic}.md"] = "\n".join(lines)
+    files["docs/topics.md"] = "\n".join(index + [""])
+    return files
+
+
 def documents(rows, report):
     files = {}
     by_id = {r["id"]: r for r in rows}
@@ -269,6 +318,9 @@ def documents(rows, report):
         if r["review_status"] == "curated":
             grouped[r["kind"]].append(r)
     for kind, group in sorted(grouped.items()):
+        if kind == "paper":
+            # Reviewed papers are published by topic (docs/topics/); docs/papers.md is the full bibliography.
+            continue
         columns, legend = KIND_COLUMNS.get(kind, KIND_COLUMNS[None])
         lines = [f"# {kind.title()} catalog", "", "[Home](../README.md) · [Methodology](methodology.md) · [Machine-readable catalog](../data/catalog.jsonl)", "",
             "Curated metadata, not a performance ranking. Each entry links its first-party evidence. Unknown facts are shown as —.", "", legend, "",
@@ -280,7 +332,7 @@ def documents(rows, report):
         lines += ["", "Detailed notes and separate code/data/weights license declarations are in `data/catalog.jsonl`.", ""]
         filename = "companies" if kind == "company" else kind + "s"
         files[f"docs/{filename}.md"] = "\n".join(lines)
-    paper_lines = ["# Research bibliography", "", "[Home](../README.md) · [Curated surveys](surveys.md) · [Query examples](query-guide.md)", "",
+    paper_lines = ["# Research bibliography", "", "[Home](../README.md) · [Reviewed research by topic](topics.md) · [Curated surveys](surveys.md) · [Query examples](query-guide.md)", "",
         "Official arXiv bibliographic metadata. Most entries have **not** undergone a relevance or methodological review. Discovery includes historical references and adjacent work; this is not a count of confirmed CUA papers.",
         "Explicit scope exclusions are listed in the [scope-decision ledger](../data/exclusion-status.json); original records remain in the [metadata archive](../data/papers.jsonl).", ""]
     years = collections.defaultdict(list)
@@ -293,6 +345,7 @@ def documents(rows, report):
             paper_lines.append(f"| {r['published_at']} | [{md(r['name'])}]({r['url']}) | {r['review_status']} |")
         paper_lines.append("")
     files["docs/papers.md"] = "\n".join(paper_lines)
+    files.update(topic_pages(rows))
     lines = ["# Coverage and quality ledger", "", f"Evidence snapshot through **{report['as_of_utc']}**. Generated from committed source receipts.", "",
         f"- {report['total_records']:,} resource records: {report['curated_records']:,} curated; {report['metadata_only_records']:,} bibliographic metadata only.",
         f"- {report['bibliographic_records']:,} arXiv records, including curated surveys. This count overlaps the status counts above.",
@@ -351,7 +404,7 @@ def badges(rows, report):
 
 # README category layout: rows of (left, right) cells; each cell lists (label, generated page, kind). Counts are curated resources.
 EXPLORE = [
-    ([("Research bibliography", "docs/papers.md", "paper")], [("Agents", "docs/agents.md", "agent")]),
+    ([("Research by topic", "docs/topics.md", "paper"), ("Full bibliography", "docs/papers.md", "bibliography")], [("Agents", "docs/agents.md", "agent")]),
     ([("Surveys", "docs/surveys.md", "survey")], [("Frameworks", "docs/frameworks.md", "framework")]),
     ([("Datasets", "docs/datasets.md", "dataset")], [("Infrastructure", "docs/infrastructures.md", "infrastructure")]),
     ([("Benchmarks", "docs/benchmarks.md", "benchmark")], [("Tools", "docs/tools.md", "tool")]),
@@ -363,7 +416,9 @@ def explore(rows, report):
     curated = collections.Counter(r["kind"] for r in rows if r["review_status"] == "curated")
     def link(label, path, kind):
         if kind == "paper":
-            return f"[{label}]({path}) · **{curated[kind]:,}** reviewed of {report['bibliographic_records']:,}"
+            return f"[{label}]({path}) · **{curated[kind]:,}** reviewed papers"
+        if kind == "bibliography":
+            return f"[{label}]({path}) · {report['bibliographic_records']:,} arXiv records"
         return f"[{label}]({path}) · **{curated[kind]:,}**"
     lines = ["| Research and training | Engineering and industry |", "| --- | --- |"]
     lines += [f"| {' · '.join(link(*item) for item in left)} | {' · '.join(link(*item) for item in right)} |" for left, right in EXPLORE]

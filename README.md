@@ -33,7 +33,7 @@ Evidence through `2026-10-17T07:57:59Z`. 1,549 records have bibliographic verifi
 <!-- EXPLORE:START -->
 | Research and training | Engineering and industry |
 | --- | --- |
-| [Research bibliography](docs/papers.md) · **604** reviewed of 2,164 | [Agents](docs/agents.md) · **31** |
+| [Research by topic](docs/topics.md) · **604** reviewed papers · [Full bibliography](docs/papers.md) · 2,164 arXiv records | [Agents](docs/agents.md) · **31** |
 | [Surveys](docs/surveys.md) · **11** | [Frameworks](docs/frameworks.md) · **50** |
 | [Datasets](docs/datasets.md) · **73** | [Infrastructure](docs/infrastructures.md) · **14** |
 | [Benchmarks](docs/benchmarks.md) · **70** | [Tools](docs/tools.md) · **17** |
