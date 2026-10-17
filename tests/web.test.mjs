@@ -227,3 +227,11 @@ test('data and coverage buttons respond while the catalog loads and after it fai
     for(const [key,descriptor] of saved)if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];
   }
 });
+
+test('header switches to the compact two-row layout before the full nav overflows', () => {
+  const css = readFileSync(new URL('../web/styles.css', import.meta.url), 'utf8');
+  const block = css.match(/@media\(max-width:900px\)\{(.*?)\}\}/s);
+  assert.ok(block, 'expected a 900px header breakpoint');
+  assert.match(block[1], /\.site-header nav\{order:1;flex-basis:100%;[^}]*overflow-x:auto/);
+  assert.match(block[1], /\.header-inner\{[^}]*flex-wrap:wrap/);
+});
