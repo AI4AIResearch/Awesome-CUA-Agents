@@ -15,7 +15,7 @@ from search_pages import build_search_pages, resource_path
 from export_rag import build_exports
 from export_citations import build_citation_exports
 from site_files import reconcile_generated_pages
-from publication_metadata import record_date_parts, record_date_text, publication_search_text
+from publication_metadata import record_date_text, publication_search_text
 
 
 def version_script_imports(destination):
@@ -51,7 +51,8 @@ def build_site(output=None):
     (destination/'schemas').mkdir(exist_ok=True)
     for contract in ('resource.schema.json','scope-decision.schema.json','publication-observation.schema.json','download-manifest.schema.json'):
         shutil.copy2(ROOT/'schemas'/contract,destination/'schemas'/contract)
-    keys=['id','name','kind','url','aliases','environments','topics','summary','review_status','published_at','authors','scope','last_verified_at']
+    # index.json carries only fields the catalog list reads; the detail dialog fetches each record's own record.json.
+    keys=['id','name','kind','url','aliases','environments','topics','summary','review_status','authors']
     related={row['id']:set() for row in rows}
     incoming={row['id']:[] for row in rows}
     for row in rows:
@@ -64,7 +65,6 @@ def build_site(output=None):
         'paper_version':row.get('details',{}).get('arxiv_snapshot',{}).get('version'),
         'paper_source_url':row.get('details',{}).get('arxiv_snapshot',{}).get('versioned_url'),
         'paper_date':record_date_text(row),
-        'paper_date_precision':{1:'year',2:'month',3:'day'}.get(len(record_date_parts(row) or [])),
         'publication_search_text':publication_search_text(row),
         'related_count':len(related[row['id']]),'incoming_relations':incoming[row['id']],**compact_facts(row)} for row in rows]}
     for filename,payload in [('index.json',index),('records.json',rows)]:
