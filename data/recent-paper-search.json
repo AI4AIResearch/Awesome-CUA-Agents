@@ -1,14 +1,17 @@
 {
-  "query": "(ti:\"computer use\" OR ti:\"computer-use\" OR ti:\"GUI agent\" OR ti:\"GUI agents\" OR ti:\"GUI grounding\" OR ti:\"web agent\" OR ti:\"browser agent\") AND submittedDate:[202610030232 TO 202610170232]",
-  "since_utc": "202610030232",
-  "cutoff_utc": "202610170232",
+  "schema_version": 2,
+  "scan_day_utc": "2026-10-17",
+  "query": "(ti:\"computer use\" OR ti:\"computer-use\" OR ti:\"GUI agent\" OR ti:\"GUI agents\" OR ti:\"GUI grounding\" OR ti:\"web agent\" OR ti:\"browser agent\") AND submittedDate:[202610030000 TO 202610170000]",
+  "since_utc": "202610030000",
+  "cutoff_utc": "202610170000",
+  "polling_policy": "Complete arXiv snapshots are reused within one UTC publication day; failed or incomplete searches are retried by a later scheduled scan.",
   "reported_total": null,
   "unique_returned": 0,
   "complete": false,
   "pages": [
     {
-      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agent%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B202610030232+TO+202610170232%5D&start=0&max_results=200&sortBy=submittedDate&sortOrder=descending",
-      "retrieved_at": "2026-10-17T02:32:17Z",
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agent%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B202610030000+TO+202610170000%5D&start=0&max_results=200&sortBy=submittedDate&sortOrder=descending",
+      "retrieved_at": "2026-10-17T03:50:43Z",
       "ok": false,
       "error": "HTTP Error 429: Unknown Error",
       "status": 429

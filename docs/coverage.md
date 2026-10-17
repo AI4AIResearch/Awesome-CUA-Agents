@@ -30,7 +30,7 @@ The denominator is the normalized identifiers extracted from each fetched docume
 | [Yearly GUI Agents](https://github.com/qy0720/awesome-yearly-gui-agents) | 193 | 137 | 121 | 0 | 56 | OK · 2026-10-17 |
 | [OSU-NLP-Group/GUI-Agents-Paper-List / README.md](https://github.com/OSU-NLP-Group/GUI-Agents-Paper-List) | 544 | 486 | 144 | 0 | 58 | OK · 2026-10-17 |
 | [opendilab/awesome-ui-agents / README.md](https://github.com/opendilab/awesome-ui-agents) | 144 | 88 | 66 | 0 | 56 | OK · 2026-10-17 |
-| [jin-s13/awesome-gui-agent-hub / AWESOME.md](https://github.com/jin-s13/awesome-gui-agent-hub) | 206 | 203 | 70 | 0 | 3 | OK · 2026-10-17 |
+| [jin-s13/awesome-gui-agent-hub / AWESOME.md](https://github.com/jin-s13/awesome-gui-agent-hub) | 210 | 207 | 74 | 0 | 3 | OK · 2026-10-17 |
 | [ZJU-REAL/Awesome-GUI-Agents / ICLR2026/Paperlist.md](https://github.com/ZJU-REAL/Awesome-GUI-Agents) | 9 | 0 | 0 | 0 | 9 | OK · 2026-10-17 |
 | [dqtz5vpvj9-create/awesome-mobile-gui-agents / README.md](https://github.com/dqtz5vpvj9-create/awesome-mobile-gui-agents) | 40 | 23 | 21 | 0 | 17 | OK · 2026-10-17 |
 | [PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents](https://github.com/PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents) | 247 | 184 | 146 | 0 | 63 | OK · 2026-10-17 |
