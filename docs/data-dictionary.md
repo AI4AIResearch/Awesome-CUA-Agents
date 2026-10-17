@@ -29,7 +29,6 @@ The schema checks `dataset_profile`, `benchmark_protocol`, `arxiv_snapshot` and 
 
 - **Editorial**: the `details` object of an [editorial input](editorial-input.md), checked against its retained receipts.
 - **Hub API** and **Dataverse API**: extracted by `catalog.py enrich` from the record's primary Hugging Face or Harvard Dataverse API receipt. An extracted value replaces an editorial value under the same key.
-- **Placeholder**: `catalog.py build` adds the key to every curated dataset or benchmark that lacks it, as null or `[]`.
 - **License review**: `catalog.py build` copies each `reviewed_licenses` decision's reason and evidence URLs here; the value itself goes in `licenses`.
 - **Bibliography**: copied from the retained arXiv archive (`papers.jsonl`) or from publication observations (`publications.jsonl`).
 
@@ -39,19 +38,18 @@ The schema checks `dataset_profile`, `benchmark_protocol`, `arxiv_snapshot` and 
 | `publication` | paper, survey | Publication edition: title, literal authors, type, venue, publisher, DOI and `date_parts`; see `details.publication` below | Bibliography (`publications.jsonl`) |
 | `dataset_profile` | dataset | Supervision, modalities, formats, splits, notes, evidence URLs and `counts`; see [dataset and benchmark specifications](specifications.md) | Editorial |
 | `benchmark_protocol` | benchmark | Focus, setting, observations, actions, evaluation, notes, evidence URLs and `counts`; see [dataset and benchmark specifications](specifications.md) | Editorial |
-| `sample_count` | dataset | Number of samples, in `sample_unit` | Placeholder, or editorial |
-| `sample_unit` | dataset | What `sample_count` counts, such as `episodes` or `screen summaries` | Placeholder, or editorial |
+| `sample_count` | dataset | Number of samples, in `sample_unit` | Editorial (legacy) |
+| `sample_unit` | dataset | What `sample_count` counts, such as `episodes` or `screen summaries` | Editorial (legacy) |
 | `example_count` | dataset | Publisher-stated number of examples, a different unit from `sample_unit` | Editorial |
 | `screen_count` | dataset | Number of distinct UI screens the samples refer to | Editorial |
 | `reported_scale` | dataset | One publisher-stated size as `{value, unit, comparison}`; `comparison` (`approximately`, `>`) keeps the source's precision | Editorial |
-| `task_count` | benchmark | Number of tasks, in `task_unit` when given | Placeholder, or editorial |
-| `task_unit` | benchmark | What `task_count` counts, such as `parameterized task definitions` | Editorial |
-| `metrics` | benchmark | Metric names the publisher reports, such as `task success` | Placeholder, or editorial |
-| `evaluation_type` | benchmark | How results are judged, such as `programmatic state checks` or `rubric-based` | Placeholder, or editorial |
-| `leaderboard_url` | benchmark | Official leaderboard page | Placeholder |
-| `modalities` | benchmark, dataset, model | Data modalities, such as `screenshot` or `instruction` | Hub API (`modality:` tags), editorial, or placeholder for datasets |
-| `languages` | benchmark, dataset, model | Natural-language codes, such as `en` | Hub API (card `language`), editorial, or placeholder for datasets |
-| `download_url` | benchmark, dataset, infrastructure, model | Download landing page, not a direct file; the Hub API sets the repository's file tree | Hub API, editorial, or placeholder for datasets |
+| `task_count` | benchmark | Number of tasks, in `task_unit` when given | Editorial (legacy) |
+| `task_unit` | benchmark | What `task_count` counts, such as `parameterized task definitions` | Editorial (legacy) |
+| `metrics` | benchmark | Metric names the publisher reports, such as `task success` | Editorial (legacy) |
+| `evaluation_type` | benchmark | How results are judged, such as `programmatic state checks` or `rubric-based` | Editorial (legacy) |
+| `modalities` | benchmark, dataset, model | Data modalities, such as `screenshot` or `instruction` | Hub API (`modality:` tags), or editorial |
+| `languages` | benchmark, dataset, model | Natural-language codes, such as `en` | Hub API (card `language`), or editorial |
+| `download_url` | benchmark, dataset, infrastructure, model | Download landing page, not a direct file; the Hub API sets the repository's file tree | Hub API, or editorial |
 | `hub_id` | benchmark, dataset, infrastructure, model | Hugging Face repository ID as the API reports it | Hub API, or editorial |
 | `gated` | benchmark, dataset, infrastructure, model | Hub access gate: `false`, `"auto"` (approved automatically) or `"manual"` (approved by the publisher) | Hub API, or editorial |
 | `disabled` | benchmark, dataset, infrastructure, model | Whether Hugging Face has disabled the repository | Hub API, or editorial |
@@ -82,7 +80,7 @@ The schema checks `dataset_profile`, `benchmark_protocol`, `arxiv_snapshot` and 
 | `evaluation_caution` | framework | Evaluation behaviour that can distort reported results | Editorial |
 | `platform_constraints` | framework | Map from an environment key to a stated support limit | Editorial |
 
-The flat `sample_count`, `sample_unit`, `task_count`, `metrics`, `evaluation_type` and `leaderboard_url` keys are placeholders: they stay null or empty unless an editor sets them, which few records do. The authoritative quantities are the `counts` in `dataset_profile` and `benchmark_protocol`, where each count carries its own unit, precision qualifier, population, basis and evidence URL. A flat count is a single editorial figure without that context; when both exist, use the profile. Counts of episodes, actions, screenshots, tasks, and instructions are different units and are never summed.
+The flat `sample_count`, `sample_unit`, `task_count`, `task_unit`, `metrics` and `evaluation_type` keys are legacy editorial fields, superseded by the profiles: a record has them only where an editor set them, which few records do, and the build adds no null or empty placeholders. Add new counts, units and evaluation methods to the profile instead. The authoritative quantities are the `counts` in `dataset_profile` and `benchmark_protocol`, where each count carries its own unit, precision qualifier, population, basis and evidence URL. A flat count is a single editorial figure without that context; when both exist, use the profile. Counts of episodes, actions, screenshots, tasks, and instructions are different units and are never summed.
 
 ## Environment facets
 
