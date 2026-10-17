@@ -39,7 +39,7 @@ if (!new URLSearchParams(location.search).has('lang')) {try {if (localStorage.ge
 const t = key => TEXT[lang][key] || TEXT.en[key] || key;
 const label = (dict,key) => dict[key]?.[lang === 'zh' ? 1 : 0] || key;
 const num = n => Number(n).toLocaleString(lang === 'zh' ? 'zh-CN' : 'en-US');
-let state = parseState(location.search), records = [], report, activeRecord='', loading=true, toastTimer;
+let state = parseState(location.search), records = [], report, activeRecord='', loading=true, toastTimer, pendingInfo='';
 const getDetails=createRecordLoader(url=>fetch(url));
 const dates = value => value ? new Date(value.length === 10 ? value+'T00:00:00Z' : value).toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US',{year:'numeric',month:'short',day:'numeric',timeZone:'UTC'}) : t('unknown');
 function updateURL() {const query=serializeState(state,lang,activeRecord); history.replaceState(null,'',location.pathname+(query?'?'+query:'')+location.hash);}
@@ -122,8 +122,9 @@ async function load() {
     if(!records.some(r=>r.topics.includes(state.topic)))state.topic='';
     $('#stat-resources').textContent=num(records.length);$('#stat-curated').textContent=num(report.curated_records);$('#stat-kinds').textContent=num(Object.keys(report.by_kind).length);$('#stat-sources').textContent=num(report.sources.length);
     loading=false;translate();render();updateURL();
+    if(pendingInfo&&$('#info-dialog').open)info(pendingInfo);
     const rid=new URLSearchParams(location.search).get('record');if(rid)await showRecord(rid,false);
-  } catch(error) {loading=false;$('#results').innerHTML='';$('#results').setAttribute('aria-busy','false');$('#load-error').hidden=false;$('#results-count').textContent='';console.error('Catalog loading failed:',error);}
+  } catch(error) {loading=false;$('#results').innerHTML='';$('#results').setAttribute('aria-busy','false');$('#load-error').hidden=false;$('#results-count').textContent='';console.error('Catalog loading failed:',error);if(pendingInfo&&$('#info-dialog').open)info(pendingInfo);}
 }
 const external=(url,text)=>`<a href="${e(safeURL(url))}" target="_blank" rel="noopener noreferrer">${e(text)} ↗</a>`;
 function resourceFacts(details) {
@@ -167,17 +168,20 @@ async function showRecord(id,setURL=true) {
   }catch(error){if(activeRecord!==id)return;$('#detail-content').innerHTML=`<h2 id="detail-title">${e(found.name)}</h2><p>${e(t('errorDetail'))}</p><button type="button" class="button secondary" data-record="${e(id)}">${e(t('retry'))}</button>`;}
 }
 function info(type) {
-  if(!report)return;
   let content='';
+  // Downloads are static files; only the coverage view waits for index.json, and it re-renders once loading settles.
+  pendingInfo=type!=='download'&&!report?type:'';
   if(type==='download') {
     const options=[['catalog.jsonl','fullCatalog','fullCatalogCopy','JSONL'],['catalog.sqlite','sqlite','sqliteCopy','SQLite'],['rag-documents.jsonl','ragReviewed','ragReviewedCopy','JSONL'],['rag-all-records.jsonl','ragAll','ragAllCopy','JSONL'],['citations.bib','paperBibtex','paperBibtexCopy','BibTeX'],['citations.csl.json','paperCSL','paperCSLCopy','JSON'],['publication-citations.bib','publicationBib','publicationBibCopy','BibTeX'],['publication-citations.csl.json','publicationCSL','publicationCSLCopy','JSON'],['coverage.json','coverageFile','coverageFileCopy','JSON'],['sources.json','sourcesFile','sourcesFileCopy','JSON']];
     content=`<h2 id="info-title">${e(t('downloadTitle'))}</h2><p>${e(t('downloadCopy'))}</p><div class="download-options">${options.map(([file,title,copy])=>`<a class="download-option" href="./downloads/${file}" download><span><strong>${e(t(title))}</strong><small>${e(t(copy))}</small></span><span>↓</span></a>`).join('')}</div><p>${e(t('licenseNote'))}</p>`;
     content+=`<section class="agent-download"><h3>${e(t('agentTitle'))}</h3><div class="clone-command"><code>${CLONE_COMMAND}</code><button type="button" data-copy-clone>${e(t('copyCommand'))}</button></div><p><a href="${lang==='zh'?'/zh/agents/':'/agents/'}">${e(t('agentGuide'))} ↗</a> · <a href="/AGENTS.md">AGENTS.md</a> · <a href="/downloads/rag-manifest.json">RAG manifest</a></p></section>`;
+  }else if(!report) {
+    content=`<h2 id="info-title">${e(t('coverageDialogTitle'))}</h2><p role="status">${e(t(loading?'loading':'errorTitle'))}</p><p><a href="/coverage/">${e(t('viewCoverage'))} ↗</a></p>`;
   }else {
     content=`<h2 id="info-title">${e(t('coverageDialogTitle'))}</h2><p>${e(t('coverageDialogCopy'))}</p><div class="info-stat-grid"><div><strong>${num(report.curated_records)}</strong><span>${e(t('curatedResources'))}</span></div><div><strong>${num(report.metadata_only_records)}</strong><span>${e(t('metadata'))}</span></div><div><strong>${num(report.unindexed_candidates)}</strong><span>${e(t('unindexed'))}</span></div></div><p>${e(t('reviewExplanation'))}</p><table class="coverage-table"><thead><tr><th>${e(t('source'))}</th><th>${e(t('discovered'))}</th><th>${e(t('indexed'))}</th></tr></thead><tbody>${report.sources.map(s=>`<tr><td>${external(s.url,s.name)}</td><td>${num(s.discovered)}</td><td>${num(s.indexed)}</td></tr>`).join('')}</tbody></table><h3>${e(t('limitations'))}</h3><p>${e(t('boundaries'))}</p><a class="button secondary" href="./downloads/coverage.json" download>${e(t('coverageFile'))} ↓</a>`;
   }
-  if(type!=='download' && report.excluded_records)content+=`<h3>${e(t('excluded'))}: ${num(report.excluded_records)}</h3><p>${e(t('exclusionCopy'))}</p><p><a href="./downloads/exclusions.json">${e(t('exclusionFile'))}</a> · <a href="./downloads/arxiv-archive.jsonl">${e(t('archiveFile'))}</a></p>`;
-  $('#info-content').innerHTML=content;$('#info-dialog').showModal();
+  if(type!=='download' && report?.excluded_records)content+=`<h3>${e(t('excluded'))}: ${num(report.excluded_records)}</h3><p>${e(t('exclusionCopy'))}</p><p><a href="./downloads/exclusions.json">${e(t('exclusionFile'))}</a> · <a href="./downloads/arxiv-archive.jsonl">${e(t('archiveFile'))}</a></p>`;
+  $('#info-content').innerHTML=content;if(!$('#info-dialog').open)$('#info-dialog').showModal();
 }
 document.addEventListener('click',async event=>{if(!event.target.closest('[data-copy-clone]'))return;try{await navigator.clipboard.writeText(CLONE_COMMAND);toast(t('commandCopied'));}catch{toast(t('commandCopyFailed'));}});
 document.addEventListener('click',async event=>{
