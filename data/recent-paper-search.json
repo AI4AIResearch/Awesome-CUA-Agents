@@ -5,20 +5,23 @@
   "since_utc": "202610030000",
   "cutoff_utc": "202610170000",
   "polling_policy": "Complete arXiv snapshots are reused within one UTC publication day; failed or incomplete searches are retried by a later scheduled scan.",
-  "reported_total": null,
-  "unique_returned": 0,
-  "complete": false,
+  "reported_total": 36,
+  "unique_returned": 36,
+  "complete": true,
   "pages": [
     {
       "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agent%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B202610030000+TO+202610170000%5D&start=0&max_results=200&sortBy=submittedDate&sortOrder=descending",
-      "retrieved_at": "2026-10-17T03:50:43Z",
-      "ok": false,
-      "error": "HTTP Error 429: Unknown Error",
-      "status": 429
+      "retrieved_at": "2026-10-17T07:46:40Z",
+      "ok": true,
+      "status": 200,
+      "final_url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agent%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B202610030000+TO+202610170000%5D&start=0&max_results=200&sortBy=submittedDate&sortOrder=descending",
+      "content_type": "application/atom+xml; charset=utf-8",
+      "sha256": "804ee6aad0bae2ce987b1deb291591a78aaa685faf6380ca0a7f1c52a42d8379",
+      "bytes": 94550,
+      "start": 0,
+      "returned": 36
     }
   ],
   "new_ids": [],
-  "warnings": [
-    "HTTP Error 429: Unknown Error"
-  ]
+  "warnings": []
 }
