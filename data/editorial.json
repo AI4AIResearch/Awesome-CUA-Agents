@@ -6986,7 +6986,7 @@
     "topics": [
       "survey"
     ],
-    "summary": "Survey of research directions in GUI or computer-use agents.",
+    "summary": "Survey of (M)LLM-based GUI agents organized around their datasets and benchmarks, a unified agent framework with a taxonomy, and commercial applications.",
     "verify_terms": [
       "GUI Agents with Foundatio"
     ],
@@ -7007,7 +7007,7 @@
     "topics": [
       "survey"
     ],
-    "summary": "Survey of research directions in GUI or computer-use agents.",
+    "summary": "Survey of LLM-brained GUI agents that carry out natural-language instructions across web, mobile, and desktop interfaces, organizing research and industry progress.",
     "verify_terms": [
       "Large Language Model-Brai"
     ],
@@ -7028,7 +7028,7 @@
     "topics": [
       "survey"
     ],
-    "summary": "Survey of research directions in GUI or computer-use agents.",
+    "summary": "Categorizes GUI-agent benchmarks, evaluation metrics, architectures, and training methods, and proposes a unified perception, reasoning, planning, and acting framework.",
     "verify_terms": [
       "GUI Agents: A Survey"
     ],
@@ -7049,7 +7049,7 @@
     "topics": [
       "survey"
     ],
-    "summary": "Survey of research directions in GUI or computer-use agents.",
+    "summary": "Reviews 87 computer-use agents and 33 datasets through a taxonomy of operating domain, observation and action modalities, and agent design.",
     "verify_terms": [
       "A Comprehensive Survey of"
     ],
@@ -7071,7 +7071,7 @@
       "survey",
       "safety-security"
     ],
-    "summary": "Survey of research directions in GUI or computer-use agents.",
+    "summary": "Frames GUI-agent trustworthiness as an execution gap and reviews failures, attacks, and defenses across perception, reasoning, and interaction.",
     "verify_terms": [
       "Towards Trustworthy GUI A"
     ],
@@ -7092,7 +7092,7 @@
     "topics": [
       "survey"
     ],
-    "summary": "Survey of research directions in GUI or computer-use agents.",
+    "summary": "Analyzes LLM-based GUI agents through four components (perception, exploration, planning, and interaction) and the methods used to evaluate them.",
     "verify_terms": [
       "A Survey on (M)LLM-Based "
     ],
@@ -7114,7 +7114,7 @@
     "topics": [
       "survey"
     ],
-    "summary": "Survey of research directions in GUI or computer-use agents.",
+    "summary": "Reviews LLM-driven phone GUI agents with a taxonomy of agent frameworks, prompt- and training-based modeling, datasets, and benchmarks.",
     "verify_terms": [
       "LLM-Powered GUI Agents in"
     ],
@@ -7136,7 +7136,7 @@
       "survey",
       "reinforcement-learning"
     ],
-    "summary": "Survey of research directions in GUI or computer-use agents.",
+    "summary": "Formalizes GUI tasks as Markov decision processes and traces agent training from prompting through supervised fine-tuning to reinforcement learning.",
     "verify_terms": [
       "A Survey on GUI Agents wi"
     ],
@@ -7158,7 +7158,7 @@
       "survey",
       "safety-security"
     ],
-    "summary": "Survey of research directions in GUI or computer-use agents.",
+    "summary": "Systematizes safety and security threats to computer-using agents, with taxonomies of threats and defensive strategies.",
     "verify_terms": [
       "A Survey on the Safety an"
     ],
@@ -7179,7 +7179,7 @@
     "topics": [
       "survey"
     ],
-    "summary": "Survey of research directions in GUI or computer-use agents.",
+    "summary": "Surveys agents that operate computers and phones through operating-system interfaces, covering components, capabilities, foundation models, frameworks, and benchmarks.",
     "verify_terms": [
       "OS Agents: A Survey on ML"
     ],
@@ -7200,7 +7200,7 @@
     "topics": [
       "survey"
     ],
-    "summary": "Survey of research directions in GUI or computer-use agents.",
+    "summary": "Surveys GUI-agent efficiency beyond task success: observation, context and memory, action, and planner or runtime cost.",
     "verify_terms": [
       "Efficient GUI Agents: A S"
     ],

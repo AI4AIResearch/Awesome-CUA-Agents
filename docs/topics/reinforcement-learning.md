@@ -87,7 +87,7 @@ All entries in this section: cross-platform.
 
 | Date | Resource | Description |
 | --- | --- | --- |
-| 2025‑04‑29 | [A Survey on GUI Agents with Foundation Models Enhanced by Reinforcement Learning](https://arxiv.org/abs/2504.20464) | Survey of research directions in GUI or computer-use agents. |
+| 2025‑04‑29 | [A Survey on GUI Agents with Foundation Models Enhanced by Reinforcement Learning](https://arxiv.org/abs/2504.20464) | Formalizes GUI tasks as Markov decision processes and traces agent training from prompting through supervised fine-tuning to reinforcement learning. |
 
 ## Papers
 
