@@ -1048,5 +1048,455 @@
       "sha256": "bb3d2692c294743a8d06d5065cc84b27b229a981c2c650ff20a2ec038797a0e3",
       "retrieved_at": "2026-10-16T06:37:05Z"
     }
+  },
+  {
+    "id": "arxiv:2501.02210",
+    "name": "Vulnerability Liquefaction Mapping in Padang City Based on Cloud Computing Using Optical Satellite Imagery Data",
+    "url": "https://arxiv.org/abs/2501.02210",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract maps earthquake-related soil liquefaction vulnerability using satellite water indices and geological data. This geospatial hazard analysis is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:27:45Z",
+    "metadata_fingerprint": "bb49f60c6b2a6a088e2894636df0252f70a75ebb99d5a3125ef380789e14191a",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "c87e97eb397da04806d53145cf9c13be739fc657bb54dca9318c8c4ed2a36249",
+      "retrieved_at": "2026-10-16T06:36:58Z"
+    }
+  },
+  {
+    "id": "arxiv:2501.02813",
+    "name": "Multi-time scale and high performance in-material reservoir computing using graphene-based ion-gating reservoir",
+    "url": "https://arxiv.org/abs/2501.02813",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract develops a graphene ion-gating reservoir and evaluates physical recurrent computation on chaotic time-series prediction. This neuromorphic device research is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:27:45Z",
+    "metadata_fingerprint": "8c2d9877f64e4bf3e134ffc51b4016ac99d021b2373c630f8b5c0aacab116f23",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "c87e97eb397da04806d53145cf9c13be739fc657bb54dca9318c8c4ed2a36249",
+      "retrieved_at": "2026-10-16T06:36:58Z"
+    }
+  },
+  {
+    "id": "arxiv:2501.08639",
+    "name": "Detecting Wildfire Flame and Smoke through Edge Computing using Transfer Learning Enhanced Deep Learning Models",
+    "url": "https://arxiv.org/abs/2501.08639",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract evaluates transfer learning for aerial wildfire smoke and flame detection on edge devices. Its observations and tasks concern physical fire imagery, outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:27:45Z",
+    "metadata_fingerprint": "bc543b3e2a56acacffd5350fb1d2a0612b40db6c1d05edc33ae62ca257271bcd",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "c87e97eb397da04806d53145cf9c13be739fc657bb54dca9318c8c4ed2a36249",
+      "retrieved_at": "2026-10-16T06:36:58Z"
+    }
+  },
+  {
+    "id": "arxiv:2502.01897",
+    "name": "Improved Quantum Computation using Operator Backpropagation",
+    "url": "https://arxiv.org/abs/2502.01897",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract partitions quantum circuits between classical simulation and quantum hardware to estimate observable expectation values. This quantum-computation method is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:27:45Z",
+    "metadata_fingerprint": "d5cd46421345cd23518814d6cb69b7c24db286a5f5f6adfb3f38bca52083d7a0",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=800&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "c87e97eb397da04806d53145cf9c13be739fc657bb54dca9318c8c4ed2a36249",
+      "retrieved_at": "2026-10-16T06:36:58Z"
+    }
+  },
+  {
+    "id": "arxiv:2502.03402",
+    "name": "Tensor Evolution: A Framework for Fast Evaluation of Tensor Computations using Recurrences",
+    "url": "https://arxiv.org/abs/2502.03402",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract extends compiler recurrence analysis from scalar expressions to tensor computations inside loops. This general compiler-optimization framework is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:27:45Z",
+    "metadata_fingerprint": "9c0226456b2c1c6cad1d2b61d35ec6b5785afea541ac239db4cec3baab41f16c",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+      "retrieved_at": "2026-10-16T06:36:54Z"
+    }
+  },
+  {
+    "id": "arxiv:2502.03797",
+    "name": "Superior probabilistic computing using operationally stable probabilistic-bit constructed by manganite nanowire",
+    "url": "https://arxiv.org/abs/2502.03797",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract builds probabilistic bits from fluctuating manganite nanowires and evaluates their use in Bayesian inference and random-number generation. This physical computing hardware is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:27:45Z",
+    "metadata_fingerprint": "fee0519fc45fb782d5d2238c98eaef093979051ddeba9063f1d9af982a3c9b6e",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+      "retrieved_at": "2026-10-16T06:36:54Z"
+    }
+  },
+  {
+    "id": "arxiv:2502.12252",
+    "name": "Roadmap to fault tolerant quantum computation using topological qubit arrays",
+    "url": "https://arxiv.org/abs/2502.12252",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract presents a roadmap for Majorana-based qubit devices, quantum gate protocols, and error correction. This quantum-device architecture is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:27:45Z",
+    "metadata_fingerprint": "da7f7afebd808d3b5e5bc6df040f9f0ced9128f126fbe5c08c58b2cbba0ad599",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+      "retrieved_at": "2026-10-16T06:36:54Z"
+    }
+  },
+  {
+    "id": "arxiv:2503.00931",
+    "name": "Personalizing the meshed SPL/NAC Brain Atlas for patient-specific scientific computing using SynthMorph",
+    "url": "https://arxiv.org/abs/2503.00931",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract generates patient-specific brain meshes by registering an anatomical atlas to MRI scans with SynthMorph. This medical image-registration workflow is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:27:45Z",
+    "metadata_fingerprint": "aa8d542ef5064526bb6c272ae48ccacb97143feee418ae785282a3ba9f6f2015",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+      "retrieved_at": "2026-10-16T06:36:54Z"
+    }
+  },
+  {
+    "id": "arxiv:2504.03653",
+    "name": "A Survey on Heterogeneous Computing Using SmartNICs and Emerging Data Processing Units",
+    "url": "https://arxiv.org/abs/2504.03653",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract surveys SmartNIC and data-processing-unit hardware, programming frameworks, and heterogeneous CPU/DPU workloads. This computing-infrastructure survey is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:27:45Z",
+    "metadata_fingerprint": "1a9a92f948ba86bc1f9fc12a94c47497e21f5492c71ceb6169bb7f187037eb1a",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+      "retrieved_at": "2026-10-16T06:36:54Z"
+    }
+  },
+  {
+    "id": "arxiv:2503.05850",
+    "name": "Encrypted Vector Similarity Computations Using Partially Homomorphic Encryption: Applications and Performance Analysis",
+    "url": "https://arxiv.org/abs/2503.05850",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract studies encrypted vector similarity calculations and facial-recognition experiments using partially homomorphic encryption. This privacy-preserving numerical-computation method is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:27:45Z",
+    "metadata_fingerprint": "1ca9f538bbe449c8cb9d547acd51cb538ee76f1c554be48a7a0d4319bcbda66a",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+      "retrieved_at": "2026-10-16T06:36:54Z"
+    }
+  },
+  {
+    "id": "arxiv:2503.14988",
+    "name": "Fault-Tolerant Optical Quantum Computation using 3D Hybrid Cluster States",
+    "url": "https://arxiv.org/abs/2503.14988",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract proposes optical quantum-computation architectures using hybrid cluster states and quantum error-correction codes. This physical quantum-computing research is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:29:09Z",
+    "metadata_fingerprint": "61639327104b02ef9551adec32c46d323e99cad2962065439cec805fa9070c11",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+      "retrieved_at": "2026-10-16T06:36:54Z"
+    }
+  },
+  {
+    "id": "arxiv:2503.16146",
+    "name": "Distributed Split Computing Using Diffusive Metrics for UAV Swarms",
+    "url": "https://arxiv.org/abs/2503.16146",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract distributes neural-network inference among UAV swarm nodes using local resource metrics and early exits. This aerial-network computation scheduling is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:29:09Z",
+    "metadata_fingerprint": "eb0177af7faf941bc84b5fe4d0e42f95e34269a7b709596fb80d0dc7b177686e",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+      "retrieved_at": "2026-10-16T06:36:54Z"
+    }
+  },
+  {
+    "id": "arxiv:2503.16222",
+    "name": "Efficient Bayesian Computation Using Plug-and-Play Priors for Poisson Inverse Problems",
+    "url": "https://arxiv.org/abs/2503.16222",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract develops Langevin sampling methods for Bayesian reconstruction of low-photon Poisson images. This statistical inverse-problem research is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:29:09Z",
+    "metadata_fingerprint": "78a3b9911c80e7deaea7cd71f316ab10d1fdb1be925ffe8527a6978b822b3b06",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+      "retrieved_at": "2026-10-16T06:36:54Z"
+    }
+  },
+  {
+    "id": "arxiv:2504.03763",
+    "name": "Efficient Calibration for RRAM-based In-Memory Computing using DoRA",
+    "url": "https://arxiv.org/abs/2504.03763",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract calibrates resistive in-memory neural-computing hardware against conductance drift and tests image classification. This hardware calibration method is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:29:09Z",
+    "metadata_fingerprint": "d031d9a0dac9af377f08069892cf4cb2a1f52aa2379d65bea6a20b4fb85704cc",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+      "retrieved_at": "2026-10-16T06:36:54Z"
+    }
+  },
+  {
+    "id": "arxiv:2504.08340",
+    "name": "All-in-Memory Stochastic Computing using ReRAM",
+    "url": "https://arxiv.org/abs/2504.08340",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract implements stochastic bit-stream generation, arithmetic, and conversion within ReRAM devices. This in-memory computing architecture is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:29:09Z",
+    "metadata_fingerprint": "7373123b52f52fc44d715e43d56d9d5d84e82eb74ec14833e88f7924752fffa0",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+      "retrieved_at": "2026-10-16T06:36:54Z"
+    }
+  },
+  {
+    "id": "arxiv:2504.11576",
+    "name": "Effective dimensionality reduction for Greeks computation using Randomized QMC",
+    "url": "https://arxiv.org/abs/2504.11576",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract analyzes numerical estimation of option-price sensitivities using randomized quasi-Monte Carlo and dimensionality reduction. This mathematical-finance computation is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:29:09Z",
+    "metadata_fingerprint": "2f6be24d7eca556bcc1d58cf9e32f27fdb8e9a136e9f13507ef6b429491a3a01",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+      "retrieved_at": "2026-10-16T06:36:54Z"
+    }
+  },
+  {
+    "id": "arxiv:2506.01968",
+    "name": "Efficient ANN-SNN Conversion with Error Compensation Learning",
+    "url": "https://arxiv.org/abs/2506.01968",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract converts artificial neural networks into spiking networks using threshold and membrane-potential compensation, evaluated on image classification. This general neural-computation method is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:29:09Z",
+    "metadata_fingerprint": "b95a537d0b61ccb4717fffa3125635d9bb0774b89585b550755da4046955797c",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?id_list=2503.16788%2C2503.17709%2C2503.18492%2C2503.19537%2C2503.20978%2C2503.21620%2C2503.23434%2C2504.01382%2C2504.07981%2C2504.10445%2C2504.10458%2C2504.11257%2C2504.11281%2C2504.12679%2C2504.13805%2C2504.13865%2C2504.14239%2C2504.18575%2C2504.19838%2C2504.20464%2C2505.10924%2C2505.11891%2C2505.12299%2C2505.12632%2C2505.13227%2C2505.13887%2C2505.13909%2C2505.14289%2C2505.15810%2C2505.16282%2C2505.16827%2C2505.18829%2C2505.19897%2C2505.21496%2C2505.21499%2C2505.21936%2C2505.22648%2C2505.23762%2C2505.24838%2C2506.00618%2C2506.01391%2C2506.01968%2C2506.02456%2C2506.03143%2C2506.03569%2C2506.04135%2C2506.04614%2C2506.07672%2C2506.08012%2C2506.08972&max_results=50",
+      "sha256": "afe4e75ffb8a5c44f4c088a90ffa5f53553036f514aa768f5aee0c5aa38d731e",
+      "retrieved_at": "2026-10-16T06:31:42Z"
+    }
+  },
+  {
+    "id": "arxiv:2505.12830",
+    "name": "2T1R Regulated Memristor Conductance Control Array Architecture for Neuromorphic Computing using 28nm CMOS Technology",
+    "url": "https://arxiv.org/abs/2505.12830",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract designs a regulated memristor crossbar architecture for conductance control and vector-matrix multiplication. This neuromorphic circuit design is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:29:09Z",
+    "metadata_fingerprint": "68757d540d149ea1e32d1485ea5bf763aaf6059db3d5962ea28c91252be33f2d",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+      "retrieved_at": "2026-10-16T06:36:54Z"
+    }
+  },
+  {
+    "id": "arxiv:2505.13695",
+    "name": "Large-scale quantum reservoir computing using a Gaussian Boson Sampler",
+    "url": "https://arxiv.org/abs/2505.13695",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract experimentally uses a Gaussian boson sampler as a quantum reservoir for vowel and handwritten-digit classification. This optical quantum-machine-learning hardware is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:29:09Z",
+    "metadata_fingerprint": "1c2b6119c040502af480d65fb21ad80f7ba6b57ba76dab3edb1846ad3f6d6315",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+      "retrieved_at": "2026-10-16T06:36:54Z"
+    }
+  },
+  {
+    "id": "arxiv:2505.23819",
+    "name": "Linear Layouts: Robust Code Generation of Efficient Tensor Computation Using $\\mathbb{F}_2$",
+    "url": "https://arxiv.org/abs/2505.23819",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract models tensor layouts with binary linear algebra and integrates layout transformations into the Triton compiler. This general tensor code-generation method is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:29:09Z",
+    "metadata_fingerprint": "fc77065760545279a699a826d6c1fd0c3a1faab65f79ab215141f9277e4c814c",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=700&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "4953a8e0f029016aef668bce98cec4d2873a7ae49c1fe33c4311fa5eb8d24089",
+      "retrieved_at": "2026-10-16T06:36:54Z"
+    }
+  },
+  {
+    "id": "arxiv:2506.08331",
+    "name": "Correcting a noisy quantum computer using a quantum computer",
+    "url": "https://arxiv.org/abs/2506.08331",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract trains quantum circuits to decode quantum error-correcting codes and correct noisy quantum hardware. This quantum error-correction method is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:31:21Z",
+    "metadata_fingerprint": "c5d9e8b48166c90f4ffba593c5973bea5c9aecc1e9500a617e1b8bc6f171994d",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=600&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "26fb4922c4c0bb5c9069935ed0aef0a9f56938cf8ae1af9724894fa1409955fb",
+      "retrieved_at": "2026-10-16T06:36:50Z"
+    }
+  },
+  {
+    "id": "arxiv:2507.06063",
+    "name": "Practical design and performance of physical reservoir computing using hysteresis",
+    "url": "https://arxiv.org/abs/2507.06063",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract analyzes the design and performance of physical reservoirs built from hysteretic systems. This physical reservoir-computing study is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:31:21Z",
+    "metadata_fingerprint": "372c8aace2690b8c21da02cd0185a1f44ce56b326221c6603a1501fe1d22f8ab",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=600&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "26fb4922c4c0bb5c9069935ed0aef0a9f56938cf8ae1af9724894fa1409955fb",
+      "retrieved_at": "2026-10-16T06:36:50Z"
+    }
+  },
+  {
+    "id": "arxiv:2507.13204",
+    "name": "Performance Portable Gradient Computations Using Source Transformation",
+    "url": "https://arxiv.org/abs/2507.13204",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract uses source transformation to differentiate Kokkos-based C++ numerical code on GPUs. This automatic-differentiation and scientific-computing method is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:31:21Z",
+    "metadata_fingerprint": "420d36970c156f2f9b66ae477f04d3291816c8a02272877d66cb1244f623ef14",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=600&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "26fb4922c4c0bb5c9069935ed0aef0a9f56938cf8ae1af9724894fa1409955fb",
+      "retrieved_at": "2026-10-16T06:36:50Z"
+    }
+  },
+  {
+    "id": "arxiv:2507.15955",
+    "name": "Impact of finite squeezing on near-term quantum computations using GKP qubits",
+    "url": "https://arxiv.org/abs/2507.15955",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract simulates quantum computations with finite-squeezing errors in GKP qubits and evaluates quantum benchmarking and Grover circuits. This quantum-simulation research is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:31:21Z",
+    "metadata_fingerprint": "5a7a515302e9fb582c75028fb8eeb941cf8f5572060a539d11af6ad5e2d80ec6",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=600&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "26fb4922c4c0bb5c9069935ed0aef0a9f56938cf8ae1af9724894fa1409955fb",
+      "retrieved_at": "2026-10-16T06:36:50Z"
+    }
+  },
+  {
+    "id": "arxiv:2508.10850",
+    "name": "Scalable platform for qudit-based quantum computing using polar molecules",
+    "url": "https://arxiv.org/abs/2508.10850",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract proposes a quantum processor using molecular rotational states, optical traps, and multilevel gate encodings. This physical quantum-computing platform is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:31:21Z",
+    "metadata_fingerprint": "b0bdb653b12a35b0d6be885d9f28eb1222a3b8624dcb2c4c4406c457e3e62ba6",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=600&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "26fb4922c4c0bb5c9069935ed0aef0a9f56938cf8ae1af9724894fa1409955fb",
+      "retrieved_at": "2026-10-16T06:36:50Z"
+    }
+  },
+  {
+    "id": "arxiv:2509.10627",
+    "name": "ReCross: Efficient Embedding Reduction Scheme for In-Memory Computing using ReRAM-Based Crossbar",
+    "url": "https://arxiv.org/abs/2509.10627",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract optimizes recommendation-model embedding reductions through ReRAM crossbar mappings and conversion circuits. This in-memory hardware optimization is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:31:22Z",
+    "metadata_fingerprint": "cbc092b5fa20abca226924a60374ea49154f02f163d33229a3f1108d9920f919",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=600&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "26fb4922c4c0bb5c9069935ed0aef0a9f56938cf8ae1af9724894fa1409955fb",
+      "retrieved_at": "2026-10-16T06:36:50Z"
+    }
+  },
+  {
+    "id": "arxiv:2509.18679",
+    "name": "Lightweight Targeted Estimation of Layout Noise in a Quantum Computer using Quality Indicator Circuits",
+    "url": "https://arxiv.org/abs/2509.18679",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract probes quantum hardware noise to choose physical circuit layouts using quality-indicator quantum circuits. This quantum-hardware layout optimization is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:31:22Z",
+    "metadata_fingerprint": "807b98559f1be6ed2a290abddb3f313f375d0265e74c4d7f4a1bab2127f0343e",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=600&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "26fb4922c4c0bb5c9069935ed0aef0a9f56938cf8ae1af9724894fa1409955fb",
+      "retrieved_at": "2026-10-16T06:36:50Z"
+    }
+  },
+  {
+    "id": "arxiv:2509.22999",
+    "name": "Enhanced Hybrid Temporal Computing Using Deterministic Summations for Ultra-Low-Power Accelerators",
+    "url": "https://arxiv.org/abs/2509.22999",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract designs deterministic bit-stream adders and low-power temporal-computing accelerators for filtering and cosine transforms. This digital hardware design is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:31:22Z",
+    "metadata_fingerprint": "03f3be72a77bb3ee6a695a7c00c61cc8fc75f40a9f85f7ce47c71171d4629ada",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=600&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "26fb4922c4c0bb5c9069935ed0aef0a9f56938cf8ae1af9724894fa1409955fb",
+      "retrieved_at": "2026-10-16T06:36:50Z"
+    }
+  },
+  {
+    "id": "arxiv:2510.01495",
+    "name": "Improving Runtime Performance of Tensor Computations using Rust From Python",
+    "url": "https://arxiv.org/abs/2510.01495",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract accelerates numerical tensor kernels in a Python package through Rust extension modules. This numerical software-performance study is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:31:22Z",
+    "metadata_fingerprint": "a9baaee9401d46dff0c988ef1cfae432cbc16f3db25265de1266da8c95df3a77",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=500&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "ae98e77b8bb125e45277aacec768a047e7bb0e13f33ca9ff6ca7c19e29e56cca",
+      "retrieved_at": "2026-10-16T06:36:47Z"
+    }
+  },
+  {
+    "id": "arxiv:2510.01741",
+    "name": "Multi-scale friction coefficient: From roughness to system computation using deep learning",
+    "url": "https://arxiv.org/abs/2510.01741",
+    "decision": "out_of_scope",
+    "basis": "primary_abstract_review",
+    "reason": "The abstract combines contact-mechanics simulations and deep learning to model friction for railway wheelsets. This mechanical-engineering simulation study is outside the GUI/computer-use agent scope.",
+    "reviewed_at": "2026-10-17T05:31:22Z",
+    "metadata_fingerprint": "5e6e9d8ac335bdd34a329617d51eceb0fcacc4042825b053c6ad95ce91759b75",
+    "evidence": {
+      "url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22computer+use%22+OR+ti%3A%22computer-use%22+OR+ti%3A%22GUI+agent%22+OR+ti%3A%22GUI+agents%22+OR+ti%3A%22GUI+grounding%22+OR+ti%3A%22web+agents%22+OR+ti%3A%22browser+agent%22%29+AND+submittedDate%3A%5B200001010000+TO+202610160636%5D&start=500&max_results=100&sortBy=submittedDate&sortOrder=descending",
+      "sha256": "ae98e77b8bb125e45277aacec768a047e7bb0e13f33ca9ff6ca7c19e29e56cca",
+      "retrieved_at": "2026-10-16T06:36:47Z"
+    }
   }
 ]

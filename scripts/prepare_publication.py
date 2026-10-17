@@ -5,6 +5,7 @@ import argparse
 import json
 import shutil
 from search_pages import KINDS, SITE, REPO, resource_path
+from agent_pages import CLONE_COMMAND
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -44,6 +45,7 @@ def main():
     report=json.loads((ROOT/'data/coverage.json').read_text())
     rows=[json.loads(l) for l in (ROOT/'data/catalog.jsonl').read_text().splitlines()]
     readme=['# Awesome Computer-Use Agents · AwesomeCUA','', '**A source-backed catalog of computer-use, GUI, browser, and mobile agents.**','', f'[Website]({SITE}/) · [Research papers]({SITE}/papers/) · [中文指南]({SITE}/zh/) · [GitHub organization](https://github.com/AwesomeCUA)','',f'**{report["total_records"]:,} resource records** · **{report["curated_records"]:,} curated** · **{report["bibliographic_records"]:,} arXiv records** · **{len(report["sources"])} discovery documents**','',f'Evidence snapshot: {report["as_of_utc"]}. Bibliography counts overlap review-state counts. Resources are not independent projects.','', '## What is a computer-use agent?','', 'A computer-use agent observes software interfaces, chooses and executes actions, and checks progress toward a user goal. It may operate a browser, desktop application, or phone, sometimes combining graphical interaction with code and tools. See [the primary-source introduction]('+SITE+'/guides/what-are-computer-use-agents/) and [reviewed research]('+SITE+'/papers/).','', '## Explore the ecosystem','', '| Category | Records | Browse |','| --- | ---: | --- |']
+    readme[6:6]=['## For people, RAG systems, and agents','','```sh',CLONE_COMMAND,'```','',f'[Agent instructions]({SITE}/AGENTS.md) · [Agent and RAG guide]({SITE}/agents/) · [中文使用指南]({SITE}/zh/agents/) · [Complete JSONL]({SITE}/downloads/catalog.jsonl)','']
     for kind,name in KINDS.items():readme.append(f'| {name} | {report["by_kind"].get(kind,0):,} | [Open directory]({SITE}/categories/{kind}/) |')
     readme+=['','Category pages highlight reviewed resources; the [interactive catalog]('+SITE+'/#catalog) and downloads also expose metadata-only records with their review state.','', '## Research reading list','']
     selected=sorted([r for r in rows if r['kind']=='paper' and r['review_status']=='curated'],key=lambda r:r['published_at'] or '',reverse=True)
@@ -57,6 +59,7 @@ def main():
     profile_path=profile/'profile/README.md';profile_path.parent.mkdir(exist_ok=True)
     profile_path.write_text(f'''# AwesomeCUA\n\n### The computer-use agent ecosystem, with sources.\n\nResearch papers, GUI models, training datasets, evaluation benchmarks, frameworks, tools, and products — searchable and traceable in one catalog.\n\n**[Explore the website →]({SITE}/)** · **[Research papers →]({SITE}/papers/)** · **[中文指南 →]({SITE}/zh/)**\n\n| Research & training | Engineering & industry |\n| --- | --- |\n| [Papers]({SITE}/papers/) · [Surveys]({SITE}/categories/survey/) | [Agents]({SITE}/categories/agent/) · [Frameworks]({SITE}/categories/framework/) |\n| [Models]({SITE}/categories/model/) · [Datasets]({SITE}/categories/dataset/) | [Tools]({SITE}/categories/tool/) · [Infrastructure]({SITE}/categories/infrastructure/) |\n| [Benchmarks]({SITE}/categories/benchmark/) | [Products]({SITE}/categories/product/) · [Publishers]({SITE}/categories/company/) |\n\n**{report['total_records']:,} resource records** · **{report['curated_records']:,} reviewed** · **11 categories**\n\n[Download data]({SITE}/data/) · [Practical guides]({SITE}/guides/) · [Coverage]({SITE}/coverage/) · [Contribute]({REPO}/issues/new?template=resource.yml)\n\n每条资源保留一手来源与审阅状态。支持论文检索、分类筛选、来源追溯与结构化数据下载。\n\nCurated means AI-assisted editorial review; metadata verification does not establish research quality or reproducibility. Counts refer to resources, not distinct projects. Comprehensive global coverage is a goal, not a verified claim.\n\n<sub>Source snapshots: <a href="{SITE}/coverage/">coverage ledger</a>. Original annotations and code: MIT. Linked assets retain their own terms.</sub>\n''')
     profile_text=profile_path.read_text()
+    profile_text=profile_text.replace('\n| Research & training',f'\nFor people, RAG systems, and agents — clone the complete catalog:\n\n```sh\n{CLONE_COMMAND}\n```\n\n[Agent instructions]({SITE}/AGENTS.md) · [Agent & RAG guide]({SITE}/agents/) · [中文使用指南]({SITE}/zh/agents/)\n\n| Research & training')
     profile_text=profile_text.replace(f"**{report['total_records']:,} resource records** · **{report['curated_records']:,} reviewed** · **11 categories**",f'![Live catalog counts]({SITE}/badges/catalog.svg)')
     profile_text+=f'\n[Twice-daily scan status]({SITE}/updates/) · [Source and contribution workflow](https://github.com/reacher-z/Awesome-CUA)\n'
     profile_path.write_text(profile_text)

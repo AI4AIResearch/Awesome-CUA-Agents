@@ -50,6 +50,9 @@ jobs:
           path: |
             data/scan-status.json
             data/recent-paper-search.json
+            data/paper-discovery-status.json
+            data/paper-discovery-queries.json
+            data/research-discovery.json
             data/discovery-runs.json
             data/harvest-failures.jsonl
           retention-days: 30

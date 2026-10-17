@@ -1,11 +1,11 @@
 # Coverage and quality ledger
 
-Evidence snapshot through **2026-10-17T02:49:45Z**. Generated from committed source receipts.
+Evidence snapshot through **2026-10-17T05:29:15Z**. Generated from committed source receipts.
 
-- 2,036 resource records: 842 curated; 1,194 bibliographic metadata only.
-- 1,694 arXiv records, including curated surveys. This count overlaps the status counts above.
-- 1,764 retained arXiv metadata records; 70 explicit scope exclusions are outside the active catalog.
-- 2,797 discovery identifiers; 812 remain unresolved after accounting for scope exclusions.
+- 2,045 resource records: 996 curated; 1,049 bibliographic metadata only.
+- 1,664 arXiv records, including curated surveys. This count overlaps the status counts above.
+- 1,764 retained arXiv metadata records; 100 explicit scope exclusions are outside the active catalog.
+- 3,906 discovery identifiers; 1,901 remain unresolved after accounting for scope exclusions.
 - 15 editorial proposals await verification or review.
 
 These are distinct resource identifiers, not distinct research projects. Papers, repositories, datasets, products, and publisher entities have different grains.
@@ -16,27 +16,27 @@ The denominator is the normalized identifiers extracted from each fetched docume
 
 | Source | Discovered | Indexed | Curated | Excluded | Unresolved | Fetch |
 | --- | ---: | ---: | ---: | ---: | ---: | --- |
-| [ShowLab Awesome GUI Agent](https://github.com/showlab/Awesome-GUI-Agent) | 338 | 199 | 160 | 0 | 139 | OK · 2026-10-17 |
-| [ZJU REAL Awesome GUI Agents](https://github.com/ZJU-REAL/Awesome-GUI-Agents) | 218 | 157 | 142 | 0 | 61 | OK · 2026-10-17 |
-| [OS Agents Survey](https://github.com/OS-Agent-Survey/OS-Agent-Survey) | 224 | 198 | 117 | 0 | 26 | OK · 2026-10-17 |
-| [Awesome Computer Use Agents — wjhou](https://github.com/wjhou/awesome-computer-use-agents) | 132 | 93 | 72 | 0 | 39 | OK · 2026-10-17 |
+| [ShowLab Awesome GUI Agent](https://github.com/showlab/Awesome-GUI-Agent) | 338 | 199 | 177 | 0 | 139 | OK · 2026-10-17 |
+| [ZJU REAL Awesome GUI Agents](https://github.com/ZJU-REAL/Awesome-GUI-Agents) | 218 | 157 | 149 | 0 | 61 | OK · 2026-10-17 |
+| [OS Agents Survey](https://github.com/OS-Agent-Survey/OS-Agent-Survey) | 224 | 198 | 147 | 0 | 26 | OK · 2026-10-17 |
+| [Awesome Computer Use Agents — wjhou](https://github.com/wjhou/awesome-computer-use-agents) | 132 | 93 | 76 | 0 | 39 | OK · 2026-10-17 |
 | [Steel Awesome Web Agents](https://github.com/steel-dev/awesome-web-agents) | 113 | 22 | 22 | 0 | 91 | OK · 2026-10-17 |
 | [Steel Web Agents Archive](https://github.com/steel-dev/awesome-web-agents/blob/main/ARCHIVE.md) | 7 | 1 | 1 | 0 | 6 | OK · 2026-10-17 |
-| [Computer Browser Phone Use Agent Datasets](https://github.com/Khang-9966/Computer-Browser-Phone-Use-Agent-Datasets) | 170 | 110 | 79 | 0 | 60 | OK · 2026-10-17 |
-| [Awesome Multimodal GUI Agents](https://github.com/DeLunnLi/Awesome-Multimodal-GUI-Agents) | 588 | 476 | 277 | 0 | 112 | OK · 2026-10-17 |
-| [Awesome Computer Use — TianyuanYang](https://github.com/TianyuanYang/awesome-computer-use) | 94 | 67 | 42 | 0 | 27 | OK · 2026-10-17 |
-| [Computer Use Agents Overview](https://github.com/cdxeve/awesome-computer-use-agents) | 78 | 48 | 30 | 0 | 30 | OK · 2026-10-17 |
+| [Computer Browser Phone Use Agent Datasets](https://github.com/Khang-9966/Computer-Browser-Phone-Use-Agent-Datasets) | 170 | 110 | 90 | 1 | 59 | OK · 2026-10-17 |
+| [Awesome Multimodal GUI Agents](https://github.com/DeLunnLi/Awesome-Multimodal-GUI-Agents) | 588 | 477 | 318 | 0 | 111 | OK · 2026-10-17 |
+| [Awesome Computer Use — TianyuanYang](https://github.com/TianyuanYang/awesome-computer-use) | 94 | 67 | 43 | 0 | 27 | OK · 2026-10-17 |
+| [Computer Use Agents Overview](https://github.com/cdxeve/awesome-computer-use-agents) | 78 | 48 | 31 | 0 | 30 | OK · 2026-10-17 |
 | [Awesome GUI Agents — Supernal](https://github.com/supernalintelligence/Awesome-Gui-Agents) | 63 | 11 | 8 | 0 | 52 | OK · 2026-10-17 |
-| [Yearly GUI Agents](https://github.com/qy0720/awesome-yearly-gui-agents) | 193 | 137 | 121 | 0 | 56 | OK · 2026-10-17 |
-| [OSU-NLP-Group/GUI-Agents-Paper-List / README.md](https://github.com/OSU-NLP-Group/GUI-Agents-Paper-List) | 544 | 486 | 144 | 0 | 58 | OK · 2026-10-17 |
-| [opendilab/awesome-ui-agents / README.md](https://github.com/opendilab/awesome-ui-agents) | 144 | 88 | 66 | 0 | 56 | OK · 2026-10-17 |
-| [jin-s13/awesome-gui-agent-hub / AWESOME.md](https://github.com/jin-s13/awesome-gui-agent-hub) | 210 | 207 | 74 | 0 | 3 | OK · 2026-10-17 |
+| [Yearly GUI Agents](https://github.com/qy0720/awesome-yearly-gui-agents) | 193 | 137 | 129 | 0 | 56 | OK · 2026-10-17 |
+| [OSU-NLP-Group/GUI-Agents-Paper-List / README.md](https://github.com/OSU-NLP-Group/GUI-Agents-Paper-List) | 544 | 486 | 188 | 0 | 58 | OK · 2026-10-17 |
+| [opendilab/awesome-ui-agents / README.md](https://github.com/opendilab/awesome-ui-agents) | 144 | 88 | 74 | 0 | 56 | OK · 2026-10-17 |
+| [jin-s13/awesome-gui-agent-hub / AWESOME.md](https://github.com/jin-s13/awesome-gui-agent-hub) | 210 | 207 | 89 | 0 | 3 | OK · 2026-10-17 |
 | [ZJU-REAL/Awesome-GUI-Agents / ICLR2026/Paperlist.md](https://github.com/ZJU-REAL/Awesome-GUI-Agents) | 9 | 0 | 0 | 0 | 9 | OK · 2026-10-17 |
-| [dqtz5vpvj9-create/awesome-mobile-gui-agents / README.md](https://github.com/dqtz5vpvj9-create/awesome-mobile-gui-agents) | 40 | 23 | 21 | 0 | 17 | OK · 2026-10-17 |
-| [PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents](https://github.com/PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents) | 247 | 184 | 146 | 0 | 63 | OK · 2026-10-17 |
-| [aialt/awesome-mobile-agents](https://github.com/aialt/awesome-mobile-agents) | 91 | 76 | 53 | 0 | 15 | OK · 2026-10-17 |
+| [dqtz5vpvj9-create/awesome-mobile-gui-agents / README.md](https://github.com/dqtz5vpvj9-create/awesome-mobile-gui-agents) | 40 | 24 | 22 | 0 | 16 | OK · 2026-10-17 |
+| [PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents](https://github.com/PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents) | 247 | 184 | 161 | 0 | 63 | OK · 2026-10-17 |
+| [aialt/awesome-mobile-agents](https://github.com/aialt/awesome-mobile-agents) | 91 | 76 | 59 | 0 | 15 | OK · 2026-10-17 |
 | [albzni/Awesome-LLM-based-Web-Agent-and-Tools](https://github.com/albzni/Awesome-LLM-based-Web-Agent-and-Tools) | 10 | 4 | 4 | 0 | 6 | OK · 2026-10-17 |
-| [ranpox/awesome-computer-use](https://github.com/ranpox/awesome-computer-use) | 96 | 57 | 43 | 0 | 39 | OK · 2026-10-17 |
+| [ranpox/awesome-computer-use](https://github.com/ranpox/awesome-computer-use) | 96 | 57 | 48 | 0 | 39 | OK · 2026-10-17 |
 | [Fara — first-party releases](https://github.com/microsoft/fara) | 18 | 5 | 5 | 0 | 13 | OK · 2026-10-17 |
 | [UI-Venus — first-party releases](https://github.com/inclusionAI/UI-Venus) | 10 | 4 | 4 | 0 | 6 | OK · 2026-10-17 |
 | [OpenGVLab ScaleCUA — first-party releases](https://github.com/OpenGVLab/ScaleCUA) | 15 | 9 | 9 | 0 | 6 | OK · 2026-10-17 |
@@ -52,6 +52,55 @@ The denominator is the normalized identifiers extracted from each fetched docume
 | [MobileGym++ — first-party releases](https://github.com/OpenMobile2/MobileGym-plusplus) | 9 | 2 | 1 | 0 | 7 | OK · 2026-10-17 |
 | [CarryOn — first-party releases](https://github.com/Ethannju/carryon) | 2 | 1 | 1 | 0 | 1 | OK · 2026-10-17 |
 | [GraceBench — first-party releases](https://iaie-physicalai.github.io/GraceBench) | 3 | 1 | 1 | 0 | 2 | OK · 2026-10-17 |
+| [MobileAgent / GUI-Owl / UI-S1 — first-party release index](https://github.com/X-PLUG/MobileAgent) | 33 | 12 | 11 | 0 | 21 | OK · 2026-10-16 |
+| [GUICourse — first-party release checklist](https://github.com/yiye3/GUICourse) | 7 | 4 | 4 | 0 | 3 | OK · 2026-10-16 |
+| [OS-Genesis — first-party training assets](https://github.com/OS-Copilot/OS-Genesis) | 29 | 2 | 2 | 0 | 27 | OK · 2026-10-16 |
+| [MultiUI / UIX — first-party release index](https://github.com/neulab/multiui) | 8 | 1 | 1 | 0 | 7 | OK · 2026-10-16 |
+| [UI-Genie — first-party model and data releases](https://github.com/Euphoria16/UI-Genie) | 12 | 5 | 5 | 0 | 7 | OK · 2026-10-17 |
+| [ScienceBoard — first-party environments and trajectories](https://github.com/OS-Copilot/ScienceBoard) | 16 | 4 | 4 | 0 | 12 | OK · 2026-10-16 |
+| [MAI-UI / Qwen-UI-Agent — first-party project index](https://github.com/Tongyi-MAI/MAI-UI) | 17 | 3 | 2 | 0 | 14 | OK · 2026-10-17 |
+| [H Company — official Hub model index](https://huggingface.co/Hcompany) | 39 | 4 | 4 | 0 | 35 | OK · 2026-10-17 |
+
+## Paper-discovery query coverage
+
+Latest pass: 2026-10-17T04:05:38Z; **32/32** query windows succeeded. 1,491 distinct identifiers; 918 new to the candidate queue.
+
+These are ranked search windows, not a field-wide denominator. New identifiers still require primary metadata verification and relevance review.
+
+| Area | Query | Returned / limit | State |
+| --- | --- | ---: | --- |
+| General computer use | computer use agents | 74 / 80 | success |
+| Grounding evaluation | GUI grounding benchmark | 80 / 80 | success |
+| Mobile learning | mobile GUI agent reinforcement learning | 80 / 80 | success |
+| Web data and evaluation | web agent dataset benchmark | 80 / 80 | success |
+| Safety and security | computer use agent safety | 80 / 80 | success |
+| Memory and planning | GUI agent memory planning | 80 / 80 | success |
+| Desktop platforms | desktop computer use agent Windows macOS Linux | 80 / 80 | success |
+| Android | Android smartphone GUI agent automation | 80 / 80 | success |
+| iOS | iOS iPhone GUI agent benchmark | 80 / 80 | success |
+| HarmonyOS | HarmonyOS mobile GUI agent | 80 / 80 | success |
+| Screen understanding | GUI screen understanding interface element detection | 80 / 80 | success |
+| Visual grounding | screenshot visual grounding click localization agent | 80 / 80 | success |
+| Browser interaction | visual web navigation browser agent | 80 / 80 | success |
+| Cross application work | cross application multi app GUI agents | 80 / 80 | success |
+| Long horizon tasks | long horizon computer use agent workflow planning | 80 / 80 | success |
+| Agent memory | GUI agent episodic memory self reflection | 80 / 80 | success |
+| Reinforcement learning | computer use agent online reinforcement learning rewards | 80 / 80 | success |
+| Demonstrations | GUI agent imitation learning human demonstration trajectories | 80 / 80 | success |
+| Synthetic training data | synthetic GUI agent training data generation | 80 / 80 | success |
+| Task verification | computer use benchmark task evaluation state verification | 80 / 80 | success |
+| Professional software | professional software GUI agent CAD Blender 3D | 80 / 80 | success |
+| Office workflows | spreadsheets presentations documents computer use agents | 80 / 80 | success |
+| Assistive interfaces | accessibility assistive multimodal GUI agents | 80 / 80 | success |
+| Robustness | GUI agent robustness dynamic interfaces distribution shift | 80 / 80 | success |
+| Adversarial security | browser GUI agent prompt injection adversarial security | 80 / 80 | success |
+| Human collaboration | GUI agent human collaboration clarification intervention | 80 / 80 | success |
+| Efficiency | GUI agent efficiency latency visual token compression | 80 / 80 | success |
+| Open models | open source GUI model computer use checkpoint | 80 / 80 | success |
+| Workflow automation | visual workflow automation robotic process automation agents | 80 / 80 | success |
+| Multilingual interfaces | multilingual GUI agent interface grounding | 80 / 80 | success |
+| Testing and exploration | GUI agent software testing interface exploration | 80 / 80 | success |
+| Chinese language discovery | 图形界面 智能体 手机 电脑操作 | 8 / 80 | success |
 
 ## Primary arXiv discovery
 
@@ -65,9 +114,9 @@ The recorded title query returned 1,199 unique records out of 1,246 reported mat
 
 | Scope | Recorded declarations |
 | --- | ---: |
-| code | 133 |
-| data | 37 |
-| weights | 38 |
+| code | 142 |
+| data | 42 |
+| weights | 50 |
 | document | 0 |
 
 A code license never fills a data or weights field. Hub declarations are publisher metadata, not independently audited legal conclusions. Missing values remain null.
@@ -94,7 +143,7 @@ A code license never fills a data or weights field. Hub declarations are publish
 
 ## Scope exclusions
 
-70 records have an applied scope decision; 0 require another review after a change. See the [decision ledger](../data/exclusion-status.json) for each rationale and source fingerprint. These decisions concern catalog relevance, not research quality. Original bibliographic metadata is retained, and previous resource URLs explain the decision rather than silently disappearing.
+100 records have an applied scope decision; 0 require another review after a change. See the [decision ledger](../data/exclusion-status.json) for each rationale and source fingerprint. These decisions concern catalog relevance, not research quality. Original bibliographic metadata is retained, and previous resource URLs explain the decision rather than silently disappearing.
 
 ## Known gaps
 

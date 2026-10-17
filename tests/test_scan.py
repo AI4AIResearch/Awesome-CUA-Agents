@@ -38,6 +38,14 @@ class ScanSafetyTests(unittest.TestCase):
         phases=[{'name':'discovery','ok':True},{'name':'validate','ok':False,'error':'invalid record'}]
         status,_=scan.summarize_phases(phases,[{'id':'good','ok':True}],[],[])
         self.assertEqual(status,'failed')
+    def test_http_success_with_only_parse_failures_is_not_a_usable_scan(self):
+        phases=[{'name':'discovery','ok':False},{'name':'huggingface','ok':True},
+                {'name':'recent_arxiv','ok':False},{'name':'build','ok':True},{'name':'validate','ok':True}]
+        runs=[{'id':'bad-shape','state':'failed','evidence':{'ok':True,'status':200},'parse_error':'not an array'}]
+        status,problems=scan.summarize_phases(phases,[],runs,[])
+        self.assertEqual(status,'failed');self.assertIn('bad-shape',' '.join(problems))
+        runs.append({'id':'empty-valid','state':'success','evidence':{'ok':True,'status':200},'identifiers':[]})
+        self.assertEqual(scan.summarize_phases(phases,[],runs,[])[0],'partial')
     def test_arxiv_error_feed_cannot_be_counted_as_successful_empty_search(self):
         body=b'<feed xmlns="http://www.w3.org/2005/Atom"><entry><id>http://arxiv.org/api/errors#bad_query</id><title>Error</title></entry></feed>'
         info={'ok':True,'url':'https://export.arxiv.org/api/query','retrieved_at':'2026-10-16T00:00:00Z','sha256':'a'*64}
@@ -47,6 +55,67 @@ class ScanSafetyTests(unittest.TestCase):
             self.assertFalse(result['ok'])
             rows=[json.loads(line) for line in (Path(directory)/'papers.jsonl').read_text().splitlines()]
             self.assertEqual(rows,[existing])
+
+    def test_recent_rate_limit_defers_harvest_and_stale_search_receipts_do_not_count(self):
+        with tempfile.TemporaryDirectory() as directory,mock.patch.object(scan,'DATA',Path(directory)):
+            path=Path(directory)
+            scan.write_json(path/'scan-config.json',{'recent_lookback_days':14,'recent_max_results':500,'harvest_limit':500,
+                'history_limit':5,'timezone':'UTC','scan_times_local':['08:17','20:17'],'policy':'Fixture'})
+            scan.write_json(path/'discovery-runs.json',[{'id':'current','ok':True}])
+            scan.write_json(path/'paper-discovery-status.json',{'schema_version':1,'started_at':'2026-10-16T00:00:00Z',
+                'finished_at':'2026-10-16T00:01:00Z','configured_query_count':1,
+                'queries':[{'id':'old','state':'success','evidence':{'ok':True}}]})
+            invoked=[]
+            def stage(name,command,timeout=600):
+                invoked.append(name)
+                return {'name':name,'ok':True,'started_at':'2026-10-17T00:00:00Z'}
+            with mock.patch.object(scan,'stage',side_effect=stage),mock.patch.object(scan,'recent_papers',return_value={
+                    'name':'recent_arxiv','ok':False,'rate_limited':True,'warnings':['HTTP 429']}),mock.patch.dict(scan.os.environ,{'GITHUB_STEP_SUMMARY':''}):
+                self.assertEqual(scan.run_scan(),0)
+            result=scan.read_json(path/'scan-status.json')
+            self.assertNotIn('harvest',invoked)
+            self.assertTrue(next(p for p in result['phases'] if p['name']=='harvest')['deferred'])
+            self.assertFalse(next(p for p in result['phases'] if p['name']=='huggingface')['ok'])
+            self.assertEqual(result['paper_searches']['successful'],0)
+            self.assertEqual(result['status'],'partial')
+    def test_publisher_hub_rate_limit_defers_paper_search_without_stopping_arxiv(self):
+        with tempfile.TemporaryDirectory() as directory,mock.patch.object(scan,'DATA',Path(directory)):
+            path=Path(directory)
+            scan.write_json(path/'scan-config.json',{'recent_lookback_days':14,'recent_max_results':500,'harvest_limit':500,
+                'history_limit':5,'timezone':'UTC','scan_times_local':['08:17','20:17'],'policy':'Fixture'})
+            invoked=[]
+            def stage(name,command,timeout=600):
+                invoked.append(name)
+                if name=='discovery':
+                    scan.write_json(path/'discovery-runs.json',[{'id':'hub','ok':False,'status':429,
+                        'provider_host':'huggingface.co','run_started_at':'2026-10-17T00:00:01Z'}])
+                return {'name':name,'ok':True,'started_at':'2026-10-17T00:00:00Z'}
+            with mock.patch.object(scan,'stage',side_effect=stage),mock.patch.object(scan,'recent_papers',return_value={
+                    'name':'recent_arxiv','ok':True,'complete':True,'warnings':[]}) as recent,mock.patch.dict(scan.os.environ,{'GITHUB_STEP_SUMMARY':''}):
+                self.assertEqual(scan.run_scan(),0)
+            recent.assert_called_once()
+            self.assertEqual(invoked,['discovery','harvest','build','validate'])
+            phase=next(p for p in scan.read_json(path/'scan-status.json')['phases'] if p['name']=='huggingface')
+            self.assertTrue(phase['deferred']);self.assertFalse(phase['request_attempted'])
+    def test_huggingface_query_rate_limit_does_not_stop_arxiv_or_harvest(self):
+        with tempfile.TemporaryDirectory() as directory,mock.patch.object(scan,'DATA',Path(directory)):
+            path=Path(directory)
+            scan.write_json(path/'scan-config.json',{'recent_lookback_days':14,'recent_max_results':500,'harvest_limit':500,
+                'history_limit':5,'timezone':'UTC','scan_times_local':['08:17','20:17'],'policy':'Fixture'})
+            invoked=[]
+            def stage(name,command,timeout=600):
+                invoked.append(name)
+                if name=='huggingface':
+                    scan.write_json(path/'paper-discovery-status.json',{'schema_version':1,
+                        'started_at':'2026-10-17T00:00:00Z','finished_at':'2026-10-17T00:00:01Z','configured_query_count':1,
+                        'queries':[{'id':'limited','state':'failed','evidence':{'ok':False,'status':429}}]})
+                return {'name':name,'ok':True,'started_at':'2026-10-17T00:00:00Z'}
+            with mock.patch.object(scan,'stage',side_effect=stage),mock.patch.object(scan,'recent_papers',return_value={
+                    'name':'recent_arxiv','ok':True,'complete':True,'warnings':[]}) as recent,mock.patch.dict(scan.os.environ,{'GITHUB_STEP_SUMMARY':''}):
+                self.assertEqual(scan.run_scan(),0)
+            recent.assert_called_once()
+            self.assertEqual(invoked,['discovery','huggingface','harvest','build','validate'])
+            self.assertEqual(scan.read_json(path/'scan-status.json')['status'],'partial')
 
 
 if __name__=='__main__':unittest.main()

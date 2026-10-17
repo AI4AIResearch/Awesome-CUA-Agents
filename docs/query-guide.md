@@ -48,3 +48,14 @@ ORDER BY publisher.name, offering.name;
 ```
 
 SQLite uses `resources`, `facets`, `relations`, and `resource_search`. The full record is retained in `resources.record_json`. FTS5 syntax differs from the CLI's literal search. Model variant and publisher counts must not be described as counts of independent projects.
+
+## Agent and RAG access
+
+Clone the complete source catalog with `git clone https://github.com/reacher-z/Awesome-CUA.git`. [AGENTS.md](../AGENTS.md) contains executable local-search examples and a citation-preserving retrieval workflow.
+
+```sh
+python3 scripts/export_rag.py --output dist/rag-documents.jsonl
+python3 scripts/export_rag.py --include-metadata --output dist/rag-all-records.jsonl
+```
+
+The default includes reviewed resources; `--include-metadata` includes every active record with its review state intact. Each row contains `id`, `text`, and `metadata`. Keep citation URLs, evidence, dates, recorded arXiv versions, licenses, and `record_sha256` alongside embeddings. Use IDs for upserts and reconcile removed IDs against the full snapshot and scope ledger. The public [RAG manifest](https://awesomecua.github.io/downloads/rag-manifest.json) gives file counts and SHA-256 fingerprints. Embeddings and upstream paper full text are not part of the export.

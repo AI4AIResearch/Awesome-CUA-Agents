@@ -112,7 +112,8 @@ def recent_papers(config):
         'polling_policy':'Complete arXiv snapshots are reused within one UTC publication day; failed or incomplete searches are retried by a later scheduled scan.',
         'reported_total':total,'unique_returned':len(seen),'complete':complete,'pages':pages,'new_ids':new_ids,'warnings':warnings}
     write_json(DATA/'recent-paper-search.json',report)
-    return {'name':'recent_arxiv','ok':any(p.get('ok') for p in pages),'complete':complete,'new_count':len(new_ids),'warnings':warnings,'cache_used':False}
+    return {'name':'recent_arxiv','ok':any(p.get('ok') for p in pages),'complete':complete,'new_count':len(new_ids),'warnings':warnings,'cache_used':False,
+            'rate_limited':any(p.get('status')==429 for p in pages)}
 
 
 def summarize_phases(phases,source_runs,hf_runs,harvest_failures):
@@ -121,12 +122,13 @@ def summarize_phases(phases,source_runs,hf_runs,harvest_failures):
         if not phase.get('ok'):problems.append(phase['name']+': '+phase.get('error','failed'))
         problems.extend(phase.get('warnings',[]))
     failed_sources=[r['id'] for r in source_runs if not r.get('ok')]
-    failed_queries=[r['id'] for r in hf_runs if not r.get('evidence',{}).get('ok') or r.get('parse_error')]
+    successful_query=lambda r:r.get('state')=='success' and r.get('evidence',{}).get('ok') and not r.get('parse_error')
+    failed_queries=[r['id'] for r in hf_runs if not successful_query(r)]
     if failed_sources:problems.append('Discovery sources failed: '+', '.join(failed_sources))
     if failed_queries:problems.append('Paper searches failed: '+', '.join(failed_queries))
-    if harvest_failures:problems.append(f'{len(harvest_failures)} arXiv identifiers remain unresolved in this harvest.')
+    if harvest_failures:problems.append(f'{len(harvest_failures)} arXiv identifiers remain unresolved in the retained harvest ledger.')
     phase_ok={p['name']:p.get('ok',False) for p in phases}
-    usable=(phase_ok.get('discovery') and any(r.get('ok') for r in source_runs)) or (phase_ok.get('huggingface') and any(r.get('evidence',{}).get('ok') for r in hf_runs)) or phase_ok.get('recent_arxiv')
+    usable=(phase_ok.get('discovery') and any(r.get('ok') and not r.get('parse_error') for r in source_runs)) or (phase_ok.get('huggingface') and any(successful_query(r) for r in hf_runs)) or phase_ok.get('recent_arxiv')
     fatal=not usable or any(p['name'] in {'build','validate'} and not p.get('ok') for p in phases)
     return ('failed' if fatal else 'partial' if problems else 'success'),problems
 
@@ -135,13 +137,31 @@ def run_scan():
     config=read_json(DATA/'scan-config.json')
     if not 1<=config['recent_lookback_days']<=31 or not 1<=config['recent_max_results']<=2000:raise ValueError('Unbounded recent-search configuration')
     started=now();before=counts();old_papers={r['id'] for r in read_jsonl(DATA/'papers.jsonl')};old_candidates={r['id'] for r in read_jsonl(DATA/'candidates.jsonl')}
-    phases=[stage('discovery',['scripts/catalog.py','discover','--refresh'],900),stage('huggingface',['scripts/discover_papers.py','--refresh'],360)]
+    phases=[stage('discovery',['scripts/catalog.py','discover','--refresh'],900)]
+    source_runs=read_json(DATA/'discovery-runs.json',[])
+    hf_limited=phases[0]['ok'] and any(r.get('status')==429 and r.get('provider_host')=='huggingface.co'
+        and r.get('run_started_at','')>=phases[0].get('started_at',started) for r in source_runs)
+    if hf_limited:
+        phases.append({'name':'huggingface','started_at':now(),'ok':False,'deferred':True,
+            'request_attempted':False,'error':'Deferred after the publisher-source phase returned Hugging Face HTTP 429.'})
+    else:
+        phases.append(stage('huggingface',['scripts/discover_papers.py','--refresh'],360))
     try:phases.append(recent_papers(config))
     except Exception as error:phases.append({'name':'recent_arxiv','ok':False,'error':str(error)})
-    phases.append(stage('harvest',['scripts/catalog.py','harvest','--limit',str(config['harvest_limit'])],600))
+    if phases[-1].get('rate_limited'):
+        phases.append({'name':'harvest','ok':False,'deferred':True,
+            'error':'Deferred after the recent arXiv query returned HTTP 429; discovered identifiers remain queued.'})
+    else:
+        phases.append(stage('harvest',['scripts/catalog.py','harvest','--limit',str(config['harvest_limit'])],600))
     phases.append(stage('build',['scripts/catalog.py','build']))
     phases.append(stage('validate',['scripts/catalog.py','validate']))
-    source_runs=read_json(DATA/'discovery-runs.json',[]);hf_runs=read_json(DATA/'research-discovery.json',[])
+    source_runs=read_json(DATA/'discovery-runs.json',[])
+    hf_report=read_json(DATA/'paper-discovery-status.json',{})
+    hf_current=(hf_report.get('schema_version')==1 and hf_report.get('finished_at')
+                and hf_report.get('started_at','')>=phases[1].get('started_at',started))
+    hf_runs=hf_report.get('queries',[]) if hf_current else []
+    if phases[1]['ok'] and not hf_current:
+        phases[1].update(ok=False,error='No complete receipt for the current paper-discovery run; previous successes are not reused.')
     status,problems=summarize_phases(phases,source_runs,hf_runs,read_jsonl(DATA/'harvest-failures.jsonl'))
     papers=read_jsonl(DATA/'papers.jsonl');candidates=read_jsonl(DATA/'candidates.jsonl');finished=now()
     new_papers=[{'id':r['id'],'name':r['name'],'url':r['url'],'review_status':'metadata_verified'} for r in papers if r['id'] not in old_papers]
@@ -151,6 +171,8 @@ def run_scan():
         'schedule':{'timezone':config['timezone'],'times_local':config['scan_times_local']},'before':before,'after':counts(),
         'new_papers':new_papers,'new_candidate_count':sum(r['id'] not in old_candidates for r in candidates),
         'pending_metadata_changes':len(read_jsonl(DATA/'metadata-updates.jsonl')),'source_fetches':{'successful':sum(bool(r.get('ok')) for r in source_runs) if phases[0]['ok'] else 0,'total':len(source_runs)},
+        'paper_searches':{'successful':sum(r.get('state')=='success' for r in hf_runs),'total':hf_report.get('configured_query_count',0) if hf_current else 0,
+            'unique_identifiers':hf_report.get('unique_identifiers',0) if hf_current else 0,'new_candidates':hf_report.get('new_candidate_count',0) if hf_current else 0},
         'phases':phases,'warnings':problems,'policy':config['policy']}
     write_json(DATA/'scan-status.json',report)
     history=read_jsonl(DATA/'scan-history.jsonl');history.append({k:v for k,v in report.items() if k!='phases'})

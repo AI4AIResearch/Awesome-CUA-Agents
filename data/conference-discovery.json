@@ -1,0 +1,655 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-10-17T05:28:26Z",
+  "policy": "Proceedings titles are discovery candidates. Conference year does not establish arXiv submission date; possible renamed papers require entity resolution. No new approved papers are created by this sweep.",
+  "source_count": 4,
+  "title_candidate_count": 65,
+  "new_candidate_identifiers": 62,
+  "sources": [
+    {
+      "id": "conference-sweep-344d18597161c619",
+      "url": "https://proceedings.iclr.cc/paper_files/paper/2026",
+      "evidence": {
+        "url": "https://proceedings.iclr.cc/paper_files/paper/2026",
+        "retrieved_at": "2026-10-17T04:06:26Z",
+        "sha256": "2e233e9120602a93230f1e81b01bd295ee69b5c93f4eaa5b1988166fa3983fe5"
+      },
+      "selection": "Bounded keyword-selected titles from this proceedings snapshot; not a complete conference review.",
+      "candidates": [
+        {
+          "title": "LongHorizonUI: A Unified Framework for Robust long-horizon Task Automation of GUI Agent",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/002a6bef26174b590e4eab95b63feb1b-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": null,
+          "discovery_review": "candidate_core",
+          "scope_basis": "Long-horizon GUI framework combining perception, reflection and compensating actions, evaluated on games and general applications. Non-game scope and artifact release need separate confirmation.",
+          "evidence": {
+            "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/002a6bef26174b590e4eab95b63feb1b-Abstract-Conference.html",
+            "retrieved_at": "2026-10-17T04:09:13Z",
+            "sha256": "fda88d4c935640339743751062d9deffa985e01c8dde011d0828f518dacf5091"
+          },
+          "abstract_sha256": "b67c5e5a1b2f9c85d34795bbeff8efa86328ef3e81dc039e51533daaea695575"
+        },
+        {
+          "title": "Grounding Computer Use Agents on Human Demonstrations",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/0961fffb7adb81388b9b24ab6a3ff7ab-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2511.07332",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "M$^2$-Miner: Multi-Agent Enhanced MCTS for Mobile GUI Agent Data Mining",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/0a6059857ae5c82ea9726ee9282a7145-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2602.05429",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "SMAN-Bench: A Cross-System Benchmark for Mobile Agents under Single- and Multi-path, Ambiguous, and Noisy Tasks",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/1b4279dc1ec8d0183c22528664d84459-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": null,
+          "discovery_review": "possible_existing_alias",
+          "scope_basis": "Direct GUI benchmark relevance is established, but single/multi-path, noisy/AITZ and ambiguous task construction closely matches archived Mobile-Bench-v2. Do not count as a new paper until publisher/author identity is resolved.",
+          "evidence": {
+            "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/1b4279dc1ec8d0183c22528664d84459-Abstract-Conference.html",
+            "retrieved_at": "2026-10-17T04:09:13Z",
+            "sha256": "1b2f547a7e5e443c8be94e9e904bb17564f9c9175d17063b3d5fa462b0e039bf"
+          },
+          "abstract_sha256": "f7bedf60e9fd9595c1612d2c8ebd6247a049f410dca4e31e6388711a0918d7d3",
+          "possible_or_linked_arxiv": "arxiv:2505.11891",
+          "arxiv_identity_basis": "Potential conference rename: compare retained complete Mobile-Bench-v2 abstract and benchmark dataset identity; author/version reconciliation still required."
+        },
+        {
+          "title": "ComputerRL: Scaling End-to-End Online Reinforcement Learning for Computer Use Agents",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/28707388472adc117714e83d44bfaebb-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2508.14040",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "VPI-Bench: Visual Prompt Injection Attacks for Computer-Use Agents",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/28e4c3696637ac727051a2922643ec6a-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2506.02456",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "SCUBA: Salesforce Computer Use Benchmark",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/29c8c615b3187ee995029284702d3f43-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2509.26506",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "WARC-Bench: Web Archive based Benchmark for GUI Subtask Executions",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/2bf17c1d28ba14a8c7cf432c9910af6e-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2510.09872",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "MobileRL: Online Agentic Reinforcement Learning for Mobile GUI Agents",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/3b6aaffec941f98930753fa6d6de7263-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2509.18119",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "Web-CogReasoner: Towards Multimodal Knowledge-Induced Cognitive Reasoning for Web Agents",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/3d14c058074f6a5476a7e5cbe9c0f4c1-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2508.01858",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "GUI-Shift: Enhancing VLM-Based GUI Agents through Self-supervised Reinforcement Learning",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/41effeded300e4c99c16f35bb3206fe0-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2505.12493",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "Flash-Searcher: Fast and Effective Web Agents via DAG-Based Parallel Execution",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/4a975de3dd9f9c06109e3015b51c587b-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2509.25301",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "Talk, Evaluate, Diagnose: User-aware Agent Evaluation with Automated Error Analysis",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/4cb31c278aae8c8862af1672557d3b11-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": null,
+          "discovery_review": "skip_for_gui_expansion",
+          "scope_basis": "Abstract describes generic tool-signature and conversational agent evaluation without GUI action evidence.",
+          "evidence": {
+            "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/4cb31c278aae8c8862af1672557d3b11-Abstract-Conference.html",
+            "retrieved_at": "2026-10-17T04:09:13Z",
+            "sha256": "7a765a88877db71bb47310f25505c02f92ec6107d1c4d2f58c243d04503c861d"
+          },
+          "abstract_sha256": "dec827f7b4592ef81791d436b4e6b0d69cc1b97f5f18ed6f0bd13782d355bf19"
+        },
+        {
+          "title": "GTA1: GUI Test-time Scaling Agent",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/4fb7d5059cdbe2db2b62dcfe14caa658-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2507.05791",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "RedTeamCUA: Realistic Adversarial Testing of Computer-Use Agents in Hybrid Web-OS Environments",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/505ca7558b83126389727d08f2366b72-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2505.21936",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "UI-Ins: Enhancing GUI Grounding with Multi-Perspective Instruction as Reasoning",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/5965f3a748a8d41415db2bfa44635cc3-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2510.20286",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "WALT: Web Agents that Learn Tools",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/5b175f9e93873e3a10a6ce43dbb82e05-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2510.01524",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "Computer Agent Arena: Toward Human-Centric Evaluation and Analysis of Computer-Use Agents",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/5f1d328711b162e1cf9896c7d6aaecdd-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": null,
+          "discovery_review": "candidate_core",
+          "scope_basis": "Human-preference evaluation of CUAs in matched interactive computer environments, including pure GUI and hybrid agents.",
+          "evidence": {
+            "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/5f1d328711b162e1cf9896c7d6aaecdd-Abstract-Conference.html",
+            "retrieved_at": "2026-10-17T04:09:13Z",
+            "sha256": "b58444fac0014fcefe6adbae83d28f036b5a7f2cd861426a8904f9d1d6e882a1"
+          },
+          "abstract_sha256": "c3d1f1aece6dfa6df1e45765b92a4bf8750cb8cabd16e3b11fde09c94fe159bb"
+        },
+        {
+          "title": "R-WoM: Retrieval-augmented World Model For Computer-use Agents",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/6057cd2bc818e9ae2113151ae2a5bbaa-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2510.11892",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "MobileIPL: Enhancing Mobile Agents Thinking Process via Iterative Preference Learning",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/61122fec6f7c24d0c4c7fee4fa3e2086-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2505.12299",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "ScaleCUA: Scaling Open-Source Computer Use Agents with Cross-Platform Data",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/666c1861d709bd84e20b6e0e02a2c223-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2509.15221",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "OSWorld-MCP: Benchmarking MCP Tool Invocation In Computer-Use Agents",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/67d57c32e20fd0a7a302cb81d36e40d5-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2510.24563",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "GuirlVG: Incentivize GUI Visual Grounding via Empirical Exploration on Reinforcement Learning",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/684d0a96bc636537748fc13c8dd58641-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": null,
+          "discovery_review": "candidate_core",
+          "scope_basis": "RL method for GUI visual grounding, evaluated on ScreenSpot variants.",
+          "evidence": {
+            "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/684d0a96bc636537748fc13c8dd58641-Abstract-Conference.html",
+            "retrieved_at": "2026-10-17T04:09:14Z",
+            "sha256": "268613bb7d330d505552adb5cbccbbc7a4d2a933723cede73a95a9140c4bab25"
+          },
+          "abstract_sha256": "9c6599fba4ffac790b4306b0353d1f74d43c8351d5402fb564852e5d0ab6c643"
+        },
+        {
+          "title": "ProRe: A Proactive Reward System for GUI Agents via Reasoner–Actor Collaboration",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/74bb6042258daa72bedc9616b1b93eda-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2509.21823",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "HackWorld: Evaluating Computer-Use Agents on Exploiting Web Application Vulnerabilities",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/7baa48bc166aa2013d78cbdc15010530-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2510.12200",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "How Dark Patterns Manipulate Web Agents",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/9afca5107064eb89546fabb4abc379a7-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": null,
+          "discovery_review": "possible_existing_alias",
+          "scope_basis": "DECEPTICON web-navigation dark-pattern evaluation; matches the named DECEPTICON project in an existing archived paper. Do not count as new without formal alias reconciliation.",
+          "evidence": {
+            "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/9afca5107064eb89546fabb4abc379a7-Abstract-Conference.html",
+            "retrieved_at": "2026-10-17T04:09:14Z",
+            "sha256": "6728a17be95b0604d1bdebd1631960e2b427ced2400d7f791af52300c8c8cd93"
+          },
+          "abstract_sha256": "918d24ce7ea9c9f3e24b25a5b8dbb8bfe23aa565a2b7f0245958178f0935b5c1",
+          "possible_or_linked_arxiv": "arxiv:2512.22894",
+          "arxiv_identity_basis": "Potential alias requiring author/version reconciliation"
+        },
+        {
+          "title": "OmniActor: A Generalist GUI and Embodied Agent for 2D&3D Worlds",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/9df0263b6032123e0ed65be3e42506f5-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2509.02322",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "Collaborative Gym: A Framework for Enabling and Evaluating Human-Agent Collaboration",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/a1c8a68e52499c9396854e3f967e37c0-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": null,
+          "discovery_review": "hold_gui_scope",
+          "scope_basis": "Abstract establishes a web application for human-agent collaboration, but does not establish that the agent itself performs GUI actions. Full-method review is needed for core scope.",
+          "evidence": {
+            "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/a1c8a68e52499c9396854e3f967e37c0-Abstract-Conference.html",
+            "retrieved_at": "2026-10-17T04:09:14Z",
+            "sha256": "4217a895f255dd0ad6d04390e0eb1828ca89391b03683f236e5eb9c03d07ff14"
+          },
+          "abstract_sha256": "f65582b7401c2544808b40d079a3d169852aeea9a425cd31ec777061c78095fb"
+        },
+        {
+          "title": "Programming with Pixels: Can Computer-Use Agents do Software Engineering?",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/bce96750dcb64f3257ceabadf0b9c9bf-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2502.18525",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "ViMo: A Generative Visual GUI World Model for App Agents",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/beb0f70e479c495f1903ffdea40adef6-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2504.13936",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "ST-WebAgentBench: A Benchmark for Evaluating Safety and Trustworthiness in Web Agents",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/c6c29e590e3c62e37e6b39cdd6baf2e8-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2410.06703",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "VideoAgentTrek: Computer-Use Pretraining from Unlabeled Videos",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/c78b7a0016da6bf5be2a0691c17943ee-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2510.19488",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "WebArbiter: A Generative Reasoning Process Reward Model for Web Agents",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/c8bd227b32b458970d3ab01a2c372055-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": null,
+          "discovery_review": "possible_existing_alias",
+          "scope_basis": "Generative reasoning reward model and WebPRMBench; likely a conference-title variant of the archived principle-guided WebArbiter paper, pending author/version reconciliation.",
+          "evidence": {
+            "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/c8bd227b32b458970d3ab01a2c372055-Abstract-Conference.html",
+            "retrieved_at": "2026-10-17T04:09:14Z",
+            "sha256": "5cf79241bd81a2386a17f072a935d64eeed2c36fe8d17c2e84cf844384a9b6f1"
+          },
+          "abstract_sha256": "01550aab51e1c98f2b27285667282db6a76064e02a61ccc5844826f5208e9069",
+          "possible_or_linked_arxiv": "arxiv:2601.21872",
+          "arxiv_identity_basis": "Potential alias requiring author/version reconciliation"
+        },
+        {
+          "title": "Efficient Agent Training for Computer Use",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/c909b3fa0b4a87fd0f8d314bcc41a825-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2505.13909",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "CoAct-1: Computer-using Multi-agent System with Coding Actions",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/ce65173b994cf7c925c71b482ee14a8d-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2508.03923",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "DAVE: A VLM Vision Encoder for Document Understanding and Web Agents",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/d25ed2a375a33257d33e83fd9010ec60-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2512.17221",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "WebFactory: Automated Compression of Foundational Language Intelligence into Grounded Web Agents",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/d560f94c582033e6d8eb0c97cdd4f721-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2603.05044",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "GhostEI-Bench: Do Mobile Agent Resilience to Environmental Injection in Dynamic On-Device Environments?",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/d5a58d198afa370a3dff0e1ca4fe1802-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": null,
+          "discovery_review": "candidate_core",
+          "scope_basis": "Executable environmental injection evaluation inside Android emulators, using screenshots and action traces.",
+          "evidence": {
+            "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/d5a58d198afa370a3dff0e1ca4fe1802-Abstract-Conference.html",
+            "retrieved_at": "2026-10-17T04:09:14Z",
+            "sha256": "b49edfb3f714a9a2b9eba548ad1c2678e2fb0cf1d823fbc41248b40dbec73b9c"
+          },
+          "abstract_sha256": "d17eb377b5296b8e6a41d48e715c45aa22ea23f412aa9f2b04b31eeef71a3b0b"
+        },
+        {
+          "title": "Go-Browse: Training Web Agents with Structured Exploration",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/e0c50c0e78db8d9d881c79cac775e499-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2506.03533",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "Just Do It!? Computer-Use Agents Exhibit Blind Goal-Directedness",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/ea7623ff02edffe68866f88da2667592-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2510.01670",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "AgentFold: Long-Horizon Web Agents with Proactive Context Folding",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/fa948624dfde013671e72c1a7ca4aebc-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": null,
+          "discovery_review": "skip_for_gui_expansion",
+          "scope_basis": "Abstract describes web information-seeking and context folding with BrowseComp evaluations; it does not establish GUI/browser control. Also likely an existing title variant.",
+          "evidence": {
+            "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/fa948624dfde013671e72c1a7ca4aebc-Abstract-Conference.html",
+            "retrieved_at": "2026-10-17T04:09:14Z",
+            "sha256": "73089547bf99d39c139db75a02e29c3588fb78c1465e04d0a0c620796bbb9adc"
+          },
+          "abstract_sha256": "998ab7ef90ab21edf99e90699775581b4ebf6af1eb6156e96535ffa8e6fa3df6",
+          "possible_or_linked_arxiv": "arxiv:2510.24699",
+          "arxiv_identity_basis": "Potential alias requiring author/version reconciliation"
+        },
+        {
+          "title": "AgentSynth: Scalable Task Generation for Generalist Computer-Use Agents",
+          "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/fb0f9005938c5a80b1114a42156e99e2-Abstract-Conference.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2506.14205",
+          "discovery_review": "title_only"
+        }
+      ]
+    },
+    {
+      "id": "conference-sweep-d61ca854c3555cf4",
+      "url": "https://openaccess.thecvf.com/CVPR2026?day=2026-06-05",
+      "evidence": {
+        "url": "https://openaccess.thecvf.com/CVPR2026?day=2026-06-05",
+        "retrieved_at": "2026-10-17T04:11:34Z",
+        "sha256": "50ad120dfd0e280b6d3dc0e6e2e5a5b9b794ef2d73845f48def2c71e904183bb"
+      },
+      "selection": "Bounded keyword-selected titles from this proceedings snapshot; not a complete conference review.",
+      "candidates": [
+        {
+          "title": "HiconAgent: History Context-aware Policy Optimization for GUI Agents",
+          "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Zhou_HiconAgent_History_Context-aware_Policy_Optimization_for_GUI_Agents_CVPR_2026_paper.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2512.01763",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "GUIDE: A Benchmark for Understanding and Assisting Users in Open-Ended GUI Tasks",
+          "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Yang_GUIDE_A_Benchmark_for_Understanding_and_Assisting_Users_in_Open-Ended_CVPR_2026_paper.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2603.25864",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "GUI-SAGE: Enhancing GUI Automation with Self-Explanatory Learning",
+          "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Tang_GUI-SAGE_Enhancing_GUI_Automation_with_Self-Explanatory_Learning_CVPR_2026_paper.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": null,
+          "discovery_review": "candidate_core",
+          "scope_basis": "Self-explanation and entropy-modulated learning for GUI automation, evaluated on AndroidControl and GUI-Odyssey.",
+          "evidence": {
+            "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Tang_GUI-SAGE_Enhancing_GUI_Automation_with_Self-Explanatory_Learning_CVPR_2026_paper.html",
+            "retrieved_at": "2026-10-17T04:12:37Z",
+            "sha256": "1d5ed4e24cf9763cc43f0a8ce14f0e98c01504c73578e5632cea573dfb7da647"
+          },
+          "abstract_sha256": "8f06cdfecb6a4d030f9e8225c50a63b4a11f6a284667e22fe2901f1f0670bd24"
+        },
+        {
+          "title": "LaSM: Layer-wise Scaling Mechanism for Defending Pop-up Attack on GUI Agents",
+          "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Yan_LaSM_Layer-wise_Scaling_Mechanism_for_Defending_Pop-up_Attack_on_GUI_CVPR_2026_paper.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2507.10610",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "ShowUI-p: Flow-based Generative Models as GUI Dexterous Hands",
+          "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Hu_ShowUI-p_Flow-based_Generative_Models_as_GUI_Dexterous_Hands_CVPR_2026_paper.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": null,
+          "discovery_review": "possible_existing_alias",
+          "scope_basis": "Continuous cursor trajectories and ScreenDrag match the existing ShowUI-pi contribution; typography differs and must not create a new paper.",
+          "evidence": {
+            "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Hu_ShowUI-p_Flow-based_Generative_Models_as_GUI_Dexterous_Hands_CVPR_2026_paper.html",
+            "retrieved_at": "2026-10-17T04:12:37Z",
+            "sha256": "cd85ca99b4a671741f67efc1904449ab9d452743eaab18d447291b91e5e50426"
+          },
+          "abstract_sha256": "ebe79114756cec81afeef6f4ab1dc648b7a857cdfaf592b7ddedf472bfeaa407",
+          "possible_or_linked_arxiv": "arxiv:2512.24965",
+          "arxiv_identity_basis": "Potential alias requiring author/version reconciliation"
+        },
+        {
+          "title": "MMBench-GUI: A Unified Hierarchical Evaluation Framework for Multi-Platform GUI Agents",
+          "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Wang_MMBench-GUI_A_Unified_Hierarchical_Evaluation_Framework_for_Multi-Platform_GUI_Agents_CVPR_2026_paper.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": null,
+          "discovery_review": "possible_existing_alias",
+          "scope_basis": "Hierarchical multi-platform GUI evaluation; likely conference-title expansion of existing MMBench-GUI.",
+          "evidence": {
+            "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Wang_MMBench-GUI_A_Unified_Hierarchical_Evaluation_Framework_for_Multi-Platform_GUI_Agents_CVPR_2026_paper.html",
+            "retrieved_at": "2026-10-17T04:12:37Z",
+            "sha256": "7b2d6a43395596a5ebda877131652df8216fc416333c010a3b0a4f238b134c3d"
+          },
+          "abstract_sha256": "5a14b8c271f9bc2dff784c3c1b1a04a301f9520604f4aa2ae46c79c3326b7469",
+          "possible_or_linked_arxiv": "arxiv:2507.19478",
+          "arxiv_identity_basis": "Potential alias requiring author/version reconciliation"
+        },
+        {
+          "title": "iSHIFT: Lightweight Slow-Fast GUI Agent with Adaptive Perception",
+          "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Mehrotra_iSHIFT_Lightweight_Slow-Fast_GUI_Agent_with_Adaptive_Perception_CVPR_2026_paper.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2512.22009",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "WebGym: Scaling Training Environments for Long-Horizon Visual Web Agents with Realistic Tasks",
+          "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Bai_WebGym_Scaling_Training_Environments_for_Long-Horizon_Visual_Web_Agents_with_CVPR_2026_paper.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": null,
+          "discovery_review": "possible_existing_alias",
+          "scope_basis": "Visual web-agent RL environment and asynchronous rollout training; likely conference-title variant of existing WebGym.",
+          "evidence": {
+            "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Bai_WebGym_Scaling_Training_Environments_for_Long-Horizon_Visual_Web_Agents_with_CVPR_2026_paper.html",
+            "retrieved_at": "2026-10-17T04:12:37Z",
+            "sha256": "80b6daf54a159f23cc552966a5035df47779261b50b04052da1750d544f39560"
+          },
+          "abstract_sha256": "ae8751c4fae3b4f838eba59ffa8be37a1a5f4fa497dfd69fa3075f8581547f51",
+          "possible_or_linked_arxiv": "arxiv:2601.02439",
+          "arxiv_identity_basis": "Potential alias requiring author/version reconciliation"
+        }
+      ]
+    },
+    {
+      "id": "conference-sweep-5ce03fe620d0b1a2",
+      "url": "https://openaccess.thecvf.com/CVPR2026?day=2026-06-06",
+      "evidence": {
+        "url": "https://openaccess.thecvf.com/CVPR2026?day=2026-06-06",
+        "retrieved_at": "2026-10-17T04:11:34Z",
+        "sha256": "32624c40f8f7d18be0d498a5854b4be6967955f5b937ce953d5246b2919d703e"
+      },
+      "selection": "Bounded keyword-selected titles from this proceedings snapshot; not a complete conference review.",
+      "candidates": [
+        {
+          "title": "Training High-Level Schedulers with Execution-Feedback Reinforcement Learning for Long-Horizon GUI Automation",
+          "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Deng_Training_High-Level_Schedulers_with_Execution-Feedback_Reinforcement_Learning_for_Long-Horizon_GUI_CVPR_2026_paper.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2511.22235",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "See, Think, Act: Teaching Multimodal Agents to Effectively Interact with GUI by Identifying Toggles",
+          "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Wu_See_Think_Act_Teaching_Multimodal_Agents_to_Effectively_Interact_with_CVPR_2026_paper.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": null,
+          "discovery_review": "candidate_core",
+          "scope_basis": "GUI toggle-state benchmark and state-aware reasoning. The publisher page explicitly links arXiv 2509.13615, absent from the retained raw archive.",
+          "evidence": {
+            "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Wu_See_Think_Act_Teaching_Multimodal_Agents_to_Effectively_Interact_with_CVPR_2026_paper.html",
+            "retrieved_at": "2026-10-17T04:12:38Z",
+            "sha256": "1b6fca1da3cd9387fd7f02bae4d03389cdd1994c2ee970500bd11bb2ca812ee3"
+          },
+          "abstract_sha256": "e9cd080c5ea0ecceede69dd0ffae40f9f017c0beab4a2d05ab9f2ae21806fa52",
+          "possible_or_linked_arxiv": "arxiv:2509.13615",
+          "arxiv_identity_basis": "Explicit publisher arXiv link"
+        },
+        {
+          "title": "OS-Oracle: A Comprehensive Framework for Cross-Platform GUI Critic Models",
+          "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Wu_OS-Oracle_A_Comprehensive_Framework_for_Cross-Platform_GUI_Critic_Models_CVPR_2026_paper.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2512.16295",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "ReFAct: Empowering Multimodal Web Agents with Visual and Context Focusing",
+          "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Wu_ReFAct_Empowering_Multimodal_Web_Agents_with_Visual_and_Context_Focusing_CVPR_2026_paper.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": null,
+          "discovery_review": "skip_for_gui_expansion",
+          "scope_basis": "The abstract evaluates multimodal search and grounded visual QA; visual grounding here does not establish GUI action control.",
+          "evidence": {
+            "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Wu_ReFAct_Empowering_Multimodal_Web_Agents_with_Visual_and_Context_Focusing_CVPR_2026_paper.html",
+            "retrieved_at": "2026-10-17T04:12:38Z",
+            "sha256": "0611b38f465f8263053fa2ff4b0bd21020d2c9733c340aac4150d9ab78e57453"
+          },
+          "abstract_sha256": "5cc473500f5034d881676394b8c8b5d274e4db3af0f9e593a538f4addfe153b1"
+        },
+        {
+          "title": "CGL: Advancing Continual GUI Learning via Reinforcement Fine-Tuning",
+          "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Yao_CGL_Advancing_Continual_GUI_Learning_via_Reinforcement_Fine-Tuning_CVPR_2026_paper.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2603.02951",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "AdapAction: Adaptive Target Action Backdoor Attack against GUI Agents",
+          "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Chen_AdapAction_Adaptive_Target_Action_Backdoor_Attack_against_GUI_Agents_CVPR_2026_paper.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": null,
+          "discovery_review": "candidate_core",
+          "scope_basis": "Context-aware action backdoors evaluated on AitZ and AndroidControl. Do not generalize reported attack success beyond the studied configurations.",
+          "evidence": {
+            "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Chen_AdapAction_Adaptive_Target_Action_Backdoor_Attack_against_GUI_Agents_CVPR_2026_paper.html",
+            "retrieved_at": "2026-10-17T04:12:38Z",
+            "sha256": "c540ae31dfb8a356917ef343c6e2bd1036bf0758276f838a5fd608cde690e7da"
+          },
+          "abstract_sha256": "4fe17936b4754b45f9dc4ca31286ef06bfd549eea0ae33919f32a79f729a0a7a"
+        },
+        {
+          "title": "GUI-CEval: A Hierarchical and Comprehensive Chinese Benchmark for Mobile GUI Agents",
+          "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Li_GUI-CEval_A_Hierarchical_and_Comprehensive_Chinese_Benchmark_for_Mobile_GUI_CVPR_2026_paper.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2603.15039",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "Learning to Adapt: Self-Improving Web Agent via Cognitive-Aware Exploration",
+          "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Chen_Learning_to_Adapt_Self-Improving_Web_Agent_via_Cognitive-Aware_Exploration_CVPR_2026_paper.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2605.31365",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "Ego2Web: A Web Agent Benchmark Grounded in Egocentric Videos",
+          "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Yu_Ego2Web_A_Web_Agent_Benchmark_Grounded_in_Egocentric_Videos_CVPR_2026_paper.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2603.22529",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "MVP: Multiple View Prediction Improves GUI Grounding",
+          "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_MVP_Multiple_View_Prediction_Improves_GUI_Grounding_CVPR_2026_paper.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2512.08529",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "Towards GUI Agents: Vision-Language Diffusion Models for GUI Grounding",
+          "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Kumbhar_Towards_GUI_Agents_Vision-Language_Diffusion_Models_for_GUI_Grounding_CVPR_2026_paper.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2603.26211",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "HATS: Hardness-Aware Trajectory Synthesis for GUI Agents",
+          "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Shao_HATS_Hardness-Aware_Trajectory_Synthesis_for_GUI_Agents_CVPR_2026_paper.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2603.12138",
+          "discovery_review": "title_only"
+        }
+      ]
+    },
+    {
+      "id": "conference-sweep-a06f599db762fb94",
+      "url": "https://openaccess.thecvf.com/CVPR2026?day=2026-06-07",
+      "evidence": {
+        "url": "https://openaccess.thecvf.com/CVPR2026?day=2026-06-07",
+        "retrieved_at": "2026-10-17T04:11:34Z",
+        "sha256": "0246b0a3390b2d064c14b5d2dd64085d959be8f213004f74a08929a99a261676"
+      },
+      "selection": "Bounded keyword-selected titles from this proceedings snapshot; not a complete conference review.",
+      "candidates": [
+        {
+          "title": "Exposing and Evaluating Hallucinations for GUI Grounding",
+          "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_Exposing_and_Evaluating_Hallucinations_for_GUI_Grounding_CVPR_2026_paper.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": null,
+          "discovery_review": "candidate_core",
+          "scope_basis": "GUI-HalluBench diagnoses nonexistent targets and distractor selection through GUI parsing and grounding subsets.",
+          "evidence": {
+            "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_Exposing_and_Evaluating_Hallucinations_for_GUI_Grounding_CVPR_2026_paper.html",
+            "retrieved_at": "2026-10-17T04:12:38Z",
+            "sha256": "fcf0796b159e1df0d2c1718d9d6aecd56a87563c1fdd69feb1444fdae43959ac"
+          },
+          "abstract_sha256": "409281bab478e624daf38aa69caa3a7ab5a3588cbb1fb30fbf9c850091212887"
+        },
+        {
+          "title": "DRS-GUI: Dynamic Region Search for Training-Free GUI Grounding",
+          "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Liu_DRS-GUI_Dynamic_Region_Search_for_Training-Free_GUI_Grounding_CVPR_2026_paper.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2605.15542",
+          "discovery_review": "title_only"
+        },
+        {
+          "title": "BAMI: Training-Free Bias Mitigation in GUI Grounding",
+          "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_BAMI_Training-Free_Bias_Mitigation_in_GUI_Grounding_CVPR_2026_paper.html",
+          "title_only_discovery": true,
+          "existing_exact_normalized_title_match": "arxiv:2605.06664",
+          "discovery_review": "title_only"
+        }
+      ]
+    }
+  ]
+}

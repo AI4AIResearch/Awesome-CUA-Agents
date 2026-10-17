@@ -95,7 +95,7 @@ class SearchPagesTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             source=Path(directory)/'source';source.mkdir()
             shutil.copytree(ROOT/'web',source/'web');shutil.copytree(ROOT/'data',source/'data')
-            shutil.copy2(ROOT/'LICENSE',source/'LICENSE')
+            shutil.copy2(ROOT/'LICENSE',source/'LICENSE');shutil.copy2(ROOT/'AGENTS.md',source/'AGENTS.md')
             destination=Path(directory)/'site'
             def snapshot():
                 manifest=json.loads((destination/'data/search-manifest.json').read_text())
@@ -120,6 +120,28 @@ class SearchPagesTests(unittest.TestCase):
         robots=urllib.robotparser.RobotFileParser();robots.parse((self.dest/'robots.txt').read_text().splitlines())
         for bot in ['Googlebot','bingbot','OAI-SearchBot','PerplexityBot','Claude-SearchBot']:
             self.assertTrue(robots.can_fetch(bot,SITE+'/papers/'))
+    def test_agent_guides_and_rag_downloads_share_the_actual_catalog(self):
+        command='git clone https://github.com/reacher-z/Awesome-CUA.git'
+        for path in ['index.html','agents/index.html','zh/agents/index.html','data/index.html','AGENTS.md','llms.txt']:
+            self.assertIn(command,(self.dest/path).read_text(),path)
+        manifest=json.loads((self.dest/'downloads/rag-manifest.json').read_text())
+        self.assertEqual(manifest['catalog_sha256'],hashlib.sha256((self.dest/'downloads/catalog.jsonl').read_bytes()).hexdigest())
+        for item in manifest['exports']:
+            raw=(self.dest/'downloads'/item['file']).read_bytes()
+            docs=[json.loads(line) for line in raw.splitlines()]
+            self.assertEqual(hashlib.sha256(raw).hexdigest(),item['sha256'])
+            expected={row['id']:row for row in self.rows if item['includes_metadata_only'] or row['review_status']=='curated'}
+            self.assertEqual(len(docs),len(expected));self.assertEqual(item['records'],len(docs))
+            for doc in docs:
+                row=expected[doc['id']];self.assertEqual(doc['metadata']['details'],row['details'])
+                self.assertEqual(doc['metadata']['review_status'],row['review_status'])
+                self.assertEqual(doc['metadata']['citation_url'],SITE+resource_path(row))
+        index=json.loads((self.dest/'data/index.json').read_text())
+        expected={row['id']:row for row in self.rows}
+        for row in index['records']:
+            snapshot=expected[row['id']]['details'].get('arxiv_snapshot',{})
+            self.assertEqual(row['paper_version'],snapshot.get('version'))
+            self.assertEqual(row['paper_source_url'],snapshot.get('versioned_url'))
     def test_full_exports_and_pages_preserve_paper_snapshots(self):
         expected={row['id']:row for row in self.rows}
         exports=[json.loads((self.dest/'data/records.json').read_text()),

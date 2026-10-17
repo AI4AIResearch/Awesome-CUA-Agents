@@ -4,15 +4,23 @@
 
 [Website](https://awesomecua.github.io/) · [GitHub organization](https://github.com/AwesomeCUA) · [简体中文](README.zh-CN.md) · [Coverage ledger](docs/coverage.md) · [Contribute](CONTRIBUTING.md)
 
+**For people, RAG systems, and agents — clone the complete catalog:**
+
+```sh
+git clone https://github.com/reacher-z/Awesome-CUA.git
+```
+
+[Agent instructions](AGENTS.md) · [RAG and agent guide](https://awesomecua.github.io/agents/) · [Complete JSONL](https://awesomecua.github.io/downloads/catalog.jsonl) · [Retrieval documents](https://awesomecua.github.io/downloads/rag-documents.jsonl)
+
 The goal is comprehensive coverage of public research and industry resources, with provenance that can be inspected. Papers, models, training data, evaluation environments, frameworks, infrastructure, products, and publishers belong in the same searchable catalog.
 
 **Global completeness is a goal, not a verified claim.** We publish the source populations, review states, and remaining gaps. Bibliographic metadata verification is different from reviewing a resource's relevance or quality.
 
 <!-- STATS:START -->
 
-**2,036 resource records** · **842 curated** · **1,694 arXiv records** · **36 discovery documents**
+**2,045 resource records** · **996 curated** · **1,664 arXiv records** · **44 discovery documents**
 
-Evidence through `2026-10-17T02:49:45Z`. 1,194 records have bibliographic verification only; 812 discovered identifiers remain unresolved. 70 scope exclusions retain their original metadata in the archive. Counts overlap as explained below.
+Evidence through `2026-10-17T05:29:15Z`. 1,049 records have bibliographic verification only; 1,901 discovered identifiers remain unresolved. 100 scope exclusions retain their original metadata in the archive. Counts overlap as explained below.
 
 <!-- STATS:END -->
 
@@ -42,11 +50,14 @@ Browse the [interactive website](https://awesomecua.github.io/) to search and fi
 
 ```bash
 # Python 3.11+. Search and export require only the standard library.
+cd Awesome-CUA
 python3 scripts/catalog.py search "grounding" --kind model
 python3 scripts/catalog.py search --kind dataset --environment android
 python3 scripts/catalog.py search --kind product --status curated --json
 python3 scripts/catalog.py build
 # Creates dist/catalog.sqlite and dist/catalog.json, with no network calls.
+python3 scripts/export_rag.py --output dist/rag-documents.jsonl
+# Add --include-metadata to include every active record, with its review state intact.
 ```
 
 Use SQLite to join resources, environment/topic facets, and reviewed relations. See [query examples](docs/query-guide.md). `data/catalog.jsonl` is committed; SQLite and JSON array exports are reproducible local build products.

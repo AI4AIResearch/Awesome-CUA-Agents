@@ -17,6 +17,27 @@ from scope_review import resolve_exclusions, scope_report
 from arxiv_metadata import validate_snapshot
 
 
+def apply_license_reviews(editorial, primary, licenses, details):
+    reviews=editorial.get('reviewed_licenses', {})
+    if not isinstance(reviews, dict) or set(reviews)-set(licenses):
+        raise ValueError('Invalid reviewed license scopes: '+editorial['name'])
+    receipts=[primary,*editorial.get('additional_evidence',[])]
+    for slot,decision in reviews.items():
+        if not isinstance(decision,dict) or set(decision)!={'value','reason','evidence_urls'}:
+            raise ValueError('License review needs value, reason, and evidence URLs: '+editorial['name'])
+        if not isinstance(decision['reason'],str) or not decision['reason'].strip() or not decision['evidence_urls']:
+            raise ValueError('License review lacks an explanation or evidence: '+editorial['name'])
+        for url in decision['evidence_urls']:
+            if not any(r['url']==url and ('licenses' in r['supports'] or 'licenses.'+slot in r['supports']) for r in receipts):
+                raise ValueError('License review lacks a supporting receipt: '+url)
+        value=decision['value']
+        if value is not None and (not isinstance(value,dict) or value.get('url') not in decision['evidence_urls']):
+            raise ValueError('Reviewed license must cite its retained evidence: '+editorial['name'])
+        licenses[slot]=copy.deepcopy(value)
+    if reviews:
+        details['license_review']={slot:{k:copy.deepcopy(v) for k,v in decision.items() if k!='value'} for slot,decision in reviews.items()}
+
+
 def source_records(with_scope=False):
     records = {r["id"]: copy.deepcopy(r) for r in read_jsonl(DATA / "papers.jsonl")}
     evidence = {r["id"]: r for r in read_jsonl(DATA / "primary-evidence.jsonl")}
@@ -70,6 +91,7 @@ def source_records(with_scope=False):
             "url": ev["url"], "retrieved_at": ev["retrieved_at"], "sha256": ev["sha256"]}
         if editorial.get("details") and "primary_supports" not in editorial:
             primary["supports"].append("details")
+        apply_license_reviews(editorial,primary,licenses,details)
         row = {"id": rid, "name": editorial["name"], "kind": editorial["kind"], "url": editorial["url"],
             "aliases": editorial.get("aliases", []), "environments": editorial["environments"], "topics": editorial["topics"],
             "scope": editorial.get("scope", "core"), "summary": editorial["summary"], "review_status": "curated",
@@ -179,6 +201,8 @@ def coverage(rows, pending, scope_decisions):
         "curated_by_environment": dict(sorted(collections.Counter(e for r in rows if r["review_status"] == "curated" for e in r["environments"]).items())),
         "license_declarations_by_scope": {slot: sum(r["licenses"][slot] is not None for r in rows) for slot in ("code", "data", "weights", "document")},
         "sources": source_rows, "primary_search": read_json(DATA / "arxiv-search.json", {}),
+        "paper_discovery": read_json(DATA / 'paper-discovery-status.json', {}),
+        "paper_query_registry": read_json(DATA / 'paper-discovery-queries.json', {}),
         "limits": ["Counts are resources, not distinct projects, companies, or independent discoveries.",
             "Metadata verification does not establish relevance, quality, reproducibility, availability, or endorsement.",
             "Source indexing measures only fetched source snapshots; incidental/out-of-scope links remain in discovery.",
@@ -232,6 +256,14 @@ def documents(rows, report):
         status = s["snapshot"] or {}
         lines.append(f"| [{md(s['name'])}]({s['url']}) | {s['discovered']} | {s['indexed']} | {s['curated']} | {s['excluded']} | {s['unindexed']} | {'OK' if status.get('ok') else 'FAILED'} · {status.get('retrieved_at', '')[:10]} |")
     search = report["primary_search"]
+    discovery = report.get('paper_discovery', {})
+    if discovery:
+        lines += ['', '## Paper-discovery query coverage', '',
+            f"Latest pass: {discovery.get('finished_at') or 'in progress'}; **{discovery.get('successful_query_count',0)}/{discovery.get('configured_query_count',0)}** query windows succeeded. {discovery.get('unique_identifiers',0):,} distinct identifiers; {discovery.get('new_candidate_count',0):,} new to the candidate queue.", '',
+            'These are ranked search windows, not a field-wide denominator. New identifiers still require primary metadata verification and relevance review.', '',
+            '| Area | Query | Returned / limit | State |', '| --- | --- | ---: | --- |']
+        for item in discovery.get('queries', []):
+            lines.append(f"| {md(item['area'])} | {md(item['query'])} | {item['returned_count']} / {item['limit']} | {md(item['state'])} |")
     lines += ["", "## Primary arXiv discovery", "", f"The recorded title query returned {search.get('unique_returned', 0):,} unique records out of {search.get('reported_total', 0):,} reported matches. Pagination complete: **{search.get('complete', False)}**. This query population overlaps the lists and is not the whole field.", "", "```text", search.get("query", ""), "```", "",
         "## License evidence", "", "| Scope | Recorded declarations |", "| --- | ---: |"]
     lines += [f"| {slot} | {n} |" for slot, n in report["license_declarations_by_scope"].items()]

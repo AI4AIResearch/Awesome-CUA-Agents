@@ -1,0 +1,32 @@
+"""Bilingual, static instructions for consuming the catalog with agents and retrieval systems."""
+import html
+
+CLONE_COMMAND='git clone https://github.com/reacher-z/Awesome-CUA.git'
+
+
+def agent_guide_body(language='en'):
+    zh=language=='zh'
+    def tr(en,cn):return cn if zh else en
+    def command(text):return '<pre class="command-block"><code>'+html.escape(text)+'</code></pre>'
+    downloads=[('catalog.jsonl','Complete catalog','完整目录','Every active resource and its full source record.','全部当前资源及完整来源记录。'),
+        ('catalog.sqlite','SQLite database','SQLite 数据库','Resources, facets, relations, and full-text search.','资源、标签、关联关系与全文搜索。'),
+        ('rag-documents.jsonl','Reviewed retrieval documents','已审阅检索文档','One document per reviewed resource, including citations and provenance.','每项已审阅资源对应一份文档，保留引用与来源。'),
+        ('rag-all-records.jsonl','All retrieval documents','全部检索文档','Includes metadata-only entries with their review state intact.','包含论文元数据条目，并保留其待审阅状态。'),
+        ('rag-manifest.json','RAG export manifest','RAG 导出清单','Counts, SHA-256 fingerprints, and the catalog snapshot fingerprint.','文档数量、SHA-256 指纹与原始目录指纹。')]
+    body='<div class="eyebrow">PEOPLE · RAG · AGENTS</div><h1>'+tr('Use the complete catalog with your agent','把完整目录交给你的 Agent')+'</h1>'
+    body+='<p class="answer-lead">'+tr('Clone once, search locally, and build retrieval workflows from source-backed records. The full catalog is available without an account or API key.','一行克隆，本地检索，将可追溯的资源记录接入 RAG 和 Agent。完整目录无需账号或 API Key。')+'</p>'
+    body+='<p><a href="/AGENTS.md">AGENTS.md</a> · <a href="'+('/agents/' if zh else '/zh/agents/')+'">'+('English' if zh else '中文指南')+'</a></p>'
+    body+='<h2>'+tr('1. Clone the data','1. 克隆完整数据')+'</h2>'+command(CLONE_COMMAND+'\ncd Awesome-CUA\ngit rev-parse HEAD')
+    body+='<p>'+tr('Read data/catalog.jsonl directly, or use the commands below with Python 3.11+. Search and export use the standard library; no model service or dependency installation is needed. Keep the Git commit as your source snapshot identifier.','直接读取 data/catalog.jsonl，或使用以下 Python 3.11+ 命令。检索和导出只需标准库，无需模型服务或安装依赖。保存 Git commit，便于复核所使用的数据快照。')+'</p>'
+    body+='<h2>'+tr('2. Ask a focused question','2. 先检索，再深入阅读')+'</h2>'+command('python3 scripts/catalog.py search "grounding" --kind model --status curated --json\npython3 scripts/catalog.py search --kind dataset --environment android --status curated --limit 0 --json\npython3 scripts/catalog.py search --kind paper --status curated --topic reinforcement-learning --limit 0 --json')
+    body+='<p>'+tr('Search is literal and uses AND across terms. Use aliases when a query is too narrow; --limit 0 returns all matches. Review status and platform/topic tags describe what the catalog has checked.','检索按关键词进行 AND 匹配。没有结果时可尝试别名；--limit 0 返回全部匹配项。审阅状态、平台和主题标签反映目录已经核实的范围。')+'</p>'
+    body+='<h2>'+tr('3. Connect a RAG pipeline','3. 接入 RAG')+'</h2>'+command('python3 scripts/export_rag.py --output dist/rag-documents.jsonl\npython3 scripts/export_rag.py --include-metadata --output dist/rag-all-records.jsonl\npython3 scripts/catalog.py build')
+    body+='<p>'+tr('Ingest the text field and retain the metadata object. Use id as the stable upsert key. Start with the reviewed export; the full export also includes bibliography entries awaiting relevance review. SQLite is generated at dist/catalog.sqlite.','将 text 字段用于检索，并完整保留 metadata。使用 id 作为稳定的更新键。建议先使用已审阅导出；完整导出还包含相关性待审阅的论文。SQLite 会生成到 dist/catalog.sqlite。')+'</p>'
+    body+='<div class="table-scroll"><table><thead><tr><th>'+tr('Field','字段')+'</th><th>'+tr('Purpose','用途')+'</th></tr></thead><tbody>'
+    fields=[('id / metadata.resource_id','Stable resource identity','稳定的资源标识'),('text','Title, original annotation, context, and source links','标题、原创注释、上下文和来源链接'),('review_status / scope','Filter and explain the evidence boundary','用于筛选，并说明证据边界'),('citation_url / source_url','Catalog permalink and primary source, including the recorded arXiv version when known','目录固定链接与一手来源；已知时指向记录的 arXiv 版本'),('evidence / last_verified_at','Source receipts, fingerprints, and verification dates','来源收据、指纹和核验日期'),('licenses / relations','Separate license scopes and reviewed resource relationships','分开的许可范围及已审阅关联'),('record_sha256','Detect changes to the exact source record','检测原始资源记录是否发生变化')]
+    body+=''.join('<tr><td><code>'+key+'</code></td><td>'+tr(en,cn)+'</td></tr>' for key,en,cn in fields)+'</tbody></table></div>'
+    body+='<h2>'+tr('Ready-to-use downloads','直接下载')+'</h2><ul>'+''.join('<li><a href="/downloads/'+file+'">'+tr(en,cn)+'</a> — '+tr(desc,desc_zh)+'</li>' for file,en,cn,desc,desc_zh in downloads)+'</ul>'
+    body+='<h2>'+tr('Keep answers traceable','让回答保留证据')+'</h2><p>'+tr('Curated means AI-assisted editorial review against a primary source. Metadata verified means bibliographic identity was checked; it does not establish relevance or validate findings. Cite the primary resource and catalog permalink, retain dates and recorded versions, and preserve unknown values. Papers, code, datasets, and checkpoints can be related records rather than independent projects.','“已审阅”表示经过 AI 辅助的一手来源编辑核读。“元数据已核验”只确认书目身份，不代表相关性或研究结论已经验证。回答时引用一手来源和目录链接，保留日期、版本与未知字段。论文、代码、数据集和权重可能属于同一项目的不同资源。')+'</p>'
+    body+='<p>'+tr('The exports contain catalog metadata and original annotations. Paper full text, model weights, and training examples remain with their publishers. Code, data, weights, and document licenses are separate.','导出内容是目录元数据和原创注释。论文全文、模型权重和训练样本由原发布方提供；代码、数据、权重和文档许可分别记录。')+'</p>'
+    body+='<h2>'+tr('Update and reconcile','更新与核对')+'</h2><p>'+tr('Pull a newer Git commit or fetch a new manifest. Compare record_sha256 for changes and reconcile missing IDs against the complete catalog and scope-exclusion ledger. An absent ID may represent a reviewed scope decision; do not leave stale retrieval documents silently active. Discovery is scheduled twice a day, with actual outcomes and gaps recorded on the updates page.','更新到新的 Git commit，或获取新的导出清单。用 record_sha256 比较变更，并对照完整目录和排除台账处理消失的 ID；范围审阅后的排除项不应继续留在检索结果中。发现流程每日计划执行两次，实际执行结果和缺口公开记录在更新页。')+'</p><p><a href="/updates/">'+tr('Scan activity','扫描进展')+'</a> · <a href="/coverage/">'+tr('Coverage ledger','覆盖台账')+'</a> · <a href="/about/">'+tr('Editorial policy','审阅方法')+'</a></p>'
+    return body

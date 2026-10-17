@@ -20,6 +20,11 @@ Object.assign(TOPICS, {
   'training-free':['Training-free methods','无需训练的方法'],
   'ui-design':['UI design','界面设计']
 });
+Object.assign(TEXT.en, {agentEyebrow:'DATA FOR PEOPLE & AGENTS',agentTitle:'Clone the catalog. Put it to work.',agentCopy:'Search locally, connect a RAG pipeline, or let your agent explore—with sources and review states intact.',agentGuide:'Agent & RAG guide',copyCommand:'Copy command',commandCopied:'Clone command copied',commandCopyFailed:'Select the command above to copy it.',ragReviewed:'RAG documents · reviewed',ragReviewedCopy:'One retrieval document per reviewed resource, with citations and provenance.',ragAll:'RAG documents · all records',ragAllCopy:'Every active record, including metadata-only entries with their review state.'});
+Object.assign(TEXT.zh, {agentEyebrow:'给人阅读，也给 AGENTS 使用',agentTitle:'克隆完整目录，接入你的工作。',agentCopy:'本地检索、构建 RAG，或让 Agent 继续探索。来源、引用和审阅状态随数据一起保留。',agentGuide:'Agents 与 RAG 使用指南',copyCommand:'复制克隆命令',commandCopied:'克隆命令已复制',commandCopyFailed:'请选择上方命令并复制。',ragReviewed:'RAG 文档 · 已审阅',ragReviewedCopy:'每项已审阅资源对应一份检索文档，保留引用和来源。',ragAll:'RAG 文档 · 全部记录',ragAllCopy:'包含全部当前记录，并明确保留待审阅论文的状态。'});
+const CLONE_COMMAND = 'git clone https://github.com/reacher-z/Awesome-CUA.git';
+Object.assign(TEXT.en,{navData:'Data / Agents',year:'Year',allYears:'All years',related:'related',primaryLink:'Primary source',recordLink:'Details',reviewedCount:'reviewed',pendingCount:'metadata only',directoryTitle:'Resource directory'});
+Object.assign(TEXT.zh,{navData:'数据 / Agents',year:'年份',allYears:'全部年份',related:'项关联',primaryLink:'一手来源',recordLink:'详情',reviewedCount:'已审阅',pendingCount:'仅元数据',directoryTitle:'资源目录'});
 const $ = selector => document.querySelector(selector);
 const $$ = selector => [...document.querySelectorAll(selector)];
 let lang = new URLSearchParams(location.search).get('lang') === 'zh' ? 'zh' : 'en';
@@ -36,6 +41,7 @@ function translate() {
   $$('[data-i18n]').forEach(el=>el.textContent=t(el.dataset.i18n));
   $$('[data-placeholder]').forEach(el=>el.placeholder=t(el.dataset.placeholder));
   $('#language').textContent=lang==='zh'?'EN':'中文';
+  $$('[data-agent-guide]').forEach(link=>link.href=lang==='zh'?'/zh/agents/':'/agents/');
   if(report) $('#snapshot-date').textContent=dates(report.as_of_utc);
   fillSelects();
 }
@@ -43,9 +49,12 @@ function fillSelects() {
   $('#platform').innerHTML=`<option value="">${e(t('allPlatforms'))}</option>`+Object.keys(PLATFORMS).map(key=>`<option value="${e(key)}">${e(label(PLATFORMS,key))}</option>`).join('');
   const topics=[...new Set(records.flatMap(r=>r.topics))].sort((a,b)=>label(TOPICS,a).localeCompare(label(TOPICS,b)));
   $('#topic').innerHTML=`<option value="">${e(t('allTopics'))}</option>`+topics.map(key=>`<option value="${e(key)}">${e(label(TOPICS,key))}</option>`).join('');
+  const years=[...new Set(records.map(r=>r.published_at?.slice(0,4)).filter(Boolean))].sort().reverse();
+  if(state.year&&!years.includes(state.year)){years.push(state.year);years.sort().reverse();}
+  $('#year').innerHTML=`<option value="">${e(t('allYears'))}</option>`+years.map(year=>`<option value="${year}">${year}</option>`).join('');
   syncControls();
 }
-function syncControls() {$('#search').value=state.q;$('#platform').value=state.platform;$('#review').value=state.review;$('#topic').value=state.topic;$('#sort').value=state.sort;}
+function syncControls() {$('#search').value=state.q;$('#platform').value=state.platform;$('#review').value=state.review;$('#topic').value=state.topic;$('#year').value=state.year;$('#sort').value=state.sort;}
 function change(patch,scroll=false) {
   Object.assign(state,{page:1},patch);syncControls();render();updateURL();
   if(scroll) $('#catalog').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
@@ -67,18 +76,30 @@ function card(r) {
 }
 function render() {
   if(loading) return;
+  const focused=Boolean(state.kind||state.q||state.platform||state.review||state.topic||state.year);
+  document.body.classList.toggle('catalog-focused',focused);
+  $('.hero [data-i18n="heroLine1"]').textContent=focused?(state.kind?label(KINDS,state.kind):t('directoryTitle')):t('heroLine1');
   renderCategories();
   const result=filtered(records,state), pages=Math.max(1,Math.ceil(result.length/PAGE_SIZE));
   state.page=Math.min(state.page,pages);
   const begin=(state.page-1)*PAGE_SIZE;
-  $('#results').innerHTML=result.slice(begin,begin+PAGE_SIZE).map(card).join('');
+  $('#results').innerHTML=result.slice(begin,begin+PAGE_SIZE).map(state.view==='list'?denseRow:card).join('');
   $('#results').classList.toggle('list-view',state.view==='list');
   $('#view-grid').setAttribute('aria-pressed',String(state.view==='grid'));$('#view-list').setAttribute('aria-pressed',String(state.view==='list'));
-  $('#results-count').innerHTML=`<strong>${num(result.length)}</strong> ${e(t('showing'))}${state.kind?' <span> / '+e(label(KINDS,state.kind))+'</span>':''}`;
+  const reviewed=result.filter(r=>r.review_status==='curated').length;
+  $('#results-count').innerHTML=`<strong>${num(result.length)}</strong> ${e(t('showing'))} <span class="result-breakdown">· ${num(reviewed)} ${e(t('reviewedCount'))}${result.length>reviewed?` · ${num(result.length-reviewed)} ${e(t('pendingCount'))}`:''}</span>`;
   $('#results').setAttribute('aria-busy','false');$('#empty').hidden=result.length!==0;
-  $('#clear-filters').hidden=![state.q,state.kind,state.platform,state.review,state.topic].some(Boolean);
+  $('#clear-filters').hidden=![state.q,state.kind,state.platform,state.review,state.topic,state.year].some(Boolean);
   $('#pagination').hidden=result.length===0;
   $('#pagination').innerHTML=`<button type="button" data-page="${state.page-1}" ${state.page===1?'disabled':''}>${e(t('previous'))}</button><span>${e(t('page'))} ${state.page} ${e(t('of'))} ${pages}</span><button type="button" data-page="${state.page+1}" ${state.page===pages?'disabled':''}>${e(t('next'))}</button>`;
+}
+function denseRow(r) {
+  const reviewed=r.review_status==='curated',isPaper=['paper','survey'].includes(r.kind);
+  const date=r.published_at || '—';
+  const authors=r.authors.slice(0,2).join(', ')+(r.authors.length>2?' et al.':'');
+  const facets=[...r.environments.filter(x=>x!=='unspecified').map(x=>label(PLATFORMS,x)),...r.topics.slice(0,2).map(x=>label(TOPICS,x))];
+  const summary=r.summary || t('noTaxonomy');
+  return `<article class="resource-row" data-kind="${e(r.kind)}"><div class="row-date"><time datetime="${e(r.published_at||'')}">${e(date)}</time><span>${r.paper_version?`arXiv v${r.paper_version}`:e(label(KINDS,r.kind))}</span></div><div class="row-main"><h3><a href="${e(r.page_url)}" data-record="${e(r.id)}">${e(r.name)}</a></h3><p class="row-summary">${e(summary)}</p><div class="row-meta">${authors?`<span class="row-authors">${e(authors)}</span>`:''}${facets.map(x=>`<span class="row-tag">${e(x)}</span>`).join('')}${!isPaper?`<span>${e(label(KINDS,r.kind))}</span>`:''}</div></div><div class="row-actions"><span class="row-review ${reviewed?'is-reviewed':''}">${e(t(reviewed?'curatedBadge':'metadataBadge'))}</span><a href="${e(safeURL(r.paper_source_url || r.url))}" target="_blank" rel="noopener noreferrer">${e(t('primaryLink'))} ↗</a><a href="${e(r.page_url)}" data-record="${e(r.id)}">${r.related_count?`${num(r.related_count)} ${e(t('related'))} · `:''}${e(t('recordLink'))}</a></div></article>`;
 }
 async function load() {
   loading=true;$('#load-error').hidden=true;$('#results').setAttribute('aria-busy','true');$('#results-count').textContent=t('loading');$('#results').innerHTML=Array.from({length:6},()=>'<div class="skeleton-card" aria-hidden="true"></div>').join('');
@@ -101,7 +122,7 @@ function resourceFacts(details) {
   return '<dl class="fact-list">'+Object.entries(details).filter(([,v])=>v!==null&&v!==''&&(!Array.isArray(v)||v.length)).map(([key,v])=>'<div><dt>'+e(label(labels,key))+'</dt><dd>'+(key.endsWith('_url')&&typeof v==='string'?external(v,lang==='zh'?'打开链接':'Open link'):e(value(v)))+'</dd></div>').join('')+'</dl>';
 }
 async function showRecord(id,setURL=true) {
-  const found=records.find(r=>r.id===id);if(!found){toast(t('noRecord'));return;}
+  const found=records.find(r=>r.id===id);if(!found){activeRecord='';if($('#detail-dialog').open)$('#detail-dialog').close();toast(t('noRecord'));return;}
   activeRecord=id;if(setURL)updateURL();
   $('#detail-overline').textContent=label(KINDS,found.kind);
   $('#detail-content').innerHTML=`<h2 id="detail-title">${e(found.name)}</h2><p>${e(t('loading'))}</p>`;
@@ -115,7 +136,8 @@ async function showRecord(id,setURL=true) {
     if(r.kind!=='paper'&&r.kind!=='survey')content+=`<section class="detail-section"><h3>${e(t('licenses'))}</h3><div class="license-grid">${['code','data','weights','document'].map(slot=>{const l=r.licenses[slot];return `<div class="license-item"><span>${e(t(slot))}</span>${l?external(l.url,Array.isArray(l.declared)?l.declared.join(', '):l.declared):e(t('unknown'))}</div>`;}).join('')}</div><p>${e(t('licenseCaution'))}</p></section>`;
     const snapshot=r.details.arxiv_snapshot;
     if(snapshot)content+=`<section class="detail-section"><h3>${lang==='zh'?'已记录的论文版本':'Recorded paper version'}</h3><p>${snapshot.versioned_url?external(snapshot.versioned_url,`arXiv v${snapshot.version}`):e(t('unknown'))}</p>${snapshot.updated_at?`<p>${lang==='zh'?'版本更新时间':'Version updated'}: ${e(snapshot.updated_at)}</p>`:''}</section>`;
-    const specifications=Object.fromEntries(Object.entries(r.details).filter(([key])=>key!=='arxiv_snapshot'));
+    if(r.details.license_review)content+=`<section class="detail-section"><h3>${lang==='zh'?'许可审阅说明':'License review notes'}</h3>${Object.entries(r.details.license_review).map(([slot,review])=>`<p><strong>${e(t(slot))}:</strong> ${e(review.reason)}</p><p>${review.evidence_urls.map((url,i)=>external(url,`${lang==='zh'?'来源':'Source'} ${i+1}`)).join(' · ')}</p>`).join('')}</section>`;
+    const specifications=Object.fromEntries(Object.entries(r.details).filter(([key])=>!['arxiv_snapshot','license_review'].includes(key)));
     if(Object.values(specifications).some(v=>v!==null&&v!==''&&(!Array.isArray(v)||v.length)))content+=`<section class="detail-section"><h3>${e(t('details'))}</h3>${resourceFacts(specifications)}</section>`;
     if(r.notes)content+=`<section class="detail-section"><h3>${e(t('notes'))}</h3><p>${e(r.notes)}</p></section>`;
     if(r.relations.length)content+=`<section class="detail-section"><h3>${e(t('relations'))}</h3><ul>${r.relations.map(rel=>{const target=records.find(row=>row.id===rel.target_id);return `<li>${e(rel.type.replaceAll('_',' '))} → <button class="subtle-link" type="button" data-record="${e(rel.target_id)}">${e(target?.name || rel.target_id)}</button></li>`;}).join('')}</ul></section>`;
@@ -129,20 +151,22 @@ function info(type) {
   if(!report)return;
   let content='';
   if(type==='download') {
-    const options=[['catalog.jsonl','fullCatalog','fullCatalogCopy','JSONL'],['catalog.sqlite','sqlite','sqliteCopy','SQLite'],['coverage.json','coverageFile','coverageFileCopy','JSON'],['sources.json','sourcesFile','sourcesFileCopy','JSON']];
+    const options=[['catalog.jsonl','fullCatalog','fullCatalogCopy','JSONL'],['catalog.sqlite','sqlite','sqliteCopy','SQLite'],['rag-documents.jsonl','ragReviewed','ragReviewedCopy','JSONL'],['rag-all-records.jsonl','ragAll','ragAllCopy','JSONL'],['coverage.json','coverageFile','coverageFileCopy','JSON'],['sources.json','sourcesFile','sourcesFileCopy','JSON']];
     content=`<h2 id="info-title">${e(t('downloadTitle'))}</h2><p>${e(t('downloadCopy'))}</p><div class="download-options">${options.map(([file,title,copy])=>`<a class="download-option" href="./downloads/${file}" download><span><strong>${e(t(title))}</strong><small>${e(t(copy))}</small></span><span>↓</span></a>`).join('')}</div><p>${e(t('licenseNote'))}</p>`;
+    content+=`<section class="agent-download"><h3>${e(t('agentTitle'))}</h3><div class="clone-command"><code>${CLONE_COMMAND}</code><button type="button" data-copy-clone>${e(t('copyCommand'))}</button></div><p><a href="${lang==='zh'?'/zh/agents/':'/agents/'}">${e(t('agentGuide'))} ↗</a> · <a href="/AGENTS.md">AGENTS.md</a> · <a href="/downloads/rag-manifest.json">RAG manifest</a></p></section>`;
   }else {
     content=`<h2 id="info-title">${e(t('coverageDialogTitle'))}</h2><p>${e(t('coverageDialogCopy'))}</p><div class="info-stat-grid"><div><strong>${num(report.curated_records)}</strong><span>${e(t('curatedResources'))}</span></div><div><strong>${num(report.metadata_only_records)}</strong><span>${e(t('metadata'))}</span></div><div><strong>${num(report.unindexed_candidates)}</strong><span>${e(t('unindexed'))}</span></div></div><p>${e(t('reviewExplanation'))}</p><table class="coverage-table"><thead><tr><th>${e(t('source'))}</th><th>${e(t('discovered'))}</th><th>${e(t('indexed'))}</th></tr></thead><tbody>${report.sources.map(s=>`<tr><td>${external(s.url,s.name)}</td><td>${num(s.discovered)}</td><td>${num(s.indexed)}</td></tr>`).join('')}</tbody></table><h3>${e(t('limitations'))}</h3><p>${e(t('boundaries'))}</p><a class="button secondary" href="./downloads/coverage.json" download>${e(t('coverageFile'))} ↓</a>`;
   }
   if(type!=='download' && report.excluded_records)content+=`<h3>${e(t('excluded'))}: ${num(report.excluded_records)}</h3><p>${e(t('exclusionCopy'))}</p><p><a href="./downloads/exclusions.json">${e(t('exclusionFile'))}</a> · <a href="./downloads/arxiv-archive.jsonl">${e(t('archiveFile'))}</a></p>`;
   $('#info-content').innerHTML=content;$('#info-dialog').showModal();
 }
+document.addEventListener('click',async event=>{if(!event.target.closest('[data-copy-clone]'))return;try{await navigator.clipboard.writeText(CLONE_COMMAND);toast(t('commandCopied'));}catch{toast(t('commandCopyFailed'));}});
 $('#search').addEventListener('input',event=>change({q:event.target.value}));
-for(const [id,key] of [['platform','platform'],['review','review'],['topic','topic'],['sort','sort']])$('#'+id).addEventListener('change',event=>change({[key]:event.target.value}));
-const reset=()=>change({q:'',kind:'',platform:'',review:'',topic:'',sort:'featured'});
+for(const [id,key] of [['platform','platform'],['review','review'],['topic','topic'],['year','year'],['sort','sort']])$('#'+id).addEventListener('change',event=>change({[key]:event.target.value}));
+const reset=()=>change({q:'',kind:'',platform:'',review:'',topic:'',year:'',sort:'featured'});
 $('#clear-filters').addEventListener('click',reset);$('#empty-reset').addEventListener('click',reset);
 $('#view-grid').addEventListener('click',()=>change({view:'grid',page:state.page}));$('#view-list').addEventListener('click',()=>change({view:'list',page:state.page}));
-$('#categories').addEventListener('click',event=>{const button=event.target.closest('[data-kind]');if(button)change({kind:button.dataset.kind});});
+$('#categories').addEventListener('click',event=>{const button=event.target.closest('[data-kind]');if(button)change({kind:button.dataset.kind,view:['paper','survey'].includes(button.dataset.kind)?'list':state.view});});
 $$('[data-environment]').forEach(button=>button.addEventListener('click',()=>change({platform:button.dataset.environment,kind:'',q:''},true)));
 $$('[data-search]').forEach(button=>button.addEventListener('click',()=>change({q:button.dataset.search,topic:''})));
 $$('[data-topic]').forEach(button=>button.addEventListener('click',()=>change({topic:button.dataset.topic,q:''})));

@@ -35,7 +35,7 @@ test('newest publication sorts known dates first and unknown dates last',()=>{
   assert.ok(result.slice(index).every(r=>!r.published_at));
 });
 test('deep links round-trip search, filters, layout, language, and a selected record',()=>{
-  const state={q:'GUI 定位',kind:'model',platform:'desktop',review:'curated',topic:'grounding',sort:'name',page:2,view:'list'};
+  const state={q:'GUI 定位',kind:'model',platform:'desktop',review:'curated',topic:'grounding',year:'',sort:'name',page:2,view:'list'};
   const encoded=serializeState(state,'zh','github:bytedance/ui-tars');
   assert.deepEqual(parseState(encoded),state);
   assert.equal(new URLSearchParams(encoded).get('record'),'github:bytedance/ui-tars');
@@ -62,4 +62,21 @@ test('featured project names do not accidentally feature identically named publi
   const framework=result.findIndex(r=>r.name==='Browser Use'&&r.kind==='framework');
   const company=result.findIndex(r=>r.name==='Browser Use'&&r.kind==='company');
   assert.ok(framework<company);
+});
+
+test('paper browsing defaults to dense rows but explicit layout and year round-trip',()=>{
+  assert.equal(parseState('?kind=paper').view,'list');
+  assert.equal(parseState('?kind=survey').view,'list');
+  assert.equal(parseState('?kind=model').view,'grid');
+  const state={...parseState('?kind=paper'),year:'2026',view:'grid'};
+  assert.deepEqual(parseState(serializeState(state,'zh')),state);
+  const result=filtered(rows,{...state,review:'curated'});
+  assert.ok(result.length>0);assert.ok(result.every(r=>r.published_at.startsWith('2026')));
+  assert.equal(parseState('?year=hello').year,'');
+});
+test('paper curated-first order puts reviewed recent work before older reviewed work',()=>{
+  const result=filtered(rows,parseState('?kind=paper'));
+  const reviewed=result.filter(r=>r.review_status==='curated');
+  assert.ok(reviewed.length>0);assert.ok(reviewed.slice(1).every((r,i)=>(reviewed[i].published_at||'')>=(r.published_at||'')));
+  assert.ok(result.slice(reviewed.length).every(r=>r.review_status!=='curated'));
 });

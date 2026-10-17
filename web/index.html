@@ -23,6 +23,7 @@
         <a href="#catalog" data-i18n="navExplore">Explore</a>
         <a href="/papers/" data-i18n="navPapers">Papers</a>
         <a href="/guides/" data-i18n="navGuides">Guides</a>
+        <a href="/agents/" data-agent-guide data-i18n="navData">Data / Agents</a>
         <a href="#coverage" data-i18n="navCoverage">Coverage</a>
         <a href="#about" data-i18n="navAbout">About</a>
       </nav>
@@ -55,6 +56,10 @@
       <div><span class="stat-value" id="stat-sources">—</span><span class="stat-label" data-i18n="discoverySources">Discovery documents</span></div>
       <div class="snapshot"><span class="snapshot-title" data-i18n="snapshot">DATA SNAPSHOT</span><span id="snapshot-date">—</span><a href="#coverage"><span data-i18n="viewCoverage">View coverage</span> ↗</a></div>
     </section>
+    <section class="agent-entry shell" aria-labelledby="agent-entry-title">
+      <div><div class="eyebrow" data-i18n="agentEyebrow">DATA FOR PEOPLE & AGENTS</div><h2 id="agent-entry-title" data-i18n="agentTitle">Clone the catalog. Put it to work.</h2><p data-i18n="agentCopy">Search locally, connect a RAG pipeline, or let your agent explore—with sources and review states intact.</p><a class="subtle-link" data-agent-guide href="/agents/"><span data-i18n="agentGuide">Agent & RAG guide</span> ↗</a></div>
+      <div class="clone-command"><code>git clone https://github.com/reacher-z/Awesome-CUA.git</code><button type="button" data-copy-clone data-i18n="copyCommand">Copy command</button></div>
+    </section>
     <section id="catalog" class="catalog-section shell" aria-labelledby="catalog-title">
       <div class="section-heading"><div><div class="eyebrow section-eyebrow" data-i18n="catalogEyebrow">THE ECOSYSTEM, ORGANIZED</div><h2 id="catalog-title" data-i18n="catalogTitle">Find your next building block.</h2></div><a class="subtle-link" href="https://github.com/AwesomeCUA/awesomecua.github.io/issues/new?template=resource.yml" target="_blank" rel="noopener noreferrer"><span data-i18n="suggest">Suggest a resource</span> ↗</a></div>
       <div class="catalog-layout">
@@ -68,6 +73,7 @@
           <div class="filter-row">
             <label class="select-wrap"><span data-i18n="platform">Platform</span><select id="platform"><option value="" data-i18n="allPlatforms">All platforms</option></select></label>
             <label class="select-wrap"><span data-i18n="review">Review</span><select id="review"><option value="" data-i18n="allStates">All states</option><option value="curated" data-i18n="curated">Curated</option><option value="metadata_verified" data-i18n="metadata">Bibliography</option></select></label>
+            <label class="select-wrap"><span data-i18n="year">Year</span><select id="year"><option value="" data-i18n="allYears">All years</option></select></label>
             <label class="select-wrap topic-select"><span data-i18n="topic">Topic</span><select id="topic"><option value="" data-i18n="allTopics">All topics</option></select></label>
             <button type="button" class="clear-button" id="clear-filters" data-i18n="clearFilters" hidden>Reset filters</button>
           </div>

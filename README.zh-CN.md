@@ -4,13 +4,23 @@
 
 [在线主页](https://awesomecua.github.io/) · [GitHub 组织](https://github.com/AwesomeCUA) · [English](README.md) · [覆盖度与缺口](docs/coverage.md)
 
+**让人、RAG 和 Agents 都能使用：一行克隆完整目录。**
+
+```sh
+git clone https://github.com/reacher-z/Awesome-CUA.git
+```
+
+[Agent 操作指南](AGENTS.md) · [网页使用指南](https://awesomecua.github.io/agents/) · [完整 JSONL](https://awesomecua.github.io/downloads/catalog.jsonl) · [已审阅 RAG 文档](https://awesomecua.github.io/downloads/rag-documents.jsonl)
+
+克隆后进入 `Awesome-CUA`，用 `python3 scripts/catalog.py search "grounding" --status curated --json` 查询；用 `python3 scripts/export_rag.py --output dist/rag-documents.jsonl` 导出带引用、版本、审阅状态与来源指纹的检索文档。加 `--include-metadata` 可包含全部当前记录。
+
 目标是把全球公开的 GUI、浏览器、桌面和手机智能体资料整理成可检索、可追溯、可持续扩充的数据资产。论文、模型、数据集、基准、框架、基础设施、产品和发布方统一建模，并保留它们之间的关系。
 
 <!-- STATS:START -->
 
-**2,036 resource records** · **842 curated** · **1,694 arXiv records** · **36 discovery documents**
+**2,045 resource records** · **996 curated** · **1,664 arXiv records** · **44 discovery documents**
 
-Evidence through `2026-10-17T02:49:45Z`. 1,194 records have bibliographic verification only; 812 discovered identifiers remain unresolved. 70 scope exclusions retain their original metadata in the archive. Counts overlap as explained below.
+Evidence through `2026-10-17T05:29:15Z`. 1,049 records have bibliographic verification only; 1,901 discovered identifiers remain unresolved. 100 scope exclusions retain their original metadata in the archive. Counts overlap as explained below.
 
 <!-- STATS:END -->
 

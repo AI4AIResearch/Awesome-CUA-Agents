@@ -75,6 +75,9 @@ def fetch(url, refresh=False):
         return info, body
     except (urllib.error.URLError, TimeoutError, ValueError, OSError) as error:
         info.update(error=str(error), status=getattr(error, "code", None))
+        headers = getattr(error, "headers", None)
+        if headers and headers.get('Retry-After'):
+            info['retry_after'] = headers.get('Retry-After')
         # Keep the previous successful cache intact when a refresh fails.
         write_json(CACHE / f"{key}.error.json", info)
         return info, b""
@@ -115,39 +118,114 @@ def canonical(url):
     return "url:" + hashlib.sha256(clean.encode()).hexdigest()[:20], clean, "url"
 
 
+def source_links(source, body):
+    """Parse only declared source formats; provider metadata remains a candidate."""
+    parser = source.get('parser', 'links')
+    if parser == 'huggingface_models':
+        url = urllib.parse.urlsplit(source['url'])
+        params = urllib.parse.parse_qs(url.query)
+        if url.scheme != 'https' or url.hostname != 'huggingface.co' or url.path != '/api/models':
+            raise ValueError('Model-index source must be the official Hugging Face models API')
+        author = params.get('author', [''])[0]
+        limit = params.get('limit', [''])[0]
+        if not re.fullmatch(r'[A-Za-z0-9_.-]+', author) or not limit.isdigit() or not 1 <= int(limit) <= 100:
+            raise ValueError('Model-index source requires one publisher and a limit of 1..100')
+        payload = json.loads(body)
+        if not isinstance(payload, list) or len(payload) > int(limit):
+            raise ValueError('Model-index response exceeds its declared window or is not a list')
+        result = []
+        for item in payload:
+            identity = item.get('id') if isinstance(item, dict) else None
+            if not isinstance(identity, str) or not re.fullmatch(r'[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+', identity):
+                raise ValueError('Model-index entry has an invalid repository identifier')
+            if identity.split('/')[0].casefold() != author.casefold():
+                raise ValueError('Model-index entry is outside the declared publisher')
+            result.append((None, 'Publisher model index; relevance and variant identity await review', 'https://huggingface.co/' + identity))
+        return result
+    if parser != 'links':
+        raise ValueError('Unknown discovery source parser: ' + str(parser))
+    result, heading = [], ''
+    for line_no, line in enumerate(body.decode('utf-8', errors='replace').splitlines(), 1):
+        if line.startswith('#'):
+            heading = re.sub(r'[#*_]', '', line).strip()[:140]
+        result.extend((line_no, heading, url) for url in re.findall(r"https?://[^\s<>\]\[\)\"']+", line))
+    return result
+
+
+def discovery_occurrence(source_id, info, line=None, section=''):
+    """Keep source facts with the occurrence, even after its latest run fails."""
+    evidence = {key: info[key] for key in ('url', 'sha256', 'retrieved_at')}
+    identity = json.dumps([source_id, evidence['url'], evidence['sha256']], separators=(',', ':'))
+    return {'source_id': source_id, 'line': line, 'section': section,
+            'snapshot_sha256': evidence['sha256'],
+            'receipt_id': 'discovery:' + hashlib.sha256(identity.encode()).hexdigest(),
+            'evidence': evidence}
+
+
+def retain_discovery_evidence(rows, previous_runs):
+    """Backfill only matching old receipts; never relabel old content as current."""
+    for row in rows:
+        for occurrence in row.get('discovered_in', []):
+            if occurrence.get('evidence'):
+                continue
+            previous = previous_runs.get(occurrence['source_id'], {})
+            info = previous.get('evidence', previous)
+            if (info.get('ok') and not previous.get('parse_error')
+                    and info.get('sha256') == occurrence.get('snapshot_sha256')
+                    and all(info.get(key) for key in ('url', 'sha256', 'retrieved_at'))):
+                receipt = discovery_occurrence(occurrence['source_id'], info)
+                occurrence.update({key: receipt[key] for key in ('receipt_id', 'evidence')})
+
+
 def discover(args):
     sources = read_json(DATA / "sources.json", [])
     existing = {r["id"]: r for r in read_jsonl(DATA / "candidates.jsonl")}
-    manifests = {r["id"]: r for r in read_json(DATA / "discovery-runs.json", [])}
+    previous = {r["id"]: r for r in read_json(DATA / "discovery-runs.json", [])}
+    retain_discovery_evidence(existing.values(), previous)
+    manifests, rate_limited_hosts = {}, set()
+    started = now()
     for source in sources:
-        info, body = fetch(source["url"], args.refresh)
-        manifest = {"id": source["id"], **info, "unique_resources": 0}
+        host = urllib.parse.urlsplit(source['url']).hostname
+        deferred = host in rate_limited_hosts
+        if deferred:
+            info, body = {'url': source['url'], 'retrieved_at': now(), 'ok': False,
+                'error': 'Deferred after an HTTP 429 from this host; no request made.'}, b''
+        else:
+            info, body = fetch(source["url"], args.refresh)
+        manifest = {"id": source["id"], **info, "unique_resources": 0,
+            'run_started_at': started, 'provider_host': host,
+            'request_attempted': not deferred, 'state': 'deferred' if deferred else 'failed'}
+        if info.get('status') == 429:
+            rate_limited_hosts.add(host)
         if not info["ok"]:
             manifests[source["id"]] = manifest
             print(f"FAILED {source['id']}: {info['error']}", flush=True)
+            continue
+        try:
+            links = source_links(source, body)
+        except (ValueError, TypeError) as error:
+            manifests[source['id']] = {**manifest, 'ok': False, 'parse_error': str(error)}
+            print(f"FAILED {source['id']}: {error}", flush=True)
             continue
         # Replace this source's old occurrences so deleted links remain historical candidates,
         # but cannot inflate current source coverage.
         for row in existing.values():
             row["discovered_in"] = [o for o in row["discovered_in"] if o["source_id"] != source["id"]]
         seen = set()
-        heading = ""
-        for line_no, line in enumerate(body.decode("utf-8", errors="replace").splitlines(), 1):
-            if line.startswith("#"):
-                heading = re.sub(r"[#*_]", "", line).strip()[:140]
-            for url in re.findall(r"https?://[^\s<>\]\[\)\"']+", line):
-                parsed = canonical(url)
-                if not parsed:
-                    continue
-                rid, clean, provider = parsed
-                if rid in seen or clean.lower() == source["homepage"].rstrip("/").lower():
-                    continue
-                seen.add(rid)
-                row = existing.setdefault(rid, {"id": rid, "url": clean, "provider": provider,
-                    "first_discovered_at": info["retrieved_at"], "discovered_in": []})
-                row["discovered_in"].append({"source_id": source["id"], "line": line_no,
-                    "section": heading, "snapshot_sha256": info["sha256"]})
+        for line_no, heading, url in links:
+            parsed = canonical(url)
+            if not parsed:
+                continue
+            rid, clean, provider = parsed
+            if rid in seen or clean.lower() == source["homepage"].rstrip("/").lower():
+                continue
+            seen.add(rid)
+            row = existing.setdefault(rid, {"id": rid, "url": clean, "provider": provider,
+                "first_discovered_at": info["retrieved_at"], "discovered_in": []})
+            row["discovered_in"].append(discovery_occurrence(source['id'],
+                {**info, 'url': source['url']}, line_no, heading))
         manifest["unique_resources"] = len(seen)
+        manifest['state'] = 'success'
         manifests[source["id"]] = manifest
         print(f"{source['id']}: {len(seen)} unique identifiers", flush=True)
     for row in existing.values():
@@ -212,6 +290,12 @@ def harvest(args):
         print(f"arXiv {start + 1}-{start + len(batch)}/{len(ids)}: {len(got)} metadata records", flush=True)
         write_jsonl(DATA / "papers.jsonl", records.values())
         write_jsonl(DATA / "metadata-updates.jsonl", proposals.values())
+        if info.get('status') == 429:
+            for aid in ids[start + len(batch):]:
+                failures.append({'id': 'arxiv:' + aid, 'checked_at': info['retrieved_at'],
+                    'deferred': True, 'request_attempted': False,
+                    'error': 'Deferred after an arXiv HTTP 429; no additional request made in this harvest.'})
+            break
         if start + 50 < len(ids):
             time.sleep(3.1)
     write_jsonl(DATA / "harvest-failures.jsonl", failures)

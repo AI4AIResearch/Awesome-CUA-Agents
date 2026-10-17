@@ -424,5 +424,313 @@
       "benchmarks",
       "release-monitoring"
     ]
+  },
+  {
+    "id": "release-mobileagent",
+    "name": "MobileAgent / GUI-Owl / UI-S1 — first-party release index",
+    "url": "https://raw.githubusercontent.com/X-PLUG/MobileAgent/HEAD/README.md",
+    "homepage": "https://github.com/X-PLUG/MobileAgent",
+    "role": "discovery",
+    "parser": "links",
+    "scope": [
+      "research",
+      "models",
+      "datasets",
+      "release-monitoring"
+    ],
+    "notes": "This is one retained README snapshot, not an exhaustive publisher inventory. Only produces unreviewed candidates; release status, canonical identity, scope and per-artifact license require separate review.",
+    "rationale": "The project lists successive mobile/desktop agent systems, released GUI-Owl/UI-S1 models and data; a recurring source rather than one parameter variant.",
+    "evidence": [
+      {
+        "role": "primary",
+        "method": "publisher_release_index_review",
+        "supports": [
+          "identity",
+          "discovery_scope"
+        ],
+        "url": "https://raw.githubusercontent.com/X-PLUG/MobileAgent/HEAD/README.md",
+        "sha256": "ca402ffd3b05f72a6d72f47de52c962f92e410749a77939044f3301d4330af16",
+        "retrieved_at": "2026-10-16T06:36:02Z"
+      }
+    ],
+    "observed_candidate_examples": [
+      "https://huggingface.co/collections/mPLUG/gui-owl-15",
+      "https://huggingface.co/mPLUG/GUI-Owl-32B",
+      "https://huggingface.co/mPLUG/GUI-Owl-7B",
+      "https://huggingface.co/papers/2605.12481",
+      "https://github.com/X-PLUG/ToolCUA",
+      "https://arxiv.org/abs/2602.16855",
+      "https://github.com/X-PLUG/MobileAgent/tree/main/Mobile-Agent-v3.5",
+      "https://github.com/X-PLUG/OSWorld-MCP"
+    ]
+  },
+  {
+    "id": "release-guicourse",
+    "name": "GUICourse — first-party release checklist",
+    "url": "https://raw.githubusercontent.com/yiye3/GUICourse/HEAD/README.md",
+    "homepage": "https://github.com/yiye3/GUICourse",
+    "role": "discovery",
+    "parser": "links",
+    "scope": [
+      "research",
+      "models",
+      "datasets",
+      "release-monitoring"
+    ],
+    "notes": "This is one retained README snapshot, not an exhaustive publisher inventory. Only produces unreviewed candidates; release status, canonical identity, scope and per-artifact license require separate review.",
+    "rationale": "The release checklist distinguishes available GUIEnv-local, GUIAct and GUIChat from unreleased GUIEnv-global; publisher licensing conflicts require review.",
+    "evidence": [
+      {
+        "role": "primary",
+        "method": "publisher_release_index_review",
+        "supports": [
+          "identity",
+          "discovery_scope"
+        ],
+        "url": "https://raw.githubusercontent.com/yiye3/GUICourse/HEAD/README.md",
+        "sha256": "0968273442bfb9a6478fe78f8b9a6247a3bb8e6d028880939b432fd009961e98",
+        "retrieved_at": "2026-10-16T06:36:01Z"
+      }
+    ],
+    "observed_candidate_examples": [
+      "https://arxiv.org/abs/2406.11317",
+      "https://huggingface.co/RhapsodyAI/qwen_vl_guidance",
+      "https://huggingface.co/RhapsodyAI/minicpm-guidance",
+      "https://huggingface.co/datasets/yiye2023/GUIEnv",
+      "https://huggingface.co/datasets/yiye2023/GUIAct",
+      "https://huggingface.co/datasets/yiye2023/GUIChat"
+    ]
+  },
+  {
+    "id": "release-os-genesis",
+    "name": "OS-Genesis — first-party training assets",
+    "url": "https://raw.githubusercontent.com/OS-Copilot/OS-Genesis/HEAD/README.md",
+    "homepage": "https://github.com/OS-Copilot/OS-Genesis",
+    "role": "discovery",
+    "parser": "links",
+    "scope": [
+      "research",
+      "models",
+      "datasets",
+      "release-monitoring"
+    ],
+    "notes": "This is one retained README snapshot, not an exhaustive publisher inventory. Only produces unreviewed candidates; release status, canonical identity, scope and per-artifact license require separate review.",
+    "rationale": "Official tables enumerate mobile/web trajectories and AC/AW/WA checkpoints; gated releases and model variants remain reviewable candidates.",
+    "evidence": [
+      {
+        "role": "primary",
+        "method": "publisher_release_index_review",
+        "supports": [
+          "identity",
+          "discovery_scope"
+        ],
+        "url": "https://raw.githubusercontent.com/OS-Copilot/OS-Genesis/HEAD/README.md",
+        "sha256": "430e495ab250395d666854bd18b0fc29b819cd784cd7730215ef65e461834d0d",
+        "retrieved_at": "2026-10-16T06:36:01Z"
+      }
+    ],
+    "observed_candidate_examples": [
+      "https://arxiv.org/abs/2412.19723",
+      "https://huggingface.co/datasets/huggingface/badges/resolve/main/paper-page-sm.svg",
+      "https://huggingface.co/papers/2412.19723",
+      "https://github.com/QwenLM/Qwen2-VL",
+      "https://github.com/OS-Copilot/OS-Genesis.git",
+      "https://huggingface.co/OpenGVLab/InternVL2-4B",
+      "https://huggingface.co/datasets/OS-Copilot/OS-Genesis-mobile-data/blob/main/os_genesis_ac_training_data.jsonl",
+      "https://huggingface.co/OS-Copilot/OS-Genesis-4B-AC"
+    ]
+  },
+  {
+    "id": "release-multiui",
+    "name": "MultiUI / UIX — first-party release index",
+    "url": "https://raw.githubusercontent.com/neulab/multiui/HEAD/README.md",
+    "homepage": "https://github.com/neulab/multiui",
+    "role": "discovery",
+    "parser": "links",
+    "scope": [
+      "research",
+      "models",
+      "datasets",
+      "release-monitoring"
+    ],
+    "notes": "This is one retained README snapshot, not an exhaustive publisher inventory. Only produces unreviewed candidates; release status, canonical identity, scope and per-artifact license require separate review.",
+    "rationale": "Official links identify the MultiUI dataset, UIX checkpoints and processed evaluation assets; generic OCR/document capability is not automatically CUA inclusion.",
+    "evidence": [
+      {
+        "role": "primary",
+        "method": "publisher_release_index_review",
+        "supports": [
+          "identity",
+          "discovery_scope"
+        ],
+        "url": "https://raw.githubusercontent.com/neulab/multiui/HEAD/README.md",
+        "sha256": "fe0c03fe73529a29788d559103c4aed48dca6ed9ba3bfd5f151f902fa8858b38",
+        "retrieved_at": "2026-10-16T06:36:01Z"
+      }
+    ],
+    "observed_candidate_examples": [
+      "https://huggingface.co/datasets/neulab/MultiUI",
+      "https://huggingface.co/Qwen/Qwen2-7B-Instruct",
+      "https://huggingface.co/google/siglip-so400m-patch14-384",
+      "https://huggingface.co/neulab/UIX-Qwen2",
+      "https://huggingface.co/neulab/UIX-Qwen2-Mind2Web",
+      "https://github.com/EvolvingLMMs-Lab/lmms-eval",
+      "https://huggingface.co/datasets/neulab/Mind2Web_bbox_eval"
+    ]
+  },
+  {
+    "id": "release-ui-genie",
+    "name": "UI-Genie — first-party model and data releases",
+    "url": "https://raw.githubusercontent.com/Euphoria16/UI-Genie/HEAD/README.md",
+    "homepage": "https://github.com/Euphoria16/UI-Genie",
+    "role": "discovery",
+    "parser": "links",
+    "scope": [
+      "research",
+      "models",
+      "datasets",
+      "release-monitoring"
+    ],
+    "notes": "This is one retained README snapshot, not an exhaustive publisher inventory. Only produces unreviewed candidates; release status, canonical identity, scope and per-artifact license require separate review.",
+    "rationale": "Model-zoo and dataset sections name released agents and reward/trajectory data; coming-soon weights and evaluation scripts must stay pending.",
+    "evidence": [
+      {
+        "role": "primary",
+        "method": "publisher_release_index_review",
+        "supports": [
+          "identity",
+          "discovery_scope"
+        ],
+        "url": "https://raw.githubusercontent.com/Euphoria16/UI-Genie/HEAD/README.md",
+        "sha256": "e08569bd9d8a6ff44537d4fe69243ddfeb8a41ae5c9f87ef84af50a67c64c726",
+        "retrieved_at": "2026-10-17T03:59:54Z"
+      }
+    ],
+    "observed_candidate_examples": [
+      "https://arxiv.org/abs/2505.21496",
+      "https://huggingface.co/collections/HanXiao1999/ui-genie",
+      "https://huggingface.co/HanXiao1999/UI-Genie-Agent-3B",
+      "https://huggingface.co/HanXiao1999/UI-Genie-Agent-7B",
+      "https://huggingface.co/datasets/HanXiao1999/UI-Genie-RM-517k",
+      "https://huggingface.co/datasets/HanXiao1999/UI-Genie-Agent-16k",
+      "https://github.com/Euphoria16/UI-Genie.git",
+      "https://github.com/modelscope/swift"
+    ]
+  },
+  {
+    "id": "release-scienceboard",
+    "name": "ScienceBoard — first-party environments and trajectories",
+    "url": "https://raw.githubusercontent.com/OS-Copilot/ScienceBoard/HEAD/README.md",
+    "homepage": "https://github.com/OS-Copilot/ScienceBoard",
+    "role": "discovery",
+    "parser": "links",
+    "scope": [
+      "research",
+      "models",
+      "datasets",
+      "release-monitoring"
+    ],
+    "notes": "This is one retained README snapshot, not an exhaustive publisher inventory. Only produces unreviewed candidates; release status, canonical identity, scope and per-artifact license require separate review.",
+    "rationale": "Official updates identify VM snapshots, agent trajectories and scientific desktop evaluation infrastructure, with runtime dependencies scoped separately.",
+    "evidence": [
+      {
+        "role": "primary",
+        "method": "publisher_release_index_review",
+        "supports": [
+          "identity",
+          "discovery_scope"
+        ],
+        "url": "https://raw.githubusercontent.com/OS-Copilot/ScienceBoard/HEAD/README.md",
+        "sha256": "4c3fe93aa740dbf4a279a246ddd836f2590a2a36f39b820abe166e38cb484577",
+        "retrieved_at": "2026-10-16T06:35:58Z"
+      }
+    ],
+    "observed_candidate_examples": [
+      "https://arxiv.org/abs/2505.19897",
+      "https://huggingface.co/datasets/huggingface/badges/resolve/main/paper-page-sm.svg",
+      "https://huggingface.co/papers/2505.19897",
+      "https://arxiv.org/abs/2508.20096",
+      "https://huggingface.co/datasets/OS-Copilot/ScienceBoard-Traj/tree/main",
+      "https://huggingface.co/OS-Copilot/ScienceBoard-Env",
+      "https://github.com/xlang-ai/OSWorld",
+      "https://huggingface.co/OS-Copilot/ScienceBoard-Env/blob/main/VM.zip"
+    ]
+  },
+  {
+    "id": "release-mai-ui",
+    "name": "MAI-UI / Qwen-UI-Agent — first-party project index",
+    "url": "https://raw.githubusercontent.com/Tongyi-MAI/MAI-UI/HEAD/README.md",
+    "homepage": "https://github.com/Tongyi-MAI/MAI-UI",
+    "role": "discovery",
+    "parser": "links",
+    "scope": [
+      "research",
+      "models",
+      "datasets",
+      "release-monitoring"
+    ],
+    "notes": "This is one retained README snapshot, not an exhaustive publisher inventory. Only produces unreviewed candidates; release status, canonical identity, scope and per-artifact license require separate review.",
+    "rationale": "Root project index tracks original MAI-UI and follow-up work; linked subdirectory READMEs need their own asset review because a root announcement does not prove implementation release.",
+    "evidence": [
+      {
+        "role": "primary",
+        "method": "publisher_release_index_review",
+        "supports": [
+          "identity",
+          "discovery_scope"
+        ],
+        "url": "https://raw.githubusercontent.com/Tongyi-MAI/MAI-UI/HEAD/README.md",
+        "sha256": "a77375cc0c52ea48cb913ea046b2255fb3fc4666380beea7b29fa7c3fea7629f",
+        "retrieved_at": "2026-10-17T04:11:45Z"
+      }
+    ],
+    "observed_candidate_examples": [
+      "https://arxiv.org/abs/2607.28227",
+      "https://arxiv.org/abs/2512.22047",
+      "https://huggingface.co/Tongyi-MAI/MAI-UI-8B",
+      "https://huggingface.co/Tongyi-MAI/MAI-UI-2B"
+    ]
+  },
+  {
+    "id": "release-hcompany-model-index",
+    "name": "H Company — official Hub model index",
+    "url": "https://huggingface.co/api/models?author=Hcompany&limit=100&sort=lastModified&direction=-1",
+    "homepage": "https://huggingface.co/Hcompany",
+    "role": "discovery",
+    "parser": "huggingface_models",
+    "scope": [
+      "models",
+      "release-monitoring",
+      "bounded-publisher-window"
+    ],
+    "notes": "One official publisher-index request, limited to the 100 most recently modified entries; this retained response contains 39 models. It is not a complete Hub-wide inventory or a guarantee of future publisher completeness. Parse each id to https://huggingface.co/{id}. Every result remains an unreviewed candidate: general NeoMME retrieval models may be out of CUA scope, and quantized/packaging variants must not become duplicate curated project entries.",
+    "rationale": "The index exposes currently released Holo generations and related checkpoints whose links can be absent from older project READMEs.",
+    "evidence": [
+      {
+        "role": "primary",
+        "method": "huggingface_publisher_index",
+        "supports": [
+          "identity",
+          "discovery_scope",
+          "observed_count"
+        ],
+        "url": "https://huggingface.co/api/models?author=Hcompany&limit=100&sort=lastModified&direction=-1",
+        "sha256": "81da5464dd04bfec969a1efe50391207cab6c399f720547b22a55d96f2ace506",
+        "retrieved_at": "2026-10-17T04:07:19Z"
+      }
+    ],
+    "observed_count": 39,
+    "window_limit": 100,
+    "canonical_url_template": "https://huggingface.co/{id}",
+    "observed_candidate_examples": [
+      "https://huggingface.co/Hcompany/Holotron4-30B-A3B-FP8",
+      "https://huggingface.co/Hcompany/Holotron4-30B-A3B",
+      "https://huggingface.co/Hcompany/Holo4-35B-A3B-NVFP4",
+      "https://huggingface.co/Hcompany/Holo4-35B-A3B-GGUF",
+      "https://huggingface.co/Hcompany/Holo4-35B-A3B-FP8",
+      "https://huggingface.co/Hcompany/Holo4-35B-A3B",
+      "https://huggingface.co/Hcompany/Holo4-27B-NVFP4",
+      "https://huggingface.co/Hcompany/Holo4-27B-GGUF"
+    ]
   }
 ]

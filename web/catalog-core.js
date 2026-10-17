@@ -7,6 +7,7 @@ export function matches(record, state, ignoreKind = false) {
   if (state.platform && !record.environments.includes(state.platform)) return false;
   if (state.review && record.review_status !== state.review) return false;
   if (state.topic && !record.topics.includes(state.topic)) return false;
+  if (state.year && (record.published_at || '').slice(0,4) !== state.year) return false;
   const terms = normalize(state.q).split(' ').filter(Boolean);
   return terms.every(term => record.search_text.includes(term));
 }
@@ -18,6 +19,7 @@ export function filtered(records, state) {
   else result.sort((a,b) => {
     const review = Number(a.review_status !== 'curated') - Number(b.review_status !== 'curated');
     if (review) return review;
+    if (['paper','survey'].includes(state.kind)) return (b.published_at || '').localeCompare(a.published_at || '') || alpha(a,b);
     const rank = r => r.kind !== 'company' && FEATURED.includes(r.name) ? FEATURED.indexOf(r.name) : FEATURED.length;
     const exact = r => state.q && normalize(r.name) === normalize(state.q) ? -1 : 0;
     return exact(a)-exact(b) || rank(a)-rank(b) || alpha(a,b);
@@ -26,14 +28,15 @@ export function filtered(records, state) {
 }
 export function parseState(search) {
   const p = new URLSearchParams(search);
-  return {q:p.get('q') || '',kind:KIND_ORDER.includes(p.get('kind')) ? p.get('kind') : '',platform:p.get('platform') || '',review:['curated','metadata_verified'].includes(p.get('review')) ? p.get('review') : '',topic:p.get('topic') || '',sort:['name','newest'].includes(p.get('sort')) ? p.get('sort') : 'featured',page:Math.max(1,parseInt(p.get('page'),10)||1),view:p.get('view') === 'list' ? 'list' : 'grid'};
+  const kind=KIND_ORDER.includes(p.get('kind')) ? p.get('kind') : '';
+  return {q:p.get('q') || '',kind,platform:p.get('platform') || '',review:['curated','metadata_verified'].includes(p.get('review')) ? p.get('review') : '',topic:p.get('topic') || '',year:/^(19|20)\d{2}$/.test(p.get('year') || '') ? p.get('year') : '',sort:['name','newest'].includes(p.get('sort')) ? p.get('sort') : 'featured',page:Math.max(1,parseInt(p.get('page'),10)||1),view:['list','grid'].includes(p.get('view')) ? p.get('view') : ['paper','survey'].includes(kind) ? 'list' : 'grid'};
 }
 export function serializeState(state, lang, record='') {
   const p = new URLSearchParams();
-  for (const key of ['q','kind','platform','review','topic']) if (state[key]) p.set(key,state[key]);
+  for (const key of ['q','kind','platform','review','topic','year']) if (state[key]) p.set(key,state[key]);
   if (state.sort !== 'featured') p.set('sort',state.sort);
   if (state.page > 1) p.set('page',String(state.page));
-  if (state.view === 'list') p.set('view','list');
+  if (state.view !== (['paper','survey'].includes(state.kind) ? 'list' : 'grid')) p.set('view',state.view);
   if (lang === 'zh') p.set('lang','zh');
   if (record) p.set('record',record);
   return p.toString();

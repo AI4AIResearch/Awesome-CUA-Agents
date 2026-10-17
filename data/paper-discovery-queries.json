@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "provider": "huggingface_papers_search",
+  "policy": "Bounded hybrid search windows; candidate discovery is not exhaustive coverage or editorial approval.",
+  "queries": [
+    {
+      "id": "hf-search-computer-use-agents",
+      "query": "computer use agents",
+      "area": "General computer use",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-gui-grounding-benchmark",
+      "query": "GUI grounding benchmark",
+      "area": "Grounding evaluation",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-mobile-gui-agent-reinforcement-learning",
+      "query": "mobile GUI agent reinforcement learning",
+      "area": "Mobile learning",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-web-agent-dataset-benchmark",
+      "query": "web agent dataset benchmark",
+      "area": "Web data and evaluation",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-computer-use-agent-safety",
+      "query": "computer use agent safety",
+      "area": "Safety and security",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-gui-agent-memory-planning",
+      "query": "GUI agent memory planning",
+      "area": "Memory and planning",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-desktop-computer-use-agent-windows-macos-linux",
+      "query": "desktop computer use agent Windows macOS Linux",
+      "area": "Desktop platforms",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-android-smartphone-gui-agent-automation",
+      "query": "Android smartphone GUI agent automation",
+      "area": "Android",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-ios-iphone-gui-agent-benchmark",
+      "query": "iOS iPhone GUI agent benchmark",
+      "area": "iOS",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-harmonyos-mobile-gui-agent",
+      "query": "HarmonyOS mobile GUI agent",
+      "area": "HarmonyOS",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-gui-screen-understanding-interface-element-detection",
+      "query": "GUI screen understanding interface element detection",
+      "area": "Screen understanding",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-screenshot-visual-grounding-click-localization-agent",
+      "query": "screenshot visual grounding click localization agent",
+      "area": "Visual grounding",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-visual-web-navigation-browser-agent",
+      "query": "visual web navigation browser agent",
+      "area": "Browser interaction",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-cross-application-multi-app-gui-agents",
+      "query": "cross application multi app GUI agents",
+      "area": "Cross application work",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-long-horizon-computer-use-agent-workflow-planning",
+      "query": "long horizon computer use agent workflow planning",
+      "area": "Long horizon tasks",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-gui-agent-episodic-memory-self-reflection",
+      "query": "GUI agent episodic memory self reflection",
+      "area": "Agent memory",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-computer-use-agent-online-reinforcement-learning-rewards",
+      "query": "computer use agent online reinforcement learning rewards",
+      "area": "Reinforcement learning",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-gui-agent-imitation-learning-human-demonstration-trajectories",
+      "query": "GUI agent imitation learning human demonstration trajectories",
+      "area": "Demonstrations",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-synthetic-gui-agent-training-data-generation",
+      "query": "synthetic GUI agent training data generation",
+      "area": "Synthetic training data",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-computer-use-benchmark-task-evaluation-state-verification",
+      "query": "computer use benchmark task evaluation state verification",
+      "area": "Task verification",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-professional-software-gui-agent-cad-blender-3d",
+      "query": "professional software GUI agent CAD Blender 3D",
+      "area": "Professional software",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-spreadsheets-presentations-documents-computer-use-agents",
+      "query": "spreadsheets presentations documents computer use agents",
+      "area": "Office workflows",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-accessibility-assistive-multimodal-gui-agents",
+      "query": "accessibility assistive multimodal GUI agents",
+      "area": "Assistive interfaces",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-gui-agent-robustness-dynamic-interfaces-distribution-shift",
+      "query": "GUI agent robustness dynamic interfaces distribution shift",
+      "area": "Robustness",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-browser-gui-agent-prompt-injection-adversarial-security",
+      "query": "browser GUI agent prompt injection adversarial security",
+      "area": "Adversarial security",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-gui-agent-human-collaboration-clarification-intervention",
+      "query": "GUI agent human collaboration clarification intervention",
+      "area": "Human collaboration",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-gui-agent-efficiency-latency-visual-token-compression",
+      "query": "GUI agent efficiency latency visual token compression",
+      "area": "Efficiency",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-open-source-gui-model-computer-use-checkpoint",
+      "query": "open source GUI model computer use checkpoint",
+      "area": "Open models",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-visual-workflow-automation-robotic-process-automation-agents",
+      "query": "visual workflow automation robotic process automation agents",
+      "area": "Workflow automation",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-multilingual-gui-agent-interface-grounding",
+      "query": "multilingual GUI agent interface grounding",
+      "area": "Multilingual interfaces",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-gui-agent-software-testing-interface-exploration",
+      "query": "GUI agent software testing interface exploration",
+      "area": "Testing and exploration",
+      "limit": 80
+    },
+    {
+      "id": "hf-search-chinese-gui-agents",
+      "query": "图形界面 智能体 手机 电脑操作",
+      "area": "Chinese language discovery",
+      "limit": 80
+    }
+  ]
+}
