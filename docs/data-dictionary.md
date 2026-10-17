@@ -1,6 +1,6 @@
 # Data dictionary
 
-The executable contract is [resource.schema.json](../schemas/resource.schema.json). All text files are UTF-8. JSONL has one resource per line; file ordering is by stable ID.
+The executable contract is [resource.schema.json](../schemas/resource.schema.json). It checks each record on its own, including the rules for curated records and kind-specific `details`; `catalog.py validate` and `build` also enforce rules that need other fields, other records or `data/topics.json`, such as canonical URL identities, the topic vocabulary, relation targets and evidence receipts. All text files are UTF-8. JSONL has one resource per line; file ordering is by stable ID.
 
 | Field | Meaning |
 | --- | --- |
