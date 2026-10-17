@@ -45,7 +45,7 @@ git clone https://github.com/AwesomeCUA/awesomecua.github.io.git .cache/github-p
 git clone https://github.com/AwesomeCUA/.github.git .cache/github-profile
 ```
 
-Then build the site and prepare the checkouts, in this order. `prepare_publication.py` copies the built `dist/site/` and reads its `data/search-manifest.json`:
+Then build the site and prepare the checkouts, in this order. `prepare_publication.py` copies the built `dist/site/` and reads its `data/search-manifest.json`; without that build it stops before changing either checkout:
 
 ```bash
 python3 scripts/build_site.py
