@@ -359,11 +359,45 @@ class ReadmeBlockTests(unittest.TestCase):
         rows = [self.row("a", "A"), self.row("b", "B"), self.row("c", "C", status="metadata_verified"), self.row("d", "D", kind="paper")]
         table = build.explore(rows, {"bibliographic_records": 1234})
         self.assertIn("[Benchmarks](docs/benchmarks.md) · **2**", table)
-        self.assertIn("**1** reviewed of 1,234", table)
+        self.assertIn("[Research by topic](docs/topics.md) · **1** reviewed papers", table)
+        self.assertIn("[Full bibliography](docs/papers.md) · 1,234 arXiv records", table)
 
     def test_shield_escapes_separators(self):
         self.assertEqual(build.shield("evidence through", "2026-10-17", "1d76db"), "https://img.shields.io/badge/evidence%20through-2026--10--17-1d76db")
         self.assertEqual(build.shield("a_b", "1,036", "blue"), "https://img.shields.io/badge/a__b-1%2C036-blue")
+
+
+
+class TopicHubTests(unittest.TestCase):
+    def row(self, rid, name, kind, topics, published_at=None, status="curated"):
+        return {"id": rid, "name": name, "kind": kind, "review_status": status, "url": "https://example.com/" + rid, "environments": ["web"], "topics": topics,
+            "summary": name + ".", "published_at": published_at, "relations": [], "licenses": {"code": None, "data": None, "weights": None, "document": None},
+            "evidence": [{"method": "editorial_primary_review", "url": "https://example.com/" + rid, "retrieved_at": "2026-10-16T00:00:00Z"}]}
+
+    def test_hubs_list_every_tagged_curated_resource_once_per_topic(self):
+        rows = [self.row("arxiv:2401.00001", "Older paper", "paper", ["grounding"], "2024-01-01"),
+            self.row("arxiv:2501.00001", "Newer paper", "paper", ["grounding", "safety-security"], "2025-01-01"),
+            self.row("github:a/bench", "Bench", "benchmark", ["grounding", "grounding"]),
+            self.row("arxiv:2502.00001", "Unreviewed", "paper", ["grounding"], "2025-02-01", status="metadata_verified")]
+        files = build.topic_pages(rows)
+        self.assertEqual(sorted(files), ["docs/topics.md", "docs/topics/grounding.md", "docs/topics/safety-security.md"])
+        hub = files["docs/topics/grounding.md"]
+        self.assertLess(hub.index("Newer paper"), hub.index("Older paper"))
+        self.assertEqual(hub.count("[Bench]("), 1)
+        self.assertNotIn("Unreviewed", hub)
+        self.assertIn("[Benchmarks (1)](#benchmarks) · [Papers (2)](#papers)", hub)
+        index = files["docs/topics.md"]
+        self.assertLess(index.index("[Grounding]"), index.index("[Safety and security]"))
+        self.assertIn("| [Grounding](topics/grounding.md) | 3 | 1 | · | · | · | 2 | [Newer paper]", index)
+
+    def test_bibliography_owns_papers_page(self):
+        rows = [self.row("arxiv:2401.00001", "Reviewed paper", "paper", ["grounding"], "2024-01-01")]
+        report = {"as_of_utc": "2026-10-16T00:00:00Z", "total_records": 1, "curated_records": 1, "metadata_only_records": 0, "bibliographic_records": 1,
+            "arxiv_archive_records": 1, "excluded_records": 0, "discovery_identifiers": 0, "unindexed_candidates": 0, "pending_editorial": [], "sources": [],
+            "primary_search": {}, "license_declarations_by_scope": {}, "exclusion_revalidation_pending": 0}
+        files = build.documents(rows, report)
+        self.assertTrue(files["docs/papers.md"].startswith("# Research bibliography"))
+        self.assertIn("Reviewed paper", files["docs/topics/grounding.md"])
 
 
 if __name__ == "__main__":
