@@ -12,11 +12,13 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 SCAN = ROOT / ".github" / "workflows" / "scan.yml"
 PUBLISH = ROOT / "automation" / "publish.yml"
-WORKFLOWS = [ROOT / ".github" / "workflows" / "catalog.yml", SCAN, PUBLISH]
+# Every workflow in this repository, plus the publication workflow installed in the website repository.
+WORKFLOWS = [*sorted((ROOT / ".github" / "workflows").glob("*.yml")), PUBLISH]
 TOKEN = "ghs_exampletoken"
 HEADER = "AUTHORIZATION: basic " + base64.b64encode(f"x-access-token:{TOKEN}".encode()).decode()
 PUSH_STEPS = {("scan.yml", "scan", "Commit verified scan output"), ("scan.yml", "dispatch_quality", "Run Catalog quality on the scan commit"),
-              ("publish.yml", "build", "Commit the public website snapshot"), ("publish.yml", "notify_search", "Preserve accepted state and actual submission receipts")}
+              ("publish.yml", "build", "Commit the public website snapshot"), ("publish.yml", "notify_search", "Preserve accepted state and actual submission receipts"),
+              ("freshness.yml", "dispatch_scan", "Dispatch a recovery scan")}
 
 
 def steps(path):
@@ -54,7 +56,7 @@ class WorkflowCredentialTests(unittest.TestCase):
                     checkouts += 1
                     with self.subTest(workflow=path.name, job=job, step=name):
                         self.assertIn("          persist-credentials: false", lines)
-        self.assertEqual(checkouts, 6)
+        self.assertEqual(checkouts, 7)
 
     def test_only_push_and_dispatch_steps_receive_the_token(self):
         found = set()
