@@ -173,6 +173,19 @@ The website's `downloads/topics.json` is a derived index of reviewed topic membe
 
 Reviewed `documented_by` links connect an implementation or dataset to a paper named by its first-party source. They do not imply a training or evaluation dependency. Resource pages expose both outgoing relations and incoming connected assets. The [connections directory](https://awesomecua.github.io/connections/) and [relationship export](https://awesomecua.github.io/downloads/relationships.json) provide a consolidated view.
 
+A relation points from the record that holds it to `target_id` and cites one of that record's primary receipts whose `supports` include `relations`. Choose the type from what that source states; when it states none of these, record no relation.
+
+| Type | The cited source states that | Editorial key |
+| --- | --- | --- |
+| `documented_by` | a paper describes the resource, for example by linking or citing it as the resource's paper. This is the default paper link and stays correct when the paper also introduced the resource | `documented_by` |
+| `introduced_by` | the resource, typically a dataset or benchmark, originates in that paper | `paper_ids` |
+| `published_by` | the target organization publishes the resource | `publisher_id` |
+| `variant_of` | the resource is a checkpoint or variant of a model family; the target is the family's record or the repository that releases the family | `family_url` |
+| `component_of` | the resource, such as a dataset, benchmark data or a tool, is released as part of the target project | `component_of` |
+| `trained_on` | the model was trained or fine-tuned on the target dataset | `reviewed_relations` |
+| `uses` | the resource depends on a separate resource, such as a framework that runs a benchmark's tasks. A checkpoint never `uses` its own code repository; that link is `variant_of` | `reviewed_relations` |
+| `evaluates` | the resource, such as a benchmark or evaluation harness, measures the target | `reviewed_relations` |
+
 The citation exports retain literal source authors, source dates at their known precision, review status, and stable catalog identity. The default arXiv citation keeps its retained preprint version; `--edition publication` explicitly selects the publication's own title/authors/date/venue/DOI. Publisher-only records cite their publication in either mode. Unknown facts are omitted. Publication citation IDs can have an edition suffix while `custom.catalog_id` retains the canonical resource ID. The export manifest records editions, counts and file SHA-256 values, tied to the source catalog SHA-256.
 
 `catalog.py get` returns an exact active record with its stable ID. `--related` adds only source-backed reviewed semantic relations; raw reference mentions are not promoted. A scope-excluded ID returns its applied decision and a nonzero exit code, preserving the boundary between the active catalog and retained archive.

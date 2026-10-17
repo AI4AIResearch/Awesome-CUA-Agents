@@ -1,6 +1,6 @@
 # Coverage and quality ledger
 
-Evidence snapshot through **2026-10-17T15:37:20Z**. Generated from committed source receipts.
+Evidence snapshot through **2026-10-17T16:10:54Z**. Generated from committed source receipts.
 
 - 3,003 resource records: 1,429 curated; 1,574 bibliographic metadata only.
 - 2,578 paper and survey records, including 2,565 arXiv identities and 13 publisher-only identities. This count overlaps the status counts above.
