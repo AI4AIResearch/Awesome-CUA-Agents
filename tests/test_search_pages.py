@@ -82,18 +82,21 @@ class SearchPagesTests(unittest.TestCase):
         self.assertIn('Computer-use agent research and resources',text)
     def test_bilingual_libraries_preserve_the_complete_reviewed_paper_set(self):
         expected={row['id'] for row in self.rows if eligible(row) and row['kind'] in {'paper','survey'}}
-        for path in ['papers/index.html','zh/papers/index.html']:
-            markup=(self.dest/path).read_text()
-            ids=[html.unescape(value) for value in re.findall(r'data-resource-id="([^"]+)"',markup)]
-            self.assertEqual(set(ids),expected,path)
-            self.assertEqual(len(ids),len(expected),path)
-            schema=json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>',markup,re.S)[1])
-            collection=next(item for item in schema['@graph'] if item['@type']=='ItemList')
-            self.assertEqual(collection['numberOfItems'],len(expected))
-            self.assertEqual([item['url'] for item in collection['itemListElement']],
-                             [SITE+resource_path({'id':rid}) for rid in ids])
-            self.assertIn('href="/downloads/citations.bib"',markup)
-            self.assertIn('href="/downloads/citations.csl.json"',markup)
+        for prefix in ['/papers/','/zh/papers/']:
+            ids=[]
+            for path in [item['path'] for item in self.manifest['pages'] if item['path'].startswith(prefix)]:
+                markup=(self.dest/path.lstrip('/')/'index.html').read_text()
+                page_ids=[html.unescape(value) for value in re.findall(r'data-resource-id="([^"]+)"',markup)]
+                schema=json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>',markup,re.S)[1])
+                collection=next(item for item in schema['@graph'] if item['@type']=='ItemList')
+                self.assertEqual(collection['numberOfItems'],len(page_ids),path)
+                self.assertEqual([item['url'] for item in collection['itemListElement']],
+                                 [SITE+resource_path({'id':rid}) for rid in page_ids],path)
+                self.assertIn('href="/downloads/citations.bib"',markup)
+                self.assertIn('href="/downloads/citations.csl.json"',markup)
+                ids+=page_ids
+            self.assertEqual(set(ids),expected,prefix)
+            self.assertEqual(len(ids),len(expected),prefix)
     def test_topic_pages_exports_and_bilingual_structured_data_share_exact_membership(self):
         manifest=json.loads((self.dest/'downloads/topics.json').read_text())
         expected_topics={topic for row in self.rows if eligible(row) for topic in row['topics']}

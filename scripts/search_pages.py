@@ -12,8 +12,8 @@ from collections import Counter, defaultdict
 from specifications import PROFILE_KEYS, comparison_body, profile_export, resource_profile_html, count_text, safe_href
 from agent_pages import agent_guide_body
 from export_citations import citation_bibtex, citation_csl
-from paper_library import paper_library
-from publication_metadata import publication, format_date_parts, record_date_text
+from paper_library import library_pages, library_path, library_years, paper_library
+from publication_metadata import publication, format_date_parts, record_date_text, record_year
 from topic_pages import write_topic_exports, topic_index_body, topic_body, topic_markdown, topic_name, topic_path
 from data_hub import build_download_manifest, data_hub_body
 
@@ -309,8 +309,17 @@ def build_search_pages(destination, rows, coverage, root):
         body=f'<div class="eyebrow">RESOURCE CATEGORY</div><h1>Computer-use agent {esc(label.lower())}</h1><p class="answer-lead">Browse {len(selected)} reviewed {esc(label.lower())} connected to computer-use, GUI, web, and mobile agents. Each entry links to primary evidence and records its scope.</p><p>Review means AI-assisted editorial inspection, not independent reproduction. Unknown licenses and specifications remain unknown.</p>'
         if kind=='paper':body+='<p>The complete bibliography includes metadata-only discoveries awaiting relevance review. They remain accessible in the <a href="/?kind=paper#catalog">interactive catalog</a> and data downloads.</p>'
         if kind in PROFILE_KEYS:body+=f'<p><a href="/compare/{"benchmarks" if kind=="benchmark" else "datasets"}/">Compare source-reviewed specifications</a></p>'
-        body+=listing(selected)+f'<p><a href="/?kind={kind}#catalog">Search all records in this category</a> · <a href="/catalog/">All categories</a></p>'
-        schema={"@type":"ItemList","name":f'Computer-use agent {label.lower()}',"numberOfItems":len(selected),"itemListElement":[{"@type":"ListItem","position":i+1,"url":SITE+resource_path(r),"name":r['name']} for i,r in enumerate(selected)]}
+        if kind=='paper':
+            # The paginated /papers/ library is the one indexable list of reviewed papers; this category is a hub into it.
+            years=Counter(record_year(r) or 'undated' for r in selected);year_links=library_years(rows);topics=Counter(t for r in selected for t in r['topics'])
+            body+='<p>The <a href="/papers/">research library</a> lists every reviewed paper and survey once, newest first, with authors, annotations and citations. Start from a publication year or a topic.</p><div class="page-actions"><a class="button primary" href="/papers/">Open the research library</a><a class="button secondary" href="/categories/survey/">Surveys</a></div>'
+            body+='<h2>Papers by publication year</h2><nav class="paper-years" aria-label="Papers by publication year">'+''.join(f'<a href="{year_links[y]}">{"Date not recorded" if y=="undated" else y}<span>{years[y]:,}</span></a>' for y in sorted(years,key=lambda y:(y!='undated',y),reverse=True))+'</nav>'
+            body+='<h2>Papers by topic</h2><div class="library-topics">'+''.join(f'<a href="{topic_path(t)}">{esc(topic_name(t))} ({n:,})</a>' for t,n in topics.most_common())+'</div>'
+            schema={"@type":"CollectionPage","name":f'Computer-use agent {label.lower()}'}
+        else:
+            body+=listing(selected)
+            schema={"@type":"ItemList","name":f'Computer-use agent {label.lower()}',"numberOfItems":len(selected),"itemListElement":[{"@type":"ListItem","position":i+1,"url":SITE+resource_path(r),"name":r['name']} for i,r in enumerate(selected)]}
+        body+=f'<p><a href="/?kind={kind}#catalog">Search all records in this category</a> · <a href="/catalog/">All categories</a></p>'
         emit(f'/categories/{kind}/',page(f'Computer-use agent {label.lower()}',f'Reviewed {label.lower()} for computer-use and GUI agents, with original sources, platform tags, and license evidence.',f'/categories/{kind}/',body,schema,crumbs=[("AwesomeCUA","/"),("Catalog","/catalog/"),(label,f'/categories/{kind}/')]))
     for kind,plural,title in [('benchmark','benchmarks','Compare GUI-agent benchmark protocols'),('dataset','datasets','Compare GUI-agent training datasets')]:
         path=f'/compare/{plural}/'
@@ -318,12 +327,18 @@ def build_search_pages(destination, rows, coverage, root):
         (destination/f'downloads/{plural}-profiles.json').write_text(json.dumps(export,ensure_ascii=False,indent=2)+'\n')
         emit(path,page(title,f'Compare {plural} by source-reviewed interfaces, scope, counting units, and access information.',path,comparison_body(rows,kind,resource_path),{'@type':'CollectionPage','name':title},crumbs=[("AwesomeCUA","/"),("Catalog","/catalog/"),(title,path)]))
     papers=sorted([r for r in reviewed if r['kind'] in {'paper','survey'}],key=record_date_text,reverse=True)
-    paper_alternatives={'en':'/papers/','zh-CN':'/zh/papers/','x-default':'/papers/'}
-    for language,path,title,summary in [
-        ('en','/papers/','Computer-use agent papers and surveys','Browse reviewed computer-use research by publication year, author, environment and topic, with original papers and BibTeX citations.'),
-        ('zh','/zh/papers/','Computer-Use 论文库：按年份浏览论文与综述','按发表年份浏览经过来源审阅的 Computer-Use 与 GUI Agent 论文，查看作者、平台、研究主题和原论文，下载 BibTeX 引用。')]:
-        body,schema=paper_library(rows,resource_path,language=language,site_url=SITE)
-        emit(path,page(title,summary,path,body,schema,lang='zh-CN' if language=='zh' else 'en',alternatives=paper_alternatives))
+    library_count=library_pages(rows)
+    for language,title,summary in [
+        ('en','Computer-use agent papers and surveys','Browse reviewed computer-use research by publication year, author, environment and topic, with original papers and BibTeX citations.'),
+        ('zh','Computer-Use 论文库：按年份浏览论文与综述','按发表年份浏览经过来源审阅的 Computer-Use 与 GUI Agent 论文，查看作者、平台、研究主题和原论文，下载 BibTeX 引用。')]:
+        root_crumb=("AwesomeCUA","/zh/" if language=='zh' else "/")
+        for number in range(1,library_count+1):
+            path=library_path(number,language)
+            body,schema=paper_library(rows,resource_path,language=language,site_url=SITE,number=number)
+            numbered=(f'{title}, page {number}' if language=='en' else f'{title}（第 {number} 页）') if number>1 else title
+            crumbs=[root_crumb,(title,library_path(1,language)),(f'Page {number}' if language=='en' else f'第 {number} 页',path)] if number>1 else None
+            alternatives={'en':library_path(number),'zh-CN':library_path(number,'zh'),'x-default':library_path(number)}
+            emit(path,page(numbered,summary,path,body,schema,lang='zh-CN' if language=='zh' else 'en',alternatives=alternatives,crumbs=crumbs))
     topic_manifest,topic_groups=write_topic_exports(destination,rows,(root/'data/catalog.jsonl').read_bytes())
     for language in ('en','zh'):
         path=topic_path(language=language)
