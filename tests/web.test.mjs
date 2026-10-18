@@ -495,8 +495,11 @@ test('load failures and toasts are announced through live regions that exist bef
     await Promise.all(dialog.listeners.click.map(listener=>listener({target:{closest:selector=>selector==='[data-copy-link]'?{}:null}})));
     assert.deepEqual(texts(),['','Copy the URL from your address bar.','']);
     dialog.close();
-    await Promise.all(clicks.map(listener=>listener({target:{closest:selector=>selector==='[data-copy-clone]'?{}:null}})));
+    const cloneButton={dataset:{copied:'true'},textContent:'Copied',querySelector:()=>null};
+    await Promise.all(clicks.map(listener=>listener({target:{closest:selector=>selector==='[data-copy-clone]'?cloneButton:null}})));
     assert.deepEqual(texts(),['Select the command above to copy it.','','']);
+    assert.equal(cloneButton.textContent,'Copy command');
+    assert.equal(cloneButton.dataset.copied,undefined);
     t.mock.timers.tick(2600);
     assert.deepEqual(texts(),['','','']);
   } finally {
