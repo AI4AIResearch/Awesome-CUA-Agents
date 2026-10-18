@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="500" height="106" viewBox="0 0 500 106" role="img" aria-labelledby="title desc">
   <title id="title">Featured by AwesomeCUA</title>
-  <desc id="desc">A violet laurel wreath and cursor emblem with a rounded outline and two levels of typography.</desc>
+  <desc id="desc">A violet laurel wreath and CUA monogram with a rounded outline and two levels of typography.</desc>
   <rect x="1" y="1" width="498" height="104" rx="21" fill="#fff" stroke="#5b30b5" stroke-width="2"/>
   <g fill="#55309e" stroke="#55309e" stroke-width="1.25">
     <path d="M64 82C46 81 29 68 25 44M64 82C82 81 99 68 103 44" fill="none" stroke-linecap="round"/>
@@ -27,7 +27,7 @@
       <ellipse cx="57" cy="82" rx="2.4" ry="5.5" transform="rotate(-80 57 82)" stroke="none"/>
     </g>
   </g>
-  <path d="M55 27v34l8-8 8 16 6-3-8-16 13-1Z" fill="#55309e"/>
+  <text x="64" y="60" text-anchor="middle" fill="#55309e" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="24" font-weight="750" letter-spacing="-1">CUA</text>
   <text x="127" y="39" fill="#5b3c98" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="14" font-weight="500" letter-spacing="1.15">COMPUTER-USE AGENTS</text>
   <text x="126" y="72" fill="#432477" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="27" font-weight="750" letter-spacing="-.55">Featured by AwesomeCUA</text>
 </svg>
