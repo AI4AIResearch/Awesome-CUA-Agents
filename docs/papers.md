@@ -5,7 +5,7 @@
 Bibliographic records from arXiv and retained publication sources. Metadata-only entries have **not** undergone a relevance or methodological review. Discovery includes historical references and adjacent work; this is not a count of confirmed CUA papers.
 Dates retain their recorded precision: a year or month does not imply a known day. Explicit arXiv scope exclusions are listed in the [scope-decision ledger](../data/exclusion-status.json). The [arXiv archive](../data/papers.jsonl) and [publication observations](../data/publications.jsonl) retain their separate source facts.
 
-**Years:** [2026](#2026) (1,083; 506 ⭐) · [2025](#2025) (675; 355 ⭐) · [2024](#2024) (412; 180 ⭐) · [2023](#2023) (161; 41 ⭐) · [2022](#2022) (67; 13 ⭐) · [2021](#2021) (51; 8 ⭐) · [2020](#2020) (28; 4 ⭐) · [2019](#2019) (19; 1 ⭐) · [2018](#2018) (29; 5 ⭐) · [2017](#2017) (11; 3 ⭐) · [2016](#2016) (13; 2 ⭐) · [2015](#2015) (13; 0 ⭐) · [2014](#2014) (14; 0 ⭐) · [2013](#2013) (5; 0 ⭐) · [2012](#2012) (1; 0 ⭐) · [2011](#2011) (4; 0 ⭐) · [2010](#2010) (5; 1 ⭐) · [2009](#2009) (3; 1 ⭐) · [2008](#2008) (2; 0 ⭐) · [2007](#2007) (2; 2 ⭐) · [1991](#1991) (1; 1 ⭐)
+**Years:** [2026](#2026) (1,083; 506 ⭐) · [2025](#2025) (678; 355 ⭐) · [2024](#2024) (412; 180 ⭐) · [2023](#2023) (163; 41 ⭐) · [2022](#2022) (68; 13 ⭐) · [2021](#2021) (51; 8 ⭐) · [2020](#2020) (29; 4 ⭐) · [2019](#2019) (19; 1 ⭐) · [2018](#2018) (29; 5 ⭐) · [2017](#2017) (11; 3 ⭐) · [2016](#2016) (13; 2 ⭐) · [2015](#2015) (13; 0 ⭐) · [2014](#2014) (14; 0 ⭐) · [2013](#2013) (5; 0 ⭐) · [2012](#2012) (1; 0 ⭐) · [2011](#2011) (4; 0 ⭐) · [2010](#2010) (5; 1 ⭐) · [2009](#2009) (3; 1 ⭐) · [2008](#2008) (2; 0 ⭐) · [2007](#2007) (2; 2 ⭐) · [1991](#1991) (1; 1 ⭐)
 
 ⭐ marks papers with an editorial relevance review; their topics link to the [topic hubs](topics.md). Other rows are bibliographic metadata only.
 
@@ -1182,6 +1182,7 @@ Dates retain their recorded precision: a year or month does not imply a known da
 | 2025-11-17 | [MEGA-GUI: Multi-stage Enhanced Grounding Agents for GUI Elements](https://arxiv.org/abs/2511.13087) | ⭐ reviewed | [grounding](topics/grounding.md), [screen-understanding](topics/screen-understanding.md) |
 | 2025-11-15 | [Mobile-Agent-RAG: Driving Smart Multi-Agent Coordination with Contextual Knowledge Empowerment for Long-Horizon Mobile Automation](https://arxiv.org/abs/2511.12254) | ⭐ reviewed | [long-horizon](topics/long-horizon.md), [memory](topics/memory.md), [mobile-navigation](topics/mobile-navigation.md) |
 | 2025-11-15 | [Measurement-Based Quantum Computation Using the Spin-1 XXZ Model with Uniaxial Anisotropy](https://arxiv.org/abs/2511.12000) | metadata |  |
+| 2025-11-14 | [UFO3: Weaving the Digital Agent Galaxy](https://arxiv.org/abs/2511.11332) | metadata |  |
 | 2025-11-13 | [Learning a Thousand Tasks in a Day](https://arxiv.org/abs/2511.10110) | metadata |  |
 | 2025-11-13 | [Co-EPG: A Framework for Co-Evolution of Planning and Grounding in Autonomous GUI Agents](https://arxiv.org/abs/2511.10705) | ⭐ reviewed | [data-generation](topics/data-generation.md), [grounding](topics/grounding.md), [planning](topics/planning.md), [reinforcement-learning](topics/reinforcement-learning.md) |
 | 2025-11-12 | [ProBench: Benchmarking GUI Agents with Accurate Process Information](https://arxiv.org/abs/2511.09157) | ⭐ reviewed | [evaluation](topics/evaluation.md), [mobile-navigation](topics/mobile-navigation.md), [observability](topics/observability.md) |
@@ -1475,6 +1476,7 @@ Dates retain their recorded precision: a year or month does not imply a known da
 | 2025-07-01 | [WebArxiv: A Reproducible Benchmark for Evaluating Multimodal Web Agents on arXiv Tasks](https://arxiv.org/abs/2507.00938) | ⭐ reviewed | [evaluation](topics/evaluation.md), [memory](topics/memory.md), [web-navigation](topics/web-navigation.md) |
 | 2025-06-30 | [ZonUI-3B: A Lightweight Vision-Language Model for Cross-Resolution GUI Grounding](https://arxiv.org/abs/2506.23491) | ⭐ reviewed | [data-generation](topics/data-generation.md), [efficiency](topics/efficiency.md), [grounding](topics/grounding.md) |
 | 2025-06-30 | [LineRetriever: Planning-Aware Observation Reduction for Web Agents](https://arxiv.org/abs/2507.00210) | ⭐ reviewed | [efficiency](topics/efficiency.md), [planning](topics/planning.md), [web-navigation](topics/web-navigation.md) |
+| 2025-06-26 | [Mind2Web 2: Evaluating Agentic Search with Agent-as-a-Judge](https://arxiv.org/abs/2506.21506) | metadata |  |
 | 2025-06-26 | [Bridging Offline and Online Reinforcement Learning for LLMs](https://arxiv.org/abs/2506.21495) | metadata |  |
 | 2025-06-26 | [Agent-RewardBench: Towards a Unified Benchmark for Reward Modeling across Perception, Planning, and Safety in Real-World Multimodal Agents](https://arxiv.org/abs/2506.21252) | metadata |  |
 | 2025-06-25 | [Mobile-R1: Towards Interactive Capability for VLM-Based Mobile Agent via Systematic Training](https://arxiv.org/abs/2506.20332) | ⭐ reviewed | [mobile-navigation](topics/mobile-navigation.md), [reinforcement-learning](topics/reinforcement-learning.md) |
@@ -1727,6 +1729,7 @@ Dates retain their recorded precision: a year or month does not imply a known da
 | 2025-02-20 | [PC-Agent: A Hierarchical Multi-Agent Collaboration Framework for Complex Task Automation on PC](https://arxiv.org/abs/2502.14282) | ⭐ reviewed | [cross-app](topics/cross-app.md), [planning](topics/planning.md) |
 | 2025-02-20 | [Advancing Language Multi-Agent Learning with Credit Re-Assignment for Interactive Environment Generalization](https://arxiv.org/abs/2502.14496) | metadata |  |
 | 2025-02-19 | [Qwen2.5-VL Technical Report](https://arxiv.org/abs/2502.13923) | metadata |  |
+| 2025-02-18 | [Magma: A Foundation Model for Multimodal AI Agents](https://arxiv.org/abs/2502.13130) | metadata |  |
 | 2025-02-18 | [Evaluating the Robustness of Multimodal Agents Against Active Environmental Injection Attacks](https://arxiv.org/abs/2502.13053) | ⭐ reviewed | [evaluation](topics/evaluation.md), [robustness](topics/robustness.md), [safety-security](topics/safety-security.md) |
 | 2025-02-17 | [Scaling Autonomous Agents via Automatic Reward Modeling And Planning](https://arxiv.org/abs/2502.12130) | metadata |  |
 | 2025-02-17 | [Explorer: Scaling Exploration-driven Web Trajectory Synthesis for Multimodal Web Agents](https://arxiv.org/abs/2502.11357) | ⭐ reviewed | [data-generation](topics/data-generation.md), [web-navigation](topics/web-navigation.md) |
@@ -2218,10 +2221,12 @@ Dates retain their recorded precision: a year or month does not imply a known da
 | 2023-11-30 | [CLS-CAD: Synthesizing CAD Assemblies in Fusion 360](https://arxiv.org/abs/2311.18492) | metadata |  |
 | 2023-11-30 | [Bottom-up computation using trees of sublists (Functional Pearl)](https://arxiv.org/abs/2311.18528) | metadata |  |
 | 2023-11-29 | [Towards Efficient Hyperdimensional Computing Using Photonics](https://arxiv.org/abs/2311.17801) | metadata |  |
+| 2023-11-28 | [Mitigating Object Hallucinations in Large Vision-Language Models through Visual Contrastive Decoding](https://arxiv.org/abs/2311.16922) | metadata |  |
 | 2023-11-27 | [Shaping dynamical neural computations using spatiotemporal constraints](https://arxiv.org/abs/2311.15572) | metadata |  |
 | 2023-11-23 | [A robust framework for quantum computation using quasi-hidden molecular degrees of freedom](https://arxiv.org/abs/2311.14133) | metadata |  |
 | 2023-11-21 | [Teaching Quantum Computing using Microsoft Quantum Development Kit and Azure Quantum](https://arxiv.org/abs/2311.12960) | metadata |  |
 | 2023-11-21 | [GAIA: a benchmark for General AI Assistants](https://arxiv.org/abs/2311.12983) | ⭐ reviewed | [evaluation](topics/evaluation.md), [tool-integration](topics/tool-integration.md) |
+| 2023-11-20 | [GPQA: A Graduate-Level Google-Proof Q&A Benchmark](https://arxiv.org/abs/2311.12022) | metadata |  |
 | 2023-11-20 | [Evil Geniuses: Delving into the Safety of LLM-based Agents](https://arxiv.org/abs/2311.11855) | metadata |  |
 | 2023-11-19 | [Adversarial Prompt Tuning for Vision-Language Models](https://arxiv.org/abs/2311.11261) | metadata |  |
 | 2023-11-17 | [Testing Language Model Agents Safely in the Wild](https://arxiv.org/abs/2311.10538) | metadata |  |
@@ -2405,6 +2410,7 @@ Dates retain their recorded precision: a year or month does not imply a known da
 | 2022-06-26 | [Repository-Level Prompt Generation for Large Language Models of Code](https://arxiv.org/abs/2206.12839) | metadata |  |
 | 2022-06-17 | [MineDojo: Building Open-Ended Embodied Agents with Internet-Scale Knowledge](https://arxiv.org/abs/2206.08853) | metadata |  |
 | 2022-06-10 | [The Capacity of Low Earth Orbit Computed using Source-sink Modeling](https://arxiv.org/abs/2206.05345) | metadata |  |
+| 2022-06-09 | [Beyond the Imitation Game: Quantifying and extrapolating the capabilities of language models](https://arxiv.org/abs/2206.04615) | metadata |  |
 | 2022-06-05 | [Discontinuity Computing using Physics-Informed Neural Network](https://arxiv.org/abs/2206.03864) | metadata |  |
 | 2022-05-23 | [SparseLNR: Accelerating Sparse Tensor Computations Using Loop Nest Restructuring](https://arxiv.org/abs/2205.11622) | metadata |  |
 | 2022-05-23 | [META-GUI: Towards Multi-modal Conversational Agents on Mobile GUI](https://arxiv.org/abs/2205.11029) | ⭐ reviewed | [human-in-the-loop](topics/human-in-the-loop.md), [mobile-navigation](topics/mobile-navigation.md) |
@@ -2512,6 +2518,7 @@ Dates retain their recorded precision: a year or month does not imply a known da
 | 2020-06-29 | [The Many Faces of Robustness: A Critical Analysis of Out-of-Distribution Generalization](https://arxiv.org/abs/2006.16241) | metadata |  |
 | 2020-06-11 | [Blind Quantum Computation Using a Circuit-Based Quantum Computer](https://arxiv.org/abs/2006.06255) | metadata |  |
 | 2020-06-10 | [Toward a standardized methodology for constructing quantum computing use cases](https://arxiv.org/abs/2006.05846) | metadata |  |
+| 2020-05-15 | [Language Conditioned Imitation Learning over Unstructured Data](https://arxiv.org/abs/2005.07648) | metadata |  |
 | 2020-05-13 | [Realistic simulation of quantum computation using unitary and measurement channels](https://arxiv.org/abs/2005.06337) | metadata |  |
 | 2020-05-13 | [Improved Computation-Communication Trade-Off for Coded Distributed Computing using Linear Dependence of Intermediate Values](https://arxiv.org/abs/2005.06118) | metadata |  |
 | 2020-05-07 | [Mapping Natural Language Instructions to Mobile UI Action Sequences](https://arxiv.org/abs/2005.03776) | ⭐ reviewed | [action-prediction](topics/action-prediction.md), [data-generation](topics/data-generation.md), [grounding](topics/grounding.md), [mobile-navigation](topics/mobile-navigation.md) |
