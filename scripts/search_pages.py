@@ -10,7 +10,7 @@ import re
 import xml.etree.ElementTree as ET
 from collections import Counter, defaultdict
 from specifications import PROFILE_KEYS, comparison_body, profile_export, resource_profile_html, count_text, safe_href
-from agent_pages import agent_guide_body
+from agent_pages import agent_guide_body, RELEASES_URL
 from export_citations import citation_bibtex, citation_csl
 from paper_library import library_pages, library_path, library_years, paper_library
 from publication_metadata import publication, format_date_parts, record_date_text, record_year
@@ -457,6 +457,7 @@ def build_search_pages(destination, rows, coverage, root):
     llms.extend(['', '## Topic collections', '', f'- [Topic directory]({SITE}/topics/)', f'- [中文主题目录]({SITE}/zh/topics/)', f'- [Topic manifest]({SITE}/downloads/topics.json): exact reviewed resource IDs, counts, subset URLs and SHA-256 fingerprints. Topic memberships overlap; counts must not be summed.', '', 'The first page of each topic has an index.md listing all of its resources. Each /downloads/topics/<topic>/ directory serves records.jsonl, citations.bib and citations.csl.json. Pass records.jsonl to export_rag.py --input to build a topic-specific retrieval corpus.'])
     llms.extend(['', '## Repository identity', '', f'- [Verified former repository names]({SITE}/downloads/repository-aliases.json): paired official API observations with the same GitHub or Hugging Face repository ID. Use the canonical returned ID for retrieval upserts; aliases add no resources. Record fields and RAG documents retain former names and their alias-scoped evidence.', f'- [Repository identity schema]({SITE}/schemas/repository-alias.schema.json)'])
     llms.extend(['', '## Download inventory', '', f'- [Bilingual data hub]({SITE}/data/)', f'- [中文数据中心]({SITE}/zh/data/)', f'- [Download manifest]({SITE}/downloads/manifest.json): file paths, exact byte sizes, SHA-256 fingerprints, counts and units. Compare catalog_sha256 with the RAG, citation and topic manifests before combining artifacts.', f'- [Download manifest schema]({SITE}/schemas/download-manifest.schema.json)'])
+    llms.extend(['', '## Versioned data', '', f'- [Tagged data releases]({RELEASES_URL}): complete data bundles containing catalog, RAG, citations and topic subsets. Verify SHA256SUMS and retain release-manifest.json, source_commit and catalog_sha256. Repository CLI commands require a source clone at the recorded commit.'])
     (destination/'llms.txt').write_text(clean_text('\n'.join(llms)+'\n'),encoding='utf-8')
     (destination/'llms-full.txt').write_text(clean_text('# AwesomeCUA curated resource annotations\n\n'+f'Evidence snapshot: {latest}. These records were reviewed with AI assistance; experiments are not independently reproduced.\n\n'+'\n---\n\n'.join(resource_markdown(r) for r in reviewed)),encoding='utf-8')
     robots='User-agent: *\nAllow: /\n\n'+''.join(f'User-agent: {bot}\nAllow: /\n\n' for bot in ['Googlebot','bingbot','OAI-SearchBot','PerplexityBot','Claude-SearchBot'])+f'Sitemap: {SITE}/sitemap.xml\nSitemap: {SITE}/sitemap.txt\n'

@@ -1,12 +1,12 @@
 # Coverage and quality ledger
 
-Evidence snapshot through **2026-10-17T19:15:20Z**. Generated from committed source receipts.
+Evidence snapshot through **2026-10-18T04:40:40Z**. Generated from committed source receipts.
 
-- 3,006 resource records: 1,435 curated; 1,571 bibliographic metadata only.
-- 2,578 paper and survey records, including 2,565 arXiv identities and 13 publisher-only identities. This count overlaps the status counts above.
-- 2,683 retained arXiv metadata records; 118 explicit scope exclusions are outside the active catalog.
-- 3,908 discovery identifiers; 852 remain unresolved after accounting for scope exclusions and for 80 reviewed non-resource links and 9 other addresses of indexed resources, which stay in the review queue with their reasons.
-- 13 editorial proposals await verification or review.
+- 3,048 resource records: 1,572 curated; 1,476 bibliographic metadata only.
+- 2,599 paper and survey records, including 2,586 arXiv identities and 13 publisher-only identities. This count overlaps the status counts above.
+- 2,708 retained arXiv metadata records; 122 explicit scope exclusions are outside the active catalog.
+- 4,052 discovery identifiers; 910 remain unresolved after accounting for scope exclusions and for 80 reviewed non-resource links and 9 other addresses of indexed resources, which stay in the review queue with their reasons.
+- 18 editorial proposals await verification or review.
 
 These are distinct resource identifiers, not distinct research projects. Papers, repositories, datasets, products, and publisher entities have different grains.
 
@@ -16,16 +16,16 @@ Counts of source-reviewed resources. A resource tagged with several environments
 
 | Kind | web | desktop | windows | macos | linux | android | ios | harmonyos | cross-platform | unspecified |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| [agent](agents.md) | 10 | 14 | 3 | 1 | · | 15 | 1 | · | 1 | · |
-| [benchmark](benchmarks.md) | 36 | 19 | 4 | 3 | 5 | 17 | 1 | · | 13 | 3 |
+| [agent](agents.md) | 11 | 15 | 4 | 2 | · | 16 | 1 | · | 1 | · |
+| [benchmark](benchmarks.md) | 37 | 20 | 5 | 3 | 5 | 18 | 1 | · | 13 | 3 |
 | [company](companies.md) | · | · | · | · | · | · | · | · | · | 16 |
-| [dataset](datasets.md) | 21 | 16 | 3 | 2 | 6 | 33 | 1 | · | 14 | 8 |
-| [framework](frameworks.md) | 34 | 18 | 1 | 1 | 3 | 17 | 1 | 1 | 7 | 2 |
+| [dataset](datasets.md) | 24 | 18 | 4 | 2 | 7 | 34 | 1 | · | 14 | 8 |
+| [framework](frameworks.md) | 36 | 21 | 2 | 1 | 5 | 19 | 1 | 1 | 7 | 2 |
 | [infrastructure](infrastructures.md) | 5 | 9 | 1 | 2 | 4 | 3 | 1 | · | · | · |
-| [model](models.md) | 27 | 21 | 4 | 4 | 4 | 23 | 4 | · | 46 | 2 |
-| [paper](topics.md) | 375 | 193 | 32 | 14 | 16 | 161 | 6 | 1 | 94 | 292 |
+| [model](models.md) | 28 | 24 | 5 | 4 | 6 | 24 | 4 | · | 47 | 2 |
+| [paper](topics.md) | 424 | 204 | 36 | 14 | 18 | 173 | 8 | 2 | 100 | 332 |
 | [product](products.md) | 18 | 5 | · | · | · | · | · | · | · | · |
-| [survey](surveys.md) | · | · | · | · | · | 1 | 1 | · | 10 | 2 |
+| [survey](surveys.md) | 2 | 1 | 1 | · | · | 2 | 1 | · | 10 | 2 |
 | [tool](tools.md) | 11 | 3 | 3 | 2 | 2 | 5 | 2 | · | 1 | 2 |
 
 ## Source snapshot coverage
@@ -35,20 +35,20 @@ The denominator is the normalized identifiers extracted from each fetched docume
 | Source | Discovered | Indexed | Curated | Excluded | Set aside | Unresolved | Fetch |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
 | [ShowLab Awesome GUI Agent](https://github.com/showlab/Awesome-GUI-Agent) | 338 | 221 | 209 | 0 | 1 | 116 | OK · 2026-10-17 |
-| [ZJU REAL Awesome GUI Agents](https://github.com/ZJU-REAL/Awesome-GUI-Agents) | 218 | 165 | 162 | 0 | 4 | 49 | OK · 2026-10-17 |
+| [ZJU REAL Awesome GUI Agents](https://github.com/ZJU-REAL/Awesome-GUI-Agents) | 218 | 166 | 163 | 0 | 4 | 48 | OK · 2026-10-17 |
 | [OS Agents Survey](https://github.com/OS-Agent-Survey/OS-Agent-Survey) | 224 | 198 | 178 | 0 | 1 | 25 | OK · 2026-10-17 |
-| [Awesome Computer Use Agents — wjhou](https://github.com/wjhou/awesome-computer-use-agents) | 132 | 95 | 85 | 0 | 1 | 36 | OK · 2026-10-17 |
+| [Awesome Computer Use Agents — wjhou](https://github.com/wjhou/awesome-computer-use-agents) | 132 | 96 | 87 | 0 | 1 | 35 | OK · 2026-10-17 |
 | [Steel Awesome Web Agents](https://github.com/steel-dev/awesome-web-agents) | 113 | 24 | 24 | 0 | 4 | 85 | OK · 2026-10-17 |
 | [Steel Web Agents Archive](https://github.com/steel-dev/awesome-web-agents/blob/main/ARCHIVE.md) | 7 | 1 | 1 | 0 | 0 | 6 | OK · 2026-10-17 |
-| [Computer Browser Phone Use Agent Datasets](https://github.com/Khang-9966/Computer-Browser-Phone-Use-Agent-Datasets) | 170 | 114 | 106 | 1 | 0 | 55 | OK · 2026-10-17 |
-| [Awesome Multimodal GUI Agents](https://github.com/DeLunnLi/Awesome-Multimodal-GUI-Agents) | 588 | 496 | 432 | 0 | 0 | 92 | OK · 2026-10-17 |
-| [Awesome Computer Use — TianyuanYang](https://github.com/TianyuanYang/awesome-computer-use) | 94 | 69 | 62 | 0 | 1 | 24 | OK · 2026-10-17 |
+| [Computer Browser Phone Use Agent Datasets](https://github.com/Khang-9966/Computer-Browser-Phone-Use-Agent-Datasets) | 170 | 115 | 108 | 1 | 0 | 54 | OK · 2026-10-17 |
+| [Awesome Multimodal GUI Agents](https://github.com/DeLunnLi/Awesome-Multimodal-GUI-Agents) | 588 | 499 | 454 | 1 | 0 | 88 | OK · 2026-10-17 |
+| [Awesome Computer Use — TianyuanYang](https://github.com/TianyuanYang/awesome-computer-use) | 94 | 69 | 63 | 0 | 1 | 24 | OK · 2026-10-17 |
 | [Computer Use Agents Overview](https://github.com/cdxeve/awesome-computer-use-agents) | 78 | 48 | 32 | 0 | 2 | 28 | OK · 2026-10-17 |
 | [Awesome GUI Agents — Supernal](https://github.com/supernalintelligence/Awesome-Gui-Agents) | 63 | 11 | 8 | 0 | 2 | 50 | OK · 2026-10-17 |
 | [Yearly GUI Agents](https://github.com/qy0720/awesome-yearly-gui-agents) | 193 | 147 | 144 | 0 | 0 | 46 | OK · 2026-10-17 |
-| [OSU-NLP-Group/GUI-Agents-Paper-List / README.md](https://github.com/OSU-NLP-Group/GUI-Agents-Paper-List) | 544 | 486 | 353 | 0 | 45 | 13 | OK · 2026-10-17 |
+| [OSU-NLP-Group/GUI-Agents-Paper-List / README.md](https://github.com/OSU-NLP-Group/GUI-Agents-Paper-List) | 544 | 486 | 394 | 0 | 45 | 13 | OK · 2026-10-17 |
 | [opendilab/awesome-ui-agents / README.md](https://github.com/opendilab/awesome-ui-agents) | 144 | 92 | 83 | 0 | 2 | 50 | OK · 2026-10-17 |
-| [jin-s13/awesome-gui-agent-hub / AWESOME.md](https://github.com/jin-s13/awesome-gui-agent-hub) | 210 | 207 | 116 | 0 | 1 | 2 | OK · 2026-10-17 |
+| [jin-s13/awesome-gui-agent-hub / AWESOME.md](https://github.com/jin-s13/awesome-gui-agent-hub) | 210 | 207 | 156 | 0 | 1 | 2 | OK · 2026-10-17 |
 | [ZJU-REAL/Awesome-GUI-Agents / ICLR2026/Paperlist.md](https://github.com/ZJU-REAL/Awesome-GUI-Agents) | 7 | 0 | 0 | 0 | 0 | 7 | OK · 2026-10-17 |
 | [dqtz5vpvj9-create/awesome-mobile-gui-agents / README.md](https://github.com/dqtz5vpvj9-create/awesome-mobile-gui-agents) | 40 | 26 | 25 | 0 | 0 | 14 | OK · 2026-10-17 |
 | [PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents](https://github.com/PhoneLLM/Awesome-LLM-Powered-Phone-GUI-Agents) | 247 | 195 | 182 | 0 | 2 | 50 | OK · 2026-10-17 |
@@ -78,6 +78,9 @@ The denominator is the normalized identifiers extracted from each fetched docume
 | [ScienceBoard — first-party environments and trajectories](https://github.com/OS-Copilot/ScienceBoard) | 16 | 4 | 4 | 0 | 3 | 9 | OK · 2026-10-17 |
 | [MAI-UI / Qwen-UI-Agent — first-party project index](https://github.com/Tongyi-MAI/MAI-UI) | 17 | 3 | 3 | 0 | 0 | 14 | OK · 2026-10-17 |
 | [H Company — official Hub model index](https://huggingface.co/Hcompany) | 39 | 4 | 4 | 0 | 0 | 35 | OK · 2026-10-17 |
+| [Maxi-W Awesome AI for GUI Agents](https://github.com/maxi-w/awesome-ai-for-gui-agents) | 50 | 26 | 26 | 0 | 1 | 23 | OK · 2026-10-17 |
+| [Awesome On-Device Agents](https://github.com/Adam-THU/awesome-on-device-agents) | 32 | 20 | 15 | 3 | 0 | 9 | OK · 2026-10-17 |
+| [AwesomeEverything GUI Agents Paper List](https://github.com/WeijianQ/AwesomeEverything_GUI-Agents-Paper-List) | 496 | 451 | 385 | 0 | 0 | 45 | OK · 2026-10-17 |
 
 ## Paper-discovery query coverage
 
@@ -132,16 +135,16 @@ The recorded title query returned 1,199 unique records out of 1,246 reported mat
 
 | Scope | Recorded declarations |
 | --- | ---: |
-| code | 166 |
-| data | 56 |
-| weights | 53 |
+| code | 176 |
+| data | 61 |
+| weights | 56 |
 | document | 0 |
 
 A code license never fills a data or weights field. Hub declarations are publisher metadata, not independently audited legal conclusions. Missing values remain null.
 
 ## Pending editorial proposals
 
-13 proposals: 3 with unresolved primary evidence, 0 whose current source snapshot awaits review, 10 held by a reviewer after reading the current source, and 0 awaiting another scope review.
+18 proposals: 3 with unresolved primary evidence, 0 whose current source snapshot awaits review, 15 held by a reviewer after reading the current source, and 0 awaiting another scope review.
 
 | Resource | Reason |
 | --- | --- |
@@ -158,6 +161,11 @@ A code license never fills a data or weights field. Hub declarations are publish
 | [UGround V1 bounding-box data](https://huggingface.co/datasets/osunlp/UGround-V1-Data-Box) | Public API identifies the dataset and Parquet manifest, but access is gated=auto and the raw card returns 401. No access request or agreement acceptance was made. Defer curation of a directly usable release until access scope and the full card can be reviewed. |
 | [LiteCUA implementation](https://github.com/agiresearch/LiteCUA) | primary evidence unresolved: HTTP Error 404: Not Found; agiresearch/LiteCUA still returns 404 from the GitHub API and its README endpoint, with no redirect, although the AIOS README still links it as the LiteCUA codebase. The Cerebrum README says LiteCUA has been integrated into Cerebrum, the AIOS agent SDK (agiresearch/Cerebrum), which needs its own proposal and review. The paper (arxiv:2505.18829) is curated separately; do not infer a release at this path. |
 | [Project Mariner](https://labs.google.com/mariner/) | The Project Mariner page on labs.google.com is a client-rendered sign-in shell whose HTML carries only the title, and the former deepmind.google Project Mariner pages now redirect to the DeepMind homepage. Approval needs a readable first-party product page. |
+| [On-Device Language Models: A Comprehensive Review](https://arxiv.org/abs/2409.00088) | This survey covers on-device language-model architectures, compression and deployment. Further review is needed to establish substantive computer-interface-agent coverage. |
+| [Small Language Models are the Future of Agentic AI](https://arxiv.org/abs/2506.02153) | This is a general position on small language models in agentic architectures. The abstract does not establish a specific computer-interface application for adjacent inclusion. |
+| [An Information Theoretic Perspective on Agentic System Design](https://arxiv.org/abs/2512.21720) | The abstract studies compressor-predictor language-model systems and Deep Research. A concrete connection to GUI, browser or operating-system interaction needs further primary-source review. |
+| [Rethinking Scale: Deployment Trade-offs of Small Language Models under Agent Paradigms](https://arxiv.org/abs/2604.19299) | The abstract compares base models, tool-equipped agents and multi-agent systems without identifying interface-interaction tasks. Retain as metadata pending a task-level scope check. |
+| [HazardAuditor: From Executable Threats to Safer Computer-Use Agents](https://arxiv.org/abs/2609.15134) | The abstract trains safety guards from normalized events across Claude Code, Codex, Hermes and OpenClaw. Browser interaction appears in the general motivation, but it does not identify actual GUI/browser tasks or the execution interface of its evaluated benchmarks. Harness names and the computer-use label alone do not establish material GUI evidence. |
 
 ## Uncurated papers behind curated resources
 
@@ -167,7 +175,7 @@ None: every paper linked from a curated resource is curated.
 
 ## Scope exclusions
 
-118 records have an applied scope decision; 0 require another review after a change. See the [decision ledger](../data/exclusion-status.json) for each rationale and source fingerprint. These decisions concern catalog relevance, not research quality. Original bibliographic metadata is retained, and previous resource URLs explain the decision rather than silently disappearing.
+122 records have an applied scope decision; 0 require another review after a change. See the [decision ledger](../data/exclusion-status.json) for each rationale and source fingerprint. These decisions concern catalog relevance, not research quality. Original bibliographic metadata is retained, and previous resource URLs explain the decision rather than silently disappearing.
 
 ## Known gaps
 

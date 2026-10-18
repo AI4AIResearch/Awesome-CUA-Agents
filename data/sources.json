@@ -732,5 +732,43 @@
       "https://huggingface.co/Hcompany/Holo4-27B-NVFP4",
       "https://huggingface.co/Hcompany/Holo4-27B-GGUF"
     ]
+  },
+  {
+    "id": "maxiw-gui",
+    "name": "Maxi-W Awesome AI for GUI Agents",
+    "url": "https://raw.githubusercontent.com/maxi-w/awesome-ai-for-gui-agents/HEAD/README.md",
+    "homepage": "https://github.com/maxi-w/awesome-ai-for-gui-agents",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "datasets",
+      "models",
+      "tools"
+    ]
+  },
+  {
+    "id": "on-device-agents",
+    "name": "Awesome On-Device Agents",
+    "url": "https://raw.githubusercontent.com/Adam-THU/awesome-on-device-agents/HEAD/README.md",
+    "homepage": "https://github.com/Adam-THU/awesome-on-device-agents",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "mobile",
+      "infrastructure"
+    ]
+  },
+  {
+    "id": "awesome-everything-gui",
+    "name": "AwesomeEverything GUI Agents Paper List",
+    "url": "https://raw.githubusercontent.com/WeijianQ/AwesomeEverything_GUI-Agents-Paper-List/HEAD/README.md",
+    "homepage": "https://github.com/WeijianQ/AwesomeEverything_GUI-Agents-Paper-List",
+    "role": "discovery",
+    "scope": [
+      "research",
+      "benchmarks",
+      "datasets",
+      "models"
+    ]
   }
 ]

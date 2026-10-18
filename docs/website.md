@@ -12,6 +12,8 @@ The [English data hub](https://awesomecua.github.io/data/) and [中文数据中�
 
 The hub is another entry point to the complete catalog available through `git clone https://github.com/reacher-z/Awesome-CUA.git`. Downloaded records retain their review states, evidence and separate license scopes. The manifest describes generated files, not upstream model weights, training samples or paper full text; its format is defined by [download-manifest.schema.json](../schemas/download-manifest.schema.json).
 
+For repeatable ingestion, the hub and bilingual agent guides also link to [versioned data releases](https://github.com/reacher-z/Awesome-CUA/releases). Each complete data bundle keeps the catalog, RAG documents, citations, provenance, schemas and topic subsets together with their manifests. Its release manifest identifies the source commit and file fingerprints. The website serves the current publication; a tagged bundle preserves the chosen snapshot for a retrieval corpus or report.
+
 ## Build and preview
 
 ```bash

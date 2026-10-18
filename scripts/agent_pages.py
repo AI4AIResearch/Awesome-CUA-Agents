@@ -2,6 +2,7 @@
 import html
 
 CLONE_COMMAND='git clone https://github.com/reacher-z/Awesome-CUA.git'
+RELEASES_URL='https://github.com/reacher-z/Awesome-CUA/releases'
 
 
 def agent_guide_body(language='en'):
@@ -20,6 +21,7 @@ def agent_guide_body(language='en'):
     body+='<p><a href="/AGENTS.md">AGENTS.md</a> · <a href="'+('/agents/' if zh else '/zh/agents/')+'">'+('English' if zh else '中文指南')+'</a></p>'
     body+='<h2>'+tr('1. Clone the data','1. 克隆完整数据')+'</h2>'+command(CLONE_COMMAND+'\ncd Awesome-CUA\ngit rev-parse HEAD')
     body+='<p>'+tr('Read data/catalog.jsonl directly, or use the commands below with Python 3.11+. Search and export use the standard library; no model service or dependency installation is needed. Keep the Git commit as your source snapshot identifier.','直接读取 data/catalog.jsonl，或使用以下 Python 3.11+ 命令。检索和导出只需标准库，无需模型服务或安装依赖。保存 Git commit，便于复核所使用的数据快照。')+'</p>'
+    body+='<p><a href="'+RELEASES_URL+'">'+tr('Versioned data snapshots','版本化数据快照')+'</a>'+tr(' provide a complete data ZIP for repeatable ingestion. Verify SHA256SUMS and retain release-manifest.json with the source commit and catalog fingerprint. The bundle includes catalog, RAG, citations and topic subsets; repository CLI commands below require the source clone.','提供可重复使用的完整数据 ZIP。校验 SHA256SUMS，并保留 release-manifest.json 中的源提交与目录指纹。数据包包含目录、RAG、引用和专题子集；以下仓库 CLI 命令需要克隆源代码后运行。')+'</p>'
     body+='<h2>'+tr('2. Ask a focused question','2. 先检索，再深入阅读')+'</h2>'+command('python3 scripts/catalog.py search "grounding" --kind model --status curated --json\npython3 scripts/catalog.py search --kind dataset --environment android --status curated --limit 0 --json\npython3 scripts/catalog.py search --kind paper --status curated --topic reinforcement-learning --limit 0 --json')
     body+='<p>'+tr('Search is literal and uses AND across terms. Use aliases when a query is too narrow; --limit 0 returns all matches. Review status and platform/topic tags describe what the catalog has checked.','检索按关键词进行 AND 匹配。没有结果时可尝试别名；--limit 0 返回全部匹配项。审阅状态、平台和主题标签反映目录已经核实的范围。')+'</p>'
     body+='<h3>'+tr('Retrieve a record by ID','用稳定 ID 读取记录')+'</h3>'+command('python3 scripts/catalog.py get arxiv:2404.07972 --json\npython3 scripts/catalog.py get arxiv:2404.07972 --related --json')

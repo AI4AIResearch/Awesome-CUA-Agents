@@ -1,5 +1,22 @@
 [
   {
+    "id": "awesome-everything-gui",
+    "url": "https://raw.githubusercontent.com/WeijianQ/AwesomeEverything_GUI-Agents-Paper-List/HEAD/README.md",
+    "retrieved_at": "2026-10-17T15:36:03Z",
+    "ok": true,
+    "request_attempts": 1,
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/WeijianQ/AwesomeEverything_GUI-Agents-Paper-List/HEAD/README.md",
+    "content_type": "text/plain; charset=utf-8",
+    "sha256": "24889bc3aa739d191f02ede69c34e8e81fec0d3d5ed714318484f1527135f287",
+    "bytes": 441781,
+    "unique_resources": 496,
+    "run_started_at": "2026-10-18T04:10:37Z",
+    "provider_host": "raw.githubusercontent.com",
+    "request_attempted": true,
+    "state": "success"
+  },
+  {
     "id": "cdxeve-cua",
     "url": "https://raw.githubusercontent.com/cdxeve/awesome-computer-use-agents/main/README.md",
     "retrieved_at": "2026-10-17T23:21:25Z",
@@ -68,6 +85,23 @@
     "state": "success"
   },
   {
+    "id": "maxiw-gui",
+    "url": "https://raw.githubusercontent.com/maxi-w/awesome-ai-for-gui-agents/HEAD/README.md",
+    "retrieved_at": "2026-10-17T15:36:03Z",
+    "ok": true,
+    "request_attempts": 1,
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/maxi-w/awesome-ai-for-gui-agents/HEAD/README.md",
+    "content_type": "text/plain; charset=utf-8",
+    "sha256": "59b793336baf32fd714d13ad511e92b21e46ab6f2c0da9b0b2f12a03c1d03483",
+    "bytes": 9378,
+    "unique_resources": 50,
+    "run_started_at": "2026-10-18T04:10:37Z",
+    "provider_host": "raw.githubusercontent.com",
+    "request_attempted": true,
+    "state": "success"
+  },
+  {
     "id": "mobile-agents",
     "url": "https://raw.githubusercontent.com/aialt/awesome-mobile-agents/main/README.md",
     "retrieved_at": "2026-10-17T23:21:27Z",
@@ -97,6 +131,23 @@
     "bytes": 31646,
     "unique_resources": 40,
     "run_started_at": "2026-10-17T23:21:24Z",
+    "provider_host": "raw.githubusercontent.com",
+    "request_attempted": true,
+    "state": "success"
+  },
+  {
+    "id": "on-device-agents",
+    "url": "https://raw.githubusercontent.com/Adam-THU/awesome-on-device-agents/HEAD/README.md",
+    "retrieved_at": "2026-10-17T15:36:03Z",
+    "ok": true,
+    "request_attempts": 1,
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/Adam-THU/awesome-on-device-agents/HEAD/README.md",
+    "content_type": "text/plain; charset=utf-8",
+    "sha256": "0ea8f6355c1999f7c2503d3f46ce7405c847b6e05b87b96b45d1f8e00483fb43",
+    "bytes": 11821,
+    "unique_resources": 32,
+    "run_started_at": "2026-10-18T04:10:37Z",
     "provider_host": "raw.githubusercontent.com",
     "request_attempted": true,
     "state": "success"

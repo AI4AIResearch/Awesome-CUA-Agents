@@ -1,17 +1,17 @@
 {
-  "as_of_utc": "2026-10-17T19:15:20Z",
-  "total_records": 3006,
-  "curated_records": 1435,
-  "bibliographic_records": 2578,
-  "arxiv_active_records": 2565,
+  "as_of_utc": "2026-10-18T04:40:40Z",
+  "total_records": 3048,
+  "curated_records": 1572,
+  "bibliographic_records": 2599,
+  "arxiv_active_records": 2586,
   "non_arxiv_bibliographic_records": 13,
-  "publication_metadata_records": 26,
-  "arxiv_archive_records": 2683,
-  "excluded_records": 118,
+  "publication_metadata_records": 77,
+  "arxiv_archive_records": 2708,
+  "excluded_records": 122,
   "exclusion_revalidation_pending": 0,
-  "metadata_only_records": 1571,
-  "discovery_identifiers": 3908,
-  "unindexed_candidates": 852,
+  "metadata_only_records": 1476,
+  "discovery_identifiers": 4052,
+  "unindexed_candidates": 910,
   "non_resource_candidates": 80,
   "alias_candidates": 9,
   "pending_editorial": [
@@ -105,80 +105,115 @@
       "url": "https://labs.google.com/mariner/",
       "reason": "The Project Mariner page on labs.google.com is a client-rendered sign-in shell whose HTML carries only the title, and the former deepmind.google Project Mariner pages now redirect to the DeepMind homepage. Approval needs a readable first-party product page.",
       "cause": "reviewer_hold"
+    },
+    {
+      "id": "arxiv:2409.00088",
+      "name": "On-Device Language Models: A Comprehensive Review",
+      "url": "https://arxiv.org/abs/2409.00088",
+      "reason": "This survey covers on-device language-model architectures, compression and deployment. Further review is needed to establish substantive computer-interface-agent coverage.",
+      "cause": "reviewer_hold"
+    },
+    {
+      "id": "arxiv:2506.02153",
+      "name": "Small Language Models are the Future of Agentic AI",
+      "url": "https://arxiv.org/abs/2506.02153",
+      "reason": "This is a general position on small language models in agentic architectures. The abstract does not establish a specific computer-interface application for adjacent inclusion.",
+      "cause": "reviewer_hold"
+    },
+    {
+      "id": "arxiv:2512.21720",
+      "name": "An Information Theoretic Perspective on Agentic System Design",
+      "url": "https://arxiv.org/abs/2512.21720",
+      "reason": "The abstract studies compressor-predictor language-model systems and Deep Research. A concrete connection to GUI, browser or operating-system interaction needs further primary-source review.",
+      "cause": "reviewer_hold"
+    },
+    {
+      "id": "arxiv:2604.19299",
+      "name": "Rethinking Scale: Deployment Trade-offs of Small Language Models under Agent Paradigms",
+      "url": "https://arxiv.org/abs/2604.19299",
+      "reason": "The abstract compares base models, tool-equipped agents and multi-agent systems without identifying interface-interaction tasks. Retain as metadata pending a task-level scope check.",
+      "cause": "reviewer_hold"
+    },
+    {
+      "id": "arxiv:2609.15134",
+      "name": "HazardAuditor: From Executable Threats to Safer Computer-Use Agents",
+      "url": "https://arxiv.org/abs/2609.15134",
+      "reason": "The abstract trains safety guards from normalized events across Claude Code, Codex, Hermes and OpenClaw. Browser interaction appears in the general motivation, but it does not identify actual GUI/browser tasks or the execution interface of its evaluated benchmarks. Harness names and the computer-use label alone do not establish material GUI evidence.",
+      "cause": "reviewer_hold"
     }
   ],
   "uncurated_linked_papers": [],
   "by_kind": {
-    "agent": 38,
-    "benchmark": 80,
+    "agent": 41,
+    "benchmark": 83,
     "company": 16,
-    "dataset": 80,
-    "framework": 66,
+    "dataset": 85,
+    "framework": 72,
     "infrastructure": 14,
-    "model": 94,
-    "paper": 2565,
+    "model": 98,
+    "paper": 2584,
     "product": 20,
-    "survey": 13,
+    "survey": 15,
     "tool": 20
   },
   "curated_by_environment": {
-    "android": 275,
-    "cross-platform": 186,
-    "desktop": 298,
-    "harmonyos": 2,
-    "ios": 18,
-    "linux": 40,
-    "macos": 29,
-    "unspecified": 327,
-    "web": 537,
-    "windows": 51
+    "android": 294,
+    "cross-platform": 193,
+    "desktop": 320,
+    "harmonyos": 3,
+    "ios": 20,
+    "linux": 47,
+    "macos": 30,
+    "unspecified": 367,
+    "web": 596,
+    "windows": 61
   },
   "curated_by_kind_and_environment": {
     "agent": {
-      "android": 15,
+      "android": 16,
       "cross-platform": 1,
-      "desktop": 14,
+      "desktop": 15,
       "ios": 1,
-      "macos": 1,
-      "web": 10,
-      "windows": 3
+      "macos": 2,
+      "web": 11,
+      "windows": 4
     },
     "benchmark": {
-      "android": 17,
+      "android": 18,
       "cross-platform": 13,
-      "desktop": 19,
+      "desktop": 20,
       "ios": 1,
       "linux": 5,
       "macos": 3,
       "unspecified": 3,
-      "web": 36,
-      "windows": 4
+      "web": 37,
+      "windows": 5
     },
     "company": {
       "unspecified": 16
     },
     "dataset": {
-      "android": 33,
+      "android": 34,
       "cross-platform": 14,
-      "desktop": 16,
+      "desktop": 18,
       "ios": 1,
-      "linux": 6,
+      "linux": 7,
       "macos": 2,
       "unspecified": 8,
-      "web": 21,
-      "windows": 3
+      "web": 24,
+      "windows": 4
     },
     "framework": {
-      "android": 17,
+      "android": 19,
       "cross-platform": 7,
-      "desktop": 18,
+      "desktop": 21,
       "harmonyos": 1,
       "ios": 1,
-      "linux": 3,
+      "linux": 5,
       "macos": 1,
       "unspecified": 2,
-      "web": 34,
-      "windows": 1
+      "web": 36,
+      "windows": 2
     },
     "infrastructure": {
       "android": 3,
@@ -190,37 +225,40 @@
       "windows": 1
     },
     "model": {
-      "android": 23,
-      "cross-platform": 46,
-      "desktop": 21,
+      "android": 24,
+      "cross-platform": 47,
+      "desktop": 24,
       "ios": 4,
-      "linux": 4,
+      "linux": 6,
       "macos": 4,
       "unspecified": 2,
-      "web": 27,
-      "windows": 4
+      "web": 28,
+      "windows": 5
     },
     "paper": {
-      "android": 161,
-      "cross-platform": 94,
-      "desktop": 193,
-      "harmonyos": 1,
-      "ios": 6,
-      "linux": 16,
+      "android": 173,
+      "cross-platform": 100,
+      "desktop": 204,
+      "harmonyos": 2,
+      "ios": 8,
+      "linux": 18,
       "macos": 14,
-      "unspecified": 292,
-      "web": 375,
-      "windows": 32
+      "unspecified": 332,
+      "web": 424,
+      "windows": 36
     },
     "product": {
       "desktop": 5,
       "web": 18
     },
     "survey": {
-      "android": 1,
+      "android": 2,
       "cross-platform": 10,
+      "desktop": 1,
       "ios": 1,
-      "unspecified": 2
+      "unspecified": 2,
+      "web": 2,
+      "windows": 1
     },
     "tool": {
       "android": 5,
@@ -235,9 +273,9 @@
     }
   },
   "license_declarations_by_scope": {
-    "code": 166,
-    "data": 56,
-    "weights": 53,
+    "code": 176,
+    "data": 61,
+    "weights": 56,
     "document": 0
   },
   "sources": [
@@ -293,13 +331,13 @@
         "state": "success"
       },
       "discovered": 218,
-      "indexed": 165,
-      "indexed_resources": 165,
-      "resolved_aliases": 0,
-      "curated": 162,
+      "indexed": 166,
+      "indexed_resources": 166,
+      "resolved_aliases": 1,
+      "curated": 163,
       "excluded": 0,
       "set_aside": 4,
-      "unindexed": 49
+      "unindexed": 48
     },
     {
       "id": "os-agent-survey",
@@ -353,13 +391,13 @@
         "state": "success"
       },
       "discovered": 132,
-      "indexed": 95,
-      "indexed_resources": 95,
-      "resolved_aliases": 0,
-      "curated": 85,
+      "indexed": 96,
+      "indexed_resources": 96,
+      "resolved_aliases": 1,
+      "curated": 87,
       "excluded": 0,
       "set_aside": 1,
-      "unindexed": 36
+      "unindexed": 35
     },
     {
       "id": "steel-web",
@@ -443,13 +481,13 @@
         "state": "success"
       },
       "discovered": 170,
-      "indexed": 114,
+      "indexed": 115,
       "indexed_resources": 114,
-      "resolved_aliases": 2,
-      "curated": 106,
+      "resolved_aliases": 3,
+      "curated": 108,
       "excluded": 1,
       "set_aside": 0,
-      "unindexed": 55
+      "unindexed": 54
     },
     {
       "id": "delunn-multimodal",
@@ -473,13 +511,13 @@
         "state": "success"
       },
       "discovered": 588,
-      "indexed": 496,
-      "indexed_resources": 496,
-      "resolved_aliases": 4,
-      "curated": 432,
-      "excluded": 0,
+      "indexed": 499,
+      "indexed_resources": 499,
+      "resolved_aliases": 5,
+      "curated": 454,
+      "excluded": 1,
       "set_aside": 0,
-      "unindexed": 92
+      "unindexed": 88
     },
     {
       "id": "tianyuan-cua",
@@ -506,7 +544,7 @@
       "indexed": 69,
       "indexed_resources": 69,
       "resolved_aliases": 0,
-      "curated": 62,
+      "curated": 63,
       "excluded": 0,
       "set_aside": 1,
       "unindexed": 24
@@ -626,7 +664,7 @@
       "indexed": 486,
       "indexed_resources": 486,
       "resolved_aliases": 0,
-      "curated": 353,
+      "curated": 394,
       "excluded": 0,
       "set_aside": 45,
       "unindexed": 13
@@ -686,7 +724,7 @@
       "indexed": 207,
       "indexed_resources": 207,
       "resolved_aliases": 0,
-      "curated": 116,
+      "curated": 156,
       "excluded": 0,
       "set_aside": 1,
       "unindexed": 2
@@ -1560,6 +1598,96 @@
       "excluded": 0,
       "set_aside": 0,
       "unindexed": 35
+    },
+    {
+      "id": "maxiw-gui",
+      "name": "Maxi-W Awesome AI for GUI Agents",
+      "url": "https://github.com/maxi-w/awesome-ai-for-gui-agents",
+      "snapshot": {
+        "id": "maxiw-gui",
+        "url": "https://raw.githubusercontent.com/maxi-w/awesome-ai-for-gui-agents/HEAD/README.md",
+        "retrieved_at": "2026-10-17T15:36:03Z",
+        "ok": true,
+        "request_attempts": 1,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/maxi-w/awesome-ai-for-gui-agents/HEAD/README.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "59b793336baf32fd714d13ad511e92b21e46ab6f2c0da9b0b2f12a03c1d03483",
+        "bytes": 9378,
+        "unique_resources": 50,
+        "run_started_at": "2026-10-18T04:10:37Z",
+        "provider_host": "raw.githubusercontent.com",
+        "request_attempted": true,
+        "state": "success"
+      },
+      "discovered": 50,
+      "indexed": 26,
+      "indexed_resources": 26,
+      "resolved_aliases": 0,
+      "curated": 26,
+      "excluded": 0,
+      "set_aside": 1,
+      "unindexed": 23
+    },
+    {
+      "id": "on-device-agents",
+      "name": "Awesome On-Device Agents",
+      "url": "https://github.com/Adam-THU/awesome-on-device-agents",
+      "snapshot": {
+        "id": "on-device-agents",
+        "url": "https://raw.githubusercontent.com/Adam-THU/awesome-on-device-agents/HEAD/README.md",
+        "retrieved_at": "2026-10-17T15:36:03Z",
+        "ok": true,
+        "request_attempts": 1,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/Adam-THU/awesome-on-device-agents/HEAD/README.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "0ea8f6355c1999f7c2503d3f46ce7405c847b6e05b87b96b45d1f8e00483fb43",
+        "bytes": 11821,
+        "unique_resources": 32,
+        "run_started_at": "2026-10-18T04:10:37Z",
+        "provider_host": "raw.githubusercontent.com",
+        "request_attempted": true,
+        "state": "success"
+      },
+      "discovered": 32,
+      "indexed": 20,
+      "indexed_resources": 20,
+      "resolved_aliases": 3,
+      "curated": 15,
+      "excluded": 3,
+      "set_aside": 0,
+      "unindexed": 9
+    },
+    {
+      "id": "awesome-everything-gui",
+      "name": "AwesomeEverything GUI Agents Paper List",
+      "url": "https://github.com/WeijianQ/AwesomeEverything_GUI-Agents-Paper-List",
+      "snapshot": {
+        "id": "awesome-everything-gui",
+        "url": "https://raw.githubusercontent.com/WeijianQ/AwesomeEverything_GUI-Agents-Paper-List/HEAD/README.md",
+        "retrieved_at": "2026-10-17T15:36:03Z",
+        "ok": true,
+        "request_attempts": 1,
+        "status": 200,
+        "final_url": "https://raw.githubusercontent.com/WeijianQ/AwesomeEverything_GUI-Agents-Paper-List/HEAD/README.md",
+        "content_type": "text/plain; charset=utf-8",
+        "sha256": "24889bc3aa739d191f02ede69c34e8e81fec0d3d5ed714318484f1527135f287",
+        "bytes": 441781,
+        "unique_resources": 496,
+        "run_started_at": "2026-10-18T04:10:37Z",
+        "provider_host": "raw.githubusercontent.com",
+        "request_attempted": true,
+        "state": "success"
+      },
+      "discovered": 496,
+      "indexed": 451,
+      "indexed_resources": 451,
+      "resolved_aliases": 56,
+      "curated": 385,
+      "excluded": 0,
+      "set_aside": 0,
+      "unindexed": 45
     }
   ],
   "primary_search": {
